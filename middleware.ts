@@ -31,19 +31,20 @@ export default clerkMiddleware(async (auth, req) => {
   res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   // Prevent cross-origin window opener attacks
   res.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
-  // Basic CSP: blocks framing, restricts sources; unsafe-inline/eval kept for Next.js compatibility
-  // Clerk loads its JS bundle from *.clerk.accounts.dev so that host must be in script-src
+  // CSP — Clerk prod uses https://clerk.webmimic.com (FAPI); dev uses *.clerk.accounts.dev
+  // https://clerk.com/docs/guides/secure/best-practices/csp-headers
   res.headers.set(
     'Content-Security-Policy',
     [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.clerk.accounts.dev",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://clerk.webmimic.com https://*.clerk.accounts.dev https://challenges.cloudflare.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https:",
+      "img-src 'self' data: blob: https: https://img.clerk.com",
       "media-src 'self' https:",
       "font-src 'self' data:",
       "connect-src 'self' https:",
-      "frame-src https://*.clerk.accounts.dev",
+      "frame-src 'self' https://clerk.webmimic.com https://*.clerk.accounts.dev https://challenges.cloudflare.com",
+      "worker-src 'self' blob:",
       "frame-ancestors 'none'",
     ].join('; ')
   );
