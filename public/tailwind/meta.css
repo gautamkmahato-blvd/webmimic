@@ -1,0 +1,343 @@
+/* ============================================
+ * Design Tokens — About Meta | Social technology, VR, AR and innovation
+ * Source: https://www.meta.com/en-gb/about/?srsltid=AfmBOooXOpmENdSinKKHCdK571HVEl4iPifxJcr6s5GC15Tej_ZUR_9O
+ * Generated: 15/04/2026, 23:37:08
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #1C1E21; /* hsl(216, 8%, 12%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-blue: #5D6C7B; /* hsl(210, 14%, 42%) · text */
+  --color-dark-gray-2: #0A1317; /* hsl(198, 39%, 6%) · text */
+  --color-dark-blue: #1C2B33; /* hsl(201, 29%, 15%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue-2: #385898; /* hsl(220, 46%, 41%) · text */
+  --color-blue-3: #0457CB; /* hsl(215, 96%, 41%) · background */
+  --color-light-gray: #DADDE1; /* hsl(214, 10%, 87%) · text */
+  --color-blue-4: #0064E0; /* hsl(213, 100%, 44%) · background */
+  --color-dark-blue-2: rgba(10, 19, 23, 0.12); /* hsl(212, 52%, 6%) · background */
+  --color-dark-blue-3: #465A69; /* hsl(206, 20%, 34%) · text */
+  --color-white-2: #F8F9FB; /* hsl(220, 27%, 98%) · background */
+  --color-white-3: rgba(248, 249, 251, 0.2); /* hsl(0, 0%, 98%) · border */
+  --color-blue-5: #768591; /* hsl(207, 11%, 52%) · text */
+  --color-light-gray-2: #CBD2D9; /* hsl(210, 16%, 82%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 36px;
+  --font-size-xl: 48px;
+  --font-family-base: Times;
+  --font-family-2: Helvetica;
+  --font-family-3: Optimistic VF;
+  --font-family-4: Optimistic Display Medium;
+  --font-family-5: Optimistic Text Bold;
+  --font-family-6: Optimistic Text Normal;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 16.08px;
+  --line-height-snug: 20.0004px;
+  --line-height-normal: 21.6px;
+  --line-height-relaxed: 24px;
+  --line-height-loose: 27px;
+  --line-height-lh-6: 39.6px;
+  --line-height-lh-7: 43.2px;
+  --line-height-lh-8: 52.8px;
+  --line-height-lh-9: 57.6px;
+  --letter-spacing-tight: -0.48px;
+  --letter-spacing-normal: -0.36px;
+  --letter-spacing-wide: -0.16px;
+  --letter-spacing-wider: -0.14px;
+  --letter-spacing-widest: 0.08px;
+  --letter-spacing-ls-6: 0.09px;
+  --letter-spacing-ls-7: 0.36px;
+  --letter-spacing-ls-8: 0.576px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 3px;
+  --space-3: 4px;
+  --space-4: 5px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 11px;
+  --space-10: 12px;
+  --space-12: 15px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 80px;
+  --space-32: 191.398px;
+  --space-40: 32px;
+  --space-48: 36px;
+  --space-64: 40px;
+  --space-80: 45px;
+  --space-96: 48px;
+  --space-128: 56px;
+  --space-160: 64px;
+  --space-192: 72px;
+  --space-256: 79.75px;
+  --space-23: 79.7578px;
+  --space-25: 96px;
+  --space-26: 120px;
+  --space-27: 123px;
+  --space-28: 136px;
+  --space-29: 160px;
+  --space-30: 167.242px;
+  --space-31: 184px;
+  --space-33: 357.062px;
+  --space-34: 358.875px;
+  --space-35: 382.797px;
+  --space-36: 470.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 24px;
+  --radius-md: 32px;
+  --radius-lg: 50%;
+  --radius-xl: 100px;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.333s;
+  --easing-ease-in-out: ease-in-out;
+  --easing-ease-out: ease-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 400;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 70px;
+  --breakpoint-sm: 240px;
+  --breakpoint-md: 256px;
+  --breakpoint-lg: 280px;
+  --breakpoint-xl: 299px;
+  --breakpoint-2xl: 320px;
+  --breakpoint-3xl: 340px;
+  --breakpoint-bp-8: 359px;
+  --breakpoint-bp-9: 360px;
+  --breakpoint-bp-10: 375px;
+  --breakpoint-bp-11: 389px;
+  --breakpoint-bp-12: 390px;
+  --breakpoint-bp-13: 400px;
+  --breakpoint-bp-14: 404px;
+  --breakpoint-bp-15: 420px;
+  --breakpoint-bp-16: 422px;
+  --breakpoint-bp-17: 428px;
+  --breakpoint-bp-18: 435px;
+  --breakpoint-bp-19: 450px;
+  --breakpoint-bp-20: 459px;
+  --breakpoint-bp-21: 460px;
+  --breakpoint-bp-22: 480px;
+  --breakpoint-bp-23: 481px;
+  --breakpoint-bp-24: 482px;
+  --breakpoint-bp-25: 486px;
+  --breakpoint-bp-26: 488px;
+  --breakpoint-bp-27: 499px;
+  --breakpoint-bp-28: 500px;
+  --breakpoint-bp-29: 501px;
+  --breakpoint-bp-30: 520px;
+  --breakpoint-bp-31: 530px;
+  --breakpoint-bp-32: 531px;
+  --breakpoint-bp-33: 539px;
+  --breakpoint-bp-34: 540px;
+  --breakpoint-bp-35: 550px;
+  --breakpoint-bp-36: 559px;
+  --breakpoint-bp-37: 560px;
+  --breakpoint-bp-38: 561px;
+  --breakpoint-bp-39: 562px;
+  --breakpoint-bp-40: 564px;
+  --breakpoint-bp-41: 575px;
+  --breakpoint-bp-42: 583px;
+  --breakpoint-bp-43: 584px;
+  --breakpoint-bp-44: 599px;
+  --breakpoint-bp-45: 600px;
+  --breakpoint-bp-46: 639px;
+  --breakpoint-bp-47: 648px;
+  --breakpoint-bp-48: 650px;
+  --breakpoint-bp-49: 655px;
+  --breakpoint-bp-50: 656px;
+  --breakpoint-bp-51: 660px;
+  --breakpoint-bp-52: 665px;
+  --breakpoint-bp-53: 670px;
+  --breakpoint-bp-54: 679px;
+  --breakpoint-bp-55: 680px;
+  --breakpoint-bp-56: 699px;
+  --breakpoint-bp-57: 700px;
+  --breakpoint-bp-58: 701px;
+  --breakpoint-bp-59: 703px;
+  --breakpoint-bp-60: 704px;
+  --breakpoint-bp-61: 719px;
+  --breakpoint-bp-62: 720px;
+  --breakpoint-bp-63: 735px;
+  --breakpoint-bp-64: 736px;
+  --breakpoint-bp-65: 744px;
+  --breakpoint-bp-66: 760px;
+  --breakpoint-bp-67: 767px;
+  --breakpoint-bp-68: 768px;
+  --breakpoint-bp-69: 769px;
+  --breakpoint-bp-70: 780px;
+  --breakpoint-bp-71: 784px;
+  --breakpoint-bp-72: 789px;
+  --breakpoint-bp-73: 790px;
+  --breakpoint-bp-74: 792px;
+  --breakpoint-bp-75: 799px;
+  --breakpoint-bp-76: 800px;
+  --breakpoint-bp-77: 802px;
+  --breakpoint-bp-78: 819px;
+  --breakpoint-bp-79: 820px;
+  --breakpoint-bp-80: 836px;
+  --breakpoint-bp-81: 837px;
+  --breakpoint-bp-82: 838px;
+  --breakpoint-bp-83: 860px;
+  --breakpoint-bp-84: 868px;
+  --breakpoint-bp-85: 875px;
+  --breakpoint-bp-86: 876px;
+  --breakpoint-bp-87: 877px;
+  --breakpoint-bp-88: 878px;
+  --breakpoint-bp-89: 880px;
+  --breakpoint-bp-90: 899px;
+  --breakpoint-bp-91: 900px;
+  --breakpoint-bp-92: 905px;
+  --breakpoint-bp-93: 915px;
+  --breakpoint-bp-94: 916px;
+  --breakpoint-bp-95: 917px;
+  --breakpoint-bp-96: 939px;
+  --breakpoint-bp-97: 940px;
+  --breakpoint-bp-98: 950px;
+  --breakpoint-bp-99: 955px;
+  --breakpoint-bp-100: 959px;
+  --breakpoint-bp-101: 960px;
+  --breakpoint-bp-102: 970px;
+  --breakpoint-bp-103: 990px;
+  --breakpoint-bp-104: 996px;
+  --breakpoint-bp-105: 999px;
+  --breakpoint-bp-106: 1000px;
+  --breakpoint-bp-107: 1009px;
+  --breakpoint-bp-108: 1023px;
+  --breakpoint-bp-109: 1024px;
+  --breakpoint-bp-110: 1025px;
+  --breakpoint-bp-111: 1035px;
+  --breakpoint-bp-112: 1036px;
+  --breakpoint-bp-113: 1050px;
+  --breakpoint-bp-114: 1058px;
+  --breakpoint-bp-115: 1071px;
+  --breakpoint-bp-116: 1072px;
+  --breakpoint-bp-117: 1079px;
+  --breakpoint-bp-118: 1080px;
+  --breakpoint-bp-119: 1099px;
+  --breakpoint-bp-120: 1100px;
+  --breakpoint-bp-121: 1103px;
+  --breakpoint-bp-122: 1104px;
+  --breakpoint-bp-123: 1105px;
+  --breakpoint-bp-124: 1150px;
+  --breakpoint-bp-125: 1159px;
+  --breakpoint-bp-126: 1160px;
+  --breakpoint-bp-127: 1190px;
+  --breakpoint-bp-128: 1193px;
+  --breakpoint-bp-129: 1194px;
+  --breakpoint-bp-130: 1199px;
+  --breakpoint-bp-131: 1200px;
+  --breakpoint-bp-132: 1201px;
+  --breakpoint-bp-133: 1219px;
+  --breakpoint-bp-134: 1230px;
+  --breakpoint-bp-135: 1235px;
+  --breakpoint-bp-136: 1237px;
+  --breakpoint-bp-137: 1238px;
+  --breakpoint-bp-138: 1249px;
+  --breakpoint-bp-139: 1259px;
+  --breakpoint-bp-140: 1260px;
+  --breakpoint-bp-141: 1267px;
+  --breakpoint-bp-142: 1274px;
+  --breakpoint-bp-143: 1279px;
+  --breakpoint-bp-144: 1280px;
+  --breakpoint-bp-145: 1290px;
+  --breakpoint-bp-146: 1291px;
+  --breakpoint-bp-147: 1300px;
+  --breakpoint-bp-148: 1319px;
+  --breakpoint-bp-149: 1320px;
+  --breakpoint-bp-150: 1337px;
+  --breakpoint-bp-151: 1339px;
+  --breakpoint-bp-152: 1350px;
+  --breakpoint-bp-153: 1351px;
+  --breakpoint-bp-154: 1352px;
+  --breakpoint-bp-155: 1359px;
+  --breakpoint-bp-156: 1360px;
+  --breakpoint-bp-157: 1364px;
+  --breakpoint-bp-158: 1365px;
+  --breakpoint-bp-159: 1366px;
+  --breakpoint-bp-160: 1367px;
+  --breakpoint-bp-161: 1371px;
+  --breakpoint-bp-162: 1372px;
+  --breakpoint-bp-163: 1379px;
+  --breakpoint-bp-164: 1380px;
+  --breakpoint-bp-165: 1382px;
+  --breakpoint-bp-166: 1395px;
+  --breakpoint-bp-167: 1396px;
+  --breakpoint-bp-168: 1400px;
+  --breakpoint-bp-169: 1439px;
+  --breakpoint-bp-170: 1440px;
+  --breakpoint-bp-171: 1456px;
+  --breakpoint-bp-172: 1460px;
+  --breakpoint-bp-173: 1504px;
+  --breakpoint-bp-174: 1509px;
+  --breakpoint-bp-175: 1510px;
+  --breakpoint-bp-176: 1535px;
+  --breakpoint-bp-177: 1553px;
+  --breakpoint-bp-178: 1554px;
+  --breakpoint-bp-179: 1599px;
+  --breakpoint-bp-180: 1600px;
+  --breakpoint-bp-181: 1627px;
+  --breakpoint-bp-182: 1628px;
+  --breakpoint-bp-183: 1661px;
+  --breakpoint-bp-184: 1667px;
+  --breakpoint-bp-185: 1668px;
+  --breakpoint-bp-186: 1679px;
+  --breakpoint-bp-187: 1680px;
+  --breakpoint-bp-188: 1711px;
+  --breakpoint-bp-189: 1712px;
+  --breakpoint-bp-190: 1728px;
+  --breakpoint-bp-191: 1800px;
+  --breakpoint-bp-192: 1825px;
+  --breakpoint-bp-193: 1826px;
+  --breakpoint-bp-194: 1869px;
+  --breakpoint-bp-195: 1870px;
+  --breakpoint-bp-196: 1919px;
+  --breakpoint-bp-197: 1920px;
+  --breakpoint-bp-198: 1921px;
+  --breakpoint-bp-199: 1928px;
+  --breakpoint-bp-200: 1935px;
+  --breakpoint-bp-201: 1936px;
+  --breakpoint-bp-202: 1983px;
+  --breakpoint-bp-203: 1984px;
+  --breakpoint-bp-204: 1987px;
+  --breakpoint-bp-205: 1988px;
+  --breakpoint-bp-206: 2027px;
+  --breakpoint-bp-207: 2028px;
+  --breakpoint-bp-208: 2048px;
+  --breakpoint-bp-209: 2142px;
+  --breakpoint-bp-210: 2243px;
+  --breakpoint-bp-211: 2244px;
+  --breakpoint-bp-212: 2295px;
+  --breakpoint-bp-213: 2296px;
+  --breakpoint-bp-214: 2300px;
+  --breakpoint-bp-215: 2552px;
+  --breakpoint-bp-216: 2604px;
+  --breakpoint-bp-217: 2605px;
+  --breakpoint-bp-218: 9999px;
+
+  /* ── Opacity ── */
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+}

@@ -1,0 +1,221 @@
+/* ============================================
+ * Design Tokens — Antimetal
+ * Source: https://antimetal.com/
+ * Generated: 05/05/2026, 21:22:31
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-blue: #1B2540; /* hsl(224, 41%, 18%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-white: #FAFEFF; /* hsl(192, 100%, 99%) · background */
+  --color-dark-green: #048F42; /* hsl(147, 95%, 29%) · text */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-blue-2: rgba(27, 37, 64, 0.64); /* hsl(222, 41%, 18%) · text */
+  --color-dark-blue-3: rgba(27, 37, 64, 0.32); /* hsl(225, 40%, 18%) · text */
+  --color-light-cyan: #E1F6FF; /* hsl(198, 100%, 94%) · text */
+  --color-light-cyan-2: #DDFFFF; /* hsl(180, 100%, 93%) · background */
+  --color-dark-blue-4: rgba(12, 38, 77, 0.05); /* hsl(220, 59%, 19%) · background */
+  --color-dark-blue-5: rgba(0, 39, 80, 0.04); /* hsl(200, 100%, 15%) · shadow */
+  --color-light-cyan-3: #E0F6FF; /* hsl(197, 100%, 94%) · background */
+  --color-dark-blue-6: rgba(27, 37, 64, 0.72); /* hsl(223, 42%, 18%) · text */
+  --color-dark-blue-7: rgba(4, 33, 80, 0.04); /* hsl(220, 100%, 15%) · background */
+  --color-white-3: #E6FFFF; /* hsl(180, 100%, 95%) · background */
+  --color-dark-blue-8: rgba(0, 39, 80, 0.08); /* hsl(210, 100%, 15%) · shadow */
+  --color-blue: #8D5CF7; /* hsl(259, 91%, 66%) · fill */
+  --color-yellow: #DBEF01; /* hsl(65, 99%, 47%) · fill */
+  --color-black-2: #090703; /* hsl(40, 50%, 2%) · fill */
+  --color-light-cyan-4: #DFF6FF; /* hsl(197, 100%, 94%) · text */
+  --color-white-4: #F8F9FC; /* hsl(225, 40%, 98%) · background */
+  --color-dark-blue-9: #08122D; /* hsl(224, 70%, 10%) · text */
+  --color-light-cyan-5: rgba(219, 247, 255, 0.07); /* hsl(200, 100%, 92%) · gradient */
+  --color-light-cyan-6: #E1F5FF; /* hsl(200, 100%, 94%) · text */
+  --color-blue-2: #0060FF; /* hsl(217, 100%, 50%) · background */
+  --color-dark-blue-10: rgba(4, 33, 80, 0.06); /* hsl(216, 100%, 17%) · shadow */
+  --color-dark-blue-11: rgba(12, 38, 77, 0.06); /* hsl(225, 67%, 20%) · fill */
+  --color-dark-blue-12: #001033; /* hsl(221, 100%, 10%) · background */
+  --color-light-cyan-7: rgba(219, 247, 255, 0.2); /* hsl(197, 100%, 93%) · gradient */
+  --color-light-cyan-8: rgba(219, 247, 255, 0.32); /* hsl(195, 100%, 93%) · gradient */
+  --color-dark-blue-13: rgba(24, 37, 66, 0.32); /* hsl(222, 44%, 18%) · shadow */
+  --color-dark-blue-14: rgba(24, 37, 66, 0.12); /* hsl(228, 45%, 18%) · shadow */
+  --color-dark-blue-15: rgba(24, 37, 66, 0.44); /* hsl(224, 45%, 18%) · shadow */
+  --color-light-cyan-9: rgba(219, 247, 255, 0.48); /* hsl(193, 100%, 93%) · shadow */
+  --color-light-cyan-10: rgba(219, 247, 255, 0.24); /* hsl(193, 100%, 93%) · shadow */
+  --color-yellow-2: #D0F100; /* hsl(68, 100%, 47%) · background */
+  --color-light-gray: #ECF7E9; /* hsl(107, 47%, 94%) · background */
+  --color-orange: #FF9B00; /* hsl(36, 100%, 50%) · background */
+  --color-purple: #9559FF; /* hsl(262, 100%, 67%) · background */
+  --color-green: #4C8050; /* hsl(125, 25%, 40%) · text */
+  --color-blue-3: #005BF6; /* hsl(218, 100%, 48%) · gradient */
+  --color-light-blue: #B0C6E9; /* hsl(217, 56%, 80%) · gradient */
+  --color-yellow-3: #FECA00; /* hsl(48, 100%, 50%) · gradient */
+  --color-red: #FF1C11; /* hsl(3, 100%, 53%) · gradient */
+  --color-pink: #FF00EA; /* hsl(305, 100%, 50%) · gradient */
+  --color-light-pink: rgba(255, 162, 251, 0.8); /* hsl(303, 100%, 82%) · gradient */
+  --color-red-2: #EB3441; /* hsl(356, 82%, 56%) · background */
+  --color-orange-2: #F4A43A; /* hsl(34, 89%, 59%) · background */
+  --color-green-2: #5ACC5A; /* hsl(120, 53%, 58%) · background */
+  --color-dark-blue-16: #0C264D; /* hsl(216, 73%, 17%) · fill */
+  --color-dark-blue-17: rgba(0, 39, 80, 0.1); /* hsl(210, 100%, 15%) · shadow */
+  --color-dark-blue-18: rgba(13, 23, 46, 0.2); /* hsl(220, 50%, 12%) · gradient */
+  --color-dark-blue-19: #3E4452; /* hsl(222, 14%, 28%) · other */
+  --color-dark-blue-20: rgba(12, 38, 77, 0.08); /* hsl(217, 71%, 18%) · background */
+  --color-blue-4: rgba(0, 128, 248, 0.32); /* hsl(209, 100%, 49%) · gradient */
+  --color-blue-5: rgba(95, 189, 247, 0.32); /* hsl(202, 89%, 67%) · gradient */
+  --color-light-cyan-11: rgba(211, 239, 252, 0.32); /* hsl(199, 87%, 91%) · gradient */
+  --color-blue-6: #0062FF; /* hsl(217, 100%, 50%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 13px;
+  --font-size-xs: 14px;
+  --font-size-sm: 15px;
+  --font-size-base: 16px;
+  --font-size-lg: 17px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 22px;
+  --font-size-4xl: 24px;
+  --font-size-5xl: 28px;
+  --font-size-6xl: 32px;
+  --font-size-40px: 40px;
+  --font-size-46px: 46px;
+  --font-size-48px: 48px;
+  --font-family-base: abcdFont;
+  --font-family-2: ivarTextFont;
+  --font-family-3: Times;
+  --font-weight-regular: 400;
+  --font-weight-w450: 450;
+  --font-weight-w480: 480;
+  --line-height-tight: 16px;
+  --line-height-snug: 20px;
+  --line-height-normal: 22px;
+  --line-height-relaxed: 24px;
+  --line-height-loose: 26px;
+  --line-height-lh-6: 28px;
+  --line-height-lh-7: 30px;
+  --line-height-lh-8: 40px;
+  --line-height-lh-9: 42px;
+  --line-height-lh-10: 48px;
+  --line-height-lh-11: 56px;
+  --letter-spacing-tight: -0.46px;
+  --letter-spacing-normal: -0.42px;
+  --letter-spacing-wide: -0.4px;
+  --letter-spacing-wider: -0.32px;
+  --letter-spacing-widest: -0.24px;
+  --letter-spacing-ls-6: -0.22px;
+  --letter-spacing-ls-7: -0.1px;
+  --letter-spacing-ls-8: -0.09px;
+  --letter-spacing-ls-9: -0.075px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 6px;
+  --space-6: 7px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 13px;
+  --space-20: 14px;
+  --space-24: 38px;
+  --space-32: 64px;
+  --space-40: 124px;
+  --space-48: 226.5px;
+  --space-64: 24px;
+  --space-80: 25px;
+  --space-96: 27px;
+  --space-128: 28px;
+  --space-160: 30px;
+  --space-192: 31px;
+  --space-256: 32px;
+  --space-23: 36.5px;
+  --space-25: 40px;
+  --space-26: 44px;
+  --space-27: 45.5px;
+  --space-28: 47.5px;
+  --space-29: 50px;
+  --space-30: 54px;
+  --space-31: 56px;
+  --space-33: 72px;
+  --space-34: 76px;
+  --space-35: 78.5px;
+  --space-36: 80px;
+  --space-37: 88px;
+  --space-38: 96px;
+  --space-39: 120px;
+  --space-41: 129px;
+  --space-42: 134px;
+  --space-43: 144px;
+  --space-44: 148px;
+  --space-45: 172px;
+  --space-46: 196px;
+  --space-47: 214px;
+  --space-49: 290px;
+  --space-50: 316.5px;
+  --space-51: 321px;
+  --space-52: 369px;
+  --space-53: 390.953px;
+  --space-54: 454px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 0px 12px 12px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-full: 14px;
+  --radius-r7: 16px;
+  --radius-r8: 16px 16px 0px;
+  --radius-r9: 20px;
+  --radius-r10: 28px;
+  --radius-r11: 60px;
+  --radius-r12: 720px;
+  --radius-r13: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 39, 80, 0.08) 0px 6px 16px -3px, rgba(0, 39, 80, 0.04) 0px 0px 0px 1px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 39, 80, 0.03) 0px 56px 72px -16px, rgba(0, 39, 80, 0.03) 0px 32px 32px -16px, rgba(0, 39, 80, 0.04) 0px 6px 12px -3px, rgba(0, 39, 80, 0.04) 0px 0px 0px 1px;
+  --shadow-lg: rgba(255, 255, 255, 0.72) 0px 1px 1px 0px inset, rgba(4, 33, 80, 0.02) 0px 8px 16px 0px, rgba(4, 33, 80, 0.03) 0px 4px 12px 0px, rgba(4, 33, 80, 0.06) 0px 1px 2px 0px, rgba(4, 33, 80, 0.04) 0px 0px 0px 1px;
+  --shadow-xl: rgba(24, 37, 66, 0.32) 0px 1px 3px 0px, rgba(24, 37, 66, 0.12) 0px 0.5px 0.5px 0px, rgba(24, 37, 66, 0.44) 0px 12px 24px -12px, rgba(219, 247, 255, 0.06) 0px 8px 16px 0px inset, rgba(219, 247, 255, 0.48) 0px 0.5px 0.5px 0px inset, rgba(219, 247, 255, 0.04) 0px -4px 8px 0px inset, rgba(219, 247, 255, 0.24) 0px -0.5px 0.5px 0px inset;
+  --shadow-shadow-5: rgba(255, 255, 255, 0.08) 0px 0px 16px 8px inset, rgba(255, 255, 255, 0.08) 0px 0px 8px 4px inset, rgba(255, 255, 255, 0.08) 0px 0px 4px 2px inset, rgba(255, 255, 255, 0.12) 0px 0px 2px 1px inset;
+  --shadow-shadow-6: color(srgb 0.878431 0.964706 1 / 0.24) 0px 0.5px 0.5px 0px inset, color(srgb 0.878431 0.964706 1 / 0.24) 0px -0.5px 0.5px 0px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.03s;
+  --duration-fast: 0.06s;
+  --duration-normal: 0.09s;
+  --duration-slow: 0.1s;
+  --duration-slower: 0.12s;
+  --duration-duration-6: 0.15s;
+  --duration-duration-7: 0.2s;
+  --duration-duration-8: 0.25s;
+  --duration-duration-9: 0.3s;
+  --duration-duration-10: 0.6s;
+  --duration-duration-11: 1s;
+  --easing-linear: linear;
+  --easing-ease-out: ease-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -10;
+  --z-2: -1;
+  --z-3: 1;
+  --z-4: 2;
+  --z-5: 10;
+  --z-6: 200;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 992px;
+
+  /* ── Opacity ── */
+  --opacity-4: 0.04;
+  --opacity-5: 0.05;
+  --opacity-6: 0.06;
+  --opacity-8: 0.08;
+  --opacity-12: 0.12;
+  --opacity-32: 0.32;
+  --opacity-40: 0.4;
+  --opacity-80: 0.8;
+}

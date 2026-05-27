@@ -1,0 +1,210 @@
+/* ============================================
+ * Design Tokens — World Leader in Artificial Intelligence Computing | NVIDIA
+ * Source: https://www.nvidia.com/en-in/
+ * Generated: 17/04/2026, 13:11:37
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray: #666666; /* hsl(0, 0%, 40%) · text */
+  --color-light-gray: #EEEEEE; /* hsl(0, 0%, 93%) · background */
+  --color-dark-gray-2: #222222; /* hsl(0, 0%, 13%) · text */
+  --color-dark-gray-3: #1A1A1A; /* hsl(0, 0%, 10%) · background */
+  --color-green: #76B900; /* hsl(82, 100%, 36%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-4: #111111; /* hsl(0, 0%, 7%) · text */
+  --color-light-gray-2: #CCCCCC; /* hsl(0, 0%, 80%) · background */
+  --color-dark-gray-5: #555555; /* hsl(0, 0%, 33%) · text */
+  --color-dark-gray-6: #5E5E5E; /* hsl(0, 0%, 37%) · border */
+  --color-mid-gray: #999999; /* hsl(0, 0%, 60%) · text */
+  --color-light-green: #E2FF8C; /* hsl(75, 100%, 77%) · text */
+  --color-dark-blue: #27455C; /* hsl(206, 40%, 26%) · background */
+  --color-white-2: #F7F7F7; /* hsl(0, 0%, 97%) · background */
+  --color-dark-gray-7: #656565; /* hsl(0, 0%, 40%) · text */
+  --color-dark-green: #134D00; /* hsl(105, 100%, 15%) · background */
+  --color-dark-gray-8: #333333; /* hsl(0, 0%, 20%) · text */
+  --color-green-2: #74B71B; /* hsl(86, 74%, 41%) · fill */
+  --color-dark-green-2: #6AA700; /* hsl(82, 100%, 33%) · background */
+  --color-cyan: #32AE88; /* hsl(162, 55%, 44%) · border */
+  --color-mid-gray-2: #696969; /* hsl(0, 0%, 41%) · text */
+  --color-light-gray-3: #C7C5C7; /* hsl(300, 2%, 78%) · shadow */
+  --color-mid-gray-3: #A7A7A7; /* hsl(0, 0%, 65%) · border */
+  --color-light-gray-4: #EFEFEF; /* hsl(0, 0%, 94%) · background */
+  --color-white-3: #F9FFFA; /* hsl(130, 100%, 99%) · background */
+  --color-light-gray-5: #D8D8D8; /* hsl(0, 0%, 85%) · border */
+  --color-mid-gray-4: #707070; /* hsl(0, 0%, 44%) · border */
+  --color-dark-blue-2: #2E3644; /* hsl(218, 19%, 22%) · fill */
+  --color-blue: #3860BE; /* hsl(222, 54%, 48%) · text */
+  --color-white-4: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 0px;
+  --font-size-xs: 11px;
+  --font-size-sm: 11.25px;
+  --font-size-base: 12px;
+  --font-size-lg: 12.992px;
+  --font-size-xl: 13.008px;
+  --font-size-2xl: 13.6px;
+  --font-size-3xl: 14px;
+  --font-size-4xl: 14.4px;
+  --font-size-5xl: 15px;
+  --font-size-6xl: 16px;
+  --font-size-17px: 17px;
+  --font-size-18px: 18px;
+  --font-size-20px: 20px;
+  --font-size-24px: 24px;
+  --font-size-28px: 28px;
+  --font-size-36px: 36px;
+  --font-family-base: sans-serif;
+  --font-family-2: NVIDIA-NALA;
+  --font-family-3: Font Awesome 6 Pro;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 11px;
+  --line-height-snug: 14.4px;
+  --line-height-normal: 15px;
+  --line-height-relaxed: 16px;
+  --line-height-loose: 16.9104px;
+  --line-height-lh-6: 17.5px;
+  --line-height-lh-7: 19.6px;
+  --line-height-lh-8: 21px;
+  --line-height-lh-9: 22px;
+  --line-height-lh-10: 22.5px;
+  --line-height-lh-11: 24px;
+  --line-height-lh-12: 24.99px;
+  --line-height-lh-13: 26px;
+  --line-height-lh-14: 30px;
+  --line-height-lh-15: 35px;
+  --line-height-lh-16: 37px;
+  --line-height-lh-17: 45px;
+  --letter-spacing-tight: 0.144px;
+  --letter-spacing-normal: 0.16px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-6: 6px;
+  --space-8: 7px;
+  --space-10: 8px;
+  --space-12: 9px;
+  --space-16: 10px;
+  --space-20: 11px;
+  --space-24: 30px;
+  --space-32: 56px;
+  --space-40: 326.203px;
+  --space-48: 15px;
+  --space-64: 16px;
+  --space-80: 17px;
+  --space-96: 20px;
+  --space-128: 25px;
+  --space-160: 27px;
+  --space-192: 28px;
+  --space-256: 28.1562px;
+  --space-23: 28.1641px;
+  --space-25: 32px;
+  --space-26: 33px;
+  --space-27: 35px;
+  --space-28: 36px;
+  --space-29: 40px;
+  --space-30: 45px;
+  --space-31: 50px;
+  --space-33: 60px;
+  --space-34: 62px;
+  --space-35: 74.5px;
+  --space-36: 75px;
+  --space-37: 82px;
+  --space-38: 89.5px;
+  --space-39: 326.195px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 12px;
+  --radius-sm: 1px;
+  --radius-md: 2px;
+  --radius-lg: 2.5px;
+  --radius-xl: 3px;
+  --radius-2xl: 17px;
+  --radius-full: 20px;
+  --radius-r7: 50%;
+  --radius-r8: 50px;
+  --radius-r9: 55%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.3) 0px 0px 5px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.19) 0px 2px 6px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.2) 3px 0px 15px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0.24) 0px 3px 4.7px 0.3px, rgba(0, 0, 0, 0.16) 0px 1px 5.88px 0.12px;
+  --shadow-shadow-5: rgb(153, 153, 153) 0px 2px 10px -3px;
+  --shadow-shadow-6: rgb(199, 197, 199) -3px -3px 5px -2px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.4s;
+  --duration-duration-6: 0.5s;
+  --duration-duration-7: 0.8s;
+  --duration-duration-8: 1.2s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in: ease-in;
+  --easing-ease-in-out: ease-in-out;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -999;
+  --z-2: -1;
+  --z-3: 1;
+  --z-4: 2;
+  --z-5: 3;
+  --z-6: 551;
+  --z-7: 552;
+  --z-8: 553;
+  --z-9: 999;
+  --z-10: 1000;
+  --z-11: 1001;
+  --z-12: 1004;
+  --z-13: 1005;
+  --z-14: 10000;
+  --z-15: 2147483646;
+  --z-16: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 374px;
+  --breakpoint-md: 375px;
+  --breakpoint-lg: 399px;
+  --breakpoint-xl: 400px;
+  --breakpoint-2xl: 425px;
+  --breakpoint-3xl: 426px;
+  --breakpoint-bp-8: 480px;
+  --breakpoint-bp-9: 500px;
+  --breakpoint-bp-10: 530px;
+  --breakpoint-bp-11: 550px;
+  --breakpoint-bp-12: 600px;
+  --breakpoint-bp-13: 630px;
+  --breakpoint-bp-14: 639px;
+  --breakpoint-bp-15: 640px;
+  --breakpoint-bp-16: 768px;
+  --breakpoint-bp-17: 896px;
+  --breakpoint-bp-18: 954px;
+  --breakpoint-bp-19: 1023px;
+  --breakpoint-bp-20: 1024px;
+  --breakpoint-bp-21: 1025px;
+  --breakpoint-bp-22: 1290px;
+  --breakpoint-bp-23: 1349px;
+  --breakpoint-bp-24: 1350px;
+  --breakpoint-bp-25: 3000px;
+
+  /* ── Opacity ── */
+  --opacity-60: 0.6;
+  --opacity-90: 0.9;
+}

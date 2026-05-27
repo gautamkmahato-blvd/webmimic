@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Cron Calendar Design System</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+  /* ── Core Colors ── */
+  --color-dark-gray: #161412;
+  --color-black-2: #0F0D0A;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-light-gray: #CCCCCC;
+  --color-orange-2: #FF4700;
+  --color-orange: rgba(255, 71, 0, 0.2);
+  --color-orange-3: rgba(255, 71, 0, 0.5);
+
+  /* Derived UI surfaces */
+  --color-surface: #161412;
+  --color-surface-card: #1c1916;
+  --color-surface-elevated: #201d1a;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+  --color-orange-tint: rgba(255, 71, 0, 0.1);
+  --color-mid-gray: #666666;
+
+  /* ── Typography ── */
+  --font-family-base: 'Helvetica Neue', Helvetica, 'Inter', Arial, sans-serif;
+  --font-size-2xs: 13px;
+  --font-size-xs: 15px;
+  --font-size-sm: 16px;
+  --font-size-base: 22px;
+  --font-size-lg: 140px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 15px;
+  --line-height-snug: 19.5px;
+  --line-height-normal: 22px;
+  --line-height-relaxed: 37.4px;
+  --line-height-loose: 126px;
+  --letter-spacing-tight: -3px;
+  --letter-spacing-normal: 0.15px;
+
+  /* ── Spacing ── */
+  --space-1: 1px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 24px;
+  --space-6: 40px;
+  --space-8: 80px;
+  --space-10: 140px;
+  --space-12: 431.906px;
+
+  /* ── Borders ── */
+  --radius-sm: 4px;
+  --radius-md: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: rgba(255, 71, 0, 0.2) 0px 0px 100px 0px;
+  --shadow-md: rgba(255, 71, 0, 0.5) 0px 0px 0px 0.5px inset, rgba(255, 72, 0, 0.2) 0px 0px 28px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.175s;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 500px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1000px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:var(--font-family-base);
+  background:var(--color-black-2);
+  color:var(--color-light-gray);
+  font-size:var(--font-size-xs);
+  line-height:var(--line-height-snug);
+  font-weight:var(--font-weight-regular);
+}
+.page{max-width:1200px;margin:0 auto;padding:64px 48px;}
+
+/* ── HEADER ── */
+.top-bar{border-bottom:1px solid var(--color-border);margin-bottom:32px;padding-bottom:16px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.header-left{display:flex;align-items:center;gap:16px;}
+.logo{width:38px;height:38px;background:var(--color-orange-2);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);}
+.system-title{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-normal);letter-spacing:var(--letter-spacing-normal);}
+.system-meta{font-size:var(--font-size-2xs);color:var(--color-mid-gray);margin-top:2px;line-height:var(--line-height-snug);}
+.hbadge{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);background:var(--color-surface-card);color:var(--color-mid-gray);padding:2px 10px;border-radius:var(--radius-md);border:1px solid var(--color-border);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:1px solid var(--color-border);background:var(--color-surface-card);color:var(--color-light-gray);box-shadow:0 1px 2px rgba(0,0,0,0.28);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-orange);color:var(--color-orange);box-shadow:0 4px 14px rgba(0,0,0,0.38);transform:translateY(-1px);}
+
+/* ── SECTION ── */
+.section{margin-bottom:64px;}
+.section-title{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-normal);margin-bottom:24px;letter-spacing:var(--letter-spacing-normal);}
+
+/* ── COLORS ── */
+.color-group{margin-bottom:32px;}
+.color-group-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);letter-spacing:0.8px;text-transform:uppercase;color:var(--color-mid-gray);margin-bottom:8px;}
+.swatch-grid{display:grid;gap:6px;}
+.swatch-item{display:flex;flex-direction:column;gap:6px;}
+.swatch-box{height:60px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.05);}
+.swatch-name{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray);line-height:var(--line-height-tight);}
+.swatch-hex{font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-base);line-height:var(--line-height-tight);}
+
+/* ── TYPOGRAPHY ── */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px;}
+.font-card{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:24px;}
+.font-token{font-size:var(--font-size-2xs);font-family:var(--font-family-base);color:var(--color-orange-2);font-weight:var(--font-weight-medium);margin-bottom:8px;letter-spacing:0.5px;}
+.font-display{font-size:36px;color:var(--color-white);line-height:1.1;margin-bottom:8px;font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-tight);}
+.font-sample{font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);font-weight:var(--font-weight-regular);}
+.fw-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.fw-chip{font-size:var(--font-size-2xs);padding:2px 10px;background:var(--color-surface-elevated);border-radius:var(--radius-md);color:var(--color-light-gray);border:1px solid var(--color-border);}
+
+.type-scale{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);overflow:hidden;}
+.type-row{display:flex;flex-direction:column;padding:16px 24px;border-bottom:1px solid var(--color-border);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--color-white);margin-bottom:4px;}
+.type-meta{font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-base);line-height:var(--line-height-tight);}
+
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.lh-item{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:12px;display:flex;flex-direction:column;gap:4px;}
+.lh-bar-wrap{background:rgba(255,71,0,0.08);border-radius:2px;overflow:hidden;}
+.lh-bar{background:linear-gradient(to bottom,rgba(255,71,0,0.4),var(--color-orange-2));width:100%;}
+.lh-token{font-size:var(--font-size-2xs);color:var(--color-orange-2);}
+.lh-val{font-size:10px;color:var(--color-mid-gray);}
+
+.ls-row{display:flex;gap:12px;flex-wrap:wrap;}
+.ls-item{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:16px 24px;flex:1;}
+.ls-sample{font-size:var(--font-size-base);color:var(--color-white);font-weight:var(--font-weight-bold);margin-bottom:4px;}
+.ls-token{font-size:var(--font-size-2xs);color:var(--color-orange-2);}
+.ls-desc{font-size:10px;color:var(--color-mid-gray);}
+
+/* ── SPACING ── */
+.token-wrap{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:24px;}
+.tw-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-normal);margin-bottom:4px;}
+.tw-sub{font-size:var(--font-size-2xs);color:var(--color-mid-gray);margin-bottom:24px;line-height:var(--line-height-snug);}
+.spacing-chart{display:flex;align-items:flex-end;gap:4px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+.sp-bar{background:linear-gradient(to top,rgba(255,71,0,0.3),var(--color-orange-2));border-radius:2px 2px 0 0;width:100%;}
+.sp-lbl{font-size:8px;color:var(--color-mid-gray);text-align:center;}
+
+/* ── BORDERS ── */
+.border-card{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:24px;margin-bottom:16px;}
+.bc-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-normal);margin-bottom:12px;}
+.radius-row{display:flex;gap:16px;flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,rgba(255,71,0,0.3),var(--color-orange-2));border:1px solid rgba(255,255,255,0.05);}
+.radius-lbl{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray);text-align:center;}
+.radius-val{font-size:10px;color:var(--color-mid-gray);text-align:center;}
+
+/* ── SHADOWS ── */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sh-item{display:flex;flex-direction:column;gap:8px;}
+.sh-box{height:88px;background:var(--color-surface-elevated);border-radius:var(--radius-sm);}
+.sh-token{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-light-gray);}
+.sh-usage{font-size:10px;color:var(--color-mid-gray);}
+.sh-desc{font-size:10px;color:var(--color-mid-gray);line-height:var(--line-height-snug);margin-top:2px;}
+
+/* ── Z-INDEX ── */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:12px 12px;text-align:left;font-size:var(--font-size-xs);border-bottom:1px solid var(--color-border);line-height:var(--line-height-snug);}
+.z-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:0.8px;color:var(--color-mid-gray);background:var(--color-surface-card);}
+.z-table td:first-child{color:var(--color-orange-2);}
+.z-table td:nth-child(2){color:var(--color-white);font-weight:var(--font-weight-bold);}
+.z-table td:nth-child(3){color:var(--color-mid-gray);}
+.z-table tr:last-child td{border-bottom:none;}
+
+/* ── BREAKPOINTS ── */
+.bp-card{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:24px;display:flex;align-items:center;gap:24px;}
+.bp-icon{font-size:28px;line-height:1;}
+.bp-token{font-size:var(--font-size-2xs);color:var(--color-orange-2);margin-bottom:4px;}
+.bp-val{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:1;letter-spacing:var(--letter-spacing-tight);}
+.bp-desc{font-size:var(--font-size-2xs);color:var(--color-mid-gray);margin-top:4px;}
+
+/* ── OPACITY ── */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.op-item{display:flex;flex-direction:column;gap:6px;}
+.op-box{height:60px;border-radius:var(--radius-sm);background:var(--color-orange-2);}
+.op-token{font-size:var(--font-size-2xs);color:var(--color-orange-2);}
+.op-val{font-size:10px;color:var(--color-mid-gray);}
+
+/* ── ACCESSIBILITY ── */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:10px 12px;text-align:left;font-size:var(--font-size-2xs);border-bottom:1px solid var(--color-border);line-height:var(--line-height-snug);}
+.a11y-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:0.8px;color:var(--color-mid-gray);background:var(--color-surface-card);}
+.a11y-table td:first-child,.a11y-table td:nth-child(2){font-size:10px;}
+.a11y-table td:nth-child(2){color:var(--color-mid-gray);}
+.a11y-table td:nth-child(3){color:var(--color-light-gray);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-md);}
+.wcag-aaa{background:rgba(255,71,0,0.12);color:var(--color-orange-2);border:1px solid rgba(255,71,0,0.3);}
+.wcag-aa{background:rgba(255,255,255,0.06);color:var(--color-light-gray);border:1px solid var(--color-border);}
+.wcag-aal{background:rgba(255,255,255,0.04);color:var(--color-mid-gray);border:1px solid var(--color-border);}
+.wcag-fail{background:rgba(239,68,68,.08);color:#f87171;border:1px solid rgba(239,68,68,.2);}
+
+/* ── COMPONENTS ── */
+.comp-row{background:var(--color-surface-card);border-radius:var(--radius-sm);border:1px solid var(--color-border);overflow:hidden;margin-bottom:16px;}
+.comp-header{padding:6px 12px;border-bottom:1px solid var(--color-border);background:var(--color-black-2);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray);}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-medium);background:rgba(255,71,0,0.1);color:var(--color-orange-2);padding:2px 8px;border-radius:var(--radius-md);border:1px solid rgba(255,71,0,0.2);}
+.comp-body{padding:24px;}
+
+.btn-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-base);font-weight:var(--font-weight-medium);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-xs);padding:8px 20px;border-radius:var(--radius-md);line-height:var(--line-height-tight);letter-spacing:var(--letter-spacing-normal);transition:opacity var(--duration-instant), background var(--duration-instant);}
+.btn-primary{background:var(--color-orange-2);color:var(--color-white);}
+.btn-primary:hover{background:#e63f00;}
+.btn-secondary{background:var(--color-surface-elevated);color:var(--color-white);border:1px solid var(--color-border-strong);}
+.btn-secondary:hover{background:rgba(255,255,255,0.08);}
+.btn-outline{background:transparent;color:var(--color-orange-2);border:1px solid var(--color-orange-2);}
+.btn-outline:hover{background:rgba(255,71,0,0.1);}
+.btn-ghost{background:transparent;color:var(--color-light-gray);border:1px solid transparent;}
+.btn-ghost:hover{background:var(--color-surface-elevated);}
+.btn-muted{background:var(--color-surface-card);color:var(--color-mid-gray);border:1px solid var(--color-border);}
+
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.inp-group{display:flex;flex-direction:column;gap:4px;}
+.inp-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray);line-height:var(--line-height-tight);}
+.inp{width:100%;font-family:var(--font-family-base);font-size:var(--font-size-xs);color:var(--color-white);background:var(--color-surface-elevated);border:1px solid var(--color-border-strong);border-radius:var(--radius-sm);padding:8px 12px;outline:none;transition:border var(--duration-instant);line-height:var(--line-height-tight);}
+.inp:focus{border-color:var(--color-orange-2);box-shadow:0 0 0 3px rgba(255,71,0,0.1);}
+.inp::placeholder{color:var(--color-mid-gray);}
+.inp-hint{font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-tight);}
+.inp-err{border-color:rgba(255,71,0,0.5)!important;}
+.inp-err-msg{font-size:var(--font-size-2xs);color:var(--color-orange-2);line-height:var(--line-height-tight);}
+
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-md);line-height:var(--line-height-tight);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--color-surface-elevated);color:var(--color-light-gray);border:1px solid var(--color-border);}
+.badge-brand{background:rgba(255,71,0,0.12);color:var(--color-orange-2);border:1px solid rgba(255,71,0,0.25);}
+.badge-muted{background:var(--color-surface-card);color:var(--color-mid-gray);border:1px solid var(--color-border);}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-sm);border:1px solid var(--color-border);background:var(--color-surface-elevated);color:var(--color-light-gray);line-height:var(--line-height-tight);}
+.tag-brand{color:var(--color-orange-2);background:rgba(255,71,0,0.1);border-color:rgba(255,71,0,0.25);}
+
+.alert{display:flex;gap:10px;padding:12px 16px;border-radius:var(--radius-sm);font-size:var(--font-size-xs);}
+.alert-icon{font-size:1rem;flex-shrink:0;line-height:1.7;}
+.alert-body h5{font-weight:var(--font-weight-bold);margin-bottom:2px;font-size:var(--font-size-xs);color:var(--color-white);line-height:var(--line-height-snug);}
+.alert-body p{font-size:var(--font-size-2xs);line-height:var(--line-height-snug);}
+.alert-neutral{background:var(--color-surface-card);color:var(--color-light-gray);border:1px solid var(--color-border);}
+.alert-brand{background:rgba(255,71,0,0.1);color:var(--color-orange-2);border:1px solid rgba(255,71,0,0.25);}
+.alert-dim{background:var(--color-surface-elevated);color:var(--color-light-gray);border:1px solid var(--color-border);}
+.alert-base{background:var(--color-black-2);color:var(--color-mid-gray);border:1px solid var(--color-border);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.feature-card{background:var(--color-black-2);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:24px;transition:border-color var(--duration-instant);}
+.feature-card:hover{border-color:var(--color-orange-2);box-shadow:var(--shadow-sm);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px;border:1px solid var(--color-border);background:var(--color-surface-card);}
+.fc-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-normal);margin-bottom:4px;}
+.fc-desc{font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);margin-bottom:12px;}
+
+.av-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-bold);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-sm);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-xs);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-2xs);}
+.av-info h4{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-normal);}
+.av-info p{font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-tight);}
+
+.prog-wrap{margin-bottom:8px;}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray);line-height:var(--line-height-tight);margin-bottom:4px;}
+.prog-track{height:2px;background:rgba(255,255,255,0.08);border-radius:var(--radius-md);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-md);transition:width var(--duration-instant);}
+
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:8px 12px;text-align:left;font-size:var(--font-size-xs);border-bottom:1px solid var(--color-border);line-height:var(--line-height-snug);}
+.data-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:0.8px;color:var(--color-mid-gray);background:var(--color-surface-card);}
+.data-table tr:hover td{background:var(--color-surface-elevated);transition:background var(--duration-instant);}
+.data-table td:first-child{color:var(--color-orange-2);}
+
+/* ── CSS VARIABLES REFERENCE ── */
+.tokens-section{margin-bottom:64px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.tokens-group{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);overflow:hidden;}
+.tokens-group-header{padding:8px 12px;border-bottom:1px solid var(--color-border);background:var(--color-black-2);display:flex;align-items:center;gap:8px;}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--color-orange-2);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray);letter-spacing:0.8px;text-transform:uppercase;}
+.tokens-group-count{font-size:10px;color:var(--color-mid-gray);margin-left:auto;}
+.tokens-list{padding:6px 0;}
+.token-row{display:flex;align-items:center;gap:10px;padding:4px 12px;transition:background var(--duration-instant);}
+.token-row:hover{background:var(--color-surface-elevated);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.08);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray);flex:1;min-width:0;}
+.token-css{font-size:10px;color:var(--color-orange-2);white-space:nowrap;}
+.token-value{font-size:10px;color:var(--color-mid-gray);white-space:nowrap;}
+.token-preview-bar{height:3px;border-radius:var(--radius-md);background:linear-gradient(to right,rgba(255,71,0,0.4),var(--color-orange-2));flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,rgba(255,71,0,0.4),var(--color-orange-2));flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-sm);background:var(--color-orange-2);flex-shrink:0;border:1px solid var(--color-border);}
+.token-row-sep{height:1px;background:var(--color-border);margin:4px 0;}
+
+@media(max-width:768px){
+  .font-cards,.shadows-row,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" fill="none" stroke="white" stroke-width="2"/>
+            <line x1="16" y1="2" x2="16" y2="6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <line x1="8" y1="2" x2="8" y2="6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            <line x1="3" y1="10" x2="21" y2="10" stroke="white" stroke-width="2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">Cron Calendar</div>
+          <div class="system-meta">Dark · Generated 19/04/2026 · 8 colors · 16 type tokens · 9 spacing steps · 3 breakpoints · 1 motion token</div>
+        </div>
+      </div>
+      <span class="hbadge">v1.0.0</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- ── 1. COLOR PALETTE ── -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(3,1fr);max-width:340px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#161412"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#161412 · ×2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF4700"></div><div class="swatch-name">Orange</div><div class="swatch-hex">#FF4700 · ×1</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0F0D0A"></div><div class="swatch-name">Black 2</div><div class="swatch-hex">#0F0D0A · ×1</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(3,1fr);max-width:340px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#CCCCCC;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#CCCCCC · ×58</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF · ×31</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black</div><div class="swatch-hex">#000000 · ×23</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Border Colors</div>
+      <div style="background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:16px;max-width:440px;">
+        <span style="font-size:var(--font-size-xs);color:var(--color-mid-gray);">No border color tokens were detected. Cron uses inline RGBA values for all border styling rather than named border tokens.</span>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Shadow Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(2,1fr);max-width:220px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(255,71,0,0.2)"></div><div class="swatch-name">Orange Glow</div><div class="swatch-hex">rgba(255,71,0,.2) · ×2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(255,71,0,0.5)"></div><div class="swatch-name">Orange Glow 3</div><div class="swatch-hex">rgba(255,71,0,.5) · ×1</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. TYPOGRAPHY ── */
+  <div class="section">
+    <div class="section-title">Typography</div>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">Primary Font · Helvetica Neue</div>
+        <div class="font-display" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">Helvetica Neue</div>
+        <div class="font-sample">Your calendar. Sharper. Designed for how professionals actually work.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:500">Medium · 500</span>
+          <span class="fw-chip" style="font-weight:700">Bold · 700</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Display · 140px · −3px tracking</div>
+        <div style="font-size:72px;color:var(--color-white);font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-tight);line-height:0.9;margin-bottom:8px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">12</div>
+        <div class="font-sample">The 140px display size with −3px letter-spacing is the most extreme tracked number in the entire series — used for the hero date display.</div>
+        <div class="fw-row">
+          <span class="fw-chip">140px · −3px</span>
+          <span class="fw-chip">line-height: 126px</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type Scale -->
+    <div class="type-scale" style="margin-bottom:24px;">
+      <div class="type-row">
+        <div class="type-sample" style="font-size:72px;font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-tight);line-height:0.9;color:var(--color-white);">19</div>
+        <div class="type-meta">Display Hero · 140px (capped for preview) · Bold · letter-spacing: −3px · line-height: 126px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-base);font-weight:var(--font-weight-bold);line-height:var(--line-height-normal);color:var(--color-white);">Sunday, April 19</div>
+        <div class="type-meta">Body Large · 22px · Bold · line-height: 22px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-sm);font-weight:var(--font-weight-regular);line-height:var(--line-height-normal);color:var(--color-light-gray);">Team standup · 9:00 AM – 9:30 AM · Google Meet</div>
+        <div class="type-meta">Body Default · 16px · Regular · line-height: 22px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-xs);font-weight:var(--font-weight-regular);line-height:var(--line-height-snug);color:var(--color-light-gray);">3 events today · Next: Product Review in 45 min</div>
+        <div class="type-meta">Body Small · 15px · Regular · line-height: 19.5px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);line-height:var(--line-height-tight);letter-spacing:var(--letter-spacing-normal);color:var(--color-mid-gray);">MON · TUE · WED · THU · FRI</div>
+        <div class="type-meta">Caption · 13px · Medium · line-height: 15px · letter-spacing: 0.15px</div>
+      </div>
+    </div>
+
+    <!-- Line Heights -->
+    <div style="margin-bottom:24px;">
+      <div style="font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);letter-spacing:0.8px;text-transform:uppercase;color:var(--color-mid-gray);margin-bottom:12px;">Line Heights</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:15px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">15px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:19.5px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">19.5px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:22px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">22px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:37.4px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">37.4px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:80px;opacity:0.5"></div></div><div class="lh-token">Loose</div><div class="lh-val">126px</div></div>
+      </div>
+    </div>
+
+    <!-- Letter Spacing -->
+    <div>
+      <div style="font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);letter-spacing:0.8px;text-transform:uppercase;color:var(--color-mid-gray);margin-bottom:12px;">Letter Spacing</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-tight);font-size:48px;line-height:1;">19</div>
+          <div class="ls-token">Tight</div>
+          <div class="ls-desc">−3px · hero date display, monumental numerals</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-normal);font-size:var(--font-size-base);">Calendar · Events · Today</div>
+          <div class="ls-token">Normal</div>
+          <div class="ls-desc">0.15px · body text and UI labels</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. SPACING ── -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">9 tokens — 1px → 431.906px</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:1px"></div><div class="sp-lbl">1</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:16px"></div><div class="sp-lbl">16</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:20px"></div><div class="sp-lbl">20</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:24px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:40px"></div><div class="sp-lbl">40</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:80px"></div><div class="sp-lbl">80</div></div>
+        <div class="sp-col" style="opacity:0.5"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">140</div></div>
+        <div class="sp-col" style="opacity:0.25"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">431.9</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. BORDERS ── -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">sm</div><div class="radius-val">4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px;width:80px;height:36px;"></div><div class="radius-lbl">md (Pill)</div><div class="radius-val">9999px</div></div>
+      </div>
+      <div style="margin-top:16px;font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);">Cron uses a binary radius system — either a minimal 4px for card and input corners, or a full pill (9999px) for tags, badges, and buttons. No intermediate values exist.</div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Widths</div>
+      <div style="font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);">No border width tokens were detected in Cron's design system. All borders are defined inline using 1px values or via box-shadow for the orange glow effects. The orange shadow tokens (<span style="color:var(--color-orange-2);">rgba(255,71,0,0.5) 0px 0px 0px 0.5px inset</span>) act as a hairline colored border substitute.</div>
+    </div>
+  </div>
+
+  <!-- ── 5. SHADOW / ELEVATION ── -->
+  <div class="section">
+    <div class="section-title">Shadows / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">2 tokens — orange glow system unique to Cron</div>
+      <div class="shadows-row" style="grid-template-columns:repeat(2,1fr);">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-sm);"></div>
+          <div class="sh-token">sm</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">rgba(255,71,0,.2) 100px diffuse — wide ambient orange glow for hero backgrounds and section highlights</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-md);"></div>
+          <div class="sh-token">md</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">0.5px orange inset border + rgba(255,71,0,.2) 28px diffuse — active/focused element state with glowing edge</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);">Cron's shadow system is entirely orange-tinted and replaces traditional neutral drop-shadows. The glow effect reinforces the brand color as the sole interactive signal throughout the UI.</div>
+    </div>
+  </div>
+
+  <!-- ── 6. Z-INDEX ── -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div class="token-wrap">
+      <div class="tw-title">No Z-Index Tokens Detected</div>
+      <div style="font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);">Cron's design system defines no named z-index tokens at the CSS custom property level. Stacking contexts are managed directly in component stylesheets without a centralized token layer — consistent with the system's overall minimalism (only 8 colors, 1 motion token).</div>
+    </div>
+  </div>
+
+  <!-- ── 7. BREAKPOINTS ── -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+      <div class="bp-card">
+        <div class="bp-icon">📱</div>
+        <div>
+          <div class="bp-token">XS · Mobile</div>
+          <div class="bp-val">500px</div>
+          <div class="bp-desc">--breakpoint-xs · compact phone</div>
+        </div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">📲</div>
+        <div>
+          <div class="bp-token">SM · Tablet</div>
+          <div class="bp-val">768px</div>
+          <div class="bp-desc">--breakpoint-sm · tablet portrait</div>
+        </div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">💻</div>
+        <div>
+          <div class="bp-token">MD · Desktop</div>
+          <div class="bp-val">1000px</div>
+          <div class="bp-desc">--breakpoint-md · desktop layout</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);">3 clean breakpoints — no micro-clustering like X's 13-point mobile-dense system. Reflects Cron's desktop-primary calendar focus (500 → 768 → 1000px).</div>
+  </div>
+
+  <!-- ── 8. OPACITY ── -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <div class="tw-sub">1 token — 30%</div>
+      <div class="opacity-grid" style="grid-template-columns:repeat(1,1fr);max-width:140px;">
+        <div class="op-item">
+          <div class="op-box" style="opacity:0.3;"></div>
+          <div class="op-token">Dim</div>
+          <div class="op-val">30% · ×1</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);">Cron defines a single opacity token at 30%. This is the most minimal opacity system in the entire series — only 1 token — consistent with Cron's extreme minimalism across all token categories.</div>
+    </div>
+  </div>
+
+  <!-- ── 9. ACCESSIBILITY ── -->
+  <div class="section">
+    <div class="section-title">Accessibility — Contrast Ratios</div>
+    <div style="font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);margin-bottom:12px;">WCAG 2.1 thresholds: <strong style="color:var(--color-light-gray);">AA</strong> ≥ 4.5:1 · <strong style="color:var(--color-light-gray);">AA Large</strong> ≥ 3:1 · <strong style="color:var(--color-light-gray);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Color</th><th>Background Color</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>Light Gray (#CCC)</td><td>Dark Gray (#161412)</td><td>11.44:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Light Gray (#CCC)</td><td>Orange (#FF4700)</td><td>2.13:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>Light Gray (#CCC)</td><td>Black 2 (#0F0D0A)</td><td>12.08:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>White (#FFF)</td><td>Dark Gray (#161412)</td><td>18.37:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>White (#FFF)</td><td>Orange (#FF4700)</td><td>3.41:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>White (#FFF)</td><td>Black 2 (#0F0D0A)</td><td>19.4:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Black (#000)</td><td>Dark Gray (#161412)</td><td>1.14:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>Black (#000)</td><td>Orange (#FF4700)</td><td>6.15:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>Black (#000)</td><td>Black 2 (#0F0D0A)</td><td>1.08:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Get Cron</button>
+          <button class="btn btn-secondary">Sign in</button>
+          <button class="btn btn-outline">Add event</button>
+          <button class="btn btn-ghost">View week</button>
+          <button class="btn btn-muted">Decline</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Event title</label>
+            <input class="inp" type="text" placeholder="Team standup"/>
+            <div class="inp-hint">Add to your primary calendar</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Work email</label>
+            <input class="inp" type="email" placeholder="you@company.com" style="border-color:var(--color-orange-2);box-shadow:0 0 0 3px rgba(255,71,0,0.1);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Event time</label>
+            <input class="inp inp-err" type="text" value="25:99 AM"/>
+            <div class="inp-err-msg">Invalid time format</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-orange-2)"></span>Today</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Past</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">📅 Calendar</span>
+          <span class="tag">🔔 Reminder</span>
+          <span class="tag">👥 Shared</span>
+          <span class="tag">📍 Location</span>
+          <span class="tag">🎥 Video call</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="alert alert-neutral"><div class="alert-icon">ℹ️</div><div class="alert-body"><h5>New calendar connected</h5><p>Google Calendar synced successfully. Events will appear within a few minutes.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon">✅</div><div class="alert-body"><h5>Event created</h5><p>Team standup added to your calendar for every weekday at 9:00 AM.</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon">⚠️</div><div class="alert-body"><h5>Scheduling conflict</h5><p>Product Review overlaps with Design Sync on Thursday at 2:00 PM.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon">❌</div><div class="alert-body"><h5>Sync failed</h5><p>Could not connect to Outlook Calendar. Check your account permissions.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Feature Cards</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">📅</div>
+            <div class="fc-title">Smart Calendar</div>
+            <div class="fc-desc">All your calendars unified in one focused view — Google, Outlook, Apple, and more.</div>
+            <span class="tag tag-brand">Multi-calendar</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🤝</div>
+            <div class="fc-title">Scheduling Links</div>
+            <div class="fc-desc">Share availability instantly. Let others book time without the back-and-forth.</div>
+            <span class="tag">No back-and-forth</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">⌨️</div>
+            <div class="fc-title">Keyboard First</div>
+            <div class="fc-desc">Navigate your entire calendar without touching the mouse. Built for speed.</div>
+            <span class="tag">Power user</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars &amp; Progress</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:linear-gradient(135deg,rgba(255,71,0,0.4),var(--color-orange-2));color:var(--color-white);">AC</div>
+          <div class="av-info"><h4>Akira Chen</h4><p>akira@company.com · Google Calendar · Pro plan</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:var(--color-orange-2);color:var(--color-white)">S</div>
+          <div class="avatar av-md" style="background:var(--color-surface-elevated);color:var(--color-light-gray)">M</div>
+          <div class="avatar av-md" style="background:var(--color-surface-card);color:var(--color-light-gray)">R</div>
+          <div class="avatar av-sm" style="background:rgba(255,71,0,0.15);color:var(--color-orange-2)">K</div>
+          <div class="avatar av-sm" style="background:rgba(255,255,255,0.06);color:var(--color-mid-gray)">+5</div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Monthly events</span><span>68%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:68%;background:linear-gradient(to right,rgba(255,71,0,0.4),var(--color-orange-2))"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Calendar sync</span><span>34%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:34%;background:rgba(255,71,0,0.4)"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>Meeting load this week</span><span>91%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:91%;background:rgba(255,71,0,0.6)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Data Table</span><span class="comp-badge">Events</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead>
+            <tr><th>event</th><th>calendar</th><th>time</th><th>guests</th><th>status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Team Standup</td><td style="color:var(--color-light-gray)">Work</td><td style="color:var(--color-light-gray)">9:00 – 9:30 AM</td><td style="color:var(--color-mid-gray)">6 guests</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-orange-2)"></span>Today</span></td></tr>
+            <tr><td>Product Review</td><td style="color:var(--color-light-gray)">Work</td><td style="color:var(--color-light-gray)">2:00 – 3:00 PM</td><td style="color:var(--color-mid-gray)">12 guests</td><td><span class="badge badge-muted" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Upcoming</span></td></tr>
+            <tr><td>Lunch with Sam</td><td style="color:var(--color-light-gray)">Personal</td><td style="color:var(--color-light-gray)">12:30 – 1:30 PM</td><td style="color:var(--color-mid-gray)">2 guests</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-orange-2)"></span>Today</span></td></tr>
+            <tr><td>Design Sync</td><td style="color:var(--color-light-gray)">Work</td><td style="color:var(--color-light-gray)">Thu 2:00 PM</td><td style="color:var(--color-mid-gray)">4 guests</td><td><span class="badge badge-default" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Thu</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- ── 11. CSS VARIABLES REFERENCE ── -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <!-- Colors -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Colors</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#0F0D0A"></div><span class="token-readable">Black 2 (Canvas)</span><span class="token-css">--color-black-2</span><span class="token-value">#0F0D0A</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#161412"></div><span class="token-readable">Dark Gray</span><span class="token-css">--color-dark-gray</span><span class="token-value">#161412</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#000000"></div><span class="token-readable">Black</span><span class="token-css">--color-black</span><span class="token-value">#000000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FF4700"></div><span class="token-readable">Orange (Brand)</span><span class="token-css">--color-orange-2</span><span class="token-value">#FF4700</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(255,71,0,0.2)"></div><span class="token-readable">Orange Glow</span><span class="token-css">--color-orange</span><span class="token-value">rgba(255,71,0,.2)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(255,71,0,0.5)"></div><span class="token-readable">Orange Glow 3</span><span class="token-css">--color-orange-3</span><span class="token-value">rgba(255,71,0,.5)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#CCCCCC;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">Light Gray (Text)</span><span class="token-css">--color-light-gray</span><span class="token-value">#CCCCCC</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">White (Text)</span><span class="token-css">--color-white</span><span class="token-value">#FFFFFF</span></div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Typography</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Font Family</span><span class="token-css">--font-family-base</span><span class="token-value">Helvetica Neue</span></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">Medium</span><span class="token-css">--font-weight-medium</span><span class="token-value">500</span></div>
+          <div class="token-row"><span class="token-readable">Bold</span><span class="token-css">--font-weight-bold</span><span class="token-value">700</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">2xs (Caption)</span><span class="token-css">--font-size-2xs</span><span class="token-value">13px</span></div>
+          <div class="token-row"><span class="token-readable">xs (Body sm)</span><span class="token-css">--font-size-xs</span><span class="token-value">15px</span></div>
+          <div class="token-row"><span class="token-readable">sm (Body)</span><span class="token-css">--font-size-sm</span><span class="token-value">16px</span></div>
+          <div class="token-row"><span class="token-readable">base (Body lg)</span><span class="token-css">--font-size-base</span><span class="token-value">22px</span></div>
+          <div class="token-row"><span class="token-readable">lg (Display Hero)</span><span class="token-css">--font-size-lg</span><span class="token-value">140px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Tight Tracking</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">−3px</span></div>
+          <div class="token-row"><span class="token-readable">Normal Tracking</span><span class="token-css">--letter-spacing-normal</span><span class="token-value">0.15px</span></div>
+        </div>
+      </div>
+
+      <!-- Spacing -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Spacing</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-preview-bar" style="width:1px"></div><span class="token-readable">space-1</span><span class="token-css">--space-1</span><span class="token-value">1px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:12px"></div><span class="token-readable">space-2</span><span class="token-css">--space-2</span><span class="token-value">12px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:16px"></div><span class="token-readable">space-3</span><span class="token-css">--space-3</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:20px"></div><span class="token-readable">space-4</span><span class="token-css">--space-4</span><span class="token-value">20px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:24px"></div><span class="token-readable">space-5</span><span class="token-css">--space-5</span><span class="token-value">24px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:40px"></div><span class="token-readable">space-6</span><span class="token-css">--space-6</span><span class="token-value">40px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:80px"></div><span class="token-readable">space-8</span><span class="token-css">--space-8</span><span class="token-value">80px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:140px;opacity:.6"></div><span class="token-readable">space-10</span><span class="token-css">--space-10</span><span class="token-value">140px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:140px;opacity:.25"></div><span class="token-readable">space-12</span><span class="token-css">--space-12</span><span class="token-value">431.906px</span></div>
+        </div>
+      </div>
+
+      <!-- Borders, Shadows, Motion & Opacity -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Borders, Shadows &amp; Motion</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px"></div><span class="token-readable">sm (Rect)</span><span class="token-css">--radius-sm</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:9999px;height:8px;width:24px"></div><span class="token-readable">md (Pill)</span><span class="token-css">--radius-md</span><span class="token-value">9999px</span></div>
+          <div class="token-row"><span style="font-size:10px;color:var(--color-mid-gray)">No border-width tokens</span><span class="token-css">—</span><span class="token-value">—</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Orange Glow Wide</span><span class="token-css">--shadow-sm</span><span class="token-value">100px diffuse</span></div>
+          <div class="token-row"><span class="token-readable">Orange Edge + Glow</span><span class="token-css">--shadow-md</span><span class="token-value">0.5px inset + 28px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Transition</span><span class="token-css">--duration-instant</span><span class="token-value">175ms</span></div>
+          <div class="token-row"><span style="font-size:10px;color:var(--color-mid-gray)">No easing tokens</span><span class="token-css">—</span><span class="token-value">—</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.3"></div><span class="token-readable">Dim</span><span class="token-css">--opacity-30</span><span class="token-value">30%</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">XS · Mobile</span><span class="token-css">--breakpoint-xs</span><span class="token-value">500px</span></div>
+          <div class="token-row"><span class="token-readable">SM · Tablet</span><span class="token-css">--breakpoint-sm</span><span class="token-value">768px</span></div>
+          <div class="token-row"><span class="token-readable">MD · Desktop</span><span class="token-css">--breakpoint-md</span><span class="token-value">1000px</span></div>
+          <div class="token-row"><span style="font-size:10px;color:var(--color-mid-gray)">No z-index tokens</span><span class="token-css">—</span><span class="token-value">—</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div style="text-align:center;padding:48px 0 24px;color:var(--color-mid-gray);font-size:var(--font-size-2xs);border-top:1px solid var(--color-border);line-height:var(--line-height-snug);">
+    Design System Preview · Cron Calendar (Dark) · Generated 19/04/2026 · 8 color tokens · 5 font-size · 1 font-family · 3 font-weight · 5 line-height · 2 letter-spacing · 9 spacing · 2 radius · 0 border-width · 2 shadow · 1 duration · 0 easing · 0 z-index · 3 breakpoints · 1 opacity
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

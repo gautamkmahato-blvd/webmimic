@@ -1,0 +1,310 @@
+/* ============================================
+ * Design Tokens — Stripe | Financial Infrastructure to Grow Your Revenue
+ * Source: https://stripe.com/in
+ * Generated: 18/04/2026, 13:50:52
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-blue: #533AFD; /* hsl(248, 98%, 61%) · background */
+  --color-dark-blue: #061B31; /* hsl(211, 78%, 11%) · text */
+  --color-blue-2: #50617A; /* hsl(216, 21%, 40%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue-3: #64748D; /* hsl(217, 17%, 47%) · text */
+  --color-blue-4: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-light-blue: #7F7DFC; /* hsl(241, 95%, 74%) · background */
+  --color-light-blue-2: #7389FF; /* hsl(231, 100%, 73%) · text */
+  --color-light-blue-3: #E5EDF5; /* hsl(210, 44%, 93%) · background */
+  --color-dark-blue-2: #3C4F69; /* hsl(215, 27%, 32%) · text */
+  --color-dark-blue-3: #273951; /* hsl(214, 35%, 24%) · text */
+  --color-dark-blue-4: #1A2C44; /* hsl(214, 45%, 18%) · text */
+  --color-orange: #FF6118; /* hsl(19, 100%, 55%) · text */
+  --color-light-blue-4: #B9B9F9; /* hsl(240, 84%, 85%) · border */
+  --color-white-2: #F8FAFD; /* hsl(216, 56%, 98%) · background */
+  --color-blue-5: #7D8BA4; /* hsl(218, 18%, 57%) · text */
+  --color-dark-gray: #181818; /* hsl(0, 0%, 9%) · fill */
+  --color-light-blue-5: #D6D9FC; /* hsl(235, 86%, 91%) · border */
+  --color-light-blue-6: #D4DEE9; /* hsl(211, 32%, 87%) · other */
+  --color-blue-6: #839BC8; /* hsl(219, 39%, 65%) · text */
+  --color-dark-gray-2: rgba(23, 23, 23, 0.06); /* hsl(0, 0%, 7%) · text */
+  --color-dark-blue-5: rgba(50, 50, 93, 0.12); /* hsl(240, 29%, 27%) · shadow */
+  --color-blue-7: #95A4BA; /* hsl(216, 21%, 66%) · fill */
+  --color-black-2: #010202; /* hsl(180, 33%, 1%) · fill */
+  --color-pink: #F44BCC; /* hsl(314, 88%, 63%) · gradient */
+  --color-light-blue-7: #E2E4FF; /* hsl(236, 100%, 94%) · background */
+  --color-light-blue-8: #A3B5D6; /* hsl(219, 38%, 74%) · text */
+  --color-white-3: #E8E9FF; /* hsl(237, 100%, 95%) · background */
+  --color-yellow: #DDD600; /* hsl(58, 100%, 43%) · text */
+  --color-blue-8: rgba(0, 14, 255, 0.5); /* hsl(237, 100%, 50%) · text */
+  --color-orange-2: #FF6201; /* hsl(23, 100%, 50%) · fill */
+  --color-blue-9: #4285F4; /* hsl(217, 89%, 61%) · fill */
+  --color-dark-gray-3: #2D2D2D; /* hsl(0, 0%, 18%) · fill */
+  --color-red: #ED5153; /* hsl(359, 81%, 62%) · fill */
+  --color-light-blue-9: #B9C7D9; /* hsl(214, 30%, 79%) · fill */
+  --color-white-4: #F6F9FC; /* hsl(210, 50%, 98%) · fill */
+  --color-dark-blue-6: #474E5A; /* hsl(218, 12%, 32%) · fill */
+  --color-light-blue-10: #E3ECF7; /* hsl(213, 56%, 93%) · background */
+  --color-purple: rgba(218, 75, 254, 0.8); /* hsl(288, 99%, 65%) · gradient */
+  --color-dark-blue-7: #2D2564; /* hsl(248, 46%, 27%) · text */
+  --color-dark-blue-8: #171D27; /* hsl(218, 26%, 12%) · fill */
+  --color-green: #76B900; /* hsl(82, 100%, 36%) · fill */
+  --color-dark-blue-9: #003478; /* hsl(214, 100%, 24%) · fill */
+  --color-blue-10: #0052FF; /* hsl(221, 100%, 50%) · fill */
+  --color-orange-3: #FBBC05; /* hsl(45, 97%, 50%) · fill */
+  --color-red-2: #EA4335; /* hsl(5, 81%, 56%) · fill */
+  --color-green-2: #34A853; /* hsl(136, 53%, 43%) · fill */
+  --color-green-3: #95BF47; /* hsl(81, 48%, 51%) · fill */
+  --color-green-4: #5E8E3E; /* hsl(96, 39%, 40%) · fill */
+  --color-green-5: #A4CE4E; /* hsl(80, 57%, 56%) · fill */
+  --color-blue-11: #0090DA; /* hsl(200, 100%, 43%) · fill */
+  --color-dark-blue-10: #0061A0; /* hsl(204, 100%, 31%) · fill */
+  --color-red-3: #A11D2B; /* hsl(354, 69%, 37%) · fill */
+  --color-purple-2: #873EFF; /* hsl(263, 100%, 62%) · fill */
+  --color-mid-gray: #72716D; /* hsl(48, 2%, 44%) · fill */
+  --color-dark-gray-4: #55544F; /* hsl(50, 4%, 32%) · fill */
+  --color-dark-gray-5: #43413C; /* hsl(43, 6%, 25%) · fill */
+  --color-light-gray: #D6D5D2; /* hsl(45, 5%, 83%) · fill */
+  --color-dark-gray-6: #26251E; /* hsl(53, 12%, 13%) · fill */
+  --color-light-orange: #FFE0D1; /* hsl(20, 100%, 91%) · background */
+  --color-blue-12: rgba(83, 58, 253, 0.8); /* hsl(248, 97%, 61%) · gradient */
+  --color-orange-4: #FFCF5E; /* hsl(42, 100%, 68%) · gradient */
+  --color-light-gray-2: #ECF0F4; /* hsl(210, 27%, 94%) · background */
+  --color-blue-13: #2863B1; /* hsl(214, 63%, 43%) · text */
+  --color-blue-14: #0810BF; /* hsl(237, 92%, 39%) · gradient */
+  --color-white-5: #FCFDFE; /* hsl(210, 50%, 99%) · gradient */
+  --color-light-blue-11: #B4D8FF; /* hsl(211, 100%, 85%) · gradient */
+  --color-white-6: #FAFBFD; /* hsl(220, 43%, 99%) · fill */
+  --color-blue-15: rgba(83, 58, 253, 0.08); /* hsl(248, 100%, 63%) · gradient */
+  --color-light-red: rgba(255, 140, 108, 0.8); /* hsl(13, 100%, 71%) · gradient */
+  --color-dark-blue-11: #031323; /* hsl(210, 84%, 7%) · fill */
+  --color-dark-blue-12: rgba(50, 50, 93, 0.25); /* hsl(240, 28%, 28%) · shadow */
+  --color-white-7: rgba(248, 250, 253, 0.45); /* hsl(204, 56%, 98%) · background */
+  --color-dark-gray-7: rgba(23, 23, 23, 0.08); /* hsl(0, 0%, 10%) · shadow */
+  --color-blue-16: #667691; /* hsl(218, 17%, 48%) · fill */
+  --color-cyan: #00D66F; /* hsl(151, 100%, 42%) · background */
+  --color-cyan-2: #047AB1; /* hsl(199, 96%, 35%) · fill */
+  --color-red-4: #D42D06; /* hsl(11, 94%, 43%) · fill */
+  --color-green-6: #67B637; /* hsl(97, 54%, 46%) · fill */
+  --color-light-red-2: #FFA8CD; /* hsl(334, 100%, 83%) · fill */
+  --color-blue-17: #4A4AF4; /* hsl(240, 89%, 62%) · fill */
+  --color-green-7: #00D64F; /* hsl(142, 100%, 42%) · fill */
+  --color-red-5: #FF0033; /* hsl(348, 100%, 50%) · fill */
+  --color-dark-green: #009F41; /* hsl(145, 100%, 31%) · fill */
+  --color-blue-18: #008CD5; /* hsl(201, 100%, 42%) · fill */
+  --color-pink-2: rgba(243, 99, 243, 0.8); /* hsl(300, 85%, 67%) · gradient */
+  --color-purple-3: #7232F1; /* hsl(260, 87%, 57%) · gradient */
+  --color-light-pink: #FB76FA; /* hsl(300, 94%, 72%) · gradient */
+  --color-blue-19: rgba(40, 99, 177, 0.1); /* hsl(214, 64%, 42%) · background */
+  --color-blue-20: #486FFD; /* hsl(227, 98%, 64%) · gradient */
+  --color-light-blue-12: #7F81F3; /* hsl(239, 83%, 73%) · gradient */
+  --color-light-purple: #C489FF; /* hsl(270, 100%, 77%) · gradient */
+  --color-light-purple-2: #DAC0FF; /* hsl(265, 100%, 88%) · gradient */
+  --color-light-purple-3: #EADCFF; /* hsl(264, 100%, 93%) · gradient */
+  --color-white-8: #F9F6FF; /* hsl(260, 100%, 98%) · gradient */
+  --color-light-purple-4: #CB83FF; /* hsl(275, 100%, 76%) · gradient */
+  --color-light-red-3: #FF90B9; /* hsl(338, 100%, 78%) · gradient */
+  --color-light-orange-2: #FFC977; /* hsl(36, 100%, 73%) · gradient */
+  --color-light-orange-3: #FFD79B; /* hsl(36, 100%, 80%) · gradient */
+  --color-light-orange-4: #FFF1DC; /* hsl(36, 100%, 93%) · gradient */
+  --color-blue-21: #0071C1; /* hsl(205, 100%, 38%) · gradient */
+  --color-blue-22: #60A8E2; /* hsl(207, 69%, 63%) · gradient */
+  --color-light-blue-13: #D9EBFF; /* hsl(212, 100%, 93%) · gradient */
+  --color-orange-5: #FFB451; /* hsl(34, 100%, 66%) · gradient */
+  --color-light-orange-5: #EFC680; /* hsl(38, 78%, 72%) · gradient */
+  --color-light-blue-14: #D2E8FF; /* hsl(211, 100%, 91%) · gradient */
+  --color-white-9: #FAFDFF; /* hsl(204, 100%, 99%) · gradient */
+  --color-white-10: #FDFEFF; /* hsl(210, 100%, 100%) · gradient */
+  --color-light-orange-6: #FFA577; /* hsl(20, 100%, 73%) · gradient */
+  --color-light-red-4: #FF90A1; /* hsl(351, 100%, 78%) · gradient */
+  --color-light-purple-5: #DDADFF; /* hsl(275, 100%, 84%) · gradient */
+  --color-light-purple-6: #ECD8FF; /* hsl(271, 100%, 92%) · gradient */
+  --color-white-11: #F5EAFF; /* hsl(271, 100%, 96%) · gradient */
+  --color-blue-23: #6763E4; /* hsl(242, 70%, 64%) · gradient */
+  --color-blue-24: #453BB3; /* hsl(245, 50%, 47%) · gradient */
+  --color-dark-blue-13: #29227D; /* hsl(245, 57%, 31%) · gradient */
+  --color-dark-blue-14: #1E2064; /* hsl(238, 54%, 25%) · gradient */
+  --color-dark-blue-15: #141E4B; /* hsl(229, 58%, 19%) · gradient */
+  --color-yellow-2: #FFD100; /* hsl(49, 100%, 50%) · fill */
+  --color-light-orange-7: #FAF1E5; /* hsl(34, 68%, 94%) · fill */
+  --color-green-8: #0AAD0A; /* hsl(120, 89%, 36%) · fill */
+  --color-orange-6: #FF7009; /* hsl(25, 100%, 52%) · fill */
+  --color-dark-gray-8: #1A171B; /* hsl(285, 8%, 10%) · fill */
+  --color-pink-3: #F72DF3; /* hsl(301, 93%, 57%) · gradient */
+  --color-orange-7: #FFAD00; /* hsl(41, 100%, 50%) · gradient */
+  --color-orange-8: #FF7600; /* hsl(28, 100%, 50%) · gradient */
+  --color-orange-9: #FFBB00; /* hsl(44, 100%, 50%) · fill */
+  --color-dark-cyan: #012939; /* hsl(197, 97%, 11%) · fill */
+  --color-orange-10: #FF671A; /* hsl(20, 100%, 55%) · fill */
+  --color-dark-gray-9: #5A5B5D; /* hsl(220, 2%, 36%) · fill */
+  --color-dark-blue-16: #0D1738; /* hsl(226, 62%, 14%) · background */
+  --color-blue-25: rgba(83, 58, 253, 0.698); /* hsl(248, 99%, 61%) · border */
+  --color-blue-26: rgba(113, 92, 255, 0.48); /* hsl(248, 100%, 68%) · gradient */
+  --color-blue-27: rgba(113, 92, 255, 0.8); /* hsl(247, 100%, 68%) · gradient */
+  --color-white-12: #F2F7FE; /* hsl(215, 86%, 97%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 8px;
+  --font-size-xs: 9px;
+  --font-size-sm: 10px;
+  --font-size-base: 11px;
+  --font-size-lg: 12px;
+  --font-size-xl: 14px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 18px;
+  --font-size-4xl: 22px;
+  --font-size-5xl: 23.793px;
+  --font-size-6xl: 26px;
+  --font-size-32px: 32px;
+  --font-size-48px: 48px;
+  --font-size-56px: 56px;
+  --font-family-base: sohne-var;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --line-height-tight: 8px;
+  --line-height-snug: 8.56px;
+  --line-height-normal: 10.8px;
+  --line-height-relaxed: 11.5px;
+  --line-height-loose: 12.6px;
+  --line-height-lh-6: 14px;
+  --line-height-lh-7: 15px;
+  --line-height-lh-8: 16px;
+  --line-height-lh-9: 17.4px;
+  --line-height-lh-10: 19.2px;
+  --line-height-lh-11: 20px;
+  --line-height-lh-12: 22.4px;
+  --line-height-lh-13: 24.2px;
+  --line-height-lh-14: 25.2px;
+  --line-height-lh-15: 26.6482px;
+  --line-height-lh-16: 29.12px;
+  --line-height-lh-17: 29.9px;
+  --line-height-lh-18: 35.2px;
+  --line-height-lh-19: 48px;
+  --line-height-lh-20: 49.44px;
+  --line-height-lh-21: 55.2px;
+  --line-height-lh-22: 57.68px;
+  --letter-spacing-tight: -1.4px;
+  --letter-spacing-normal: -0.96px;
+  --letter-spacing-wide: -0.78px;
+  --letter-spacing-wider: -0.64px;
+  --letter-spacing-widest: -0.52px;
+  --letter-spacing-ls-6: -0.42px;
+  --letter-spacing-ls-7: -0.36px;
+  --letter-spacing-ls-8: -0.33px;
+  --letter-spacing-ls-9: -0.3px;
+  --letter-spacing-ls-10: -0.27px;
+  --letter-spacing-ls-11: -0.26px;
+  --letter-spacing-ls-12: -0.23793px;
+  --letter-spacing-ls-13: -0.22px;
+  --letter-spacing-ls-14: -0.081px;
+  --letter-spacing-ls-15: 0.036px;
+  --letter-spacing-ls-16: 0.1px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 0.8px;
+  --space-2: 1px;
+  --space-3: 2px;
+  --space-4: 3px;
+  --space-5: 3.2px;
+  --space-6: 3.71875px;
+  --space-8: 3.72656px;
+  --space-10: 4px;
+  --space-12: 5px;
+  --space-16: 5.5px;
+  --space-20: 6px;
+  --space-24: 14px;
+  --space-32: 22px;
+  --space-40: 40px;
+  --space-48: 96px;
+  --space-64: 9px;
+  --space-80: 10px;
+  --space-96: 11px;
+  --space-128: 11.5px;
+  --space-160: 12px;
+  --space-192: 12.2364px;
+  --space-256: 12.5px;
+  --space-23: 13.5px;
+  --space-25: 14.5px;
+  --space-26: 15px;
+  --space-27: 15.5px;
+  --space-28: 16px;
+  --space-29: 16.5px;
+  --space-30: 18px;
+  --space-31: 20px;
+  --space-33: 22.3984px;
+  --space-34: 24px;
+  --space-35: 28px;
+  --space-36: 31.5625px;
+  --space-37: 32px;
+  --space-38: 34px;
+  --space-39: 36px;
+  --space-41: 48px;
+  --space-42: 52px;
+  --space-43: 56px;
+  --space-44: 60px;
+  --space-45: 64px;
+  --space-46: 72px;
+  --space-47: 80px;
+  --space-49: 219.188px;
+  --space-50: 340px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 0px 0px 6px 6px;
+  --radius-md: 1px;
+  --radius-lg: 2px;
+  --radius-xl: 3px;
+  --radius-2xl: 4px;
+  --radius-full: 5px;
+  --radius-r7: 6px;
+  --radius-r8: 6px 6px 0px 0px;
+  --radius-r9: 6px 0px 0px 6px;
+  --radius-r10: 8px;
+  --radius-r11: 16px;
+  --radius-r12: 100%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(50, 50, 93, 0.12) 0px 13.5px 27px -12.4px, rgba(0, 0, 0, 0.05) 0px 8.1px 16.2px -8.1px;
+  --shadow-md: rgba(0, 0, 0, 0.1) 0px 20.187px 40.374px -20.187px;
+  --shadow-lg: rgba(50, 50, 93, 0.12) 0px 16px 32px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0.1) 0px 30px 60px -50px, rgba(50, 50, 93, 0.25) 0px 30px 60px -10px;
+  --shadow-shadow-5: rgba(23, 23, 23, 0.08) 0px 15px 35px 0px;
+  --shadow-shadow-6: rgba(23, 23, 23, 0.06) 0px 3px 6px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.12s;
+  --duration-normal: 0.15s;
+  --duration-slow: 0.2s;
+  --duration-slower: 0.24s;
+  --duration-duration-6: 0.25s;
+  --duration-duration-7: 0.3s;
+  --duration-duration-8: 0.4s;
+  --duration-duration-9: 0.5s;
+  --duration-duration-10: 0.6s;
+  --duration-duration-11: 0.8s;
+  --duration-duration-12: 1s;
+  --duration-duration-13: 1.2s;
+  --easing-linear: linear;
+  --easing-ease-in-out: ease-in-out;
+  --easing-ease-out: ease-out;
+  --easing-ease-in: ease-in;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+  --opacity-10: 0.1;
+  --opacity-20: 0.2;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-80: 0.8;
+  --opacity-85: 0.85;
+  --opacity-90: 0.9;
+}

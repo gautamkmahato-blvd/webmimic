@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FedEx Design System</title>
+<style>
+:root {
+  --color-white: #FFFFFF;
+  --color-dark-purple: #4D148C;
+  --color-white-2: #FAFAFA;
+  --color-orange: #FF6200;
+  --color-light-gray: #F2F2F2;
+  --color-dark-gray: #333333;
+  --color-black: #000000;
+  --color-cyan: #007AB7;
+  --color-red: #DE002E;
+  --color-mid-gray: #808080;
+  --color-mid-gray-2: #777777;
+  --color-dark-gray-3: #646464;
+  --color-dark-gray-2: rgba(89,89,91,0.5);
+  --color-mid-gray-3: #8E8E8E;
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 19px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 22px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-size-5xl: 32px;
+  --font-size-6xl: 40px;
+  --font-size-44px: 44px;
+  --font-family-base: Times, 'Times New Roman', Georgia, serif;
+  --font-family-2: FedExSans, Arial, ui-sans-serif, sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 11.5px;
+  --line-height-snug: 13.8px;
+  --line-height-normal: 15.6px;
+  --line-height-relaxed: 18px;
+  --line-height-loose: 21px;
+  --line-height-lh-6: 24px;
+  --line-height-lh-7: 24.7px;
+  --line-height-lh-8: 28.6px;
+  --line-height-lh-9: 30px;
+  --line-height-lh-10: 31.2px;
+  --line-height-lh-11: 34.5px;
+  --line-height-lh-12: 39px;
+  --line-height-lh-13: 41.6px;
+  --line-height-lh-14: 52px;
+  --line-height-lh-15: 66px;
+  --letter-spacing-tight: -0.63px;
+  --letter-spacing-normal: -0.4px;
+  --letter-spacing-wide: -0.18px;
+  --letter-spacing-wider: -0.1px;
+  --letter-spacing-widest: 0.75px;
+  --letter-spacing-ls-6: 0.95px;
+  --letter-spacing-ls-7: 1px;
+  --letter-spacing-ls-8: 1.11px;
+  --space-1: 4px; --space-2: 6px; --space-3: 7px; --space-4: 8px;
+  --space-5: 10px; --space-6: 12.5px; --space-8: 15px; --space-10: 16px;
+  --space-12: 17px; --space-16: 18px; --space-20: 19px; --space-24: 45px;
+  --space-32: 21px; --space-40: 24px; --space-48: 25px; --space-64: 28px;
+  --space-80: 30px; --space-96: 32px; --space-128: 34px; --space-160: 35px;
+  --space-192: 36px; --space-256: 40px; --space-23: 44px; --space-25: 52px;
+  --space-26: 60px; --space-27: 66.5px; --space-28: 75px; --space-29: 81.5px;
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 40px;
+  --radius-md: 8px;
+  --radius-full: 9999px;
+  --shadow-sm: rgba(0,0,0,0.5) 0px 5px 15px 0px;
+  --duration-instant: 0.15s; --duration-fast: 0.2s; --duration-normal: 0.25s;
+  --duration-slow: 0.3s; --duration-slower: 0.5s;
+  --easing-linear: linear; --easing-ease-out: ease-out;
+  --z-1: -20; --z-2: -1; --z-3: 1; --z-4: 2; --z-5: 10;
+  --z-6: 1000; --z-7: 1050; --z-8: 11000; --z-9: 9999999;
+  --breakpoint-xs: 320px; --breakpoint-sm: 350px; --breakpoint-md: 425px;
+  --breakpoint-lg: 426px; --breakpoint-xl: 480px; --breakpoint-2xl: 499px;
+  --breakpoint-3xl: 500px; --breakpoint-bp-8: 600px; --breakpoint-bp-9: 663px;
+  --breakpoint-bp-10: 664px; --breakpoint-bp-11: 767px; --breakpoint-bp-12: 768px;
+  --breakpoint-bp-13: 769px; --breakpoint-bp-14: 800px; --breakpoint-bp-15: 989px;
+  --breakpoint-bp-16: 991px; --breakpoint-bp-17: 992px; --breakpoint-bp-18: 993px;
+  --breakpoint-bp-19: 1000px; --breakpoint-bp-20: 1023px; --breakpoint-bp-21: 1024px;
+  --breakpoint-bp-22: 1100px; --breakpoint-bp-23: 1199px; --breakpoint-bp-24: 1200px;
+  --breakpoint-bp-25: 1300px; --breakpoint-bp-26: 1439px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family-2);background:var(--color-white);color:var(--color-dark-gray);font-size:var(--font-size-sm);line-height:var(--line-height-relaxed);font-weight:var(--font-weight-regular);}
+.page{max-width:1200px;margin:0 auto;padding:40px 32px;}
+
+/* HEADER */
+.top-bar{border-bottom:var(--border-width-hairline) solid rgba(89,89,91,0.25);margin-bottom:32px;padding-bottom:20px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-4);}
+.header-left{display:flex;align-items:center;gap:var(--space-10);}
+.logo{width:38px;height:38px;background:var(--color-dark-purple);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.system-title{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-black);line-height:var(--line-height-lh-6);}
+.system-meta{font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-top:2px;line-height:var(--line-height-loose);}
+.hbadge{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);background:var(--color-light-gray);color:var(--color-mid-gray);padding:2px 10px;border-radius:var(--radius-full);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-hairline) solid rgba(89,89,91,0.25);background:var(--color-white-2);color:var(--color-dark-gray);box-shadow:0 1px 2px rgba(15,23,42,0.08);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-cyan);color:var(--color-cyan);box-shadow:0 4px 14px rgba(15,23,42,0.14);transform:translateY(-1px);}
+
+/* SECTION */
+.section{margin-bottom:56px;}
+.section-title{font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);color:var(--color-black);line-height:var(--line-height-lh-8);margin-bottom:20px;display:flex;align-items:center;gap:var(--space-4);}
+
+/* COLORS */
+.color-group{margin-bottom:24px;}
+.color-group-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;color:var(--color-mid-gray);margin-bottom:var(--space-5);}
+.swatch-grid{display:grid;gap:var(--space-3);}
+.swatch-item{display:flex;flex-direction:column;gap:var(--space-2);}
+.swatch-box{height:60px;border-radius:var(--radius-md);border:var(--border-width-hairline) solid rgba(0,0,0,0.08);}
+.swatch-name{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-dark-gray);line-height:var(--line-height-snug);}
+.swatch-hex{font-size:10px;color:var(--color-mid-gray);line-height:var(--line-height-tight);}
+
+/* TYPOGRAPHY */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);margin-bottom:20px;}
+.font-card{background:var(--color-white-2);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);padding:20px;}
+.font-token{font-size:var(--font-size-xs);color:var(--color-dark-purple);font-weight:var(--font-weight-medium);margin-bottom:var(--space-3);}
+.font-display{font-size:var(--font-size-5xl);color:var(--color-black);line-height:var(--line-height-lh-9);margin-bottom:var(--space-3);font-weight:var(--font-weight-bold);}
+.font-sample{font-size:var(--font-size-sm);color:var(--color-mid-gray);line-height:var(--line-height-relaxed);}
+.fw-row{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-5);}
+.fw-chip{font-size:var(--font-size-xs);padding:2px 10px;background:var(--color-light-gray);border-radius:var(--radius-md);color:var(--color-dark-gray);border:var(--border-width-hairline) solid rgba(89,89,91,0.2);}
+
+.type-scale{background:var(--color-white-2);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);overflow:hidden;margin-bottom:20px;}
+.type-row{display:flex;flex-direction:column;padding:var(--space-10) 20px;border-bottom:var(--border-width-hairline) solid rgba(89,89,91,0.15);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--color-black);margin-bottom:var(--space-2);}
+.type-meta{font-size:10px;color:var(--color-mid-gray);line-height:var(--line-height-snug);}
+
+.lh-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-5);margin-bottom:20px;}
+.lh-item{background:var(--color-white-2);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);}
+.lh-bar-wrap{background:var(--color-light-gray);border-radius:2px;overflow:hidden;}
+.lh-bar{background:linear-gradient(to bottom,var(--color-dark-purple),var(--color-orange));width:100%;}
+.lh-token{font-size:var(--font-size-xs);color:var(--color-dark-purple);}
+.lh-val{font-size:10px;color:var(--color-mid-gray);}
+
+.ls-row{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.ls-item{background:var(--color-white-2);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);padding:var(--space-10) 20px;flex:1;}
+.ls-sample{font-size:var(--font-size-3xl);color:var(--color-black);font-weight:var(--font-weight-bold);margin-bottom:var(--space-2);}
+.ls-token{font-size:var(--font-size-xs);color:var(--color-dark-purple);}
+.ls-desc{font-size:10px;color:var(--color-mid-gray);}
+
+/* SPACING */
+.token-wrap{background:var(--color-white-2);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);padding:20px;}
+.tw-title{font-size:var(--font-size-base);font-weight:var(--font-weight-medium);color:var(--color-black);margin-bottom:4px;}
+.tw-sub{font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-bottom:20px;}
+.spacing-chart{display:flex;align-items:flex-end;gap:2px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;}
+.sp-bar{background:linear-gradient(to top,var(--color-dark-purple),var(--color-orange));border-radius:2px 2px 0 0;width:100%;min-height:2px;}
+.sp-lbl{font-size:7px;color:var(--color-mid-gray);text-align:center;}
+
+/* BORDERS */
+.border-card{background:var(--color-white-2);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);padding:20px;margin-bottom:16px;}
+.bc-title{font-size:var(--font-size-base);font-weight:var(--font-weight-medium);color:var(--color-black);margin-bottom:var(--space-4);}
+.radius-row{display:flex;gap:var(--space-10);flex-wrap:wrap;align-items:flex-end;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:var(--space-3);}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,var(--color-dark-purple),var(--color-orange));}
+.radius-lbl{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-dark-gray);text-align:center;}
+.radius-val{font-size:10px;color:var(--color-mid-gray);text-align:center;}
+.bw-demo{display:flex;flex-direction:column;gap:var(--space-5);}
+.bw-item{display:flex;align-items:center;gap:var(--space-10);}
+.bw-line{flex:1;}
+.bw-token{font-size:var(--font-size-xs);color:var(--color-dark-purple);white-space:nowrap;}
+.bw-val{font-size:10px;color:var(--color-mid-gray);white-space:nowrap;}
+
+/* SHADOWS */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);}
+.sh-item{display:flex;flex-direction:column;gap:var(--space-5);}
+.sh-box{height:88px;background:var(--color-white);border-radius:var(--radius-md);}
+.sh-token{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--color-dark-gray);}
+.sh-usage{font-size:10px;color:var(--color-mid-gray);}
+.sh-desc{font-size:10px;color:var(--color-mid-gray);line-height:var(--line-height-normal);margin-top:4px;}
+
+/* MOTION */
+.motion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);margin-bottom:var(--space-5);}
+.motion-card{background:var(--color-white-2);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);padding:var(--space-10);display:flex;flex-direction:column;gap:var(--space-3);}
+.motion-token{font-size:var(--font-size-xs);color:var(--color-dark-purple);}
+.motion-val{font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);color:var(--color-black);line-height:var(--line-height-loose);}
+.motion-usage{font-size:10px;color:var(--color-mid-gray);}
+.motion-bar-track{height:4px;background:var(--color-light-gray);border-radius:var(--radius-full);overflow:hidden;margin-top:4px;}
+.motion-bar-fill{height:100%;background:linear-gradient(to right,var(--color-dark-purple),var(--color-orange));border-radius:var(--radius-full);}
+.easing-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);}
+.easing-card{background:var(--color-white-2);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);padding:var(--space-10);}
+.easing-token{font-size:var(--font-size-xs);color:var(--color-dark-purple);margin-bottom:var(--space-3);}
+.easing-val{font-size:var(--font-size-base);font-weight:var(--font-weight-medium);color:var(--color-black);}
+.easing-desc{font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-top:4px;}
+
+/* Z-INDEX */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:var(--space-10);text-align:left;font-size:var(--font-size-sm);border-bottom:var(--border-width-hairline) solid rgba(89,89,91,0.15);line-height:var(--line-height-normal);}
+.z-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-7);color:var(--color-mid-gray);background:var(--color-light-gray);}
+.z-table td:first-child{font-family:var(--font-family-2);color:var(--color-dark-purple);}
+.z-table td:nth-child(2){font-family:var(--font-family-2);color:var(--color-black);font-weight:var(--font-weight-medium);}
+.z-table td:nth-child(3){color:var(--color-mid-gray);}
+.z-table tr:last-child td{border-bottom:none;}
+
+/* BREAKPOINTS */
+.bp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);}
+.bp-table-wrap{background:var(--color-white-2);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);overflow:hidden;}
+.bp-table{width:100%;border-collapse:collapse;}
+.bp-table th,.bp-table td{padding:6px 12px;text-align:left;font-size:var(--font-size-xs);border-bottom:var(--border-width-hairline) solid rgba(89,89,91,0.12);line-height:var(--line-height-normal);}
+.bp-table th{font-size:10px;font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-7);color:var(--color-mid-gray);background:var(--color-light-gray);}
+.bp-table td:first-child{font-size:10px;color:var(--color-dark-purple);}
+.bp-table td:nth-child(2){color:var(--color-black);font-weight:var(--font-weight-medium);}
+.bp-table tr:last-child td{border-bottom:none;}
+
+/* OPACITY */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-5);}
+.op-item{display:flex;flex-direction:column;gap:var(--space-3);}
+.op-box{height:60px;border-radius:var(--radius-md);background:var(--color-dark-purple);}
+.op-token{font-size:var(--font-size-xs);color:var(--color-dark-purple);}
+.op-val{font-size:10px;color:var(--color-mid-gray);}
+.fallback-msg{font-size:var(--font-size-sm);color:var(--color-mid-gray);font-style:italic;padding:var(--space-16) 0;}
+
+/* ACCESSIBILITY */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:var(--space-10);text-align:left;font-size:var(--font-size-xs);border-bottom:var(--border-width-hairline) solid rgba(89,89,91,0.15);line-height:var(--line-height-normal);}
+.a11y-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-7);color:var(--color-mid-gray);background:var(--color-light-gray);}
+.a11y-table td:first-child{font-size:10px;color:var(--color-dark-purple);}
+.a11y-table td:nth-child(2){font-size:10px;color:var(--color-mid-gray);}
+.a11y-table td:nth-child(3){color:var(--color-dark-gray);font-weight:var(--font-weight-medium);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-medium);padding:2px 7px;border-radius:var(--radius-full);}
+.wcag-aaa{background:#EBE0FA;color:#4D148C;border:var(--border-width-hairline) solid #C4A2F0;}
+.wcag-aa{background:#FFF0E6;color:#CC4E00;border:var(--border-width-hairline) solid #FFBC96;}
+.wcag-aal{background:var(--color-light-gray);color:var(--color-mid-gray);border:var(--border-width-hairline) solid rgba(89,89,91,0.3);}
+.wcag-fail{background:rgba(222,0,46,.08);color:#DE002E;border:var(--border-width-hairline) solid rgba(222,0,46,.25);}
+
+/* COMPONENTS */
+.comp-row{background:var(--color-white-2);border-radius:var(--radius-md);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);overflow:hidden;margin-bottom:var(--space-5);}
+.comp-header{padding:var(--space-3) var(--space-4);border-bottom:var(--border-width-hairline) solid rgba(89,89,91,0.2);background:var(--color-light-gray);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-dark-gray);}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-medium);background:var(--color-white);color:var(--color-mid-gray);padding:2px 8px;border-radius:var(--radius-full);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);}
+.comp-body{padding:20px;}
+
+.btn-row{display:flex;align-items:center;gap:var(--space-5);flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-2);font-weight:var(--font-weight-medium);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-sm);padding:var(--space-5) 20px;border-radius:var(--radius-sm);line-height:var(--line-height-normal);transition:opacity var(--duration-fast) var(--easing-ease-out),background var(--duration-fast) var(--easing-ease-out);}
+.btn-primary{background:var(--color-dark-purple);color:#FFFFFF;}
+.btn-primary:hover{background:#3B0E6C;}
+.btn-secondary{background:var(--color-orange);color:#FFFFFF;}
+.btn-secondary:hover{background:#CC4E00;}
+.btn-outline{background:transparent;color:var(--color-dark-purple);border:var(--border-width-thin) solid var(--color-dark-purple);}
+.btn-outline:hover{background:#EBE0FA;}
+.btn-ghost{background:transparent;color:var(--color-mid-gray);border:var(--border-width-hairline) solid transparent;}
+.btn-ghost:hover{background:var(--color-light-gray);}
+.btn-muted{background:var(--color-light-gray);color:var(--color-mid-gray);border:var(--border-width-hairline) solid rgba(89,89,91,0.3);}
+
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.inp-group{display:flex;flex-direction:column;gap:var(--space-2);}
+.inp-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-dark-gray);line-height:var(--line-height-snug);}
+.inp{width:100%;font-family:var(--font-family-2);font-size:var(--font-size-sm);color:var(--color-black);background:var(--color-white);border:var(--border-width-hairline) solid rgba(89,89,91,0.4);border-radius:var(--radius-md);padding:var(--space-5) var(--space-4);outline:none;transition:border var(--duration-fast) var(--easing-ease-out);}
+.inp:focus{border-color:var(--color-dark-purple);box-shadow:0 0 0 3px rgba(77,20,140,0.1);}
+.inp::placeholder{color:var(--color-mid-gray-3);}
+.inp-hint{font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);}
+.inp-err{border-color:var(--color-red)!important;}
+.inp-err-msg{font-size:var(--font-size-xs);color:var(--color-red);line-height:var(--line-height-snug);}
+
+.badge{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);padding:2px var(--space-5);border-radius:var(--radius-full);line-height:var(--line-height-snug);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--color-light-gray);color:var(--color-dark-gray);border:var(--border-width-hairline) solid rgba(89,89,91,0.3);}
+.badge-brand{background:#EBE0FA;color:var(--color-dark-purple);border:var(--border-width-hairline) solid #C4A2F0;}
+.badge-orange{background:#FFF0E6;color:#CC4E00;border:var(--border-width-hairline) solid #FFBC96;}
+.badge-muted{background:var(--color-white-2);color:var(--color-mid-gray);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);}
+.badge-row{display:flex;flex-wrap:wrap;gap:var(--space-3);}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);padding:2px var(--space-5);border-radius:var(--radius-md);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);background:var(--color-light-gray);color:var(--color-dark-gray);line-height:var(--line-height-snug);}
+.tag-brand{color:var(--color-dark-purple);background:#EBE0FA;border-color:#C4A2F0;}
+.tag-orange{color:#CC4E00;background:#FFF0E6;border-color:#FFBC96;}
+
+.alert{display:flex;gap:var(--space-5);padding:var(--space-4) var(--space-5);border-radius:var(--radius-md);font-size:var(--font-size-sm);}
+.alert-icon{font-size:var(--font-size-base);flex-shrink:0;line-height:1.4;}
+.alert-body h5{font-weight:var(--font-weight-medium);margin-bottom:2px;font-size:var(--font-size-sm);line-height:var(--line-height-relaxed);}
+.alert-body p{font-size:var(--font-size-xs);line-height:var(--line-height-normal);}
+.alert-neutral{background:var(--color-white-2);color:var(--color-dark-gray);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);}
+.alert-brand{background:#EBE0FA;color:var(--color-dark-purple);border:var(--border-width-hairline) solid #C4A2F0;}
+.alert-warning{background:#FFF0E6;color:#CC4E00;border:var(--border-width-hairline) solid #FFBC96;}
+.alert-error{background:rgba(222,0,46,.08);color:var(--color-red);border:var(--border-width-hairline) solid rgba(222,0,46,.25);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);}
+.feature-card{background:var(--color-white);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);padding:20px;transition:border-color var(--duration-normal) var(--easing-ease-out),box-shadow var(--duration-normal) var(--easing-ease-out);}
+.feature-card:hover{border-color:var(--color-dark-purple);box-shadow:var(--shadow-sm);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:var(--space-4);border:var(--border-width-hairline) solid rgba(89,89,91,0.2);background:var(--color-light-gray);}
+.fc-title{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-black);line-height:var(--line-height-loose);margin-bottom:var(--space-2);}
+.fc-desc{font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);margin-bottom:var(--space-4);}
+
+/* CSS VARIABLES REFERENCE */
+.tokens-section{margin-bottom:56px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-5);}
+.tokens-group{background:var(--color-white-2);border:var(--border-width-hairline) solid rgba(89,89,91,0.25);border-radius:var(--radius-md);overflow:hidden;}
+.tokens-group-header{padding:var(--space-4) var(--space-5);border-bottom:var(--border-width-hairline) solid rgba(89,89,91,0.2);background:var(--color-light-gray);display:flex;align-items:center;gap:var(--space-5);}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--color-dark-purple);flex-shrink:0;}
+.tokens-group-icon-orange{background:var(--color-orange);}
+.tokens-group-title{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-dark-gray);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;}
+.tokens-list{padding:var(--space-5) 0;}
+.token-row{display:flex;align-items:center;gap:var(--space-4);padding:3px var(--space-5);transition:background var(--duration-instant);}
+.token-row:hover{background:var(--color-light-gray);}
+.token-swatch{width:20px;height:20px;border-radius:4px;border:var(--border-width-hairline) solid rgba(0,0,0,0.08);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-dark-gray);flex:1;min-width:0;}
+.token-css{font-size:10px;color:var(--color-dark-purple);white-space:nowrap;}
+.token-value{font-size:10px;color:var(--color-mid-gray);white-space:nowrap;}
+.token-preview-bar{height:4px;border-radius:var(--radius-full);background:linear-gradient(to right,var(--color-dark-purple),var(--color-orange));flex-shrink:0;}
+.tokens-full{grid-column:1/-1;}
+.token-row-sep{height:var(--border-width-hairline);background:rgba(89,89,91,0.15);margin:4px 0;}
+
+@media(max-width:768px){
+  .font-cards,.motion-grid,.shadows-row,.cards-grid,.inputs-grid,.lh-grid,.tokens-grid,.bp-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="22" height="14" viewBox="0 0 44 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="2" y="20" font-size="18" font-weight="900" fill="#FF6200" font-family="Arial,sans-serif">Fe</text>
+            <text x="22" y="20" font-size="18" font-weight="900" fill="#FFFFFF" font-family="Arial,sans-serif">dEx</text>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">FedEx Design System</div>
+          <div class="system-meta">Light · Generated 13/04/2026 · 14 colors · 41 type tokens · 28 spacing steps · 26 breakpoints · 7 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">v1.0.0</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- 1. COLOR PALETTE -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(5,1fr);max-width:640px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(0,0,0,0.12)"></div><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF · ×284</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#4D148C"></div><div class="swatch-name">FedEx Purple</div><div class="swatch-hex">#4D148C · ×25</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FAFAFA;border-color:rgba(0,0,0,0.1)"></div><div class="swatch-name">Off White</div><div class="swatch-hex">#FAFAFA · ×16</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF6200"></div><div class="swatch-name">FedEx Orange</div><div class="swatch-hex">#FF6200 · ×3</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F2F2F2;border-color:rgba(0,0,0,0.1)"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#F2F2F2 · ×2</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(7,1fr);max-width:820px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#333333"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#333333 · ×2899</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black</div><div class="swatch-hex">#000000 · ×872</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#007AB7"></div><div class="swatch-name">FedEx Blue</div><div class="swatch-hex">#007AB7 · ×185</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#DE002E"></div><div class="swatch-name">Alert Red</div><div class="swatch-hex">#DE002E · ×46</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#808080"></div><div class="swatch-name">Mid Gray</div><div class="swatch-hex">#808080 · ×42</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#777777"></div><div class="swatch-name">Gray 2</div><div class="swatch-hex">#777777 · ×4</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#646464"></div><div class="swatch-name">Dark Gray 3</div><div class="swatch-hex">#646464 · ×4</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Border Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(2,1fr);max-width:240px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(89,89,91,0.5);border-color:rgba(0,0,0,0.08)"></div><div class="swatch-name">Border Default</div><div class="swatch-hex">rgba(89,89,91,0.5) · ×14</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#8E8E8E;border-color:rgba(0,0,0,0.08)"></div><div class="swatch-name">Border Muted</div><div class="swatch-hex">#8E8E8E · ×2</div></div>
+      </div>
+    </div>
+
+    <div class="color-group" style="margin-bottom:0;">
+      <div class="color-group-label">Shadow Colors</div>
+      <p style="font-size:var(--font-size-sm);color:var(--color-mid-gray);font-style:italic;">No dedicated shadow color tokens detected.</p>
+    </div>
+  </div>
+
+  <!-- 2. TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">Serif Font · --font-family-base</div>
+        <div class="font-display" style="font-family:var(--font-family-base);">Times</div>
+        <div class="font-sample" style="font-family:var(--font-family-base);">The world on time — FedEx delivers packages to over 220 countries worldwide.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:var(--font-family-base);font-weight:300">Light · 300</span>
+          <span class="fw-chip" style="font-family:var(--font-family-base);font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-family:var(--font-family-base);font-weight:700">Bold · 700</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Brand Font · --font-family-2</div>
+        <div class="font-display" style="font-family:var(--font-family-2);">FedExSans</div>
+        <div class="font-sample" style="font-family:var(--font-family-2);">Track your shipment, manage deliveries, and access all FedEx services in one place.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:300">Light · 300</span>
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:500">Medium · 500</span>
+          <span class="fw-chip" style="font-weight:700">Bold · 700</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type Scale -->
+    <div class="type-scale" style="margin-bottom:20px;">
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-44px);font-weight:var(--font-weight-bold);line-height:var(--line-height-lh-15);letter-spacing:var(--letter-spacing-tight);">The World On Time.</div>
+        <div class="type-meta">Display Hero · 44px · Bold · line-height: 66px · letter-spacing: −0.63px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-6xl);font-weight:var(--font-weight-bold);line-height:var(--line-height-lh-14);">Shipping Made Simple</div>
+        <div class="type-meta">Heading 1 · 40px · Bold · line-height: 52px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-4xl);font-weight:var(--font-weight-bold);line-height:var(--line-height-lh-12);">Reliable Overnight Delivery</div>
+        <div class="type-meta">Heading 2 · 30px · Bold · line-height: 39px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-3xl);font-weight:var(--font-weight-medium);line-height:var(--line-height-lh-9);">FedEx Express International</div>
+        <div class="type-meta">Heading 3 · 24px · Medium · line-height: 30px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-base);font-weight:var(--font-weight-regular);line-height:var(--line-height-lh-6);color:var(--color-dark-gray);">Track, manage, and get updates on all your shipments. From door to door, FedEx handles the logistics so you can focus on your business.</div>
+        <div class="type-meta">Body Large · 16px · Regular · line-height: 24px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-sm);font-weight:var(--font-weight-regular);line-height:var(--line-height-loose);color:var(--color-mid-gray);">Estimated delivery by Thursday, April 17 · Standard overnight shipping applies</div>
+        <div class="type-meta">Body Default · 14px · Regular · line-height: 21px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);line-height:var(--line-height-snug);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;color:var(--color-mid-gray);">TRACKING · EXPRESS · GROUND · FREIGHT</div>
+        <div class="type-meta">Caption / Label · 12px · Medium · line-height: 13.8px · letter-spacing: 1px</div>
+      </div>
+    </div>
+
+    <!-- Line Heights -->
+    <div style="margin-bottom:20px;">
+      <div style="font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;color:var(--color-mid-gray);margin-bottom:var(--space-4);">Line Heights</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:11.5px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">11.5px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:13.8px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">13.8px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:15.6px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">15.6px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:18px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">18px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:21px;"></div></div><div class="lh-token">Loose</div><div class="lh-val">21px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">Spacious</div><div class="lh-val">24px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:28.6px;"></div></div><div class="lh-token">Open</div><div class="lh-val">28.6px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:30px;"></div></div><div class="lh-token">Airy</div><div class="lh-val">30px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:34.5px;"></div></div><div class="lh-token">Heading</div><div class="lh-val">34.5px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:39px;"></div></div><div class="lh-token">Heading L</div><div class="lh-val">39px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:52px;"></div></div><div class="lh-token">Heading XL</div><div class="lh-val">52px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:66px;"></div></div><div class="lh-token">Display</div><div class="lh-val">66px</div></div>
+      </div>
+    </div>
+
+    <!-- Letter Spacing -->
+    <div>
+      <div style="font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;color:var(--color-mid-gray);margin-bottom:var(--space-4);">Letter Spacing</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-tight);">Tight Tracking</div>
+          <div class="ls-token">--letter-spacing-tight</div>
+          <div class="ls-desc">−0.63px · display headlines</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-normal);">Normal Tracking</div>
+          <div class="ls-token">--letter-spacing-normal</div>
+          <div class="ls-desc">−0.4px · body headings</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-widest);text-transform:uppercase;font-size:var(--font-size-xs);">WIDE TRACKING</div>
+          <div class="ls-token">--letter-spacing-widest</div>
+          <div class="ls-desc">0.75px · uppercase labels</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-ls-8);text-transform:uppercase;font-size:var(--font-size-xs);">MAX TRACKING</div>
+          <div class="ls-token">--letter-spacing-ls-8</div>
+          <div class="ls-desc">1.11px · micro copy, tags</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SPACING -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">28 tokens — 4px → 81.5px</div>
+      <div class="spacing-chart">
+        <!-- Heights scaled to 140px max. Max value = 81.5px. Scale = 140/81.5 ≈ 1.718 -->
+        <div class="sp-col"><div class="sp-bar" style="height:7px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">6</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">7</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:14px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:17px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:21px"></div><div class="sp-lbl">12.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:26px"></div><div class="sp-lbl">15</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:27px"></div><div class="sp-lbl">16</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:29px"></div><div class="sp-lbl">17</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:31px"></div><div class="sp-lbl">18</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:33px"></div><div class="sp-lbl">19</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:36px"></div><div class="sp-lbl">21</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:41px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:43px"></div><div class="sp-lbl">25</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:48px"></div><div class="sp-lbl">28</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:52px"></div><div class="sp-lbl">30</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:55px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:58px"></div><div class="sp-lbl">34</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:60px"></div><div class="sp-lbl">35</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:62px"></div><div class="sp-lbl">36</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:69px"></div><div class="sp-lbl">40</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:76px"></div><div class="sp-lbl">44</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:77px"></div><div class="sp-lbl">45</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:89px"></div><div class="sp-lbl">52</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:103px"></div><div class="sp-lbl">60</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:114px"></div><div class="sp-lbl">66.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:129px"></div><div class="sp-lbl">75</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">81.5</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. BORDERS -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii</div>
+      <div class="radius-row">
+        <div class="radius-item">
+          <div class="radius-box" style="border-radius:40px;width:80px;height:60px;"></div>
+          <div class="radius-lbl">Small / Pill</div>
+          <div class="radius-val">--radius-sm · 40px</div>
+        </div>
+        <div class="radius-item">
+          <div class="radius-box" style="border-radius:40px 0 0 40px;width:100px;height:40px;"></div>
+          <div class="radius-lbl">Half-Pill Left</div>
+          <div class="radius-val">--radius-md · 40px 0 0 40px</div>
+        </div>
+        <div style="padding-left:16px;border-left:var(--border-width-hairline) solid rgba(89,89,91,0.2);flex:1;max-width:420px;">
+          <div style="font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);">FedEx uses <span style="color:var(--color-dark-purple);font-weight:var(--font-weight-medium);">pill-shaped (40px)</span> radius for buttons and inputs, and a distinctive <span style="color:var(--color-dark-purple);font-weight:var(--font-weight-medium);">half-pill</span> pattern on search inputs — only rounding the left side to create the iconic FedEx search bar shape.</div>
+        </div>
+      </div>
+    </div>
+    <div class="border-card" style="margin-bottom:0;">
+      <div class="bc-title">Border Widths</div>
+      <div class="bw-demo">
+        <div class="bw-item">
+          <div class="bw-token">--border-width-hairline</div>
+          <div class="bw-line" style="height:1px;background:var(--color-dark-gray);"></div>
+          <div class="bw-val">1px · ×111</div>
+        </div>
+        <div class="bw-item">
+          <div class="bw-token">--border-width-thin</div>
+          <div class="bw-line" style="height:2px;background:var(--color-dark-gray);"></div>
+          <div class="bw-val">2px · ×48</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. SHADOW / ELEVATION -->
+  <div class="section">
+    <div class="section-title">Shadow / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">1 token detected</div>
+      <div class="shadows-row" style="grid-template-columns:repeat(2,1fr);max-width:560px;">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-sm);border:var(--border-width-hairline) solid rgba(89,89,91,0.15);"></div>
+          <div class="sh-token">--shadow-sm</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">rgba(0,0,0,0.5) 0px 5px 15px 0px · heavy drop shadow for overlays, modals, and sticky elements</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="border:var(--border-width-hairline) solid rgba(89,89,91,0.2);"></div>
+          <div class="sh-token">Flat (Border Only)</div>
+          <div class="sh-usage">—</div>
+          <div class="sh-desc">Most elements rely on a 1px border instead of shadow for definition, keeping the design clean and minimal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Z-INDEX -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>--z-1</td><td>-20</td><td>Deep background layers, decorative canvas elements</td></tr>
+          <tr><td>--z-2</td><td>-1</td><td>Behind base content, background decorations</td></tr>
+          <tr><td>--z-3</td><td>1</td><td>Base content layer</td></tr>
+          <tr><td>--z-4</td><td>2</td><td>Slightly elevated base elements</td></tr>
+          <tr><td>--z-5</td><td>10</td><td>Sticky headers, navigation bar</td></tr>
+          <tr><td>--z-6</td><td>1000</td><td>Dropdowns, popovers, tooltips</td></tr>
+          <tr><td>--z-7</td><td>1050</td><td>Fixed overlays, sidebars</td></tr>
+          <tr><td>--z-8</td><td>11000</td><td>Modals, dialogs, drawer panels</td></tr>
+          <tr><td>--z-9</td><td>9999999</td><td>Top-most layer — chat widgets, critical alerts</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. BREAKPOINTS -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div class="bp-grid">
+      <div class="bp-table-wrap">
+        <table class="bp-table">
+          <thead><tr><th>Token</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>--breakpoint-xs</td><td>320px</td></tr>
+            <tr><td>--breakpoint-sm</td><td>350px</td></tr>
+            <tr><td>--breakpoint-md</td><td>425px</td></tr>
+            <tr><td>--breakpoint-lg</td><td>426px</td></tr>
+            <tr><td>--breakpoint-xl</td><td>480px</td></tr>
+            <tr><td>--breakpoint-2xl</td><td>499px</td></tr>
+            <tr><td>--breakpoint-3xl</td><td>500px</td></tr>
+            <tr><td>--breakpoint-bp-8</td><td>600px</td></tr>
+            <tr><td>--breakpoint-bp-9</td><td>663px</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bp-table-wrap">
+        <table class="bp-table">
+          <thead><tr><th>Token</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>--breakpoint-bp-10</td><td>664px</td></tr>
+            <tr><td>--breakpoint-bp-11</td><td>767px</td></tr>
+            <tr><td>--breakpoint-bp-12</td><td>768px</td></tr>
+            <tr><td>--breakpoint-bp-13</td><td>769px</td></tr>
+            <tr><td>--breakpoint-bp-14</td><td>800px</td></tr>
+            <tr><td>--breakpoint-bp-15</td><td>989px</td></tr>
+            <tr><td>--breakpoint-bp-16</td><td>991px</td></tr>
+            <tr><td>--breakpoint-bp-17</td><td>992px</td></tr>
+            <tr><td>--breakpoint-bp-18</td><td>993px</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bp-table-wrap">
+        <table class="bp-table">
+          <thead><tr><th>Token</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>--breakpoint-bp-19</td><td>1000px</td></tr>
+            <tr><td>--breakpoint-bp-20</td><td>1023px</td></tr>
+            <tr><td>--breakpoint-bp-21</td><td>1024px</td></tr>
+            <tr><td>--breakpoint-bp-22</td><td>1100px</td></tr>
+            <tr><td>--breakpoint-bp-23</td><td>1199px</td></tr>
+            <tr><td>--breakpoint-bp-24</td><td>1200px</td></tr>
+            <tr><td>--breakpoint-bp-25</td><td>1300px</td></tr>
+            <tr><td>--breakpoint-bp-26</td><td>1439px</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. OPACITY -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <p class="fallback-msg">No opacity tokens defined in the FedEx design system. FedEx achieves transparency effects through <span style="color:var(--color-dark-purple);font-style:normal;font-weight:var(--font-weight-medium);">rgba() color values</span> (e.g., rgba(89, 89, 91, 0.5) for borders) rather than standalone opacity tokens.</p>
+    </div>
+  </div>
+
+  <!-- 9. ACCESSIBILITY -->
+  <div class="section">
+    <div class="section-title">Accessibility — Contrast Ratios</div>
+    <div style="font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);margin-bottom:var(--space-5);">WCAG 2.1 thresholds: <strong style="color:var(--color-dark-gray);">AA</strong> ≥ 4.5:1 (normal text) · <strong style="color:var(--color-dark-gray);">AA Large</strong> ≥ 3:1 (large/bold) · <strong style="color:var(--color-dark-gray);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Token</th><th>Background Token</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>--color-dark-gray</td><td>--color-white</td><td>12.63:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-dark-gray</td><td>--color-dark-purple</td><td>1.08:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-dark-gray</td><td>--color-white-2</td><td>12.1:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-dark-gray</td><td>--color-orange</td><td>4.21:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-dark-gray</td><td>--color-light-gray</td><td>11.29:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-black</td><td>--color-white</td><td>21:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-black</td><td>--color-dark-purple</td><td>1.79:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-black</td><td>--color-white-2</td><td>20.12:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-black</td><td>--color-orange</td><td>7:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-black</td><td>--color-light-gray</td><td>18.76:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-cyan</td><td>--color-white</td><td>4.7:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-cyan</td><td>--color-dark-purple</td><td>2.49:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-cyan</td><td>--color-white-2</td><td>4.5:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-cyan</td><td>--color-orange</td><td>1.57:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-cyan</td><td>--color-light-gray</td><td>4.2:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-red</td><td>--color-white</td><td>5.07:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-red</td><td>--color-dark-purple</td><td>2.31:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-red</td><td>--color-white-2</td><td>4.85:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-red</td><td>--color-orange</td><td>1.69:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-red</td><td>--color-light-gray</td><td>4.53:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-white</td><td>3.95:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-dark-purple</td><td>2.96:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-white-2</td><td>3.78:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-orange</td><td>1.32:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-light-gray</td><td>3.53:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Ship Now</button>
+          <button class="btn btn-secondary">Track Package</button>
+          <button class="btn btn-outline">Get a Quote</button>
+          <button class="btn btn-ghost">Learn More</button>
+          <button class="btn btn-muted">Cancel Shipment</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Tracking Number</label>
+            <input class="inp" type="text" placeholder="Enter FedEx tracking number"/>
+            <div class="inp-hint">E.g. 7489 3251 0928 7461 3920</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Delivery Address</label>
+            <input class="inp" type="text" placeholder="Street, City, ZIP" style="border-color:var(--color-dark-purple);box-shadow:0 0 0 3px rgba(77,20,140,0.1);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Package Weight (kg)</label>
+            <input class="inp inp-err" type="text" value="999abc"/>
+            <div class="inp-err-msg">Please enter a valid weight in kg</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:var(--space-5);">
+        <div class="badge-row">
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-dark-purple)"></span>Delivered</span>
+          <span class="badge badge-orange"><span class="badge-dot" style="background:var(--color-orange)"></span>Out for Delivery</span>
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>In Transit</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--color-mid-gray-3)"></span>Scheduled</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">✈ FedEx Express</span>
+          <span class="tag tag-orange">📦 FedEx Ground</span>
+          <span class="tag">🌍 FedEx International</span>
+          <span class="tag">🚚 FedEx Freight</span>
+          <span class="tag">🏠 Home Delivery</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:var(--space-5);">
+        <div class="alert alert-neutral"><div class="alert-icon">ℹ️</div><div class="alert-body"><h5>Shipment Update Available</h5><p>Your package has been scanned at the Memphis hub. Estimated delivery remains on schedule.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon">✅</div><div class="alert-body"><h5>Package Delivered</h5><p>Your shipment was successfully delivered at 2:34 PM. Signed by: J. SMITH.</p></div></div>
+        <div class="alert alert-warning"><div class="alert-icon">⚠️</div><div class="alert-body"><h5>Delivery Delay</h5><p>Severe weather conditions in Chicago have caused a 1-day delay. New estimated delivery: April 18.</p></div></div>
+        <div class="alert alert-error"><div class="alert-icon">❌</div><div class="alert-body"><h5>Delivery Exception</h5><p>Address not found. Please update your delivery address or contact FedEx customer service.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Service Cards</span><span class="comp-badge">Product cards</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">✈</div>
+            <div class="fc-title">FedEx Express</div>
+            <div class="fc-desc">Priority overnight and day-definite delivery. Guaranteed time-sensitive shipping to 220+ countries.</div>
+            <span class="tag tag-brand">Priority Overnight</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📦</div>
+            <div class="fc-title">FedEx Ground</div>
+            <div class="fc-desc">Cost-effective shipping for business and residential deliveries. 1–5 business days across the US.</div>
+            <span class="tag tag-orange">Cost Effective</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🚛</div>
+            <div class="fc-title">FedEx Freight</div>
+            <div class="fc-desc">Less-than-truckload (LTL) and full truckload shipping for palletized and large freight needs.</div>
+            <span class="tag">LTL · FTL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- 11. CSS VARIABLES REFERENCE -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <!-- Background Colors -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Background Colors</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF;border-color:rgba(0,0,0,0.12)"></div><span class="token-readable">White</span><span class="token-css">--color-white</span><span class="token-value">#FFFFFF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#4D148C"></div><span class="token-readable">FedEx Purple</span><span class="token-css">--color-dark-purple</span><span class="token-value">#4D148C</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FAFAFA;border-color:rgba(0,0,0,0.1)"></div><span class="token-readable">Off White</span><span class="token-css">--color-white-2</span><span class="token-value">#FAFAFA</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FF6200"></div><span class="token-readable">FedEx Orange</span><span class="token-css">--color-orange</span><span class="token-value">#FF6200</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F2F2F2;border-color:rgba(0,0,0,0.1)"></div><span class="token-readable">Light Gray</span><span class="token-css">--color-light-gray</span><span class="token-value">#F2F2F2</span></div>
+        </div>
+      </div>
+
+      <!-- Text & Border Colors -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon tokens-group-icon-orange"></div>
+          <span class="tokens-group-title">Text &amp; Border Colors</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#333333"></div><span class="token-readable">Dark Gray</span><span class="token-css">--color-dark-gray</span><span class="token-value">#333333</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#000000"></div><span class="token-readable">Black</span><span class="token-css">--color-black</span><span class="token-value">#000000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#007AB7"></div><span class="token-readable">FedEx Blue</span><span class="token-css">--color-cyan</span><span class="token-value">#007AB7</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#DE002E"></div><span class="token-readable">Alert Red</span><span class="token-css">--color-red</span><span class="token-value">#DE002E</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#808080"></div><span class="token-readable">Mid Gray</span><span class="token-css">--color-mid-gray</span><span class="token-value">#808080</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#777777"></div><span class="token-readable">Gray 2</span><span class="token-css">--color-mid-gray-2</span><span class="token-value">#777777</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#646464"></div><span class="token-readable">Dark Gray 3</span><span class="token-css">--color-dark-gray-3</span><span class="token-value">#646464</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(89,89,91,0.5)"></div><span class="token-readable">Border Default</span><span class="token-css">--color-dark-gray-2</span><span class="token-value">rgba(89,89,91,.5)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#8E8E8E"></div><span class="token-readable">Border Muted</span><span class="token-css">--color-mid-gray-3</span><span class="token-value">#8E8E8E</span></div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Typography</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Serif (Base)</span><span class="token-css">--font-family-base</span><span class="token-value">Times</span></div>
+          <div class="token-row"><span class="token-readable">Brand Font</span><span class="token-css">--font-family-2</span><span class="token-value">FedExSans</span></div>
+          <div class="token-row"><span class="token-readable">Light</span><span class="token-css">--font-weight-light</span><span class="token-value">300</span></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">Medium</span><span class="token-css">--font-weight-medium</span><span class="token-value">500</span></div>
+          <div class="token-row"><span class="token-readable">Bold</span><span class="token-css">--font-weight-bold</span><span class="token-value">700</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Micro</span><span class="token-css">--font-size-2xs</span><span class="token-value">10px</span></div>
+          <div class="token-row"><span class="token-readable">Caption</span><span class="token-css">--font-size-xs</span><span class="token-value">12px</span></div>
+          <div class="token-row"><span class="token-readable">Body Small</span><span class="token-css">--font-size-sm</span><span class="token-value">14px</span></div>
+          <div class="token-row"><span class="token-readable">Body</span><span class="token-css">--font-size-base</span><span class="token-value">16px</span></div>
+          <div class="token-row"><span class="token-readable">Body Large</span><span class="token-css">--font-size-lg</span><span class="token-value">19px</span></div>
+          <div class="token-row"><span class="token-readable">Heading S</span><span class="token-css">--font-size-3xl</span><span class="token-value">24px</span></div>
+          <div class="token-row"><span class="token-readable">Heading L</span><span class="token-css">--font-size-4xl</span><span class="token-value">30px</span></div>
+          <div class="token-row"><span class="token-readable">Heading XL</span><span class="token-css">--font-size-6xl</span><span class="token-value">40px</span></div>
+          <div class="token-row"><span class="token-readable">Display</span><span class="token-css">--font-size-44px</span><span class="token-value">44px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Tight Tracking</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">−0.63px</span></div>
+          <div class="token-row"><span class="token-readable">Wide Tracking</span><span class="token-css">--letter-spacing-widest</span><span class="token-value">0.75px</span></div>
+        </div>
+      </div>
+
+      <!-- Spacing, Motion & Borders -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon tokens-group-icon-orange"></div>
+          <span class="tokens-group-title">Spacing, Motion &amp; Borders</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-preview-bar" style="width:4px;"></div><span class="token-readable">Space 1</span><span class="token-css">--space-1</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:8px;"></div><span class="token-readable">Space 4</span><span class="token-css">--space-4</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:16px;"></div><span class="token-readable">Space 10</span><span class="token-css">--space-10</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:24px;"></div><span class="token-readable">Space 40</span><span class="token-css">--space-40</span><span class="token-value">24px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:40px;"></div><span class="token-readable">Space 256</span><span class="token-css">--space-256</span><span class="token-value">40px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:60px;"></div><span class="token-readable">Space 26</span><span class="token-css">--space-26</span><span class="token-value">60px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:81px;max-width:100px;"></div><span class="token-readable">Space 29</span><span class="token-css">--space-29</span><span class="token-value">81.5px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Instant</span><span class="token-css">--duration-instant</span><span class="token-value">0.15s</span></div>
+          <div class="token-row"><span class="token-readable">Fast</span><span class="token-css">--duration-fast</span><span class="token-value">0.2s</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--duration-normal</span><span class="token-value">0.25s</span></div>
+          <div class="token-row"><span class="token-readable">Slow</span><span class="token-css">--duration-slow</span><span class="token-value">0.3s</span></div>
+          <div class="token-row"><span class="token-readable">Slower</span><span class="token-css">--duration-slower</span><span class="token-value">0.5s</span></div>
+          <div class="token-row"><span class="token-readable">Ease Linear</span><span class="token-css">--easing-linear</span><span class="token-value">linear</span></div>
+          <div class="token-row"><span class="token-readable">Ease Out</span><span class="token-css">--easing-ease-out</span><span class="token-value">ease-out</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Hairline Border</span><span class="token-css">--border-width-hairline</span><span class="token-value">1px</span></div>
+          <div class="token-row"><span class="token-readable">Thin Border</span><span class="token-css">--border-width-thin</span><span class="token-value">2px</span></div>
+          <div class="token-row"><span class="token-readable">Radius Pill</span><span class="token-css">--radius-sm</span><span class="token-value">40px</span></div>
+          <div class="token-row"><span class="token-readable">Shadow</span><span class="token-css">--shadow-sm</span><span class="token-value">rgba(0,0,0,.5) 0px 5px 15px</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

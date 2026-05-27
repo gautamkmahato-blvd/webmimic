@@ -1,0 +1,217 @@
+/* ============================================
+ * Design Tokens — Airtable: Build Enterprise-ready AI Workflows, Apps & Agents - Airtable
+ * Source: https://www.airtable.com/
+ * Generated: 13/04/2026, 22:43:54
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #181D26; /* hsl(219, 23%, 12%) · background */
+  --color-dark-gray-2: #333333; /* hsl(0, 0%, 20%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray-3: #444444; /* hsl(0, 0%, 27%) · text */
+  --color-dark-gray-4: #333840; /* hsl(217, 11%, 23%) · text */
+  --color-dark-blue: #040E20; /* hsl(219, 78%, 7%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-5: #41454D; /* hsl(220, 8%, 28%) · text */
+  --color-mid-gray: #9297A0; /* hsl(219, 7%, 60%) · text */
+  --color-orange: #FCB42A; /* hsl(39, 97%, 58%) · background */
+  --color-blue: #254FAD; /* hsl(221, 65%, 41%) · background */
+  --color-dark-green: #0A2E0E; /* hsl(127, 64%, 11%) · background */
+  --color-dark-orange: #AA2D00; /* hsl(16, 100%, 33%) · background */
+  --color-light-pink: #FA91E0; /* hsl(315, 91%, 77%) · background */
+  --color-dark-gray-6: rgba(7, 12, 20, 0.82); /* hsl(217, 48%, 5%) · text */
+  --color-white-2: #F8FAFC; /* hsl(210, 40%, 98%) · background */
+  --color-blue-2: #1B61C9; /* hsl(216, 76%, 45%) · text */
+  --color-purple: #9B67F0; /* hsl(263, 82%, 67%) · fill */
+  --color-cyan: #0DBDB4; /* hsl(177, 87%, 40%) · text */
+  --color-red: #FC4777; /* hsl(344, 97%, 63%) · fill */
+  --color-blue-3: #458FFF; /* hsl(216, 100%, 64%) · fill */
+  --color-light-gray: #E0E2E6; /* hsl(220, 11%, 89%) · border */
+  --color-dark-blue-2: rgba(1, 20, 53, 0.12); /* hsl(220, 100%, 10%) · background */
+  --color-dark-green-2: #214224; /* hsl(125, 33%, 19%) · background */
+  --color-orange-2: #F5620C; /* hsl(22, 92%, 50%) · fill */
+  --color-pink: #E848C0; /* hsl(315, 78%, 60%) · fill */
+  --color-cyan-2: #0AB2FA; /* hsl(198, 96%, 51%) · fill */
+  --color-blue-4: rgba(45, 127, 249, 0.28); /* hsl(216, 93%, 58%) · shadow */
+  --color-light-blue: #C0C6D1; /* hsl(219, 16%, 79%) · fill */
+  --color-dark-blue-3: rgba(15, 48, 106, 0.05); /* hsl(225, 66%, 23%) · shadow */
+  --color-light-cyan: #C7E5F2; /* hsl(198, 62%, 86%) · background */
+  --color-mid-gray-2: #949494; /* hsl(0, 0%, 58%) · fill */
+  --color-light-orange: #FCAB79; /* hsl(23, 96%, 73%) · background */
+  --color-cyan-3: #39CAFF; /* hsl(196, 100%, 61%) · fill */
+  --color-purple-2: #7C37EF; /* hsl(263, 85%, 58%) · fill */
+  --color-dark-cyan: #0076A8; /* hsl(198, 100%, 33%) · text */
+  --color-green: #39BF45; /* hsl(125, 54%, 49%) · fill */
+  --color-dark-cyan-2: #097A76; /* hsl(178, 86%, 26%) · text */
+  --color-dark-red: #912E1F; /* hsl(8, 65%, 35%) · background */
+  --color-dark-orange-2: #423719; /* hsl(44, 45%, 18%) · text */
+  --color-mid-gray-3: #A6A6A6; /* hsl(0, 0%, 65%) · fill */
+  --color-white-3: #F0F6FF; /* hsl(216, 100%, 97%) · background */
+  --color-pink-2: #DD04A8; /* hsl(315, 96%, 44%) · fill */
+  --color-light-pink-2: #F797EF; /* hsl(305, 86%, 78%) · fill */
+  --color-dark-cyan-3: #0D7F78; /* hsl(176, 81%, 27%) · fill */
+  --color-cyan-4: #36C5F0; /* hsl(194, 86%, 58%) · fill */
+  --color-cyan-5: #2EB67D; /* hsl(155, 60%, 45%) · fill */
+  --color-orange-3: #ECB22E; /* hsl(42, 83%, 55%) · fill */
+  --color-red-2: #E01E5A; /* hsl(341, 76%, 50%) · fill */
+  --color-blue-5: #4185F3; /* hsl(217, 88%, 60%) · fill */
+  --color-blue-6: #1767D1; /* hsl(214, 80%, 45%) · fill */
+  --color-red-3: #E94235; /* hsl(4, 80%, 56%) · fill */
+  --color-green-2: #30A753; /* hsl(138, 55%, 42%) · fill */
+  --color-yellow: #F9BC00; /* hsl(45, 100%, 49%) · fill */
+  --color-dark-green-3: #0F8038; /* hsl(142, 79%, 28%) · fill */
+  --color-cyan-6: #00A1E0; /* hsl(197, 100%, 44%) · fill */
+  --color-blue-7: #2684FF; /* hsl(214, 100%, 57%) · fill */
+  --color-dark-cyan-4: #03363D; /* hsl(187, 91%, 13%) · fill */
+  --color-white-4: #EBF7FC; /* hsl(198, 74%, 95%) · gradient */
+  --color-cyan-7: #01DDD5; /* hsl(178, 99%, 44%) · fill */
+  --color-light-gray-2: #EBF7F7; /* hsl(180, 43%, 95%) · gradient */
+  --color-light-cyan-2: #C7EBE9; /* hsl(177, 47%, 85%) · gradient */
+  --color-light-green: #B6E995; /* hsl(96, 66%, 75%) · background */
+  --color-dark-blue-4: #002D98; /* hsl(222, 100%, 30%) · background */
+  --color-light-orange-2: #FAF5E8; /* hsl(43, 64%, 95%) · background */
+  --color-light-gray-3: #CCCCCC; /* hsl(0, 0%, 80%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 14px;
+  --font-size-xs: 16px;
+  --font-size-sm: 18px;
+  --font-size-base: 20px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;
+  --font-size-2xl: 40px;
+  --font-size-3xl: 48px;
+  --font-family-base: Times;
+  --font-family-2: Haas Groot Disp;
+  --font-family-3: Haas;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-black: 900;
+  --line-height-tight: 17.5px;
+  --line-height-snug: 18.9px;
+  --line-height-normal: 20px;
+  --line-height-relaxed: 20.8px;
+  --line-height-loose: 21.6px;
+  --line-height-lh-6: 24px;
+  --line-height-lh-7: 25px;
+  --line-height-lh-8: 26px;
+  --line-height-lh-9: 27px;
+  --line-height-lh-10: 30px;
+  --line-height-lh-11: 32.4px;
+  --line-height-lh-12: 36.8px;
+  --line-height-lh-13: 40px;
+  --line-height-lh-14: 41.6px;
+  --line-height-lh-15: 48px;
+  --line-height-lh-16: 52px;
+  --line-height-lh-17: 55.2px;
+  --line-height-lh-18: 72px;
+  --letter-spacing-tight: 0.08px;
+  --letter-spacing-normal: 0.1px;
+  --letter-spacing-wide: 0.12px;
+  --letter-spacing-wider: 0.14px;
+  --letter-spacing-widest: 0.16px;
+  --letter-spacing-ls-6: 0.18px;
+  --letter-spacing-ls-7: 0.2px;
+  --letter-spacing-ls-8: 0.28px;
+  --letter-spacing-ls-9: 0.7px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 6px;
+  --space-6: 7px;
+  --space-8: 8px;
+  --space-10: 12px;
+  --space-12: 16px;
+  --space-16: 20px;
+  --space-20: 22px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 72px;
+  --space-96: 96px;
+  --space-128: 120.984px;
+  --space-160: 335px;
+  --space-192: 337.492px;
+  --space-256: 338.703px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 20px;
+  --radius-r7: 24px;
+  --radius-r8: 32px;
+  --radius-r9: 50%;
+  --radius-r10: 999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.32) 0px 0px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 2px 0px, rgba(45, 127, 249, 0.28) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 0.5px inset;
+  --shadow-md: rgba(15, 48, 106, 0.05) 0px 0px 20px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.32) 0px 0px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 2px 0px, rgba(0, 0, 0, 0.08) 0px 1px 3px 0px, rgba(1, 20, 53, 0.12) 0px 0px 0px 1px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.6s;
+  --easing-ease-in: ease-in;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -15;
+  --z-2: -10;
+  --z-3: -1;
+  --z-4: 1;
+  --z-5: 2;
+  --z-6: 3;
+  --z-7: 4;
+  --z-8: 10;
+  --z-9: 9999;
+  --z-10: 2147483642;
+  --z-11: 2147483646;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 426px;
+  --breakpoint-md: 530px;
+  --breakpoint-lg: 550px;
+  --breakpoint-xl: 600px;
+  --breakpoint-2xl: 642px;
+  --breakpoint-3xl: 720px;
+  --breakpoint-bp-8: 749px;
+  --breakpoint-bp-9: 768px;
+  --breakpoint-bp-10: 832px;
+  --breakpoint-bp-11: 834px;
+  --breakpoint-bp-12: 896px;
+  --breakpoint-bp-13: 904px;
+  --breakpoint-bp-14: 1024px;
+  --breakpoint-bp-15: 1080px;
+  --breakpoint-bp-16: 1100px;
+  --breakpoint-bp-17: 1184px;
+  --breakpoint-bp-18: 1344px;
+  --breakpoint-bp-19: 1350px;
+  --breakpoint-bp-20: 1408px;
+  --breakpoint-bp-21: 1440px;
+  --breakpoint-bp-22: 1600px;
+  --breakpoint-bp-23: 1664px;
+
+  /* ── Opacity ── */
+  --opacity-10: 0.1;
+  --opacity-12: 0.12;
+  --opacity-20: 0.2;
+  --opacity-25: 0.25;
+  --opacity-50: 0.5;
+  --opacity-70: 0.7;
+}

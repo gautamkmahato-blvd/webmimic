@@ -1,0 +1,251 @@
+/* ============================================
+ * Design Tokens — Column | The platform bank built for scale
+ * Source: https://column.com/
+ * Generated: 05/05/2026, 21:31:56
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #E3E4E8; /* hsl(228, 10%, 90%) · border */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-blue: #7EA7E9; /* hsl(217, 71%, 70%) · background */
+  --color-mid-gray: #7C7F88; /* hsl(225, 5%, 51%) · text */
+  --color-dark-gray: #12161E; /* hsl(220, 25%, 9%) · text */
+  --color-dark-blue: #111A4A; /* hsl(231, 63%, 18%) · background */
+  --color-cyan: #44B48B; /* hsl(158, 45%, 49%) · text */
+  --color-dark-cyan: rgba(1, 24, 33, 0.5); /* hsl(199, 89%, 7%) · text */
+  --color-light-cyan: #C1E8EF; /* hsl(189, 59%, 85%) · text */
+  --color-mid-gray-2: #A9ACB6; /* hsl(226, 8%, 69%) · text */
+  --color-blue: #1E4199; /* hsl(223, 67%, 36%) · background */
+  --color-light-cyan-2: #B0C8C4; /* hsl(170, 18%, 74%) · gradient */
+  --color-dark-cyan-2: #167E6C; /* hsl(170, 70%, 29%) · background */
+  --color-dark-blue-2: rgba(1, 24, 33, 0.05); /* hsl(209, 100%, 8%) · background */
+  --color-dark-cyan-3: #354A50; /* hsl(193, 20%, 26%) · background */
+  --color-mid-gray-3: rgba(124, 127, 136, 0.4); /* hsl(222, 4%, 51%) · text */
+  --color-light-cyan-3: #88DEEB; /* hsl(188, 71%, 73%) · background */
+  --color-green: rgba(156, 217, 93, 0.1); /* hsl(88, 62%, 60%) · gradient */
+  --color-dark-cyan-4: #011821; /* hsl(197, 94%, 7%) · background */
+  --color-light-red: #F5A2AE; /* hsl(351, 81%, 80%) · fill */
+  --color-dark-gray-2: #232730; /* hsl(222, 16%, 16%) · text */
+  --color-light-green: #94EFB7; /* hsl(143, 74%, 76%) · text */
+  --color-dark-cyan-5: #023247; /* hsl(198, 95%, 14%) · text */
+  --color-orange: #EFAA65; /* hsl(30, 81%, 67%) · text */
+  --color-light-blue-2: #E3E9F2; /* hsl(216, 37%, 92%) · text */
+  --color-white-2: #F6F6F8; /* hsl(240, 12%, 97%) · background */
+  --color-dark-blue-3: rgba(17, 26, 74, 0.05); /* hsl(240, 59%, 19%) · border */
+  --color-dark-blue-4: rgba(5, 26, 35, 0.1); /* hsl(201, 59%, 10%) · shadow */
+  --color-dark-cyan-6: #0C6997; /* hsl(200, 85%, 32%) · background */
+  --color-red: #A41742; /* hsl(342, 75%, 37%) · fill */
+  --color-light-yellow: #F7EB81; /* hsl(54, 88%, 74%) · text */
+  --color-dark-gray-3: #3B3E47; /* hsl(225, 9%, 25%) · background */
+  --color-light-blue-3: #9F7AEE; /* hsl(259, 77%, 71%) · text */
+  --color-red-2: #D80027; /* hsl(349, 100%, 42%) · fill */
+  --color-dark-blue-5: rgba(17, 26, 74, 0.1); /* hsl(231, 59%, 19%) · shadow */
+  --color-dark-gray-4: #575A64; /* hsl(226, 7%, 37%) · text */
+  --color-blue-2: #0052B4; /* hsl(213, 100%, 35%) · fill */
+  --color-dark-cyan-7: #172C34; /* hsl(197, 39%, 15%) · background */
+  --color-white-3: rgba(246, 246, 248, 0.6); /* hsl(240, 7%, 97%) · gradient */
+  --color-light-gray-2: rgba(191, 201, 205, 0.8); /* hsl(197, 12%, 78%) · background */
+  --color-blue-3: #2F8FC5; /* hsl(202, 61%, 48%) · text */
+  --color-yellow: #FFDA44; /* hsl(48, 100%, 63%) · fill */
+  --color-light-gray-3: #EEEFF2; /* hsl(225, 13%, 94%) · background */
+  --color-orange-2: #EC652B; /* hsl(18, 84%, 55%) · background */
+  --color-dark-pink: #771C86; /* hsl(292, 65%, 32%) · background */
+  --color-light-gray-4: #E3E4EA; /* hsl(231, 14%, 90%) · fill */
+  --color-dark-gray-5: rgba(87, 90, 100, 0.12); /* hsl(240, 5%, 37%) · shadow */
+  --color-dark-cyan-8: #0F252D; /* hsl(196, 50%, 12%) · gradient */
+  --color-light-blue-4: #A2C1ED; /* hsl(215, 68%, 78%) · text */
+  --color-light-purple: #E5C9EB; /* hsl(289, 46%, 85%) · text */
+  --color-light-gray-5: #F0F0F0; /* hsl(0, 0%, 94%) · fill */
+  --color-dark-cyan-9: rgba(2, 50, 71, 0.3); /* hsl(198, 92%, 14%) · text */
+  --color-light-blue-5: #C1AAF1; /* hsl(259, 72%, 81%) · text */
+  --color-cyan-2: #71D2F0; /* hsl(194, 81%, 69%) · gradient */
+  --color-dark-cyan-10: #011219; /* hsl(197, 92%, 5%) · background */
+  --color-light-gray-6: rgba(191, 201, 205, 0.25); /* hsl(200, 10%, 77%) · background */
+  --color-blue-4: rgba(30, 65, 153, 0.12); /* hsl(224, 65%, 37%) · shadow */
+  --color-cyan-3: rgba(113, 210, 240, 0.15); /* hsl(196, 83%, 70%) · gradient */
+  --color-white-4: rgba(246, 246, 248, 0.5); /* hsl(240, 11%, 96%) · gradient */
+  --color-dark-blue-6: rgba(30, 30, 44, 0.15); /* hsl(240, 27%, 15%) · shadow */
+  --color-dark-blue-7: rgba(18, 22, 30, 0.05); /* hsl(240, 32%, 12%) · shadow */
+  --color-white-5: #FBFBFC; /* hsl(240, 14%, 99%) · background */
+  --color-orange-3: #F2936B; /* hsl(18, 84%, 68%) · background */
+  --color-light-cyan-4: rgba(219, 239, 243, 0.65); /* hsl(188, 49%, 91%) · background */
+  --color-dark-gray-6: #111111; /* hsl(0, 0%, 7%) · fill */
+  --color-dark-cyan-11: #2B4048; /* hsl(197, 25%, 23%) · background */
+  --color-dark-cyan-12: rgba(70, 89, 98, 0.565); /* hsl(198, 15%, 33%) · background */
+  --color-cyan-4: #909EA2; /* hsl(193, 9%, 60%) · shadow */
+  --color-dark-cyan-13: rgba(1, 24, 33, 0.2); /* hsl(197, 100%, 7%) · background */
+  --color-cyan-5: #93A0A5; /* hsl(197, 9%, 61%) · background */
+  --color-cyan-6: #7E8A8E; /* hsl(195, 7%, 53%) · shadow */
+  --color-light-gray-7: rgba(191, 201, 205, 0.35); /* hsl(201, 13%, 78%) · background */
+  --color-light-gray-8: rgba(191, 201, 205, 0.6); /* hsl(194, 12%, 78%) · background */
+  --color-light-gray-9: rgba(191, 201, 205, 0.45); /* hsl(189, 11%, 77%) · background */
+  --color-light-gray-10: #CFD0D8; /* hsl(233, 10%, 83%) · gradient */
+  --color-orange-4: #D65620; /* hsl(18, 74%, 48%) · gradient */
+  --color-blue-5: #4575CD; /* hsl(219, 58%, 54%) · gradient */
+  --color-yellow-2: #F4DF69; /* hsl(51, 86%, 68%) · gradient */
+  --color-light-green-2: rgba(148, 239, 183, 0.2); /* hsl(143, 75%, 76%) · gradient */
+  --color-cyan-7: rgba(113, 210, 240, 0.4); /* hsl(194, 81%, 69%) · gradient */
+  --color-blue-6: rgba(69, 117, 205, 0.3); /* hsl(220, 57%, 54%) · gradient */
+  --color-light-blue-6: rgba(159, 122, 238, 0.2); /* hsl(260, 80%, 71%) · gradient */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 28px;
+  --font-size-5xl: 40px;
+  --font-size-6xl: 48px;
+  --font-size-52px: 52px;
+  --font-size-60px: 60px;
+  --font-family-base: SuisseIntl;
+  --font-family-2: Inter;
+  --font-family-3: SFMono;
+  --font-family-4: SuisseIntlMono;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 11px;
+  --line-height-snug: 12px;
+  --line-height-normal: 13.2px;
+  --line-height-relaxed: 14px;
+  --line-height-loose: 15px;
+  --line-height-lh-6: 16px;
+  --line-height-lh-7: 16.5px;
+  --line-height-lh-8: 17.6px;
+  --line-height-lh-9: 20px;
+  --line-height-lh-10: 21px;
+  --line-height-lh-11: 22px;
+  --line-height-lh-12: 24px;
+  --line-height-lh-13: 26px;
+  --line-height-lh-14: 27px;
+  --line-height-lh-15: 28px;
+  --line-height-lh-16: 30px;
+  --line-height-lh-17: 30.8px;
+  --line-height-lh-18: 36px;
+  --line-height-lh-19: 44px;
+  --line-height-lh-20: 52.8px;
+  --line-height-lh-21: 57.2px;
+  --line-height-lh-22: 60px;
+  --letter-spacing-tight: -1.56px;
+  --letter-spacing-normal: -1.44px;
+  --letter-spacing-wide: -0.96px;
+  --letter-spacing-wider: -0.8px;
+  --letter-spacing-widest: -0.72px;
+  --letter-spacing-ls-6: -0.6px;
+  --letter-spacing-ls-7: -0.42px;
+  --letter-spacing-ls-8: -0.28px;
+  --letter-spacing-ls-9: -0.24px;
+  --letter-spacing-ls-10: -0.2px;
+  --letter-spacing-ls-11: -0.16px;
+  --letter-spacing-ls-12: -0.14px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 10.5px;
+  --space-8: 12px;
+  --space-10: 16px;
+  --space-12: 20px;
+  --space-16: 24px;
+  --space-20: 32px;
+  --space-24: 180px;
+  --space-32: 48px;
+  --space-40: 51px;
+  --space-48: 64px;
+  --space-64: 72px;
+  --space-80: 80px;
+  --space-96: 82.5px;
+  --space-128: 96px;
+  --space-160: 100px;
+  --space-192: 120px;
+  --space-256: 140px;
+  --space-23: 144px;
+  --space-25: 192px;
+  --space-26: 288px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 12px;
+  --radius-full: 12px 12px 0px 0px;
+  --radius-r7: 18px;
+  --radius-r8: 50%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(1, 24, 33, 0.05) 0px 0px 0px 1px;
+  --shadow-md: rgba(0, 0, 0, 0.05) 0px 4px 8px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(0, 0, 0, 0.1) 0px 1px 1px 0px;
+  --shadow-lg: rgba(17, 26, 74, 0.1) 0px 1px 3px 0px, rgba(17, 26, 74, 0.05) 0px 1px 0px 0px, rgba(255, 255, 255, 0.5) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.5) 0px 1px 4px 0px inset;
+  --shadow-xl: rgba(5, 26, 35, 0.1) 0px 16px 32px 0px, rgba(255, 255, 255, 0.85) 0px 0px 0px 1px;
+  --shadow-shadow-5: rgba(255, 255, 255, 0) 0px 1px 1px 0px, rgba(87, 90, 100, 0.12) 0px 0px 0px 1px;
+  --shadow-shadow-6: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.05s;
+  --duration-fast: 0.1s;
+  --duration-normal: 0.15s;
+  --duration-slow: 0.2s;
+  --duration-slower: 0.3s;
+  --duration-duration-6: 0.35s;
+  --duration-duration-7: 0.4s;
+  --duration-duration-8: 0.5s;
+  --duration-duration-9: 0.55s;
+  --duration-duration-10: 0.6s;
+  --duration-duration-11: 0.7s;
+  --duration-duration-12: 0.8s;
+  --duration-duration-13: 1s;
+  --duration-duration-14: 1.5s;
+  --duration-duration-15: 4s;
+  --easing-ease-out: ease-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 4;
+  --z-6: 5;
+  --z-7: 6;
+  --z-8: 7;
+  --z-9: 10;
+  --z-10: 20;
+  --z-11: 100;
+  --z-12: 99998;
+  --z-13: 99999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 870px;
+  --breakpoint-xl: 1024px;
+  --breakpoint-2xl: 1112px;
+  --breakpoint-3xl: 1200px;
+  --breakpoint-bp-8: 1280px;
+
+  /* ── Opacity ── */
+  --opacity-2: 0.02;
+  --opacity-10: 0.1;
+  --opacity-15: 0.15;
+  --opacity-20: 0.2;
+  --opacity-40: 0.4;
+  --opacity-45: 0.45;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+  --opacity-75: 0.75;
+  --opacity-98: 0.98;
+}

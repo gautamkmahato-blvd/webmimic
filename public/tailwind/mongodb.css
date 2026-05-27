@@ -1,0 +1,214 @@
+/* ============================================
+ * Design Tokens — MongoDB: The World’s Leading Modern Data Platform | MongoDB
+ * Source: https://www.mongodb.com/
+ * Generated: 15/04/2026, 23:59:14
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue: #006CFA; /* hsl(214, 100%, 49%) · background */
+  --color-dark-cyan: #001E2B; /* hsl(198, 100%, 8%) · background */
+  --color-green: #00ED64; /* hsl(145, 100%, 46%) · background */
+  --color-light-gray: #B8C4C2; /* hsl(170, 9%, 75%) · text */
+  --color-blue-2: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-dark-blue: #21313C; /* hsl(204, 29%, 18%) · background */
+  --color-dark-cyan-2: #00684A; /* hsl(163, 100%, 20%) · background */
+  --color-blue-3: #009FFD; /* hsl(202, 100%, 50%) · text */
+  --color-dark-cyan-3: #3D4F58; /* hsl(200, 18%, 29%) · background */
+  --color-light-gray-2: #E7EEEC; /* hsl(163, 17%, 92%) · background */
+  --color-white-2: #F5F7FA; /* hsl(216, 33%, 97%) · background */
+  --color-dark-cyan-4: #014E3D; /* hsl(167, 97%, 15%) · text */
+  --color-dark-blue-2: #061621; /* hsl(204, 69%, 8%) · background */
+  --color-mid-gray: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-light-green: #E9FF99; /* hsl(73, 100%, 80%) · text */
+  --color-cyan: #00E97A; /* hsl(151, 100%, 46%) · gradient */
+  --color-cyan-2: #00D4EB; /* hsl(186, 100%, 46%) · gradient */
+  --color-blue-4: #0066FF; /* hsl(216, 100%, 50%) · fill */
+  --color-green-2: #B1FF05; /* hsl(79, 100%, 51%) · background */
+  --color-blue-5: #5D6C74; /* hsl(201, 11%, 41%) · fill */
+  --color-dark-cyan-5: #16774E; /* hsl(155, 69%, 28%) · gradient */
+  --color-green-3: #12C86A; /* hsl(149, 83%, 43%) · gradient */
+  --color-green-4: #0AE85D; /* hsl(142, 92%, 47%) · gradient */
+  --color-green-5: #17B659; /* hsl(145, 78%, 40%) · gradient */
+  --color-cyan-3: #53E9F6; /* hsl(185, 90%, 65%) · gradient */
+  --color-mid-gray-2: #767676; /* hsl(0, 0%, 46%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 9px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 13.3333px;
+  --font-size-lg: 14px;
+  --font-size-xl: 15px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 18px;
+  --font-size-4xl: 20px;
+  --font-size-5xl: 24px;
+  --font-size-6xl: 28px;
+  --font-size-32px: 32px;
+  --font-size-36px: 36px;
+  --font-size-40px: 40px;
+  --font-size-56px: 56px;
+  --font-size-64px: 64px;
+  --font-family-base: Times;
+  --font-family-2: Source Code Pro;
+  --font-family-3: Euclid Circular A;
+  --font-family-4: Arial;
+  --font-family-5: Akzidenz-Grotesk Std;
+  --font-family-6: MongoDB Value Serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 12px;
+  --line-height-snug: 14px;
+  --line-height-normal: 15px;
+  --line-height-relaxed: 16px;
+  --line-height-loose: 18px;
+  --line-height-lh-6: 20px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 30px;
+  --line-height-lh-9: 32px;
+  --line-height-lh-10: 36px;
+  --line-height-lh-11: 37px;
+  --line-height-lh-12: 40px;
+  --line-height-lh-13: 48px;
+  --line-height-lh-14: 56px;
+  --line-height-lh-15: 64px;
+  --line-height-lh-16: 72px;
+  --letter-spacing-tight: 0.16px;
+  --letter-spacing-normal: 0.5px;
+  --letter-spacing-wide: 1px;
+  --letter-spacing-wider: 2px;
+  --letter-spacing-widest: 2.5px;
+  --letter-spacing-ls-6: 3px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 5px;
+  --space-5: 6px;
+  --space-6: 7px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-16: 14px;
+  --space-20: 15px;
+  --space-24: 55px;
+  --space-32: 398.5px;
+  --space-40: 16px;
+  --space-48: 18px;
+  --space-64: 20px;
+  --space-80: 23px;
+  --space-96: 24px;
+  --space-128: 30px;
+  --space-160: 32px;
+  --space-192: 40px;
+  --space-256: 48px;
+  --space-23: 50px;
+  --space-25: 56px;
+  --space-26: 60px;
+  --space-27: 64px;
+  --space-28: 70px;
+  --space-29: 78px;
+  --space-30: 80px;
+  --space-31: 105px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 6px;
+  --radius-sm: 0px 0px 96px 96px;
+  --radius-md: 0px 8px 8px 0px;
+  --radius-lg: 0px 0px 100px 100px;
+  --radius-xl: 0px 0px 16px 16px;
+  --radius-2xl: 0px 72px 0px 0px;
+  --radius-full: 0px 0px 72px;
+  --radius-r7: 2px;
+  --radius-r8: 4px;
+  --radius-r9: 8px;
+  --radius-r10: 8px 0px 0px 8px;
+  --radius-r11: 10px;
+  --radius-r12: 16px;
+  --radius-r13: 24px;
+  --radius-r14: 25px;
+  --radius-r15: 32px;
+  --radius-r16: 50%;
+  --radius-r17: 50px;
+  --radius-r18: 104px;
+  --radius-r19: 999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.15) 0px 3px 9px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.15) 0px 3px 20px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.15) 0px 3px 9px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0.13) 0px 7px 12px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.25s;
+  --duration-slower: 0.3s;
+  --duration-duration-6: 0.5s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in-out: ease-in-out;
+  --easing-ease-in: ease-in;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 10;
+  --z-5: 99;
+  --z-6: 100;
+  --z-7: 101;
+  --z-8: 999;
+  --z-9: 1000;
+  --z-10: 9999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 1px;
+  --breakpoint-sm: 460px;
+  --breakpoint-md: 500px;
+  --breakpoint-lg: 767px;
+  --breakpoint-xl: 768px;
+  --breakpoint-2xl: 820px;
+  --breakpoint-3xl: 844px;
+  --breakpoint-bp-8: 896px;
+  --breakpoint-bp-9: 1000px;
+  --breakpoint-bp-10: 1023px;
+  --breakpoint-bp-11: 1024px;
+  --breakpoint-bp-12: 1025px;
+  --breakpoint-bp-13: 1065px;
+  --breakpoint-bp-14: 1079px;
+  --breakpoint-bp-15: 1080px;
+  --breakpoint-bp-16: 1180px;
+  --breakpoint-bp-17: 1200px;
+  --breakpoint-bp-18: 1280px;
+  --breakpoint-bp-19: 1281px;
+  --breakpoint-bp-20: 1300px;
+  --breakpoint-bp-21: 1350px;
+  --breakpoint-bp-22: 1366px;
+  --breakpoint-bp-23: 1400px;
+  --breakpoint-bp-24: 1410px;
+  --breakpoint-bp-25: 1416px;
+  --breakpoint-bp-26: 1440px;
+  --breakpoint-bp-27: 1450px;
+  --breakpoint-bp-28: 1500px;
+  --breakpoint-bp-29: 1511px;
+  --breakpoint-bp-30: 1600px;
+  --breakpoint-bp-31: 1680px;
+  --breakpoint-bp-32: 1800px;
+  --breakpoint-bp-33: 2300px;
+  --breakpoint-bp-34: 2500px;
+
+  /* ── Opacity ── */
+  --opacity-5: 0.05;
+  --opacity-45: 0.45;
+  --opacity-75: 0.75;
+}

@@ -1,0 +1,164 @@
+/* ============================================
+ * Design Tokens — Generative AI APIs | Run Image, Video, 3D and Audio Models 4x Faster | fal.ai
+ * Source: https://fal.ai/
+ * Generated: 17/04/2026, 13:23:22
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-light-gray: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray: #1B1B1D; /* hsl(240, 4%, 11%) · text */
+  --color-dark-gray-2: #1D1D20; /* hsl(240, 5%, 12%) · text */
+  --color-cyan: #14CBF3; /* hsl(191, 90%, 52%) · fill */
+  --color-light-green: #D5F393; /* hsl(79, 80%, 76%) · fill */
+  --color-light-cyan: #99EDFF; /* hsl(191, 100%, 80%) · background */
+  --color-light-purple: #AB77FF; /* hsl(263, 100%, 73%) · background */
+  --color-dark-blue: #111827; /* hsl(221, 39%, 11%) · text */
+  --color-white-2: #FAFAFA; /* hsl(0, 0%, 98%) · background */
+  --color-light-green-2: #F1FFD2; /* hsl(79, 100%, 91%) · background */
+  --color-dark-gray-3: #252527; /* hsl(240, 3%, 15%) · background */
+  --color-light-red: #FB8DB2; /* hsl(340, 93%, 77%) · fill */
+  --color-dark-green: #004012; /* hsl(137, 100%, 13%) · fill */
+  --color-white-3: #F3F4F6; /* hsl(220, 14%, 96%) · background */
+  --color-dark-blue-2: #4B5563; /* hsl(215, 14%, 34%) · text */
+  --color-green: #ADFF00; /* hsl(79, 100%, 50%) · background */
+  --color-dark-gray-4: #494950; /* hsl(240, 5%, 30%) · text */
+  --color-white-4: #F4F4F5; /* hsl(240, 5%, 96%) · background */
+  --color-dark-gray-5: rgba(27, 27, 29, 0.13); /* hsl(240, 15%, 11%) · border */
+  --color-mid-gray: #787882; /* hsl(240, 4%, 49%) · text */
+  --color-dark-gray-6: #18181B; /* hsl(240, 6%, 10%) · text */
+  --color-blue: #4A17B0; /* hsl(260, 77%, 39%) · background */
+  --color-blue-2: #0A4DCE; /* hsl(219, 91%, 42%) · fill */
+  --color-light-gray-2: #EBEBEB; /* hsl(0, 0%, 92%) · background */
+  --color-light-cyan-2: #99ECFF; /* hsl(191, 100%, 80%) · background */
+  --color-dark-blue-3: #003279; /* hsl(215, 100%, 24%) · fill */
+  --color-light-pink: #FFDDFA; /* hsl(309, 100%, 93%) · background */
+  --color-light-purple-2: #D0B7F9; /* hsl(263, 85%, 85%) · background */
+  --color-blue-3: #115EF3; /* hsl(220, 90%, 51%) · fill */
+  --color-blue-4: #3FB5FE; /* hsl(203, 99%, 62%) · fill */
+  --color-dark-gray-7: #121216; /* hsl(240, 10%, 8%) · background */
+  --color-cyan-2: #5BFFEC; /* hsl(173, 100%, 68%) · fill */
+  --color-blue-5: #6120EE; /* hsl(259, 86%, 53%) · text */
+  --color-yellow: #FFFF00; /* hsl(60, 100%, 50%) · other */
+  --color-purple: #5718C0; /* hsl(263, 78%, 42%) · background */
+  --color-white-5: #EFEEFC; /* hsl(244, 70%, 96%) · background */
+  --color-light-cyan-3: rgba(153, 236, 255, 0.5); /* hsl(192, 100%, 80%) · background */
+  --color-mid-gray-2: #A6A6B0; /* hsl(240, 6%, 67%) · text */
+  --color-dark-gray-8: rgba(27, 27, 29, 0.06); /* hsl(0, 0%, 13%) · border */
+  --color-mid-gray-3: #71717A; /* hsl(240, 4%, 46%) · text */
+  --color-white-6: #F3E8FF; /* hsl(269, 100%, 95%) · background */
+  --color-light-red-2: #FFC4D8; /* hsl(340, 100%, 88%) · background */
+  --color-red: #EC0648; /* hsl(343, 95%, 47%) · fill */
+  --color-dark-gray-9: rgba(27, 27, 29, 0.05); /* hsl(0, 0%, 8%) · background */
+  --color-red-2: #EC0649; /* hsl(343, 95%, 47%) · fill */
+  --color-light-gray-3: #F0F0F0; /* hsl(0, 0%, 94%) · fill */
+  --color-dark-gray-10: rgba(27, 27, 29, 0.1); /* hsl(0, 0%, 11%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 30px;
+  --font-size-3xl: 36px;
+  --font-size-4xl: 40px;
+  --font-size-5xl: 48px;
+  --font-size-6xl: 60px;
+  --font-size-68px: 67.98px;
+  --font-size-80px: 80px;
+  --font-size-120px: 120px;
+  --font-family-base: publicSansRounded;
+  --font-family-2: focal;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 15px;
+  --line-height-snug: 16px;
+  --line-height-normal: 19.6px;
+  --line-height-relaxed: 24px;
+  --line-height-loose: 25.6px;
+  --line-height-lh-6: 28px;
+  --line-height-lh-7: 32px;
+  --line-height-lh-8: 36px;
+  --line-height-lh-9: 40px;
+  --line-height-lh-10: 48px;
+  --line-height-lh-11: 60px;
+  --line-height-lh-12: 61.182px;
+  --line-height-lh-13: 70px;
+  --line-height-lh-14: 100px;
+  --letter-spacing-tight: -4.8px;
+  --letter-spacing-normal: -4%;
+  --letter-spacing-wide: -2.4px;
+  --letter-spacing-wider: -2%;
+  --letter-spacing-widest: -1.6px;
+  --letter-spacing-ls-6: -1.44px;
+  --letter-spacing-ls-7: -0.6px;
+  --letter-spacing-ls-8: -0.48px;
+  --letter-spacing-ls-9: -0.4px;
+  --letter-spacing-ls-10: -0.16px;
+  --letter-spacing-ls-11: -0.14px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 20px;
+  --space-8: 24px;
+  --space-10: 32px;
+  --space-12: 40px;
+  --space-16: 48px;
+  --space-20: 56px;
+  --space-24: 64px;
+  --space-32: 80px;
+  --space-40: 96px;
+  --space-48: 112px;
+  --space-64: 128px;
+  --space-80: 133px;
+  --space-96: 223px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -10;
+  --z-2: 3;
+  --z-3: 4;
+  --z-4: 10;
+  --z-5: 20;
+  --z-6: 30;
+  --z-7: 49;
+  --z-8: 50;
+  --z-9: 110;
+  --z-10: 120;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 640px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-70: 0.7;
+  --opacity-80: 0.8;
+  --opacity-87: 0.87;
+}

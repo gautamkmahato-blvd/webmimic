@@ -1,0 +1,164 @@
+/* ============================================
+ * Design Tokens — Electric Cars, Solar & Clean Energy | Tesla
+ * Source: https://www.tesla.com/
+ * Generated: 13/04/2026, 22:52:04
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #393C41; /* hsl(218, 7%, 24%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-light-gray: #EEEEEE; /* hsl(0, 0%, 93%) · text */
+  --color-dark-gray-2: #171A20; /* hsl(220, 16%, 11%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-3: #5C5E62; /* hsl(220, 3%, 37%) · text */
+  --color-blue: #3E6AE1; /* hsl(224, 73%, 56%) · background */
+  --color-light-gray-2: #D0D1D2; /* hsl(210, 2%, 82%) · background */
+  --color-mid-gray: #8E8E8E; /* hsl(0, 0%, 56%) · text */
+  --color-light-gray-3: #E8EAED; /* hsl(216, 12%, 92%) · background */
+  --color-white-2: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+  --color-white-3: #F5F5F5; /* hsl(0, 0%, 96%) · background */
+  --color-orange: #FBB01B; /* hsl(40, 97%, 55%) · fill */
+  --color-red: #ED4E3B; /* hsl(6, 83%, 58%) · fill */
+  --color-green: #12BB00; /* hsl(114, 100%, 37%) · fill */
+  --color-mid-gray-2: #A2A3A5; /* hsl(220, 2%, 64%) · other */
+  --color-dark-gray-4: #161616; /* hsl(0, 0%, 9%) · fill */
+  --color-mid-gray-3: rgba(128, 128, 128, 0.65); /* hsl(0, 0%, 50%) · background */
+  --color-light-gray-4: #E5E3DF; /* hsl(40, 10%, 89%) · background */
+  --color-blue-2: #1A73E8; /* hsl(214, 82%, 51%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 7px;
+  --font-size-xs: 10px;
+  --font-size-sm: 11px;
+  --font-size-base: 12px;
+  --font-size-lg: 14px;
+  --font-size-xl: 17px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 28px;
+  --font-size-4xl: 40px;
+  --font-family-base: Universal Sans Text;
+  --font-family-2: Universal Sans Display;
+  --font-family-3: Google Sans Text;
+  --font-family-4: Roboto;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --line-height-tight: 7px;
+  --line-height-snug: 14px;
+  --line-height-normal: 16px;
+  --line-height-relaxed: 16.8px;
+  --line-height-loose: 18px;
+  --line-height-lh-6: 20px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 28px;
+  --line-height-lh-9: 36px;
+  --line-height-lh-10: 48px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 14px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-16: 28px;
+  --space-20: 32px;
+  --space-24: 36px;
+  --space-32: 40px;
+  --space-40: 48px;
+  --space-48: 60px;
+  --space-64: 88px;
+  --space-80: 253.156px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 3px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-2xl: 50%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 2px inset;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px inset, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  --shadow-xl: rgb(255, 255, 255) 0px 2px 0px -1px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0.16) 0px 8px 16px 0px;
+  --shadow-shadow-6: rgb(255, 255, 255) 0px -2px 0px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.2s;
+  --duration-fast: 0.25s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.33s;
+  --duration-slower: 0.5s;
+  --duration-duration-6: 0.8s;
+  --duration-duration-7: 1s;
+  --easing-ease-in-out: ease-in-out;
+  --easing-linear: linear;
+  --easing-ease-out: ease-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 3;
+  --z-4: 4;
+  --z-5: 10;
+  --z-6: 100;
+  --z-7: 101;
+  --z-8: 102;
+  --z-9: 103;
+  --z-10: 104;
+  --z-11: 105;
+  --z-12: 106;
+  --z-13: 107;
+  --z-14: 490;
+  --z-15: 995;
+  --z-16: 999;
+  --z-17: 1000;
+  --z-18: 100001;
+  --z-19: 999999;
+  --z-20: 1000001;
+  --z-21: 1000002;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 450px;
+  --breakpoint-sm: 599px;
+  --breakpoint-md: 600px;
+  --breakpoint-lg: 639px;
+  --breakpoint-xl: 640px;
+  --breakpoint-2xl: 700px;
+  --breakpoint-3xl: 768px;
+  --breakpoint-bp-8: 800px;
+  --breakpoint-bp-9: 839px;
+  --breakpoint-bp-10: 840px;
+  --breakpoint-bp-11: 899px;
+  --breakpoint-bp-12: 900px;
+  --breakpoint-bp-13: 975px;
+  --breakpoint-bp-14: 1024px;
+  --breakpoint-bp-15: 1199px;
+  --breakpoint-bp-16: 1200px;
+  --breakpoint-bp-17: 1240px;
+  --breakpoint-bp-18: 1299px;
+  --breakpoint-bp-19: 1399px;
+  --breakpoint-bp-20: 1440px;
+  --breakpoint-bp-21: 1600px;
+  --breakpoint-bp-22: 1799px;
+  --breakpoint-bp-23: 1800px;
+  --breakpoint-bp-24: 2040px;
+  --breakpoint-bp-25: 2559px;
+
+  /* ── Opacity ── */
+  --opacity-20: 0.2;
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+  --opacity-90: 0.9;
+}

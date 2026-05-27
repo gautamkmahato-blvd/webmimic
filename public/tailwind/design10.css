@@ -1,0 +1,153 @@
+/* ============================================
+ * Design Tokens — Acctual: Free Small Business Invoicing Software
+ * Source: https://www.acctual.com/
+ * Generated: 05/05/2026, 21:31:10
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-mid-gray: #8D8D8D; /* hsl(0, 0%, 55%) · text */
+  --color-blue: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-dark-gray: #1E1E1E; /* hsl(0, 0%, 12%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-2: #666666; /* hsl(0, 0%, 40%) · background */
+  --color-dark-gray-3: #0F0F0F; /* hsl(0, 0%, 6%) · background */
+  --color-blue-2: #0098F2; /* hsl(202, 100%, 47%) · text */
+  --color-mid-gray-2: #999999; /* hsl(0, 0%, 60%) · text */
+  --color-white-2: #FAFAFA; /* hsl(0, 0%, 98%) · background */
+  --color-mid-gray-3: #8B8B8B; /* hsl(0, 0%, 55%) · text */
+  --color-pink: #F200CA; /* hsl(310, 100%, 47%) · text */
+  --color-blue-3: #6C56FC; /* hsl(248, 97%, 66%) · text */
+  --color-dark-gray-4: #0D111B; /* hsl(223, 35%, 8%) · background */
+  --color-dark-gray-5: #242628; /* hsl(210, 5%, 15%) · shadow */
+  --color-dark-gray-6: rgba(27, 28, 29, 0.48); /* hsl(240, 4%, 11%) · shadow */
+  --color-dark-green: #5D9C06; /* hsl(85, 93%, 32%) · text */
+  --color-blue-4: rgba(0, 152, 242, 0.16); /* hsl(203, 100%, 48%) · background */
+  --color-white-3: #F7FAFC; /* hsl(204, 45%, 98%) · background */
+  --color-cyan: #1AB4D7; /* hsl(191, 78%, 47%) · background */
+  --color-green: #00F23D; /* hsl(135, 100%, 47%) · fill */
+  --color-dark-blue: rgba(30, 45, 82, 0.06); /* hsl(220, 43%, 23%) · shadow */
+  --color-dark-blue-2: rgba(30, 45, 82, 0.2); /* hsl(222, 45%, 22%) · shadow */
+  --color-pink-2: rgba(242, 0, 201, 0.16); /* hsl(311, 100%, 48%) · background */
+  --color-blue-5: rgba(108, 85, 252, 0.16); /* hsl(247, 100%, 67%) · background */
+  --color-green-2: #2CA01C; /* hsl(113, 70%, 37%) · background */
+  --color-red: #FF6363; /* hsl(0, 100%, 69%) · fill */
+  --color-green-3: #529F36; /* hsl(104, 49%, 42%) · fill */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 11px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 14.22px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 22px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 32px;
+  --font-size-5xl: 40px;
+  --font-size-6xl: 64px;
+  --font-family-base: Times;
+  --font-family-2: sans-serif;
+  --font-family-3: Open Runde;
+  --font-family-4: Caveat;
+  --font-family-5: SF Pro Text;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 16px;
+  --line-height-snug: 17.78px;
+  --line-height-normal: 19.36px;
+  --line-height-relaxed: 20px;
+  --line-height-loose: 21.33px;
+  --line-height-lh-6: 24px;
+  --line-height-lh-7: 28px;
+  --line-height-lh-8: 32px;
+  --line-height-lh-9: 40px;
+  --line-height-lh-10: 48px;
+  --line-height-lh-11: 72px;
+  --letter-spacing-tight: -1.92px;
+  --letter-spacing-normal: -1.2px;
+  --letter-spacing-wide: -0.96px;
+  --letter-spacing-wider: -0.72px;
+  --letter-spacing-widest: -0.6px;
+  --letter-spacing-ls-6: -0.32px;
+  --letter-spacing-ls-7: -0.2844px;
+  --letter-spacing-ls-8: -0.28px;
+  --letter-spacing-ls-9: -0.24px;
+  --letter-spacing-ls-10: -0.16px;
+  --letter-spacing-ls-11: 0.22px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 9px;
+  --space-6: 10px;
+  --space-8: 12px;
+  --space-10: 12.5px;
+  --space-12: 14px;
+  --space-16: 14.2222px;
+  --space-20: 16px;
+  --space-24: 80px;
+  --space-32: 20px;
+  --space-40: 22px;
+  --space-48: 24px;
+  --space-64: 24.44px;
+  --space-80: 28px;
+  --space-96: 28.4444px;
+  --space-128: 32px;
+  --space-160: 36px;
+  --space-192: 40px;
+  --space-256: 48px;
+  --space-23: 64px;
+  --space-25: 96px;
+  --space-26: 100px;
+  --space-27: 200px;
+  --space-28: 256px;
+
+  /* ── Borders ── */
+  --radius-sm: 0px 10px 10px 0px;
+  --radius-md: 10px 0px 0px 10px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 20px;
+  --radius-r7: 32px;
+  --radius-r8: 50px;
+  --radius-r9: 100px;
+  --radius-r10: 888px;
+  --radius-r11: 999px;
+  --radius-r12: 1250px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.06) 0px 2.5px 2.5px 0px;
+  --shadow-md: rgba(10, 13, 20, 0.03) 0px 1px 2px 0px;
+  --shadow-lg: rgb(36, 38, 40) 0px 0px 0px 1px, rgba(27, 28, 29, 0.48) 0px 1px 2px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0.05) 0px 1.77778px 8px 0px, rgba(0, 0, 0, 0.04) 0px 0.888889px 2.66667px 0px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0.06) 0px 2px 3px -1px;
+  --shadow-shadow-6: rgba(30, 45, 82, 0.06) 0px 0px 0.34px 0.34px, rgba(30, 45, 82, 0.2) 0.34px 0.34px 0.34px 0px;
+
+  /* ── Motion ── */
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 3;
+  --z-4: 4;
+  --z-5: 8;
+  --z-6: 9;
+  --z-7: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 799px;
+  --breakpoint-sm: 799.98px;
+  --breakpoint-md: 800px;
+  --breakpoint-lg: 1099px;
+  --breakpoint-xl: 1099.98px;
+
+  /* ── Opacity ── */
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+}

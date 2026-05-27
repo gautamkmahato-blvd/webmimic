@@ -1,0 +1,67 @@
+/* ============================================
+ * Design Tokens — Cron Calendar
+ * Source: https://www.cron.com/
+ * Generated: 19/04/2026, 00:14:03
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #CCCCCC; /* hsl(0, 0%, 80%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-dark-gray: #161412; /* hsl(30, 10%, 8%) · background */
+  --color-orange: rgba(255, 71, 0, 0.2); /* hsl(16, 100%, 50%) · shadow */
+  --color-orange-2: #FF4700; /* hsl(17, 100%, 50%) · background */
+  --color-orange-3: rgba(255, 71, 0, 0.5); /* hsl(17, 100%, 50%) · shadow */
+  --color-black-2: #0F0D0A; /* hsl(36, 20%, 5%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 13px;
+  --font-size-xs: 15px;
+  --font-size-sm: 16px;
+  --font-size-base: 22px;
+  --font-size-lg: 140px;
+  --font-family-base: Helvetica Neue;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 15px;
+  --line-height-snug: 19.5px;
+  --line-height-normal: 22px;
+  --line-height-relaxed: 37.4px;
+  --line-height-loose: 126px;
+  --letter-spacing-tight: -3px;
+  --letter-spacing-normal: 0.15px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 24px;
+  --space-6: 40px;
+  --space-8: 80px;
+  --space-10: 140px;
+  --space-12: 431.906px;
+
+  /* ── Borders ── */
+  --radius-sm: 4px;
+  --radius-md: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(255, 71, 0, 0.2) 0px 0px 100px 0px;
+  --shadow-md: rgba(255, 71, 0, 0.5) 0px 0px 0px 0.5px inset, rgba(255, 72, 0, 0.2) 0px 0px 28px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.175s;
+
+  /* ── Layout: Z-Index ── */
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 500px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1000px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+}

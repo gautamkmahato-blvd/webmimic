@@ -1,0 +1,187 @@
+/* ============================================
+ * Design Tokens — Enterprise AI: Private, Secure, Customizable | Cohere
+ * Source: https://cohere.com/
+ * Generated: 15/04/2026, 00:24:23
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray: #212121; /* hsl(0, 0%, 13%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-white-2: #FAFAFA; /* hsl(0, 0%, 98%) · text */
+  --color-dark-gray-2: #17171C; /* hsl(240, 10%, 10%) · background */
+  --color-dark-gray-3: #212129; /* hsl(240, 11%, 15%) · fill */
+  --color-light-gray-2: #F2F2F2; /* hsl(0, 0%, 95%) · background */
+  --color-dark-gray-4: #17171B; /* hsl(240, 8%, 10%) · fill */
+  --color-blue: #75758A; /* hsl(240, 8%, 50%) · text */
+  --color-red: #FF7759; /* hsl(11, 100%, 67%) · background */
+  --color-dark-gray-5: #2E2E37; /* hsl(240, 9%, 20%) · other */
+  --color-blue-2: #4C6EE6; /* hsl(227, 75%, 60%) · background */
+  --color-light-purple: #D18EE2; /* hsl(288, 59%, 72%) · background */
+  --color-blue-3: #7670C5; /* hsl(244, 42%, 61%) · gradient */
+  --color-mid-gray: #93939E; /* hsl(240, 5%, 60%) · fill */
+  --color-light-gray-3: #D9D9DD; /* hsl(240, 6%, 86%) · border */
+  --color-dark-gray-6: rgba(33, 33, 33, 0.4); /* hsl(0, 0%, 13%) · gradient */
+  --color-dark-gray-7: rgba(33, 33, 33, 0.2); /* hsl(0, 0%, 14%) · gradient */
+  --color-light-pink: #F0DFF3; /* hsl(291, 45%, 91%) · background */
+  --color-dark-gray-8: #616161; /* hsl(0, 0%, 38%) · text */
+  --color-light-gray-4: #F0EEE9; /* hsl(43, 19%, 93%) · background */
+  --color-mid-gray-2: #A4A4A4; /* hsl(0, 0%, 64%) · text */
+  --color-mid-gray-3: #93939F; /* hsl(240, 6%, 60%) · text */
+  --color-mid-gray-4: #808080; /* hsl(0, 0%, 50%) · fill */
+  --color-dark-green: #00AA28; /* hsl(134, 100%, 33%) · fill */
+  --color-dark-blue: #152455; /* hsl(226, 60%, 21%) · gradient */
+  --color-dark-gray-9: #2E2E2E; /* hsl(0, 0%, 18%) · background */
+  --color-light-gray-5: #BDBDBD; /* hsl(0, 0%, 74%) · text */
+  --color-mid-gray-5: rgba(172, 171, 171, 0.3); /* hsl(0, 0%, 67%) · shadow */
+  --color-mid-gray-6: #8E8E90; /* hsl(240, 1%, 56%) · fill */
+  --color-blue-4: #0066D9; /* hsl(212, 100%, 43%) · fill */
+  --color-dark-green-2: #00AB46; /* hsl(145, 100%, 34%) · fill */
+  --color-red-2: #E94234; /* hsl(5, 80%, 56%) · fill */
+  --color-dark-green-3: #00822D; /* hsl(141, 100%, 25%) · fill */
+  --color-blue-5: #2583FB; /* hsl(214, 96%, 56%) · fill */
+  --color-orange: #FFB900; /* hsl(44, 100%, 50%) · fill */
+  --color-cyan: #00A1DF; /* hsl(197, 100%, 44%) · fill */
+  --color-purple: #9B60AA; /* hsl(288, 30%, 52%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 0px;
+  --font-size-xs: 8px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 48px;
+  --font-size-5xl: 60px;
+  --font-size-6xl: 72px;
+  --font-family-base: InterRegular;
+  --font-family-2: Unica77 Cohere Web;
+  --font-family-3: CohereMono;
+  --font-family-4: CohereText;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 11.2px;
+  --line-height-snug: 16.8px;
+  --line-height-normal: 19.6px;
+  --line-height-relaxed: 21px;
+  --line-height-loose: 22.4px;
+  --line-height-lh-6: 24px;
+  --line-height-lh-7: 25.2px;
+  --line-height-lh-8: 31.2px;
+  --line-height-lh-9: 38.4px;
+  --line-height-lh-10: 57.6px;
+  --line-height-lh-11: 60px;
+  --line-height-lh-12: 72px;
+  --letter-spacing-tight: -1.44px;
+  --letter-spacing-normal: -1.2px;
+  --letter-spacing-wide: -0.48px;
+  --letter-spacing-wider: -0.32px;
+  --letter-spacing-widest: 0.16px;
+  --letter-spacing-ls-6: 0.28px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-12: 22px;
+  --space-16: 24px;
+  --space-20: 28px;
+  --space-24: 32px;
+  --space-32: 36px;
+  --space-40: 40px;
+  --space-48: 56px;
+  --space-64: 60px;
+  --space-80: 64px;
+  --space-96: 80px;
+  --space-128: 96px;
+  --space-160: 128px;
+  --space-192: 144px;
+  --space-256: 160px;
+  --space-23: 176px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 2px 2px 0px;
+  --radius-md: 0px 0px 22px 22px;
+  --radius-lg: 2px;
+  --radius-xl: 2px 0px 0px 2px;
+  --radius-2xl: 4px;
+  --radius-full: 6px;
+  --radius-r7: 8px;
+  --radius-r8: 12px;
+  --radius-r9: 16px;
+  --radius-r10: 20px;
+  --radius-r11: 22px;
+  --radius-r12: 22px 22px 0px 0px;
+  --radius-r13: 32px;
+  --radius-r14: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(172, 171, 171, 0.3) 0px -1px 10px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.3) 0px 32px 68px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 2px 2px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+  --duration-slower: 0.7s;
+  --duration-duration-6: 0.8s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -10;
+  --z-2: 1;
+  --z-3: 10;
+  --z-4: 20;
+  --z-5: 99;
+  --z-6: 100;
+  --z-7: 101;
+  --z-8: 102;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 336px;
+  --breakpoint-sm: 352px;
+  --breakpoint-md: 410px;
+  --breakpoint-lg: 425px;
+  --breakpoint-xl: 440px;
+  --breakpoint-2xl: 460px;
+  --breakpoint-3xl: 480px;
+  --breakpoint-bp-8: 510px;
+  --breakpoint-bp-9: 540px;
+  --breakpoint-bp-10: 550px;
+  --breakpoint-bp-11: 576px;
+  --breakpoint-bp-12: 640px;
+  --breakpoint-bp-13: 660px;
+  --breakpoint-bp-14: 767px;
+  --breakpoint-bp-15: 768px;
+  --breakpoint-bp-16: 845px;
+  --breakpoint-bp-17: 918px;
+  --breakpoint-bp-18: 919px;
+  --breakpoint-bp-19: 1023px;
+  --breakpoint-bp-20: 1024px;
+  --breakpoint-bp-21: 1279px;
+  --breakpoint-bp-22: 1280px;
+  --breakpoint-bp-23: 1440px;
+  --breakpoint-bp-24: 1536px;
+  --breakpoint-bp-25: 1600px;
+  --breakpoint-bp-26: 2560px;
+
+  /* ── Opacity ── */
+  --opacity-1: 0.01;
+  --opacity-2: 0.02;
+  --opacity-20: 0.2;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+}

@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Better Stack Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* Better Stack Color Tokens */
+  --color-blue: #939DB8;
+  --color-dark-gray: #0F101A;
+  --color-blue-4: #6C769D;
+  --color-dark-gray-2: #0B0C14;
+  --color-dark-gray-4: #181925;
+  --color-dark-blue-2: #1F2433;
+  --color-dark-blue-3: rgba(47,53,71,0.5);
+  --color-dark-blue-4: #171926;
+  --color-dark-blue-5: #101828;
+  --color-dark-gray-5: rgba(23,24,36,0.5);
+  --color-light-blue: #C9D3EE;
+  --color-dark-blue: #3B4254;
+  --color-blue-2: #646E87;
+  --color-light-blue-2: #7C87F7;
+  --color-white: #FFFFFF;
+  --color-blue-3: #656A7B;
+  --color-dark-gray-3: #0F1019;
+  --color-blue-5: #737DA0;
+  --color-blue-6: rgba(147,157,184,0.1);
+  --color-blue-8: rgba(114,125,161,0.07);
+  --color-blue-9: #919BB9;
+  --color-dark-blue-2-solid: #1F2433;
+  --color-blue-10: #626C80;
+  --color-blue-11: rgba(147,157,184,0.12);
+  --color-blue-12: #7280A1;
+  --color-dark-blue-6: rgba(35,40,56,0.3);
+  --color-black: #000000;
+  --color-blue-7: #5B63D3;
+  --color-light-blue-3: #98A4F7;
+  --color-dark-blue-7: rgba(41,47,64,0.2);
+  --color-dark-blue-8: rgba(41,47,64,0.5);
+
+  /* Better Stack Typography */
+  --font-size-2xs: 10px;
+  --font-size-xs: 10.4px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-lg: 14px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 28px;
+  --font-size-5xl: 36px;
+  --font-size-6xl: 40px;
+  --font-size-66px: 66px;
+  --font-family-base: 'DM Sans', 'Roobert', ui-sans-serif, sans-serif;
+  --font-family-2: 'DM Sans', 'Helvetica Now Text', Helvetica, sans-serif;
+  --font-family-3: 'DM Sans', 'Helvetica Now Display', Helvetica, sans-serif;
+  --font-family-mono: 'DM Mono', ui-monospace, monospace;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 13px;
+  --line-height-snug: 13.87px;
+  --line-height-normal: 14.5px;
+  --line-height-relaxed: 17.14px;
+  --line-height-loose: 18px;
+  --line-height-lh-6: 18.85px;
+  --line-height-lh-7: 20.8px;
+  --line-height-lh-8: 21.7px;
+  --line-height-lh-9: 23.2px;
+  --line-height-lh-10: 24px;
+  --line-height-lh-11: 24.8px;
+  --line-height-lh-12: 25.6px;
+  --line-height-lh-13: 28px;
+  --line-height-lh-14: 32.76px;
+  --line-height-lh-15: 38.88px;
+  --line-height-lh-16: 42.12px;
+  --line-height-lh-17: 43.2px;
+  --line-height-lh-18: 66px;
+  --letter-spacing-tight: -0.4px;
+  --letter-spacing-normal: -0.36px;
+  --letter-spacing-wide: -0.24px;
+  --letter-spacing-wider: -0.16px;
+  --letter-spacing-widest: -0.14px;
+  --letter-spacing-ls-6: -0.12px;
+
+  /* Better Stack Spacing */
+  --space-1: 1px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 11.5px;
+  --space-8: 12px;
+  --space-10: 14px;
+  --space-12: 16px;
+  --space-16: 18px;
+  --space-20: 20px;
+  --space-24: 80px;
+  --space-32: 386.703px;
+  --space-40: 30px;
+  --space-48: 32px;
+  --space-64: 36px;
+  --space-80: 40px;
+  --space-96: 44px;
+  --space-128: 48px;
+  --space-160: 56px;
+  --space-192: 57.5px;
+  --space-256: 64px;
+  --space-23: 66.5px;
+  --space-25: 96px;
+  --space-26: 100px;
+  --space-27: 120px;
+  --space-28: 128px;
+  --space-29: 130px;
+  --space-30: 144px;
+  --space-31: 296.5px;
+
+  /* Better Stack Borders */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --radius-sm: 0px 0px 16px 16px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 10px;
+  --radius-full: 12px;
+  --radius-r7: 16px 16px 0px 0px;
+  --radius-r8: 16px;
+  --radius-r9: 26px;
+  --radius-r10: 43px;
+  --radius-r11: 9999px;
+
+  /* Better Stack Shadows */
+  --shadow-sm: rgba(255,255,255,0.25) 0px 1px 3px 0px inset;
+
+  /* Better Stack Motion */
+  --duration-instant: 0.05s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 1s;
+
+  /* Z-Index */
+  --z-1: -10;
+  --z-2: 10;
+  --z-3: 20;
+  --z-4: 40;
+  --z-5: 99999999;
+  --z-6: 100000000;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family-base);background:var(--color-dark-gray-2);color:var(--color-light-blue);font-size:var(--font-size-lg);line-height:var(--line-height-relaxed);font-weight:var(--font-weight-regular);}
+.page{max-width:1200px;margin:0 auto;padding:64px 48px;}
+
+/* ── HEADER ── */
+.top-bar{border-bottom:var(--border-width-thin) solid var(--color-blue-6);margin-bottom:32px;padding-bottom:20px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.header-left{display:flex;align-items:center;gap:16px;}
+.logo{width:38px;height:38px;background:linear-gradient(135deg,var(--color-blue-7),var(--color-light-blue-2));border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);}
+.system-title{font-size:var(--font-size-2xl);font-weight:var(--font-weight-semibold);color:var(--color-white);line-height:var(--line-height-lh-10);letter-spacing:var(--letter-spacing-wide);}
+.system-meta{font-size:var(--font-size-sm);color:var(--color-blue-2);margin-top:2px;line-height:var(--line-height-loose);font-family:var(--font-family-mono);}
+.hbadge{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);background:var(--color-dark-blue-2);color:var(--color-blue-2);padding:2px 10px;border-radius:var(--radius-r11);border:var(--border-width-thin) solid var(--color-blue-6);font-family:var(--font-family-mono);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-thin) solid var(--color-dark-gray-5);background:var(--color-dark-blue-2);color:var(--color-white);box-shadow:0 1px 2px rgba(0,0,0,0.28);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-blue);color:var(--color-blue);box-shadow:0 4px 14px rgba(0,0,0,0.38);transform:translateY(-1px);}
+
+/* ── SECTION ── */
+.section{margin-bottom:64px;}
+.section-title{font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-lh-10);margin-bottom:24px;display:flex;align-items:center;gap:8px;letter-spacing:var(--letter-spacing-tight);}
+
+/* ── COLORS ── */
+.color-group{margin-bottom:32px;}
+.color-group-label{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--color-blue-2);margin-bottom:8px;font-family:var(--font-family-mono);}
+.swatch-grid{display:grid;gap:8px;}
+.swatch-item{display:flex;flex-direction:column;gap:4px;}
+.swatch-box{height:60px;border-radius:var(--radius-xl);border:var(--border-width-thin) solid var(--color-blue-8);}
+.swatch-name{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--color-light-blue);line-height:var(--line-height-snug);}
+.swatch-hex{font-size:10px;color:var(--color-blue-2);font-family:var(--font-family-mono);line-height:var(--line-height-tight);}
+
+/* ── TYPOGRAPHY ── */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px;}
+.font-card{background:var(--color-dark-blue-2);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-r8);padding:24px;}
+.font-token{font-size:var(--font-size-sm);font-family:var(--font-family-mono);color:var(--color-light-blue-2);font-weight:var(--font-weight-regular);margin-bottom:8px;}
+.font-display{font-size:28px;color:var(--color-white);line-height:var(--line-height-lh-13);margin-bottom:8px;font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-tight);}
+.font-sample{font-size:var(--font-size-lg);color:var(--color-blue-2);line-height:var(--line-height-relaxed);font-weight:var(--font-weight-regular);}
+.fw-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.fw-chip{font-size:var(--font-size-sm);padding:2px 10px;background:var(--color-dark-gray-4);border-radius:var(--radius-lg);color:var(--color-light-blue);border:var(--border-width-thin) solid var(--color-blue-6);}
+
+.type-scale{background:var(--color-dark-blue-2);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-r8);overflow:hidden;}
+.type-row{display:flex;flex-direction:column;padding:12px 24px;border-bottom:var(--border-width-thin) solid var(--color-blue-8);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--color-white);margin-bottom:2px;}
+.type-meta{font-size:10px;color:var(--color-blue-2);font-family:var(--font-family-mono);line-height:var(--line-height-snug);}
+
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.lh-item{background:var(--color-dark-blue-2);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-xl);padding:8px;display:flex;flex-direction:column;gap:4px;}
+.lh-bar-wrap{background:var(--color-blue-6);border-radius:2px;overflow:hidden;position:relative;}
+.lh-bar{background:linear-gradient(to bottom,var(--color-blue-7),var(--color-light-blue-2));width:100%;}
+.lh-token{font-size:var(--font-size-sm);font-family:var(--font-family-mono);color:var(--color-light-blue-2);}
+.lh-val{font-size:10px;color:var(--color-blue-2);}
+
+.ls-row{display:flex;gap:8px;flex-wrap:wrap;}
+.ls-item{background:var(--color-dark-blue-2);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-xl);padding:12px 24px;flex:1;}
+.ls-sample{font-size:var(--font-size-4xl);color:var(--color-white);font-weight:var(--font-weight-bold);margin-bottom:4px;}
+.ls-token{font-size:var(--font-size-sm);font-family:var(--font-family-mono);color:var(--color-light-blue-2);}
+.ls-desc{font-size:10px;color:var(--color-blue-2);}
+
+/* ── SPACING ── */
+.token-wrap{background:var(--color-dark-blue-2);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-r8);padding:24px;}
+.tw-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--color-white);line-height:var(--line-height-lh-10);margin-bottom:2px;letter-spacing:var(--letter-spacing-wide);}
+.tw-sub{font-size:var(--font-size-sm);color:var(--color-blue-2);margin-bottom:24px;line-height:var(--line-height-lh-7);font-family:var(--font-family-mono);}
+.spacing-chart{display:flex;align-items:flex-end;gap:4px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;}
+.sp-bar{background:linear-gradient(to top,var(--color-blue-7),var(--color-light-blue-2));border-radius:2px 2px 0 0;width:100%;}
+.sp-lbl{font-size:9px;color:var(--color-blue-2);text-align:center;font-family:var(--font-family-mono);}
+
+/* ── BORDERS ── */
+.border-card{background:var(--color-dark-blue-2);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-r8);padding:24px;margin-bottom:24px;}
+.bc-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--color-white);line-height:var(--line-height-lh-10);margin-bottom:12px;letter-spacing:var(--letter-spacing-wide);}
+.radius-row{display:flex;gap:16px;flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,var(--color-blue-7),var(--color-light-blue-2));border:var(--border-width-thin) solid var(--color-blue-6);}
+.radius-lbl{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--color-light-blue);text-align:center;font-family:var(--font-family-mono);}
+.radius-val{font-size:10px;color:var(--color-blue-2);text-align:center;}
+.bw-demo{display:flex;flex-direction:column;gap:8px;}
+.bw-item{display:flex;align-items:center;gap:16px;}
+.bw-token{font-size:var(--font-size-sm);font-family:var(--font-family-mono);color:var(--color-light-blue-2);white-space:nowrap;}
+.bw-val{font-size:10px;color:var(--color-blue-2);font-family:var(--font-family-mono);white-space:nowrap;}
+
+/* ── SHADOWS ── */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sh-item{display:flex;flex-direction:column;gap:8px;}
+.sh-box{height:88px;background:var(--color-dark-gray-4);border-radius:var(--radius-xl);}
+.sh-token{font-size:var(--font-size-lg);font-weight:var(--font-weight-medium);color:var(--color-light-blue);font-family:var(--font-family-mono);}
+.sh-usage{font-size:10px;color:var(--color-blue-2);}
+.sh-desc{font-size:10px;color:var(--color-blue-3);line-height:var(--line-height-relaxed);margin-top:2px;}
+
+/* ── Z-INDEX ── */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:10px 10px;text-align:left;font-size:var(--font-size-lg);border-bottom:var(--border-width-thin) solid var(--color-blue-8);line-height:var(--line-height-relaxed);}
+.z-table th{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:0.06em;color:var(--color-blue-2);font-family:var(--font-family-mono);}
+.z-table td:first-child{font-family:var(--font-family-mono);color:var(--color-light-blue-2);}
+.z-table td:nth-child(2){font-family:var(--font-family-mono);color:var(--color-white);font-weight:var(--font-weight-semibold);}
+.z-table td:nth-child(3){color:var(--color-blue-2);}
+.z-table tr:last-child td{border-bottom:none;}
+
+/* ── BREAKPOINTS ── */
+.bp-card{background:var(--color-dark-blue-2);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-r8);padding:24px;display:flex;align-items:center;gap:32px;}
+.bp-icon{font-size:28px;line-height:1;}
+.bp-token{font-size:var(--font-size-sm);font-family:var(--font-family-mono);color:var(--color-light-blue-2);margin-bottom:4px;}
+.bp-val{font-size:24px;font-weight:var(--font-weight-bold);color:var(--color-white);line-height:1;letter-spacing:var(--letter-spacing-tight);}
+.bp-desc{font-size:var(--font-size-sm);color:var(--color-blue-2);margin-top:4px;font-family:var(--font-family-mono);}
+
+/* ── OPACITY ── */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.op-item{display:flex;flex-direction:column;gap:4px;}
+.op-box{height:60px;border-radius:var(--radius-xl);background:var(--color-light-blue-2);}
+.op-token{font-size:var(--font-size-sm);font-family:var(--font-family-mono);color:var(--color-light-blue-2);}
+.op-val{font-size:10px;color:var(--color-blue-2);}
+
+/* ── ACCESSIBILITY ── */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:10px 10px;text-align:left;font-size:var(--font-size-sm);border-bottom:var(--border-width-thin) solid var(--color-blue-8);line-height:var(--line-height-relaxed);}
+.a11y-table th{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:0.06em;color:var(--color-blue-2);font-family:var(--font-family-mono);}
+.a11y-table td:first-child,.a11y-table td:nth-child(2){font-family:var(--font-family-mono);font-size:10px;}
+.a11y-table td:nth-child(2){color:var(--color-blue-2);}
+.a11y-table td:nth-child(3){color:var(--color-light-blue);font-family:var(--font-family-mono);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-semibold);padding:2px 7px;border-radius:var(--radius-r11);font-family:var(--font-family-mono);}
+.wcag-aaa{background:rgba(91,99,211,0.2);color:var(--color-light-blue-2);border:var(--border-width-thin) solid rgba(91,99,211,0.4);}
+.wcag-aa{background:rgba(124,135,247,0.12);color:var(--color-light-blue-3);border:var(--border-width-thin) solid rgba(124,135,247,0.3);}
+.wcag-aal{background:var(--color-blue-8);color:var(--color-light-blue);border:var(--border-width-thin) solid var(--color-blue-6);}
+.wcag-fail{background:rgba(255,100,100,0.08);color:#f87171;border:var(--border-width-thin) solid rgba(255,100,100,0.2);}
+
+/* ── COMPONENTS ── */
+.comp-row{background:var(--color-dark-blue-2);border-radius:var(--radius-r8);border:var(--border-width-thin) solid var(--color-blue-6);overflow:hidden;margin-bottom:20px;}
+.comp-header{padding:6px 12px;border-bottom:var(--border-width-thin) solid var(--color-blue-8);background:var(--color-dark-gray-4);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--color-light-blue);font-family:var(--font-family-mono);}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-medium);background:var(--color-blue-8);color:var(--color-blue-2);padding:2px 8px;border-radius:var(--radius-r11);border:var(--border-width-thin) solid var(--color-blue-6);font-family:var(--font-family-mono);}
+.comp-body{padding:24px;}
+
+.btn-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-base);font-weight:var(--font-weight-semibold);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-lg);padding:7px 16px;border-radius:var(--radius-r11);line-height:var(--line-height-relaxed);transition:background var(--duration-fast),border-color var(--duration-fast),color var(--duration-fast);letter-spacing:var(--letter-spacing-widest);}
+.btn-primary{background:var(--color-light-blue-2);color:var(--color-dark-gray-2);box-shadow:var(--shadow-sm);}
+.btn-primary:hover{background:var(--color-light-blue-3);}
+.btn-secondary{background:var(--color-dark-gray-4);color:var(--color-light-blue);border:var(--border-width-thin) solid var(--color-blue-6);}
+.btn-secondary:hover{background:var(--color-dark-blue-2);}
+.btn-outline{background:transparent;color:var(--color-light-blue-2);border:var(--border-width-thin) solid var(--color-light-blue-2);}
+.btn-outline:hover{background:rgba(124,135,247,0.1);}
+.btn-ghost{background:transparent;color:var(--color-blue-2);border:var(--border-width-thin) solid transparent;}
+.btn-ghost:hover{background:var(--color-blue-8);}
+.btn-muted{background:var(--color-dark-gray-4);color:var(--color-blue-2);border:var(--border-width-thin) solid var(--color-blue-6);}
+
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.inp-group{display:flex;flex-direction:column;gap:4px;}
+.inp-label{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--color-light-blue);line-height:var(--line-height-snug);font-family:var(--font-family-mono);}
+.inp{width:100%;font-family:var(--font-family-base);font-size:var(--font-size-lg);color:var(--color-white);background:var(--color-dark-gray-4);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-xl);padding:7px 12px;outline:none;transition:border var(--duration-fast);line-height:var(--line-height-relaxed);}
+.inp:focus{border-color:var(--color-light-blue-2);box-shadow:0 0 0 2px rgba(124,135,247,0.2);}
+.inp::placeholder{color:var(--color-blue-3);}
+.inp-hint{font-size:var(--font-size-sm);color:var(--color-blue-2);line-height:var(--line-height-snug);font-family:var(--font-family-mono);}
+.inp-err{border-color:rgba(255,100,100,0.4) !important;}
+.inp-err-msg{font-size:var(--font-size-sm);color:#f87171;line-height:var(--line-height-snug);font-family:var(--font-family-mono);}
+
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-r11);line-height:var(--line-height-snug);font-family:var(--font-family-mono);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--color-blue-8);color:var(--color-light-blue);border:var(--border-width-thin) solid var(--color-blue-6);}
+.badge-brand{background:rgba(91,99,211,0.15);color:var(--color-light-blue-2);border:var(--border-width-thin) solid rgba(91,99,211,0.3);}
+.badge-muted{background:var(--color-dark-gray-4);color:var(--color-blue-2);border:var(--border-width-thin) solid var(--color-blue-6);}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-lg);border:var(--border-width-thin) solid var(--color-blue-6);background:var(--color-dark-gray-4);color:var(--color-light-blue);line-height:var(--line-height-snug);font-family:var(--font-family-mono);}
+.tag-brand{color:var(--color-light-blue-2);background:rgba(91,99,211,0.12);border-color:rgba(91,99,211,0.25);}
+
+.alert{display:flex;gap:8px;padding:10px 12px;border-radius:var(--radius-r8);font-size:var(--font-size-lg);}
+.alert-icon{font-size:var(--font-size-2xl);flex-shrink:0;line-height:1.4;}
+.alert-body h5{font-weight:var(--font-weight-semibold);margin-bottom:2px;font-size:var(--font-size-lg);color:var(--color-white);line-height:var(--line-height-lh-7);letter-spacing:var(--letter-spacing-widest);}
+.alert-body p{font-size:var(--font-size-sm);line-height:var(--line-height-relaxed);font-family:var(--font-family-mono);}
+.alert-neutral{background:var(--color-dark-gray-4);color:var(--color-light-blue);border:var(--border-width-thin) solid var(--color-blue-6);}
+.alert-brand{background:rgba(91,99,211,0.1);color:var(--color-light-blue-2);border:var(--border-width-thin) solid rgba(91,99,211,0.25);}
+.alert-dim{background:rgba(124,135,247,0.07);color:var(--color-light-blue-3);border:var(--border-width-thin) solid rgba(124,135,247,0.15);}
+.alert-base{background:var(--color-dark-gray-2);color:var(--color-blue-2);border:var(--border-width-thin) solid var(--color-blue-8);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.feature-card{background:var(--color-dark-gray-4);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-r8);padding:24px;transition:border-color var(--duration-normal);}
+.feature-card:hover{border-color:var(--color-light-blue-2);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px;border:var(--border-width-thin) solid var(--color-blue-6);background:var(--color-dark-blue-2);}
+.fc-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--color-white);line-height:var(--line-height-lh-10);margin-bottom:4px;letter-spacing:var(--letter-spacing-wide);}
+.fc-desc{font-size:var(--font-size-sm);color:var(--color-blue-2);line-height:var(--line-height-relaxed);margin-bottom:12px;font-family:var(--font-family-mono);}
+
+.av-row{display:flex;align-items:center;gap:8px;margin-bottom:24px;}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-bold);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-xl);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-lg);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-sm);}
+.av-info h4{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--color-white);line-height:var(--line-height-lh-10);letter-spacing:var(--letter-spacing-wide);}
+.av-info p{font-size:var(--font-size-sm);color:var(--color-blue-2);line-height:var(--line-height-snug);font-family:var(--font-family-mono);}
+
+.prog-wrap{margin-bottom:8px;}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--color-light-blue);line-height:var(--line-height-snug);margin-bottom:3px;font-family:var(--font-family-mono);}
+.prog-track{height:4px;background:var(--color-blue-8);border-radius:var(--radius-r11);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-r11);transition:width var(--duration-slow);}
+
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:7px 10px;text-align:left;font-size:var(--font-size-lg);border-bottom:var(--border-width-thin) solid var(--color-blue-8);line-height:var(--line-height-relaxed);}
+.data-table th{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:0.06em;color:var(--color-blue-2);background:var(--color-dark-gray-4);font-family:var(--font-family-mono);}
+.data-table tr:hover td{background:rgba(124,135,247,0.04);transition:background var(--duration-fast);}
+.data-table td:first-child{font-family:var(--font-family-mono);color:var(--color-light-blue-2);}
+
+/* ── CSS VARIABLES REFERENCE ── */
+.tokens-section{margin-bottom:64px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.tokens-group{background:var(--color-dark-blue-2);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-r8);overflow:hidden;}
+.tokens-group-header{padding:8px 12px;border-bottom:var(--border-width-thin) solid var(--color-blue-8);background:var(--color-dark-gray-4);display:flex;align-items:center;gap:8px;}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--color-light-blue-2);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--color-light-blue);letter-spacing:0.06em;text-transform:uppercase;font-family:var(--font-family-mono);}
+.tokens-group-count{font-size:10px;color:var(--color-blue-2);margin-left:auto;font-family:var(--font-family-mono);}
+.tokens-list{padding:4px 0;}
+.token-row{display:flex;align-items:center;gap:8px;padding:3px 12px;transition:background var(--duration-instant);}
+.token-row:hover{background:var(--color-blue-8);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-md);border:var(--border-width-thin) solid var(--color-blue-6);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--color-light-blue);flex:1;min-width:0;}
+.token-css{font-size:10px;font-family:var(--font-family-mono);color:var(--color-light-blue-2);white-space:nowrap;}
+.token-value{font-size:10px;font-family:var(--font-family-mono);color:var(--color-blue-2);white-space:nowrap;}
+.token-preview-bar{height:4px;border-radius:var(--radius-r11);background:linear-gradient(to right,var(--color-blue-7),var(--color-light-blue-2));flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,var(--color-blue-7),var(--color-light-blue-2));flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-md);background:var(--color-light-blue-2);flex-shrink:0;}
+.tokens-full{grid-column:1/-1;}
+.token-row-sep{height:var(--border-width-thin);background:var(--color-blue-8);margin:4px 0;}
+
+@media(max-width:600px){
+  .font-cards,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L4 7V17L12 22L20 17V7L12 2Z" fill="white" fill-opacity="0.2"/>
+            <path d="M12 6L8 8.5V13.5L12 16L16 13.5V8.5L12 6Z" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">Better Stack Design System</div>
+          <div class="system-meta">Dark Navy · Generated 18/04/2026 · 30 colors · 43 type tokens · 30 spacing steps · 4 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">v1.0.0</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- ── 1. COLOR PALETTE ── -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(10,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#0B0C14;border-color:rgba(147,157,184,.12)"></div><div class="swatch-name">Dark Gray 2</div><div class="swatch-hex">#0B0C14</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0F1019;border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Dark Gray 3</div><div class="swatch-hex">#0F1019</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0F101A;border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#0F101A</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#101828;border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Dark Blue 5</div><div class="swatch-hex">#101828</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#171926;border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Dark Blue 4</div><div class="swatch-hex">#171926</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#181925;border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Dark Gray 4</div><div class="swatch-hex">#181925</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1F2433;border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Dark Blue 2</div><div class="swatch-hex">#1F2433</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(47,53,71,0.5);border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Dark Blue 3</div><div class="swatch-hex">rgba(47,53,71,.5)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#6C769D;border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Blue 4</div><div class="swatch-hex">#6C769D</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#939DB8;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Blue</div><div class="swatch-hex">#939DB8</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(7,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#3B4254;border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Dark Blue</div><div class="swatch-hex">#3B4254</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#646E87"></div><div class="swatch-name">Blue 2</div><div class="swatch-hex">#646E87</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#656A7B"></div><div class="swatch-name">Blue 3</div><div class="swatch-hex">#656A7B</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#7C87F7"></div><div class="swatch-name">Light Blue 2</div><div class="swatch-hex">#7C87F7</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#98A4F7"></div><div class="swatch-name">Light Blue 3</div><div class="swatch-hex">#98A4F7</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#C9D3EE;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Blue</div><div class="swatch-hex">#C9D3EE</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(0,0,0,.12)"></div><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Border &amp; Fill Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(114,125,161,0.07);border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Blue 8</div><div class="swatch-hex">rgba(114,125,161,.07)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(147,157,184,0.1);border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Blue 6</div><div class="swatch-hex">rgba(147,157,184,.1)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(147,157,184,0.12);border-color:rgba(147,157,184,.1)"></div><div class="swatch-name">Blue 11</div><div class="swatch-hex">rgba(147,157,184,.12)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#626C80"></div><div class="swatch-name">Blue 10</div><div class="swatch-hex">#626C80</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#737DA0"></div><div class="swatch-name">Blue 5</div><div class="swatch-hex">#737DA0</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#7280A1"></div><div class="swatch-name">Blue 12</div><div class="swatch-hex">#7280A1</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#919BB9"></div><div class="swatch-name">Blue 9</div><div class="swatch-hex">#919BB9</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#5B63D3"></div><div class="swatch-name">Blue 7</div><div class="swatch-hex">#5B63D3</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. TYPOGRAPHY ── -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">Base Font · Roobert / DM Sans</div>
+        <div class="font-display" style="letter-spacing:var(--letter-spacing-tight);">Roobert</div>
+        <div class="font-sample">Monitor everything. Respond faster. Better Stack brings observability, uptime monitoring, and log management into one platform.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:500">Medium · 500</span>
+          <span class="fw-chip" style="font-weight:600">Semibold · 600</span>
+          <span class="fw-chip" style="font-weight:700">Bold · 700</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Mono · Helvetica Now Text / DM Mono</div>
+        <div class="font-display" style="font-family:var(--font-family-mono);font-size:22px;letter-spacing:0;">HNT + HND</div>
+        <div class="font-sample" style="font-family:var(--font-family-mono);">GET /api/v1/incidents?status=open
+Content-Type: application/json
+Authorization: Bearer bs_••••••••</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:var(--font-family-mono);font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-family:var(--font-family-mono);font-weight:500">Medium · 500</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type Scale -->
+    <div class="type-scale" style="margin-bottom:24px;">
+      <div class="type-row">
+        <div class="type-sample" style="font-size:66px;font-weight:700;line-height:66px;letter-spacing:-0.4px;">Monitor all</div>
+        <div class="type-meta">Display 66px · Bold · line-height: 66px · letter-spacing: −0.4px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:40px;font-weight:700;line-height:43.2px;letter-spacing:-0.4px;">Error tracking</div>
+        <div class="type-meta">Display MD · 40px · Bold · line-height: 43.2px · letter-spacing: −0.4px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:36px;font-weight:700;line-height:38.88px;letter-spacing:-0.36px;">Uptime monitoring</div>
+        <div class="type-meta">Heading XL · 36px · Bold · line-height: 38.88px · letter-spacing: −0.36px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:28px;font-weight:700;line-height:32.76px;letter-spacing:-0.24px;">Log management</div>
+        <div class="type-meta">Heading LG · 28px · Bold · line-height: 32.76px · letter-spacing: −0.24px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:24px;font-weight:600;line-height:28px;letter-spacing:-0.24px;">Infrastructure alerts</div>
+        <div class="type-meta">Heading MD · 24px · Semibold · line-height: 28px · letter-spacing: −0.24px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:20px;font-weight:600;line-height:24.8px;letter-spacing:-0.16px;color:var(--color-light-blue);">On-call scheduling and incident response</div>
+        <div class="type-meta">Heading SM · 20px · Semibold · line-height: 24.8px · letter-spacing: −0.16px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:16px;font-weight:400;line-height:25.6px;letter-spacing:-0.14px;color:var(--color-light-blue);">Better Stack helps you monitor your entire stack — from your website and APIs to your databases and servers — all in one place.</div>
+        <div class="type-meta">Body · 16px · Regular · line-height: 25.6px · letter-spacing: −0.14px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:13px;font-weight:400;line-height:20.8px;letter-spacing:-0.12px;color:var(--color-blue-2);font-family:var(--font-family-mono);">Incident #1024 · Critical · Triggered 3 min ago · Assigned to on-call</div>
+        <div class="type-meta">Caption · 13px · Regular · monospace · line-height: 20.8px · letter-spacing: −0.12px</div>
+      </div>
+    </div>
+
+    <!-- Line Heights -->
+    <div style="margin-bottom:24px;">
+      <div style="font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--color-blue-2);margin-bottom:12px;font-family:var(--font-family-mono);">Line Heights</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:13px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">13px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:13.87px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">13.87px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:14.5px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">14.5px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:17.14px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">17.14px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:18px;"></div></div><div class="lh-token">Loose</div><div class="lh-val">18px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:20.8px;"></div></div><div class="lh-token">LH-7</div><div class="lh-val">20.8px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">LH-10</div><div class="lh-val">24px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24.8px;"></div></div><div class="lh-token">LH-11</div><div class="lh-val">24.8px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:28px;"></div></div><div class="lh-token">LH-13</div><div class="lh-val">28px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:32.76px;"></div></div><div class="lh-token">LH-14</div><div class="lh-val">32.76px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:43.2px;"></div></div><div class="lh-token">LH-17</div><div class="lh-val">43.2px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:66px;"></div></div><div class="lh-token">LH-18</div><div class="lh-val">66px</div></div>
+      </div>
+    </div>
+
+    <!-- Letter Spacing -->
+    <div>
+      <div style="font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);letter-spacing:0.06em;text-transform:uppercase;color:var(--color-blue-2);margin-bottom:12px;font-family:var(--font-family-mono);">Letter Spacing</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.4px;">Monitor</div>
+          <div class="ls-token">Tight · −0.4px</div>
+          <div class="ls-desc">--letter-spacing-tight · display 40–66px</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.36px;">Uptime</div>
+          <div class="ls-token">Normal · −0.36px</div>
+          <div class="ls-desc">--letter-spacing-normal · headings 28–40px</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.24px;">Incidents</div>
+          <div class="ls-token">Wide · −0.24px</div>
+          <div class="ls-desc">--letter-spacing-wide · mid headings 20–28px</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.12px;font-size:20px;">Alerts</div>
+          <div class="ls-token">LS-6 · −0.12px</div>
+          <div class="ls-desc">--letter-spacing-ls-6 · body & UI text</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. SPACING ── -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">30 tokens — 1px → 386.7px</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:1px"></div><div class="sp-lbl">1</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:6px"></div><div class="sp-lbl">6</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:14px"></div><div class="sp-lbl">14</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:16px"></div><div class="sp-lbl">16</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:18px"></div><div class="sp-lbl">18</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:20px"></div><div class="sp-lbl">20</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:30px"></div><div class="sp-lbl">30</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:32px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:36px"></div><div class="sp-lbl">36</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:40px"></div><div class="sp-lbl">40</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:44px"></div><div class="sp-lbl">44</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:48px"></div><div class="sp-lbl">48</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:56px"></div><div class="sp-lbl">56</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:57px"></div><div class="sp-lbl">57.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:64px"></div><div class="sp-lbl">64</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:66px"></div><div class="sp-lbl">66.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:80px"></div><div class="sp-lbl">80</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:96px"></div><div class="sp-lbl">96</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:100px"></div><div class="sp-lbl">100</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:120px"></div><div class="sp-lbl">120</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:128px"></div><div class="sp-lbl">128</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:130px"></div><div class="sp-lbl">130</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:140px;opacity:.8"></div><div class="sp-lbl">144</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:140px;opacity:.6"></div><div class="sp-lbl">296.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:140px;opacity:.4"></div><div class="sp-lbl">386.7</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. BORDERS ── -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">MD</div><div class="radius-val">4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:6px"></div><div class="radius-lbl">LG</div><div class="radius-val">6px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-lbl">XL</div><div class="radius-val">8px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:10px"></div><div class="radius-lbl">2XL</div><div class="radius-val">10px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:12px"></div><div class="radius-lbl">Full</div><div class="radius-val">12px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:16px"></div><div class="radius-lbl">R8</div><div class="radius-val">16px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:26px"></div><div class="radius-lbl">R9</div><div class="radius-val">26px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:43px"></div><div class="radius-lbl">R10</div><div class="radius-val">43px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px"></div><div class="radius-lbl">Pill</div><div class="radius-val">9999px</div></div>
+      </div>
+      <div style="margin-top:16px;font-size:var(--font-size-sm);color:var(--color-blue-2);line-height:var(--line-height-relaxed);font-family:var(--font-family-mono);">Better Stack uses directional radii: <span style="color:var(--color-light-blue-2);">SM</span> has <span style="color:var(--color-light-blue-2);">0 0 16 16px</span> (bottom-rounded) and <span style="color:var(--color-light-blue-2);">R7</span> has <span style="color:var(--color-light-blue-2);">16 16 0 0px</span> (top-rounded) — used for drawer/panel shapes.</div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Widths</div>
+      <div class="bw-demo">
+        <div class="bw-item"><div class="bw-token">--border-width-hairline</div><div class="bw-val">0.5px · ultra-thin dividers</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-thin</div><div class="bw-val">1px · cards, inputs, modals</div></div>
+        <div style="margin-top:10px;font-size:var(--font-size-sm);color:var(--color-blue-2);line-height:var(--line-height-relaxed);font-family:var(--font-family-mono);">Better Stack uses a sub-pixel <span style="color:var(--color-light-blue-2);">0.5px</span> hairline for internal dividers alongside the standard <span style="color:var(--color-light-blue-2);">1px</span> border. The hairline creates very refined separations on high-DPI displays.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. SHADOW / ELEVATION ── -->
+  <div class="section">
+    <div class="section-title">Shadow / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">1 token — inset highlight</div>
+      <div class="shadows-row">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-sm);background:linear-gradient(135deg,var(--color-dark-gray-4),var(--color-dark-blue-2));border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-xl);"></div>
+          <div class="sh-token">--shadow-sm</div>
+          <div class="sh-usage">rgba(255,255,255,0.25) inset</div>
+          <div class="sh-desc">1px inset top highlight — used on interactive elements (buttons, cards) to simulate a subtle lit surface edge on dark backgrounds</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="background:var(--color-dark-gray-4);border:var(--border-width-thin) solid var(--color-blue-6);border-radius:var(--radius-xl);"></div>
+          <div class="sh-token">Border-based</div>
+          <div class="sh-usage">Depth without shadow</div>
+          <div class="sh-desc">Depth is primarily expressed through stacked dark blue fills and rgba border opacity — no standard drop shadows are used</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="background:linear-gradient(135deg,var(--color-blue-7),var(--color-light-blue-2));border-radius:var(--radius-xl);"></div>
+          <div class="sh-token">Gradient fills</div>
+          <div class="sh-usage">Accent elevation</div>
+          <div class="sh-desc">Gradient from #5B63D3 → #7C87F7 creates the signature periwinkle accent used on CTAs and logos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6. Z-INDEX ── -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Layer</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>--z-1</td><td>-10</td><td>Background decorations, canvas layers behind content</td></tr>
+          <tr><td>--z-2</td><td>10</td><td>Sticky navigation, floating headers, fixed elements</td></tr>
+          <tr><td>--z-3</td><td>20</td><td>Dropdowns, tooltips, hover popovers</td></tr>
+          <tr><td>--z-4</td><td>40</td><td>Modals, dialogs, command palette, overlays</td></tr>
+          <tr><td>--z-5</td><td>99,999,999</td><td>Maximum application layer — chat widgets, critical alerts</td></tr>
+          <tr><td>--z-6</td><td>100,000,000</td><td>Absolute top layer — cookie notices, emergency banners</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── 7. BREAKPOINTS ── -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div class="token-wrap">
+      <div class="tw-title">No Breakpoint Tokens Defined</div>
+      <div class="tw-sub">Better Stack's design system does not expose breakpoint values as CSS custom properties. Responsive behavior is handled directly in component-level CSS without a shared breakpoint token layer.</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;">
+        <div class="bp-card" style="flex:1;min-width:180px;">
+          <div class="bp-icon">📱</div>
+          <div>
+            <div class="bp-token">Mobile</div>
+            <div class="bp-val">~375px</div>
+            <div class="bp-desc">Assumed mobile threshold</div>
+          </div>
+        </div>
+        <div class="bp-card" style="flex:1;min-width:180px;">
+          <div class="bp-icon">💻</div>
+          <div>
+            <div class="bp-token">Desktop</div>
+            <div class="bp-val">~1024px</div>
+            <div class="bp-desc">Assumed desktop threshold</div>
+          </div>
+        </div>
+        <div class="bp-card" style="flex:1;min-width:180px;">
+          <div class="bp-icon">🖥️</div>
+          <div>
+            <div class="bp-token">Wide</div>
+            <div class="bp-val">~1280px</div>
+            <div class="bp-desc">Assumed wide threshold</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 8. OPACITY ── -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">No Opacity Tokens Defined</div>
+      <div class="tw-sub">Better Stack's design system does not define named opacity tokens. Transparency is expressed directly as rgba color values in the color token layer — for example, <span style="font-family:var(--font-family-mono);color:var(--color-light-blue-2);">rgba(147,157,184,0.1)</span> for subtle borders and <span style="font-family:var(--font-family-mono);color:var(--color-light-blue-2);">rgba(47,53,71,0.5)</span> for semi-transparent surfaces.</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;">
+        <div class="op-item"><div class="op-box" style="background:rgba(147,157,184,0.07);border:var(--border-width-thin) solid var(--color-blue-6);height:48px;"></div><div class="op-token" style="color:var(--color-blue-2);">rgba opacity .07</div><div class="op-val">border-subtle</div></div>
+        <div class="op-item"><div class="op-box" style="background:rgba(147,157,184,0.1);border:var(--border-width-thin) solid var(--color-blue-6);height:48px;"></div><div class="op-token" style="color:var(--color-blue-2);">rgba opacity .1</div><div class="op-val">border-default</div></div>
+        <div class="op-item"><div class="op-box" style="background:rgba(47,53,71,0.5);border:var(--border-width-thin) solid var(--color-blue-6);height:48px;"></div><div class="op-token" style="color:var(--color-blue-2);">rgba opacity .5</div><div class="op-val">surface-dim</div></div>
+        <div class="op-item"><div class="op-box" style="background:rgba(255,255,255,0.25);height:48px;"></div><div class="op-token" style="color:var(--color-blue-2);">rgba opacity .25</div><div class="op-val">inset-highlight</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 9. ACCESSIBILITY ── -->
+  <div class="section">
+    <div class="section-title">Accessibility — Contrast Ratios</div>
+    <div style="font-size:var(--font-size-sm);color:var(--color-blue-2);line-height:var(--line-height-relaxed);margin-bottom:16px;font-family:var(--font-family-mono);">WCAG 2.1 thresholds: <strong style="color:var(--color-light-blue);">AA</strong> ≥ 4.5:1 (normal text) · <strong style="color:var(--color-light-blue);">AA Large</strong> ≥ 3:1 (large/bold) · <strong style="color:var(--color-light-blue);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Token</th><th>Background Token</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>--color-light-blue</td><td>--color-dark-gray</td><td>12.65:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-light-blue</td><td>--color-dark-gray-2</td><td>13.03:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-light-blue</td><td>--color-dark-gray-4</td><td>11.65:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-light-blue</td><td>--color-blue</td><td>1.81:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-light-blue</td><td>--color-blue-4</td><td>2.98:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-dark-blue</td><td>--color-blue</td><td>3.7:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-dark-blue</td><td>--color-dark-gray</td><td>1.89:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-blue-2</td><td>--color-dark-gray</td><td>3.72:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-blue-2</td><td>--color-dark-gray-2</td><td>3.83:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-blue-2</td><td>--color-dark-gray-4</td><td>3.42:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-light-blue-2</td><td>--color-dark-gray</td><td>6.01:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-light-blue-2</td><td>--color-dark-gray-2</td><td>6.19:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-light-blue-2</td><td>--color-dark-gray-4</td><td>5.53:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-white</td><td>--color-dark-gray</td><td>18.93:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-white</td><td>--color-dark-gray-2</td><td>19.5:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-white</td><td>--color-dark-gray-4</td><td>17.43:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Start monitoring</button>
+          <button class="btn btn-secondary">View incidents</button>
+          <button class="btn btn-outline">Connect alerts</button>
+          <button class="btn btn-ghost">Learn more</button>
+          <button class="btn btn-muted">Mute alert</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Monitor name</label>
+            <input class="inp" type="text" placeholder="api.production.myapp.com"/>
+            <div class="inp-hint">URL or hostname to monitor</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Webhook URL</label>
+            <input class="inp" type="url" placeholder="https://hooks.slack.com/…" style="border-color:var(--color-light-blue-2);box-shadow:0 0 0 2px rgba(124,135,247,0.2);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Alert threshold</label>
+            <input class="inp inp-err" type="number" value="0"/>
+            <div class="inp-err-msg">Must be greater than 0 seconds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--color-blue-2)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-light-blue-2)"></span>Live</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--color-blue-3)"></span>Paused</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">📡 Uptime</span>
+          <span class="tag">📋 Logs</span>
+          <span class="tag">🚨 Incidents</span>
+          <span class="tag">🔔 Alerts</span>
+          <span class="tag">📊 Metrics</span>
+          <span class="tag">🔥 On-call</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="alert alert-neutral"><div class="alert-icon">ℹ️</div><div class="alert-body"><h5>New integration available</h5><p style="color:var(--color-blue-2);">PagerDuty integration is now available. Connect your existing on-call schedule in 2 minutes.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon">✅</div><div class="alert-body"><h5>Incident resolved</h5><p>Production API downtime resolved in 4m 12s. Post-mortem scheduled for tomorrow.</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon">⚡</div><div class="alert-body"><h5 style="color:var(--color-light-blue-3);">Elevated response times</h5><p style="color:var(--color-light-blue-3);">API P95 latency has been above 800ms for 3 minutes. On-call engineer notified.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon">❌</div><div class="alert-body"><h5 style="color:var(--color-light-blue);">Monitor paused</h5><p>This monitor was auto-paused after 5 consecutive failures. Click to re-enable.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Feature Cards</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">📡</div>
+            <div class="fc-title">Uptime Monitoring</div>
+            <div class="fc-desc">Check every URL, API endpoint, or server every 30 seconds from 10 global locations.</div>
+            <span class="tag tag-brand">30s checks</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📋</div>
+            <div class="fc-title">Log Management</div>
+            <div class="fc-desc">Centralize your logs. Full-text search, live tail, and structured parsing out of the box.</div>
+            <span class="tag">Live tail</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🚨</div>
+            <div class="fc-title">Error Tracking</div>
+            <div class="fc-desc">Capture and group errors with full context — stack traces, user info, and affected releases.</div>
+            <span class="tag">Auto-grouping</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars &amp; Progress</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:linear-gradient(135deg,var(--color-blue-7),var(--color-light-blue-2));color:white;box-shadow:var(--shadow-sm);">BS</div>
+          <div class="av-info"><h4>Better Stack</h4><p>team@betterstack.com · Pro plan · 12 monitors active</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:var(--color-light-blue-2);color:var(--color-dark-gray-2)">A</div>
+          <div class="avatar av-md" style="background:var(--color-blue-7);color:white">M</div>
+          <div class="avatar av-md" style="background:var(--color-blue-4);color:var(--color-light-blue)">R</div>
+          <div class="avatar av-sm" style="background:var(--color-dark-blue-2-solid);color:var(--color-light-blue);border:var(--border-width-thin) solid var(--color-blue-6)">K</div>
+          <div class="avatar av-sm" style="background:var(--color-dark-gray-4);color:var(--color-blue-2);border:var(--border-width-thin) solid var(--color-blue-6)">+4</div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Uptime last 30 days</span><span>99.97%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:99.97%;background:linear-gradient(to right,var(--color-blue-7),var(--color-light-blue-2))"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Log ingestion quota</span><span>62%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:62%;background:var(--color-blue-5)"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>Alert channels configured</span><span>84%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:84%;background:var(--color-blue-3)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Data Table</span><span class="comp-badge">Incident log</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead>
+            <tr><th>incident_id</th><th>monitor</th><th>duration</th><th>started</th><th>status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>#INC-1024</td><td style="color:var(--color-light-blue);font-weight:500">api.prod.example.com</td><td style="color:var(--color-blue-2);font-family:var(--font-family-mono);font-size:12px">4m 12s</td><td style="color:var(--color-blue-2)">Apr 15, 2026</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-light-blue-2)"></span>Resolved</span></td></tr>
+            <tr><td>#INC-1023</td><td style="color:var(--color-light-blue);font-weight:500">checkout.mystore.io</td><td style="color:var(--color-blue-2);font-family:var(--font-family-mono);font-size:12px">ongoing</td><td style="color:var(--color-blue-2)">Apr 14, 2026</td><td><span class="badge badge-muted" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-blue-3)"></span>Acknowledged</span></td></tr>
+            <tr><td>#INC-1022</td><td style="color:var(--color-light-blue);font-weight:500">metrics.internal.dev</td><td style="color:var(--color-blue-2);font-family:var(--font-family-mono);font-size:12px">1m 04s</td><td style="color:var(--color-blue-2)">Apr 13, 2026</td><td><span class="badge badge-default" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-blue-2)"></span>Closed</span></td></tr>
+            <tr><td>#INC-1021</td><td style="color:var(--color-light-blue);font-weight:500">db.postgres.cluster-a</td><td style="color:var(--color-blue-2);font-family:var(--font-family-mono);font-size:12px">28m 53s</td><td style="color:var(--color-blue-2)">Apr 12, 2026</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-light-blue-2)"></span>Resolved</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- ── 11. CSS VARIABLES REFERENCE ── -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <!-- Background Colors -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Background Colors</span><span class="tokens-group-count">10 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#0B0C14;border-color:rgba(147,157,184,.15)"></div><span class="token-readable">Dark Gray 2</span><span class="token-css">--color-dark-gray-2</span><span class="token-value">#0B0C14</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0F101A;border-color:rgba(147,157,184,.12)"></div><span class="token-readable">Dark Gray</span><span class="token-css">--color-dark-gray</span><span class="token-value">#0F101A</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#101828;border-color:rgba(147,157,184,.1)"></div><span class="token-readable">Dark Blue 5</span><span class="token-css">--color-dark-blue-5</span><span class="token-value">#101828</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#171926;border-color:rgba(147,157,184,.1)"></div><span class="token-readable">Dark Blue 4</span><span class="token-css">--color-dark-blue-4</span><span class="token-value">#171926</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#181925;border-color:rgba(147,157,184,.1)"></div><span class="token-readable">Dark Gray 4</span><span class="token-css">--color-dark-gray-4</span><span class="token-value">#181925</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1F2433;border-color:rgba(147,157,184,.1)"></div><span class="token-readable">Dark Blue 2</span><span class="token-css">--color-dark-blue-2</span><span class="token-value">#1F2433</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(47,53,71,0.5);border-color:rgba(147,157,184,.1)"></div><span class="token-readable">Dark Blue 3</span><span class="token-css">--color-dark-blue-3</span><span class="token-value">rgba(47,53,71,.5)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(23,24,36,0.5);border-color:rgba(147,157,184,.1)"></div><span class="token-readable">Dark Gray 5</span><span class="token-css">--color-dark-gray-5</span><span class="token-value">rgba(23,24,36,.5)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#6C769D"></div><span class="token-readable">Blue 4</span><span class="token-css">--color-blue-4</span><span class="token-value">#6C769D</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#939DB8;border-color:rgba(0,0,0,.08)"></div><span class="token-readable">Blue</span><span class="token-css">--color-blue</span><span class="token-value">#939DB8</span></div>
+        </div>
+      </div>
+
+      <!-- Text Colors -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Text &amp; Accent Colors</span><span class="tokens-group-count">8 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#3B4254;border-color:rgba(147,157,184,.1)"></div><span class="token-readable">Dark Blue</span><span class="token-css">--color-dark-blue</span><span class="token-value">#3B4254</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#646E87"></div><span class="token-readable">Blue 2</span><span class="token-css">--color-blue-2</span><span class="token-value">#646E87</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#656A7B"></div><span class="token-readable">Blue 3</span><span class="token-css">--color-blue-3</span><span class="token-value">#656A7B</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#5B63D3"></div><span class="token-readable">Blue 7 (accent)</span><span class="token-css">--color-blue-7</span><span class="token-value">#5B63D3</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#7C87F7"></div><span class="token-readable">Light Blue 2</span><span class="token-css">--color-light-blue-2</span><span class="token-value">#7C87F7</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#98A4F7"></div><span class="token-readable">Light Blue 3</span><span class="token-css">--color-light-blue-3</span><span class="token-value">#98A4F7</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#C9D3EE;border-color:rgba(0,0,0,.08)"></div><span class="token-readable">Light Blue</span><span class="token-css">--color-light-blue</span><span class="token-value">#C9D3EE</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF;border-color:rgba(0,0,0,.15)"></div><span class="token-readable">White</span><span class="token-css">--color-white</span><span class="token-value">#FFFFFF</span></div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Typography</span><span class="tokens-group-count">43 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Base Font</span><span class="token-css">--font-family-base</span><span class="token-value">Roobert</span></div>
+          <div class="token-row"><span class="token-readable">Text Font</span><span class="token-css">--font-family-2</span><span class="token-value">Helvetica Now Text</span></div>
+          <div class="token-row"><span class="token-readable">Display Font</span><span class="token-css">--font-family-3</span><span class="token-value">Helvetica Now Display</span></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">Medium</span><span class="token-css">--font-weight-medium</span><span class="token-value">500</span></div>
+          <div class="token-row"><span class="token-readable">Semibold</span><span class="token-css">--font-weight-semibold</span><span class="token-value">600</span></div>
+          <div class="token-row"><span class="token-readable">Bold</span><span class="token-css">--font-weight-bold</span><span class="token-value">700</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">2XS</span><span class="token-css">--font-size-2xs</span><span class="token-value">10px</span></div>
+          <div class="token-row"><span class="token-readable">XS</span><span class="token-css">--font-size-xs</span><span class="token-value">10.4px</span></div>
+          <div class="token-row"><span class="token-readable">SM</span><span class="token-css">--font-size-sm</span><span class="token-value">12px</span></div>
+          <div class="token-row"><span class="token-readable">Base</span><span class="token-css">--font-size-base</span><span class="token-value">13px</span></div>
+          <div class="token-row"><span class="token-readable">LG</span><span class="token-css">--font-size-lg</span><span class="token-value">14px</span></div>
+          <div class="token-row"><span class="token-readable">XL</span><span class="token-css">--font-size-xl</span><span class="token-value">16px</span></div>
+          <div class="token-row"><span class="token-readable">2XL</span><span class="token-css">--font-size-2xl</span><span class="token-value">20px</span></div>
+          <div class="token-row"><span class="token-readable">3XL</span><span class="token-css">--font-size-3xl</span><span class="token-value">24px</span></div>
+          <div class="token-row"><span class="token-readable">4XL</span><span class="token-css">--font-size-4xl</span><span class="token-value">28px</span></div>
+          <div class="token-row"><span class="token-readable">5XL</span><span class="token-css">--font-size-5xl</span><span class="token-value">36px</span></div>
+          <div class="token-row"><span class="token-readable">6XL</span><span class="token-css">--font-size-6xl</span><span class="token-value">40px</span></div>
+          <div class="token-row"><span class="token-readable">Display</span><span class="token-css">--font-size-66px</span><span class="token-value">66px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Tight</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">−0.4px</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--letter-spacing-normal</span><span class="token-value">−0.36px</span></div>
+          <div class="token-row"><span class="token-readable">Wide</span><span class="token-css">--letter-spacing-wide</span><span class="token-value">−0.24px</span></div>
+          <div class="token-row"><span class="token-readable">Wider</span><span class="token-css">--letter-spacing-wider</span><span class="token-value">−0.16px</span></div>
+          <div class="token-row"><span class="token-readable">Widest</span><span class="token-css">--letter-spacing-widest</span><span class="token-value">−0.14px</span></div>
+          <div class="token-row"><span class="token-readable">LS-6</span><span class="token-css">--letter-spacing-ls-6</span><span class="token-value">−0.12px</span></div>
+        </div>
+      </div>
+
+      <!-- Spacing -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Spacing</span><span class="tokens-group-count">30 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-preview-bar" style="width:1px"></div><span class="token-readable">Space 1</span><span class="token-css">--space-1</span><span class="token-value">1px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:4px"></div><span class="token-readable">Space 2</span><span class="token-css">--space-2</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:6px"></div><span class="token-readable">Space 3</span><span class="token-css">--space-3</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:8px"></div><span class="token-readable">Space 4</span><span class="token-css">--space-4</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:10px"></div><span class="token-readable">Space 5</span><span class="token-css">--space-5</span><span class="token-value">10px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:12px"></div><span class="token-readable">Space 8</span><span class="token-css">--space-8</span><span class="token-value">12px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:16px"></div><span class="token-readable">Space 12</span><span class="token-css">--space-12</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:20px"></div><span class="token-readable">Space 20</span><span class="token-css">--space-20</span><span class="token-value">20px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:30px"></div><span class="token-readable">Space 40</span><span class="token-css">--space-40</span><span class="token-value">30px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:32px"></div><span class="token-readable">Space 48</span><span class="token-css">--space-48</span><span class="token-value">32px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:48px"></div><span class="token-readable">Space 128</span><span class="token-css">--space-128</span><span class="token-value">48px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:64px"></div><span class="token-readable">Space 256</span><span class="token-css">--space-256</span><span class="token-value">64px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:80px"></div><span class="token-readable">Space 24</span><span class="token-css">--space-24</span><span class="token-value">80px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:96px"></div><span class="token-readable">Space 25</span><span class="token-css">--space-25</span><span class="token-value">96px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:120px"></div><span class="token-readable">Space 27</span><span class="token-css">--space-27</span><span class="token-value">120px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:128px"></div><span class="token-readable">Space 28</span><span class="token-css">--space-28</span><span class="token-value">128px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:140px;opacity:.6"></div><span class="token-readable">Space 30</span><span class="token-css">--space-30</span><span class="token-value">144px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:140px;opacity:.4"></div><span class="token-readable">Space 31</span><span class="token-css">--space-31</span><span class="token-value">296.5px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:140px;opacity:.2"></div><span class="token-readable">Space 32</span><span class="token-css">--space-32</span><span class="token-value">386.7px</span></div>
+        </div>
+      </div>
+
+      <!-- Borders + Radius -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Borders &amp; Radius</span><span class="tokens-group-count">13 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Hairline</span><span class="token-css">--border-width-hairline</span><span class="token-value">0.5px</span></div>
+          <div class="token-row"><span class="token-readable">Thin</span><span class="token-css">--border-width-thin</span><span class="token-value">1px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:0 0 16px 16px;height:12px"></div><span class="token-readable">SM (bottom)</span><span class="token-css">--radius-sm</span><span class="token-value">0 0 16 16px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:16px 16px 0 0;height:12px"></div><span class="token-readable">R7 (top)</span><span class="token-css">--radius-r7</span><span class="token-value">16 16 0 0px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px"></div><span class="token-readable">MD</span><span class="token-css">--radius-md</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:6px"></div><span class="token-readable">LG</span><span class="token-css">--radius-lg</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:8px"></div><span class="token-readable">XL</span><span class="token-css">--radius-xl</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:10px"></div><span class="token-readable">2XL</span><span class="token-css">--radius-2xl</span><span class="token-value">10px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:12px"></div><span class="token-readable">Full</span><span class="token-css">--radius-full</span><span class="token-value">12px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:16px"></div><span class="token-readable">R8</span><span class="token-css">--radius-r8</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:26px"></div><span class="token-readable">R9</span><span class="token-css">--radius-r9</span><span class="token-value">26px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:43px"></div><span class="token-readable">R10</span><span class="token-css">--radius-r10</span><span class="token-value">43px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:9999px;height:12px"></div><span class="token-readable">Pill</span><span class="token-css">--radius-r11</span><span class="token-value">9999px</span></div>
+        </div>
+      </div>
+
+      <!-- Motion + Z-Index -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Motion &amp; Layers</span><span class="tokens-group-count">10 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Instant</span><span class="token-css">--duration-instant</span><span class="token-value">50ms</span></div>
+          <div class="token-row"><span class="token-readable">Fast</span><span class="token-css">--duration-fast</span><span class="token-value">150ms</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--duration-normal</span><span class="token-value">200ms</span></div>
+          <div class="token-row"><span class="token-readable">Slow (pulse)</span><span class="token-css">--duration-slow</span><span class="token-value">1s</span></div>
+          <div class="token-row"><span class="token-readable">Shadow</span><span class="token-css">--shadow-sm</span><span class="token-value">inset 0 1px rgba(255,255,255,.25)</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Background</span><span class="token-css">--z-1</span><span class="token-value">-10</span></div>
+          <div class="token-row"><span class="token-readable">Navigation</span><span class="token-css">--z-2</span><span class="token-value">10</span></div>
+          <div class="token-row"><span class="token-readable">Popovers</span><span class="token-css">--z-3</span><span class="token-value">20</span></div>
+          <div class="token-row"><span class="token-readable">Modals</span><span class="token-css">--z-4</span><span class="token-value">40</span></div>
+          <div class="token-row"><span class="token-readable">Max App</span><span class="token-css">--z-5</span><span class="token-value">99,999,999</span></div>
+          <div class="token-row"><span class="token-readable">Absolute Top</span><span class="token-css">--z-6</span><span class="token-value">100,000,000</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div style="text-align:center;padding:32px 0;color:var(--color-blue-2);font-size:var(--font-size-sm);border-top:var(--border-width-thin) solid var(--color-blue-8);line-height:var(--line-height-relaxed);font-family:var(--font-family-mono);">
+    Design System Preview · Better Stack (Dark Navy) · Generated 18/04/2026 · 30 color tokens · 12 font-size · 3 font-family · 4 font-weight · 18 line-height · 6 letter-spacing · 30 spacing · 11 radius · 2 border-width · 1 shadow · 4 duration · 6 z-index · no breakpoints · no opacity
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

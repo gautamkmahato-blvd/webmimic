@@ -1,0 +1,145 @@
+/* ============================================
+ * Design Tokens — adidas India Official Website | Sneakers and Sportswear | adidas IN
+ * Source: https://www.adidas.co.in/
+ * Generated: 17/04/2026, 13:09:53
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-mid-gray: #767677; /* hsl(240, 0%, 46%) · text */
+  --color-light-gray: #ECEFF1; /* hsl(204, 15%, 94%) · background */
+  --color-red: #E32B2B; /* hsl(0, 77%, 53%) · text */
+  --color-cyan: #69C9D0; /* hsl(184, 52%, 61%) · fill */
+  --color-light-gray-2: #D3D7DA; /* hsl(206, 9%, 84%) · border */
+  --color-mid-gray-2: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-mid-gray-3: #929396; /* hsl(225, 2%, 58%) · border */
+  --color-cyan-2: #408267; /* hsl(155, 34%, 38%) · background */
+  --color-blue: #3175DE; /* hsl(216, 72%, 53%) · fill */
+  --color-orange: #F9B900; /* hsl(45, 100%, 49%) · fill */
+  --color-dark-green: #00AC37; /* hsl(139, 100%, 34%) · fill */
+  --color-red-2: #EA2C35; /* hsl(357, 82%, 55%) · fill */
+  --color-blue-2: #0286CD; /* hsl(201, 98%, 41%) · fill */
+  --color-blue-3: #1877F2; /* hsl(214, 89%, 52%) · fill */
+  --color-blue-4: #4285F4; /* hsl(217, 89%, 61%) · fill */
+  --color-green: #34A853; /* hsl(136, 53%, 43%) · fill */
+  --color-orange-2: #FBBC05; /* hsl(45, 97%, 50%) · fill */
+  --color-red-3: #EA4335; /* hsl(5, 81%, 56%) · fill */
+  --color-red-4: #EE1D52; /* hsl(345, 86%, 52%) · fill */
+  --color-blue-5: #1DA1F2; /* hsl(203, 89%, 53%) · fill */
+  --color-blue-6: #4680C2; /* hsl(212, 50%, 52%) · fill */
+  --color-dark-purple: #400090; /* hsl(267, 100%, 28%) · fill */
+  --color-light-gray-3: #E9ECEF; /* hsl(210, 16%, 93%) · background */
+  --color-white-2: #F9F7F6; /* hsl(20, 20%, 97%) · background */
+  --color-dark-gray: #363333; /* hsl(0, 3%, 21%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 24px;
+  --font-size-xl: 30px;
+  --font-size-2xl: 38px;
+  --font-family-base: Times;
+  --font-family-2: AdihausDIN;
+  --font-family-3: adidasFG;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --line-height-tight: 16px;
+  --line-height-snug: 20px;
+  --line-height-normal: 22px;
+  --line-height-relaxed: 24px;
+  --line-height-loose: 28px;
+  --line-height-lh-6: 32px;
+  --line-height-lh-7: 40px;
+  --letter-spacing-tight: 2.5px;
+  --letter-spacing-normal: 3px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1.5px;
+  --space-2: 1.75px;
+  --space-3: 2px;
+  --space-4: 4px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 12px;
+  --space-10: 16px;
+  --space-12: 20px;
+  --space-16: 22px;
+  --space-20: 24px;
+  --space-24: 32px;
+  --space-32: 35px;
+  --space-40: 40px;
+  --space-48: 44px;
+  --space-64: 48px;
+  --space-80: 60px;
+  --space-96: 64px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 2.5px;
+  --border-width-thick: 5px;
+  --radius-sm: 5px;
+  --radius-md: 50%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgb(128, 128, 128) 0px 0px 10px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.2s;
+  --duration-fast: 0.3s;
+  --duration-normal: 0.5s;
+  --duration-slow: 0.8s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 9;
+  --z-3: 10;
+  --z-4: 99;
+  --z-5: 100;
+  --z-6: 1000;
+  --z-7: 7999;
+  --z-8: 8000;
+  --z-9: 8002;
+  --z-10: 2000000000;
+  --z-11: 2000000001;
+  --z-12: 2000000002;
+  --z-13: 2000000003;
+  --z-14: 2100000000;
+  --z-15: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 280px;
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 375px;
+  --breakpoint-lg: 389px;
+  --breakpoint-xl: 390px;
+  --breakpoint-2xl: 479px;
+  --breakpoint-3xl: 480px;
+  --breakpoint-bp-8: 575px;
+  --breakpoint-bp-9: 599px;
+  --breakpoint-bp-10: 600px;
+  --breakpoint-bp-11: 767px;
+  --breakpoint-bp-12: 768px;
+  --breakpoint-bp-13: 780px;
+  --breakpoint-bp-14: 786px;
+  --breakpoint-bp-15: 959px;
+  --breakpoint-bp-16: 960px;
+  --breakpoint-bp-17: 991px;
+  --breakpoint-bp-18: 1024px;
+  --breakpoint-bp-19: 1200px;
+  --breakpoint-bp-20: 1279px;
+  --breakpoint-bp-21: 1280px;
+  --breakpoint-bp-22: 1366px;
+  --breakpoint-bp-23: 1440px;
+  --breakpoint-bp-24: 1599px;
+  --breakpoint-bp-25: 1600px;
+  --breakpoint-bp-26: 1920px;
+
+  /* ── Opacity ── */
+  --opacity-90: 0.9;
+}

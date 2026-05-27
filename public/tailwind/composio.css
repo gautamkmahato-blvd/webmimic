@@ -1,0 +1,195 @@
+/* ============================================
+ * Design Tokens — Composio
+ * Source: https://composio.dev/
+ * Generated: 15/04/2026, 00:25:13
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #E5E5E5; /* hsl(0, 0%, 90%) · border */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black: #0A0A0A; /* hsl(0, 0%, 4%) · text */
+  --color-black-2: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray: #444444; /* hsl(0, 0%, 27%) · text */
+  --color-dark-gray-2: #2C2C2C; /* hsl(0, 0%, 17%) · border */
+  --color-dark-gray-3: #0F0F0F; /* hsl(0, 0%, 6%) · background */
+  --color-white-2: #F6F6F6; /* hsl(0, 0%, 96%) · background */
+  --color-dark-gray-4: #141414; /* hsl(0, 0%, 8%) · background */
+  --color-dark-gray-5: #1A1A1A; /* hsl(0, 0%, 10%) · background */
+  --color-green: #05DF72; /* hsl(150, 96%, 45%) · background */
+  --color-dark-gray-6: #333333; /* hsl(0, 0%, 20%) · background */
+  --color-light-gray-2: #E0E0E0; /* hsl(0, 0%, 88%) · border */
+  --color-cyan: #00D492; /* hsl(161, 100%, 42%) · background */
+  --color-light-gray-3: #DDDDDD; /* hsl(0, 0%, 87%) · border */
+  --color-blue: #0089FF; /* hsl(208, 100%, 50%) · background */
+  --color-mid-gray: #999999; /* hsl(0, 0%, 60%) · text */
+  --color-light-gray-4: #BBBBBB; /* hsl(0, 0%, 73%) · text */
+  --color-light-gray-5: #ECECEC; /* hsl(0, 0%, 93%) · text */
+  --color-dark-gray-7: #1E1E1E; /* hsl(0, 0%, 12%) · background */
+  --color-orange: #FC9800; /* hsl(36, 100%, 49%) · text */
+  --color-blue-2: rgba(0, 137, 255, 0.08); /* hsl(207, 100%, 50%) · background */
+  --color-cyan-2: #3FFFDD; /* hsl(169, 100%, 62%) · text */
+  --color-blue-3: #5B9CF4; /* hsl(215, 87%, 66%) · text */
+  --color-dark-gray-8: #2A2A2A; /* hsl(0, 0%, 16%) · background */
+  --color-blue-4: #50A2FF; /* hsl(212, 100%, 66%) · text */
+  --color-blue-5: #2D7DFF; /* hsl(217, 100%, 59%) · background */
+  --color-dark-gray-9: #111111; /* hsl(0, 0%, 7%) · background */
+  --color-dark-blue: #172736; /* hsl(209, 40%, 15%) · text */
+  --color-blue-6: #0007CD; /* hsl(238, 100%, 40%) · text */
+  --color-light-green: #A5D6A7; /* hsl(122, 37%, 74%) · text */
+  --color-orange-2: #C4956A; /* hsl(29, 43%, 59%) · background */
+  --color-light-gray-6: #E8E8E8; /* hsl(0, 0%, 91%) · background */
+  --color-red: #FF5F57; /* hsl(3, 100%, 67%) · background */
+  --color-orange-3: #FEBC2E; /* hsl(41, 99%, 59%) · background */
+  --color-green-2: #28C840; /* hsl(129, 67%, 47%) · background */
+  --color-orange-4: #D87756; /* hsl(15, 63%, 59%) · text */
+  --color-blue-7: #8B5CF6; /* hsl(258, 90%, 66%) · text */
+  --color-orange-5: #F0A46C; /* hsl(25, 81%, 68%) · text */
+  --color-cyan-3: rgba(63, 255, 221, 0.3); /* hsl(170, 100%, 62%) · other */
+  --color-mid-gray-2: #818181; /* hsl(0, 0%, 51%) · border */
+  --color-dark-blue-2: #312E81; /* hsl(242, 47%, 34%) · gradient */
+  --color-dark-purple: #4C1D95; /* hsl(264, 67%, 35%) · gradient */
+  --color-dark-red: #831843; /* hsl(336, 69%, 30%) · gradient */
+  --color-dark-red-2: #9A3412; /* hsl(15, 79%, 34%) · gradient */
+  --color-blue-8: #6366F1; /* hsl(239, 84%, 67%) · gradient */
+  --color-purple: #A855F7; /* hsl(271, 91%, 65%) · gradient */
+  --color-red-2: #EC4899; /* hsl(330, 81%, 60%) · gradient */
+  --color-orange-6: #F97316; /* hsl(25, 95%, 53%) · gradient */
+  --color-cyan-4: rgba(0, 255, 255, 0.12); /* hsl(180, 100%, 50%) · background */
+  --color-blue-9: #0096FF; /* hsl(205, 100%, 50%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 5.5px;
+  --font-size-xs: 7.5px;
+  --font-size-sm: 8px;
+  --font-size-base: 9px;
+  --font-size-lg: 10px;
+  --font-size-xl: 11px;
+  --font-size-2xl: 12px;
+  --font-size-3xl: 13px;
+  --font-size-4xl: 14px;
+  --font-size-5xl: 15px;
+  --font-size-6xl: 16px;
+  --font-size-18px: 18px;
+  --font-size-20px: 20px;
+  --font-size-24px: 24px;
+  --font-size-28px: 28px;
+  --font-size-40px: 40px;
+  --font-size-48px: 48px;
+  --font-size-64px: 64px;
+  --font-family-base: abcDiatype;
+  --font-family-2: JetBrains Mono;
+  --font-family-3: monospace;
+  --font-family-4: Menlo;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 6.325px;
+  --line-height-snug: 9.375px;
+  --line-height-normal: 10.6667px;
+  --line-height-relaxed: 12px;
+  --line-height-loose: 12.5px;
+  --line-height-lh-6: 13.5px;
+  --line-height-lh-7: 14.6667px;
+  --line-height-lh-8: 16px;
+  --line-height-lh-9: 16.5px;
+  --line-height-lh-10: 17.6px;
+  --line-height-lh-11: 18.7px;
+  --line-height-lh-12: 19.5px;
+  --line-height-lh-13: 21px;
+  --line-height-lh-14: 21.6px;
+  --line-height-lh-15: 22.75px;
+  --line-height-lh-16: 24px;
+  --line-height-lh-17: 28.8px;
+  --line-height-lh-18: 33.6px;
+  --line-height-lh-19: 40px;
+  --line-height-lh-20: 43.2px;
+  --line-height-lh-21: 48px;
+  --line-height-lh-22: 55.68px;
+  --line-height-lh-23: 60px;
+  --letter-spacing-tight: -0.98px;
+  --letter-spacing-normal: -0.32px;
+  --letter-spacing-wide: -0.28px;
+  --letter-spacing-wider: -0.24px;
+  --letter-spacing-widest: -0.22px;
+  --letter-spacing-ls-6: 0.3px;
+  --letter-spacing-ls-7: 0.4px;
+  --letter-spacing-ls-8: 0.45px;
+  --letter-spacing-ls-9: 0.5px;
+  --letter-spacing-ls-10: 0.55px;
+  --letter-spacing-ls-11: 0.7px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 7px;
+  --space-6: 8px;
+  --space-8: 10px;
+  --space-10: 12px;
+  --space-12: 14px;
+  --space-16: 16px;
+  --space-20: 18px;
+  --space-24: 79px;
+  --space-32: 24px;
+  --space-40: 26px;
+  --space-48: 28px;
+  --space-64: 30px;
+  --space-80: 32px;
+  --space-96: 40px;
+  --space-128: 48px;
+  --space-160: 64px;
+  --space-192: 72px;
+  --space-256: 72.5078px;
+  --space-23: 73px;
+  --space-25: 80px;
+  --space-26: 86px;
+  --space-27: 96px;
+  --space-28: 160px;
+  --space-29: 180px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 2px 2px 0px;
+  --radius-md: 2px;
+  --radius-lg: 2px 0px 0px 2px;
+  --radius-xl: 4px;
+  --radius-2xl: 24px;
+  --radius-full: 28px;
+  --radius-r7: 37px;
+  --radius-r8: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.15) 4px 4px 0px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.5) 0px 8px 32px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  --shadow-xl: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.5) 0px 0px 40px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 3;
+  --z-4: 5;
+  --z-5: 10;
+  --z-6: 20;
+  --z-7: 50;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+  --opacity-35: 0.35;
+  --opacity-70: 0.7;
+  --opacity-72: 0.72;
+  --opacity-73: 0.73;
+  --opacity-80: 0.8;
+  --opacity-85: 0.85;
+  --opacity-90: 0.9;
+  --opacity-92: 0.92;
+}

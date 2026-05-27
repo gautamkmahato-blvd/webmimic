@@ -1,0 +1,225 @@
+/* ============================================
+ * Design Tokens — Spotify - Web Player: Music for everyone
+ * Source: https://open.spotify.com/
+ * Generated: 18/04/2026, 13:50:20
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-gray: #B3B3B3; /* hsl(0, 0%, 70%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-mid-gray: #696969; /* hsl(0, 0%, 41%) · text */
+  --color-green: #1ED760; /* hsl(141, 76%, 48%) · background */
+  --color-dark-gray: #555555; /* hsl(0, 0%, 33%) · text */
+  --color-mid-gray-2: #7C7C7C; /* hsl(0, 0%, 49%) · text */
+  --color-dark-gray-2: #1F1F1F; /* hsl(0, 0%, 12%) · background */
+  --color-dark-gray-3: #121212; /* hsl(0, 0%, 7%) · background */
+  --color-white-2: #F8F8F8; /* hsl(0, 0%, 97%) · background */
+  --color-green-2: #468254; /* hsl(134, 30%, 39%) · background */
+  --color-blue: #3860BE; /* hsl(222, 54%, 48%) · background */
+  --color-dark-green: #346E4A; /* hsl(143, 36%, 32%) · background */
+  --color-dark-gray-4: #656565; /* hsl(0, 0%, 40%) · text */
+  --color-blue-2: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-dark-gray-5: #101010; /* hsl(0, 0%, 6%) · text */
+  --color-mid-gray-3: #777777; /* hsl(0, 0%, 47%) · background */
+  --color-mid-gray-4: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-dark-gray-6: #292929; /* hsl(0, 0%, 16%) · background */
+  --color-dark-gray-7: #2A2A2A; /* hsl(0, 0%, 16%) · gradient */
+  --color-dark-gray-8: #333333; /* hsl(0, 0%, 20%) · background */
+  --color-dark-red: #680808; /* hsl(0, 86%, 22%) · background */
+  --color-cyan: #438080; /* hsl(180, 31%, 38%) · background */
+  --color-orange: #A86741; /* hsl(22, 44%, 46%) · background */
+  --color-cyan-2: #4F7F77; /* hsl(170, 23%, 40%) · background */
+  --color-cyan-3: #32AE88; /* hsl(162, 55%, 44%) · border */
+  --color-light-gray-2: #C7C5C7; /* hsl(300, 2%, 78%) · shadow */
+  --color-green-3: #1DB954; /* hsl(141, 73%, 42%) · background */
+  --color-light-gray-3: #C1C1C1; /* hsl(0, 0%, 76%) · border */
+  --color-pink: #AF2896; /* hsl(311, 63%, 42%) · gradient */
+  --color-blue-3: #509BF5; /* hsl(213, 89%, 64%) · gradient */
+  --color-light-gray-4: #C5C5C5; /* hsl(0, 0%, 77%) · text */
+  --color-dark-gray-9: #535353; /* hsl(0, 0%, 33%) · background */
+  --color-red: #A9635C; /* hsl(5, 31%, 51%) · background */
+  --color-dark-red-2: #481008; /* hsl(8, 80%, 16%) · background */
+  --color-pink-2: #E10096; /* hsl(320, 100%, 44%) · background */
+  --color-dark-red-3: #A01010; /* hsl(0, 82%, 35%) · background */
+  --color-green-4: #617F52; /* hsl(100, 22%, 41%) · background */
+  --color-dark-gray-10: #404040; /* hsl(0, 0%, 25%) · background */
+  --color-dark-red-4: #900808; /* hsl(0, 89%, 30%) · background */
+  --color-red-2: #985058; /* hsl(353, 31%, 45%) · background */
+  --color-cyan-4: #637C7C; /* hsl(180, 11%, 44%) · background */
+  --color-dark-yellow: #857809; /* hsl(54, 87%, 28%) · background */
+  --color-dark-blue: #284050; /* hsl(204, 33%, 24%) · background */
+  --color-dark-blue-2: #284058; /* hsl(210, 38%, 25%) · background */
+  --color-blue-4: #4078B0; /* hsl(210, 47%, 47%) · background */
+  --color-cyan-5: #5F7D75; /* hsl(164, 14%, 43%) · background */
+  --color-dark-red-5: #582018; /* hsl(8, 57%, 22%) · background */
+  --color-dark-red-6: #682828; /* hsl(0, 44%, 28%) · background */
+  --color-dark-cyan: #0080AF; /* hsl(196, 100%, 34%) · background */
+  --color-dark-gray-11: #484048; /* hsl(300, 6%, 27%) · background */
+  --color-dark-gray-12: #383840; /* hsl(240, 7%, 24%) · background */
+  --color-blue-5: #6A7983; /* hsl(204, 11%, 46%) · background */
+  --color-blue-6: #3818A0; /* hsl(254, 74%, 36%) · background */
+  --color-red-3: #804038; /* hsl(7, 39%, 36%) · background */
+  --color-cyan-6: #3D8282; /* hsl(180, 36%, 37%) · background */
+  --color-dark-red-7: #501810; /* hsl(8, 67%, 19%) · background */
+  --color-red-4: #A85050; /* hsl(0, 35%, 49%) · background */
+  --color-orange-2: #A16B20; /* hsl(35, 67%, 38%) · background */
+  --color-dark-red-8: #481818; /* hsl(0, 50%, 19%) · background */
+  --color-dark-purple: #302048; /* hsl(264, 38%, 20%) · background */
+  --color-purple: #584870; /* hsl(264, 22%, 36%) · background */
+  --color-dark-green-2: #384030; /* hsl(90, 14%, 22%) · background */
+  --color-orange-3: #A3694F; /* hsl(19, 35%, 47%) · background */
+  --color-red-5: #A4646F; /* hsl(350, 26%, 52%) · background */
+  --color-mid-gray-5: #767676; /* hsl(0, 0%, 46%) · background */
+  --color-green-5: #697F37; /* hsl(78, 40%, 36%) · background */
+  --color-blue-7: #6F74A4; /* hsl(234, 23%, 54%) · background */
+  --color-red-6: #C0574A; /* hsl(7, 48%, 52%) · background */
+  --color-purple-2: #8E69A3; /* hsl(278, 24%, 53%) · background */
+  --color-purple-3: #703090; /* hsl(280, 50%, 38%) · background */
+  --color-red-7: #B82810; /* hsl(9, 84%, 39%) · background */
+  --color-dark-blue-3: #183860; /* hsl(213, 60%, 24%) · background */
+  --color-dark-cyan-2: #106850; /* hsl(164, 73%, 24%) · background */
+  --color-dark-cyan-3: #1B8857; /* hsl(153, 67%, 32%) · background */
+  --color-dark-cyan-4: #086050; /* hsl(169, 85%, 20%) · background */
+  --color-dark-gray-13: #282828; /* hsl(0, 0%, 16%) · background */
+  --color-light-gray-5: #EEEEEE; /* hsl(0, 0%, 93%) · background */
+  --color-mid-gray-6: #999999; /* hsl(0, 0%, 60%) · shadow */
+  --color-white-3: #F9FFFA; /* hsl(130, 100%, 99%) · background */
+  --color-light-gray-6: #D8D8D8; /* hsl(0, 0%, 85%) · border */
+  --color-mid-gray-7: #707070; /* hsl(0, 0%, 44%) · border */
+  --color-dark-blue-4: #2E3644; /* hsl(218, 19%, 22%) · fill */
+  --color-light-gray-7: #BBBBBB; /* hsl(0, 0%, 73%) · border */
+  --color-white-4: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 12.992px;
+  --font-size-sm: 13.008px;
+  --font-size-base: 13.3333px;
+  --font-size-lg: 13.6px;
+  --font-size-xl: 14px;
+  --font-size-2xl: 14.4px;
+  --font-size-3xl: 16px;
+  --font-size-4xl: 24px;
+  --font-family-base: Times;
+  --font-family-2: SpotifyMixUI;
+  --font-family-3: SpotifyMixUITitle;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 12px;
+  --line-height-snug: 14.4px;
+  --line-height-normal: 16.9104px;
+  --line-height-relaxed: 17.6px;
+  --line-height-loose: 19.488px;
+  --line-height-lh-6: 20.8px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 38px;
+  --letter-spacing-tight: 0.144px;
+  --letter-spacing-normal: 0.16px;
+  --letter-spacing-wide: 1.2px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 7px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 11px;
+  --space-10: 12px;
+  --space-12: 15px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 20.3208px;
+  --space-32: 24px;
+  --space-40: 28px;
+  --space-48: 32px;
+  --space-64: 36px;
+  --space-80: 40px;
+  --space-96: 48px;
+  --space-128: 64px;
+  --space-160: 96px;
+  --space-192: 110.914px;
+  --space-256: 153.727px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 12px;
+  --radius-sm: 2px;
+  --radius-md: 2.5px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+  --radius-full: 8px;
+  --radius-r7: 10px;
+  --radius-r8: 16px;
+  --radius-r9: 17px;
+  --radius-r10: 20px;
+  --radius-r11: 32px;
+  --radius-r12: 50%;
+  --radius-r13: 50px;
+  --radius-r14: 500px;
+  --radius-r15: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.5) 0px 8px 24px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.3) 0px 8px 8px 0px;
+  --shadow-lg: rgb(18, 18, 18) 0px 1px 0px 0px, rgb(124, 124, 124) 0px 0px 0px 1px inset;
+  --shadow-xl: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;
+  --shadow-shadow-5: rgb(128, 128, 128) 0px 0px 5px 0px;
+  --shadow-shadow-6: rgb(124, 124, 124) 0px 0px 0px 1px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.22s;
+  --duration-slower: 0.25s;
+  --duration-duration-6: 0.3s;
+  --duration-duration-7: 0.5s;
+  --duration-duration-8: 1s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in: ease-in;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 4;
+  --z-6: 5;
+  --z-7: 6;
+  --z-8: 7;
+  --z-9: 100;
+  --z-10: 9999;
+  --z-11: 2147483645;
+  --z-12: 2147483646;
+  --z-13: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 425px;
+  --breakpoint-md: 426px;
+  --breakpoint-lg: 500px;
+  --breakpoint-xl: 530px;
+  --breakpoint-2xl: 550px;
+  --breakpoint-3xl: 599.95px;
+  --breakpoint-bp-8: 600px;
+  --breakpoint-bp-9: 768px;
+  --breakpoint-bp-10: 769px;
+  --breakpoint-bp-11: 890px;
+  --breakpoint-bp-12: 896px;
+  --breakpoint-bp-13: 897px;
+  --breakpoint-bp-14: 992px;
+  --breakpoint-bp-15: 1023px;
+  --breakpoint-bp-16: 1024px;
+  --breakpoint-bp-17: 1280px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-70: 0.7;
+}

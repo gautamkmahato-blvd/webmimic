@@ -1,0 +1,165 @@
+/* ============================================
+ * Design Tokens — New Project
+ * Source: https://vercel.com/new
+ * Generated: 18/04/2026, 14:14:51
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #EBEBEB; /* hsl(0, 0%, 92%) · border */
+  --color-dark-gray: #171717; /* hsl(0, 0%, 9%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-2: #4D4D4D; /* hsl(0, 0%, 30%) · text */
+  --color-white-2: #FAFAFA; /* hsl(0, 0%, 98%) · background */
+  --color-mid-gray: #8F8F8F; /* hsl(0, 0%, 56%) · text */
+  --color-light-gray-2: #E6E6E6; /* hsl(0, 0%, 90%) · border */
+  --color-orange: #C15F3C; /* hsl(16, 53%, 50%) · text */
+  --color-blue: #007CF0; /* hsl(209, 100%, 47%) · gradient */
+  --color-mid-gray-2: #7D7D7D; /* hsl(0, 0%, 49%) · text */
+  --color-blue-2: #006BFF; /* hsl(215, 100%, 50%) · text */
+  --color-dark-gray-3: #1F1F1F; /* hsl(0, 0%, 12%) · border */
+  --color-cyan: #00DFD8; /* hsl(178, 100%, 44%) · gradient */
+  --color-pink: #FF0080; /* hsl(330, 100%, 50%) · gradient */
+  --color-light-gray-3: #EAEAEA; /* hsl(0, 0%, 92%) · border */
+  --color-dark-gray-4: #444444; /* hsl(0, 0%, 27%) · text */
+  --color-dark-gray-5: #24292E; /* hsl(210, 12%, 16%) · background */
+  --color-blue-3: #6B4FBB; /* hsl(256, 44%, 52%) · background */
+  --color-blue-4: #0052CC; /* hsl(216, 100%, 40%) · background */
+  --color-mid-gray-3: #A8A8A8; /* hsl(0, 0%, 66%) · text */
+  --color-light-gray-4: #DBDBDB; /* hsl(0, 0%, 86%) · other */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 13px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 24px;
+  --font-size-lg: 32px;
+  --font-family-base: Geist;
+  --font-family-2: Geist Mono;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 18px;
+  --line-height-snug: 20px;
+  --line-height-normal: 24px;
+  --line-height-relaxed: 32px;
+  --line-height-loose: 40px;
+  --letter-spacing-tight: -1.28px;
+  --letter-spacing-normal: -0.96px;
+  --letter-spacing-wide: -0.32px;
+  --letter-spacing-wider: -0.28px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 12px;
+  --space-10: 16px;
+  --space-12: 20px;
+  --space-16: 23px;
+  --space-20: 24px;
+  --space-24: 32px;
+  --space-32: 48px;
+  --space-40: 50.9531px;
+  --space-48: 60.2188px;
+  --space-64: 60.2266px;
+  --space-80: 61.0859px;
+  --space-96: 61.0938px;
+  --space-128: 64px;
+  --space-160: 127.891px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 8px 8px 0px;
+  --radius-md: 6px;
+  --radius-lg: 6px 0px 0px 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 100%;
+  --radius-full: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px inset;
+  --shadow-md: rgb(235, 235, 235) 0px 0px 0px 1px;
+  --shadow-lg: rgba(0, 0, 0, 0.12) 0px 5px 10px 0px;
+  --shadow-xl: rgb(255, 255, 255) 0px 0px 0px 2px, oklch(0.5761 0.2508 258.23) 0px 0px 0px 4px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  --shadow-shadow-6: rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.02) 0px 1px 1px 0px, rgba(0, 0, 0, 0.04) 0px 4px 8px 0px, rgb(250, 250, 250) 0px 0px 0px 1px, rgb(255, 255, 255) 0px 0px 0px 1px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1000;
+  --z-2: 100000;
+  --z-3: 1000000;
+  --z-4: 999999999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 360px;
+  --breakpoint-sm: 370px;
+  --breakpoint-md: 380px;
+  --breakpoint-lg: 400px;
+  --breakpoint-xl: 401px;
+  --breakpoint-2xl: 410px;
+  --breakpoint-3xl: 420px;
+  --breakpoint-bp-8: 427px;
+  --breakpoint-bp-9: 428px;
+  --breakpoint-bp-10: 430px;
+  --breakpoint-bp-11: 440px;
+  --breakpoint-bp-12: 450px;
+  --breakpoint-bp-13: 456px;
+  --breakpoint-bp-14: 470px;
+  --breakpoint-bp-15: 480px;
+  --breakpoint-bp-16: 500px;
+  --breakpoint-bp-17: 513px;
+  --breakpoint-bp-18: 514px;
+  --breakpoint-bp-19: 540px;
+  --breakpoint-bp-20: 544px;
+  --breakpoint-bp-21: 600px;
+  --breakpoint-bp-22: 601px;
+  --breakpoint-bp-23: 640px;
+  --breakpoint-bp-24: 660px;
+  --breakpoint-bp-25: 670px;
+  --breakpoint-bp-26: 690px;
+  --breakpoint-bp-27: 700px;
+  --breakpoint-bp-28: 701px;
+  --breakpoint-bp-29: 710px;
+  --breakpoint-bp-30: 711px;
+  --breakpoint-bp-31: 736px;
+  --breakpoint-bp-32: 745px;
+  --breakpoint-bp-33: 750px;
+  --breakpoint-bp-34: 768px;
+  --breakpoint-bp-35: 769px;
+  --breakpoint-bp-36: 780px;
+  --breakpoint-bp-37: 800px;
+  --breakpoint-bp-38: 860px;
+  --breakpoint-bp-39: 960px;
+  --breakpoint-bp-40: 961px;
+  --breakpoint-bp-41: 992px;
+  --breakpoint-bp-42: 997px;
+  --breakpoint-bp-43: 1024px;
+  --breakpoint-bp-44: 1040px;
+  --breakpoint-bp-45: 1048px;
+  --breakpoint-bp-46: 1050px;
+  --breakpoint-bp-47: 1060px;
+  --breakpoint-bp-48: 1070px;
+  --breakpoint-bp-49: 1150px;
+  --breakpoint-bp-50: 1151px;
+  --breakpoint-bp-51: 1200px;
+  --breakpoint-bp-52: 1240px;
+  --breakpoint-bp-53: 1248px;
+  --breakpoint-bp-54: 1250px;
+  --breakpoint-bp-55: 1280px;
+  --breakpoint-bp-56: 1400px;
+  --breakpoint-bp-57: 1480px;
+
+  /* ── Opacity ── */
+  --opacity-40: 0.4;
+  --opacity-60: 0.6;
+}

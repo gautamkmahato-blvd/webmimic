@@ -1,0 +1,228 @@
+/* ============================================
+ * Design Tokens — Official Ferrari website
+ * Source: https://www.ferrari.com/en-IN
+ * Generated: 15/04/2026, 00:27:36
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray: #181818; /* hsl(0, 0%, 9%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-2: #666666; /* hsl(0, 0%, 40%) · background */
+  --color-light-gray: #DDDDDD; /* hsl(0, 0%, 87%) · background */
+  --color-mid-gray: #999999; /* hsl(0, 0%, 60%) · text */
+  --color-dark-gray-3: #555555; /* hsl(0, 0%, 33%) · background */
+  --color-light-gray-2: #CCCCCC; /* hsl(0, 0%, 80%) · border */
+  --color-dark-gray-4: #333333; /* hsl(0, 0%, 20%) · background */
+  --color-mid-gray-2: #8F8F8F; /* hsl(0, 0%, 56%) · text */
+  --color-light-gray-3: #E4E4E4; /* hsl(0, 0%, 89%) · text */
+  --color-red: #FF0000; /* hsl(0, 100%, 50%) · text */
+  --color-dark-gray-5: #222222; /* hsl(0, 0%, 13%) · background */
+  --color-dark-blue: #27455C; /* hsl(206, 40%, 26%) · background */
+  --color-dark-gray-6: #656565; /* hsl(0, 0%, 40%) · text */
+  --color-blue: #3860BE; /* hsl(222, 54%, 48%) · background */
+  --color-red-2: #EB2323; /* hsl(0, 83%, 53%) · background */
+  --color-mid-gray-3: #ABABAB; /* hsl(0, 0%, 67%) · background */
+  --color-mid-gray-4: #A0A0A0; /* hsl(0, 0%, 63%) · border */
+  --color-cyan: #32AE88; /* hsl(162, 55%, 44%) · border */
+  --color-green: #468254; /* hsl(134, 30%, 39%) · background */
+  --color-light-gray-4: #C7C5C7; /* hsl(300, 2%, 78%) · shadow */
+  --color-dark-gray-7: #303030; /* hsl(0, 0%, 19%) · background */
+  --color-white-2: #F9FFFA; /* hsl(130, 100%, 99%) · background */
+  --color-light-gray-5: #D8D8D8; /* hsl(0, 0%, 85%) · border */
+  --color-light-gray-6: #D1D1D1; /* hsl(0, 0%, 82%) · border */
+  --color-dark-blue-2: #2E3644; /* hsl(218, 19%, 22%) · fill */
+  --color-light-gray-7: #BBBBBB; /* hsl(0, 0%, 73%) · border */
+  --color-white-3: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+  --color-blue-2: #146FF8; /* hsl(216, 94%, 53%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 7px;
+  --font-size-xs: 9px;
+  --font-size-sm: 10px;
+  --font-size-base: 11px;
+  --font-size-lg: 12px;
+  --font-size-xl: 13px;
+  --font-size-2xl: 13.008px;
+  --font-size-3xl: 13.3333px;
+  --font-size-4xl: 13.6px;
+  --font-size-5xl: 14px;
+  --font-size-6xl: 14.08px;
+  --font-size-14px: 14.4px;
+  --font-size-16px: 16px;
+  --font-size-18px: 18px;
+  --font-size-21px: 21.3333px;
+  --font-size-26px: 26px;
+  --font-family-base: Times;
+  --font-family-2: FerrariSans;
+  --font-family-3: Body-Font;
+  --font-family-4: Arial;
+  --font-family-5: Helvetica;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 12px;
+  --line-height-snug: 13.5px;
+  --line-height-normal: 15.24px;
+  --line-height-relaxed: 15.6096px;
+  --line-height-loose: 17.6px;
+  --line-height-lh-6: 19.5px;
+  --line-height-lh-7: 20.8px;
+  --line-height-lh-8: 21.6px;
+  --line-height-lh-9: 24px;
+  --line-height-lh-10: 25px;
+  --line-height-lh-11: 32px;
+  --line-height-lh-12: 34px;
+  --line-height-lh-13: 39px;
+  --letter-spacing-tight: 0.08px;
+  --letter-spacing-normal: 0.13008px;
+  --letter-spacing-wide: 0.195px;
+  --letter-spacing-wider: 0.96px;
+  --letter-spacing-widest: 1px;
+  --letter-spacing-ls-6: 1.28px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 0.0703125px;
+  --space-2: 1px;
+  --space-3: 3.53906px;
+  --space-4: 3.54688px;
+  --space-5: 5px;
+  --space-6: 6px;
+  --space-8: 6.15625px;
+  --space-10: 8.30469px;
+  --space-12: 8.3125px;
+  --space-16: 10px;
+  --space-20: 11.3906px;
+  --space-24: 22.3906px;
+  --space-32: 33.7656px;
+  --space-40: 42.6797px;
+  --space-48: 50.6328px;
+  --space-64: 15.7266px;
+  --space-80: 15.7344px;
+  --space-96: 16px;
+  --space-128: 17.6484px;
+  --space-160: 18.7969px;
+  --space-192: 20px;
+  --space-256: 20.7266px;
+  --space-23: 20.7891px;
+  --space-25: 24px;
+  --space-26: 25px;
+  --space-27: 30px;
+  --space-28: 32px;
+  --space-29: 32.7031px;
+  --space-30: 32.7109px;
+  --space-31: 33.5781px;
+  --space-33: 33.7734px;
+  --space-34: 34.5391px;
+  --space-35: 37.0547px;
+  --space-36: 37.0625px;
+  --space-37: 40px;
+  --space-38: 40.8594px;
+  --space-39: 42.6719px;
+  --space-41: 43.7031px;
+  --space-42: 47.5234px;
+  --space-43: 47.5312px;
+  --space-44: 48px;
+  --space-45: 50px;
+  --space-46: 50.5547px;
+  --space-47: 50.5625px;
+  --space-49: 50.6406px;
+  --space-50: 50.8828px;
+  --space-51: 51px;
+  --space-52: 51.0078px;
+  --space-53: 53.5156px;
+  --space-54: 53.5234px;
+  --space-55: 55.6328px;
+  --space-56: 58.3047px;
+  --space-57: 62.1328px;
+  --space-58: 63.7891px;
+  --space-59: 63.7969px;
+  --space-60: 64.0234px;
+  --space-61: 226.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 6px;
+  --border-width-thick: 12px;
+  --radius-sm: 1px;
+  --radius-md: 2px;
+  --radius-lg: 2.5px;
+  --radius-xl: 3px;
+  --radius-2xl: 8px;
+  --radius-full: 17px;
+  --radius-r7: 20px;
+  --radius-r8: 50%;
+  --radius-r9: 50px;
+  --radius-r10: 100%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgb(153, 153, 153) 1px 1px 1px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.2) 0px 0px 18px 0px;
+  --shadow-lg: rgb(153, 153, 153) 0px 2px 10px -3px;
+  --shadow-xl: rgb(199, 197, 199) -3px -3px 5px -2px;
+  --shadow-shadow-5: rgb(199, 197, 199) 0px 0px 12px 2px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.25s;
+  --duration-slower: 0.3s;
+  --duration-duration-6: 0.4s;
+  --duration-duration-7: 0.5s;
+  --easing-ease-out: ease-out;
+  --easing-linear: linear;
+  --easing-ease-in: ease-in;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 3;
+  --z-4: 20;
+  --z-5: 100;
+  --z-6: 200;
+  --z-7: 700;
+  --z-8: 750;
+  --z-9: 1000;
+  --z-10: 6000;
+  --z-11: 9999;
+  --z-12: 10000;
+  --z-13: 10100;
+  --z-14: 10101;
+  --z-15: 10102;
+  --z-16: 10103;
+  --z-17: 99999999;
+  --z-18: 2147483645;
+  --z-19: 2147483646;
+  --z-20: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 375px;
+  --breakpoint-md: 400px;
+  --breakpoint-lg: 425px;
+  --breakpoint-xl: 426px;
+  --breakpoint-2xl: 428px;
+  --breakpoint-3xl: 520px;
+  --breakpoint-bp-8: 530px;
+  --breakpoint-bp-9: 550px;
+  --breakpoint-bp-10: 600px;
+  --breakpoint-bp-11: 601px;
+  --breakpoint-bp-12: 640px;
+  --breakpoint-bp-13: 711px;
+  --breakpoint-bp-14: 768px;
+  --breakpoint-bp-15: 812px;
+  --breakpoint-bp-16: 823px;
+  --breakpoint-bp-17: 896px;
+  --breakpoint-bp-18: 961px;
+  --breakpoint-bp-19: 1200px;
+  --breakpoint-bp-20: 1281px;
+  --breakpoint-bp-21: 1601px;
+  --breakpoint-bp-22: 1920px;
+
+  /* ── Opacity ── */
+  --opacity-70: 0.7;
+}

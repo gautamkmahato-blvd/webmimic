@@ -1,0 +1,182 @@
+/* ============================================
+ * Design Tokens — Binance: The World’s Most Trusted Cryptocurrency Exchange to Buy, Trade & Invest in Crypto
+ * Source: https://www.binance.com/en-IN
+ * Generated: 14/04/2026, 13:24:26
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #EAECEF; /* hsl(216, 14%, 93%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-yellow: #F0B90B; /* hsl(46, 91%, 49%) · text */
+  --color-blue: #707A8A; /* hsl(217, 10%, 49%) · text */
+  --color-yellow-2: #FCD535; /* hsl(48, 97%, 60%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue-2: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-dark-blue: #202630; /* hsl(218, 20%, 16%) · background */
+  --color-blue-3: #929AA5; /* hsl(215, 10%, 61%) · text */
+  --color-dark-gray: #555555; /* hsl(0, 0%, 33%) · text */
+  --color-cyan: #2EBD85; /* hsl(157, 61%, 46%) · text */
+  --color-dark-gray-2: #2B3139; /* hsl(214, 14%, 20%) · background */
+  --color-dark-gray-3: #181A20; /* hsl(225, 14%, 11%) · background */
+  --color-blue-4: #5F82D3; /* hsl(222, 57%, 60%) · text */
+  --color-dark-gray-4: #12161C; /* hsl(216, 22%, 9%) · background */
+  --color-dark-blue-2: #27455C; /* hsl(206, 40%, 26%) · background */
+  --color-dark-blue-3: #333B47; /* hsl(216, 16%, 24%) · background */
+  --color-dark-gray-5: #656565; /* hsl(0, 0%, 40%) · text */
+  --color-blue-5: #76808F; /* hsl(216, 10%, 51%) · fill */
+  --color-dark-gray-6: rgba(24, 26, 32, 0.08); /* hsl(240, 19%, 13%) · shadow */
+  --color-dark-blue-4: #29313D; /* hsl(216, 20%, 20%) · background */
+  --color-blue-6: #3860BE; /* hsl(222, 54%, 48%) · background */
+  --color-dark-blue-5: #434C5A; /* hsl(217, 15%, 31%) · border */
+  --color-green: #468254; /* hsl(134, 30%, 39%) · background */
+  --color-red: #F6465D; /* hsl(352, 91%, 62%) · text */
+  --color-cyan-2: #32AE88; /* hsl(162, 55%, 44%) · border */
+  --color-mid-gray: #696969; /* hsl(0, 0%, 41%) · text */
+  --color-light-gray-2: #C7C5C7; /* hsl(300, 2%, 78%) · shadow */
+  --color-white-2: #FEF1F2; /* hsl(355, 87%, 97%) · background */
+  --color-dark-gray-7: #1E2329; /* hsl(213, 15%, 14%) · background */
+  --color-mid-gray-2: #999999; /* hsl(0, 0%, 60%) · shadow */
+  --color-white-3: #F9FFFA; /* hsl(130, 100%, 99%) · background */
+  --color-light-gray-3: #D8D8D8; /* hsl(0, 0%, 85%) · border */
+  --color-light-gray-4: #D1D1D1; /* hsl(0, 0%, 82%) · border */
+  --color-dark-blue-6: #2E3644; /* hsl(218, 19%, 22%) · fill */
+  --color-light-gray-5: #BBBBBB; /* hsl(0, 0%, 73%) · border */
+  --color-white-4: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 12.992px;
+  --font-size-sm: 13.008px;
+  --font-size-base: 13.6px;
+  --font-size-lg: 14px;
+  --font-size-xl: 14.4px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 28px;
+  --font-size-5xl: 32px;
+  --font-size-6xl: 40px;
+  --font-size-64px: 64px;
+  --font-size-72px: 72px;
+  --font-family-base: Times;
+  --font-family-2: BinanceNova;
+  --font-family-3: BinancePlex;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 12px;
+  --line-height-snug: 14.4px;
+  --line-height-normal: 16px;
+  --line-height-relaxed: 16.9104px;
+  --line-height-loose: 17.6px;
+  --line-height-lh-6: 19.488px;
+  --line-height-lh-7: 19.6px;
+  --line-height-lh-8: 20.8px;
+  --line-height-lh-9: 22px;
+  --line-height-lh-10: 24px;
+  --line-height-lh-11: 28px;
+  --line-height-lh-12: 32px;
+  --line-height-lh-13: 40px;
+  --line-height-lh-14: 48px;
+  --line-height-lh-15: 64px;
+  --line-height-lh-16: 76px;
+  --letter-spacing-tight: 0.13008px;
+  --letter-spacing-normal: 0.144px;
+  --letter-spacing-wide: 0.16px;
+  --letter-spacing-wider: 0.7px;
+  --letter-spacing-widest: 0.96px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 3px;
+  --space-3: 4px;
+  --space-4: 5px;
+  --space-5: 6px;
+  --space-6: 7px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 11px;
+  --space-16: 12px;
+  --space-20: 16px;
+  --space-24: 120px;
+  --space-32: 24px;
+  --space-40: 32px;
+  --space-48: 36px;
+  --space-64: 40px;
+  --space-80: 44px;
+  --space-96: 48px;
+  --space-128: 63px;
+  --space-160: 64px;
+  --space-192: 67px;
+  --space-256: 72px;
+  --space-23: 80px;
+  --space-25: 288.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 3px;
+  --border-width-base: 12px;
+  --radius-sm: 0px 0px 8px 8px;
+  --radius-md: 1px;
+  --radius-lg: 2px;
+  --radius-xl: 2.5px;
+  --radius-2xl: 3px;
+  --radius-full: 4px;
+  --radius-r7: 6px;
+  --radius-r8: 8px;
+  --radius-r9: 10px;
+  --radius-r10: 12px;
+  --radius-r11: 16px;
+  --radius-r12: 17px;
+  --radius-r13: 20px;
+  --radius-r14: 24px;
+  --radius-r15: 50%;
+  --radius-r16: 50px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(24, 26, 32, 0.08) 0px 8px 8px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.4) -2px 0px 14px 0px, rgba(0, 0, 0, 0.2) 0px 0px 6px 0px, rgba(255, 255, 255, 0.2) 0px 0px 2px 0px inset;
+  --shadow-lg: rgb(153, 153, 153) 0px 2px 10px -3px;
+  --shadow-xl: rgb(199, 197, 199) -3px -3px 5px -2px;
+  --shadow-shadow-5: rgb(199, 197, 199) 0px 0px 12px 2px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.25s;
+  --duration-slower: 0.4s;
+  --duration-duration-6: 0.7s;
+  --duration-duration-7: 1s;
+  --easing-ease-in-out: ease-in-out;
+  --easing-linear: linear;
+  --easing-ease-out: ease-out;
+  --easing-ease-in: ease-in;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 3;
+  --z-3: 998;
+  --z-4: 999;
+  --z-5: 1300;
+  --z-6: 1400;
+  --z-7: 2147483645;
+  --z-8: 2147483646;
+  --z-9: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 425px;
+  --breakpoint-md: 426px;
+  --breakpoint-lg: 500px;
+  --breakpoint-xl: 530px;
+  --breakpoint-2xl: 550px;
+  --breakpoint-3xl: 600px;
+  --breakpoint-bp-8: 767px;
+  --breakpoint-bp-9: 768px;
+  --breakpoint-bp-10: 896px;
+
+  /* ── Opacity ── */
+  --opacity-40: 0.4;
+}

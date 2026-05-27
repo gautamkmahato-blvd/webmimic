@@ -1,0 +1,301 @@
+/* ============================================
+ * Design Tokens — VoltAgent - Open Source TypeScript AI Agent Framework
+ * Source: https://voltagent.dev/
+ * Generated: 18/04/2026, 14:15:38
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #262626; /* hsl(0, 0%, 15%) · border */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-light-gray: #F2F2F2; /* hsl(0, 0%, 95%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · text */
+  --color-cyan: #10B981; /* hsl(160, 84%, 39%) · background */
+  --color-white-2: #F0F6FC; /* hsl(210, 67%, 96%) · text */
+  --color-light-gray-2: #B8B3B0; /* hsl(22, 5%, 71%) · text */
+  --color-light-gray-3: #DCDCDC; /* hsl(0, 0%, 86%) · text */
+  --color-dark-gray-2: #3D3A39; /* hsl(15, 3%, 23%) · border */
+  --color-light-gray-4: #E3E3E3; /* hsl(0, 0%, 89%) · text */
+  --color-blue: #3B82F6; /* hsl(217, 91%, 60%) · text */
+  --color-dark-gray-3: #101010; /* hsl(0, 0%, 6%) · background */
+  --color-blue-2: #8B949E; /* hsl(212, 9%, 58%) · text */
+  --color-blue-3: #5865F2; /* hsl(235, 86%, 65%) · background */
+  --color-dark-gray-4: #1A1A1A; /* hsl(0, 0%, 10%) · background */
+  --color-mid-gray: #8A8380; /* hsl(18, 4%, 52%) · text */
+  --color-light-red: #FF7B72; /* hsl(4, 100%, 72%) · text */
+  --color-blue-4: #0077B5; /* hsl(201, 100%, 35%) · background */
+  --color-cyan-2: #00D992; /* hsl(160, 100%, 43%) · background */
+  --color-light-gray-5: #EEEEEE; /* hsl(0, 0%, 93%) · text */
+  --color-blue-5: #6B7280; /* hsl(220, 9%, 46%) · text */
+  --color-blue-6: #9CA3AF; /* hsl(218, 11%, 65%) · text */
+  --color-light-blue: #A5D6FF; /* hsl(207, 100%, 82%) · text */
+  --color-light-gray-6: #BDBDBD; /* hsl(0, 0%, 74%) · text */
+  --color-cyan-3: #2FD6A1; /* hsl(161, 67%, 51%) · text */
+  --color-orange: #F59E0B; /* hsl(38, 92%, 50%) · text */
+  --color-dark-blue: rgba(55, 65, 81, 0.3); /* hsl(214, 17%, 26%) · border */
+  --color-light-gray-7: #D1D5DB; /* hsl(216, 12%, 84%) · text */
+  --color-red: #DC2626; /* hsl(0, 72%, 51%) · background */
+  --color-blue-7: #007EE5; /* hsl(207, 100%, 45%) · fill */
+  --color-light-gray-8: rgba(184, 179, 176, 0.1); /* hsl(0, 6%, 71%) · background */
+  --color-light-purple: #D2A8FF; /* hsl(269, 100%, 83%) · text */
+  --color-light-blue-2: #93C5FD; /* hsl(212, 96%, 78%) · text */
+  --color-cyan-4: #5EEAD4; /* hsl(171, 77%, 64%) · text */
+  --color-dark-gray-5: rgba(92, 88, 85, 0.2); /* hsl(60, 3%, 34%) · shadow */
+  --color-light-blue-3: #A5B4FC; /* hsl(230, 94%, 82%) · text */
+  --color-light-purple-2: #D8B4FE; /* hsl(269, 97%, 85%) · text */
+  --color-light-red-2: #FB7185; /* hsl(351, 95%, 71%) · text */
+  --color-cyan-5: #6EE7B7; /* hsl(156, 72%, 67%) · text */
+  --color-green: #36A852; /* hsl(135, 51%, 44%) · fill */
+  --color-dark-green: #1C8140; /* hsl(141, 64%, 31%) · fill */
+  --color-blue-8: #557EBF; /* hsl(217, 45%, 54%) · fill */
+  --color-dark-blue-2: #4B5563; /* hsl(215, 14%, 34%) · border */
+  --color-blue-9: rgba(79, 93, 117, 0.4); /* hsl(221, 19%, 39%) · border */
+  --color-blue-10: rgba(88, 101, 242, 0.1); /* hsl(236, 89%, 65%) · background */
+  --color-black-2: #050507; /* hsl(240, 17%, 2%) · background */
+  --color-dark-gray-6: #5C5855; /* hsl(26, 4%, 35%) · border */
+  --color-black-3: #020202; /* hsl(0, 0%, 1%) · background */
+  --color-blue-11: rgba(79, 93, 117, 0.25); /* hsl(220, 18%, 38%) · other */
+  --color-blue-12: #60A5FA; /* hsl(213, 94%, 68%) · text */
+  --color-orange-2: #F9BC15; /* hsl(44, 95%, 53%) · fill */
+  --color-red-2: #EA4535; /* hsl(5, 81%, 56%) · fill */
+  --color-blue-13: #3968B2; /* hsl(217, 51%, 46%) · fill */
+  --color-cyan-6: #00A1E0; /* hsl(197, 100%, 44%) · fill */
+  --color-white-3: #FFFFFE; /* hsl(60, 100%, 100%) · fill */
+  --color-blue-14: #51A9E3; /* hsl(204, 72%, 60%) · fill */
+  --color-dark-blue-3: rgba(55, 65, 81, 0.5); /* hsl(217, 19%, 27%) · border */
+  --color-yellow: #FACC15; /* hsl(48, 96%, 53%) · text */
+  --color-orange-3: #FCB400; /* hsl(43, 100%, 49%) · fill */
+  --color-cyan-7: #18BFFF; /* hsl(197, 100%, 55%) · fill */
+  --color-red-3: #F82B60; /* hsl(344, 94%, 57%) · fill */
+  --color-red-4: #BA1E45; /* hsl(345, 72%, 42%) · fill */
+  --color-cyan-8: #39C5EF; /* hsl(194, 85%, 58%) · fill */
+  --color-cyan-9: #2FB77E; /* hsl(155, 59%, 45%) · fill */
+  --color-orange-4: #EBB22D; /* hsl(42, 83%, 55%) · fill */
+  --color-red-5: #E0225B; /* hsl(342, 75%, 51%) · fill */
+  --color-red-6: #EF463D; /* hsl(3, 85%, 59%) · fill */
+  --color-blue-15: #427CBF; /* hsl(212, 49%, 50%) · fill */
+  --color-dark-cyan: #00AF59; /* hsl(151, 100%, 34%) · fill */
+  --color-red-7: #DC2226; /* hsl(359, 73%, 50%) · fill */
+  --color-orange-5: #FDB716; /* hsl(42, 98%, 54%) · fill */
+  --color-cyan-10: rgba(0, 217, 146, 0.15); /* hsl(161, 100%, 42%) · other */
+  --color-black-4: #010409; /* hsl(218, 80%, 2%) · background */
+  --color-green-2: #00D600; /* hsl(120, 100%, 42%) · text */
+  --color-light-red-3: #FDA4AF; /* hsl(353, 96%, 82%) · text */
+  --color-cyan-11: #3ECF8E; /* hsl(153, 60%, 53%) · fill */
+  --color-blue-16: rgba(148, 163, 184, 0.1); /* hsl(209, 22%, 65%) · shadow */
+  --color-cyan-12: #34D399; /* hsl(158, 64%, 52%) · text */
+  --color-cyan-13: #00FFB2; /* hsl(162, 100%, 50%) · fill */
+  --color-blue-17: #4F46E5; /* hsl(243, 75%, 59%) · fill */
+  --color-cyan-14: rgba(52, 211, 153, 0.7); /* hsl(158, 64%, 52%) · border */
+  --color-blue-18: rgba(96, 165, 250, 0.7); /* hsl(213, 93%, 67%) · border */
+  --color-orange-6: rgba(245, 158, 11, 0.2); /* hsl(38, 92%, 50%) · shadow */
+  --color-dark-orange: rgba(120, 53, 15, 0.3); /* hsl(21, 75%, 27%) · background */
+  --color-green-3: #22C55E; /* hsl(142, 71%, 45%) · fill */
+  --color-blue-19: #635BFF; /* hsl(243, 100%, 68%) · fill */
+  --color-blue-20: #0364B8; /* hsl(208, 97%, 37%) · fill */
+  --color-blue-21: #0078D4; /* hsl(206, 100%, 42%) · fill */
+  --color-blue-22: #1490DF; /* hsl(203, 84%, 48%) · fill */
+  --color-blue-23: #28A8EA; /* hsl(200, 82%, 54%) · fill */
+  --color-blue-24: #5059C9; /* hsl(236, 53%, 55%) · fill */
+  --color-light-blue-4: #7B83EB; /* hsl(236, 74%, 70%) · fill */
+  --color-yellow-2: #FFE01B; /* hsl(52, 100%, 55%) · fill */
+  --color-dark-gray-7: #1E1E1E; /* hsl(0, 0%, 12%) · fill */
+  --color-dark-cyan-2: #03363D; /* hsl(187, 91%, 13%) · fill */
+  --color-blue-25: #0079BF; /* hsl(202, 100%, 37%) · fill */
+  --color-blue-26: #4B7BBE; /* hsl(215, 47%, 52%) · fill */
+  --color-blue-27: #1F8DED; /* hsl(208, 85%, 53%) · fill */
+  --color-red-8: #FF7A59; /* hsl(12, 100%, 67%) · fill */
+  --color-cyan-15: #0ACF83; /* hsl(157, 91%, 43%) · fill */
+  --color-purple: #A259FF; /* hsl(266, 100%, 67%) · fill */
+  --color-red-9: #F24E1E; /* hsl(14, 89%, 53%) · fill */
+  --color-red-10: #FF7262; /* hsl(6, 100%, 69%) · fill */
+  --color-cyan-16: #1ABCFE; /* hsl(197, 99%, 55%) · fill */
+  --color-orange-7: #FF8800; /* hsl(32, 100%, 50%) · fill */
+  --color-blue-28: #7856FF; /* hsl(252, 100%, 67%) · fill */
+  --color-dark-blue-4: #362D59; /* hsl(252, 33%, 26%) · fill */
+  --color-cyan-17: #29B5E8; /* hsl(196, 81%, 54%) · fill */
+  --color-cyan-18: rgba(52, 211, 153, 0.1); /* hsl(159, 68%, 52%) · background */
+  --color-cyan-19: rgba(52, 211, 153, 0.3); /* hsl(157, 65%, 52%) · shadow */
+  --color-cyan-20: rgba(45, 212, 191, 0.7); /* hsl(172, 66%, 51%) · border */
+  --color-cyan-21: rgba(45, 212, 191, 0.3); /* hsl(173, 66%, 51%) · shadow */
+  --color-light-purple-3: #C084FC; /* hsl(270, 95%, 75%) · text */
+  --color-dark-gray-8: rgba(92, 88, 85, 0.3); /* hsl(26, 4%, 35%) · shadow */
+  --color-cyan-22: rgba(52, 211, 153, 0.4); /* hsl(158, 64%, 51%) · other */
+  --color-blue-29: rgba(96, 165, 250, 0.4); /* hsl(213, 94%, 68%) · other */
+  --color-light-red-4: rgba(251, 113, 133, 0.7); /* hsl(352, 95%, 71%) · border */
+  --color-light-red-5: rgba(251, 113, 133, 0.4); /* hsl(351, 93%, 71%) · other */
+  --color-dark-cyan-3: #39594D; /* hsl(158, 22%, 29%) · fill */
+  --color-light-purple-4: #D18EE2; /* hsl(288, 59%, 72%) · fill */
+  --color-red-11: #FF7759; /* hsl(11, 100%, 67%) · fill */
+  --color-white-4: #F5F6F7; /* hsl(210, 11%, 96%) · text */
+  --color-dark-gray-9: #242526; /* hsl(210, 3%, 15%) · background */
+  --color-cyan-23: rgba(16, 185, 129, 0.15); /* hsl(159, 87%, 39%) · gradient */
+  --color-dark-cyan-4: rgba(5, 150, 105, 0.15); /* hsl(163, 91%, 30%) · gradient */
+  --color-white-5: rgba(255, 253, 251, 0.69); /* hsl(45, 100%, 99%) · fill */
+  --color-white-6: #F5F5F5; /* hsl(0, 0%, 96%) · text */
+  --color-cyan-24: rgba(0, 217, 146, 0.3); /* hsl(160, 100%, 43%) · shadow */
+  --color-blue-30: #4F5D75; /* hsl(218, 19%, 38%) · border */
+  --color-cyan-25: rgba(0, 217, 146, 0.12); /* hsl(161, 100%, 42%) · gradient */
+  --color-cyan-26: rgba(0, 217, 146, 0.04); /* hsl(160, 100%, 45%) · gradient */
+  --color-blue-31: #3178C6; /* hsl(211, 60%, 48%) · fill */
+  --color-dark-cyan-5: #059669; /* hsl(161, 94%, 30%) · gradient */
+  --color-cyan-27: rgba(47, 214, 161, 0.4); /* hsl(160, 68%, 51%) · shadow */
+  --color-cyan-28: rgba(47, 214, 161, 0.15); /* hsl(161, 68%, 51%) · shadow */
+  --color-cyan-29: rgba(16, 185, 129, 0.1); /* hsl(159, 81%, 40%) · background */
+  --color-blue-32: rgba(94, 96, 226, 0.11); /* hsl(236, 72%, 63%) · background */
+  --color-light-blue-5: rgba(129, 140, 248, 0.7); /* hsl(235, 89%, 74%) · border */
+  --color-blue-33: rgba(96, 165, 250, 0.5); /* hsl(213, 93%, 68%) · shadow */
+  --color-blue-34: rgba(59, 130, 246, 0.1); /* hsl(218, 90%, 60%) · background */
+  --color-cyan-30: rgba(20, 184, 166, 0.1); /* hsl(173, 81%, 40%) · background */
+  --color-purple-2: rgba(168, 85, 247, 0.3); /* hsl(271, 92%, 65%) · shadow */
+  --color-purple-3: rgba(168, 85, 247, 0.1); /* hsl(270, 89%, 65%) · background */
+  --color-green-4: #4ADE80; /* hsl(142, 69%, 58%) · text */
+  --color-cyan-31: #2DD4BF; /* hsl(172, 66%, 50%) · text */
+  --color-light-red-6: rgba(251, 113, 133, 0.5); /* hsl(352, 94%, 72%) · shadow */
+  --color-blue-35: rgba(96, 165, 250, 0.3); /* hsl(212, 92%, 67%) · shadow */
+  --color-blue-36: #336791; /* hsl(207, 48%, 38%) · fill */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 11px;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 13.3333px;
+  --font-size-lg: 14px;
+  --font-size-xl: 14.45px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 17px;
+  --font-size-4xl: 18px;
+  --font-size-5xl: 20px;
+  --font-size-6xl: 24px;
+  --font-size-36px: 36px;
+  --font-size-60px: 60px;
+  --font-family-base: Inter;
+  --font-family-2: system-ui;
+  --font-family-3: monospace;
+  --font-family-4: Arial;
+  --font-family-5: SFMono-Regular;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 15.95px;
+  --line-height-snug: 18.2px;
+  --line-height-normal: 20px;
+  --line-height-relaxed: 21.45px;
+  --line-height-loose: 23.1px;
+  --line-height-lh-6: 23.8425px;
+  --line-height-lh-7: 26.4px;
+  --line-height-lh-8: 28px;
+  --line-height-lh-9: 32px;
+  --line-height-lh-10: 39.6px;
+  --line-height-lh-11: 60px;
+  --letter-spacing-tight: -0.9px;
+  --letter-spacing-normal: -0.8px;
+  --letter-spacing-wide: -0.7px;
+  --letter-spacing-wider: -0.65px;
+  --letter-spacing-widest: -0.6px;
+  --letter-spacing-ls-6: -0.4px;
+  --letter-spacing-ls-7: 0.45px;
+  --letter-spacing-ls-8: 0.5px;
+  --letter-spacing-ls-9: 2.52px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 5px;
+  --space-4: 6px;
+  --space-5: 7px;
+  --space-6: 8px;
+  --space-8: 12px;
+  --space-10: 16px;
+  --space-12: 20px;
+  --space-16: 24px;
+  --space-20: 28px;
+  --space-24: 32px;
+  --space-32: 40px;
+  --space-40: 48px;
+  --space-48: 64px;
+  --space-64: 80px;
+  --space-80: 96px;
+  --space-96: 144px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 1.5px;
+  --border-width-base: 2px;
+  --radius-sm: 0px 4px 4px 0px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 6.4px;
+  --radius-full: 8px;
+  --radius-r7: 8px 8px 0px 0px;
+  --radius-r8: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(92, 88, 85, 0.2) 0px 0px 15px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.7) 0px 20px 60px 0px, rgba(148, 163, 184, 0.1) 0px 0px 0px 1px inset;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(245, 158, 11, 0.2) 0px 0px 15px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(52, 211, 153, 0.3) 0px 0px 15px 0px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(45, 212, 191, 0.3) 0px 0px 15px 0px;
+  --shadow-shadow-6: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(92, 88, 85, 0.3) 0px 0px 15px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+  --duration-slower: 0.7s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 10;
+  --z-6: 20;
+  --z-7: 50;
+  --z-8: 201;
+  --z-9: 1000;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 360px;
+  --breakpoint-sm: 420px;
+  --breakpoint-md: 576px;
+  --breakpoint-lg: 640px;
+  --breakpoint-xl: 720px;
+  --breakpoint-2xl: 767px;
+  --breakpoint-3xl: 768px;
+  --breakpoint-bp-8: 960px;
+  --breakpoint-bp-9: 975px;
+  --breakpoint-bp-10: 996px;
+  --breakpoint-bp-11: 997px;
+  --breakpoint-bp-12: 1000px;
+  --breakpoint-bp-13: 1024px;
+  --breakpoint-bp-14: 1025px;
+  --breakpoint-bp-15: 1100px;
+  --breakpoint-bp-16: 1160px;
+  --breakpoint-bp-17: 1200px;
+  --breakpoint-bp-18: 1270px;
+  --breakpoint-bp-19: 1280px;
+  --breakpoint-bp-20: 1296px;
+  --breakpoint-bp-21: 1440px;
+  --breakpoint-bp-22: 1584px;
+  --breakpoint-bp-23: 1992px;
+
+  /* ── Opacity ── */
+  --opacity-10: 0.1;
+  --opacity-15: 0.15;
+  --opacity-20: 0.2;
+  --opacity-30: 0.3;
+  --opacity-42: 0.42;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-63: 0.63;
+  --opacity-80: 0.8;
+  --opacity-90: 0.9;
+  --opacity-94: 0.94;
+  --opacity-99: 0.99;
+}

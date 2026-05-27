@@ -1,0 +1,164 @@
+/* ============================================
+ * Design Tokens — WIRED - The Latest in Technology, Science, Culture and Business | WIRED
+ * Source: https://www.wired.com/
+ * Generated: 18/04/2026, 14:17:41
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-blue: #4A5568; /* hsl(218, 17%, 35%) · text */
+  --color-mid-gray: #757575; /* hsl(0, 0%, 46%) · text */
+  --color-dark-gray: #1A1A1A; /* hsl(0, 0%, 10%) · text */
+  --color-light-gray: #E5E5E5; /* hsl(0, 0%, 90%) · background */
+  --color-mid-gray-2: #999999; /* hsl(0, 0%, 60%) · text */
+  --color-dark-gray-2: #333333; /* hsl(0, 0%, 20%) · text */
+  --color-dark-blue-2: #2D3748; /* hsl(218, 23%, 23%) · text */
+  --color-white-2: #F3F3F3; /* hsl(0, 0%, 95%) · background */
+  --color-dark-gray-3: #2B2E35; /* hsl(222, 10%, 19%) · background */
+  --color-white-3: #F7FAFC; /* hsl(204, 45%, 98%) · background */
+  --color-light-gray-2: #E1E7EE; /* hsl(212, 28%, 91%) · background */
+  --color-light-gray-3: #E2E8F0; /* hsl(214, 32%, 91%) · background */
+  --color-mid-gray-3: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-blue: #057DBC; /* hsl(201, 95%, 38%) · text */
+  --color-mid-gray-4: rgba(153, 153, 153, 0.8); /* hsl(0, 0%, 60%) · background */
+  --color-blue-2: #0066FF; /* hsl(216, 100%, 50%) · fill */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 8px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 12.73px;
+  --font-size-lg: 13px;
+  --font-size-xl: 14px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 17px;
+  --font-size-4xl: 17.008px;
+  --font-size-5xl: 19px;
+  --font-size-6xl: 20px;
+  --font-size-26px: 26px;
+  --font-size-38px: 38px;
+  --font-size-45px: 45.465px;
+  --font-size-64px: 64px;
+  --font-family-base: sans-serif;
+  --font-family-2: BreveText;
+  --font-family-3: Inter;
+  --font-family-4: WiredMono;
+  --font-family-5: WIRED Mono;
+  --font-family-6: Apercu;
+  --font-family-7: WiredDisplay;
+  --font-family-8: ProximaNova;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 12px;
+  --line-height-snug: 14px;
+  --line-height-normal: 15.96px;
+  --line-height-relaxed: 18px;
+  --line-height-loose: 19.6px;
+  --line-height-lh-6: 21.66px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 28px;
+  --line-height-lh-9: 42.2825px;
+  --line-height-lh-10: 59.52px;
+  --letter-spacing-tight: -0.5px;
+  --letter-spacing-normal: -0.28px;
+  --letter-spacing-wide: -0.144px;
+  --letter-spacing-wider: 0.084px;
+  --letter-spacing-widest: 0.09px;
+  --letter-spacing-ls-6: 0.108px;
+  --letter-spacing-ls-7: 0.3px;
+  --letter-spacing-ls-8: 0.4px;
+  --letter-spacing-ls-9: 0.9px;
+  --letter-spacing-ls-10: 0.92px;
+  --letter-spacing-ls-11: 1.1px;
+  --letter-spacing-ls-12: 1.2px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 14.11px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-16: 32px;
+  --space-20: 40px;
+  --space-24: 48px;
+  --space-32: 64px;
+  --space-40: 120px;
+  --space-48: 418.695px;
+  --space-64: 418.703px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 0px 0px 4px 4px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 12px;
+  --radius-full: 50%;
+  --radius-r7: 1133px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.1) -2px 2px 5px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.25s;
+  --duration-slower: 0.3s;
+  --duration-duration-6: 0.35s;
+  --duration-duration-7: 0.4s;
+  --duration-duration-8: 0.5s;
+  --duration-duration-9: 0.55s;
+  --duration-duration-10: 1s;
+  --easing-ease-in-out: ease-in-out;
+  --easing-ease-in: ease-in;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 4;
+  --z-6: 5;
+  --z-7: 50;
+  --z-8: 80;
+  --z-9: 300;
+  --z-10: 400;
+  --z-11: 450;
+  --z-12: 451;
+  --z-13: 530;
+  --z-14: 600;
+  --z-15: 1000;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 319px;
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 375px;
+  --breakpoint-lg: 425px;
+  --breakpoint-xl: 480px;
+  --breakpoint-2xl: 569px;
+  --breakpoint-3xl: 570px;
+  --breakpoint-bp-8: 599px;
+  --breakpoint-bp-9: 667px;
+  --breakpoint-bp-10: 767px;
+  --breakpoint-bp-11: 768px;
+  --breakpoint-bp-12: 1023px;
+  --breakpoint-bp-13: 1024px;
+  --breakpoint-bp-14: 1025px;
+  --breakpoint-bp-15: 1279px;
+  --breakpoint-bp-16: 1280px;
+  --breakpoint-bp-17: 1599px;
+  --breakpoint-bp-18: 1600px;
+
+  /* ── Opacity ── */
+  --opacity-20: 0.2;
+}

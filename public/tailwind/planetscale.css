@@ -1,0 +1,72 @@
+/* ============================================
+ * Design Tokens — PlanetScale - the world’s fastest and most scalable cloud hosting for Vitess and Postgres
+ * Source: https://planetscale.com/
+ * Generated: 19/04/2026, 00:16:20
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #414141; /* hsl(0, 0%, 25%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-blue: #006BD7; /* hsl(210, 100%, 42%) · text */
+  --color-light-gray: #C1C1C1; /* hsl(0, 0%, 76%) · text */
+  --color-mid-gray: #737373; /* hsl(0, 0%, 45%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · text */
+  --color-white-2: #FAFAFA; /* hsl(0, 0%, 98%) · background */
+  --color-dark-gray-2: #111111; /* hsl(0, 0%, 7%) · background */
+  --color-red: #C11027; /* hsl(352, 85%, 41%) · fill */
+  --color-yellow: #F2B600; /* hsl(45, 100%, 47%) · background */
+  --color-orange: #FF4400; /* hsl(16, 100%, 50%) · background */
+  --color-orange-2: #F35815; /* hsl(18, 90%, 52%) · border */
+  --color-light-gray-2: #EBEBEB; /* hsl(0, 0%, 92%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 16px;
+  --font-family-base: ui-sans-serif;
+  --font-family-2: ui-monospace;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 16px;
+  --line-height-snug: 20px;
+  --line-height-normal: 24px;
+  --letter-spacing-tight: -0.096px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 9.63281px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 56px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+
+  /* ── Layout: Z-Index ── */
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 640px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1536px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+}

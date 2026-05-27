@@ -1,0 +1,93 @@
+/* ============================================
+ * Design Tokens — xAI: Understand the Universe
+ * Source: https://x.ai/
+ * Generated: 18/04/2026, 14:18:41
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray: #1F2228; /* hsl(220, 13%, 14%) · border */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · fill */
+  --color-mid-gray: #7D8187; /* hsl(216, 4%, 51%) · text */
+  --color-black-2: #0A0A0A; /* hsl(0, 0%, 4%) · background */
+  --color-black-3: #0C0C0B; /* hsl(60, 4%, 5%) · background */
+  --color-orange: rgba(255, 99, 8, 0.1); /* hsl(22, 100%, 52%) · gradient */
+  --color-light-blue: rgba(151, 196, 255, 0.1); /* hsl(213, 100%, 79%) · gradient */
+  --color-black-4: rgba(10, 10, 10, 0.25); /* hsl(0, 0%, 5%) · background */
+  --color-blue: #6B7280; /* hsl(220, 9%, 46%) · border */
+  --color-light-blue-2: rgba(189, 201, 230, 0.1); /* hsl(225, 41%, 81%) · gradient */
+  --color-dark-gray-2: rgba(31, 34, 40, 0.5); /* hsl(225, 11%, 14%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 20px;
+  --font-size-lg: 48px;
+  --font-size-xl: 80px;
+  --font-family-base: Times;
+  --font-family-2: universalSans;
+  --font-family-3: GeistMono;
+  --font-weight-regular: 400;
+  --line-height-tight: 16px;
+  --line-height-snug: 20px;
+  --line-height-normal: 24px;
+  --line-height-relaxed: 28px;
+  --line-height-loose: 48px;
+  --line-height-lh-6: 80px;
+  --letter-spacing-tight: -2px;
+  --letter-spacing-normal: -1.2px;
+  --letter-spacing-wide: 1.2px;
+  --letter-spacing-wider: 1.4px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 12px;
+  --space-6: 14px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-16: 32px;
+  --space-20: 40px;
+  --space-24: 48px;
+  --space-32: 64px;
+  --space-40: 80px;
+  --space-48: 96px;
+  --space-64: 128px;
+  --space-80: 256px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 24px;
+  --radius-md: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 10;
+  --z-2: 20;
+  --z-3: 50;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 640px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1000px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 2000px;
+
+  /* ── Opacity ── */
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-75: 0.75;
+}

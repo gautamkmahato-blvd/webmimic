@@ -1,0 +1,136 @@
+/* ============================================
+ * Design Tokens — Replicate - Run AI with an API
+ * Source: https://replicate.com/
+ * Generated: 17/04/2026, 13:22:22
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #202020; /* hsl(0, 0%, 13%) · background */
+  --color-white: #FCFCFC; /* hsl(0, 0%, 99%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-2: #646464; /* hsl(0, 0%, 39%) · text */
+  --color-red: #EA2804; /* hsl(9, 97%, 47%) · background */
+  --color-dark-gray-3: #24292E; /* hsl(210, 12%, 16%) · text */
+  --color-light-gray: #BBBBBB; /* hsl(0, 0%, 73%) · text */
+  --color-dark-blue: #032F62; /* hsl(212, 94%, 20%) · text */
+  --color-light-gray-2: #EFEFEF; /* hsl(0, 0%, 94%) · background */
+  --color-white-3: #F9F9F9; /* hsl(0, 0%, 98%) · background */
+  --color-light-pink: #FF6BFC; /* hsl(301, 100%, 71%) · gradient */
+  --color-red-2: #D73A49; /* hsl(354, 66%, 54%) · text */
+  --color-light-yellow: #F6F47F; /* hsl(59, 87%, 73%) · gradient */
+  --color-light-gray-3: #D8D9D9; /* hsl(180, 1%, 85%) · text */
+  --color-mid-gray: #838383; /* hsl(0, 0%, 51%) · text */
+  --color-blue: #005CC5; /* hsl(212, 100%, 39%) · text */
+  --color-purple: #6F42C1; /* hsl(261, 51%, 51%) · text */
+  --color-red-3: #DD4425; /* hsl(10, 73%, 51%) · text */
+  --color-orange: #E36209; /* hsl(24, 92%, 46%) · text */
+  --color-dark-yellow: #735C0F; /* hsl(46, 77%, 25%) · text */
+  --color-light-gray-4: #E0E0E0; /* hsl(0, 0%, 88%) · border */
+  --color-dark-orange: #A06E00; /* hsl(41, 100%, 31%) · text */
+  --color-white-4: #FFFCFC; /* hsl(0, 100%, 99%) · background */
+  --color-red-4: rgba(234, 40, 4, 0.5); /* hsl(9, 97%, 46%) · gradient */
+  --color-light-gray-5: #E8E8E8; /* hsl(0, 0%, 91%) · background */
+  --color-white-5: #FEFCE9; /* hsl(54, 91%, 95%) · background */
+  --color-blue-2: #6A737D; /* hsl(212, 8%, 45%) · text */
+  --color-cyan: #00C8D2; /* hsl(183, 100%, 41%) · fill */
+  --color-blue-3: #3C8CFF; /* hsl(215, 100%, 62%) · fill */
+  --color-cyan-2: #78E6DC; /* hsl(175, 69%, 69%) · fill */
+  --color-blue-4: #325AB4; /* hsl(222, 57%, 45%) · fill */
+  --color-pink: #E54FE2; /* hsl(301, 74%, 60%) · gradient */
+  --color-light-red: #F97E82; /* hsl(358, 91%, 74%) · gradient */
+  --color-cyan-3: #2B9A66; /* hsl(152, 56%, 39%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 22.66px;
+  --font-size-4xl: 24px;
+  --font-size-5xl: 30px;
+  --font-size-6xl: 48px;
+  --font-size-72px: 72px;
+  --font-size-96px: 96px;
+  --font-family-base: basier-square;
+  --font-family-2: jetbrains-mono;
+  --font-family-3: rb-freigeist-neue;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 15px;
+  --line-height-snug: 16px;
+  --line-height-normal: 16.5px;
+  --line-height-relaxed: 20px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 28px;
+  --line-height-lh-7: 32px;
+  --line-height-lh-8: 36px;
+  --line-height-lh-9: 48px;
+  --line-height-lh-10: 72px;
+  --line-height-lh-11: 96px;
+  --letter-spacing-tight: -1.8px;
+  --letter-spacing-normal: -0.35px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 6.5px;
+  --space-6: 8px;
+  --space-8: 10px;
+  --space-10: 12px;
+  --space-12: 16px;
+  --space-16: 24px;
+  --space-20: 28px;
+  --space-24: 32px;
+  --space-32: 48px;
+  --space-40: 56px;
+  --space-48: 64px;
+  --space-64: 96px;
+  --space-80: 144px;
+  --space-96: 160px;
+  --space-128: 166.5px;
+  --space-160: 192px;
+  --space-192: 214.5px;
+  --space-256: 355.242px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 4px;
+  --radius-sm: 2px;
+  --radius-md: 4px 4px 0px 0px;
+  --radius-lg: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, color(display-p3 0.876 0.785 0.46) 0px 1px 2px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  --shadow-lg: rgb(255, 255, 255) 0px 0px 0px 0px, color(display-p3 0.796 0.907 0.826) 0px 0px 0px 2px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.5s;
+  --duration-slow: 1s;
+  --duration-slower: 10s;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -10;
+  --z-2: -1;
+  --z-3: 10;
+  --z-4: 20;
+  --z-5: 30;
+  --z-6: 9999;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+}

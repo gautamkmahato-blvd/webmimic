@@ -1,0 +1,189 @@
+/* ============================================
+ * Design Tokens — HashiCorp | An IBM Company
+ * Source: https://www.hashicorp.com/en
+ * Generated: 15/04/2026, 23:30:37
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray: #3B3D45; /* hsl(228, 8%, 25%) · text */
+  --color-light-gray: #D5D7DB; /* hsl(220, 8%, 85%) · text */
+  --color-blue: #2264D6; /* hsl(218, 73%, 49%) · text */
+  --color-light-gray-2: #EFEFF1; /* hsl(240, 7%, 94%) · text */
+  --color-light-gray-3: #B2B6BD; /* hsl(218, 8%, 72%) · text */
+  --color-dark-gray-2: #0C0C0E; /* hsl(240, 8%, 5%) · text */
+  --color-blue-2: #656A76; /* hsl(222, 8%, 43%) · text */
+  --color-blue-3: rgba(101, 106, 118, 0.05); /* hsl(240, 9%, 42%) · shadow */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue-4: #2B89FF; /* hsl(213, 100%, 58%) · background */
+  --color-blue-5: #1060FF; /* hsl(220, 100%, 53%) · background */
+  --color-dark-gray-3: #0D0E12; /* hsl(228, 16%, 6%) · background */
+  --color-light-gray-4: rgba(178, 182, 189, 0.1); /* hsl(180, 6%, 71%) · border */
+  --color-white-2: #FAFAFA; /* hsl(0, 0%, 98%) · background */
+  --color-light-gray-5: rgba(239, 239, 241, 0.27); /* hsl(0, 0%, 94%) · gradient */
+  --color-dark-gray-4: rgba(59, 61, 69, 0.4); /* hsl(240, 8%, 25%) · border */
+  --color-blue-6: #616875; /* hsl(219, 9%, 42%) · border */
+  --color-dark-gray-5: #15181E; /* hsl(220, 18%, 10%) · background */
+  --color-blue-7: rgba(101, 106, 118, 0.1); /* hsl(210, 9%, 42%) · border */
+  --color-mid-gray: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-blue-8: #0C56E9; /* hsl(220, 90%, 48%) · border */
+  --color-blue-9: #389AFF; /* hsl(210, 100%, 61%) · border */
+  --color-dark-blue: #2B303C; /* hsl(222, 17%, 20%) · background */
+  --color-dark-gray-6: #333333; /* hsl(0, 0%, 20%) · text */
+  --color-blue-10: #5990FF; /* hsl(220, 100%, 67%) · shadow */
+  --color-blue-11: #7948FF; /* hsl(256, 100%, 64%) · background */
+  --color-purple: #7B42BC; /* hsl(268, 48%, 50%) · fill */
+  --color-orange: #FF6423; /* hsl(18, 100%, 57%) · background */
+  --color-dark-purple: #42225B; /* hsl(274, 46%, 25%) · background */
+  --color-purple-2: #B457FF; /* hsl(273, 100%, 67%) · border */
+  --color-light-blue: #6C81FF; /* hsl(231, 100%, 71%) · gradient */
+  --color-light-purple: #C08DFF; /* hsl(267, 100%, 78%) · gradient */
+  --color-light-blue-2: #A8B5FF; /* hsl(231, 100%, 83%) · gradient */
+  --color-light-purple-2: #CFA9FC; /* hsl(267, 93%, 83%) · gradient */
+  --color-light-red: #FF8791; /* hsl(355, 100%, 76%) · gradient */
+  --color-light-orange: #F9B571; /* hsl(30, 92%, 71%) · gradient */
+  --color-light-red-2: #FDAFB5; /* hsl(355, 95%, 84%) · gradient */
+  --color-light-orange-2: #FFD1A2; /* hsl(30, 100%, 82%) · gradient */
+  --color-light-gray-6: rgba(178, 182, 189, 0.4); /* hsl(220, 8%, 72%) · border */
+  --color-light-gray-7: rgba(178, 182, 189, 0.25); /* hsl(210, 6%, 72%) · shadow */
+  --color-blue-12: rgba(97, 104, 117, 0.15); /* hsl(219, 10%, 41%) · shadow */
+  --color-blue-13: rgba(97, 104, 117, 0.2); /* hsl(210, 10%, 41%) · shadow */
+  --color-dark-blue-2: rgba(1, 1, 63, 0.1); /* hsl(240, 100%, 12%) · shadow */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 13px;
+  --font-size-xs: 13.3333px;
+  --font-size-sm: 14px;
+  --font-size-base: 15.008px;
+  --font-size-lg: 16px;
+  --font-size-xl: 17px;
+  --font-size-2xl: 19px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 26px;
+  --font-size-5xl: 34px;
+  --font-size-6xl: 42px;
+  --font-size-52px: 52px;
+  --font-size-82px: 82px;
+  --font-family-base: Times;
+  --font-family-2: system-ui;
+  --font-family-3: __hashicorpSans_96f0ca;
+  --font-family-4: Arial;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 14px;
+  --line-height-snug: 16px;
+  --line-height-normal: 17.9998px;
+  --line-height-relaxed: 19.9988px;
+  --line-height-loose: 21.9375px;
+  --line-height-lh-6: 22.9995px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 26px;
+  --line-height-lh-9: 27px;
+  --line-height-lh-10: 30px;
+  --line-height-lh-11: 30.9998px;
+  --line-height-lh-12: 39.9976px;
+  --line-height-lh-13: 49.9968px;
+  --line-height-lh-14: 61.9996px;
+  --line-height-lh-15: 95.9974px;
+  --letter-spacing-tight: -0.42px;
+  --letter-spacing-normal: 0.175px;
+  --letter-spacing-wide: 1.3px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 3px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 7px;
+  --space-5: 8px;
+  --space-6: 9px;
+  --space-8: 11px;
+  --space-10: 12px;
+  --space-12: 15px;
+  --space-16: 16px;
+  --space-20: 19px;
+  --space-24: 20px;
+  --space-32: 24px;
+  --space-40: 32px;
+  --space-48: 40px;
+  --space-64: 48px;
+  --space-80: 56px;
+  --space-96: 64px;
+  --space-128: 88px;
+  --space-160: 96px;
+  --space-192: 128px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 5px;
+  --radius-2xl: 6px;
+  --radius-full: 8px;
+  --radius-r7: 50%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(97, 104, 117, 0.05) 0px 1px 1px 0px, rgba(97, 104, 117, 0.05) 0px 2px 2px 0px;
+  --shadow-md: rgba(101, 106, 118, 0.05) 0px 1px 1px 0px, rgba(101, 106, 118, 0.05) 0px 2px 2px 0px;
+  --shadow-lg: rgba(97, 104, 117, 0.1) 0px 1px 2px 1px inset;
+  --shadow-xl: rgb(89, 144, 255) 0px 0px 0px 3px, rgba(101, 106, 118, 0.05) 0px 1px 1px 0px, rgba(101, 106, 118, 0.05) 0px 2px 2px 0px;
+  --shadow-shadow-5: rgba(178, 182, 189, 0.25) 0px 0px 0px 1px, rgba(97, 104, 117, 0.15) 0px 2px 3px 0px, rgba(97, 104, 117, 0.2) 0px 16px 16px -10px;
+  --shadow-shadow-6: rgba(1, 1, 63, 0.1) 0px 2px 19px -4px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.4s;
+  --duration-duration-6: 0.6s;
+  --easing-ease-in: ease-in;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 3;
+  --z-4: 10;
+  --z-5: 9999;
+  --z-6: 666666667;
+  --z-7: 666666668;
+  --z-8: 2147483642;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 326px;
+  --breakpoint-sm: 340px;
+  --breakpoint-md: 375px;
+  --breakpoint-lg: 460px;
+  --breakpoint-xl: 480px;
+  --breakpoint-2xl: 500px;
+  --breakpoint-3xl: 551px;
+  --breakpoint-bp-8: 560px;
+  --breakpoint-bp-9: 600px;
+  --breakpoint-bp-10: 650px;
+  --breakpoint-bp-11: 700px;
+  --breakpoint-bp-12: 744px;
+  --breakpoint-bp-13: 750px;
+  --breakpoint-bp-14: 767px;
+  --breakpoint-bp-15: 768px;
+  --breakpoint-bp-16: 800px;
+  --breakpoint-bp-17: 850px;
+  --breakpoint-bp-18: 860px;
+  --breakpoint-bp-19: 900px;
+  --breakpoint-bp-20: 924px;
+  --breakpoint-bp-21: 925px;
+  --breakpoint-bp-22: 975px;
+  --breakpoint-bp-23: 991px;
+  --breakpoint-bp-24: 992px;
+  --breakpoint-bp-25: 1024px;
+  --breakpoint-bp-26: 1119px;
+  --breakpoint-bp-27: 1120px;
+  --breakpoint-bp-28: 1150px;
+  --breakpoint-bp-29: 1556px;
+  --breakpoint-bp-30: 1600px;
+
+  /* ── Opacity ── */
+}

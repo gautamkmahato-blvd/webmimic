@@ -1,0 +1,136 @@
+/* ============================================
+ * Design Tokens — Gleap - AI-powered Customer Support OS
+ * Source: https://www.gleap.io/
+ * Generated: 06/05/2026, 18:04:41
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray: #333333; /* hsl(0, 0%, 20%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-mid-gray: #7B7B7B; /* hsl(0, 0%, 48%) · text */
+  --color-light-purple: #F1CCFF; /* hsl(284, 100%, 90%) · background */
+  --color-light-gray: #D6D6D6; /* hsl(0, 0%, 84%) · background */
+  --color-light-cyan: #91E0FF; /* hsl(197, 100%, 78%) · background */
+  --color-dark-blue: rgba(16, 24, 40, 0.05); /* hsl(240, 32%, 12%) · shadow */
+  --color-cyan: #13D9FE; /* hsl(189, 99%, 54%) · gradient */
+  --color-light-pink: #FBBAFF; /* hsl(297, 100%, 86%) · gradient */
+  --color-light-gray-2: #DDDDDD; /* hsl(0, 0%, 87%) · background */
+  --color-white-2: #F5F2F0; /* hsl(24, 20%, 95%) · background */
+  --color-light-gray-3: #BCBCBC; /* hsl(0, 0%, 74%) · text */
+  --color-light-gray-4: #F4F2F0; /* hsl(30, 15%, 95%) · background */
+  --color-light-purple-2: rgba(236, 188, 255, 0.4); /* hsl(282, 100%, 87%) · shadow */
+  --color-red: #FF0000; /* hsl(0, 100%, 50%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 13px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 20px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;
+  --font-size-2xl: 48px;
+  --font-size-3xl: 62px;
+  --font-family-base: sans-serif;
+  --font-family-2: Arial;
+  --font-family-3: Switzer;
+  --font-family-4: PP Editorial New;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 18.2px;
+  --line-height-snug: 19px;
+  --line-height-normal: 19.6px;
+  --line-height-relaxed: 22.4px;
+  --line-height-loose: 23px;
+  --line-height-lh-6: 26px;
+  --line-height-lh-7: 28px;
+  --line-height-lh-8: 31.2px;
+  --line-height-lh-9: 38.4px;
+  --line-height-lh-10: 57.6px;
+  --line-height-lh-11: 60px;
+  --line-height-lh-12: 80.6px;
+  --letter-spacing-tight: -0.4px;
+  --letter-spacing-normal: -0.325px;
+  --letter-spacing-wide: -0.32px;
+  --letter-spacing-wider: -0.16px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 5px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 14px;
+  --space-8: 15px;
+  --space-10: 16px;
+  --space-12: 17px;
+  --space-16: 20px;
+  --space-20: 24px;
+  --space-24: 156.5px;
+  --space-32: 300px;
+  --space-40: 32px;
+  --space-48: 40px;
+  --space-64: 50px;
+  --space-80: 55px;
+  --space-96: 56px;
+  --space-128: 60px;
+  --space-160: 80px;
+  --space-192: 100px;
+  --space-256: 105.297px;
+  --space-23: 137.062px;
+  --space-25: 160px;
+  --space-26: 196.5px;
+  --space-27: 216.898px;
+  --space-28: 220px;
+  --space-29: 241.781px;
+  --space-30: 255.969px;
+  --space-31: 276.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 9px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 13px;
+  --radius-2xl: 16px;
+  --radius-full: 20px;
+  --radius-r7: 24px;
+  --radius-r8: 30px;
+  --radius-r9: 32px;
+  --radius-r10: 42px;
+  --radius-r11: 48px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.04) 0px 8px 16px 0px;
+  --shadow-md: rgba(16, 24, 40, 0.05) 0px 1px 2px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.08) 0px 12px 16px -4px, rgba(16, 24, 40, 0.03) 0px 4px 6px -2px;
+  --shadow-xl: rgba(236, 188, 255, 0.4) 2px 1px 16px 0px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0.15) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 0px 20px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.2s;
+  --duration-fast: 0.25s;
+  --duration-normal: 0.3s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 99;
+  --z-2: 900;
+  --z-3: 1000;
+  --z-4: 2147483630;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 450px;
+  --breakpoint-sm: 479px;
+  --breakpoint-md: 767px;
+  --breakpoint-lg: 768px;
+  --breakpoint-xl: 991px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+}

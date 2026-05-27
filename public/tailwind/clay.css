@@ -1,0 +1,204 @@
+/* ============================================
+ * Design Tokens — Clay | Go to market with unique data—and the ability to act on it
+ * Source: https://www.clay.com/
+ * Generated: 14/04/2026, 13:30:08
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-mid-gray: #9F9B93; /* hsl(40, 6%, 60%) · text */
+  --color-dark-gray: #55534E; /* hsl(43, 4%, 32%) · text */
+  --color-mid-gray-2: #7B7974; /* hsl(43, 3%, 47%) · text */
+  --color-blue: #3859F9; /* hsl(230, 94%, 60%) · text */
+  --color-dark-gray-2: #222222; /* hsl(0, 0%, 13%) · text */
+  --color-white-2: #F9F8F6; /* hsl(40, 20%, 97%) · background */
+  --color-blue-2: #525A69; /* hsl(219, 12%, 37%) · text */
+  --color-light-orange: #DAD4C8; /* hsl(40, 20%, 82%) · border */
+  --color-light-orange-2: #EEE9DF; /* hsl(40, 31%, 90%) · border */
+  --color-light-gray: #F3F2ED; /* hsl(50, 20%, 94%) · background */
+  --color-white-3: #F0F8FF; /* hsl(208, 100%, 97%) · background */
+  --color-light-gray-2: #E6E8EC; /* hsl(220, 14%, 91%) · border */
+  --color-dark-gray-3: #181818; /* hsl(0, 0%, 9%) · fill */
+  --color-dark-gray-4: #333333; /* hsl(0, 0%, 20%) · text */
+  --color-dark-cyan: #03331D; /* hsl(153, 89%, 11%) · background */
+  --color-blue-3: #0667D9; /* hsl(212, 95%, 44%) · background */
+  --color-white-4: #FEFDFB; /* hsl(40, 60%, 99%) · background */
+  --color-light-gray-3: #D0D0D0; /* hsl(0, 0%, 82%) · border */
+  --color-white-5: #F7F8F9; /* hsl(210, 14%, 97%) · background */
+  --color-dark-pink: #8B045C; /* hsl(321, 94%, 28%) · background */
+  --color-dark-cyan-2: #005870; /* hsl(193, 100%, 22%) · background */
+  --color-dark-cyan-3: #078A52; /* hsl(154, 90%, 28%) · background */
+  --color-mid-gray-3: #85817A; /* hsl(38, 4%, 50%) · text */
+  --color-blue-4: #0382F7; /* hsl(209, 98%, 49%) · background */
+  --color-blue-5: #717989; /* hsl(220, 10%, 49%) · border */
+  --color-yellow: #CBD810; /* hsl(64, 86%, 45%) · background */
+  --color-orange: #FF7614; /* hsl(25, 100%, 54%) · background */
+  --color-blue-6: #429DFF; /* hsl(211, 100%, 63%) · background */
+  --color-cyan: #3BD3FD; /* hsl(193, 98%, 61%) · background */
+  --color-light-blue: #C1B0FF; /* hsl(253, 100%, 85%) · background */
+  --color-light-gray-4: #BFC4CD; /* hsl(219, 12%, 78%) · background */
+  --color-red: #DD2C53; /* hsl(347, 72%, 52%) · background */
+  --color-orange-2: #C34E1B; /* hsl(18, 76%, 44%) · background */
+  --color-dark-pink-2: #45012E; /* hsl(320, 97%, 14%) · background */
+  --color-dark-cyan-4: #02693E; /* hsl(155, 96%, 21%) · background */
+  --color-dark-blue: #002F67; /* hsl(213, 100%, 20%) · background */
+  --color-light-pink: #F8B9E3; /* hsl(320, 82%, 85%) · background */
+  --color-light-gray-5: #F4F3F0; /* hsl(45, 15%, 95%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 9.6px;
+  --font-size-xs: 10px;
+  --font-size-sm: 11px;
+  --font-size-base: 11.6223px;
+  --font-size-lg: 12px;
+  --font-size-xl: 12.8px;
+  --font-size-2xl: 14px;
+  --font-size-3xl: 15px;
+  --font-size-4xl: 16px;
+  --font-size-5xl: 18px;
+  --font-size-6xl: 20px;
+  --font-size-32px: 32px;
+  --font-size-44px: 44px;
+  --font-size-60px: 60px;
+  --font-size-80px: 80px;
+  --font-family-base: sans-serif;
+  --font-family-2: Roobert;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 10px;
+  --line-height-snug: 13.2px;
+  --line-height-normal: 14.4px;
+  --line-height-relaxed: 16.5px;
+  --line-height-loose: 17.6px;
+  --line-height-lh-6: 19.2px;
+  --line-height-lh-7: 20.48px;
+  --line-height-lh-8: 21px;
+  --line-height-lh-9: 22.4px;
+  --line-height-lh-10: 24px;
+  --line-height-lh-11: 25.6px;
+  --line-height-lh-12: 28px;
+  --line-height-lh-13: 28.8px;
+  --line-height-lh-14: 30px;
+  --line-height-lh-15: 35.2px;
+  --line-height-lh-16: 48px;
+  --line-height-lh-17: 60px;
+  --line-height-lh-18: 80px;
+  --letter-spacing-tight: -3.2px;
+  --letter-spacing-normal: -2.4px;
+  --letter-spacing-wide: -1.32px;
+  --letter-spacing-wider: -0.88px;
+  --letter-spacing-widest: -0.64px;
+  --letter-spacing-ls-6: -0.4px;
+  --letter-spacing-ls-7: -0.36px;
+  --letter-spacing-ls-8: -0.32px;
+  --letter-spacing-ls-9: -0.16px;
+  --letter-spacing-ls-10: -0.14px;
+  --letter-spacing-ls-11: -0.128px;
+  --letter-spacing-ls-12: -0.1px;
+  --letter-spacing-ls-13: 1px;
+  --letter-spacing-ls-14: 1.08px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1.6px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 6.4px;
+  --space-5: 8px;
+  --space-6: 8.7167px;
+  --space-8: 10px;
+  --space-10: 12px;
+  --space-12: 12.8px;
+  --space-16: 13px;
+  --space-20: 13.2px;
+  --space-24: 32px;
+  --space-32: 56.6484px;
+  --space-40: 180px;
+  --space-48: 16px;
+  --space-64: 17.4334px;
+  --space-80: 17.6px;
+  --space-96: 18px;
+  --space-128: 20px;
+  --space-160: 21.3828px;
+  --space-192: 24px;
+  --space-256: 28.3281px;
+  --space-23: 30px;
+  --space-25: 34px;
+  --space-26: 40px;
+  --space-27: 46.3203px;
+  --space-28: 48px;
+  --space-29: 50.9844px;
+  --space-30: 53.7188px;
+  --space-31: 54.4px;
+  --space-33: 56.6562px;
+  --space-34: 60px;
+  --space-35: 64px;
+  --space-36: 80px;
+  --space-37: 96px;
+  --space-38: 120px;
+  --space-39: 150px;
+  --space-41: 193.383px;
+  --space-42: 210px;
+  --space-43: 240px;
+  --space-44: 320px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --border-width-base: 2px;
+  --radius-sm: 2.75px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 11px;
+  --radius-2xl: 12px;
+  --radius-full: 14%;
+  --radius-r7: 16px;
+  --radius-r8: 16px 0px 0px 16px;
+  --radius-r9: 24px;
+  --radius-r10: 30px;
+  --radius-r11: 40px;
+  --radius-r12: 1584px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.1) 0px 1px 1px 0px, rgba(0, 0, 0, 0.04) 0px -1px 1px 0px inset, rgba(0, 0, 0, 0.05) 0px -0.5px 1px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.1) 0px 2px 6px 2px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 100px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.25s;
+  --duration-slower: 0.3s;
+  --duration-duration-6: 0.35s;
+  --duration-duration-7: 0.4s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 10;
+  --z-6: 30;
+  --z-7: 99;
+  --z-8: 900;
+  --z-9: 1000;
+  --z-10: 9999;
+  --z-11: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 479px;
+  --breakpoint-sm: 767px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 991px;
+  --breakpoint-xl: 992px;
+
+  /* ── Opacity ── */
+  --opacity-5: 0.05;
+  --opacity-56: 0.56;
+}

@@ -1,0 +1,155 @@
+/* ============================================
+ * Design Tokens — Y Combinator
+ * Source: https://www.ycombinator.com/
+ * Generated: 15/04/2026, 23:40:12
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray: #16140F; /* hsl(43, 19%, 7%) · text */
+  --color-light-gray: #F5F5EE; /* hsl(60, 26%, 95%) · background */
+  --color-yellow: #8A8575; /* hsl(46, 8%, 50%) · text */
+  --color-light-gray-2: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 11px;
+  --font-size-xs: 11.2px;
+  --font-size-sm: 14px;
+  --font-size-base: 15.2px;
+  --font-size-lg: 16px;
+  --font-size-xl: 16.8px;
+  --font-size-2xl: 17px;
+  --font-size-3xl: 18px;
+  --font-size-4xl: 19.2px;
+  --font-size-5xl: 20px;
+  --font-size-6xl: 22px;
+  --font-size-28px: 28px;
+  --font-size-32px: 32px;
+  --font-size-40px: 40px;
+  --font-size-48px: 48px;
+  --font-size-60px: 60px;
+  --font-size-73px: 72.65px;
+  --font-family-base: Outfit;
+  --font-family-2: Source Serif 4;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-w350: 350;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 13.2px;
+  --line-height-snug: 16.8px;
+  --line-height-normal: 17.5px;
+  --line-height-relaxed: 19.6px;
+  --line-height-loose: 20.8px;
+  --line-height-lh-6: 22px;
+  --line-height-lh-7: 22.8px;
+  --line-height-lh-8: 23.52px;
+  --line-height-lh-9: 25px;
+  --line-height-lh-10: 25.5px;
+  --line-height-lh-11: 26.88px;
+  --line-height-lh-12: 28px;
+  --line-height-lh-13: 28.6px;
+  --line-height-lh-14: 32.64px;
+  --line-height-lh-15: 38.4px;
+  --line-height-lh-16: 42px;
+  --line-height-lh-17: 57.6px;
+  --line-height-lh-18: 60px;
+  --line-height-lh-19: 66px;
+  --line-height-lh-20: 79.915px;
+  --letter-spacing-tight: -0.8px;
+  --letter-spacing-normal: -0.4px;
+  --letter-spacing-wide: 0.24px;
+  --letter-spacing-wider: 0.3px;
+  --letter-spacing-widest: 0.4px;
+  --letter-spacing-ls-6: 0.55px;
+  --letter-spacing-ls-7: 0.56px;
+  --letter-spacing-ls-8: 0.7px;
+  --letter-spacing-ls-9: 1.68px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 5px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 12px;
+  --space-10: 13px;
+  --space-12: 16px;
+  --space-16: 16.5px;
+  --space-20: 18px;
+  --space-24: 120px;
+  --space-32: 24px;
+  --space-40: 28px;
+  --space-48: 32px;
+  --space-64: 36px;
+  --space-80: 40px;
+  --space-96: 48px;
+  --space-128: 60px;
+  --space-160: 64px;
+  --space-192: 66.5px;
+  --space-256: 80px;
+  --space-23: 96px;
+  --space-25: 275px;
+  --space-26: 346.789px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 0px 12px 12px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 12px;
+  --radius-full: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.15) 0px 8px 32px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.08) 0px 4px 20px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.03s;
+  --duration-fast: 0.1s;
+  --duration-normal: 0.15s;
+  --duration-slow: 0.2s;
+  --duration-slower: 0.3s;
+  --duration-duration-6: 0.4s;
+  --duration-duration-7: 0.5s;
+  --duration-duration-8: 0.7s;
+  --easing-ease-out: ease-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 10;
+  --z-4: 20;
+  --z-5: 30;
+  --z-6: 50;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 350px;
+  --breakpoint-sm: 400px;
+  --breakpoint-md: 450px;
+  --breakpoint-lg: 500px;
+  --breakpoint-xl: 550px;
+  --breakpoint-2xl: 639.9px;
+  --breakpoint-3xl: 640px;
+  --breakpoint-bp-8: 650px;
+  --breakpoint-bp-9: 700px;
+  --breakpoint-bp-10: 768px;
+  --breakpoint-bp-11: 850px;
+  --breakpoint-bp-12: 900px;
+  --breakpoint-bp-13: 950px;
+  --breakpoint-bp-14: 1000px;
+  --breakpoint-bp-15: 1100px;
+  --breakpoint-bp-16: 1200px;
+
+  /* ── Opacity ── */
+  --opacity-15: 0.15;
+  --opacity-30: 0.3;
+  --opacity-80: 0.8;
+  --opacity-85: 0.85;
+  --opacity-90: 0.9;
+}

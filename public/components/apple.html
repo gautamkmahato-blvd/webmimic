@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Apple Components</title>
+<style>
+  /* ---------- Apple design tokens ---------- */
+  :root {
+    --apple-black: #000000;
+    --apple-white: #ffffff;
+    --apple-page-bg: #f5f5f7;      /* Apple's soft light-grey page background */
+    --apple-text: #1d1d1f;
+    --apple-text-secondary: #1d1d1f;
+    --apple-border: #1d1d1f;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--apple-page-bg);
+    color: var(--apple-text);
+    /* Apple's SF Pro stack (with system fallbacks) */
+    font-family: "SF Pro Display", "SF Pro Text", -apple-system,
+      BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .component-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .component-label {
+    font-size: 12px;
+    color: #6e6e73;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  /* ============================================= */
+  /* Component 1: iPhone 17 Pro product card         */
+  /* ============================================= */
+  .product-card {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    aspect-ratio: 0.78 / 1;       /* tall card ratio from the screenshot */
+    background: var(--apple-black);
+    color: var(--apple-white);
+    border-radius: 28px;
+    overflow: hidden;
+    padding: 56px 48px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .product-card__text {
+    width: 100%;
+    text-align: left;
+    z-index: 2;
+  }
+
+  .product-card__title {
+    margin: 0 0 12px;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+  }
+
+  .product-card__tagline {
+    margin: 0 0 16px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.2;
+  }
+
+  .product-card__price {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .product-card__price sup {
+    font-size: 0.7em;
+    vertical-align: super;
+  }
+
+  .product-card__image-wrap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* image is visually anchored to the bottom half of the card */
+    height: 62%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  /* ============================================= */
+  /* Component 2: Quick-link pill buttons            */
+  /* ============================================= */
+  .quicklinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .quicklink-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    min-height: 40px;
+    background: transparent;
+    color: var(--apple-text);
+    border: 1px solid var(--apple-border);
+    border-radius: 9999px;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background-color 200ms ease, color 200ms ease;
+    white-space: nowrap;
+  }
+
+  .quicklink-btn:hover {
+    background: var(--apple-black);
+    color: var(--apple-white);
+  }
+
+  .quicklink-btn:focus-visible {
+    outline: 2px solid #0071e3;   /* Apple's focus-blue */
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== Component 1 ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 1 — iPhone product card</div>
+      <article class="product-card">
+        <div class="product-card__text">
+          <h2 class="product-card__title">iPhone 17 Pro</h2>
+          <p class="product-card__tagline">All out Pro.</p>
+          <p class="product-card__price">
+            From ₹134900.00<sup>±</sup>
+          </p>
+        </div>
+
+        <div class="product-card__image-wrap">
+          <img
+            class="product-card__image"
+            src="https://www.apple.com/v/iphone-17-pro/b/images/overview/hero/hero_endframe__f29zy01vhl6q_large.jpg"
+            alt="iPhone 17 Pro in orange"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-17-pro-finish-unselect-gallery-1-202509_GEO_EMEA?wid=5120&hei=2880&fmt=webp&qlt=70&.v=ZXJnR0xmRldFVWJhR1BERUtFUXgrVUFDZWV3UmVESVEybEgvc2ZMbWxqa05Oc2VRVzR2MFpwZFVDU0lpVm1tWWNmTGZjT1F1RHhGMUlxalRpRm9hbzNRNFBKZjlybWp0OFpaTXRqTG5sdFp2WWsrOE9aNWRnR1Z4a293UlBiWFEvNHA3QmJpcndIQWNzNVZTQWhwaVBn'"
+          />
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== Component 2 ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 2 — Quick-link pills</div>
+      <div class="quicklinks">
+        <button type="button" class="quicklink-btn">Find a Store</button>
+        <button type="button" class="quicklink-btn">Order Status</button>
+        <button type="button" class="quicklink-btn">Shopping Help</button>
+        <button type="button" class="quicklink-btn">Your Saves</button>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

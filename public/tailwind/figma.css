@@ -1,0 +1,120 @@
+/* ============================================
+ * Design Tokens — Home – Figma
+ * Source: https://www.figma.com/files/team/1609475456435251541/recents-and-sharing?fuid=1609475454540289089
+ * Generated: 15/04/2026, 00:27:54
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #F5F5F5; /* hsl(0, 0%, 96%) · background */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-gray: #E6E6E6; /* hsl(0, 0%, 90%) · background */
+  --color-blue: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-blue-2: #0D99FF; /* hsl(205, 100%, 53%) · background */
+  --color-dark-gray: #2C2C2C; /* hsl(0, 0%, 17%) · background */
+  --color-dark-gray-2: #1E1E1E; /* hsl(0, 0%, 12%) · background */
+  --color-blue-3: #007BE5; /* hsl(208, 100%, 45%) · background */
+  --color-purple: #9747FF; /* hsl(266, 100%, 64%) · background */
+  --color-orange: #FF5C16; /* hsl(18, 100%, 54%) · background */
+  --color-pink: #FF24BD; /* hsl(318, 100%, 57%) · background */
+  --color-blue-4: #4D49FC; /* hsl(241, 97%, 64%) · background */
+  --color-black-2: #000102; /* hsl(210, 100%, 0%) · background */
+  --color-light-blue: #E5F4FF; /* hsl(205, 100%, 95%) · background */
+  --color-white-3: #F2F9FF; /* hsl(208, 100%, 97%) · background */
+  --color-light-gray-2: #EEEEEE; /* hsl(0, 0%, 93%) · background */
+  --color-light-gray-3: #F2F2F2; /* hsl(0, 0%, 95%) · background */
+  --color-white-4: #F4F3FE; /* hsl(245, 85%, 97%) · background */
+  --color-white-5: #FAFAFA; /* hsl(0, 0%, 98%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 8px;
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 16px;
+  --font-family-base: Times;
+  --font-family-2: Inter;
+  --font-weight-regular: 400;
+  --font-weight-w450: 450;
+  --font-weight-medium: 500;
+  --font-weight-w550: 550;
+  --line-height-tight: 16px;
+  --line-height-snug: 22px;
+  --line-height-normal: 24px;
+  --letter-spacing-tight: -0.032px;
+  --letter-spacing-normal: -0.003px;
+  --letter-spacing-wide: 0.005px;
+  --letter-spacing-wider: 0.05504px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-8: 16px;
+  --space-10: 24px;
+  --space-12: 28px;
+  --space-16: 32px;
+  --space-20: 34px;
+  --space-24: 138.188px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 4px;
+  --radius-sm: 0px 0px 13px 13px;
+  --radius-md: 2px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+  --radius-2xl: 4.5px;
+  --radius-full: 5px;
+  --radius-r7: 6px;
+  --radius-r8: 8px;
+  --radius-r9: 13px;
+  --radius-r10: 13px 13px 0px 0px;
+  --radius-r11: 100%;
+  --radius-r12: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgb(230, 230, 230) 0px 0px 0px 1px inset;
+  --shadow-md: rgba(0, 0, 0, 0.15) 0px 1px 3px 0px, rgba(0, 0, 0, 0.3) 0px 0px 0.5px 0px;
+  --shadow-lg: rgb(230, 230, 230) 0px 0px 0px 1px;
+  --shadow-xl: rgba(0, 0, 0, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.12) 0px 10px 16px 0px, rgba(0, 0, 0, 0.12) 0px 0px 0.5px 0px;
+  --shadow-shadow-5: rgba(255, 255, 255, 0.4) 0px 0px 0px 1px inset;
+  --shadow-shadow-6: rgba(0, 0, 0, 0.18) 0px 0px 0.5px 0px, rgba(0, 0, 0, 0.1) 0px 3px 8px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.4s;
+  --duration-slower: 0.5s;
+  --easing-ease-in-out: ease-in-out;
+  --easing-ease-out: ease-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 4;
+  --z-6: 6;
+  --z-7: 8;
+  --z-8: 11;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 645px;
+  --breakpoint-sm: 832px;
+  --breakpoint-md: 849px;
+  --breakpoint-lg: 1000px;
+  --breakpoint-xl: 1023px;
+  --breakpoint-2xl: 1440px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-59: 0.59;
+  --opacity-60: 0.6;
+  --opacity-89: 0.89;
+  --opacity-92: 0.92;
+}

@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Reddit Design System</title>
+<style>
+/* ============================================
+ * Reddit Design Tokens — pulled from the Markdown
+ * ============================================ */
+:root {
+  /* ── Colors: Backgrounds ── */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-light-gray-2: #E5EBEE;
+  --color-light-green: #95DAB6;
+  --color-blue-2: #5D81A2;
+  --color-pink: #FF1AA7;
+  --color-cyan-3: #32CDC8;
+  --color-light-gray-3: #BBBDBF;
+  --color-red: #D42B42;
+  --color-cyan-4: #0DD3BB;
+  --color-dark-green: #638029;
+  --color-cyan-5: #1A7FAA;
+  --color-green: #349E48;
+  --color-purple: #9116E9;
+  --color-dark-blue-2: #0A449B;
+  --color-orange-3: #D93900;
+  --color-cyan-6: #98AFB9;
+  --color-purple-2: #9406F9;
+  --color-orange-4: #958578;
+  --color-white-2: #F7F7F7;
+  --color-mid-gray-2: #7C8183;
+  --color-light-blue-3: #C2DBFF;
+  --color-dark-gray-4: #0C0E10;
+  --color-light-gray-4: #BFC2C7;
+  --color-blue-7: #096CF6;
+  --color-white-3: #F6F8F9;
+  --color-white-4: #F8F8F8;
+
+  /* ── Colors: Text ── */
+  --color-dark-cyan: #333D42;
+  --color-dark-gray: #21272A;
+  --color-dark-gray-2: #181C1F;
+  --color-light-gray: #EEF1F3;
+  --color-cyan: #5C6C74;
+  --color-blue: #115BCA;
+  --color-cyan-2: #576F76;
+  --color-mid-gray: #808080;
+  --color-orange: #FF4500;
+  --color-light-blue: #D4EAFF;
+  --color-dark-gray-3: #222222;
+  --color-yellow: #DDD622;
+  --color-blue-3: #2972A3;
+  --color-red-2: #FC0335;
+  --color-light-orange-2: #EADDC8;
+  --color-blue-4: #0077FF;
+  --color-pink-2: #FF1493;
+  --color-blue-5: #0079D3;
+  --color-dark-blue: #49545F;
+  --color-blue-6: #0051FF;
+  --color-dark-gray-5: #131313;
+
+  /* ── Colors: Border ── */
+  --color-light-gray-5: #C1C1C1;
+
+  /* ── Colors: Fill / Gradient ── */
+  --color-dark-red: #842123;
+  --color-orange-2: #FF6101;
+  --color-light-orange: #FFC49C;
+  --color-light-blue-2: #BBCFDA;
+
+  /* ── Typography ── */
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-2: Times, 'Times New Roman', serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 21px;
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight: 16px;
+  --line-height-snug: 20px;
+  --line-height-normal: 21px;
+  --line-height-relaxed: 22px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 30px;
+  --line-height-lh-7: 31.5px;
+  --line-height-lh-8: 38px;
+
+  --letter-spacing-tight: -0.028px;
+  --letter-spacing-normal: -0.012px;
+
+  /* ── Spacing ── */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 7px;
+  --space-4: 8px;
+  --space-5: 9px;
+  --space-6: 11px;
+  --space-8: 12px;
+  --space-10: 14px;
+  --space-12: 16px;
+  --space-16: 24px;
+  --space-20: 56px;
+  --space-24: 378.969px;
+  --space-32: 380.094px;
+  --space-40: 407.25px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 999px;
+  --radius-r7: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: rgba(255, 255, 255, 0.2) 0px 0px 6px 0px inset;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.25) 0px 1px 2px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  --shadow-xl: rgb(128, 128, 128) 0px 0px 5px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.2s;
+  --duration-fast: 0.25s;
+  --duration-normal: 0.3s;
+  --easing-ease-out: ease-out;
+
+  /* ── Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 3;
+  --z-4: 4;
+  --z-5: 10;
+  --z-6: 50;
+  --z-7: 101;
+  --z-8: 1001;
+  --z-9: 9000;
+  --z-10: 9999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 260px;
+  --breakpoint-sm: 325px;
+  --breakpoint-md: 500px;
+  --breakpoint-lg: 599px;
+  --breakpoint-xl: 607px;
+  --breakpoint-2xl: 608px;
+  --breakpoint-3xl: 767px;
+  --breakpoint-bp-8: 768px;
+  --breakpoint-bp-9: 960px;
+  --breakpoint-bp-10: 1024px;
+  --breakpoint-bp-11: 1200px;
+  --breakpoint-bp-12: 1416px;
+  --breakpoint-bp-13: 1472px;
+  --breakpoint-bp-14: 1920px;
+
+  /* ── Opacity ── */
+  --opacity-25: 0.25;
+  --opacity-30: 0.3;
+  --opacity-60: 0.6;
+  --opacity-75: 0.75;
+  --opacity-90: 0.9;
+}
+
+/* ============================================
+ * Layout structure — identical to reference
+ * Colors / tokens mapped from Reddit system
+ * ============================================ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:var(--font-family-base);
+  background:var(--color-white);
+  color:var(--color-dark-gray-2);
+  font-size:var(--font-size-xs);
+  line-height:var(--line-height-normal);
+  font-weight:var(--font-weight-regular);
+  -webkit-font-smoothing:antialiased;
+}
+.page{max-width:1200px;margin:0 auto;padding:56px 32px;}
+
+/* ── HEADER ── */
+.top-bar{border-bottom:var(--border-width-hairline) solid var(--color-light-gray-2);margin-bottom:56px;padding-bottom:16px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;}
+.header-left{display:flex;align-items:center;gap:14px;}
+.logo{width:38px;height:38px;background:var(--color-orange);border:var(--border-width-hairline) solid var(--color-orange);border-radius:var(--radius-r7);display:flex;align-items:center;justify-content:center;}
+.system-title{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);line-height:var(--line-height-lh-6);letter-spacing:var(--letter-spacing-tight);}
+.system-meta{font-size:var(--font-size-2xs);color:var(--color-cyan);margin-top:4px;line-height:var(--line-height-loose);}
+.hbadge{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);background:var(--color-light-gray-2);color:var(--color-cyan);padding:4px 12px;border-radius:var(--radius-r7);border:var(--border-width-hairline) solid var(--color-light-gray-2);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-hairline) solid var(--color-light-gray-4);background:var(--color-white-2);color:var(--color-dark-gray-2);box-shadow:0 1px 2px rgba(15,23,42,0.08);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-cyan);color:var(--color-cyan);box-shadow:0 4px 14px rgba(15,23,42,0.14);transform:translateY(-1px);}
+
+/* ── SECTION ── */
+.section{margin-bottom:64px;}
+.section-title{font-size:var(--font-size-lg);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);line-height:var(--line-height-lh-8);margin-bottom:24px;display:flex;align-items:center;gap:12px;letter-spacing:var(--letter-spacing-tight);}
+
+/* ── COLORS ── */
+.color-group{margin-bottom:32px;}
+.color-group-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);letter-spacing:0.5px;text-transform:uppercase;color:var(--color-cyan);margin-bottom:12px;}
+.swatch-grid{display:grid;gap:8px;}
+.swatch-item{display:flex;flex-direction:column;gap:8px;}
+.swatch-box{height:60px;border-radius:var(--radius-lg);border:var(--border-width-hairline) solid var(--color-light-gray-2);}
+.swatch-name{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);color:var(--color-dark-cyan);line-height:var(--line-height-tight);}
+.swatch-hex{font-size:var(--font-size-2xs);color:var(--color-cyan);font-family:var(--font-family-mono);line-height:var(--line-height-tight);}
+.empty-state{padding:24px;text-align:center;color:var(--color-cyan);font-size:var(--font-size-2xs);background:var(--color-white-3);border:var(--border-width-hairline) dashed var(--color-light-gray-2);border-radius:var(--radius-xl);font-style:italic;}
+
+/* ── TYPOGRAPHY ── */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+.font-card{background:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray-2);border-radius:var(--radius-xl);padding:24px;}
+.font-token{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--color-orange);font-weight:var(--font-weight-semibold);margin-bottom:8px;}
+.font-display{font-size:var(--font-size-lg);color:var(--color-dark-gray-2);line-height:var(--line-height-lh-7);margin-bottom:8px;font-weight:var(--font-weight-extrabold);letter-spacing:var(--letter-spacing-tight);}
+.font-sample{font-size:var(--font-size-xs);color:var(--color-dark-cyan);line-height:var(--line-height-normal);font-weight:var(--font-weight-regular);}
+.fw-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.fw-chip{font-size:var(--font-size-2xs);padding:4px 11px;background:var(--color-white-2);border-radius:var(--radius-r7);color:var(--color-dark-cyan);border:var(--border-width-hairline) solid var(--color-light-gray-2);}
+
+.type-scale{background:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray-2);border-radius:var(--radius-xl);overflow:hidden;}
+.type-row{display:flex;flex-direction:column;padding:16px 24px;border-bottom:var(--border-width-hairline) solid var(--color-light-gray-2);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--color-dark-gray-2);margin-bottom:4px;}
+.type-meta{font-size:var(--font-size-2xs);color:var(--color-cyan);font-family:var(--font-family-mono);line-height:var(--line-height-snug);}
+
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;}
+.lh-item{background:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray-2);border-radius:var(--radius-lg);padding:12px;display:flex;flex-direction:column;gap:6px;}
+.lh-bar-wrap{background:var(--color-light-gray-2);border-radius:4px;overflow:hidden;position:relative;}
+.lh-bar{background:var(--color-orange);width:100%;}
+.lh-token{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--color-orange);font-weight:var(--font-weight-semibold);}
+.lh-val{font-size:var(--font-size-2xs);color:var(--color-cyan);}
+
+.ls-row{display:flex;gap:12px;flex-wrap:wrap;}
+.ls-item{background:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray-2);border-radius:var(--radius-lg);padding:16px 24px;flex:1;}
+.ls-sample{font-size:var(--font-size-lg);color:var(--color-dark-gray-2);font-weight:var(--font-weight-extrabold);margin-bottom:6px;letter-spacing:var(--letter-spacing-tight);}
+.ls-token{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--color-orange);font-weight:var(--font-weight-semibold);}
+.ls-desc{font-size:var(--font-size-2xs);color:var(--color-cyan);margin-top:4px;}
+
+/* ── SPACING ── */
+.token-wrap{background:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray-2);border-radius:var(--radius-xl);padding:24px;}
+.tw-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);line-height:var(--line-height-relaxed);margin-bottom:4px;letter-spacing:var(--letter-spacing-tight);}
+.tw-sub{font-size:var(--font-size-2xs);color:var(--color-cyan);margin-bottom:24px;line-height:var(--line-height-normal);}
+.spacing-chart{display:flex;align-items:flex-end;gap:6px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;}
+.sp-bar{background:var(--color-orange);border-radius:4px 4px 0 0;width:100%;}
+.sp-lbl{font-size:10px;color:var(--color-cyan);text-align:center;font-family:var(--font-family-mono);}
+
+/* ── BORDERS ── */
+.border-card{background:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray-2);border-radius:var(--radius-xl);padding:24px;margin-bottom:16px;}
+.bc-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);line-height:var(--line-height-relaxed);margin-bottom:16px;letter-spacing:var(--letter-spacing-tight);}
+.radius-row{display:flex;gap:16px;flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.radius-box{width:60px;height:60px;background:var(--color-orange);border:var(--border-width-hairline) solid var(--color-orange-2);}
+.radius-lbl{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);color:var(--color-dark-cyan);text-align:center;font-family:var(--font-family-mono);}
+.radius-val{font-size:var(--font-size-2xs);color:var(--color-cyan);text-align:center;font-family:var(--font-family-mono);}
+.bw-demo{display:flex;flex-direction:column;gap:12px;}
+.bw-item{display:flex;align-items:center;gap:16px;}
+.bw-line{flex:1;background:var(--color-dark-gray-2);}
+.bw-token{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--color-orange);white-space:nowrap;font-weight:var(--font-weight-semibold);}
+.bw-val{font-size:var(--font-size-2xs);color:var(--color-cyan);font-family:var(--font-family-mono);white-space:nowrap;}
+
+/* ── SHADOWS ── */
+.shadows-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.sh-item{display:flex;flex-direction:column;gap:9px;}
+.sh-box{height:88px;background:var(--color-white);border-radius:var(--radius-lg);border:var(--border-width-hairline) solid var(--color-light-gray-2);}
+.sh-token{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);font-family:var(--font-family-mono);letter-spacing:var(--letter-spacing-tight);}
+.sh-usage{font-size:var(--font-size-2xs);color:var(--color-orange);font-weight:var(--font-weight-semibold);}
+.sh-desc{font-size:var(--font-size-2xs);color:var(--color-cyan);line-height:var(--line-height-normal);margin-top:4px;}
+
+/* ── MOTION / BREAKPOINTS / Z-INDEX tables ── */
+.z-table,.a11y-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td,.a11y-table th,.a11y-table td{padding:14px;text-align:left;font-size:var(--font-size-2xs);border-bottom:var(--border-width-hairline) solid var(--color-light-gray-2);line-height:var(--line-height-normal);}
+.z-table th,.a11y-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);text-transform:uppercase;letter-spacing:0.5px;color:var(--color-cyan);background:var(--color-white-3);}
+.z-table td:first-child,.a11y-table td:first-child,.a11y-table td:nth-child(2){font-family:var(--font-family-mono);color:var(--color-orange);font-weight:var(--font-weight-semibold);}
+.z-table td:nth-child(2){font-family:var(--font-family-mono);color:var(--color-dark-gray-2);font-weight:var(--font-weight-bold);}
+.z-table td:nth-child(3),.a11y-table td:nth-child(3){color:var(--color-cyan);}
+.z-table tr:last-child td,.a11y-table tr:last-child td{border-bottom:none;}
+
+/* ── BREAKPOINTS ── */
+.bp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.bp-card{background:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray-2);border-radius:var(--radius-xl);padding:16px;display:flex;align-items:center;gap:16px;}
+.bp-icon{width:40px;height:40px;background:var(--color-white-3);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.bp-icon svg{width:18px;height:18px;color:var(--color-orange);}
+.bp-token{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--color-orange);margin-bottom:2px;font-weight:var(--font-weight-semibold);}
+.bp-val{font-size:var(--font-size-base);font-weight:var(--font-weight-extrabold);color:var(--color-dark-gray-2);line-height:1;letter-spacing:var(--letter-spacing-tight);}
+.bp-desc{font-size:var(--font-size-2xs);color:var(--color-cyan);margin-top:4px;}
+
+/* ── OPACITY ── */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+.op-item{display:flex;flex-direction:column;gap:8px;}
+.op-box{height:60px;border-radius:var(--radius-lg);background:var(--color-orange);}
+.op-token{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--color-orange);font-weight:var(--font-weight-semibold);}
+.op-val{font-size:var(--font-size-2xs);color:var(--color-cyan);}
+
+/* ── ACCESSIBILITY ── */
+.wcag-badge{display:inline-flex;align-items:center;font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);padding:4px 11px;border-radius:var(--radius-r7);}
+.wcag-aaa{background:#e8f5ec;color:#1d7a35;border:var(--border-width-hairline) solid #c5e4cf;}
+.wcag-aa{background:#fff1e5;color:#a33400;border:var(--border-width-hairline) solid #ffd4b8;}
+.wcag-aal{background:var(--color-white-3);color:var(--color-cyan);border:var(--border-width-hairline) solid var(--color-light-gray-2);}
+.wcag-fail{background:#fdecee;color:#a8001a;border:var(--border-width-hairline) solid #f5c8cd;}
+
+/* ── UI COMPONENTS ── */
+.comp-row{background:var(--color-white);border-radius:var(--radius-xl);border:var(--border-width-hairline) solid var(--color-light-gray-2);overflow:hidden;margin-bottom:16px;}
+.comp-header{padding:12px 16px;border-bottom:var(--border-width-hairline) solid var(--color-light-gray-2);background:var(--color-white-3);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);letter-spacing:var(--letter-spacing-tight);}
+.comp-badge{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);background:var(--color-light-gray-2);color:var(--color-cyan);padding:4px 11px;border-radius:var(--radius-r7);}
+.comp-body{padding:24px;}
+
+.btn-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-base);font-weight:var(--font-weight-bold);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-xs);padding:8px 16px;border-radius:var(--radius-r7);line-height:1.125rem;transition:opacity var(--duration-fast) var(--easing-ease-out), background var(--duration-fast) var(--easing-ease-out);height:2.125rem;}
+.btn-primary{background:var(--color-orange);color:var(--color-white);}
+.btn-primary:hover{background:var(--color-orange-3);}
+.btn-secondary{background:transparent;color:var(--color-blue-5);border:var(--border-width-hairline) solid var(--color-blue-5);}
+.btn-secondary:hover{background:var(--color-light-blue);}
+.btn-outline{background:transparent;color:var(--color-orange);border:var(--border-width-hairline) solid var(--color-orange);}
+.btn-outline:hover{background:var(--color-light-orange);}
+.btn-ghost{background:transparent;color:var(--color-blue-5);border:var(--border-width-hairline) solid transparent;}
+.btn-ghost:hover{background:var(--color-white-3);}
+.btn-muted{background:var(--color-white-2);color:var(--color-cyan);border:var(--border-width-hairline) solid var(--color-light-gray-2);}
+
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.inp-group{display:flex;flex-direction:column;gap:6px;}
+.inp-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);line-height:var(--line-height-snug);}
+.inp{width:100%;font-family:var(--font-family-base);font-size:var(--font-size-xs);color:var(--color-dark-gray-2);background:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray-5);border-radius:var(--radius-r7);padding:8px 16px;outline:none;transition:border var(--duration-fast) var(--easing-ease-out);line-height:var(--line-height-normal);height:2.75rem;}
+.inp:focus{border-color:var(--color-blue-5);box-shadow:0 0 0 3px rgba(0,121,211,0.2);}
+.inp::placeholder{color:var(--color-mid-gray-2);}
+.inp-hint{font-size:var(--font-size-2xs);color:var(--color-cyan);line-height:var(--line-height-snug);}
+.inp-err{border-color:var(--color-red-2)!important;}
+.inp-err-msg{font-size:var(--font-size-2xs);color:var(--color-red-2);line-height:var(--line-height-snug);font-weight:var(--font-weight-semibold);}
+
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);padding:4px 11px;border-radius:var(--radius-r7);line-height:var(--line-height-snug);}
+.badge-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--color-light-gray-2);color:var(--color-dark-cyan);}
+.badge-brand{background:var(--color-light-orange);color:var(--color-dark-red);}
+.badge-muted{background:var(--color-white-3);color:var(--color-cyan);border:var(--border-width-hairline) solid var(--color-light-gray-2);}
+.badge-row{display:flex;flex-wrap:wrap;gap:8px;}
+
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);padding:4px 11px;border-radius:var(--radius-r7);border:var(--border-width-hairline) solid var(--color-light-gray-2);background:var(--color-white);color:var(--color-dark-cyan);line-height:var(--line-height-snug);}
+.tag-brand{color:var(--color-white);background:var(--color-orange);border-color:var(--color-orange);}
+
+.alert{display:flex;gap:12px;padding:16px;border-radius:var(--radius-xl);font-size:var(--font-size-xs);}
+.alert-icon{font-size:var(--font-size-lg);flex-shrink:0;line-height:1;}
+.alert-body h5{font-weight:var(--font-weight-bold);margin-bottom:4px;font-size:var(--font-size-xs);color:var(--color-dark-gray-2);line-height:var(--line-height-relaxed);letter-spacing:var(--letter-spacing-tight);}
+.alert-body p{font-size:var(--font-size-2xs);line-height:var(--line-height-normal);}
+.alert-neutral{background:var(--color-light-blue);color:var(--color-dark-blue-2);border:var(--border-width-hairline) solid #b3d9ff;}
+.alert-brand{background:var(--color-light-orange);color:var(--color-dark-red);border:var(--border-width-hairline) solid var(--color-orange);}
+.alert-dim{background:#fff8e1;color:#6b5200;border:var(--border-width-hairline) solid #ffe082;}
+.alert-base{background:#fdecee;color:#842123;border:var(--border-width-hairline) solid #f5c8cd;}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.feature-card{background:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray-2);border-radius:var(--radius-xl);padding:24px;transition:border-color var(--duration-normal) var(--easing-ease-out);}
+.feature-card:hover{border-color:var(--color-orange);}
+.fc-icon{width:40px;height:40px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:12px;background:var(--color-light-orange);color:var(--color-orange);}
+.fc-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);line-height:var(--line-height-loose);margin-bottom:6px;letter-spacing:var(--letter-spacing-tight);}
+.fc-desc{font-size:var(--font-size-2xs);color:var(--color-dark-cyan);line-height:var(--line-height-normal);margin-bottom:12px;}
+
+.av-row{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-bold);flex-shrink:0;font-family:var(--font-family-base);}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-sm);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-xs);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-2xs);}
+.av-info h4{font-size:var(--font-size-sm);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);line-height:var(--line-height-relaxed);letter-spacing:var(--letter-spacing-tight);}
+.av-info p{font-size:var(--font-size-2xs);color:var(--color-cyan);line-height:var(--line-height-snug);}
+
+.prog-wrap{margin-bottom:12px;}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);line-height:var(--line-height-snug);margin-bottom:6px;}
+.prog-track{height:6px;background:var(--color-light-gray-2);border-radius:var(--radius-full);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-full);transition:width var(--duration-normal) var(--easing-ease-out);}
+
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:12px 16px;text-align:left;font-size:var(--font-size-xs);border-bottom:var(--border-width-hairline) solid var(--color-light-gray-2);line-height:var(--line-height-normal);}
+.data-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);text-transform:uppercase;letter-spacing:0.5px;color:var(--color-cyan);background:var(--color-white-3);}
+.data-table tr:hover td{background:var(--color-white-3);transition:background var(--duration-fast) var(--easing-ease-out);}
+.data-table td:first-child{font-family:var(--font-family-mono);color:var(--color-orange);font-weight:var(--font-weight-semibold);}
+
+/* ── CSS VARIABLES REFERENCE ── */
+.tokens-section{margin-bottom:64px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.tokens-group{background:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray-2);border-radius:var(--radius-xl);overflow:hidden;}
+.tokens-group-header{padding:12px 16px;border-bottom:var(--border-width-hairline) solid var(--color-light-gray-2);background:var(--color-white-3);display:flex;align-items:center;gap:9px;}
+.tokens-group-icon{width:8px;height:8px;border-radius:50%;background:var(--color-orange);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-dark-gray-2);letter-spacing:0.5px;text-transform:uppercase;}
+.tokens-list{padding:9px 0;}
+.token-row{display:flex;align-items:center;gap:12px;padding:7px 16px;transition:background var(--duration-instant);}
+.token-row:hover{background:var(--color-white-3);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-md);border:var(--border-width-hairline) solid var(--color-light-gray-2);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);color:var(--color-dark-cyan);flex:1;min-width:0;}
+.token-css{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--color-orange);white-space:nowrap;font-weight:var(--font-weight-semibold);}
+.token-value{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--color-cyan);white-space:nowrap;}
+.token-preview-bar{height:6px;border-radius:var(--radius-full);background:var(--color-orange);flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:var(--color-orange);flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-md);background:var(--color-orange);flex-shrink:0;}
+.token-row-sep{height:var(--border-width-hairline);background:var(--color-light-gray-2);margin:6px 0;}
+
+@media(max-width:767px){
+  .font-cards,.motion-grid,.shadows-row,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid,.bp-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="22" height="22" viewBox="0 0 216 216" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="108" cy="108" r="108" fill="#FF4500"/>
+            <path d="M180 108c0-8.84-7.16-16-16-16-4.32 0-8.23 1.71-11.1 4.49-10.94-7.88-26.04-13.01-42.84-13.65l7.3-34.41 23.9 5.08c.3 6.08 5.31 10.94 11.47 10.94 6.35 0 11.5-5.15 11.5-11.5s-5.15-11.5-11.5-11.5c-4.52 0-8.42 2.61-10.3 6.41l-26.7-5.67a2.5 2.5 0 0 0-2.97 1.93l-8.15 38.37c-17.08.51-32.44 5.66-43.54 13.62C58.23 93.71 54.32 92 50 92c-8.84 0-16 7.16-16 16 0 6.5 3.87 12.09 9.43 14.62-.24 1.5-.36 3.03-.36 4.58 0 23.35 27.17 42.3 60.69 42.3s60.69-18.95 60.69-42.3c0-1.55-.12-3.08-.36-4.58 5.56-2.53 9.91-8.12 9.91-14.62ZM72 124c0-5.52 4.48-10 10-10s10 4.48 10 10-4.48 10-10 10-10-4.48-10-10Zm55.22 30.36c-6.75 6.75-19.66 7.27-23.47 7.27-3.82 0-16.73-.52-23.47-7.27a2.56 2.56 0 0 1 0-3.62 2.56 2.56 0 0 1 3.62 0c4.25 4.25 13.33 5.76 19.85 5.76s15.6-1.5 19.85-5.76a2.56 2.56 0 0 1 3.62 0c1 1 1 2.62 0 3.62Zm-3.17-20.36c-5.52 0-10-4.48-10-10s4.48-10 10-10 10 4.48 10 10-4.48 10-10 10Z" fill="#FFFFFF"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">Reddit Design System</div>
+          <div class="system-meta">Light · Generated 17/04/2026 · 53 colors · 21 type tokens · 14 spacing steps · 4 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">v1.0.0</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- ── 1. COLOR PALETTE ── -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(9,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black</div><div class="swatch-hex">#000000</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF"></div><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E5EBEE"></div><div class="swatch-name">Light Gray 2</div><div class="swatch-hex">#E5EBEE</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#95DAB6"></div><div class="swatch-name">Light Green</div><div class="swatch-hex">#95DAB6</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#5D81A2"></div><div class="swatch-name">Blue 2</div><div class="swatch-hex">#5D81A2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF1AA7"></div><div class="swatch-name">Pink</div><div class="swatch-hex">#FF1AA7</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#32CDC8"></div><div class="swatch-name">Cyan 3</div><div class="swatch-hex">#32CDC8</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#BBBDBF"></div><div class="swatch-name">Light Gray 3</div><div class="swatch-hex">#BBBDBF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#D42B42"></div><div class="swatch-name">Red</div><div class="swatch-hex">#D42B42</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0DD3BB"></div><div class="swatch-name">Cyan 4</div><div class="swatch-hex">#0DD3BB</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#638029"></div><div class="swatch-name">Dark Green</div><div class="swatch-hex">#638029</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1A7FAA"></div><div class="swatch-name">Cyan 5</div><div class="swatch-hex">#1A7FAA</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#349E48"></div><div class="swatch-name">Green</div><div class="swatch-hex">#349E48</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#9116E9"></div><div class="swatch-name">Purple</div><div class="swatch-hex">#9116E9</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0A449B"></div><div class="swatch-name">Dark Blue 2</div><div class="swatch-hex">#0A449B</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#D93900"></div><div class="swatch-name">Orange 3</div><div class="swatch-hex">#D93900</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#98AFB9"></div><div class="swatch-name">Cyan 6</div><div class="swatch-hex">#98AFB9</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#9406F9"></div><div class="swatch-name">Purple 2</div><div class="swatch-hex">#9406F9</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#958578"></div><div class="swatch-name">Orange 4</div><div class="swatch-hex">#958578</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F7F7F7"></div><div class="swatch-name">White 2</div><div class="swatch-hex">#F7F7F7</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#7C8183"></div><div class="swatch-name">Mid Gray 2</div><div class="swatch-hex">#7C8183</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#C2DBFF"></div><div class="swatch-name">Light Blue 3</div><div class="swatch-hex">#C2DBFF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0C0E10"></div><div class="swatch-name">Dark Gray 4</div><div class="swatch-hex">#0C0E10</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#BFC2C7"></div><div class="swatch-name">Light Gray 4</div><div class="swatch-hex">#BFC2C7</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#096CF6"></div><div class="swatch-name">Blue 7</div><div class="swatch-hex">#096CF6</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F6F8F9"></div><div class="swatch-name">White 3</div><div class="swatch-hex">#F6F8F9</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F8F8F8"></div><div class="swatch-name">White 4</div><div class="swatch-hex">#F8F8F8</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(9,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#333D42"></div><div class="swatch-name">Dark Cyan</div><div class="swatch-hex">#333D42</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#21272A"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#21272A</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#181C1F"></div><div class="swatch-name">Dark Gray 2</div><div class="swatch-hex">#181C1F</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#EEF1F3"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#EEF1F3</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#5C6C74"></div><div class="swatch-name">Cyan</div><div class="swatch-hex">#5C6C74</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#115BCA"></div><div class="swatch-name">Blue</div><div class="swatch-hex">#115BCA</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#576F76"></div><div class="swatch-name">Cyan 2</div><div class="swatch-hex">#576F76</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#808080"></div><div class="swatch-name">Mid Gray</div><div class="swatch-hex">#808080</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF4500"></div><div class="swatch-name">Orange</div><div class="swatch-hex">#FF4500</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#D4EAFF"></div><div class="swatch-name">Light Blue</div><div class="swatch-hex">#D4EAFF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#222222"></div><div class="swatch-name">Dark Gray 3</div><div class="swatch-hex">#222222</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#DDD622"></div><div class="swatch-name">Yellow</div><div class="swatch-hex">#DDD622</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#2972A3"></div><div class="swatch-name">Blue 3</div><div class="swatch-hex">#2972A3</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FC0335"></div><div class="swatch-name">Red 2</div><div class="swatch-hex">#FC0335</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#EADDC8"></div><div class="swatch-name">Light Orange 2</div><div class="swatch-hex">#EADDC8</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0077FF"></div><div class="swatch-name">Blue 4</div><div class="swatch-hex">#0077FF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF1493"></div><div class="swatch-name">Pink 2</div><div class="swatch-hex">#FF1493</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0079D3"></div><div class="swatch-name">Blue 5</div><div class="swatch-hex">#0079D3</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#49545F"></div><div class="swatch-name">Dark Blue</div><div class="swatch-hex">#49545F</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0051FF"></div><div class="swatch-name">Blue 6</div><div class="swatch-hex">#0051FF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#131313"></div><div class="swatch-name">Dark Gray 5</div><div class="swatch-hex">#131313</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Border Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(5,1fr);max-width:600px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#C1C1C1"></div><div class="swatch-name">Light Gray 5</div><div class="swatch-hex">#C1C1C1</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Fill &amp; Gradient Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(5,1fr);max-width:600px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#842123"></div><div class="swatch-name">Dark Red</div><div class="swatch-hex">#842123</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF6101"></div><div class="swatch-name">Orange 2</div><div class="swatch-hex">#FF6101</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFC49C"></div><div class="swatch-name">Light Orange</div><div class="swatch-hex">#FFC49C</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#BBCFDA"></div><div class="swatch-name">Light Blue 2</div><div class="swatch-hex">#BBCFDA</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. TYPOGRAPHY ── -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">Base Font · -apple-system</div>
+        <div class="font-display">System Sans</div>
+        <div class="font-sample">The quick brown fox jumps over the lazy dog. Reddit — Dive into anything.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:600">Semibold · 600</span>
+          <span class="fw-chip" style="font-weight:700">Bold · 700</span>
+          <span class="fw-chip" style="font-weight:800">Extrabold · 800</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Serif Font · Times</div>
+        <div class="font-display" style="font-family:var(--font-family-2);">Times Serif</div>
+        <div class="font-sample" style="font-family:var(--font-family-2);">Used sparingly for long-form content and editorial typography on Reddit.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:var(--font-family-2);font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-family:var(--font-family-2);font-weight:700">Bold · 700</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-scale" style="margin-bottom:24px;">
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-lg);font-weight:var(--font-weight-extrabold);line-height:var(--line-height-lh-8);letter-spacing:var(--letter-spacing-tight);">Display / Heading</div>
+        <div class="type-meta">Heading XL · 21px · Extrabold · line-height: 38px · letter-spacing: −0.028px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-base);font-weight:var(--font-weight-bold);line-height:var(--line-height-lh-7);">The front page of the internet</div>
+        <div class="type-meta">Heading Large · 18px · Bold · line-height: 31.5px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);line-height:var(--line-height-lh-6);">Find your community and start conversations</div>
+        <div class="type-meta">Heading Medium · 16px · Semibold · line-height: 30px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-sm);font-weight:var(--font-weight-regular);line-height:var(--line-height-loose);color:var(--color-dark-cyan);">Reddit is home to thousands of communities, endless conversation, and authentic human connection. Whether you're into breaking news, sports, TV fan theories, or a never-ending stream of the internet's cutest animals, there's a community for you.</div>
+        <div class="type-meta">Body Large · 16px · Regular · line-height: 24px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-xs);font-weight:var(--font-weight-regular);line-height:var(--line-height-relaxed);color:var(--color-dark-cyan);">Every Reddit community is a full, self-governed space with its own rules, moderators, and culture.</div>
+        <div class="type-meta">Body Default · 14px · Regular · line-height: 22px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-xs);font-weight:var(--font-weight-regular);line-height:var(--line-height-normal);color:var(--color-cyan);">Posted 2 hours ago · 1.2k comments · 24 awards</div>
+        <div class="type-meta">Body Small · 14px · Regular · line-height: 21px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight);letter-spacing:0.5px;text-transform:uppercase;color:var(--color-orange);">POPULAR · TRENDING · NEW</div>
+        <div class="type-meta">Caption / Label · 12px · Bold · line-height: 16px</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:24px;">
+      <div class="color-group-label">Line Heights</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:16px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">16px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:20px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">20px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:21px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">21px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:22px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">22px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">Loose</div><div class="lh-val">24px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:30px;"></div></div><div class="lh-token">LH-6</div><div class="lh-val">30px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:31.5px;"></div></div><div class="lh-token">LH-7</div><div class="lh-val">31.5px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:38px;"></div></div><div class="lh-token">LH-8</div><div class="lh-val">38px</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="color-group-label">Letter Spacing</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-tight);">Reddit Communities</div>
+          <div class="ls-token">Tight</div>
+          <div class="ls-desc">−0.028px · headings, display text</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-normal);">Dive into anything</div>
+          <div class="ls-token">Normal</div>
+          <div class="ls-desc">−0.012px · body copy, labels</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. SPACING ── -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">14 tokens — 4px → 407.25px</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:6px"></div><div class="sp-lbl">6</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:7px"></div><div class="sp-lbl">7</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:9px"></div><div class="sp-lbl">9</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:11px"></div><div class="sp-lbl">11</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:14px"></div><div class="sp-lbl">14</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:16px"></div><div class="sp-lbl">16</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:24px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:56px"></div><div class="sp-lbl">56</div></div>
+        <div class="sp-col" style="opacity:var(--opacity-75);"><div class="sp-bar" style="height:110px"></div><div class="sp-lbl">378.97</div></div>
+        <div class="sp-col" style="opacity:var(--opacity-60);"><div class="sp-bar" style="height:125px"></div><div class="sp-lbl">380.09</div></div>
+        <div class="sp-col" style="opacity:var(--opacity-30);"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">407.25</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. BORDERS ── -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:2px"></div><div class="radius-lbl">Small</div><div class="radius-val">2px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">Medium</div><div class="radius-val">4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-lbl">Large</div><div class="radius-val">8px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:16px"></div><div class="radius-lbl">X-Large</div><div class="radius-val">16px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:20px"></div><div class="radius-lbl">2X-Large</div><div class="radius-val">20px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:999px"></div><div class="radius-lbl">Full</div><div class="radius-val">999px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px"></div><div class="radius-lbl">Pill</div><div class="radius-val">9999px</div></div>
+      </div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Widths</div>
+      <div class="bw-demo">
+        <div class="bw-item">
+          <div class="bw-line" style="height:1px"></div>
+          <div class="bw-token">Hairline</div>
+          <div class="bw-val">1px</div>
+        </div>
+        <div class="bw-item">
+          <div class="bw-line" style="height:2px"></div>
+          <div class="bw-token">Thin</div>
+          <div class="bw-val">2px</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. SHADOWS / ELEVATION ── -->
+  <div class="section">
+    <div class="section-title">Shadow / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">4 tokens</div>
+      <div class="shadows-row">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-sm);"></div>
+          <div class="sh-token">Inset</div>
+          <div class="sh-usage">×4</div>
+          <div class="sh-desc">Inner white glow · rgba(255,255,255,.2) 0 0 6px inset</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-md);"></div>
+          <div class="sh-token">Raised</div>
+          <div class="sh-usage">×2</div>
+          <div class="sh-desc">rgba(0,0,0,.25) 0 1px 2px · cards, tooltips</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-lg);"></div>
+          <div class="sh-token">Flat</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">Transparent fallback — no visible shadow</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-xl);"></div>
+          <div class="sh-token">Floating</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">rgb(128,128,128) 0 0 5px · modals, overlays</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6. Z-INDEX ── -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>--z-1</td><td>1</td><td>Base layer</td></tr>
+          <tr><td>--z-2</td><td>2</td><td>Stacked base element</td></tr>
+          <tr><td>--z-3</td><td>3</td><td>Raised inline element</td></tr>
+          <tr><td>--z-4</td><td>4</td><td>Hover / focus rings</td></tr>
+          <tr><td>--z-5</td><td>10</td><td>Sticky headers, navigation</td></tr>
+          <tr><td>--z-6</td><td>50</td><td>Dropdowns, tooltips</td></tr>
+          <tr><td>--z-7</td><td>101</td><td>Overlays, drawers</td></tr>
+          <tr><td>--z-8</td><td>1001</td><td>Modals, dialogs</td></tr>
+          <tr><td>--z-9</td><td>9000</td><td>Toasts, notifications</td></tr>
+          <tr><td>--z-10</td><td>9999</td><td>Critical overlays, max layer</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── 7. BREAKPOINTS ── -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div class="bp-grid">
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-xs</div><div class="bp-val">260px</div><div class="bp-desc">Ultra-small mobile</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-sm</div><div class="bp-val">325px</div><div class="bp-desc">Small mobile</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-md</div><div class="bp-val">500px</div><div class="bp-desc">Large mobile</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-lg</div><div class="bp-val">599px</div><div class="bp-desc">Phablet</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-xl</div><div class="bp-val">607px</div><div class="bp-desc">Small tablet</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-2xl</div><div class="bp-val">608px</div><div class="bp-desc">Tablet</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-3xl</div><div class="bp-val">767px</div><div class="bp-desc">iPad portrait</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-bp-8</div><div class="bp-val">768px</div><div class="bp-desc">Tablet landscape</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-bp-9</div><div class="bp-val">960px</div><div class="bp-desc">Small laptop</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-bp-10</div><div class="bp-val">1024px</div><div class="bp-desc">Laptop</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-bp-11</div><div class="bp-val">1200px</div><div class="bp-desc">Desktop</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-bp-12</div><div class="bp-val">1416px</div><div class="bp-desc">Large desktop</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-bp-13</div><div class="bp-val">1472px</div><div class="bp-desc">XL desktop</div></div></div>
+      <div class="bp-card"><div class="bp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div><div><div class="bp-token">--breakpoint-bp-14</div><div class="bp-val">1920px</div><div class="bp-desc">Full HD + wide monitors</div></div></div>
+    </div>
+  </div>
+
+  <!-- ── 8. OPACITY ── -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <div class="tw-sub">5 tokens — 25% → 90%</div>
+      <div class="opacity-grid">
+        <div class="op-item"><div class="op-box" style="opacity:var(--opacity-25);"></div><div class="op-token">--opacity-25</div><div class="op-val">25%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:var(--opacity-30);"></div><div class="op-token">--opacity-30</div><div class="op-val">30%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:var(--opacity-60);"></div><div class="op-token">--opacity-60</div><div class="op-val">60%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:var(--opacity-75);"></div><div class="op-token">--opacity-75</div><div class="op-val">75%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:var(--opacity-90);"></div><div class="op-token">--opacity-90</div><div class="op-val">90%</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 9. ACCESSIBILITY ── -->
+  <div class="section">
+    <div class="section-title">Accessibility — Contrast Ratios</div>
+    <div style="font-size:var(--font-size-2xs);color:var(--color-cyan);line-height:var(--line-height-normal);margin-bottom:16px;">WCAG 2.1 thresholds: <strong style="color:var(--color-dark-gray-2);">AA</strong> ≥ 4.5:1 (normal text) · <strong style="color:var(--color-dark-gray-2);">AA Large</strong> ≥ 3:1 (large/bold) · <strong style="color:var(--color-dark-gray-2);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Token</th><th>Background Token</th><th>Ratio</th><th>Rating</th></tr></thead>
+        <tbody>
+          <tr><td>Dark Cyan</td><td>Black</td><td>1.89:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>Dark Cyan</td><td>White</td><td>11.13:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Dark Cyan</td><td>Light Gray 2</td><td>9.25:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Dark Cyan</td><td>Light Green</td><td>6.88:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>Dark Cyan</td><td>Blue 2</td><td>2.72:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>Dark Gray</td><td>Black</td><td>1.39:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>Dark Gray</td><td>White</td><td>15.13:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Dark Gray</td><td>Light Gray 2</td><td>12.57:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Dark Gray</td><td>Light Green</td><td>9.35:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Dark Gray</td><td>Blue 2</td><td>3.69:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>Dark Gray 2</td><td>Black</td><td>1.22:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>Dark Gray 2</td><td>White</td><td>17.15:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Dark Gray 2</td><td>Light Gray 2</td><td>14.25:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Dark Gray 2</td><td>Light Green</td><td>10.6:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Dark Gray 2</td><td>Blue 2</td><td>4.19:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>Light Gray</td><td>Black</td><td>18.51:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Light Gray</td><td>White</td><td>1.13:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>Light Gray</td><td>Light Gray 2</td><td>1.06:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>Light Gray</td><td>Light Green</td><td>1.43:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>Light Gray</td><td>Blue 2</td><td>3.61:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>Cyan</td><td>Black</td><td>3.85:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>Cyan</td><td>White</td><td>5.45:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>Cyan</td><td>Light Gray 2</td><td>4.53:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>Cyan</td><td>Light Green</td><td>3.37:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>Cyan</td><td>Blue 2</td><td>1.33:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Create Post</button>
+          <button class="btn btn-secondary">Join Community</button>
+          <button class="btn btn-outline">Get App</button>
+          <button class="btn btn-ghost">Cancel</button>
+          <button class="btn btn-muted">Disabled</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Username</label>
+            <input class="inp" type="text" placeholder="u/your_username"/>
+            <div class="inp-hint">Choose a unique username for your account</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Community name</label>
+            <input class="inp" type="text" placeholder="r/yourcommunity" style="border-color:var(--color-blue-5);box-shadow:0 0 0 3px rgba(0,121,211,0.2);"/>
+            <div class="inp-hint">Focused state</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Email address</label>
+            <input class="inp inp-err" type="text" value="invalid-email"/>
+            <div class="inp-err-msg">Please enter a valid email address</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:12px;">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--color-cyan)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-orange)"></span>Trending</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Archived</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">🔥 r/popular</span>
+          <span class="tag">r/AskReddit</span>
+          <span class="tag">r/technology</span>
+          <span class="tag">r/gaming</span>
+          <span class="tag">r/worldnews</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:12px;">
+        <div class="alert alert-neutral"><div class="alert-icon">ℹ️</div><div class="alert-body"><h5>New feature available</h5><p>Chat rooms are now available in your communities. Try them out today.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon">🎉</div><div class="alert-body"><h5>Award received!</h5><p>Someone gave your post a Gold Award. Thanks for contributing!</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon">⚠️</div><div class="alert-body"><h5>Content warning</h5><p>This post contains sensitive content. Click to reveal.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon">❌</div><div class="alert-body"><h5>Post removed</h5><p>Your post was removed by moderators for violating community rules.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Feature Cards</span><span class="comp-badge">Community cards</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">🌐</div>
+            <div class="fc-title">r/technology</div>
+            <div class="fc-desc">Subreddit dedicated to the news and discussions about the creation and use of technology.</div>
+            <span class="tag tag-brand">14.2M members</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🎮</div>
+            <div class="fc-title">r/gaming</div>
+            <div class="fc-desc">The Number One Gaming forum on the Internet. Discuss games, news, and everything in between.</div>
+            <span class="tag">38.7M members</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">💬</div>
+            <div class="fc-title">r/AskReddit</div>
+            <div class="fc-desc">A place to ask and answer thought-provoking questions. Dive into any topic imaginable.</div>
+            <span class="tag">42.1M members</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars &amp; Progress</span><span class="comp-badge">Karma / profile</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:var(--color-orange);color:var(--color-white);">u/</div>
+          <div class="av-info"><h4>u/spez</h4><p>Reddit co-founder · 1.2M karma · Verified</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:var(--color-orange);color:var(--color-white)">A</div>
+          <div class="avatar av-md" style="background:var(--color-blue-5);color:var(--color-white)">M</div>
+          <div class="avatar av-md" style="background:var(--color-green);color:var(--color-white)">R</div>
+          <div class="avatar av-sm" style="background:var(--color-purple);color:var(--color-white)">K</div>
+          <div class="avatar av-sm" style="background:var(--color-light-gray-2);color:var(--color-dark-cyan)">+6</div>
+        </div>
+        <div style="margin-top:16px;">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Post karma</span><span>68%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:68%;background:var(--color-orange)"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Comment karma</span><span>34%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:34%;background:var(--color-blue-5)"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>Awards received</span><span>91%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:91%;background:var(--color-green)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Data Table</span><span class="comp-badge">Moderation queue</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead>
+            <tr><th>ID</th><th>Title</th><th>Author</th><th>Posted</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>post_01</td><td style="color:var(--color-dark-cyan)">Ask Me Anything</td><td style="color:var(--color-dark-cyan)">u/alice</td><td style="color:var(--color-cyan)">2 hours ago</td><td><span class="badge badge-brand" style="font-size:12px;"><span class="badge-dot" style="background:var(--color-orange)"></span>Live</span></td></tr>
+            <tr><td>post_02</td><td style="color:var(--color-dark-cyan)">Tech news round-up</td><td style="color:var(--color-dark-cyan)">u/bob</td><td style="color:var(--color-cyan)">5 hours ago</td><td><span class="badge badge-muted" style="font-size:12px;"><span class="badge-dot" style="background:var(--color-cyan)"></span>Queued</span></td></tr>
+            <tr><td>post_03</td><td style="color:var(--color-dark-cyan)">Gaming highlights</td><td style="color:var(--color-dark-cyan)">u/carol</td><td style="color:var(--color-cyan)">1 day ago</td><td><span class="badge badge-default" style="font-size:12px;"><span class="badge-dot" style="background:var(--color-cyan)"></span>Approved</span></td></tr>
+            <tr><td>post_04</td><td style="color:var(--color-dark-cyan)">Weekly discussion</td><td style="color:var(--color-dark-cyan)">u/david</td><td style="color:var(--color-cyan)">2 days ago</td><td><span class="badge badge-brand" style="font-size:12px;"><span class="badge-dot" style="background:var(--color-orange)"></span>Pinned</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- ── 11. CSS VARIABLES REFERENCE ── -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <!-- Colors: Backgrounds -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Background Colors</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#000000"></div><span class="token-readable">Black</span><span class="token-css">--color-black</span><span class="token-value">#000000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF"></div><span class="token-readable">White</span><span class="token-css">--color-white</span><span class="token-value">#FFFFFF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#E5EBEE"></div><span class="token-readable">Light Gray 2</span><span class="token-css">--color-light-gray-2</span><span class="token-value">#E5EBEE</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#95DAB6"></div><span class="token-readable">Light Green</span><span class="token-css">--color-light-green</span><span class="token-value">#95DAB6</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#5D81A2"></div><span class="token-readable">Blue 2</span><span class="token-css">--color-blue-2</span><span class="token-value">#5D81A2</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FF1AA7"></div><span class="token-readable">Pink</span><span class="token-css">--color-pink</span><span class="token-value">#FF1AA7</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#32CDC8"></div><span class="token-readable">Cyan 3</span><span class="token-css">--color-cyan-3</span><span class="token-value">#32CDC8</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#D42B42"></div><span class="token-readable">Red</span><span class="token-css">--color-red</span><span class="token-value">#D42B42</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0DD3BB"></div><span class="token-readable">Cyan 4</span><span class="token-css">--color-cyan-4</span><span class="token-value">#0DD3BB</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#638029"></div><span class="token-readable">Dark Green</span><span class="token-css">--color-dark-green</span><span class="token-value">#638029</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1A7FAA"></div><span class="token-readable">Cyan 5</span><span class="token-css">--color-cyan-5</span><span class="token-value">#1A7FAA</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#349E48"></div><span class="token-readable">Green</span><span class="token-css">--color-green</span><span class="token-value">#349E48</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#9116E9"></div><span class="token-readable">Purple</span><span class="token-css">--color-purple</span><span class="token-value">#9116E9</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0A449B"></div><span class="token-readable">Dark Blue 2</span><span class="token-css">--color-dark-blue-2</span><span class="token-value">#0A449B</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#D93900"></div><span class="token-readable">Orange 3</span><span class="token-css">--color-orange-3</span><span class="token-value">#D93900</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F7F7F7"></div><span class="token-readable">White 2</span><span class="token-css">--color-white-2</span><span class="token-value">#F7F7F7</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F6F8F9"></div><span class="token-readable">White 3</span><span class="token-css">--color-white-3</span><span class="token-value">#F6F8F9</span></div>
+        </div>
+      </div>
+
+      <!-- Colors: Text + Borders + Fills -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Text, Border &amp; Fill Colors</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#333D42"></div><span class="token-readable">Dark Cyan</span><span class="token-css">--color-dark-cyan</span><span class="token-value">#333D42</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#21272A"></div><span class="token-readable">Dark Gray</span><span class="token-css">--color-dark-gray</span><span class="token-value">#21272A</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#181C1F"></div><span class="token-readable">Dark Gray 2</span><span class="token-css">--color-dark-gray-2</span><span class="token-value">#181C1F</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#5C6C74"></div><span class="token-readable">Cyan</span><span class="token-css">--color-cyan</span><span class="token-value">#5C6C74</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#115BCA"></div><span class="token-readable">Blue</span><span class="token-css">--color-blue</span><span class="token-value">#115BCA</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#808080"></div><span class="token-readable">Mid Gray</span><span class="token-css">--color-mid-gray</span><span class="token-value">#808080</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FF4500"></div><span class="token-readable">Orange</span><span class="token-css">--color-orange</span><span class="token-value">#FF4500</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0079D3"></div><span class="token-readable">Blue 5</span><span class="token-css">--color-blue-5</span><span class="token-value">#0079D3</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FC0335"></div><span class="token-readable">Red 2</span><span class="token-css">--color-red-2</span><span class="token-value">#FC0335</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:#C1C1C1"></div><span class="token-readable">Light Gray 5</span><span class="token-css">--color-light-gray-5</span><span class="token-value">#C1C1C1</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:#842123"></div><span class="token-readable">Dark Red</span><span class="token-css">--color-dark-red</span><span class="token-value">#842123</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FF6101"></div><span class="token-readable">Orange 2</span><span class="token-css">--color-orange-2</span><span class="token-value">#FF6101</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFC49C"></div><span class="token-readable">Light Orange</span><span class="token-css">--color-light-orange</span><span class="token-value">#FFC49C</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#BBCFDA"></div><span class="token-readable">Light Blue 2</span><span class="token-css">--color-light-blue-2</span><span class="token-value">#BBCFDA</span></div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Typography</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Base Font</span><span class="token-css">--font-family-base</span><span class="token-value">-apple-system</span></div>
+          <div class="token-row"><span class="token-readable">Serif Font</span><span class="token-css">--font-family-2</span><span class="token-value">Times</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">Semibold</span><span class="token-css">--font-weight-semibold</span><span class="token-value">600</span></div>
+          <div class="token-row"><span class="token-readable">Bold</span><span class="token-css">--font-weight-bold</span><span class="token-value">700</span></div>
+          <div class="token-row"><span class="token-readable">Extrabold</span><span class="token-css">--font-weight-extrabold</span><span class="token-value">800</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Caption</span><span class="token-css">--font-size-2xs</span><span class="token-value">12px</span></div>
+          <div class="token-row"><span class="token-readable">Body Small</span><span class="token-css">--font-size-xs</span><span class="token-value">14px</span></div>
+          <div class="token-row"><span class="token-readable">Body Default</span><span class="token-css">--font-size-sm</span><span class="token-value">16px</span></div>
+          <div class="token-row"><span class="token-readable">Body Large</span><span class="token-css">--font-size-base</span><span class="token-value">18px</span></div>
+          <div class="token-row"><span class="token-readable">Heading</span><span class="token-css">--font-size-lg</span><span class="token-value">21px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Tight Tracking</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">−0.028px</span></div>
+          <div class="token-row"><span class="token-readable">Normal Tracking</span><span class="token-css">--letter-spacing-normal</span><span class="token-value">−0.012px</span></div>
+        </div>
+      </div>
+
+      <!-- Spacing -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Spacing</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-preview-bar" style="width:4px"></div><span class="token-readable">Space 1</span><span class="token-css">--space-1</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:6px"></div><span class="token-readable">Space 2</span><span class="token-css">--space-2</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:7px"></div><span class="token-readable">Space 3</span><span class="token-css">--space-3</span><span class="token-value">7px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:8px"></div><span class="token-readable">Space 4</span><span class="token-css">--space-4</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:9px"></div><span class="token-readable">Space 5</span><span class="token-css">--space-5</span><span class="token-value">9px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:11px"></div><span class="token-readable">Space 6</span><span class="token-css">--space-6</span><span class="token-value">11px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:12px"></div><span class="token-readable">Space 8</span><span class="token-css">--space-8</span><span class="token-value">12px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:14px"></div><span class="token-readable">Space 10</span><span class="token-css">--space-10</span><span class="token-value">14px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:16px"></div><span class="token-readable">Space 12</span><span class="token-css">--space-12</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:24px"></div><span class="token-readable">Space 16</span><span class="token-css">--space-16</span><span class="token-value">24px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:56px"></div><span class="token-readable">Space 20</span><span class="token-css">--space-20</span><span class="token-value">56px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:110px;opacity:.7"></div><span class="token-readable">Space 24</span><span class="token-css">--space-24</span><span class="token-value">378.97px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:120px;opacity:.6"></div><span class="token-readable">Space 32</span><span class="token-css">--space-32</span><span class="token-value">380.09px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:130px;opacity:.5"></div><span class="token-readable">Space 40</span><span class="token-css">--space-40</span><span class="token-value">407.25px</span></div>
+        </div>
+      </div>
+
+      <!-- Borders + Radius -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Borders &amp; Radius</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Hairline</span><span class="token-css">--border-width-hairline</span><span class="token-value">1px</span></div>
+          <div class="token-row"><span class="token-readable">Thin</span><span class="token-css">--border-width-thin</span><span class="token-value">2px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:2px"></div><span class="token-readable">Small</span><span class="token-css">--radius-sm</span><span class="token-value">2px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px"></div><span class="token-readable">Medium</span><span class="token-css">--radius-md</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:8px"></div><span class="token-readable">Large</span><span class="token-css">--radius-lg</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:16px"></div><span class="token-readable">X-Large</span><span class="token-css">--radius-xl</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:20px"></div><span class="token-readable">2X-Large</span><span class="token-css">--radius-2xl</span><span class="token-value">20px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:999px;height:12px"></div><span class="token-readable">Full</span><span class="token-css">--radius-full</span><span class="token-value">999px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:9999px;height:12px"></div><span class="token-readable">Pill</span><span class="token-css">--radius-r7</span><span class="token-value">9999px</span></div>
+        </div>
+      </div>
+
+      <!-- Motion + Opacity + Z-index + Breakpoints -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Motion, Opacity, Layers &amp; Breakpoints</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Instant</span><span class="token-css">--duration-instant</span><span class="token-value">0.2s</span></div>
+          <div class="token-row"><span class="token-readable">Fast</span><span class="token-css">--duration-fast</span><span class="token-value">0.25s</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--duration-normal</span><span class="token-value">0.3s</span></div>
+          <div class="token-row"><span class="token-readable">Ease Out</span><span class="token-css">--easing-ease-out</span><span class="token-value">ease-out</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.25"></div><span class="token-readable">Opacity 25</span><span class="token-css">--opacity-25</span><span class="token-value">0.25</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.3"></div><span class="token-readable">Opacity 30</span><span class="token-css">--opacity-30</span><span class="token-value">0.3</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.6"></div><span class="token-readable">Opacity 60</span><span class="token-css">--opacity-60</span><span class="token-value">0.6</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.75"></div><span class="token-readable">Opacity 75</span><span class="token-css">--opacity-75</span><span class="token-value">0.75</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.9"></div><span class="token-readable">Opacity 90</span><span class="token-css">--opacity-90</span><span class="token-value">0.9</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Base</span><span class="token-css">--z-1</span><span class="token-value">1</span></div>
+          <div class="token-row"><span class="token-readable">Stacked</span><span class="token-css">--z-2</span><span class="token-value">2</span></div>
+          <div class="token-row"><span class="token-readable">Raised</span><span class="token-css">--z-3</span><span class="token-value">3</span></div>
+          <div class="token-row"><span class="token-readable">Focus</span><span class="token-css">--z-4</span><span class="token-value">4</span></div>
+          <div class="token-row"><span class="token-readable">Sticky</span><span class="token-css">--z-5</span><span class="token-value">10</span></div>
+          <div class="token-row"><span class="token-readable">Dropdown</span><span class="token-css">--z-6</span><span class="token-value">50</span></div>
+          <div class="token-row"><span class="token-readable">Overlay</span><span class="token-css">--z-7</span><span class="token-value">101</span></div>
+          <div class="token-row"><span class="token-readable">Modal</span><span class="token-css">--z-8</span><span class="token-value">1001</span></div>
+          <div class="token-row"><span class="token-readable">Toast</span><span class="token-css">--z-9</span><span class="token-value">9000</span></div>
+          <div class="token-row"><span class="token-readable">Max</span><span class="token-css">--z-10</span><span class="token-value">9999</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Breakpoint XS</span><span class="token-css">--breakpoint-xs</span><span class="token-value">260px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint SM</span><span class="token-css">--breakpoint-sm</span><span class="token-value">325px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint MD</span><span class="token-css">--breakpoint-md</span><span class="token-value">500px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint LG</span><span class="token-css">--breakpoint-lg</span><span class="token-value">599px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint XL</span><span class="token-css">--breakpoint-xl</span><span class="token-value">607px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint 2XL</span><span class="token-css">--breakpoint-2xl</span><span class="token-value">608px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint 3XL</span><span class="token-css">--breakpoint-3xl</span><span class="token-value">767px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint BP-8</span><span class="token-css">--breakpoint-bp-8</span><span class="token-value">768px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint BP-9</span><span class="token-css">--breakpoint-bp-9</span><span class="token-value">960px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint BP-10</span><span class="token-css">--breakpoint-bp-10</span><span class="token-value">1024px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint BP-11</span><span class="token-css">--breakpoint-bp-11</span><span class="token-value">1200px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint BP-12</span><span class="token-css">--breakpoint-bp-12</span><span class="token-value">1416px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint BP-13</span><span class="token-css">--breakpoint-bp-13</span><span class="token-value">1472px</span></div>
+          <div class="token-row"><span class="token-readable">Breakpoint BP-14</span><span class="token-css">--breakpoint-bp-14</span><span class="token-value">1920px</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div style="text-align:center;padding:48px 0;color:var(--color-cyan);font-size:var(--font-size-2xs);border-top:var(--border-width-hairline) solid var(--color-light-gray-2);line-height:var(--line-height-normal);">
+    Design System Preview · Reddit (Light) · Generated 17/04/2026 · 53 color tokens · 5 font-size · 2 font-family · 4 font-weight · 8 line-height · 2 letter-spacing · 14 spacing · 7 radius · 2 border-width · 4 shadow · 3 duration · 1 easing · 10 z-index · 14 breakpoints · 5 opacity
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

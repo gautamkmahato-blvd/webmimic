@@ -1,0 +1,205 @@
+/* ============================================
+ * Design Tokens — The Content Operating System for the AI era | Sanity
+ * Source: https://www.sanity.io/
+ * Generated: 18/04/2026, 13:46:59
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black: #0B0B0B; /* hsl(0, 0%, 4%) · background */
+  --color-light-gray: #B9B9B9; /* hsl(0, 0%, 73%) · text */
+  --color-black-2: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-pink: #F500FF; /* hsl(298, 100%, 50%) · text */
+  --color-green: #45FF00; /* hsl(104, 100%, 50%) · text */
+  --color-mid-gray: #797979; /* hsl(0, 0%, 47%) · text */
+  --color-blue: #027FFF; /* hsl(210, 100%, 50%) · text */
+  --color-light-blue: #AFBACA; /* hsl(216, 20%, 74%) · text */
+  --color-dark-gray: #212121; /* hsl(0, 0%, 13%) · background */
+  --color-dark-gray-2: #353535; /* hsl(0, 0%, 21%) · background */
+  --color-green-2: #00FF00; /* hsl(120, 100%, 50%) · text */
+  --color-dark-gray-3: #4A4A4A; /* hsl(0, 0%, 29%) · text */
+  --color-orange: #FF4100; /* hsl(15, 100%, 50%) · background */
+  --color-blue-2: #0081FF; /* hsl(210, 100%, 50%) · background */
+  --color-dark-gray-4: #2A2A2A; /* hsl(0, 0%, 16%) · other */
+  --color-cyan: #37CD8F; /* hsl(155, 60%, 51%) · fill */
+  --color-light-gray-2: #EDEDED; /* hsl(0, 0%, 93%) · background */
+  --color-yellow: #FFFF00; /* hsl(60, 100%, 50%) · text */
+  --color-green-3: #19D600; /* hsl(113, 100%, 42%) · background */
+  --color-orange-2: #FF5500; /* hsl(20, 100%, 50%) · background */
+  --color-dark-blue: #29246A; /* hsl(244, 49%, 28%) · other */
+  --color-blue-3: #0052EF; /* hsl(219, 100%, 47%) · background */
+  --color-yellow-2: #FFF500; /* hsl(58, 100%, 50%) · background */
+  --color-dark-green: #007800; /* hsl(120, 100%, 24%) · text */
+  --color-light-gray-3: #D6D6D6; /* hsl(0, 0%, 84%) · border */
+  --color-dark-blue-2: rgba(18, 25, 35, 0.2); /* hsl(220, 27%, 11%) · background */
+  --color-blue-4: #0053EF; /* hsl(219, 100%, 47%) · text */
+  --color-light-gray-4: #D7D7D7; /* hsl(0, 0%, 84%) · border */
+  --color-dark-gray-5: #373737; /* hsl(0, 0%, 22%) · border */
+  --color-pink-2: #FF00FF; /* hsl(300, 100%, 50%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 0px;
+  --font-size-xs: 10px;
+  --font-size-sm: 11px;
+  --font-size-base: 12px;
+  --font-size-lg: 13px;
+  --font-size-xl: 15px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 18px;
+  --font-size-4xl: 20px;
+  --font-size-5xl: 24px;
+  --font-size-6xl: 32px;
+  --font-size-38px: 38px;
+  --font-size-48px: 48px;
+  --font-size-60px: 60px;
+  --font-size-72px: 72px;
+  --font-size-112px: 112px;
+  --font-family-base: waldenburgNormal;
+  --font-family-2: Helvetica;
+  --font-family-3: ibmPlexMono;
+  --font-weight-regular: 400;
+  --font-weight-w425: 425;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 10px;
+  --line-height-snug: 11px;
+  --line-height-normal: 13px;
+  --line-height-relaxed: 14px;
+  --line-height-loose: 16px;
+  --line-height-lh-6: 16.5px;
+  --line-height-lh-7: 18px;
+  --line-height-lh-8: 19.5px;
+  --line-height-lh-9: 22px;
+  --line-height-lh-10: 22.5px;
+  --line-height-lh-11: 24px;
+  --line-height-lh-12: 26.4px;
+  --line-height-lh-13: 27px;
+  --line-height-lh-14: 29.76px;
+  --line-height-lh-15: 38.4px;
+  --line-height-lh-16: 39.68px;
+  --line-height-lh-17: 41.8px;
+  --line-height-lh-18: 48px;
+  --line-height-lh-19: 51.84px;
+  --line-height-lh-20: 75.6px;
+  --line-height-lh-21: 108px;
+  --line-height-lh-22: 112px;
+  --letter-spacing-tight: -4.48px;
+  --letter-spacing-normal: -2.88px;
+  --letter-spacing-wide: -1.68px;
+  --letter-spacing-wider: -1.14px;
+  --letter-spacing-widest: -0.32px;
+  --letter-spacing-ls-6: -0.24px;
+  --letter-spacing-ls-7: -0.2px;
+  --letter-spacing-ls-8: -0.18px;
+  --letter-spacing-ls-9: -0.15px;
+  --letter-spacing-ls-10: -0.13px;
+  --letter-spacing-ls-11: -0.12px;
+  --letter-spacing-ls-12: -0.01px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 6px;
+  --space-6: 6.29688px;
+  --space-8: 6.5px;
+  --space-10: 7px;
+  --space-12: 8px;
+  --space-16: 8.92969px;
+  --space-20: 12px;
+  --space-24: 64px;
+  --space-32: 233.93px;
+  --space-40: 18px;
+  --space-48: 23.9219px;
+  --space-64: 24px;
+  --space-80: 24.16px;
+  --space-96: 32px;
+  --space-128: 40px;
+  --space-160: 48px;
+  --space-192: 51.8828px;
+  --space-256: 56.6484px;
+  --space-23: 56.6562px;
+  --space-25: 87.4531px;
+  --space-26: 96px;
+  --space-27: 128px;
+  --space-28: 143.836px;
+  --space-29: 173.062px;
+  --space-30: 187.875px;
+  --space-31: 208.648px;
+  --space-33: 256px;
+  --space-34: 256.648px;
+  --space-35: 265.172px;
+  --space-36: 300.32px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 16px;
+  --border-width-thick: 24px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 5px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-full: 11px;
+  --radius-r7: 12px;
+  --radius-r8: 50%;
+  --radius-r9: 9999px;
+  --radius-r10: 99999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(0, 82, 239) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  --shadow-md: rgb(255, 255, 255) 0px 0px 0px 1px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.4s;
+  --duration-duration-6: 0.5s;
+  --duration-duration-7: 0.6s;
+  --duration-duration-8: 1s;
+  --easing-linear: linear;
+  --easing-ease-out: ease-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1000;
+  --z-2: -10;
+  --z-3: 1;
+  --z-4: 2;
+  --z-5: 5;
+  --z-6: 10;
+  --z-7: 20;
+  --z-8: 30;
+  --z-9: 50;
+  --z-10: 200;
+  --z-11: 2147483636;
+  --z-12: 2147483637;
+  --z-13: 2147483638;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 376px;
+  --breakpoint-sm: 479px;
+  --breakpoint-md: 480px;
+  --breakpoint-lg: 719px;
+  --breakpoint-xl: 720px;
+  --breakpoint-2xl: 767px;
+  --breakpoint-3xl: 768px;
+  --breakpoint-bp-8: 800px;
+  --breakpoint-bp-9: 959px;
+  --breakpoint-bp-10: 960px;
+  --breakpoint-bp-11: 1100px;
+  --breakpoint-bp-12: 1200px;
+  --breakpoint-bp-13: 1440px;
+  --breakpoint-bp-14: 1640px;
+
+  /* ── Opacity ── */
+  --opacity-20: 0.2;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-70: 0.7;
+  --opacity-90: 0.9;
+}

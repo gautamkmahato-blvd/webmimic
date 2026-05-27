@@ -1,0 +1,116 @@
+/* ============================================
+ * Design Tokens — Redbird - AI-powered Data Analytics Platform
+ * Source: https://www.redbird.io/?gad_source=1&gad_campaignid=20247600676&gbraid=0AAAAAo6Jo51JjCwjMQOA51sjV8Od-HQrD&gclid=CjwKCAjw14zPBhAuEiwAP3-Eb5clLZku96rcDH1_4lt45Tb4laz8rpXI43JeNESMMANrvz-i4kFFchoCF1kQAvD_BwE
+ * Generated: 19/04/2026, 00:16:57
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #333333; /* hsl(0, 0%, 20%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-dark-blue: #1C1548; /* hsl(248, 55%, 18%) · background */
+  --color-light-gray: #E5E5E5; /* hsl(0, 0%, 90%) · border */
+  --color-blue-2: #009CFD; /* hsl(203, 100%, 50%) · text */
+  --color-light-blue: #E0E6FE; /* hsl(228, 94%, 94%) · background */
+  --color-dark-gray-2: #353131; /* hsl(0, 4%, 20%) · background */
+  --color-dark-gray-3: #222222; /* hsl(0, 0%, 13%) · background */
+  --color-red: #FF0040; /* hsl(345, 100%, 50%) · text */
+  --color-blue-3: #0568FD; /* hsl(216, 98%, 51%) · background */
+  --color-red-2: #F5405C; /* hsl(351, 90%, 61%) · text */
+  --color-dark-gray-4: rgba(34, 34, 34, 0.4); /* hsl(0, 0%, 14%) · background */
+  --color-light-gray-2: #F1ECEC; /* hsl(0, 15%, 94%) · border */
+  --color-light-red: #FFDEDE; /* hsl(0, 100%, 94%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 14px;
+  --font-size-xs: 15px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 22px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 35px;
+  --font-size-4xl: 54px;
+  --font-size-5xl: 56px;
+  --font-family-base: sans-serif;
+  --font-family-2: Eudoxussans;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 20px;
+  --line-height-snug: 22px;
+  --line-height-normal: 24px;
+  --line-height-relaxed: 28px;
+  --line-height-loose: 32px;
+  --line-height-lh-6: 40px;
+  --line-height-lh-7: 48px;
+  --line-height-lh-8: 62px;
+  --line-height-lh-9: 64px;
+  --letter-spacing-tight: -1px;
+  --letter-spacing-normal: 2px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 8px;
+  --space-2: 10px;
+  --space-3: 12px;
+  --space-4: 15px;
+  --space-5: 16px;
+  --space-6: 20px;
+  --space-8: 24px;
+  --space-10: 28px;
+  --space-12: 30px;
+  --space-16: 32px;
+  --space-20: 34px;
+  --space-24: 120px;
+  --space-32: 48px;
+  --space-40: 50px;
+  --space-48: 52px;
+  --space-64: 58px;
+  --space-80: 60px;
+  --space-96: 70px;
+  --space-128: 72px;
+  --space-160: 73px;
+  --space-192: 80px;
+  --space-256: 82px;
+  --space-23: 100px;
+  --space-25: 160px;
+  --space-26: 186.5px;
+  --space-27: 271.25px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 12px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 50%;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.5s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 4;
+  --z-6: 1000;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 479px;
+  --breakpoint-sm: 767px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 991px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+  --breakpoint-3xl: 1920px;
+
+  /* ── Opacity ── */
+}

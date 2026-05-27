@@ -1,0 +1,174 @@
+/* ============================================
+ * Design Tokens — OpenCode | The open source AI coding agent
+ * Source: https://opencode.ai/
+ * Generated: 17/04/2026, 13:12:58
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #646262; /* hsl(0, 1%, 39%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-dark-gray-2: #201D1D; /* hsl(0, 5%, 12%) · background */
+  --color-mid-gray: #8E8B8B; /* hsl(0, 1%, 55%) · fill */
+  --color-mid-gray-2: #9A9898; /* hsl(0, 1%, 60%) · text */
+  --color-dark-gray-3: #1D1D1F; /* hsl(240, 3%, 12%) · text */
+  --color-light-gray: #CFCECD; /* hsl(30, 2%, 81%) · fill */
+  --color-light-gray-2: #BCBBBB; /* hsl(0, 1%, 74%) · fill */
+  --color-light-gray-3: #DAD9D9; /* hsl(0, 1%, 85%) · fill */
+  --color-mid-gray-3: #8D8B8B; /* hsl(0, 1%, 55%) · text */
+  --color-white: #FDFCFC; /* hsl(0, 20%, 99%) · background */
+  --color-black-2: rgba(15, 0, 0, 0.12) rgba(15, 0, 0, 0.12) rgb(100, 98, 98); /* hsl(0, 100%, 3%) · border */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-gray-4: #D0CFCE; /* hsl(30, 2%, 81%) · text */
+  --color-dark-gray-4: #424245; /* hsl(240, 2%, 26%) · text */
+  --color-white-3: #F8F7F7; /* hsl(0, 7%, 97%) · background */
+  --color-dark-green: #03B000; /* hsl(119, 100%, 35%) · other */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 14px;
+  --font-size-xs: 16px;
+  --font-size-sm: 38px;
+  --font-family-base: Times;
+  --font-family-2: Berkeley Mono;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 16px;
+  --line-height-snug: 22.4px;
+  --line-height-normal: 24px;
+  --line-height-relaxed: 28px;
+  --line-height-loose: 32px;
+  --line-height-lh-6: 57px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 9.6px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-16: 26.5px;
+  --space-20: 32px;
+  --space-24: 40px;
+  --space-32: 48px;
+  --space-40: 64px;
+  --space-48: 80px;
+  --space-64: 96px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 0px 0px 6px 6px;
+  --radius-md: 4px;
+  --radius-lg: 6px 6px 0px 0px;
+  --radius-xl: 6px;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.18s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 10;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+  --opacity-1: 0.01;
+  --opacity-2: 0.02;
+  --opacity-3: 0.03;
+  --opacity-4: 0.04;
+  --opacity-5: 0.05;
+  --opacity-6: 0.06;
+  --opacity-8: 0.08;
+  --opacity-9: 0.09;
+  --opacity-10: 0.1;
+  --opacity-11: 0.11;
+  --opacity-12: 0.12;
+  --opacity-13: 0.13;
+  --opacity-14: 0.14;
+  --opacity-15: 0.15;
+  --opacity-16: 0.16;
+  --opacity-17: 0.17;
+  --opacity-18: 0.18;
+  --opacity-19: 0.19;
+  --opacity-20: 0.2;
+  --opacity-21: 0.21;
+  --opacity-22: 0.22;
+  --opacity-23: 0.23;
+  --opacity-24: 0.24;
+  --opacity-25: 0.25;
+  --opacity-26: 0.26;
+  --opacity-27: 0.27;
+  --opacity-28: 0.28;
+  --opacity-29: 0.29;
+  --opacity-30: 0.3;
+  --opacity-31: 0.31;
+  --opacity-32: 0.32;
+  --opacity-33: 0.33;
+  --opacity-34: 0.34;
+  --opacity-35: 0.35;
+  --opacity-37: 0.37;
+  --opacity-38: 0.38;
+  --opacity-39: 0.39;
+  --opacity-40: 0.4;
+  --opacity-41: 0.41;
+  --opacity-42: 0.42;
+  --opacity-43: 0.43;
+  --opacity-44: 0.44;
+  --opacity-45: 0.45;
+  --opacity-46: 0.46;
+  --opacity-47: 0.47;
+  --opacity-48: 0.48;
+  --opacity-49: 0.49;
+  --opacity-50: 0.5;
+  --opacity-52: 0.52;
+  --opacity-53: 0.53;
+  --opacity-55: 0.55;
+  --opacity-56: 0.56;
+  --opacity-57: 0.57;
+  --opacity-58: 0.58;
+  --opacity-59: 0.59;
+  --opacity-60: 0.6;
+  --opacity-61: 0.61;
+  --opacity-62: 0.62;
+  --opacity-63: 0.63;
+  --opacity-64: 0.64;
+  --opacity-65: 0.65;
+  --opacity-66: 0.66;
+  --opacity-67: 0.67;
+  --opacity-68: 0.68;
+  --opacity-69: 0.69;
+  --opacity-70: 0.7;
+  --opacity-71: 0.71;
+  --opacity-72: 0.72;
+  --opacity-73: 0.73;
+  --opacity-74: 0.74;
+  --opacity-75: 0.75;
+  --opacity-76: 0.76;
+  --opacity-77: 0.77;
+  --opacity-78: 0.78;
+  --opacity-79: 0.79;
+  --opacity-80: 0.8;
+  --opacity-81: 0.81;
+  --opacity-82: 0.82;
+  --opacity-83: 0.83;
+  --opacity-84: 0.84;
+  --opacity-85: 0.85;
+  --opacity-86: 0.86;
+  --opacity-87: 0.87;
+  --opacity-88: 0.88;
+  --opacity-89: 0.89;
+  --opacity-90: 0.9;
+  --opacity-92: 0.92;
+  --opacity-93: 0.93;
+  --opacity-94: 0.94;
+  --opacity-95: 0.95;
+  --opacity-97: 0.97;
+  --opacity-98: 0.98;
+  --opacity-99: 0.99;
+}

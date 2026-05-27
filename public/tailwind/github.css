@@ -1,0 +1,269 @@
+/* ============================================
+ * Design Tokens — GitHub · Change is constant. GitHub keeps you ahead. · GitHub
+ * Source: https://github.com/
+ * Generated: 15/04/2026, 23:38:46
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white-2: #F0F6FC; /* hsl(210, 67%, 96%) · text */
+  --color-mid-gray: #A4AEA6; /* hsl(132, 6%, 66%) · text */
+  --color-light-blue: #8DD6FF; /* hsl(202, 100%, 78%) · text */
+  --color-dark-gray: #1F2328; /* hsl(213, 13%, 14%) · text */
+  --color-dark-gray-2: #58635B; /* hsl(136, 6%, 37%) · text */
+  --color-blue: #59636E; /* hsl(211, 11%, 39%) · text */
+  --color-light-purple: #A371F7; /* hsl(262, 89%, 71%) · fill */
+  --color-light-blue-2: #D1D9E0; /* hsl(208, 19%, 85%) · border */
+  --color-red: #D1242F; /* hsl(356, 71%, 48%) · text */
+  --color-orange: #D29922; /* hsl(41, 72%, 48%) · text */
+  --color-red-2: #F85149; /* hsl(3, 93%, 63%) · text */
+  --color-dark-gray-3: #0D1117; /* hsl(216, 28%, 7%) · background */
+  --color-blue-2: #4493F8; /* hsl(214, 93%, 62%) · text */
+  --color-light-gray: rgba(209, 217, 224, 0.5); /* hsl(206, 18%, 85%) · shadow */
+  --color-dark-cyan: rgba(37, 41, 46, 0.04); /* hsl(180, 32%, 15%) · shadow */
+  --color-dark-blue: rgba(37, 41, 46, 0.12); /* hsl(210, 20%, 16%) · shadow */
+  --color-dark-blue-2: rgba(31, 35, 40, 0.04); /* hsl(240, 32%, 15%) · shadow */
+  --color-blue-3: #0969DA; /* hsl(212, 92%, 45%) · text */
+  --color-white-3: #F6F8FA; /* hsl(210, 29%, 97%) · background */
+  --color-dark-gray-4: rgba(36, 41, 47, 0.9); /* hsl(210, 15%, 16%) · text */
+  --color-dark-blue-3: #404651; /* hsl(219, 12%, 28%) · background */
+  --color-dark-gray-5: #21262D; /* hsl(215, 15%, 15%) · border */
+  --color-mid-gray-2: #7C8980; /* hsl(138, 5%, 51%) · text */
+  --color-green: #5FED83; /* hsl(135, 80%, 65%) · text */
+  --color-black-2: rgba(1, 4, 9, 0.4); /* hsl(210, 100%, 2%) · shadow */
+  --color-light-gray-2: #E4EBE6; /* hsl(137, 15%, 91%) · background */
+  --color-dark-blue-4: #3D444D; /* hsl(214, 12%, 27%) · background */
+  --color-light-purple-2: #E6B7FE; /* hsl(280, 97%, 86%) · gradient */
+  --color-blue-4: #5049C2; /* hsl(243, 50%, 52%) · gradient */
+  --color-dark-blue-5: rgba(72, 79, 88, 0.5) rgb(255, 255, 255) rgb(255, 255, 255) rgba(72, 79, 88, 0.5); /* hsl(210, 10%, 31%) · border */
+  --color-blue-5: #1F6FEB; /* hsl(216, 84%, 52%) · background */
+  --color-light-gray-3: #EFEFEF; /* hsl(0, 0%, 94%) · background */
+  --color-blue-6: #0377FF; /* hsl(212, 100%, 51%) · text */
+  --color-mid-gray-3: #979A9C; /* hsl(204, 2%, 60%) · fill */
+  --color-dark-gray-6: #25292E; /* hsl(213, 11%, 16%) · text */
+  --color-dark-green: #1F883D; /* hsl(137, 63%, 33%) · background */
+  --color-dark-gray-7: rgba(31, 35, 40, 0.15); /* hsl(240, 8%, 15%) · border */
+  --color-orange-2: rgba(187, 128, 9, 0.15); /* hsl(40, 93%, 38%) · gradient */
+  --color-blue-7: #9198A1; /* hsl(214, 8%, 60%) · text */
+  --color-dark-blue-6: #000240; /* hsl(238, 100%, 13%) · gradient */
+  --color-dark-green-2: #08872B; /* hsl(137, 89%, 28%) · background */
+  --color-dark-gray-8: rgba(31, 35, 40, 0.4); /* hsl(210, 14%, 14%) · background */
+  --color-dark-blue-7: #484F58; /* hsl(214, 10%, 31%) · border */
+  --color-light-blue-3: #A7A2FF; /* hsl(243, 100%, 82%) · gradient */
+  --color-purple: rgba(147, 80, 255, 0.5); /* hsl(263, 100%, 66%) · gradient */
+  --color-blue-8: rgba(120, 115, 203, 0.2); /* hsl(243, 47%, 63%) · gradient */
+  --color-blue-9: #5993D4; /* hsl(212, 59%, 59%) · gradient */
+  --color-mid-gray-4: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-black-3: #010409; /* hsl(218, 80%, 2%) · background */
+  --color-red-3: rgba(248, 81, 73, 0.1); /* hsl(3, 90%, 62%) · gradient */
+  --color-dark-blue-8: rgba(46, 55, 74, 0.82); /* hsl(221, 23%, 24%) · background */
+  --color-blue-10: #818B98; /* hsl(214, 10%, 55%) · border */
+  --color-dark-gray-9: rgba(37, 41, 46, 0.24); /* hsl(210, 10%, 16%) · shadow */
+  --color-light-blue-4: rgba(200, 209, 218, 0.4); /* hsl(205, 18%, 82%) · background */
+  --color-orange-3: rgba(187, 128, 9, 0.4); /* hsl(40, 90%, 39%) · border */
+  --color-green-2: rgba(95, 237, 131, 0.5); /* hsl(135, 80%, 65%) · gradient */
+  --color-dark-blue-9: rgba(14, 10, 162, 0.5); /* hsl(242, 88%, 34%) · gradient */
+  --color-dark-gray-10: #151A22; /* hsl(217, 24%, 11%) · background */
+  --color-light-gray-4: #D9D9D9; /* hsl(0, 0%, 85%) · background */
+  --color-black-4: #090D0A; /* hsl(135, 18%, 4%) · background */
+  --color-dark-gray-11: #191F1B; /* hsl(140, 11%, 11%) · border */
+  --color-dark-blue-10: #2A486A; /* hsl(212, 43%, 29%) · gradient */
+  --color-dark-gray-12: #0F1511; /* hsl(140, 17%, 7%) · background */
+  --color-dark-gray-13: #262C28; /* hsl(140, 7%, 16%) · background */
+  --color-red-4: rgba(248, 81, 73, 0.4); /* hsl(3, 93%, 63%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 22px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+  --font-size-4xl: 48px;
+  --font-size-5xl: 64px;
+  --font-family-base: sans-serif;
+  --font-family-2: Mona Sans VF;
+  --font-family-3: Mona Sans;
+  --font-family-4: Mona Sans Mono;
+  --font-family-5: ui-monospace;
+  --font-weight-regular: 400;
+  --font-weight-w425: 425;
+  --font-weight-w440: 440;
+  --font-weight-w460: 460;
+  --font-weight-w480: 480;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --line-height-tight: 12px;
+  --line-height-snug: 14px;
+  --line-height-normal: 16px;
+  --line-height-relaxed: 17.5px;
+  --line-height-loose: 19.5px;
+  --line-height-lh-6: 20.8px;
+  --line-height-lh-7: 22.75px;
+  --line-height-lh-8: 24px;
+  --line-height-lh-9: 26.4px;
+  --line-height-lh-10: 27px;
+  --line-height-lh-11: 30.8px;
+  --line-height-lh-12: 36px;
+  --line-height-lh-13: 48px;
+  --line-height-lh-14: 52px;
+  --line-height-lh-15: 56.64px;
+  --line-height-lh-16: 69.12px;
+  --letter-spacing-tight: -2.24px;
+  --letter-spacing-normal: 0.18px;
+  --letter-spacing-wide: 0.21px;
+  --letter-spacing-wider: 0.24px;
+  --letter-spacing-widest: 0.5px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2.4px;
+  --space-2: 3px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 7px;
+  --space-6: 8px;
+  --space-8: 12px;
+  --space-10: 15px;
+  --space-12: 16px;
+  --space-16: 18px;
+  --space-20: 20px;
+  --space-24: 239.977px;
+  --space-32: 26.125px;
+  --space-40: 28px;
+  --space-48: 28.5px;
+  --space-64: 32px;
+  --space-80: 40px;
+  --space-96: 44px;
+  --space-128: 48px;
+  --space-160: 64px;
+  --space-192: 80px;
+  --space-256: 96px;
+  --space-23: 200.5px;
+  --space-25: 239.984px;
+  --space-26: 271.25px;
+  --space-27: 311.094px;
+  --space-28: 358.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 12px 12px 0px 0px;
+  --radius-full: 16px;
+  --radius-r7: 16px 0px 0px;
+  --radius-r8: 16px 16px 0px 0px;
+  --radius-r9: 24px 24px 0px 0px;
+  --radius-r10: 24px;
+  --radius-r11: 48px;
+  --radius-r12: 50%;
+  --radius-r13: 60px;
+  --radius-r14: 9999.01px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(209, 217, 224, 0.5) 0px 0px 0px 1px, rgba(37, 41, 46, 0.04) 0px 6px 12px -3px, rgba(37, 41, 46, 0.12) 0px 6px 18px 0px;
+  --shadow-md: rgba(31, 35, 40, 0.04) 0px 1px 0px 0px inset;
+  --shadow-lg: rgba(209, 217, 224, 0) 0px 0px 0px 1px, rgba(37, 41, 46, 0.24) 0px 40px 80px 0px;
+  --shadow-xl: rgb(209, 217, 224) 0px -1px 0px 0px inset;
+  --shadow-shadow-5: rgb(209, 217, 224) 0px 1px 0px 0px inset;
+  --shadow-shadow-6: rgba(255, 255, 255, 0) 0px 0px 0px 1px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.033333s;
+  --duration-fast: 0.075s;
+  --duration-normal: 0.08s;
+  --duration-slow: 0.1s;
+  --duration-slower: 0.15s;
+  --duration-duration-6: 0.2s;
+  --duration-duration-7: 0.3s;
+  --duration-duration-8: 0.4s;
+  --duration-duration-9: 0.48s;
+  --duration-duration-10: 0.5s;
+  --duration-duration-11: 0.6s;
+  --duration-duration-12: 0.8s;
+  --easing-ease-out: ease-out;
+  --easing-linear: linear;
+  --easing-ease-in-out: ease-in-out;
+  --easing-ease-in: ease-in;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 32;
+  --z-6: 35;
+  --z-7: 98;
+  --z-8: 99;
+  --z-9: 100;
+  --z-10: 999;
+  --z-11: 1000;
+  --z-12: 99999;
+  --z-13: 999999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 260px;
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 340px;
+  --breakpoint-lg: 360px;
+  --breakpoint-xl: 400px;
+  --breakpoint-2xl: 408px;
+  --breakpoint-3xl: 450px;
+  --breakpoint-bp-8: 451px;
+  --breakpoint-bp-9: 460px;
+  --breakpoint-bp-10: 470px;
+  --breakpoint-bp-11: 479px;
+  --breakpoint-bp-12: 500px;
+  --breakpoint-bp-13: 520px;
+  --breakpoint-bp-14: 542px;
+  --breakpoint-bp-15: 543px;
+  --breakpoint-bp-16: 543.98px;
+  --breakpoint-bp-17: 544px;
+  --breakpoint-bp-18: 599px;
+  --breakpoint-bp-19: 600px;
+  --breakpoint-bp-20: 618px;
+  --breakpoint-bp-21: 639px;
+  --breakpoint-bp-22: 670px;
+  --breakpoint-bp-23: 720px;
+  --breakpoint-bp-24: 767px;
+  --breakpoint-bp-25: 767.98px;
+  --breakpoint-bp-26: 768px;
+  --breakpoint-bp-27: 800px;
+  --breakpoint-bp-28: 803px;
+  --breakpoint-bp-29: 804px;
+  --breakpoint-bp-30: 840px;
+  --breakpoint-bp-31: 850px;
+  --breakpoint-bp-32: 900px;
+  --breakpoint-bp-33: 950px;
+  --breakpoint-bp-34: 980px;
+  --breakpoint-bp-35: 1011px;
+  --breakpoint-bp-36: 1011.98px;
+  --breakpoint-bp-37: 1012px;
+  --breakpoint-bp-38: 1024px;
+  --breakpoint-bp-39: 1028px;
+  --breakpoint-bp-40: 1029px;
+  --breakpoint-bp-41: 1150px;
+  --breakpoint-bp-42: 1250px;
+  --breakpoint-bp-43: 1279px;
+  --breakpoint-bp-44: 1280px;
+  --breakpoint-bp-45: 1281px;
+  --breakpoint-bp-46: 1320px;
+  --breakpoint-bp-47: 1400px;
+  --breakpoint-bp-48: 1464px;
+  --breakpoint-bp-49: 1600px;
+  --breakpoint-bp-50: 1604px;
+  --breakpoint-bp-51: 1728px;
+
+  /* ── Opacity ── */
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+}

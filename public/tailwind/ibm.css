@@ -1,0 +1,184 @@
+/* ============================================
+ * Design Tokens — IBM
+ * Source: https://www.ibm.com/in-en
+ * Generated: 15/04/2026, 23:31:28
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #161616; /* hsl(0, 0%, 9%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-blue: #0062FE; /* hsl(217, 100%, 50%) · text */
+  --color-blue-2: #0F62FE; /* hsl(219, 99%, 53%) · background */
+  --color-white: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-2: #525252; /* hsl(0, 0%, 32%) · text */
+  --color-dark-gray-3: #171717; /* hsl(0, 0%, 9%) · background */
+  --color-blue-3: #4589FF; /* hsl(218, 100%, 64%) · shadow */
+  --color-dark-gray-4: #393939; /* hsl(0, 0%, 22%) · background */
+  --color-blue-4: #0043CE; /* hsl(220, 100%, 40%) · gradient */
+  --color-light-gray: #C6C6C6; /* hsl(0, 0%, 78%) · border */
+  --color-dark-cyan: #004144; /* hsl(183, 100%, 13%) · text */
+  --color-light-cyan: #9EF0F0; /* hsl(180, 73%, 78%) · background */
+  --color-dark-gray-5: #2A2A2A; /* hsl(0, 0%, 16%) · text */
+  --color-dark-gray-6: #0F1115; /* hsl(220, 17%, 7%) · text */
+  --color-dark-cyan-2: #009D9A; /* hsl(179, 100%, 31%) · gradient */
+  --color-red: #EE5396; /* hsl(334, 82%, 63%) · gradient */
+  --color-mid-gray: #8D8D8D; /* hsl(0, 0%, 55%) · background */
+  --color-mid-gray-2: #808080; /* hsl(0, 0%, 50%) · shadow */
+  --color-light-blue: rgba(166, 200, 255, 0.64); /* hsl(217, 100%, 83%) · gradient */
+  --color-light-blue-2: #78A9FF; /* hsl(218, 100%, 74%) · gradient */
+  --color-blue-5: rgba(15, 98, 254, 0.1); /* hsl(220, 100%, 54%) · shadow */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 13.3333px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 19.2px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 31.2782px;
+  --font-size-4xl: 32px;
+  --font-size-5xl: 42px;
+  --font-size-6xl: 43.8048px;
+  --font-size-48px: 48px;
+  --font-size-56px: 55.8048px;
+  --font-family-base: Times;
+  --font-family-2: IBM Plex Sans;
+  --font-family-3: IBM Plex Mono;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --line-height-tight: 14px;
+  --line-height-snug: 16px;
+  --line-height-normal: 18px;
+  --line-height-relaxed: 20px;
+  --line-height-loose: 22px;
+  --line-height-lh-6: 24px;
+  --line-height-lh-7: 25px;
+  --line-height-lh-8: 27px;
+  --line-height-lh-9: 28px;
+  --line-height-lh-10: 40px;
+  --line-height-lh-11: 50px;
+  --line-height-lh-12: 52.1277px;
+  --line-height-lh-13: 56px;
+  --line-height-lh-14: 66.4077px;
+  --letter-spacing-tight: 0.16px;
+  --letter-spacing-normal: 0.32px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 4.8px;
+  --space-5: 6px;
+  --space-6: 8px;
+  --space-8: 10px;
+  --space-10: 14px;
+  --space-12: 15px;
+  --space-16: 15.9922px;
+  --space-20: 16px;
+  --space-24: 430.5px;
+  --space-32: 24px;
+  --space-40: 32px;
+  --space-48: 48px;
+  --space-64: 52.0078px;
+  --space-80: 63px;
+  --space-96: 64px;
+  --space-128: 90.6328px;
+  --space-160: 169.95px;
+  --space-192: 179.055px;
+  --space-256: 266.5px;
+  --space-23: 352.555px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --border-width-base: 6.5px;
+  --radius-sm: 0px 8px 0px 0px;
+  --radius-md: 0px 0px 8px 8px;
+  --radius-lg: 2px;
+  --radius-xl: 4px;
+  --radius-2xl: 5px;
+  --radius-full: 8px;
+  --radius-r7: 8px 8px 0px 0px;
+  --radius-r8: 8px 0px 0px;
+  --radius-r9: 16px;
+  --radius-r10: 28px;
+  --radius-r11: 50%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgb(255, 255, 255) 0px 0px 0px 1133px;
+  --shadow-md: rgba(0, 0, 0, 0.3) 0px 2px 6px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.2) 0px 2px 6px 0px;
+  --shadow-xl: rgb(128, 128, 128) 0px 0px 10px 0px;
+  --shadow-shadow-5: rgb(42, 42, 42) 1px 5px 5px 3px;
+  --shadow-shadow-6: rgba(69, 137, 255, 0.1) 0px -80px 70px -65px inset, rgba(15, 98, 254, 0.1) 0px 4px 10px 2px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.07s;
+  --duration-fast: 0.11s;
+  --duration-normal: 0.15s;
+  --duration-slow: 0.24s;
+  --duration-slower: 0.3s;
+  --easing-ease-in: ease-in;
+  --easing-ease-in-out: ease-in-out;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 90;
+  --z-4: 95;
+  --z-5: 99;
+  --z-6: 100;
+  --z-7: 900;
+  --z-8: 999;
+  --z-9: 1000;
+  --z-10: 6000;
+  --z-11: 9000;
+  --z-12: 99999;
+  --z-13: 1000000;
+  --z-14: 9999999;
+  --z-15: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 1px;
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 410px;
+  --breakpoint-lg: 480px;
+  --breakpoint-xl: 550px;
+  --breakpoint-2xl: 551px;
+  --breakpoint-3xl: 575px;
+  --breakpoint-bp-8: 600px;
+  --breakpoint-bp-9: 640px;
+  --breakpoint-bp-10: 650px;
+  --breakpoint-bp-11: 671px;
+  --breakpoint-bp-12: 671.68px;
+  --breakpoint-bp-13: 672px;
+  --breakpoint-bp-14: 700px;
+  --breakpoint-bp-15: 760px;
+  --breakpoint-bp-16: 767px;
+  --breakpoint-bp-17: 768px;
+  --breakpoint-bp-18: 799px;
+  --breakpoint-bp-19: 800px;
+  --breakpoint-bp-20: 991px;
+  --breakpoint-bp-21: 1023px;
+  --breakpoint-bp-22: 1024px;
+  --breakpoint-bp-23: 1055.68px;
+  --breakpoint-bp-24: 1056px;
+  --breakpoint-bp-25: 1099px;
+  --breakpoint-bp-26: 1100px;
+  --breakpoint-bp-27: 1190px;
+  --breakpoint-bp-28: 1200px;
+  --breakpoint-bp-29: 1311px;
+  --breakpoint-bp-30: 1312px;
+  --breakpoint-bp-31: 1583px;
+  --breakpoint-bp-32: 1584px;
+  --breakpoint-bp-33: 1585px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-95: 0.95;
+}

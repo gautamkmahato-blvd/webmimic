@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Raycast Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* Raycast Color Tokens */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-black-2: #07080A;
+  --color-black-3: #08090C;
+  --color-light-gray: #E6E6E6;
+  --color-light-gray-2: #D8D8D8;
+  --color-dark-gray: #121212;
+  --color-dark-gray-2: #0D0D0D;
+  --color-dark-gray-3: #434345;
+  --color-dark-gray-4: #1B1C1E;
+  --color-dark-gray-5: #2F3031;
+  --color-dark-gray-6: #0F1013;
+  --color-dark-gray-7: #545454;
+  --color-dark-gray-8: #0C0D0F;
+  --color-dark-gray-9: #111214;
+  --color-dark-gray-10: #424242;
+  --color-dark-gray-13: #222222;
+  --color-dark-gray-14: #525252;
+  --color-dark-gray-15: #0E0F11;
+  --color-dark-gray-16: #181A1E;
+  --color-dark-gray-17: #1C1E24;
+  --color-dark-gray-18: #161616;
+  --color-mid-gray: #6A6B6C;
+  --color-mid-gray-2: #9C9C9D;
+  --color-mid-gray-3: rgba(142,140,144,0.2);
+  --color-mid-gray-4: #7B7B7B;
+  --color-red: #FF6363;
+  --color-dark-red: #452324;
+  --color-light-red: #FFCDCD;
+  --color-blue: #143CA3;
+  --color-blue-2: #63A1FF;
+  --color-blue-3: #56C2FF;
+  --color-blue-4: #138AF2;
+  --color-blue-5: #2E6FCF;
+  --color-blue-9: #3782F3;
+  --color-dark-blue: #02193B;
+  --color-light-blue-4: #8CD6FF;
+  --color-cyan: #59D499;
+  --color-orange: #FFC531;
+  --color-dark-green: #0D6E30;
+  --color-purple-2: #9B4DFF;
+
+  /* Raycast Typography */
+  --font-size-2xs: 10px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-lg: 14px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 18px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 22px;
+  --font-size-6xl: 24px;
+  --font-size-32px: 32px;
+  --font-size-56px: 56px;
+  --font-size-64px: 64px;
+  --font-family-base: 'Inter', ui-sans-serif, sans-serif;
+  --font-family-2: 'JetBrains Mono', 'GeistMono', ui-monospace, monospace;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 10px;
+  --line-height-snug: 13px;
+  --line-height-normal: 13.8px;
+  --line-height-relaxed: 14.95px;
+  --line-height-loose: 16px;
+  --line-height-lh-6: 18px;
+  --line-height-lh-7: 19.2px;
+  --line-height-lh-11: 24px;
+  --line-height-lh-16: 32px;
+  --line-height-lh-17: 36.8px;
+  --line-height-lh-18: 38.4px;
+  --line-height-lh-19: 65.52px;
+  --line-height-lh-20: 70.4px;
+  --letter-spacing-tight: -0.05px;
+  --letter-spacing-normal: 0.1px;
+  --letter-spacing-wide: 0.2px;
+  --letter-spacing-wider: 0.3px;
+  --letter-spacing-widest: 0.4px;
+  --letter-spacing-ls-6: 0.5px;
+  --letter-spacing-ls-7: 0.8px;
+
+  /* Raycast Spacing (representative set) */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 2.5px;
+  --space-4: 3px;
+  --space-5: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-16: 12px;
+  --space-160: 24px;
+  --space-23: 32px;
+  --space-25: 40px;
+  --space-28: 48px;
+  --space-30: 56px;
+  --space-31: 64px;
+  --space-33: 80px;
+  --space-35: 96px;
+  --space-37: 120px;
+  --space-40: 148px;
+
+  /* Raycast Borders */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --border-width-base: 2px;
+  --border-width-thick: 4px;
+  --radius-r7: 6px;
+  --radius-r8: 8px;
+  --radius-r10: 11px;
+  --radius-r11: 12px;
+  --radius-r12: 16px;
+  --radius-r13: 20px;
+  --radius-r21: 99999px;
+
+  /* Raycast Shadows */
+  --shadow-sm: rgba(0,0,0,0.4) 0px 1.5px 0.5px 2.5px, rgb(0,0,0) 0px 0px 0.5px 1px, rgba(0,0,0,0.25) 0px 2px 1px 1px inset, rgba(255,255,255,0.2) 0px 1px 1px 1px inset;
+  --shadow-md: rgb(27,28,30) 0px 0px 0px 1px, rgb(7,8,10) 0px 0px 0px 1px inset;
+  --shadow-lg: rgba(215,201,175,0.05) 0px 0px 20px 5px, rgba(215,201,175,0.05) 0px 0px 16px -7px;
+  --shadow-xl: rgba(0,0,0,0.28) 0px 1.189px 2.377px 0px;
+  --shadow-5: rgba(255,255,255,0.05) 0px 1px 0px 0px inset, rgba(255,255,255,0.25) 0px 0px 0px 1px, rgba(0,0,0,0.2) 0px -1px 0px 0px inset;
+  --shadow-6: rgba(0,0,0,0.5) 0px 0px 0px 2px, rgba(255,255,255,0.19) 0px 0px 14px 0px, rgba(0,0,0,0.2) 0px -1px 0.4px 0px inset, rgb(255,255,255) 0px 1px 0.4px 0px inset;
+
+  /* Raycast Motion */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.125s;
+  --duration-normal: 0.15s;
+  --duration-slow: 0.2s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* Z-Index */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 200;
+
+  /* Opacity (representative) */
+  --opacity-20: 0.2;
+  --opacity-50: 0.5;
+  --opacity-80: 0.8;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family-base);background:var(--color-white);color:var(--color-dark-gray-3);font-size:var(--font-size-lg);line-height:var(--line-height-lh-7);font-weight:var(--font-weight-regular);}
+.page{max-width:1200px;margin:0 auto;padding:64px 48px;}
+
+/* ── HEADER ── */
+.top-bar{border-bottom:var(--border-width-thin) solid var(--color-light-gray-2);margin-bottom:32px;padding-bottom:20px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.header-left{display:flex;align-items:center;gap:16px;}
+.logo{width:38px;height:38px;background:linear-gradient(135deg,#FF6363,#FF9F9F);border-radius:var(--radius-r8);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);}
+.system-title{font-size:var(--font-size-2xl);font-weight:var(--font-weight-semibold);color:var(--color-dark-gray);line-height:var(--line-height-lh-6);}
+.system-meta{font-size:var(--font-size-sm);color:var(--color-mid-gray);margin-top:2px;line-height:var(--line-height-loose);}
+.hbadge{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);background:var(--color-light-gray);color:var(--color-dark-gray-3);padding:2px 10px;border-radius:var(--radius-r21);border:var(--border-width-thin) solid var(--color-light-gray-2);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-thin) solid var(--color-light-gray-2);background:var(--color-light-gray);color:var(--color-dark-gray-2);box-shadow:0 1px 2px rgba(15,23,42,0.08);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-cyan);color:var(--color-cyan);box-shadow:0 4px 14px rgba(15,23,42,0.14);transform:translateY(-1px);}
+
+/* ── SECTION ── */
+.section{margin-bottom:64px;}
+.section-title{font-size:var(--font-size-6xl);font-weight:var(--font-weight-semibold);color:var(--color-dark-gray);line-height:var(--line-height-lh-11);margin-bottom:24px;display:flex;align-items:center;gap:8px;}
+
+/* ── COLORS ── */
+.color-group{margin-bottom:32px;}
+.color-group-label{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;color:var(--color-dark-gray-7);margin-bottom:8px;}
+.swatch-grid{display:grid;gap:8px;}
+.swatch-item{display:flex;flex-direction:column;gap:4px;}
+.swatch-box{height:60px;border-radius:var(--radius-r8);border:var(--border-width-thin) solid rgba(0,0,0,0.08);}
+.swatch-name{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-dark-gray-3);line-height:var(--line-height-snug);}
+.swatch-hex{font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-2);line-height:var(--line-height-tight);}
+
+/* ── TYPOGRAPHY ── */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px;}
+.font-card{background:var(--color-light-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r11);padding:24px;}
+.font-token{font-size:var(--font-size-sm);font-family:var(--font-family-2);color:var(--color-red);font-weight:var(--font-weight-medium);margin-bottom:8px;}
+.font-display{font-size:32px;color:var(--color-dark-gray);line-height:var(--line-height-lh-16);margin-bottom:8px;font-weight:var(--font-weight-semibold);}
+.font-sample{font-size:var(--font-size-lg);color:var(--color-mid-gray);line-height:var(--line-height-lh-7);font-weight:var(--font-weight-regular);}
+.fw-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.fw-chip{font-size:var(--font-size-sm);padding:2px 10px;background:var(--color-white);border-radius:var(--radius-r8);color:var(--color-dark-gray-3);border:var(--border-width-thin) solid var(--color-light-gray-2);}
+
+.type-scale{background:var(--color-light-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r11);overflow:hidden;}
+.type-row{display:flex;flex-direction:column;padding:12px 24px;border-bottom:var(--border-width-thin) solid var(--color-light-gray-2);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--color-dark-gray);margin-bottom:2px;}
+.type-meta{font-size:10px;color:var(--color-dark-gray-7);font-family:var(--font-family-2);line-height:var(--line-height-snug);}
+
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.lh-item{background:var(--color-light-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r8);padding:8px;display:flex;flex-direction:column;gap:4px;}
+.lh-bar-wrap{background:var(--color-light-gray-2);border-radius:2px;overflow:hidden;position:relative;}
+.lh-bar{background:linear-gradient(to bottom,#b01c1c,#FF6363);width:100%;}
+.lh-token{font-size:var(--font-size-xs);font-family:var(--font-family-2);color:var(--color-red);}
+.lh-val{font-size:10px;color:var(--color-mid-gray);}
+
+.ls-row{display:flex;gap:8px;flex-wrap:wrap;}
+.ls-item{background:var(--color-light-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r8);padding:12px 24px;flex:1;}
+.ls-sample{font-size:var(--font-size-6xl);color:var(--color-dark-gray);font-weight:var(--font-weight-semibold);margin-bottom:4px;}
+.ls-token{font-size:var(--font-size-sm);font-family:var(--font-family-2);color:var(--color-red);}
+.ls-desc{font-size:10px;color:var(--color-mid-gray);}
+
+/* ── SPACING ── */
+.token-wrap{background:var(--color-light-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r11);padding:24px;}
+.tw-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--color-dark-gray);line-height:var(--line-height-lh-6);margin-bottom:2px;}
+.tw-sub{font-size:var(--font-size-sm);color:var(--color-mid-gray);margin-bottom:24px;line-height:var(--line-height-lh-6);}
+.spacing-chart{display:flex;align-items:flex-end;gap:4px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;}
+.sp-bar{background:linear-gradient(to top,#b01c1c,#FF6363);border-radius:2px 2px 0 0;width:100%;}
+.sp-lbl{font-size:9px;color:var(--color-mid-gray);text-align:center;font-family:var(--font-family-2);}
+
+/* ── BORDERS ── */
+.border-card{background:var(--color-light-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r11);padding:24px;margin-bottom:24px;}
+.bc-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--color-dark-gray);line-height:var(--line-height-lh-6);margin-bottom:12px;}
+.radius-row{display:flex;gap:16px;flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,#b01c1c,#FF6363);border:var(--border-width-thin) solid rgba(0,0,0,0.08);}
+.radius-lbl{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--color-dark-gray-3);text-align:center;font-family:var(--font-family-2);}
+.radius-val{font-size:10px;color:var(--color-mid-gray);text-align:center;}
+.bw-demo{display:flex;flex-direction:column;gap:8px;}
+.bw-item{display:flex;align-items:center;gap:16px;}
+.bw-token{font-size:var(--font-size-sm);font-family:var(--font-family-2);color:var(--color-red);white-space:nowrap;}
+.bw-val{font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-2);white-space:nowrap;}
+
+/* ── SHADOWS ── */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sh-item{display:flex;flex-direction:column;gap:8px;}
+.sh-box{height:88px;background:var(--color-white);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r8);}
+.sh-token{font-size:var(--font-size-xl);font-weight:var(--font-weight-medium);color:var(--color-dark-gray-3);font-family:var(--font-family-2);}
+.sh-usage{font-size:10px;color:var(--color-mid-gray);}
+.sh-desc{font-size:10px;color:var(--color-dark-gray-7);line-height:var(--line-height-lh-6);margin-top:2px;}
+
+/* ── Z-INDEX ── */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:10px 10px;text-align:left;font-size:var(--font-size-lg);border-bottom:var(--border-width-thin) solid var(--color-light-gray-2);line-height:var(--line-height-lh-7);}
+.z-table th{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-7);color:var(--color-dark-gray-7);}
+.z-table td:first-child{font-family:var(--font-family-2);color:var(--color-red);}
+.z-table td:nth-child(2){font-family:var(--font-family-2);color:var(--color-dark-gray);font-weight:var(--font-weight-medium);}
+.z-table td:nth-child(3){color:var(--color-mid-gray);}
+.z-table tr:last-child td{border-bottom:none;}
+
+/* ── BREAKPOINTS ── */
+.bp-card{background:var(--color-light-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r11);padding:24px;display:flex;align-items:center;gap:32px;}
+.bp-icon{font-size:32px;line-height:1;}
+.bp-token{font-size:var(--font-size-sm);font-family:var(--font-family-2);color:var(--color-red);margin-bottom:4px;}
+.bp-val{font-size:32px;font-weight:var(--font-weight-semibold);color:var(--color-dark-gray);line-height:1;}
+.bp-desc{font-size:var(--font-size-sm);color:var(--color-mid-gray);margin-top:4px;}
+
+/* ── OPACITY ── */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.op-item{display:flex;flex-direction:column;gap:4px;}
+.op-box{height:60px;border-radius:var(--radius-r8);background:var(--color-red);}
+.op-token{font-size:var(--font-size-sm);font-family:var(--font-family-2);color:var(--color-red);}
+.op-val{font-size:10px;color:var(--color-mid-gray);}
+
+/* ── ACCESSIBILITY ── */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:10px 10px;text-align:left;font-size:var(--font-size-sm);border-bottom:var(--border-width-thin) solid var(--color-light-gray-2);line-height:var(--line-height-lh-6);}
+.a11y-table th{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-7);color:var(--color-dark-gray-7);}
+.a11y-table td:first-child,.a11y-table td:nth-child(2){font-family:var(--font-family-2);font-size:10px;}
+.a11y-table td:nth-child(2){color:var(--color-mid-gray);}
+.a11y-table td:nth-child(3){color:var(--color-dark-gray-3);font-family:var(--font-family-2);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-semibold);padding:2px 7px;border-radius:var(--radius-r21);}
+.wcag-aaa{background:rgba(13,110,48,0.1);color:#0a6b2e;border:var(--border-width-thin) solid rgba(13,110,48,0.3);}
+.wcag-aa{background:rgba(0,92,197,0.08);color:#0050b3;border:var(--border-width-thin) solid rgba(99,161,255,0.25);}
+.wcag-aal{background:var(--color-light-gray);color:var(--color-dark-gray-3);border:var(--border-width-thin) solid var(--color-light-gray-2);}
+.wcag-fail{background:rgba(255,99,99,0.08);color:#c0392b;border:var(--border-width-thin) solid rgba(255,99,99,0.25);}
+
+/* ── COMPONENTS ── */
+.comp-row{background:var(--color-light-gray);border-radius:var(--radius-r11);border:var(--border-width-thin) solid var(--color-light-gray-2);overflow:hidden;margin-bottom:20px;}
+.comp-header{padding:6px 12px;border-bottom:var(--border-width-thin) solid var(--color-light-gray-2);background:var(--color-light-gray-2);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--color-dark-gray-3);}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-medium);background:var(--color-white);color:var(--color-mid-gray);padding:2px 8px;border-radius:var(--radius-r21);border:var(--border-width-thin) solid var(--color-light-gray-2);}
+.comp-body{padding:24px;}
+
+.btn-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-base);font-weight:var(--font-weight-medium);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-lg);padding:6px 14px;border-radius:var(--radius-r8);line-height:var(--line-height-lh-7);transition:opacity var(--duration-slow) var(--easing-ease-in-out),background var(--duration-slow) var(--easing-ease-in-out);}
+.btn-primary{background:var(--color-red);color:var(--color-white);box-shadow:var(--shadow-sm);}
+.btn-primary:hover{background:#e85050;}
+.btn-secondary{background:var(--color-white);color:var(--color-dark-gray-3);border:var(--border-width-thin) solid var(--color-light-gray-2);}
+.btn-secondary:hover{background:var(--color-light-gray);}
+.btn-outline{background:transparent;color:var(--color-red);border:var(--border-width-thin) solid var(--color-red);}
+.btn-outline:hover{background:rgba(255,99,99,0.08);}
+.btn-ghost{background:transparent;color:var(--color-dark-gray-3);border:var(--border-width-thin) solid transparent;}
+.btn-ghost:hover{background:var(--color-light-gray);}
+.btn-muted{background:var(--color-light-gray);color:var(--color-mid-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);}
+
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.inp-group{display:flex;flex-direction:column;gap:4px;}
+.inp-label{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--color-dark-gray-3);line-height:var(--line-height-snug);}
+.inp{width:100%;font-family:var(--font-family-base);font-size:var(--font-size-lg);color:var(--color-dark-gray);background:var(--color-white);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r8);padding:6px 10px;outline:none;transition:border var(--duration-slow) var(--easing-ease-in-out);line-height:var(--line-height-lh-7);}
+.inp:focus{border-color:var(--color-red);box-shadow:0 0 0 3px rgba(255,99,99,0.15);}
+.inp::placeholder{color:var(--color-mid-gray);}
+.inp-hint{font-size:var(--font-size-sm);color:var(--color-mid-gray);line-height:var(--line-height-snug);}
+.inp-err{border-color:rgba(255,99,99,0.4) !important;}
+.inp-err-msg{font-size:var(--font-size-sm);color:var(--color-red);line-height:var(--line-height-snug);}
+
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-r21);line-height:var(--line-height-snug);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--color-light-gray);color:var(--color-dark-gray-3);border:var(--border-width-thin) solid var(--color-light-gray-2);}
+.badge-brand{background:rgba(255,99,99,0.1);color:#c0392b;border:var(--border-width-thin) solid rgba(255,99,99,0.3);}
+.badge-muted{background:var(--color-white);color:var(--color-mid-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-r7);border:var(--border-width-thin) solid rgba(255,255,255,0.1);background:var(--color-dark-gray-9);color:var(--color-dark-gray-3);line-height:var(--line-height-snug);}
+.tag-brand{color:#c0392b;background:rgba(255,99,99,0.08);border-color:rgba(255,99,99,0.25);}
+
+.alert{display:flex;gap:8px;padding:10px 12px;border-radius:var(--radius-r11);font-size:var(--font-size-lg);}
+.alert-icon{font-size:var(--font-size-2xl);flex-shrink:0;line-height:1.4;}
+.alert-body h5{font-weight:var(--font-weight-semibold);margin-bottom:2px;font-size:var(--font-size-lg);color:var(--color-dark-gray);line-height:var(--line-height-lh-7);}
+.alert-body p{font-size:var(--font-size-sm);line-height:var(--line-height-lh-6);}
+.alert-neutral{background:var(--color-dark-gray-4);color:var(--color-mid-gray-2);border:var(--border-width-thin) solid var(--color-light-gray-2);}
+.alert-brand{background:rgba(255,99,99,0.07);color:#c0392b;border:var(--border-width-thin) solid rgba(255,99,99,0.2);}
+.alert-dim{background:rgba(161,119,11,0.08);color:#7a5c00;border:var(--border-width-thin) solid rgba(255,197,49,0.2);}
+.alert-base{background:var(--color-light-gray);color:var(--color-mid-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.feature-card{background:var(--color-white);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r11);padding:24px;transition:border-color var(--duration-slow) var(--easing-ease-in-out);}
+.feature-card:hover{border-color:var(--color-red);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-r8);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px;border:var(--border-width-thin) solid var(--color-light-gray-2);background:var(--color-light-gray);}
+.fc-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--color-dark-gray);line-height:var(--line-height-lh-6);margin-bottom:4px;}
+.fc-desc{font-size:var(--font-size-sm);color:var(--color-mid-gray);line-height:var(--line-height-lh-6);margin-bottom:12px;}
+
+.av-row{display:flex;align-items:center;gap:8px;margin-bottom:24px;}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-semibold);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-xl);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-lg);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-sm);}
+.av-info h4{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--color-dark-gray);line-height:var(--line-height-lh-6);}
+.av-info p{font-size:var(--font-size-sm);color:var(--color-mid-gray);line-height:var(--line-height-snug);}
+
+.prog-wrap{margin-bottom:8px;}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--color-dark-gray-3);line-height:var(--line-height-snug);margin-bottom:3px;}
+.prog-track{height:3px;background:var(--color-light-gray-2);border-radius:var(--radius-r21);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-r21);transition:width var(--duration-slow) var(--easing-ease-in-out);}
+
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:6px 10px;text-align:left;font-size:var(--font-size-lg);border-bottom:var(--border-width-thin) solid var(--color-light-gray-2);line-height:var(--line-height-lh-7);}
+.data-table th{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-7);color:var(--color-dark-gray-7);background:var(--color-light-gray);}
+.data-table tr:hover td{background:var(--color-light-gray);transition:background var(--duration-slow) var(--easing-ease-in-out);}
+.data-table td:first-child{font-family:var(--font-family-2);color:var(--color-red);}
+
+/* ── CSS VARIABLES REFERENCE ── */
+.tokens-section{margin-bottom:64px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.tokens-group{background:var(--color-light-gray);border:var(--border-width-thin) solid var(--color-light-gray-2);border-radius:var(--radius-r11);overflow:hidden;}
+.tokens-group-header{padding:8px 12px;border-bottom:var(--border-width-thin) solid var(--color-light-gray-2);background:var(--color-light-gray-2);display:flex;align-items:center;gap:8px;}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--color-red);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--color-dark-gray-3);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;}
+.tokens-group-count{font-size:10px;color:var(--color-dark-gray-7);margin-left:auto;}
+.tokens-list{padding:4px 0;}
+.token-row{display:flex;align-items:center;gap:8px;padding:3px 12px;transition:background var(--duration-instant);}
+.token-row:hover{background:var(--color-light-gray);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-r7);border:var(--border-width-thin) solid rgba(0,0,0,0.1);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--color-dark-gray-3);flex:1;min-width:0;}
+.token-css{font-size:10px;font-family:var(--font-family-2);color:var(--color-red);white-space:nowrap;}
+.token-value{font-size:10px;font-family:var(--font-family-2);color:var(--color-mid-gray);white-space:nowrap;}
+.token-preview-bar{height:3px;border-radius:var(--radius-r21);background:linear-gradient(to right,#b01c1c,#FF6363);flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,#b01c1c,#FF6363);flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-r7);background:var(--color-red);flex-shrink:0;}
+.tokens-full{grid-column:1/-1;}
+.token-row-sep{height:var(--border-width-thin);background:var(--color-light-gray-2);margin:4px 0;}
+
+@media(max-width:600px){
+  .font-cards,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M10 2L3 6V14L10 18L17 14V6L10 2Z" fill="white" fill-opacity="0.3"/>
+            <path d="M7 8L13 11.5L7 15V8Z" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">Raycast Design System</div>
+          <div class="system-meta">Light · Generated 17/04/2026 · 123 colors · 49 type tokens · 47 spacing steps · 17 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">v1.0.0</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- ── 1. COLOR PALETTE ── -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(0,0,0,.15)"></div><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black</div><div class="swatch-hex">#000000</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#07080A"></div><div class="swatch-name">Black 2</div><div class="swatch-hex">#07080A</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E6E6E6;border-color:rgba(0,0,0,.15)"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#E6E6E6</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#434345"></div><div class="swatch-name">Dark Gray 3</div><div class="swatch-hex">#434345</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1B1C1E"></div><div class="swatch-name">Dark Gray 4</div><div class="swatch-hex">#1B1C1E</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF6363"></div><div class="swatch-name">Brand Red</div><div class="swatch-hex">#FF6363</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#56C2FF"></div><div class="swatch-name">Blue 3</div><div class="swatch-hex">#56C2FF</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(5,1fr);max-width:560px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#6A6B6C"></div><div class="swatch-name">Mid Gray</div><div class="swatch-hex">#6A6B6C</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#9C9C9D"></div><div class="swatch-name">Mid Gray 2</div><div class="swatch-hex">#9C9C9D</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#2F3031"></div><div class="swatch-name">Dark Gray 5</div><div class="swatch-hex">#2F3031</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFCDCD;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">Light Red</div><div class="swatch-hex">#FFCDCD</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#8CD6FF;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">Light Blue 4</div><div class="swatch-hex">#8CD6FF</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Border Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(2,1fr);max-width:220px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(142,140,144,0.2)"></div><div class="swatch-name">Mid Gray 3</div><div class="swatch-hex">rgba(142,140,144,.2)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(255,99,99,0.25)"></div><div class="swatch-name">Red 5</div><div class="swatch-hex">rgba(255,99,99,.25)</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Fill &amp; Gradient Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#121212"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#121212</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0D0D0D"></div><div class="swatch-name">Dark Gray 2</div><div class="swatch-hex">#0D0D0D</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#D8D8D8;border-color:rgba(0,0,0,.12)"></div><div class="swatch-name">Light Gray 2</div><div class="swatch-hex">#D8D8D8</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#02193B"></div><div class="swatch-name">Dark Blue</div><div class="swatch-hex">#02193B</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#143CA3"></div><div class="swatch-name">Blue</div><div class="swatch-hex">#143CA3</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#63A1FF"></div><div class="swatch-name">Blue 2</div><div class="swatch-hex">#63A1FF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#59D499"></div><div class="swatch-name">Cyan</div><div class="swatch-hex">#59D499</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFC531"></div><div class="swatch-name">Orange</div><div class="swatch-hex">#FFC531</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Grey Scale (System)</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(10,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#e6e6e6;border-color:rgba(0,0,0,.12)"></div><div class="swatch-name">grey-50</div><div class="swatch-hex">#E6E6E6</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#cdcece;border-color:rgba(0,0,0,.12)"></div><div class="swatch-name">grey-100</div><div class="swatch-hex">#CDCECE</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#9c9c9d"></div><div class="swatch-name">grey-200</div><div class="swatch-hex">#9C9C9D</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#6a6b6c"></div><div class="swatch-name">grey-300</div><div class="swatch-hex">#6A6B6C</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#434345"></div><div class="swatch-name">grey-400</div><div class="swatch-hex">#434345</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#2f3031"></div><div class="swatch-name">grey-500</div><div class="swatch-hex">#2F3031</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1b1c1e"></div><div class="swatch-name">grey-600</div><div class="swatch-hex">#1B1C1E</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#111214"></div><div class="swatch-name">grey-700</div><div class="swatch-hex">#111214</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0c0d0f"></div><div class="swatch-name">grey-800</div><div class="swatch-hex">#0C0D0F</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#07080a"></div><div class="swatch-name">grey-900</div><div class="swatch-hex">#07080A</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. TYPOGRAPHY ── -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">Base Font · Inter / SF Pro Text</div>
+        <div class="font-display">Inter</div>
+        <div class="font-sample">Your shortcut to everything. Launch apps, search files, run commands.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:300">Light · 300</span>
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:500">Medium · 500</span>
+          <span class="fw-chip" style="font-weight:600">Semibold · 600</span>
+          <span class="fw-chip" style="font-weight:700">Bold · 700</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Mono Font · GeistMono / JetBrains Mono</div>
+        <div class="font-display" style="font-family:var(--font-family-2);font-size:24px;">GeistMono</div>
+        <div class="font-sample" style="font-family:var(--font-family-2);">raycast://extensions/run --command "New Tab"</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:var(--font-family-2);font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-family:var(--font-family-2);font-weight:500">Medium · 500</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type Scale -->
+    <div class="type-scale" style="margin-bottom:24px;">
+      <div class="type-row">
+        <div class="type-sample" style="font-size:64px;font-weight:700;line-height:70.4px;letter-spacing:-0.05px;">Your shortcut.</div>
+        <div class="type-meta">Display Hero · 64px · Bold · line-height: 70.4px · letter-spacing: −0.05px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:56px;font-weight:600;line-height:65.52px;">Raycast Platform</div>
+        <div class="type-meta">Display · 56px · Semibold · line-height: 65.52px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:32px;font-weight:600;line-height:38.4px;">Build your ideal workflow</div>
+        <div class="type-meta">Heading XL · 32px · Semibold · line-height: 38.4px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:24px;font-weight:500;line-height:32px;">Extensions &amp; Integrations</div>
+        <div class="type-meta">Heading Large · 24px · Medium · line-height: 32px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:18px;font-weight:400;line-height:27.6px;color:var(--color-mid-gray);">A blazing fast, totally extendable launcher. It lets you complete tasks, calculate, share common links and much more.</div>
+        <div class="type-meta">Body Large · 18px · Regular · line-height: 27.6px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:16px;font-weight:400;line-height:22.4px;color:var(--color-mid-gray);">Control your tools with a few keystrokes. Replace your dock, Spotlight, and several other tools.</div>
+        <div class="type-meta">Body Default · 16px · Regular · line-height: 22.4px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:14px;font-weight:400;line-height:19.2px;color:var(--color-mid-gray);">Last synced 2 minutes ago · 1,204 extensions available</div>
+        <div class="type-meta">Body Small · 14px · Regular · line-height: 19.2px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:12px;font-weight:500;line-height:16px;letter-spacing:0.8px;text-transform:uppercase;color:var(--color-mid-gray);">EXTENSIONS · COMMANDS · AI</div>
+        <div class="type-meta">Caption / Label · 12px · Medium · line-height: 16px · letter-spacing: 0.8px</div>
+      </div>
+    </div>
+
+    <!-- Line Heights -->
+    <div style="margin-bottom:24px;">
+      <div style="font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;color:var(--color-dark-gray-7);margin-bottom:12px;">Line Heights</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:10px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">10px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:13px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">13px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:13.8px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">13.8px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:14.95px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">14.95px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:16px;"></div></div><div class="lh-token">Loose</div><div class="lh-val">16px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:18px;"></div></div><div class="lh-token">Spacious</div><div class="lh-val">18px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">Open</div><div class="lh-val">24px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:32px;"></div></div><div class="lh-token">Display SM</div><div class="lh-val">32px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:36.8px;"></div></div><div class="lh-token">Display</div><div class="lh-val">36.8px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:38.4px;"></div></div><div class="lh-token">Display LG</div><div class="lh-val">38.4px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:65.52px;"></div></div><div class="lh-token">Hero</div><div class="lh-val">65.52px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:70.4px;"></div></div><div class="lh-token">Hero XL</div><div class="lh-val">70.4px</div></div>
+      </div>
+    </div>
+
+    <!-- Letter Spacing -->
+    <div>
+      <div style="font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;color:var(--color-dark-gray-7);margin-bottom:12px;">Letter Spacing</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.05px;">Raycast Pro</div>
+          <div class="ls-token">Tight · −0.05px</div>
+          <div class="ls-desc">--letter-spacing-tight · hero headings, display text</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:0.1px;">Extensions</div>
+          <div class="ls-token">Normal · 0.1px</div>
+          <div class="ls-desc">--letter-spacing-normal · body and UI text</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:0.8px;font-size:12px;text-transform:uppercase;">COMMANDS</div>
+          <div class="ls-token">Widest · 0.8px</div>
+          <div class="ls-desc">--letter-spacing-ls-7 · uppercase labels, captions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. SPACING ── -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">47 tokens — 1px → 442.5px</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:1px"></div><div class="sp-lbl">1</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:2px"></div><div class="sp-lbl">2</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:3px"></div><div class="sp-lbl">3</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:6px"></div><div class="sp-lbl">6</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:13px"></div><div class="sp-lbl">13</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:17px"></div><div class="sp-lbl">17</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:19px"></div><div class="sp-lbl">19</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:20px"></div><div class="sp-lbl">20</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:24px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:25px"></div><div class="sp-lbl">25</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:29px"></div><div class="sp-lbl">29</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:32px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:34px"></div><div class="sp-lbl">34</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:40px"></div><div class="sp-lbl">40</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:48px"></div><div class="sp-lbl">48</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:50px"></div><div class="sp-lbl">50</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:56px"></div><div class="sp-lbl">56</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:64px"></div><div class="sp-lbl">64</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:72px"></div><div class="sp-lbl">72</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:80px"></div><div class="sp-lbl">80</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:85px"></div><div class="sp-lbl">85</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:96px"></div><div class="sp-lbl">96</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:102px"></div><div class="sp-lbl">102</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:120px"></div><div class="sp-lbl">120</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:128px"></div><div class="sp-lbl">128</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:137px"></div><div class="sp-lbl">137</div></div>
+        <div class="sp-col" style="opacity:.5;"><div class="sp-bar" style="height:140px;"></div><div class="sp-lbl">148+</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. BORDERS ── -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:2px"></div><div class="radius-lbl">r-md</div><div class="radius-val">2px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">r-2xl</div><div class="radius-val">4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:6px"></div><div class="radius-lbl">r-r7</div><div class="radius-val">6px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-lbl">r-r8</div><div class="radius-val">8px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:11px"></div><div class="radius-lbl">r-r10</div><div class="radius-val">11px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:12px"></div><div class="radius-lbl">r-r11</div><div class="radius-val">12px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:16px"></div><div class="radius-lbl">r-r12</div><div class="radius-val">16px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:20px"></div><div class="radius-lbl">r-r13</div><div class="radius-val">20px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px;width:80px;height:30px;margin-top:15px"></div><div class="radius-lbl">r-r21</div><div class="radius-val">99999px</div></div>
+      </div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Widths</div>
+      <div class="bw-demo">
+        <div class="bw-item"><div class="bw-token">--border-width-hairline</div><div class="bw-val">0.5px · ultra-fine dividers</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-thin</div><div class="bw-val">1px · cards, inputs, standard borders</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-base</div><div class="bw-val">2px · emphasis, focus rings, active states</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-thick</div><div class="bw-val">4px · strong emphasis, selection indicators</div></div>
+        <div style="margin-top:10px;font-size:var(--font-size-sm);color:var(--color-mid-gray);line-height:var(--line-height-lh-6);">Raycast uses 4 border widths, from a hairline <span style="font-family:var(--font-family-2);color:var(--color-red);">0.5px</span> for subtle separation to thick <span style="font-family:var(--font-family-2);color:var(--color-red);">4px</span> for strong visual anchors.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. SHADOW / ELEVATION ── -->
+  <div class="section">
+    <div class="section-title">Shadow / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">6 tokens</div>
+      <div class="shadows-row">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-sm);"></div>
+          <div class="sh-token">shadow-sm</div>
+          <div class="sh-usage">Heavy button shadow</div>
+          <div class="sh-desc">Deep black outer + inset highlights — creates the signature Raycast 3D button effect</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-md);border:1px solid rgba(255,255,255,.05)"></div>
+          <div class="sh-token">shadow-md</div>
+          <div class="sh-usage">Border ring</div>
+          <div class="sh-desc">Dark outer ring + inner ring — card and surface containment without bg color</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-lg);"></div>
+          <div class="sh-token">shadow-lg</div>
+          <div class="sh-usage">Warm ambient</div>
+          <div class="sh-desc">rgba(215,201,175,.05) warm glow — subtle background warmth for hero sections</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-xl);border:1px solid rgba(255,255,255,.05)"></div>
+          <div class="sh-token">shadow-xl</div>
+          <div class="sh-usage">Minimal drop</div>
+          <div class="sh-desc">Soft rgba(0,0,0,.28) micro-drop — lightweight elevation for floating elements</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-5);"></div>
+          <div class="sh-token">shadow-5</div>
+          <div class="sh-usage">Glass button</div>
+          <div class="sh-desc">White inset + white ring + black underline — frosted glass button treatment</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-6);background:#1B1C1E;"></div>
+          <div class="sh-token">shadow-6</div>
+          <div class="sh-usage">Glow ring</div>
+          <div class="sh-desc">Black ring + white glow + inset polish — premium modal / spotlight effect</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6. Z-INDEX ── -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Layer</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>--z-1</td><td>-1</td><td>Background decorations, canvas layers</td></tr>
+          <tr><td>--z-2</td><td>1</td><td>Base content layer</td></tr>
+          <tr><td>--z-3</td><td>2</td><td>Elevated cards, interactive surfaces</td></tr>
+          <tr><td>--z-4</td><td>3</td><td>Popovers, dropdowns, tooltips</td></tr>
+          <tr><td>--z-5</td><td>200</td><td>Command window, modal overlays, top-level dialogs</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── 7. BREAKPOINTS ── -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;">
+      <div class="bp-card">
+        <div class="bp-icon">📱</div>
+        <div>
+          <div class="bp-token">--breakpoint-xs / sm</div>
+          <div class="bp-val" style="font-size:24px;">375–400px</div>
+          <div class="bp-desc">Mobile / small phone threshold</div>
+        </div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">💻</div>
+        <div>
+          <div class="bp-token">--breakpoint-bp-16</div>
+          <div class="bp-val" style="font-size:24px;">768px</div>
+          <div class="bp-desc">Tablet / medium layout threshold</div>
+        </div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">🖥️</div>
+        <div>
+          <div class="bp-token">--breakpoint-bp-29/30</div>
+          <div class="bp-val" style="font-size:24px;">1200px</div>
+          <div class="bp-desc">Desktop / full container width</div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:var(--font-size-sm);color:var(--color-mid-gray);line-height:var(--line-height-lh-6);">
+      Full ladder: 375px (xs) · 400px (sm) · 408px (md) · 420px (lg) · 480px (xl) · 520px (2xl) · 530px (3xl) · 540px · 548px · 563px · 600px · 619px · 640px · 720px · 767px · 768px · 784px · 800px · 840px · 880px · 900px · 920px · 980px · 1000px · 1024px · 1050px · 1064px · 1080px · 1200px · 1204px
+    </div>
+  </div>
+
+  <!-- ── 8. OPACITY ── -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <div class="tw-sub">34 tokens — 0.1 → 0.9</div>
+      <div class="opacity-grid">
+        <div class="op-item"><div class="op-box" style="opacity:.1"></div><div class="op-token">--opacity-10</div><div class="op-val">10%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:.2"></div><div class="op-token">--opacity-20</div><div class="op-val">20%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:.25"></div><div class="op-token">--opacity-25</div><div class="op-val">25%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:.35"></div><div class="op-token">--opacity-35</div><div class="op-val">35%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:.5"></div><div class="op-token">--opacity-50</div><div class="op-val">50%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:.6"></div><div class="op-token">--opacity-60</div><div class="op-val">60%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:.75"></div><div class="op-token">--opacity-75</div><div class="op-val">75%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:.8"></div><div class="op-token">--opacity-80</div><div class="op-val">80%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:.9"></div><div class="op-token">--opacity-90</div><div class="op-val">90%</div></div>
+        <div class="op-item" style="justify-content:center;align-items:center;background:rgba(255,255,255,0.03);border-radius:8px;padding:8px;">
+          <div style="font-size:var(--font-size-sm);color:var(--color-mid-gray);text-align:center;line-height:var(--line-height-lh-6);">+25 more<br/>granular<br/>steps</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 9. ACCESSIBILITY ── -->
+  <div class="section">
+    <div class="section-title">Accessibility — Contrast Ratios</div>
+    <div style="font-size:var(--font-size-sm);color:var(--color-mid-gray);line-height:var(--line-height-lh-6);margin-bottom:16px;">WCAG 2.1 thresholds: <strong style="color:var(--color-mid-gray-2);">AA</strong> ≥ 4.5:1 (normal text) · <strong style="color:var(--color-mid-gray-2);">AA Large</strong> ≥ 3:1 (large/bold) · <strong style="color:var(--color-mid-gray-2);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Token</th><th>Background Token</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>--color-mid-gray</td><td>--color-white</td><td>5.34:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-black</td><td>3.93:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-black-2</td><td>3.75:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-light-gray</td><td>4.28:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-dark-gray-3</td><td>1.85:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-white</td><td>2.74:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-black</td><td>7.66:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-black-2</td><td>7.3:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-light-gray</td><td>2.2:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-dark-gray-3</td><td>3.6:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-dark-gray-5</td><td>--color-white</td><td>13.22:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-dark-gray-5</td><td>--color-light-gray</td><td>10.6:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-light-red</td><td>--color-black</td><td>14.87:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-light-red</td><td>--color-dark-gray-3</td><td>6.99:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-light-blue-4</td><td>--color-black</td><td>13.18:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-light-blue-4</td><td>--color-dark-gray-3</td><td>6.19:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">⌘ Launch Raycast</button>
+          <button class="btn btn-secondary">Browse Extensions</button>
+          <button class="btn btn-outline">Install Free</button>
+          <button class="btn btn-ghost">Learn more</button>
+          <button class="btn btn-muted">Dismiss</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Search extensions</label>
+            <input class="inp" type="text" placeholder="Search 1,200+ extensions…"/>
+            <div class="inp-hint">Search the Raycast Store</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Hotkey</label>
+            <input class="inp" type="text" placeholder="⌥ Space" style="border-color:var(--color-red);box-shadow:0 0 0 3px rgba(255,99,99,0.15);font-family:var(--font-family-2);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">API Token</label>
+            <input class="inp inp-err" type="text" value="invalid-token-xyz"/>
+            <div class="inp-err-msg">Invalid API token format</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-red)"></span>New</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--color-dark-gray-7)"></span>Beta</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">⌘ Commands</span>
+          <span class="tag">🔌 Extensions</span>
+          <span class="tag">🤖 AI Features</span>
+          <span class="tag">📋 Clipboard</span>
+          <span class="tag">🪟 Window Mgmt</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="alert alert-neutral"><div class="alert-icon">ℹ️</div><div class="alert-body"><h5>New extensions available</h5><p style="color:var(--color-mid-gray);">12 new extensions were added to the store this week. Browse the latest additions.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon">🚀</div><div class="alert-body"><h5>Extension installed</h5><p>GitHub extension has been installed and is ready to use. Press ⌘ Space to launch.</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon">⚠️</div><div class="alert-body"><h5 style="color:#FFC531;">Update available</h5><p style="color:#FFC531;opacity:.7;">Raycast v1.90 is available. Restart to apply the update and get new features.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon">❌</div><div class="alert-body"><h5 style="color:var(--color-mid-gray-2);">Extension failed to load</h5><p>The extension could not be loaded due to a missing dependency. Check the logs.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Feature Cards</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">⌨️</div>
+            <div class="fc-title">Commands</div>
+            <div class="fc-desc">Run scripts, open files, control apps, and automate workflows from one place.</div>
+            <span class="tag tag-brand">⌘ Keyboard-first</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🤖</div>
+            <div class="fc-title">Raycast AI</div>
+            <div class="fc-desc">Ask anything, summarize, write, and code with AI built directly into your launcher.</div>
+            <span class="tag">GPT-4 · Claude</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🔌</div>
+            <div class="fc-title">Extensions Store</div>
+            <div class="fc-desc">1,200+ community extensions for every tool you already use.</div>
+            <span class="tag">Open Source</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars &amp; Progress</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:linear-gradient(135deg,#b01c1c,#FF6363);color:var(--color-white);">RC</div>
+          <div class="av-info"><h4>Raycast Developer</h4><p>Builder · dev@raycast.com · Pro plan</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:var(--color-red);color:white">A</div>
+          <div class="avatar av-md" style="background:var(--color-blue-2);color:#000">M</div>
+          <div class="avatar av-md" style="background:var(--color-cyan);color:#000">R</div>
+          <div class="avatar av-sm" style="background:var(--color-orange);color:#000">K</div>
+          <div class="avatar av-sm" style="background:var(--color-dark-gray-3);color:var(--color-mid-gray-2)">+9</div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Extension usage</span><span>73%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:73%;background:linear-gradient(to right,#b01c1c,#FF6363)"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>AI credits used</span><span>41%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:41%;background:var(--color-blue-2)"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>Sync status</span><span>95%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:95%;background:var(--color-mid-gray)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Data Table</span><span class="comp-badge">Extensions List</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead>
+            <tr><th>id</th><th>extension</th><th>category</th><th>installed</th><th>status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ext_01…</td><td style="color:var(--color-dark-gray-3);font-weight:500">GitHub</td><td style="color:var(--color-mid-gray)">Dev Tools</td><td style="color:var(--color-dark-gray-7)">Mar 12, 2026</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-red)"></span>Active</span></td></tr>
+            <tr><td>ext_02…</td><td style="color:var(--color-dark-gray-3);font-weight:500">Linear</td><td style="color:var(--color-mid-gray)">Project Mgmt</td><td style="color:var(--color-dark-gray-7)">Mar 15, 2026</td><td><span class="badge badge-muted" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-dark-gray-7)"></span>Updating</span></td></tr>
+            <tr><td>ext_03…</td><td style="color:var(--color-dark-gray-3);font-weight:500">Figma</td><td style="color:var(--color-mid-gray)">Design</td><td style="color:var(--color-dark-gray-7)">Apr 01, 2026</td><td><span class="badge badge-default" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Paused</span></td></tr>
+            <tr><td>ext_04…</td><td style="color:var(--color-dark-gray-3);font-weight:500">Notion</td><td style="color:var(--color-mid-gray)">Productivity</td><td style="color:var(--color-dark-gray-7)">Apr 09, 2026</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-red)"></span>Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- ── 11. CSS VARIABLES REFERENCE ── -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <!-- Background Colors -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Background Colors</span>
+          <span class="tokens-group-count">16 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF;border-color:rgba(0,0,0,.2)"></div><span class="token-readable">White</span><span class="token-css">--color-white</span><span class="token-value">#FFFFFF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#000000"></div><span class="token-readable">Black</span><span class="token-css">--color-black</span><span class="token-value">#000000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#07080A"></div><span class="token-readable">Black 2</span><span class="token-css">--color-black-2</span><span class="token-value">#07080A</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#08090C"></div><span class="token-readable">Black 3</span><span class="token-css">--color-black-3</span><span class="token-value">#08090C</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#E6E6E6;border-color:rgba(0,0,0,.15)"></div><span class="token-readable">Light Gray</span><span class="token-css">--color-light-gray</span><span class="token-value">#E6E6E6</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#434345"></div><span class="token-readable">Dark Gray 3</span><span class="token-css">--color-dark-gray-3</span><span class="token-value">#434345</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1B1C1E"></div><span class="token-readable">Dark Gray 4</span><span class="token-css">--color-dark-gray-4</span><span class="token-value">#1B1C1E</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#111214"></div><span class="token-readable">Dark Gray 9</span><span class="token-css">--color-dark-gray-9</span><span class="token-value">#111214</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#222222"></div><span class="token-readable">Dark Gray 13</span><span class="token-css">--color-dark-gray-13</span><span class="token-value">#222222</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FF6363"></div><span class="token-readable">Brand Red</span><span class="token-css">--color-red</span><span class="token-value">#FF6363</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#452324"></div><span class="token-readable">Dark Red</span><span class="token-css">--color-dark-red</span><span class="token-value">#452324</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#56C2FF"></div><span class="token-readable">Blue 3</span><span class="token-css">--color-blue-3</span><span class="token-value">#56C2FF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#59D499"></div><span class="token-readable">Cyan</span><span class="token-css">--color-cyan</span><span class="token-value">#59D499</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFC531"></div><span class="token-readable">Orange</span><span class="token-css">--color-orange</span><span class="token-value">#FFC531</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#130D0E"></div><span class="token-readable">Dark Gray 19</span><span class="token-css">--color-dark-gray-19</span><span class="token-value">#130D0E</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(158,190,215,0.1)"></div><span class="token-readable">Light Blue</span><span class="token-css">--color-light-blue</span><span class="token-value">rgba(158,190,215,.1)</span></div>
+        </div>
+      </div>
+
+      <!-- Text & Border Colors -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Text &amp; Border Colors</span>
+          <span class="tokens-group-count">7 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#6A6B6C"></div><span class="token-readable">Mid Gray</span><span class="token-css">--color-mid-gray</span><span class="token-value">#6A6B6C</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#9C9C9D"></div><span class="token-readable">Mid Gray 2</span><span class="token-css">--color-mid-gray-2</span><span class="token-value">#9C9C9D</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#2F3031"></div><span class="token-readable">Dark Gray 5</span><span class="token-css">--color-dark-gray-5</span><span class="token-value">#2F3031</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFCDCD;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">Light Red</span><span class="token-css">--color-light-red</span><span class="token-value">#FFCDCD</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#8CD6FF;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">Light Blue 4</span><span class="token-css">--color-light-blue-4</span><span class="token-value">#8CD6FF</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(142,140,144,0.2)"></div><span class="token-readable">Mid Gray 3</span><span class="token-css">--color-mid-gray-3</span><span class="token-value">rgba(142,140,144,.2)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(255,99,99,0.25)"></div><span class="token-readable">Red 5</span><span class="token-css">--color-red-5</span><span class="token-value">rgba(255,99,99,.25)</span></div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Typography</span>
+          <span class="tokens-group-count">49 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Base Font</span><span class="token-css">--font-family-base</span><span class="token-value">Inter</span></div>
+          <div class="token-row"><span class="token-readable">Mono Font</span><span class="token-css">--font-family-2</span><span class="token-value">GeistMono</span></div>
+          <div class="token-row"><span class="token-readable">SF Pro Text</span><span class="token-css">--font-family-3</span><span class="token-value">SF Pro Text</span></div>
+          <div class="token-row"><span class="token-readable">Light</span><span class="token-css">--font-weight-light</span><span class="token-value">300</span></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">Medium</span><span class="token-css">--font-weight-medium</span><span class="token-value">500</span></div>
+          <div class="token-row"><span class="token-readable">Semibold</span><span class="token-css">--font-weight-semibold</span><span class="token-value">600</span></div>
+          <div class="token-row"><span class="token-readable">Bold</span><span class="token-css">--font-weight-bold</span><span class="token-value">700</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">2XS</span><span class="token-css">--font-size-2xs</span><span class="token-value">10px</span></div>
+          <div class="token-row"><span class="token-readable">XS</span><span class="token-css">--font-size-xs</span><span class="token-value">11px</span></div>
+          <div class="token-row"><span class="token-readable">SM</span><span class="token-css">--font-size-sm</span><span class="token-value">12px</span></div>
+          <div class="token-row"><span class="token-readable">Base</span><span class="token-css">--font-size-base</span><span class="token-value">13px</span></div>
+          <div class="token-row"><span class="token-readable">LG</span><span class="token-css">--font-size-lg</span><span class="token-value">14px</span></div>
+          <div class="token-row"><span class="token-readable">XL</span><span class="token-css">--font-size-xl</span><span class="token-value">16px</span></div>
+          <div class="token-row"><span class="token-readable">2XL</span><span class="token-css">--font-size-2xl</span><span class="token-value">18px</span></div>
+          <div class="token-row"><span class="token-readable">3XL</span><span class="token-css">--font-size-3xl</span><span class="token-value">20px</span></div>
+          <div class="token-row"><span class="token-readable">4XL</span><span class="token-css">--font-size-4xl</span><span class="token-value">22px</span></div>
+          <div class="token-row"><span class="token-readable">6XL</span><span class="token-css">--font-size-6xl</span><span class="token-value">24px</span></div>
+          <div class="token-row"><span class="token-readable">Display SM</span><span class="token-css">--font-size-32px</span><span class="token-value">32px</span></div>
+          <div class="token-row"><span class="token-readable">Display LG</span><span class="token-css">--font-size-56px</span><span class="token-value">56px</span></div>
+          <div class="token-row"><span class="token-readable">Display Hero</span><span class="token-css">--font-size-64px</span><span class="token-value">64px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Tight</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">−0.05px</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--letter-spacing-normal</span><span class="token-value">0.1px</span></div>
+          <div class="token-row"><span class="token-readable">Wide</span><span class="token-css">--letter-spacing-wide</span><span class="token-value">0.2px</span></div>
+          <div class="token-row"><span class="token-readable">Wider</span><span class="token-css">--letter-spacing-wider</span><span class="token-value">0.3px</span></div>
+          <div class="token-row"><span class="token-readable">Widest</span><span class="token-css">--letter-spacing-widest</span><span class="token-value">0.4px</span></div>
+          <div class="token-row"><span class="token-readable">LS-6</span><span class="token-css">--letter-spacing-ls-6</span><span class="token-value">0.5px</span></div>
+          <div class="token-row"><span class="token-readable">LS-7 (Labels)</span><span class="token-css">--letter-spacing-ls-7</span><span class="token-value">0.8px</span></div>
+        </div>
+      </div>
+
+      <!-- Spacing -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Spacing (Representative)</span>
+          <span class="tokens-group-count">47 total tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-preview-bar" style="width:1px"></div><span class="token-readable">Space 1</span><span class="token-css">--space-1</span><span class="token-value">1px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:2px"></div><span class="token-readable">Space 2</span><span class="token-css">--space-2</span><span class="token-value">2px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:4px"></div><span class="token-readable">Space 5</span><span class="token-css">--space-5</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:6px"></div><span class="token-readable">Space 6</span><span class="token-css">--space-6</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:8px"></div><span class="token-readable">Space 8</span><span class="token-css">--space-8</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:10px"></div><span class="token-readable">Space 10</span><span class="token-css">--space-10</span><span class="token-value">10px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:12px"></div><span class="token-readable">Space 16</span><span class="token-css">--space-16</span><span class="token-value">12px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:24px"></div><span class="token-readable">Space 160</span><span class="token-css">--space-160</span><span class="token-value">24px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:32px"></div><span class="token-readable">Space 23</span><span class="token-css">--space-23</span><span class="token-value">32px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:40px"></div><span class="token-readable">Space 25</span><span class="token-css">--space-25</span><span class="token-value">40px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:48px"></div><span class="token-readable">Space 28</span><span class="token-css">--space-28</span><span class="token-value">48px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:56px"></div><span class="token-readable">Space 30</span><span class="token-css">--space-30</span><span class="token-value">56px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:64px"></div><span class="token-readable">Space 31</span><span class="token-css">--space-31</span><span class="token-value">64px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:80px"></div><span class="token-readable">Space 33</span><span class="token-css">--space-33</span><span class="token-value">80px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:96px"></div><span class="token-readable">Space 35</span><span class="token-css">--space-35</span><span class="token-value">96px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:120px"></div><span class="token-readable">Space 37</span><span class="token-css">--space-37</span><span class="token-value">120px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:140px;opacity:.5"></div><span class="token-readable">Space 40</span><span class="token-css">--space-40</span><span class="token-value">148px</span></div>
+        </div>
+      </div>
+
+      <!-- Borders + Radius -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Borders &amp; Radius</span>
+          <span class="tokens-group-count">25 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Hairline</span><span class="token-css">--border-width-hairline</span><span class="token-value">0.5px</span></div>
+          <div class="token-row"><span class="token-readable">Thin</span><span class="token-css">--border-width-thin</span><span class="token-value">1px</span></div>
+          <div class="token-row"><span class="token-readable">Base</span><span class="token-css">--border-width-base</span><span class="token-value">2px</span></div>
+          <div class="token-row"><span class="token-readable">Thick</span><span class="token-css">--border-width-thick</span><span class="token-value">4px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:2px"></div><span class="token-readable">MD</span><span class="token-css">--radius-md</span><span class="token-value">2px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px"></div><span class="token-readable">2XL</span><span class="token-css">--radius-2xl</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:6px"></div><span class="token-readable">R7</span><span class="token-css">--radius-r7</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:8px"></div><span class="token-readable">R8</span><span class="token-css">--radius-r8</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:11px"></div><span class="token-readable">R10</span><span class="token-css">--radius-r10</span><span class="token-value">11px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:12px"></div><span class="token-readable">R11</span><span class="token-css">--radius-r11</span><span class="token-value">12px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:16px"></div><span class="token-readable">R12</span><span class="token-css">--radius-r12</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:20px"></div><span class="token-readable">R13</span><span class="token-css">--radius-r13</span><span class="token-value">20px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:9999px;height:12px"></div><span class="token-readable">R21 Pill</span><span class="token-css">--radius-r21</span><span class="token-value">99999px</span></div>
+        </div>
+      </div>
+
+      <!-- Motion + Opacity + Z-Index -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Motion, Opacity &amp; Layers</span>
+          <span class="tokens-group-count">56 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Instant</span><span class="token-css">--duration-instant</span><span class="token-value">100ms</span></div>
+          <div class="token-row"><span class="token-readable">Fast</span><span class="token-css">--duration-fast</span><span class="token-value">125ms</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--duration-normal</span><span class="token-value">150ms</span></div>
+          <div class="token-row"><span class="token-readable">Slow</span><span class="token-css">--duration-slow</span><span class="token-value">200ms</span></div>
+          <div class="token-row"><span class="token-readable">Slower</span><span class="token-css">--duration-slower</span><span class="token-value">225ms</span></div>
+          <div class="token-row"><span class="token-readable">D-7</span><span class="token-css">--duration-duration-7</span><span class="token-value">300ms</span></div>
+          <div class="token-row"><span class="token-readable">D-8</span><span class="token-css">--duration-duration-8</span><span class="token-value">400ms</span></div>
+          <div class="token-row"><span class="token-readable">D-9</span><span class="token-css">--duration-duration-9</span><span class="token-value">500ms</span></div>
+          <div class="token-row"><span class="token-readable">D-15</span><span class="token-css">--duration-duration-15</span><span class="token-value">1.5s</span></div>
+          <div class="token-row"><span class="token-readable">D-16</span><span class="token-css">--duration-duration-16</span><span class="token-value">2s</span></div>
+          <div class="token-row"><span class="token-readable">Ease In Out</span><span class="token-css">--easing-ease-in-out</span><span class="token-value">ease-in-out</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.1"></div><span class="token-readable">Ghost</span><span class="token-css">--opacity-10</span><span class="token-value">10%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.2"></div><span class="token-readable">Faint</span><span class="token-css">--opacity-20</span><span class="token-value">20%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.5"></div><span class="token-readable">Dim</span><span class="token-css">--opacity-50</span><span class="token-value">50%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.8"></div><span class="token-readable">Strong</span><span class="token-css">--opacity-80</span><span class="token-value">80%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.9"></div><span class="token-readable">Nearly Solid</span><span class="token-css">--opacity-90</span><span class="token-value">90%</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Below Canvas</span><span class="token-css">--z-1</span><span class="token-value">-1</span></div>
+          <div class="token-row"><span class="token-readable">Base</span><span class="token-css">--z-2</span><span class="token-value">1</span></div>
+          <div class="token-row"><span class="token-readable">Elevated</span><span class="token-css">--z-3</span><span class="token-value">2</span></div>
+          <div class="token-row"><span class="token-readable">Popover</span><span class="token-css">--z-4</span><span class="token-value">3</span></div>
+          <div class="token-row"><span class="token-readable">Command Window</span><span class="token-css">--z-5</span><span class="token-value">200</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div style="text-align:center;padding:32px 0;color:var(--color-dark-gray-7);font-size:var(--font-size-sm);border-top:var(--border-width-thin) solid rgba(255,255,255,0.06);line-height:var(--line-height-lh-6);">
+    Design System Preview · Raycast (Dark) · Generated 17/04/2026 · 123 color tokens · 14 font-size · 3 font-family · 5 font-weight · 20 line-height · 7 letter-spacing · 47 spacing · 21 radius · 4 border-width · 6 shadow · 16 duration · 1 easing · 5 z-index · 30 breakpoints · 34 opacity
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

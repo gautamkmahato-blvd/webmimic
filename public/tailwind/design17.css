@@ -1,0 +1,132 @@
+/* ============================================
+ * Design Tokens — Workable | All-in-one HR software
+ * Source: https://www.workable.com/
+ * Generated: 06/05/2026, 18:18:02
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-blue: #0F161E; /* hsl(212, 33%, 9%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-blue: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-blue-2: #333942; /* hsl(216, 13%, 23%) · text */
+  --color-cyan: #7EDCAF; /* hsl(151, 57%, 68%) · text */
+  --color-dark-cyan: #004038; /* hsl(173, 100%, 13%) · background */
+  --color-dark-cyan-2: #00544C; /* hsl(174, 100%, 16%) · text */
+  --color-dark-blue-3: #33475B; /* hsl(210, 28%, 28%) · text */
+  --color-cyan-2: #00F5DC; /* hsl(174, 100%, 48%) · background */
+  --color-dark-cyan-3: #012620; /* hsl(170, 95%, 8%) · background */
+  --color-green: #D5FF4D; /* hsl(74, 100%, 65%) · gradient */
+  --color-light-purple: #B773FF; /* hsl(269, 100%, 73%) · gradient */
+  --color-white-2: #F6FEFB; /* hsl(157, 80%, 98%) · background */
+  --color-white-3: #FFF5EE; /* hsl(25, 100%, 97%) · background */
+  --color-light-orange: #FDE8CE; /* hsl(33, 92%, 90%) · background */
+  --color-white-4: #FFFBF2; /* hsl(42, 100%, 97%) · background */
+  --color-yellow: #FFDB24; /* hsl(50, 100%, 57%) · background */
+  --color-light-blue: #9C99FF; /* hsl(242, 100%, 80%) · background */
+  --color-cyan-3: #2ED5FF; /* hsl(192, 100%, 59%) · background */
+  --color-light-orange-2: #FFDCBF; /* hsl(27, 100%, 87%) · background */
+  --color-dark-purple: #220A3B; /* hsl(269, 71%, 14%) · background */
+  --color-light-orange-3: #FEF1E1; /* hsl(33, 94%, 94%) · background */
+  --color-light-cyan: #BEE9F4; /* hsl(192, 71%, 85%) · background */
+  --color-white-5: #F6F8FC; /* hsl(220, 50%, 98%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 56px;
+  --font-size-4xl: 72px;
+  --font-family-base: Times;
+  --font-family-2: proxima-nova;
+  --font-family-3: source-serif-pro;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 16px;
+  --line-height-snug: 20px;
+  --line-height-normal: 21px;
+  --line-height-relaxed: 22px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 28px;
+  --line-height-lh-7: 36px;
+  --line-height-lh-8: 64px;
+  --line-height-lh-9: 88px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 5px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 11px;
+  --space-10: 12px;
+  --space-12: 16px;
+  --space-16: 21px;
+  --space-20: 24px;
+  --space-24: 32px;
+  --space-32: 40px;
+  --space-40: 48px;
+  --space-48: 52px;
+  --space-64: 64px;
+  --space-80: 91.75px;
+  --space-96: 104px;
+  --space-128: 120px;
+  --space-160: 183.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 25px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.1) 0px 16px 43px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.075s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+  --duration-slower: 0.6s;
+  --duration-duration-6: 3s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in: ease-in;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 12;
+  --z-5: 100;
+  --z-6: 9989;
+  --z-7: 9998;
+  --z-8: 9999;
+  --z-9: 100000000;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 575px;
+  --breakpoint-md: 576px;
+  --breakpoint-lg: 767px;
+  --breakpoint-xl: 768px;
+  --breakpoint-2xl: 800px;
+  --breakpoint-3xl: 900px;
+  --breakpoint-bp-8: 960px;
+  --breakpoint-bp-9: 991px;
+  --breakpoint-bp-10: 992px;
+  --breakpoint-bp-11: 993px;
+  --breakpoint-bp-12: 1199px;
+  --breakpoint-bp-13: 1200px;
+  --breakpoint-bp-14: 1600px;
+
+  /* ── Opacity ── */
+  --opacity-51: 0.51;
+}

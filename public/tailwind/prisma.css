@@ -1,0 +1,212 @@
+/* ============================================
+ * Design Tokens — Prisma | Instant Postgres plus an ORM for simpler db workflows
+ * Source: https://www.prisma.io/
+ * Generated: 19/04/2026, 00:18:58
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #E2E8F0; /* hsl(214, 32%, 91%) · border */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-blue: #1D242F; /* hsl(217, 24%, 15%) · text */
+  --color-blue: #6B7280; /* hsl(220, 9%, 46%) · background */
+  --color-dark-blue-2: #111827; /* hsl(221, 39%, 11%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray: #212121; /* hsl(0, 0%, 13%) · text */
+  --color-cyan: #14B8A6; /* hsl(173, 80%, 40%) · background */
+  --color-dark-cyan: #0D9488; /* hsl(175, 84%, 32%) · background */
+  --color-dark-blue-3: #1F2937; /* hsl(215, 28%, 17%) · background */
+  --color-blue-2: #718096; /* hsl(216, 15%, 52%) · text */
+  --color-dark-blue-4: #4A5568; /* hsl(218, 17%, 35%) · text */
+  --color-blue-3: #9CA3AF; /* hsl(218, 11%, 65%) · text */
+  --color-white-2: #F0FDFA; /* hsl(166, 76%, 97%) · background */
+  --color-white-3: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+  --color-blue-4: #5A67D8; /* hsl(234, 62%, 60%) · background */
+  --color-dark-blue-5: #2D3748; /* hsl(218, 23%, 23%) · text */
+  --color-light-gray-2: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+  --color-white-4: #F3F4F6; /* hsl(220, 14%, 96%) · background */
+  --color-light-gray-3: #EBEBEB; /* hsl(0, 0%, 92%) · border */
+  --color-white-5: #F7FAFC; /* hsl(204, 45%, 98%) · background */
+  --color-mid-gray: rgba(172, 171, 171, 0.3); /* hsl(0, 0%, 67%) · shadow */
+  --color-blue-5: #1863DC; /* hsl(217, 80%, 48%) · text */
+  --color-cyan-2: #16A394; /* hsl(174, 76%, 36%) · text */
+  --color-light-cyan: #CCFBF1; /* hsl(167, 85%, 89%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 11px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 30px;
+  --font-size-3xl: 36px;
+  --font-size-4xl: 40px;
+  --font-size-5xl: 64px;
+  --font-family-base: Inter;
+  --font-family-2: Mona Sans VF;
+  --font-family-3: Mona Sans Mono VF;
+  --font-weight-w375: 375;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-w650: 650;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  --line-height-tight: 16px;
+  --line-height-snug: 19.8px;
+  --line-height-normal: 22px;
+  --line-height-relaxed: 24px;
+  --line-height-loose: 25.02px;
+  --line-height-lh-6: 28px;
+  --line-height-lh-7: 32px;
+  --line-height-lh-8: 36px;
+  --line-height-lh-9: 48px;
+  --line-height-lh-10: 72px;
+  --letter-spacing-tight: 0.36px;
+  --letter-spacing-normal: 1.6px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-8: 16px;
+  --space-10: 22px;
+  --space-12: 24px;
+  --space-16: 32px;
+  --space-20: 40px;
+  --space-24: 46px;
+  --space-32: 48px;
+  --space-40: 63.1406px;
+  --space-48: 99.8516px;
+  --space-64: 100px;
+  --space-80: 160px;
+  --space-96: 212.5px;
+  --space-128: 349px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 9px;
+  --radius-2xl: 10px;
+  --radius-full: 12px;
+  --radius-r7: 16px;
+  --radius-r8: 50px;
+  --radius-r9: 50%;
+  --radius-r10: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.04) 0px 1px 2px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 25px -5px;
+  --shadow-lg: rgba(172, 171, 171, 0.3) 0px -1px 10px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0.3) 0px 32px 68px 0px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.04) 0px 8px 16px -4px, rgba(0, 0, 0, 0.04) 0px 2px 2px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.05s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 10;
+  --z-5: 50;
+  --z-6: 9999999;
+  --z-7: 99999999;
+  --z-8: 999999999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 352px;
+  --breakpoint-sm: 425px;
+  --breakpoint-md: 440px;
+  --breakpoint-lg: 480px;
+  --breakpoint-xl: 576px;
+  --breakpoint-2xl: 660px;
+  --breakpoint-3xl: 768px;
+  --breakpoint-bp-8: 845px;
+
+  /* ── Opacity ── */
+  --opacity-20: 0.2;
+  --opacity-25: 0.25;
+  --opacity-26: 0.26;
+  --opacity-27: 0.27;
+  --opacity-28: 0.28;
+  --opacity-29: 0.29;
+  --opacity-30: 0.3;
+  --opacity-31: 0.31;
+  --opacity-32: 0.32;
+  --opacity-33: 0.33;
+  --opacity-34: 0.34;
+  --opacity-35: 0.35;
+  --opacity-36: 0.36;
+  --opacity-37: 0.37;
+  --opacity-38: 0.38;
+  --opacity-39: 0.39;
+  --opacity-40: 0.4;
+  --opacity-41: 0.41;
+  --opacity-42: 0.42;
+  --opacity-43: 0.43;
+  --opacity-44: 0.44;
+  --opacity-45: 0.45;
+  --opacity-46: 0.46;
+  --opacity-47: 0.47;
+  --opacity-48: 0.48;
+  --opacity-49: 0.49;
+  --opacity-50: 0.5;
+  --opacity-51: 0.51;
+  --opacity-52: 0.52;
+  --opacity-53: 0.53;
+  --opacity-54: 0.54;
+  --opacity-55: 0.55;
+  --opacity-56: 0.56;
+  --opacity-57: 0.57;
+  --opacity-58: 0.58;
+  --opacity-59: 0.59;
+  --opacity-60: 0.6;
+  --opacity-61: 0.61;
+  --opacity-62: 0.62;
+  --opacity-63: 0.63;
+  --opacity-64: 0.64;
+  --opacity-65: 0.65;
+  --opacity-66: 0.66;
+  --opacity-67: 0.67;
+  --opacity-68: 0.68;
+  --opacity-69: 0.69;
+  --opacity-70: 0.7;
+  --opacity-71: 0.71;
+  --opacity-72: 0.72;
+  --opacity-73: 0.73;
+  --opacity-74: 0.74;
+  --opacity-75: 0.75;
+  --opacity-76: 0.76;
+  --opacity-78: 0.78;
+  --opacity-80: 0.8;
+  --opacity-81: 0.81;
+  --opacity-82: 0.82;
+  --opacity-83: 0.83;
+  --opacity-84: 0.84;
+  --opacity-85: 0.85;
+  --opacity-86: 0.86;
+  --opacity-87: 0.87;
+  --opacity-88: 0.88;
+  --opacity-89: 0.89;
+  --opacity-90: 0.9;
+  --opacity-91: 0.91;
+  --opacity-92: 0.92;
+  --opacity-93: 0.93;
+  --opacity-94: 0.94;
+  --opacity-95: 0.95;
+  --opacity-96: 0.96;
+  --opacity-97: 0.97;
+  --opacity-98: 0.98;
+  --opacity-99: 0.99;
+}

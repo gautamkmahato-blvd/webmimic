@@ -1,0 +1,236 @@
+/* ============================================
+ * Design Tokens — Shopify: Your Commerce Platform to Sell Online & In Person - Shopify India
+ * Source: https://www.shopify.com/in
+ * Generated: 18/04/2026, 13:49:12
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-mid-gray: #9F9FA9; /* hsl(240, 5%, 64%) · text */
+  --color-mid-gray-2: #A1A1AA; /* hsl(240, 5%, 65%) · text */
+  --color-dark-cyan: #061A1C; /* hsl(185, 65%, 7%) · background */
+  --color-cyan: #36F4A4; /* hsl(155, 90%, 58%) · text */
+  --color-cyan-2: #9DABAD; /* hsl(188, 9%, 65%) · text */
+  --color-black-2: #02090A; /* hsl(188, 67%, 2%) · background */
+  --color-dark-cyan-2: #1E2C31; /* hsl(196, 24%, 15%) · border */
+  --color-light-gray-2: #E0E0E0; /* hsl(0, 0%, 88%) · text */
+  --color-mid-gray-3: #9797A2; /* hsl(240, 6%, 61%) · text */
+  --color-dark-blue: #000A1E; /* hsl(220, 100%, 6%) · background */
+  --color-cyan-3: #99B3AD; /* hsl(166, 15%, 65%) · text */
+  --color-dark-cyan-3: #05191E; /* hsl(192, 71%, 7%) · background */
+  --color-dark-cyan-4: #244749; /* hsl(183, 34%, 21%) · gradient */
+  --color-dark-cyan-5: #182E2F; /* hsl(183, 32%, 14%) · gradient */
+  --color-white-2: #F4F4F5; /* hsl(240, 5%, 96%) · background */
+  --color-light-gray-3: #E4E4E7; /* hsl(240, 6%, 90%) · border */
+  --color-dark-cyan-6: #1A292C; /* hsl(190, 26%, 14%) · border */
+  --color-cyan-4: #30DEEE; /* hsl(185, 85%, 56%) · text */
+  --color-light-gray-4: #BDBDCA; /* hsl(240, 11%, 77%) · text */
+  --color-dark-cyan-7: #041E18; /* hsl(166, 76%, 7%) · background */
+  --color-dark-cyan-8: #093329; /* hsl(166, 70%, 12%) · background */
+  --color-black-3: rgba(2, 8, 8, 0.5); /* hsl(180, 60%, 2%) · gradient */
+  --color-dark-gray: rgba(63, 63, 75, 0.5); /* hsl(240, 9%, 27%) · gradient */
+  --color-dark-cyan-9: #102620; /* hsl(164, 41%, 11%) · background */
+  --color-mid-gray-4: #71717A; /* hsl(240, 4%, 46%) · text */
+  --color-dark-cyan-10: rgba(21, 112, 118, 0.4); /* hsl(183, 71%, 27%) · gradient */
+  --color-dark-cyan-11: rgba(21, 112, 118, 0.6); /* hsl(184, 69%, 27%) · gradient */
+  --color-blue: rgba(18, 96, 255, 0.35); /* hsl(220, 100%, 53%) · gradient */
+  --color-black-4: #060607; /* hsl(240, 8%, 3%) · background */
+  --color-dark-gray-2: #0E0E10; /* hsl(240, 7%, 6%) · background */
+  --color-dark-cyan-12: #19272A; /* hsl(191, 25%, 13%) · border */
+  --color-dark-gray-3: rgba(24, 24, 27, 0.24); /* hsl(0, 0%, 10%) · shadow */
+  --color-dark-cyan-13: #0F3335; /* hsl(183, 56%, 13%) · gradient */
+  --color-dark-cyan-14: #0E2929; /* hsl(180, 49%, 11%) · gradient */
+  --color-dark-cyan-15: #157076; /* hsl(184, 70%, 27%) · gradient */
+  --color-dark-cyan-16: #11352D; /* hsl(167, 51%, 14%) · border */
+  --color-black-5: #09090A; /* hsl(240, 5%, 4%) · gradient */
+  --color-dark-gray-4: #18181B; /* hsl(240, 6%, 10%) · background */
+  --color-dark-gray-5: #0F1214; /* hsl(204, 14%, 7%) · shadow */
+  --color-dark-gray-6: rgba(66, 71, 76, 0.06); /* hsl(0, 0%, 27%) · shadow */
+  --color-cyan-5: #5FD5B6; /* hsl(164, 58%, 60%) · gradient */
+  --color-blue-2: #865CFF; /* hsl(255, 100%, 68%) · gradient */
+  --color-dark-cyan-17: #0A2C30; /* hsl(186, 66%, 11%) · gradient */
+  --color-dark-cyan-18: #061518; /* hsl(190, 60%, 6%) · gradient */
+  --color-dark-gray-7: #3E4646; /* hsl(180, 6%, 26%) · gradient */
+  --color-dark-cyan-19: #1C4E50; /* hsl(182, 48%, 21%) · gradient */
+  --color-dark-cyan-20: #133032; /* hsl(184, 45%, 14%) · gradient */
+  --color-dark-cyan-21: #091A1C; /* hsl(186, 51%, 7%) · gradient */
+  --color-dark-cyan-22: #2A4344; /* hsl(182, 24%, 22%) · gradient */
+  --color-dark-cyan-23: #1F4C4F; /* hsl(184, 44%, 22%) · gradient */
+  --color-dark-cyan-24: #286567; /* hsl(182, 44%, 28%) · gradient */
+  --color-dark-cyan-25: #235357; /* hsl(185, 43%, 24%) · gradient */
+  --color-dark-blue-2: #010624; /* hsl(231, 95%, 7%) · background */
+  --color-dark-gray-8: rgba(64, 71, 77, 0.4); /* hsl(215, 8%, 28%) · shadow */
+  --color-cyan-6: #30C0EE; /* hsl(195, 85%, 56%) · gradient */
+  --color-dark-blue-3: #070D17; /* hsl(218, 53%, 6%) · shadow */
+  --color-blue-3: #6B26FF; /* hsl(259, 100%, 57%) · gradient */
+  --color-blue-4: #5126FF; /* hsl(252, 100%, 57%) · gradient */
+  --color-dark-gray-9: rgba(7, 13, 23, 0.1); /* hsl(240, 33%, 6%) · shadow */
+  --color-blue-5: #5A31F4; /* hsl(253, 90%, 57%) · background */
+  --color-black-6: #020A08; /* hsl(165, 67%, 2%) · background */
+  --color-dark-cyan-26: #072720; /* hsl(167, 70%, 9%) · background */
+  --color-black-7: rgba(5, 24, 19, 0.05); /* hsl(180, 100%, 4%) · shadow */
+  --color-dark-cyan-27: #133B32; /* hsl(167, 51%, 15%) · shadow */
+  --color-dark-gray-10: #121C1E; /* hsl(190, 25%, 9%) · border */
+  --color-light-gray-5: #D4D4D8; /* hsl(240, 5%, 84%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 13px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28px;
+  --font-size-4xl: 30px;
+  --font-size-5xl: 48px;
+  --font-size-6xl: 55px;
+  --font-size-70px: 70px;
+  --font-size-96px: 96px;
+  --font-family-base: Inter-Variable;
+  --font-family-2: NeueHaasGrotesk;
+  --font-family-3: ui-monospace;
+  --font-weight-w330: 330;
+  --font-weight-regular: 400;
+  --font-weight-w420: 420;
+  --font-weight-w450: 450;
+  --font-weight-medium: 500;
+  --font-weight-w550: 550;
+  --font-weight-semibold: 600;
+  --line-height-tight: 14.4px;
+  --line-height-snug: 16px;
+  --line-height-normal: 18px;
+  --line-height-relaxed: 19.5px;
+  --line-height-loose: 20.8px;
+  --line-height-lh-6: 22.56px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 27.36px;
+  --line-height-lh-9: 28px;
+  --line-height-lh-10: 32px;
+  --line-height-lh-11: 35.84px;
+  --line-height-lh-12: 40px;
+  --line-height-lh-13: 48px;
+  --line-height-lh-14: 54.72px;
+  --line-height-lh-15: 64px;
+  --line-height-lh-16: 70px;
+  --line-height-lh-17: 92px;
+  --line-height-lh-18: 96px;
+  --letter-spacing-tight: -0.13px;
+  --letter-spacing-normal: 0.28px;
+  --letter-spacing-wide: 0.3px;
+  --letter-spacing-wider: 0.36px;
+  --letter-spacing-widest: 0.42px;
+  --letter-spacing-ls-6: 0.72px;
+  --letter-spacing-ls-7: 2.4px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 6px;
+  --space-6: 8px;
+  --space-8: 10px;
+  --space-10: 12px;
+  --space-12: 13px;
+  --space-16: 14px;
+  --space-20: 16px;
+  --space-24: 63.5px;
+  --space-32: 128px;
+  --space-40: 24px;
+  --space-48: 26px;
+  --space-64: 28px;
+  --space-80: 32px;
+  --space-96: 40px;
+  --space-128: 43.0391px;
+  --space-160: 43.0469px;
+  --space-192: 48px;
+  --space-256: 50px;
+  --space-23: 56px;
+  --space-25: 63.75px;
+  --space-26: 64px;
+  --space-27: 72px;
+  --space-28: 80px;
+  --space-29: 102.25px;
+  --space-30: 104px;
+  --space-31: 124.63px;
+  --space-33: 129.125px;
+  --space-34: 159.391px;
+  --space-35: 165px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --border-width-base: 2px;
+  --radius-sm: 0px 0px 12px 12px;
+  --radius-md: 0px 0px 8px 8px;
+  --radius-lg: 4px;
+  --radius-xl: 8px;
+  --radius-2xl: 8px 8px 0px 0px;
+  --radius-full: 12px;
+  --radius-r7: 12px 12px 0px 0px;
+  --radius-r8: 12px 0px 0px;
+  --radius-r9: 16px;
+  --radius-r10: 20px 20px 0px 0px;
+  --radius-r11: 20px 0px 0px;
+  --radius-r12: 48px 48px 0px 0px;
+  --radius-r13: 100%;
+  --radius-r14: 340px;
+  --radius-r15: 405px;
+  --radius-r16: 9999px;
+  --radius-r17: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 8px 8px 0px, rgba(0, 0, 0, 0.1) 0px 4px 4px 0px, rgba(0, 0, 0, 0.1) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(255, 255, 255, 0.03) 0px 1px 0px 0px inset;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(255, 255, 255, 0.03) 0px 0.929px 0px 0px inset, rgba(0, 0, 0, 0.1) 0px 0px 0px 0.929px, rgba(0, 0, 0, 0.1) 0px 1.858px 1.858px 0px, rgba(0, 0, 0, 0.1) 0px 3.717px 3.717px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  --shadow-xl: rgba(0, 0, 0, 0.2) 10px 13px 12px 2px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(255, 255, 255, 0.05) 0px 1px 2px 0px, rgba(255, 255, 255, 0.04) 0px 1px 0px 0px inset;
+  --shadow-shadow-6: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(15, 18, 20) 0px 8px 48px 0px, rgba(66, 71, 76, 0.06) 0px 4px 8px 0px, rgba(0, 0, 0, 0.9) 0px 0px 1px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.33s;
+  --duration-duration-6: 0.45s;
+  --duration-duration-7: 0.5s;
+  --duration-duration-8: 0.6s;
+  --duration-duration-9: 0.66s;
+  --duration-duration-10: 0.7s;
+  --duration-duration-11: 1s;
+  --duration-duration-12: 3s;
+  --duration-duration-13: 3.15s;
+  --duration-duration-14: 3.3s;
+  --duration-duration-15: 3.45s;
+  --duration-duration-16: 3.6s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 8;
+  --z-3: 9;
+  --z-4: 10;
+  --z-5: 11;
+  --z-6: 12;
+  --z-7: 13;
+  --z-8: 20;
+  --z-9: 30;
+  --z-10: 50;
+  --z-11: 100;
+  --z-12: 999;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+  --opacity-20: 0.2;
+  --opacity-25: 0.25;
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-60: 0.6;
+  --opacity-80: 0.8;
+}

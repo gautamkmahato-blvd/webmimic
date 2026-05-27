@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>adidas Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* ── adidas Color Tokens ── */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-mid-gray: #767677;
+  --color-light-gray: #ECEFF1;
+  --color-red: #E32B2B;
+  --color-cyan: #69C9D0;
+  --color-light-gray-2: #D3D7DA;
+  --color-mid-gray-2: #808080;
+  --color-mid-gray-3: #929396;
+  --color-cyan-2: #408267;
+  --color-blue: #3175DE;
+  --color-orange: #F9B900;
+  --color-dark-green: #00AC37;
+  --color-red-2: #EA2C35;
+  --color-blue-2: #0286CD;
+  --color-blue-3: #1877F2;
+  --color-blue-4: #4285F4;
+  --color-green: #34A853;
+  --color-orange-2: #FBBC05;
+  --color-red-3: #EA4335;
+  --color-red-4: #EE1D52;
+  --color-blue-5: #1DA1F2;
+  --color-blue-6: #4680C2;
+  --color-dark-purple: #400090;
+  --color-light-gray-3: #E9ECEF;
+  --color-white-2: #F9F7F6;
+  --color-dark-gray: #363333;
+
+  /* ── Derived dark system surfaces (Supabase layout, adidas colors) ── */
+  --color-dark-gray-2: #1A1A1A;
+  --color-dark-gray-3: #0A0A0A;
+  --color-dark-gray-4: #050505;
+  --color-dark-gray-5: #222222;
+  --color-dark-gray-6: #111111;
+  --color-dark-gray-7: #2A2A2A;
+  --color-dark-gray-8: #141414;
+  --color-dark-gray-9: #080808;
+  --color-dark-gray-10: #1C1C1C;
+  --color-dark-gray-11: #181818;
+  /* brand accent on dark = white (adidas black/white system) */
+  --color-brand: #FFFFFF;
+  --color-brand-dim: #CCCCCC;
+  --color-brand-tint: rgba(255,255,255,0.07);
+  --color-brand-tint-border: rgba(255,255,255,0.2);
+  --color-light-gray-text: #888888;
+
+  /* ── adidas Typography ── */
+  --font-family-base: 'AdihausDIN', 'Inter', Helvetica, Arial, sans-serif;
+  --font-family-2: 'Source Code Pro', ui-monospace, monospace;
+  --font-family-3: 'adidasFG', 'Inter', Helvetica, Arial, sans-serif;
+  --font-family-ui: 'Inter', 'AdihausDIN', Helvetica, Arial, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-size-2xs: 10px; --font-size-xs: 12px; --font-size-sm: 14px;
+  --font-size-base: 16px; --font-size-lg: 24px; --font-size-xl: 30px;
+  --font-size-2xl: 38px;
+  --line-height-tight: 16px; --line-height-snug: 20px; --line-height-normal: 22px;
+  --line-height-relaxed: 24px; --line-height-loose: 28px; --line-height-lh-6: 32px;
+  --line-height-lh-7: 40px;
+  /* adidas has ALL POSITIVE letter-spacing — unique */
+  --letter-spacing-tight: 2.5px;
+  --letter-spacing-normal: 3px;
+
+  /* ── Spacing ── */
+  --space-1:1.5px; --space-2:1.75px; --space-3:2px; --space-4:4px;
+  --space-5:8px; --space-6:10px; --space-8:12px; --space-10:16px;
+  --space-12:20px; --space-16:22px; --space-20:24px; --space-24:32px;
+  --space-32:35px; --space-40:40px; --space-48:44px; --space-64:48px;
+  --space-80:60px; --space-96:64px;
+
+  /* ── Borders ── */
+  --border-width-hairline:1px; --border-width-thin:2px;
+  --border-width-base:2.5px; --border-width-thick:5px;
+  --radius-sm:5px; --radius-md:50%;
+
+  /* ── Shadows ── */
+  --shadow-sm:rgb(128,128,128) 0px 0px 10px 0px;
+
+  /* ── Motion ── */
+  --duration-instant:0.2s; --duration-fast:0.3s;
+  --duration-normal:0.5s; --duration-slow:0.8s;
+  --easing-ease-in-out:ease-in-out;
+  --easing-ease-out:ease-in-out;
+
+  /* ── Opacity ── */
+  --opacity-90:0.9;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family-ui);background:var(--color-dark-gray-3);color:var(--color-white);font-size:var(--font-size-xs);line-height:var(--line-height-normal);font-weight:var(--font-weight-regular);}
+.page{max-width:1200px;margin:0 auto;padding:var(--space-96) var(--space-80);}
+
+/* ── HEADER ── */
+.top-bar{border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-5);margin-bottom:var(--space-24);padding-bottom:var(--space-8);}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-5);}
+.header-left{display:flex;align-items:center;gap:var(--space-10);}
+.logo{width:38px;height:38px;background:var(--color-black);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;}
+.system-title{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-lh-6);letter-spacing:var(--letter-spacing-tight);}
+.system-meta{font-size:var(--font-size-2xs);color:var(--color-mid-gray);margin-top:var(--space-3);line-height:var(--line-height-loose);}
+.hbadge{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);background:var(--color-dark-gray-6);color:var(--color-mid-gray);padding:var(--space-3) var(--space-5);border-radius:2px;border:var(--border-width-hairline) solid var(--color-dark-gray-5);letter-spacing:var(--letter-spacing-tight);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-hairline) solid var(--color-dark-gray-5);background:var(--color-dark-gray-6);color:var(--color-light-gray);box-shadow:0 1px 2px rgba(0,0,0,0.28);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-cyan);color:var(--color-cyan);box-shadow:0 4px 14px rgba(0,0,0,0.38);transform:translateY(-1px);}
+
+/* ── SECTION ── */
+.section{margin-bottom:var(--space-96);}
+.section-title{font-size:var(--font-size-lg);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-lh-7);margin-bottom:var(--space-20);display:flex;align-items:center;gap:var(--space-5);letter-spacing:var(--letter-spacing-tight);}
+
+/* ── COLORS ── */
+.color-group{margin-bottom:var(--space-24);}
+.color-group-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-normal);text-transform:uppercase;color:var(--color-mid-gray-2);margin-bottom:var(--space-5);}
+.swatch-grid{display:grid;gap:var(--space-4);}
+.swatch-item{display:flex;flex-direction:column;gap:var(--space-4);}
+.swatch-box{height:60px;border-radius:var(--radius-sm);border:var(--border-width-hairline) solid rgba(255,255,255,0.05);}
+.swatch-name{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray-text);line-height:var(--line-height-snug);letter-spacing:var(--letter-spacing-tight);}
+.swatch-hex{font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-2);line-height:var(--line-height-tight);}
+
+/* ── TYPOGRAPHY ── */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);margin-bottom:var(--space-10);}
+.font-card{background:var(--color-dark-gray-6);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);padding:var(--space-20);}
+.font-token{font-size:var(--font-size-2xs);font-family:var(--font-family-2);color:var(--color-brand);font-weight:var(--font-weight-bold);margin-bottom:var(--space-4);letter-spacing:var(--letter-spacing-tight);}
+.font-display{font-size:var(--font-size-xl);color:var(--color-white);line-height:var(--line-height-lh-7);margin-bottom:var(--space-4);font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-tight);}
+.font-sample{font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);font-weight:var(--font-weight-regular);}
+.fw-row{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-5);}
+.fw-chip{font-size:var(--font-size-2xs);padding:var(--space-3) var(--space-5);background:var(--color-dark-gray-3);border-radius:2px;color:var(--color-light-gray-text);border:var(--border-width-hairline) solid var(--color-dark-gray-5);letter-spacing:var(--letter-spacing-tight);}
+
+.type-scale{background:var(--color-dark-gray-6);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);overflow:hidden;}
+.type-row{display:flex;flex-direction:column;padding:var(--space-10) var(--space-20);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-5);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--color-white);margin-bottom:var(--space-3);}
+.type-meta{font-size:10px;color:var(--color-dark-gray-5);font-family:var(--font-family-2);line-height:var(--line-height-snug);}
+
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-5);}
+.lh-item{background:var(--color-dark-gray-6);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);}
+.lh-bar-wrap{background:var(--color-dark-gray-5);border-radius:1px;overflow:hidden;position:relative;}
+.lh-bar{background:linear-gradient(to bottom,var(--color-mid-gray),var(--color-brand));width:100%;}
+.lh-token{font-size:var(--font-size-2xs);font-family:var(--font-family-2);color:var(--color-brand);letter-spacing:var(--letter-spacing-tight);}
+.lh-val{font-size:10px;color:var(--color-mid-gray);}
+
+.ls-row{display:flex;gap:var(--space-5);flex-wrap:wrap;}
+.ls-item{background:var(--color-dark-gray-6);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);padding:var(--space-10) var(--space-20);flex:1;}
+.ls-sample{font-size:var(--font-size-lg);color:var(--color-white);font-weight:var(--font-weight-bold);margin-bottom:var(--space-3);letter-spacing:var(--letter-spacing-tight);}
+.ls-token{font-size:var(--font-size-2xs);font-family:var(--font-family-2);color:var(--color-brand);}
+.ls-desc{font-size:10px;color:var(--color-mid-gray);}
+
+/* ── SPACING ── */
+.token-wrap{background:var(--color-dark-gray-6);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);padding:var(--space-20);}
+.tw-title{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-relaxed);margin-bottom:var(--space-3);letter-spacing:var(--letter-spacing-tight);}
+.tw-sub{font-size:var(--font-size-2xs);color:var(--color-mid-gray);margin-bottom:var(--space-10);line-height:var(--line-height-normal);}
+.spacing-chart{display:flex;align-items:flex-end;gap:var(--space-3);height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:var(--space-3);flex:1;}
+.sp-bar{background:linear-gradient(to top,var(--color-dark-gray-7),var(--color-white));border-radius:1px 1px 0 0;width:100%;}
+.sp-lbl{font-size:9px;color:var(--color-mid-gray);text-align:center;font-family:var(--font-family-2);}
+
+/* ── BORDERS ── */
+.border-card{background:var(--color-dark-gray-6);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);padding:var(--space-20);margin-bottom:var(--space-10);}
+.bc-title{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-relaxed);margin-bottom:var(--space-5);letter-spacing:var(--letter-spacing-tight);}
+.radius-row{display:flex;gap:var(--space-10);flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:var(--space-4);}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,var(--color-dark-gray-7),var(--color-white));border:var(--border-width-hairline) solid rgba(255,255,255,0.05);}
+.radius-lbl{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray-text);text-align:center;font-family:var(--font-family-2);letter-spacing:var(--letter-spacing-tight);}
+.radius-val{font-size:10px;color:var(--color-mid-gray);text-align:center;font-family:var(--font-family-2);}
+.bw-demo{display:flex;flex-direction:column;gap:var(--space-5);}
+.bw-item{display:flex;align-items:center;gap:var(--space-10);}
+.bw-line{flex:1;background:var(--color-dark-gray-5);}
+.bw-token{font-size:var(--font-size-2xs);font-family:var(--font-family-2);color:var(--color-brand);white-space:nowrap;letter-spacing:var(--letter-spacing-tight);}
+.bw-val{font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-2);white-space:nowrap;}
+
+/* ── SHADOWS ── */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);}
+.sh-item{display:flex;flex-direction:column;gap:var(--space-5);}
+.sh-box{height:88px;background:var(--color-dark-gray-8);border-radius:var(--radius-sm);}
+.sh-token{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-light-gray-text);font-family:var(--font-family-2);letter-spacing:var(--letter-spacing-tight);}
+.sh-usage{font-size:10px;color:var(--color-mid-gray);}
+.sh-desc{font-size:10px;color:var(--color-mid-gray-2);line-height:var(--line-height-normal);margin-top:var(--space-3);}
+
+/* ── Z-INDEX ── */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:var(--space-10) var(--space-10);text-align:left;font-size:var(--font-size-xs);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-5);line-height:var(--line-height-normal);}
+.z-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);text-transform:uppercase;letter-spacing:var(--letter-spacing-normal);color:var(--color-mid-gray-2);}
+.z-table td:first-child{font-family:var(--font-family-2);color:var(--color-brand);letter-spacing:var(--letter-spacing-tight);}
+.z-table td:nth-child(2){font-family:var(--font-family-2);color:var(--color-white);}
+.z-table td:nth-child(3){color:var(--color-mid-gray);}
+.z-table tr:last-child td{border-bottom:none;}
+.z-int-max{color:var(--color-red)!important;}
+
+/* ── BREAKPOINTS ── */
+.bp-scroller{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);}
+.bp-item{background:var(--color-dark-gray-6);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);padding:var(--space-5) var(--space-8);display:flex;align-items:center;gap:var(--space-5);}
+.bp-dot{width:8px;height:8px;border-radius:50%;background:var(--color-white);flex-shrink:0;}
+.bp-token{font-size:10px;font-family:var(--font-family-2);color:var(--color-brand);letter-spacing:var(--letter-spacing-tight);}
+.bp-val{font-size:var(--font-size-xs);font-weight:var(--font-weight-bold);color:var(--color-white);letter-spacing:var(--letter-spacing-tight);}
+
+/* ── OPACITY ── */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-5);}
+.op-item{display:flex;flex-direction:column;gap:var(--space-4);}
+.op-box{height:60px;border-radius:var(--radius-sm);background:var(--color-white);}
+.op-token{font-size:var(--font-size-2xs);font-family:var(--font-family-2);color:var(--color-brand);letter-spacing:var(--letter-spacing-tight);}
+.op-val{font-size:10px;color:var(--color-mid-gray);}
+
+/* ── ACCESSIBILITY ── */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:var(--space-10) var(--space-10);text-align:left;font-size:var(--font-size-2xs);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-5);line-height:var(--line-height-normal);}
+.a11y-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);text-transform:uppercase;letter-spacing:var(--letter-spacing-normal);color:var(--color-mid-gray-2);}
+.a11y-table td:first-child,.a11y-table td:nth-child(2){font-family:var(--font-family-2);font-size:10px;letter-spacing:var(--letter-spacing-tight);}
+.a11y-table td:nth-child(2){color:var(--color-mid-gray);}
+.a11y-table td:nth-child(3){color:var(--color-light-gray-text);font-family:var(--font-family-2);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-bold);padding:2px 7px;border-radius:2px;letter-spacing:var(--letter-spacing-tight);}
+.wcag-aaa{background:rgba(255,255,255,0.1);color:var(--color-white);border:var(--border-width-hairline) solid rgba(255,255,255,0.25);}
+.wcag-aa{background:var(--color-dark-gray-10);color:var(--color-light-gray-text);border:var(--border-width-hairline) solid var(--color-dark-gray-5);}
+.wcag-aal{background:var(--color-dark-gray-11);color:var(--color-mid-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-7);}
+.wcag-fail{background:rgba(239,68,68,.08);color:#f87171;border:var(--border-width-hairline) solid rgba(239,68,68,.2);}
+
+/* ── COMPONENTS ── */
+.comp-row{background:var(--color-dark-gray-6);border-radius:var(--radius-sm);border:var(--border-width-hairline) solid var(--color-dark-gray-5);overflow:hidden;margin-bottom:var(--space-8);}
+.comp-header{padding:var(--space-3) var(--space-5);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-5);background:var(--color-dark-gray-3);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray-text);letter-spacing:var(--letter-spacing-normal);text-transform:uppercase;}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-bold);background:var(--color-dark-gray-5);color:var(--color-mid-gray);padding:2px 8px;border-radius:2px;border:var(--border-width-hairline) solid var(--color-dark-gray-7);letter-spacing:var(--letter-spacing-tight);}
+.comp-body{padding:var(--space-20);}
+
+.btn-row{display:flex;align-items:center;gap:var(--space-5);flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-ui);font-weight:var(--font-weight-bold);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-xs);padding:var(--space-6) var(--space-20);border-radius:2px;line-height:var(--line-height-normal);letter-spacing:var(--letter-spacing-tight);text-transform:uppercase;transition:all var(--duration-instant) var(--easing-ease-in-out);}
+.btn-primary{background:var(--color-white);color:var(--color-black);}
+.btn-primary:hover{background:var(--color-light-gray-2);}
+.btn-secondary{background:var(--color-dark-gray-3);color:var(--color-white);border:var(--border-width-thin) solid var(--color-white);}
+.btn-secondary:hover{background:var(--color-dark-gray-2);}
+.btn-outline{background:transparent;color:var(--color-white);border:var(--border-width-thin) solid var(--color-white);}
+.btn-outline:hover{background:var(--color-brand-tint);}
+.btn-ghost{background:transparent;color:var(--color-mid-gray);border:var(--border-width-hairline) solid transparent;}
+.btn-ghost:hover{background:var(--color-dark-gray-3);}
+.btn-muted{background:var(--color-dark-gray-3);color:var(--color-mid-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-5);}
+
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-20);}
+.inp-group{display:flex;flex-direction:column;gap:var(--space-3);}
+.inp-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray-text);line-height:var(--line-height-snug);letter-spacing:var(--letter-spacing-tight);text-transform:uppercase;}
+.inp{width:100%;font-family:var(--font-family-ui);font-size:var(--font-size-xs);color:var(--color-white);background:var(--color-dark-gray-3);border:none;border-bottom:var(--border-width-thin) solid var(--color-dark-gray-5);border-radius:0;padding:var(--space-5) 0;outline:none;transition:border var(--duration-instant) var(--easing-ease-in-out);line-height:var(--line-height-normal);}
+.inp:focus{border-bottom-color:var(--color-white);border-bottom-width:var(--border-width-base);}
+.inp::placeholder{color:var(--color-dark-gray-7);}
+.inp-hint{font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);}
+.inp-err{border-bottom-color:var(--color-red)!important;}
+.inp-err-msg{font-size:var(--font-size-2xs);color:var(--color-red);line-height:var(--line-height-snug);}
+
+.badge{display:inline-flex;align-items:center;gap:var(--space-3);font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);padding:var(--space-3) var(--space-5);border-radius:2px;line-height:var(--line-height-snug);letter-spacing:var(--letter-spacing-tight);text-transform:uppercase;}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--color-dark-gray-5);color:var(--color-light-gray-text);border:var(--border-width-hairline) solid var(--color-dark-gray-7);}
+.badge-brand{background:rgba(255,255,255,0.1);color:var(--color-white);border:var(--border-width-hairline) solid rgba(255,255,255,0.2);}
+.badge-muted{background:var(--color-dark-gray-6);color:var(--color-mid-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-5);}
+.badge-row{display:flex;flex-wrap:wrap;gap:var(--space-4);}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);padding:var(--space-3) var(--space-5);border-radius:2px;border:var(--border-width-thin) solid var(--color-dark-gray-5);background:var(--color-dark-gray-3);color:var(--color-light-gray-text);line-height:var(--line-height-snug);letter-spacing:var(--letter-spacing-tight);text-transform:uppercase;}
+.tag-brand{color:var(--color-black);background:var(--color-white);border-color:var(--color-white);}
+
+.alert{display:flex;gap:var(--space-5);padding:var(--space-5) var(--space-8);border-radius:var(--radius-sm);font-size:var(--font-size-xs);}
+.alert-icon{font-size:var(--font-size-base);flex-shrink:0;line-height:1.4;}
+.alert-body h5{font-weight:var(--font-weight-bold);margin-bottom:var(--space-3);font-size:var(--font-size-xs);color:var(--color-white);line-height:var(--line-height-relaxed);letter-spacing:var(--letter-spacing-tight);text-transform:uppercase;}
+.alert-body p{font-size:var(--font-size-2xs);line-height:var(--line-height-normal);color:var(--color-mid-gray);}
+.alert-neutral{background:var(--color-dark-gray-6);color:var(--color-light-gray-text);border:var(--border-width-hairline) solid var(--color-dark-gray-5);}
+.alert-brand{background:rgba(255,255,255,0.05);color:var(--color-white);border:var(--border-width-thin) solid var(--color-white);}
+.alert-brand .alert-body p{color:rgba(255,255,255,0.65)!important;}
+.alert-dim{background:var(--color-dark-gray-11);color:var(--color-light-gray-text);border:var(--border-width-hairline) solid var(--color-dark-gray-7);}
+.alert-base{background:var(--color-dark-gray-3);color:var(--color-mid-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-5);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5);}
+.feature-card{background:var(--color-dark-gray-3);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);padding:var(--space-20);transition:border-color var(--duration-fast) var(--easing-ease-in-out);}
+.feature-card:hover{border-color:var(--color-white);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:var(--space-5);border:var(--border-width-hairline) solid var(--color-dark-gray-5);background:var(--color-dark-gray-6);}
+.fc-title{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-loose);margin-bottom:var(--space-3);letter-spacing:var(--letter-spacing-tight);text-transform:uppercase;}
+.fc-desc{font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);margin-bottom:var(--space-5);}
+
+.av-row{display:flex;align-items:center;gap:var(--space-5);margin-bottom:var(--space-10);}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-bold);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-base);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-xs);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-2xs);}
+.av-info h4{font-size:var(--font-size-base);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-relaxed);letter-spacing:var(--letter-spacing-tight);}
+.av-info p{font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);}
+
+.prog-wrap{margin-bottom:var(--space-5);}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray-text);line-height:var(--line-height-snug);margin-bottom:var(--space-3);letter-spacing:var(--letter-spacing-tight);}
+.prog-track{height:2px;background:var(--color-dark-gray-5);border-radius:0;overflow:hidden;}
+.prog-fill{height:100%;border-radius:0;transition:width var(--duration-slow) var(--easing-ease-in-out);}
+
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:var(--space-5) var(--space-5);text-align:left;font-size:var(--font-size-xs);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-5);line-height:var(--line-height-normal);}
+.data-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);text-transform:uppercase;letter-spacing:var(--letter-spacing-normal);color:var(--color-mid-gray-2);background:var(--color-dark-gray-3);}
+.data-table tr:hover td{background:var(--color-dark-gray-8);transition:background var(--duration-instant) var(--easing-ease-in-out);}
+.data-table td:first-child{font-family:var(--font-family-2);color:var(--color-brand);letter-spacing:var(--letter-spacing-tight);}
+
+/* ── CSS VARIABLES REFERENCE ── */
+.tokens-section{margin-bottom:var(--space-96);}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-8);}
+.tokens-group{background:var(--color-dark-gray-6);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);overflow:hidden;}
+.tokens-group-header{padding:var(--space-5) var(--space-8);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-5);background:var(--color-dark-gray-3);display:flex;align-items:center;gap:var(--space-5);}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--color-white);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray-text);letter-spacing:var(--letter-spacing-normal);text-transform:uppercase;}
+.tokens-group-count{font-size:10px;color:var(--color-mid-gray-2);margin-left:auto;}
+.tokens-list{padding:var(--space-5) 0;}
+.token-row{display:flex;align-items:center;gap:var(--space-5);padding:var(--space-3) var(--space-8);transition:background var(--duration-instant);}
+.token-row:hover{background:var(--color-dark-gray-8);}
+.token-swatch{width:20px;height:20px;border-radius:2px;border:var(--border-width-hairline) solid rgba(255,255,255,0.08);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray-text);flex:1;min-width:0;letter-spacing:var(--letter-spacing-tight);}
+.token-css{font-size:10px;font-family:var(--font-family-2);color:var(--color-brand);white-space:nowrap;}
+.token-value{font-size:10px;font-family:var(--font-family-2);color:var(--color-mid-gray-2);white-space:nowrap;}
+.token-preview-bar{height:4px;border-radius:0;background:linear-gradient(to right,var(--color-mid-gray),var(--color-white));flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,var(--color-dark-gray-7),var(--color-white));flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:2px;background:var(--color-white);flex-shrink:0;}
+.tokens-full{grid-column:1/-1;}
+.token-row-sep{height:var(--border-width-hairline);background:var(--color-dark-gray-5);margin:var(--space-3) 0;}
+
+@media(max-width:600px){
+  .font-cards,.shadows-row,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid,.bp-scroller{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <!-- adidas three stripes wordmark simplified -->
+          <svg width="22" height="16" viewBox="0 0 44 32" fill="white">
+            <rect x="0" y="28" width="44" height="4"/>
+            <rect x="4" y="18" width="36" height="4"/>
+            <rect x="10" y="8" width="24" height="4"/>
+            <rect x="16" y="0" width="12" height="4"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">adidas Design System</div>
+          <div class="system-meta">adidas IN · Generated 17/04/2026 · 27 colors · 21 type tokens · 18 spacing steps · 5 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">Performance 2026</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- ── 1. COLOR PALETTE ── -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(6,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black (dominant)</div><div class="swatch-hex">#000000 · ×13460</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(255,255,255,0.2)"></div><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF · ×422</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#ECEFF1;border-color:rgba(255,255,255,0.2)"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#ECEFF1 · ×99</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#408267"></div><div class="swatch-name">Cyan 2 (green)</div><div class="swatch-hex">#408267 · ×4</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E9ECEF;border-color:rgba(255,255,255,0.2)"></div><div class="swatch-name">Light Gray 3</div><div class="swatch-hex">#E9ECEF · ×1</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F9F7F6;border-color:rgba(255,255,255,0.2)"></div><div class="swatch-name">White 2</div><div class="swatch-hex">#F9F7F6 · ×1</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(3,1fr);max-width:330px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#767677"></div><div class="swatch-name">Mid Gray</div><div class="swatch-hex">#767677 · ×168</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E32B2B"></div><div class="swatch-name">Red (error)</div><div class="swatch-hex">#E32B2B · ×24</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#808080"></div><div class="swatch-name">Mid Gray 2</div><div class="swatch-hex">#808080 · ×7</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Border Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(3,1fr);max-width:330px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#D3D7DA;border-color:rgba(255,255,255,0.2)"></div><div class="swatch-name">Light Gray 2</div><div class="swatch-hex">#D3D7DA · ×7</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#929396"></div><div class="swatch-name">Mid Gray 3</div><div class="swatch-hex">#929396 · ×6</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#363333"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#363333 · ×1</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Fill & Brand / Social Platform Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#69C9D0"></div><div class="swatch-name">Cyan (TikTok)</div><div class="swatch-hex">#69C9D0 · ×8</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#3175DE"></div><div class="swatch-name">Blue</div><div class="swatch-hex">#3175DE · ×2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F9B900"></div><div class="swatch-name">Orange</div><div class="swatch-hex">#F9B900 · ×2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#00AC37"></div><div class="swatch-name">Dark Green</div><div class="swatch-hex">#00AC37 · ×2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1877F2"></div><div class="swatch-name">Facebook</div><div class="swatch-hex">#1877F2 · ×2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1DA1F2"></div><div class="swatch-name">Twitter / X</div><div class="swatch-hex">#1DA1F2 · ×2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#EE1D52"></div><div class="swatch-name">TikTok Red</div><div class="swatch-hex">#EE1D52 · ×2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#400090"></div><div class="swatch-name">Dark Purple</div><div class="swatch-hex">#400090 · ×2</div></div>
+      </div>
+    </div>
+
+    <div style="background:var(--color-dark-gray-6);border:var(--border-width-hairline) solid var(--color-dark-gray-5);border-radius:var(--radius-sm);padding:var(--space-12) var(--space-20);margin-top:var(--space-4);">
+      <div style="font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray-text);margin-bottom:var(--space-4);letter-spacing:var(--letter-spacing-normal);text-transform:uppercase;">Dominant Color Note</div>
+      <div style="font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);">#000000 pure black appears <span style="color:var(--color-white);font-weight:bold;">13,460 times</span> — the single most-used color token across the entire series of 23 systems. The adidas product catalog, imagery backgrounds, and UI surfaces are overwhelmingly black. No accent color is defined at the brand level; the fill colors are exclusively social platform brand colors (Facebook, Twitter, TikTok, Google).</div>
+    </div>
+  </div>
+
+  <!-- ── 2. TYPOGRAPHY ── -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">--font-family-2 · AdihausDIN</div>
+        <div class="font-display">AdihausDIN</div>
+        <div class="font-sample">Impossible is Nothing. Designed for speed, built for the sport.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:700">Bold · 700</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">--font-family-3 · adidasFG</div>
+        <div class="font-display">adidasFG</div>
+        <div class="font-sample">Three Stripes. Tiro 23. Ultraboost 22. Samba OG. Gazelle Bold.</div>
+        <div class="fw-row">
+          <span class="fw-chip">Times (base fallback)</span>
+          <span class="fw-chip">AdihausDIN (UI)</span>
+          <span class="fw-chip">adidasFG (display)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type Scale -->
+    <div class="type-scale" style="margin-bottom:var(--space-10);">
+      <div class="type-row">
+        <div class="type-sample" style="font-size:38px;font-weight:700;line-height:40px;letter-spacing:2.5px;text-transform:uppercase;">IMPOSSIBLE IS NOTHING</div>
+        <div class="type-meta">Display · 38px · Bold · line-height: 40px · letter-spacing: +2.5px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:30px;font-weight:700;line-height:32px;letter-spacing:2.5px;text-transform:uppercase;">Ultraboost 22</div>
+        <div class="type-meta">Heading XL · 30px · Bold · line-height: 32px · letter-spacing: +2.5px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:24px;font-weight:700;line-height:28px;letter-spacing:2.5px;text-transform:uppercase;">New Arrivals</div>
+        <div class="type-meta">Heading · 24px · Bold · line-height: 28px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:16px;font-weight:400;line-height:24px;letter-spacing:3px;color:var(--color-mid-gray);">Engineered for maximum cushioning and energy return. Run farther with Boost technology.</div>
+        <div class="type-meta">Body · 16px · Regular · line-height: 24px · letter-spacing: +3px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:14px;font-weight:400;line-height:22px;letter-spacing:2.5px;color:var(--color-mid-gray);">₹12,999 · Available in 4 colors · Free shipping above ₹4,999</div>
+        <div class="type-meta">Body Small · 14px · Regular · line-height: 22px · letter-spacing: +2.5px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:12px;font-weight:700;line-height:16px;letter-spacing:3px;text-transform:uppercase;color:var(--color-mid-gray);">RUNNING · TRAINING · ORIGINALS</div>
+        <div class="type-meta">Label · 12px · Bold · uppercase · letter-spacing: +3px</div>
+      </div>
+    </div>
+
+    <!-- Line Heights -->
+    <div style="margin-bottom:var(--space-10);">
+      <div style="font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-normal);text-transform:uppercase;color:var(--color-mid-gray-2);margin-bottom:var(--space-5);">Line Heights — 7 tokens</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:16px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">16px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:20px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">20px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:22px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">22px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">24px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:28px;"></div></div><div class="lh-token">Loose</div><div class="lh-val">28px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:32px;"></div></div><div class="lh-token">LH-6</div><div class="lh-val">32px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:40px;"></div></div><div class="lh-token">LH-7</div><div class="lh-val">40px</div></div>
+      </div>
+    </div>
+
+    <!-- Letter Spacing — ALL POSITIVE (unique) -->
+    <div>
+      <div style="font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-normal);text-transform:uppercase;color:var(--color-mid-gray-2);margin-bottom:var(--space-5);">Letter Spacing — All-Positive (unique in series alongside MongoDB)</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:2.5px;text-transform:uppercase;">SPORT</div>
+          <div class="ls-token">--letter-spacing-tight</div>
+          <div class="ls-desc">+2.5px · headings, display, product names — wider than most systems' "wide" token</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:3px;font-size:var(--font-size-xs);text-transform:uppercase;color:var(--color-mid-gray);">RUNNING · TRAINING</div>
+          <div class="ls-token">--letter-spacing-normal</div>
+          <div class="ls-desc">+3px · labels, categories, uppercase body copy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. SPACING ── -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">18 steps — 1.5px → 64px (includes sub-pixel 1.5px and 1.75px)</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:1.5px"></div><div class="sp-lbl">1.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:2px"></div><div class="sp-lbl">1.75</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:2px"></div><div class="sp-lbl">2</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:16px"></div><div class="sp-lbl">16</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:20px"></div><div class="sp-lbl">20</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:22px"></div><div class="sp-lbl">22</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:24px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:32px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:35px"></div><div class="sp-lbl">35</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:40px"></div><div class="sp-lbl">40</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:44px"></div><div class="sp-lbl">44</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:48px"></div><div class="sp-lbl">48</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:60px"></div><div class="sp-lbl">60</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:64px"></div><div class="sp-lbl">64</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. BORDERS ── -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii — Only 2 tokens (most minimal in series)</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:5px"></div><div class="radius-lbl">sm</div><div class="radius-val">5px · ×2</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:50%;width:50px;height:50px"></div><div class="radius-lbl">md (circle)</div><div class="radius-val">50% · ×2</div></div>
+      </div>
+      <div style="margin-top:var(--space-10);font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);">adidas defines only 2 border-radius tokens — the smallest radius vocabulary in the series alongside Mistral AI. The 5px value is used for cards and interactive elements; 50% is used exclusively for circular avatars and badges. No pill, no large radius — consistent with the sharp, geometric brand aesthetic.</div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Widths — 4 tokens (includes 2.5px and 5px accent)</div>
+      <div class="bw-demo">
+        <div class="bw-item"><div class="bw-token">--border-width-hairline</div><div class="bw-line" style="height:1px;"></div><div class="bw-val">1px · ×149 — default dividers, cards, inputs</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-thin</div><div class="bw-line" style="height:2px;"></div><div class="bw-val">2px · ×22 — CTAs, selected states, focus outlines</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-base</div><div class="bw-line" style="height:2.5px;"></div><div class="bw-val">2.5px · ×8 — active nav underline, product highlight</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-thick</div><div class="bw-line" style="height:5px;"></div><div class="bw-val">5px · ×8 — Three Stripes accent bars, section dividers</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. ELEVATION / SHADOWS ── -->
+  <div class="section">
+    <div class="section-title">Shadows / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">1 token — solid gray omnidirectional glow</div>
+      <div class="shadows-row">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-sm);"></div>
+          <div class="sh-token">--shadow-sm</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">rgb(128,128,128) 0px 0px 10px 0px — omnidirectional gray glow, no offset. Used on product card hover, not on layout surfaces. Non-transparent solid gray color is unique (vs. typical rgba).</div>
+        </div>
+        <div class="sh-item" style="opacity:0.4;">
+          <div class="sh-box" style="border:var(--border-width-hairline) solid var(--color-dark-gray-5);"></div>
+          <div class="sh-token">No shadow defined</div>
+          <div class="sh-desc">adidas relies on solid 1px borders for UI surface definition — no elevation scale beyond the single card shadow token.</div>
+        </div>
+        <div class="sh-item" style="opacity:0.4;">
+          <div class="sh-box" style="border:var(--border-width-hairline) solid var(--color-dark-gray-5);"></div>
+          <div class="sh-token">No shadow defined</div>
+          <div class="sh-desc">Zero-offset, zero-spread shadows from rgba base would be the norm, but adidas opts for the non-transparent solid gray approach instead.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6. Z-INDEX ── -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div style="font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);margin-bottom:var(--space-8);">15 layers — the most extreme z-index range in the series. Starts clean (1→1000), jumps to 7999/8000/8002 (adidas header cluster, matching the CSS custom property <span style="font-family:var(--font-family-2);color:var(--color-brand);">--header-mf-z-index: 8000</span>), then escalates dramatically to 2-billion territory and peaks at signed 32-bit <span style="color:var(--color-red);">INT_MAX: 2147483647</span>.</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Layer</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>--z-1</td><td>1</td><td>Base positioned elements</td></tr>
+          <tr><td>--z-2</td><td>9</td><td>Elevated inline surfaces</td></tr>
+          <tr><td>--z-3</td><td>10</td><td>Sticky navigation sub-elements</td></tr>
+          <tr><td>--z-4</td><td>99</td><td>Dropdowns, tooltips</td></tr>
+          <tr><td>--z-5</td><td>100</td><td>Product image overlays, badges</td></tr>
+          <tr><td>--z-6</td><td>1000</td><td>Modals, cart drawers</td></tr>
+          <tr><td>--z-7</td><td>7999</td><td>Pre-header layer</td></tr>
+          <tr><td>--z-8</td><td>8000</td><td>adidas Master Frame header (--header-mf-z-index)</td></tr>
+          <tr><td>--z-9</td><td>8002</td><td>Header dropdowns above nav bar</td></tr>
+          <tr><td>--z-10</td><td class="z-int-max">2,000,000,000</td><td>Cookie consent / GDPR overlays</td></tr>
+          <tr><td>--z-11</td><td class="z-int-max">2,000,000,001</td><td>Above cookie consent</td></tr>
+          <tr><td>--z-12</td><td class="z-int-max">2,000,000,002</td><td>Critical compliance layer</td></tr>
+          <tr><td>--z-13</td><td class="z-int-max">2,000,000,003</td><td>Topmost compliance stack</td></tr>
+          <tr><td>--z-14</td><td class="z-int-max">2,100,000,000</td><td>Emergency / debug override</td></tr>
+          <tr><td>--z-15</td><td class="z-int-max">2,147,483,647</td><td>INT_MAX — absolute topmost layer in any browser</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── 7. BREAKPOINTS ── -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div style="font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);margin-bottom:var(--space-8);">26 breakpoints — 280px → 1920px. The most comprehensive breakpoint system in the entire series (tied only with GitHub at 51). Starts at 280px (ultra-small Android phones), includes iPhone 14 Pro/15 edge cases (389/390px), and ends at 1920px full-HD. Paired tokens (479/480px, 599/600px, 767/768px, 959/960px, 1279/1280px, 1599/1600px) indicate straddle pairs for device targeting.</div>
+    <div class="bp-scroller">
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-xs</div><div class="bp-val">280px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-sm</div><div class="bp-val">320px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-md</div><div class="bp-val">375px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-lg</div><div class="bp-val">389px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-xl</div><div class="bp-val">390px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-2xl</div><div class="bp-val">479px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-3xl</div><div class="bp-val">480px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-8</div><div class="bp-val">575px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-9</div><div class="bp-val">599px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-10</div><div class="bp-val">600px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-11</div><div class="bp-val">767px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-12</div><div class="bp-val">768px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-13</div><div class="bp-val">780px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-14</div><div class="bp-val">786px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-15</div><div class="bp-val">959px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-16</div><div class="bp-val">960px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-17</div><div class="bp-val">991px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-18</div><div class="bp-val">1024px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-19</div><div class="bp-val">1200px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-20</div><div class="bp-val">1279px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-21</div><div class="bp-val">1280px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-22</div><div class="bp-val">1366px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-23</div><div class="bp-val">1440px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-24</div><div class="bp-val">1599px</div></div></div>
+      <div class="bp-item"><div class="bp-dot"></div><div><div class="bp-token">--breakpoint-bp-25</div><div class="bp-val">1600px</div></div></div>
+      <div class="bp-item"><div class="bp-dot" style="background:var(--color-mid-gray)"></div><div><div class="bp-token">--breakpoint-bp-26</div><div class="bp-val">1920px</div></div></div>
+    </div>
+  </div>
+
+  <!-- ── 8. OPACITY ── -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <div class="tw-sub">1 token — 0.9 only</div>
+      <div class="opacity-grid" style="grid-template-columns:repeat(1,1fr);max-width:100px;">
+        <div class="op-item">
+          <div class="op-box" style="opacity:var(--opacity-90);"></div>
+          <div class="op-token">--opacity-90</div>
+          <div class="op-val">90% · ×2</div>
+        </div>
+      </div>
+      <div style="margin-top:var(--space-10);font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);">Single token at 90%, used for the header/navigation overlay during scroll or mega-menu open — near-opaque but slightly translucent. Alongside Nike's single 85% token, adidas represents the most minimal opacity vocabulary in the series.</div>
+    </div>
+  </div>
+
+  <!-- ── 9. ACCESSIBILITY ── -->
+  <div class="section">
+    <div class="section-title">Accessibility</div>
+    <div style="font-size:var(--font-size-2xs);color:var(--color-mid-gray);line-height:var(--line-height-normal);margin-bottom:var(--space-5);">WCAG 2.1: <strong style="color:var(--color-light-gray-text);">AA</strong> ≥ 4.5:1 · <strong style="color:var(--color-light-gray-text);">AA Large</strong> ≥ 3:1 · <strong style="color:var(--color-light-gray-text);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Color</th><th>Background Color</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>#767677 (Mid Gray)</td><td>#000000 (Black)</td><td>4.63:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>#767677 (Mid Gray)</td><td>#FFFFFF (White)</td><td>4.54:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>#767677 (Mid Gray)</td><td>#ECEFF1 (Light Gray)</td><td>3.93:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>#767677 (Mid Gray)</td><td>#408267 (Cyan 2)</td><td>1:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>#767677 (Mid Gray)</td><td>#E9ECEF (Light Gray 3)</td><td>3.83:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>#E32B2B (Red)</td><td>#000000 (Black)</td><td>4.65:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>#E32B2B (Red)</td><td>#FFFFFF (White)</td><td>4.52:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>#E32B2B (Red)</td><td>#ECEFF1 (Light Gray)</td><td>3.91:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>#E32B2B (Red)</td><td>#408267 (Cyan 2)</td><td>1.01:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>#808080 (Mid Gray 2)</td><td>#000000 (Black)</td><td>5.32:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>#808080 (Mid Gray 2)</td><td>#FFFFFF (White)</td><td>3.95:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>#808080 (Mid Gray 2)</td><td>#ECEFF1 (Light Gray)</td><td>3.42:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>#808080 (Mid Gray 2)</td><td>#408267 (Cyan 2)</td><td>1.15:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>#808080 (Mid Gray 2)</td><td>#E9ECEF (Light Gray 3)</td><td>3.33:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Shop Now</button>
+          <button class="btn btn-secondary">View All</button>
+          <button class="btn btn-outline">Find a Store</button>
+          <button class="btn btn-ghost">Learn more</button>
+          <button class="btn btn-muted">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Search</label>
+            <input class="inp" type="text" placeholder="Search products..."/>
+            <div class="inp-hint">Search by name, category or sport.</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Email</label>
+            <input class="inp" type="email" value="athlete@adidas.com" style="border-bottom-color:var(--color-white);border-bottom-width:var(--border-width-base);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Promo Code</label>
+            <input class="inp inp-err" type="text" value="INVALID2026"/>
+            <div class="inp-err-msg">This promo code is not valid.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:var(--space-5);">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:rgba(255,255,255,0.5)"></span>New</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--color-mid-gray-2)"></span>Sold Out</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">🏃 Running</span>
+          <span class="tag">🏋️ Training</span>
+          <span class="tag">👟 Originals</span>
+          <span class="tag">⚽ Football</span>
+          <span class="tag">🌿 Parley</span>
+          <span class="tag">♻️ Sustainable</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:var(--space-5);">
+        <div class="alert alert-neutral"><div class="alert-icon">ℹ️</div><div class="alert-body"><h5>Free delivery</h5><p>Get free delivery on all orders above ₹4,999. Standard delivery takes 3–5 business days.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon">✅</div><div class="alert-body"><h5>Added to bag</h5><p>Ultraboost 22 · Size UK 9 · ₹12,999. Your bag has been updated.</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon">⚠️</div><div class="alert-body"><h5>Low stock</h5><p>Only 3 left in your size for Samba OG. Order now to avoid missing out.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon">❌</div><div class="alert-body"><h5>Payment failed</h5><p>Your payment could not be processed. Please check your card details and try again.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Feature Cards</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">🏃</div>
+            <div class="fc-title">Ultraboost 22</div>
+            <div class="fc-desc">Boost cushioning returns energy with every stride. Primeknit+ upper adapts to your foot.</div>
+            <span class="tag tag-brand">₹12,999</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">👟</div>
+            <div class="fc-title">Samba OG</div>
+            <div class="fc-desc">The icon of the street. Low-profile silhouette with suede upper and gum sole. Since 1950.</div>
+            <span class="tag">Originals</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🌿</div>
+            <div class="fc-title">Parley Collection</div>
+            <div class="fc-desc">Made from ocean plastic. Our commitment to ending plastic waste through performance design.</div>
+            <span class="tag">♻️ Sustainable</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars &amp; Progress</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:var(--color-white);color:var(--color-black);">AD</div>
+          <div class="av-info"><h4>adiClub Member</h4><p>Gold · 4,200 points · 18 purchases · Joined 2022</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:var(--color-white);color:var(--color-black)">A</div>
+          <div class="avatar av-md" style="background:var(--color-dark-gray-7);color:var(--color-white)">R</div>
+          <div class="avatar av-md" style="background:var(--color-mid-gray-2);color:var(--color-white)">K</div>
+          <div class="avatar av-sm" style="background:var(--color-dark-gray-5);color:var(--color-light-gray-text)">+4</div>
+        </div>
+        <div style="margin-top:var(--space-5);">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>adiClub Points</span><span>68%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:68%;background:var(--color-white)"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Season target</span><span>34%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:34%;background:var(--color-mid-gray-2)"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>Wishlist completion</span><span>91%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:91%;background:var(--color-mid-gray)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Data Table</span><span class="comp-badge">Order history</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead><tr><th>Order</th><th>Product</th><th>Size</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>AD-7842110</td><td style="color:var(--color-light-gray-text)">Ultraboost 22</td><td style="color:var(--color-light-gray-text)">UK 9</td><td style="color:var(--color-mid-gray)">Apr 12, 2026</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:rgba(255,255,255,0.5)"></span>Delivered</span></td></tr>
+            <tr><td>AD-7811042</td><td style="color:var(--color-light-gray-text)">Samba OG White</td><td style="color:var(--color-light-gray-text)">UK 9</td><td style="color:var(--color-mid-gray)">Mar 28, 2026</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:rgba(255,255,255,0.5)"></span>Delivered</span></td></tr>
+            <tr><td>AD-7799241</td><td style="color:var(--color-light-gray-text)">Tiro 23 Jacket</td><td style="color:var(--color-light-gray-text)">M</td><td style="color:var(--color-mid-gray)">Mar 15, 2026</td><td><span class="badge badge-muted" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:var(--color-mid-gray-2)"></span>Returned</span></td></tr>
+            <tr><td>AD-7834895</td><td style="color:var(--color-light-gray-text)">Gazelle Bold W</td><td style="color:var(--color-light-gray-text)">UK 6</td><td style="color:var(--color-mid-gray)">Apr 17, 2026</td><td><span class="badge badge-default" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Processing</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- ── 11. CSS VARIABLES REFERENCE ── -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Background Colors</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#000000"></div><span class="token-readable">Black (dominant · ×13460)</span><span class="token-css">--color-black</span><span class="token-value">#000000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF"></div><span class="token-readable">White</span><span class="token-css">--color-white</span><span class="token-value">#FFFFFF · ×422</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#ECEFF1"></div><span class="token-readable">Light Gray</span><span class="token-css">--color-light-gray</span><span class="token-value">#ECEFF1 · ×99</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#408267"></div><span class="token-readable">Cyan 2 (green surface)</span><span class="token-css">--color-cyan-2</span><span class="token-value">#408267 · ×4</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#E9ECEF"></div><span class="token-readable">Light Gray 3</span><span class="token-css">--color-light-gray-3</span><span class="token-value">#E9ECEF · ×1</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F9F7F6"></div><span class="token-readable">White 2</span><span class="token-css">--color-white-2</span><span class="token-value">#F9F7F6 · ×1</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Text, Border & Fill Colors</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#767677"></div><span class="token-readable">Mid Gray (body text)</span><span class="token-css">--color-mid-gray</span><span class="token-value">#767677 · ×168</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#E32B2B"></div><span class="token-readable">Red (error text)</span><span class="token-css">--color-red</span><span class="token-value">#E32B2B · ×24</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#808080"></div><span class="token-readable">Mid Gray 2</span><span class="token-css">--color-mid-gray-2</span><span class="token-value">#808080 · ×7</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:#D3D7DA"></div><span class="token-readable">Light Gray 2 (border)</span><span class="token-css">--color-light-gray-2</span><span class="token-value">#D3D7DA · ×7</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#929396"></div><span class="token-readable">Mid Gray 3 (border)</span><span class="token-css">--color-mid-gray-3</span><span class="token-value">#929396 · ×6</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#363333"></div><span class="token-readable">Dark Gray (border)</span><span class="token-css">--color-dark-gray</span><span class="token-value">#363333 · ×1</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:#69C9D0"></div><span class="token-readable">Cyan (TikTok)</span><span class="token-css">--color-cyan</span><span class="token-value">#69C9D0 · ×8</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1877F2"></div><span class="token-readable">Facebook</span><span class="token-css">--color-blue-3</span><span class="token-value">#1877F2 · ×2</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1DA1F2"></div><span class="token-readable">Twitter / X</span><span class="token-css">--color-blue-5</span><span class="token-value">#1DA1F2 · ×2</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#EE1D52"></div><span class="token-readable">TikTok Red</span><span class="token-css">--color-red-4</span><span class="token-value">#EE1D52 · ×2</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#400090"></div><span class="token-readable">Dark Purple</span><span class="token-css">--color-dark-purple</span><span class="token-value">#400090 · ×2</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Typography</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Times (base fallback)</span><span class="token-css">--font-family-base</span><span class="token-value">Times</span></div>
+          <div class="token-row"><span class="token-readable">AdihausDIN (UI)</span><span class="token-css">--font-family-2</span><span class="token-value">AdihausDIN</span></div>
+          <div class="token-row"><span class="token-readable">adidasFG (display)</span><span class="token-css">--font-family-3</span><span class="token-value">adidasFG</span></div>
+          <div class="token-row"><span class="token-readable">Regular / Bold only</span><span class="token-css">font-weight</span><span class="token-value">400 / 700</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">10px → 38px (7 sizes)</span><span class="token-css">2xs → 2xl</span><span class="token-value"></span></div>
+          <div class="token-row"><span class="token-readable">16px → 40px (7 line-heights)</span><span class="token-css">tight → lh-7</span><span class="token-value"></span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">All-positive tracking (tight)</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">+2.5px</span></div>
+          <div class="token-row"><span class="token-readable">All-positive tracking (normal)</span><span class="token-css">--letter-spacing-normal</span><span class="token-value">+3px</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Motion, Borders, Opacity & Layers</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Instant (200ms) · ×12</span><span class="token-css">--duration-instant</span><span class="token-value">0.2s</span></div>
+          <div class="token-row"><span class="token-readable">Fast (300ms) · ×60 (most used)</span><span class="token-css">--duration-fast</span><span class="token-value">0.3s</span></div>
+          <div class="token-row"><span class="token-readable">Normal (500ms) · ×1</span><span class="token-css">--duration-normal</span><span class="token-value">0.5s</span></div>
+          <div class="token-row"><span class="token-readable">Slow (800ms) · ×4</span><span class="token-css">--duration-slow</span><span class="token-value">0.8s</span></div>
+          <div class="token-row"><span class="token-readable">Ease In-Out (sole easing)</span><span class="token-css">--easing-ease-in-out</span><span class="token-value">ease-in-out · ×8</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:0.9"></div><span class="token-readable">Nav overlay (only token)</span><span class="token-css">--opacity-90</span><span class="token-value">0.9 · ×2</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Hairline / Thin / Base / Thick</span><span class="token-css">border widths</span><span class="token-value">1/2/2.5/5px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:5px"></div><span class="token-readable">sm (5px)</span><span class="token-css">--radius-sm</span><span class="token-value">5px · ×2</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:50%"></div><span class="token-readable">md (circle)</span><span class="token-css">--radius-md</span><span class="token-value">50% · ×2</span></div>
+          <div class="token-row"><span class="token-readable">1 shadow (gray glow)</span><span class="token-css">--shadow-sm</span><span class="token-value">rgb(128,128,128) 10px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Base / Navigation</span><span class="token-css">--z-1 / --z-3</span><span class="token-value">1 / 10</span></div>
+          <div class="token-row"><span class="token-readable">Header cluster</span><span class="token-css">--z-7/z-8/z-9</span><span class="token-value">7999/8000/8002</span></div>
+          <div class="token-row"><span class="token-readable">GDPR compliance stack</span><span class="token-css">--z-10 → --z-13</span><span class="token-value">2B → 2,000,000,003</span></div>
+          <div class="token-row"><span class="token-readable">Emergency override</span><span class="token-css">--z-14</span><span class="token-value">2,100,000,000</span></div>
+          <div class="token-row"><span class="token-readable">INT_MAX (absolute top)</span><span class="token-css">--z-15</span><span class="token-value" style="color:var(--color-red)">2,147,483,647</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:8px"></div><span class="token-readable">8px (×330 — most used)</span><span class="token-css">--space-5</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:16px"></div><span class="token-readable">16px (×247)</span><span class="token-css">--space-10</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:4px"></div><span class="token-readable">4px (×168)</span><span class="token-css">--space-4</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:24px"></div><span class="token-readable">24px (×85)</span><span class="token-css">--space-20</span><span class="token-value">24px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:60px"></div><span class="token-readable">60px</span><span class="token-css">--space-80</span><span class="token-value">60px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:64px"></div><span class="token-readable">64px (max)</span><span class="token-css">--space-96</span><span class="token-value">64px</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div style="text-align:center;padding:var(--space-40) 0;color:var(--color-mid-gray-2);font-size:var(--font-size-2xs);border-top:var(--border-width-hairline) solid var(--color-dark-gray-5);line-height:var(--line-height-normal);letter-spacing:var(--letter-spacing-tight);">
+    ADIDAS DESIGN SYSTEM · GENERATED 17/04/2026 · 27 COLOR TOKENS · 3 FONT FAMILIES · 2 FONT WEIGHTS · 7 FONT SIZES · 7 LINE HEIGHTS · 2 LETTER SPACING (ALL POSITIVE) · 18 SPACING STEPS · 2 RADIUS · 4 BORDER WIDTHS · 1 SHADOW · 4 DURATIONS · 1 EASING · 15 Z-INDEX LAYERS (INT_MAX) · 26 BREAKPOINTS · 1 OPACITY
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

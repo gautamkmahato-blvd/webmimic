@@ -1,0 +1,124 @@
+/* ============================================
+ * Design Tokens — Apidog vs Mintlify - API Platform vs Documentation Tool | Apidog
+ * Source: https://apidog.com/compare/apidog-vs-mintlify/?utm_source=google_search&utm_medium=ads_sa&utm_campaign=23320166856&utm_content=189919208295&utm_term=mintlify&gad_source=1&gad_campaignid=23320166856&gbraid=0AAAAA-gKXrAX19d9yrqg_JU51ZNL2pnC2&gclid=CjwKCAjw7vzOBhBxEiwAc7WNr--PuZCAHWvmMswTYf0DBv_AiIkyaRCtHG0R2q9_mQSlvAjR9OK8MBoC0aoQAvD_BwE
+ * Generated: 15/04/2026, 23:39:47
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-light-gray: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+  --color-dark-blue: #464D6A; /* hsl(228, 20%, 35%) · text */
+  --color-white: #ECEFFF; /* hsl(231, 100%, 96%) · border */
+  --color-blue: #4D6AFF; /* hsl(230, 100%, 65%) · text */
+  --color-cyan: #00C7A6; /* hsl(170, 100%, 39%) · fill */
+  --color-blue-2: #7F85A3; /* hsl(230, 16%, 57%) · text */
+  --color-dark-blue-2: #2F3659; /* hsl(230, 31%, 27%) · text */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-red: #FF7396; /* hsl(345, 100%, 73%) · fill */
+  --color-dark-blue-3: #1D2447; /* hsl(230, 42%, 20%) · text */
+  --color-white-3: #FAFBFF; /* hsl(228, 100%, 99%) · background */
+  --color-white-4: #F5F5F5; /* hsl(0, 0%, 96%) · text */
+  --color-dark-blue-4: #0C1230; /* hsl(230, 60%, 12%) · background */
+  --color-blue-3: #4080FF; /* hsl(220, 100%, 63%) · fill */
+  --color-light-blue: #E1E5F7; /* hsl(229, 58%, 93%) · border */
+  --color-dark-blue-5: rgba(12, 18, 48, 0.04); /* hsl(209, 100%, 10%) · shadow */
+  --color-cyan-2: #00ACE6; /* hsl(195, 100%, 45%) · fill */
+  --color-light-blue-2: #DBEAFE; /* hsl(214, 95%, 93%) · border */
+  --color-white-5: #E6EEFF; /* hsl(221, 100%, 95%) · other */
+  --color-white-6: #EBEEFF; /* hsl(231, 100%, 96%) · other */
+  --color-cyan-3: #00AAFF; /* hsl(200, 100%, 50%) · gradient */
+  --color-blue-4: #1A66FF; /* hsl(220, 100%, 55%) · gradient */
+  --color-blue-5: rgba(102, 102, 255, 0.08); /* hsl(240, 100%, 70%) · shadow */
+  --color-blue-6: rgba(128, 102, 255, 0.06); /* hsl(253, 100%, 70%) · shadow */
+  --color-blue-7: #1A8CFF; /* hsl(210, 100%, 55%) · gradient */
+  --color-blue-8: #4D4DFF; /* hsl(240, 100%, 65%) · gradient */
+  --color-white-7: rgba(236, 239, 255, 0.5); /* hsl(228, 100%, 96%) · border */
+  --color-orange: #FFBF00; /* hsl(45, 100%, 50%) · fill */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 13px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+  --font-size-4xl: 56px;
+  --font-family-base: ui-sans-serif;
+  --font-family-2: Poppins;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 18.2px;
+  --line-height-snug: 19.5px;
+  --line-height-normal: 21px;
+  --line-height-relaxed: 22.4px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 28px;
+  --line-height-lh-7: 30px;
+  --line-height-lh-8: 32px;
+  --line-height-lh-9: 41.6px;
+  --line-height-lh-10: 52px;
+  --line-height-lh-11: 78.4px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-16: 32px;
+  --space-20: 38px;
+  --space-24: 40px;
+  --space-32: 48px;
+  --space-40: 56px;
+  --space-48: 64px;
+  --space-64: 72px;
+  --space-80: 75.5px;
+  --space-96: 80px;
+  --space-128: 96px;
+  --space-160: 104px;
+  --space-192: 120px;
+  --space-256: 150.5px;
+  --space-23: 281.891px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 8px;
+  --radius-md: 24px;
+  --radius-lg: 24px 24px 0px 0px;
+  --radius-xl: 32px;
+  --radius-2xl: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(255, 255, 255, 0.7) 0px 16px 24px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(12, 18, 48, 0.04) 0px 2px 12px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(102, 102, 255, 0.08) 0px 6px 56px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(128, 102, 255, 0.06) 0px 4px 40px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.3s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -10;
+  --z-2: 2;
+  --z-3: 10;
+  --z-4: 30;
+  --z-5: 50;
+  --z-6: 100;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+  --opacity-10: 0.1;
+  --opacity-20: 0.2;
+  --opacity-30: 0.3;
+  --opacity-50: 0.5;
+}

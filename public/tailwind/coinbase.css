@@ -1,0 +1,157 @@
+/* ============================================
+ * Design Tokens — Coinbase - Buy & Sell Bitcoin, Ethereum, and more with trust
+ * Source: https://www.coinbase.com/en-in
+ * Generated: 15/04/2026, 00:24:44
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-cyan: #27AD75; /* hsl(155, 63%, 42%) · text */
+  --color-blue: #5B616E; /* hsl(221, 9%, 39%) · text */
+  --color-black-2: #0A0B0D; /* hsl(220, 13%, 5%) · background */
+  --color-red: #F0616D; /* hsl(355, 83%, 66%) · text */
+  --color-blue-2: #578BFA; /* hsl(221, 94%, 66%) · text */
+  --color-blue-3: #0667D0; /* hsl(211, 94%, 42%) · text */
+  --color-dark-gray: #1D1D1D; /* hsl(0, 0%, 11%) · text */
+  --color-blue-4: #0052FF; /* hsl(221, 100%, 50%) · background */
+  --color-dark-gray-2: #555555; /* hsl(0, 0%, 33%) · text */
+  --color-light-gray: #EEF0F3; /* hsl(216, 17%, 94%) · background */
+  --color-dark-gray-3: #656565; /* hsl(0, 0%, 40%) · text */
+  --color-white-2: #F7F8F9; /* hsl(210, 14%, 97%) · background */
+  --color-dark-gray-4: #282B31; /* hsl(220, 10%, 17%) · background */
+  --color-blue-5: #8A919E; /* hsl(219, 9%, 58%) · text */
+  --color-mid-gray: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-mid-gray-2: #696969; /* hsl(0, 0%, 41%) · text */
+  --color-blue-6: #3860BE; /* hsl(222, 54%, 48%) · background */
+  --color-light-gray-2: #C7C5C7; /* hsl(300, 2%, 78%) · shadow */
+  --color-blue-7: rgba(91, 97, 110, 0.2); /* hsl(225, 10%, 39%) · background */
+  --color-mid-gray-3: #999999; /* hsl(0, 0%, 60%) · shadow */
+  --color-white-3: #F9FFFA; /* hsl(130, 100%, 99%) · background */
+  --color-cyan-2: #32AE88; /* hsl(162, 55%, 44%) · border */
+  --color-light-gray-3: #D1D1D1; /* hsl(0, 0%, 82%) · border */
+  --color-dark-blue: #2E3644; /* hsl(218, 19%, 22%) · fill */
+  --color-light-gray-4: #BBBBBB; /* hsl(0, 0%, 73%) · border */
+  --color-white-4: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 12.992px;
+  --font-size-sm: 13.6px;
+  --font-size-base: 14px;
+  --font-size-lg: 14.4px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 18px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 24px;
+  --font-size-5xl: 32px;
+  --font-size-6xl: 40px;
+  --font-size-52px: 52px;
+  --font-size-64px: 64px;
+  --font-family-base: CoinbaseSans;
+  --font-family-2: CoinbaseIcons;
+  --font-family-3: CoinbaseDisplay;
+  --font-family-4: CoinbaseText;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 14.4px;
+  --line-height-snug: 16px;
+  --line-height-normal: 16.8px;
+  --line-height-relaxed: 17.6px;
+  --line-height-loose: 19.2px;
+  --line-height-lh-6: 20px;
+  --line-height-lh-7: 20.8px;
+  --line-height-lh-8: 24px;
+  --line-height-lh-9: 28px;
+  --line-height-lh-10: 36px;
+  --line-height-lh-11: 44px;
+  --line-height-lh-12: 52px;
+  --line-height-lh-13: 64px;
+  --line-height-lh-14: 73.6px;
+  --letter-spacing-tight: 0.14px;
+  --letter-spacing-normal: 0.144px;
+  --letter-spacing-wide: 0.16px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 10px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 24px;
+  --space-8: 28px;
+  --space-10: 30px;
+  --space-12: 32px;
+  --space-16: 40px;
+  --space-20: 64px;
+  --space-24: 80px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 12px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 16px;
+  --radius-2xl: 17px;
+  --radius-full: 20px;
+  --radius-r7: 24px;
+  --radius-r8: 32px;
+  --radius-r9: 40px;
+  --radius-r10: 45px;
+  --radius-r11: 48px;
+  --radius-r12: 50%;
+  --radius-r13: 50px;
+  --radius-r14: 56px;
+  --radius-r15: 100000px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgb(255, 255, 255) 0px -1px 0px 1px;
+  --shadow-md: rgba(0, 0, 0, 0.2) 0px 0px 18px 0px;
+  --shadow-lg: rgb(153, 153, 153) 0px 2px 10px -3px;
+  --shadow-xl: rgb(199, 197, 199) -3px -3px 5px -2px;
+  --shadow-shadow-5: rgb(199, 197, 199) 0px 0px 12px 2px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --easing-ease-in-out: ease-in-out;
+  --easing-ease-in: ease-in;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 3;
+  --z-4: 4;
+  --z-5: 5;
+  --z-6: 6;
+  --z-7: 7;
+  --z-8: 100001;
+  --z-9: 2147483645;
+  --z-10: 2147483646;
+  --z-11: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 425px;
+  --breakpoint-md: 426px;
+  --breakpoint-lg: 500px;
+  --breakpoint-xl: 530px;
+  --breakpoint-2xl: 550px;
+  --breakpoint-3xl: 576px;
+  --breakpoint-bp-8: 600px;
+  --breakpoint-bp-9: 640px;
+  --breakpoint-bp-10: 767px;
+  --breakpoint-bp-11: 768px;
+  --breakpoint-bp-12: 896px;
+  --breakpoint-bp-13: 1279px;
+  --breakpoint-bp-14: 1280px;
+  --breakpoint-bp-15: 1439px;
+  --breakpoint-bp-16: 1600px;
+
+  /* ── Opacity ── */
+}

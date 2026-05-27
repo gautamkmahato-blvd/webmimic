@@ -1,0 +1,106 @@
+/* ============================================
+ * Design Tokens — Frontier AI LLMs, assistants, agents, services | Mistral AI
+ * Source: https://mistral.ai/
+ * Generated: 15/04/2026, 23:41:44
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-white: #FFFAEB; /* hsl(45, 100%, 96%) · background */
+  --color-dark-gray: #1F1F1F; /* hsl(0, 0%, 12%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-orange: #FA520F; /* hsl(17, 96%, 52%) · background */
+  --color-light-yellow: #FFF0C2; /* hsl(45, 100%, 88%) · background */
+  --color-dark-yellow: rgba(127, 99, 21, 0.12); /* hsl(45, 66%, 29%) · shadow */
+  --color-dark-orange: rgba(127, 99, 21, 0.1); /* hsl(43, 73%, 29%) · shadow */
+  --color-dark-yellow-2: rgba(127, 99, 21, 0.06); /* hsl(50, 75%, 27%) · shadow */
+  --color-light-yellow-2: #ECDAA2; /* hsl(45, 66%, 78%) · border */
+  --color-dark-gray-2: #3C3C3C; /* hsl(0, 0%, 24%) · text */
+  --color-orange-2: #9F521A; /* hsl(25, 72%, 36%) · gradient */
+  --color-orange-3: #D3812F; /* hsl(30, 65%, 51%) · gradient */
+  --color-orange-4: #B35D20; /* hsl(25, 70%, 41%) · gradient */
+  --color-yellow: #FFD900; /* hsl(51, 100%, 50%) · background */
+  --color-orange-5: #FFAE00; /* hsl(41, 100%, 50%) · background */
+  --color-orange-6: #FF8205; /* hsl(30, 100%, 51%) · background */
+  --color-red: #E00400; /* hsl(1, 100%, 44%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 14px;
+  --font-size-xs: 16px;
+  --font-size-sm: 24px;
+  --font-size-base: 30px;
+  --font-size-lg: 32px;
+  --font-size-xl: 48px;
+  --font-size-2xl: 56px;
+  --font-size-3xl: 82px;
+  --font-family-base: Arial;
+  --font-weight-regular: 400;
+  --line-height-tight: 20px;
+  --line-height-snug: 21px;
+  --line-height-normal: 24px;
+  --line-height-relaxed: 32px;
+  --line-height-loose: 36px;
+  --line-height-lh-6: 36.8px;
+  --line-height-lh-7: 45.6px;
+  --line-height-lh-8: 48px;
+  --line-height-lh-9: 53.2px;
+  --line-height-lh-10: 82px;
+  --letter-spacing-tight: -2.05px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-8: 20px;
+  --space-10: 24px;
+  --space-12: 32px;
+  --space-16: 36px;
+  --space-20: 40px;
+  --space-24: 48px;
+  --space-32: 54.5px;
+  --space-40: 56px;
+  --space-48: 64px;
+  --space-64: 72px;
+  --space-80: 80px;
+  --space-96: 98px;
+  --space-128: 100px;
+  --space-160: 150px;
+  --space-192: 172.93px;
+  --space-256: 318px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(127, 99, 21, 0.12) -8px 16px 39px 0px, rgba(127, 99, 21, 0.1) -33px 64px 72px 0px, rgba(127, 99, 21, 0.06) -73px 144px 97px 0px, rgba(127, 99, 21, 0.02) -130px 256px 115px 0px, rgba(127, 99, 21, 0) -203px 400px 126px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -10;
+  --z-2: 10;
+  --z-3: 20;
+  --z-4: 999;
+  --z-5: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 640px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1280px;
+
+  /* ── Opacity ── */
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-70: 0.7;
+  --opacity-80: 0.8;
+}

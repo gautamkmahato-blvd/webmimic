@@ -1,0 +1,168 @@
+/* ============================================
+ * Design Tokens — Warp: The Agentic Development Environment
+ * Source: https://www.warp.dev/
+ * Generated: 18/04/2026, 14:16:02
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-blue: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-white-2: rgba(250, 249, 246, 0.9); /* hsl(60, 20%, 97%) · text */
+  --color-mid-gray: #868584; /* hsl(30, 1%, 52%) · text */
+  --color-white-3: #FAF9F6; /* hsl(45, 29%, 97%) · background */
+  --color-dark-gray: #121212; /* hsl(0, 0%, 7%) · background */
+  --color-mid-gray-2: #AFAEAC; /* hsl(40, 2%, 68%) · text */
+  --color-dark-gray-2: #2F2F2F; /* hsl(0, 0%, 18%) · background */
+  --color-light-gray: #EBEBEB; /* hsl(0, 0%, 92%) · background */
+  --color-light-gray-2: #E3E2E0; /* hsl(40, 5%, 88%) · text */
+  --color-light-gray-3: #E0DFDC; /* hsl(45, 6%, 87%) · text */
+  --color-dark-gray-3: #40403F; /* hsl(60, 1%, 25%) · background */
+  --color-dark-gray-4: rgba(18, 18, 18, 0.86); /* hsl(0, 0%, 7%) · gradient */
+  --color-dark-gray-5: #1A1A1A; /* hsl(0, 0%, 10%) · background */
+  --color-dark-gray-6: rgba(18, 18, 18, 0.918); /* hsl(0, 0%, 7%) · gradient */
+  --color-dark-gray-7: #2A2B25; /* hsl(70, 8%, 16%) · text */
+  --color-light-purple: #CBB0F7; /* hsl(263, 82%, 83%) · text */
+  --color-white-4: rgba(250, 249, 246, 0.5); /* hsl(60, 25%, 97%) · text */
+  --color-dark-gray-8: #333333; /* hsl(0, 0%, 20%) · background */
+  --color-mid-gray-3: #666469; /* hsl(264, 2%, 40%) · text */
+  --color-dark-gray-9: rgba(18, 18, 18, 0.19); /* hsl(0, 0%, 6%) · gradient */
+  --color-dark-gray-10: #353534; /* hsl(60, 1%, 21%) · background */
+  --color-white-5: #F9FAF5; /* hsl(72, 33%, 97%) · background */
+  --color-dark-gray-11: rgba(18, 18, 18, 0.14); /* hsl(0, 0%, 8%) · gradient */
+  --color-dark-gray-12: rgba(18, 18, 18, 0.1); /* hsl(0, 0%, 8%) · gradient */
+  --color-black-2: rgba(18, 18, 18, 0.082); /* hsl(0, 0%, 5%) · gradient */
+  --color-dark-gray-13: rgba(18, 18, 18, 0.067); /* hsl(0, 0%, 6%) · gradient */
+  --color-dark-gray-14: rgba(54, 54, 50, 0.1); /* hsl(60, 9%, 21%) · background */
+  --color-white-6: #F9F8F6; /* hsl(40, 20%, 97%) · background */
+  --color-green: #2ECC71; /* hsl(145, 63%, 49%) · background */
+  --color-dark-gray-15: #1E1E1D; /* hsl(60, 2%, 12%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 32px;
+  --font-size-5xl: 42px;
+  --font-size-6xl: 56px;
+  --font-family-base: Times;
+  --font-family-2: sans-serif;
+  --font-family-3: Matter Regular;
+  --font-family-4: Matter Medium;
+  --font-family-5: Inter;
+  --font-family-6: Geist Mono;
+  --font-family-7: Matter Mono Regular;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 11.5px;
+  --line-height-snug: 14px;
+  --line-height-normal: 15.6px;
+  --line-height-relaxed: 16.8px;
+  --line-height-loose: 18.2px;
+  --line-height-lh-6: 19.2px;
+  --line-height-lh-7: 20px;
+  --line-height-lh-8: 22px;
+  --line-height-lh-9: 25px;
+  --line-height-lh-10: 32px;
+  --line-height-lh-11: 38px;
+  --line-height-lh-12: 48.3px;
+  --line-height-lh-13: 54px;
+  --letter-spacing-tight: -0.84px;
+  --letter-spacing-normal: -0.8px;
+  --letter-spacing-wide: -0.64px;
+  --letter-spacing-wider: -0.32px;
+  --letter-spacing-widest: -0.24px;
+  --letter-spacing-ls-6: -0.2px;
+  --letter-spacing-ls-7: -0.18px;
+  --letter-spacing-ls-8: 0.0161px;
+  --letter-spacing-ls-9: 0.16px;
+  --letter-spacing-ls-10: 0.2px;
+  --letter-spacing-ls-11: 1.4px;
+  --letter-spacing-ls-12: 2.4px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 5px;
+  --space-4: 6px;
+  --space-5: 6.63366px;
+  --space-6: 7px;
+  --space-8: 8px;
+  --space-10: 9px;
+  --space-12: 10px;
+  --space-16: 11px;
+  --space-20: 12px;
+  --space-24: 28px;
+  --space-32: 64px;
+  --space-40: 14px;
+  --space-48: 15px;
+  --space-64: 16px;
+  --space-80: 18px;
+  --space-96: 19px;
+  --space-128: 20px;
+  --space-160: 21px;
+  --space-192: 22px;
+  --space-256: 24px;
+  --space-23: 25px;
+  --space-25: 30px;
+  --space-26: 32px;
+  --space-27: 36px;
+  --space-28: 40px;
+  --space-29: 49px;
+  --space-30: 52px;
+  --space-31: 60px;
+  --space-33: 72px;
+  --space-34: 120px;
+  --space-35: 128px;
+  --space-36: 160px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 4px;
+  --radius-md: 5px;
+  --radius-lg: 6px;
+  --radius-xl: 7px;
+  --radius-2xl: 8px;
+  --radius-full: 10px;
+  --radius-r7: 20px;
+  --radius-r8: 33.17px;
+  --radius-r9: 50%;
+  --radius-r10: 50px;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 3;
+  --z-3: 9;
+  --z-4: 10;
+  --z-5: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 809px;
+  --breakpoint-sm: 809.98px;
+  --breakpoint-md: 810px;
+  --breakpoint-lg: 1199px;
+  --breakpoint-xl: 1199.98px;
+  --breakpoint-2xl: 1500px;
+
+  /* ── Opacity ── */
+  --opacity-18: 0.18;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+}

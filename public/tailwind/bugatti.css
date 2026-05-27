@@ -1,0 +1,237 @@
+/* ============================================
+ * Design Tokens — Official Bugatti Store
+ * Source: https://bugatti.store/
+ * Generated: 14/04/2026, 13:28:59
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-light-gray: #E1E1E1; /* hsl(0, 0%, 88%) · background */
+  --color-blue: #004BFA; /* hsl(222, 100%, 49%) · background */
+  --color-dark-gray: #171717; /* hsl(0, 0%, 9%) · background */
+  --color-red: #E11D48; /* hsl(347, 77%, 50%) · background */
+  --color-light-cyan: rgba(168, 232, 226, 0.1); /* hsl(172, 63%, 79%) · shadow */
+  --color-red-2: #BE123C; /* hsl(345, 83%, 41%) · text */
+  --color-light-gray-2: rgba(225, 225, 225, 0.1); /* hsl(0, 0%, 89%) · gradient */
+  --color-blue-2: #006FCF; /* hsl(208, 100%, 41%) · fill */
+  --color-white-2: #FAFAFA; /* hsl(0, 0%, 98%) · text */
+  --color-dark-gray-2: #1D1C1C; /* hsl(0, 2%, 11%) · fill */
+  --color-dark-gray-3: #231F20; /* hsl(345, 6%, 13%) · fill */
+  --color-blue-3: #3086C8; /* hsl(206, 61%, 49%) · fill */
+  --color-dark-gray-4: #232323; /* hsl(0, 0%, 14%) · fill */
+  --color-red-3: #EB001B; /* hsl(353, 100%, 46%) · fill */
+  --color-dark-gray-5: #1F1F1F; /* hsl(0, 0%, 12%) · background */
+  --color-dark-gray-6: rgba(23, 23, 23, 0.1); /* hsl(0, 0%, 8%) · border */
+  --color-dark-gray-7: rgba(23, 23, 23, 0.4); /* hsl(0, 0%, 9%) · background */
+  --color-dark-blue: #1E3764; /* hsl(219, 54%, 25%) · fill */
+  --color-orange: #F48120; /* hsl(27, 91%, 54%) · fill */
+  --color-dark-gray-8: #5F6368; /* hsl(213, 5%, 39%) · fill */
+  --color-blue-4: #4285F4; /* hsl(217, 89%, 61%) · fill */
+  --color-green: #34A853; /* hsl(136, 53%, 43%) · fill */
+  --color-orange-2: #FBBC04; /* hsl(45, 97%, 50%) · fill */
+  --color-red-4: #EA4335; /* hsl(5, 81%, 56%) · fill */
+  --color-light-yellow: #FFF48D; /* hsl(54, 100%, 78%) · fill */
+  --color-pink: #CC0066; /* hsl(330, 100%, 40%) · fill */
+  --color-light-red: #FFA8CD; /* hsl(334, 100%, 83%) · fill */
+  --color-dark-blue-2: #0B051D; /* hsl(255, 71%, 7%) · fill */
+  --color-cyan: #00A2E5; /* hsl(198, 100%, 45%) · fill */
+  --color-blue-5: #7375CF; /* hsl(239, 49%, 63%) · fill */
+  --color-orange-3: #F79E1B; /* hsl(36, 93%, 54%) · fill */
+  --color-orange-4: #FF5F00; /* hsl(22, 100%, 50%) · fill */
+  --color-dark-blue-3: #003087; /* hsl(219, 100%, 26%) · fill */
+  --color-dark-blue-4: #012169; /* hsl(222, 98%, 21%) · fill */
+  --color-blue-6: #5A31F4; /* hsl(253, 90%, 57%) · fill */
+  --color-dark-blue-5: #005B9A; /* hsl(205, 100%, 30%) · fill */
+  --color-red-5: #E9292D; /* hsl(359, 81%, 54%) · fill */
+  --color-blue-7: #0E73B9; /* hsl(205, 86%, 39%) · fill */
+  --color-dark-cyan: #059DA4; /* hsl(183, 94%, 33%) · fill */
+  --color-dark-blue-6: #142688; /* hsl(231, 74%, 31%) · fill */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 11.8257px;
+  --font-size-sm: 12px;
+  --font-size-base: 12.8229px;
+  --font-size-lg: 13px;
+  --font-size-xl: 13.3333px;
+  --font-size-2xl: 14px;
+  --font-size-3xl: 14.7821px;
+  --font-size-4xl: 15.5641px;
+  --font-size-5xl: 16px;
+  --font-size-6xl: 17.5653px;
+  --font-size-18px: 18px;
+  --font-size-19px: 19.1294px;
+  --font-size-20px: 20px;
+  --font-size-21px: 21.3354px;
+  --font-size-24px: 24px;
+  --font-size-26px: 25.5408px;
+  --font-size-28px: 28.1658px;
+  --font-size-29px: 28.6196px;
+  --font-size-30px: 30px;
+  --font-size-32px: 32px;
+  --font-size-38px: 38.1594px;
+  --font-size-54px: 53.5909px;
+  --font-size-75px: 75px;
+  --font-family-base: Times;
+  --font-family-2: BugattiRegular;
+  --font-family-3: BugattiBold;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  --line-height-tight: 10px;
+  --line-height-snug: 11.8257px;
+  --line-height-normal: 12.8229px;
+  --line-height-relaxed: 14px;
+  --line-height-loose: 14.7821px;
+  --line-height-lh-6: 16px;
+  --line-height-lh-7: 17.5px;
+  --line-height-lh-8: 19.1294px;
+  --line-height-lh-9: 19.5px;
+  --line-height-lh-10: 20.5903px;
+  --line-height-lh-11: 21.9566px;
+  --line-height-lh-12: 22.5px;
+  --line-height-lh-13: 24px;
+  --line-height-lh-14: 25px;
+  --line-height-lh-15: 25.5408px;
+  --line-height-lh-16: 26.6692px;
+  --line-height-lh-17: 28.1658px;
+  --line-height-lh-18: 28.6196px;
+  --line-height-lh-19: 30px;
+  --line-height-lh-20: 32px;
+  --line-height-lh-21: 38.1594px;
+  --line-height-lh-22: 53.5909px;
+  --line-height-lh-23: 75px;
+  --letter-spacing-tight: -3px;
+  --letter-spacing-normal: -2.14364px;
+  --letter-spacing-wide: -1.14478px;
+  --letter-spacing-wider: -1.06677px;
+  --letter-spacing-widest: -0.96px;
+  --letter-spacing-ls-6: -0.9px;
+  --letter-spacing-ls-7: -0.858587px;
+  --letter-spacing-ls-8: -0.75px;
+  --letter-spacing-ls-9: -0.704145px;
+  --letter-spacing-ls-10: -0.6px;
+  --letter-spacing-ls-11: -0.573883px;
+  --letter-spacing-ls-12: -0.514756px;
+  --letter-spacing-ls-13: -0.4px;
+  --letter-spacing-ls-14: 1px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1.90797px;
+  --space-2: 2px;
+  --space-3: 2.67954px;
+  --space-4: 3.05276px;
+  --space-5: 4px;
+  --space-6: 4.28727px;
+  --space-8: 5px;
+  --space-10: 6px;
+  --space-12: 6.5px;
+  --space-16: 8px;
+  --space-20: 9.53986px;
+  --space-24: 30px;
+  --space-32: 60px;
+  --space-40: 14px;
+  --space-48: 16px;
+  --space-64: 16.995px;
+  --space-80: 18px;
+  --space-96: 20px;
+  --space-128: 22px;
+  --space-160: 23.8496px;
+  --space-192: 24px;
+  --space-256: 26px;
+  --space-23: 28px;
+  --space-25: 32px;
+  --space-26: 35px;
+  --space-27: 36px;
+  --space-28: 40px;
+  --space-29: 48px;
+  --space-30: 52px;
+  --space-31: 56px;
+  --space-33: 70px;
+  --space-34: 72px;
+  --space-35: 95.4099px;
+  --space-36: 100px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 0px 0px 16px 16px;
+  --radius-md: 0px 34px 34px 0px;
+  --radius-lg: 0px 0px 17.8787px 17.8787px;
+  --radius-xl: 0px 0px 8px 8px;
+  --radius-2xl: 6px;
+  --radius-full: 8px 8px 0px 0px;
+  --radius-r7: 10px;
+  --radius-r8: 11.9305px;
+  --radius-r9: 11.9305px 11.9305px 0px 0px;
+  --radius-r10: 11.9305px 11.9305px 17.8787px 17.8787px;
+  --radius-r11: 12px;
+  --radius-r12: 17.8787px 17.8787px 0px 0px;
+  --radius-r13: 17.8787px;
+  --radius-r14: 24px 24px 0px 0px;
+  --radius-r15: 34px 0px 0px 34px;
+  --radius-r16: 34px 0px 0px;
+  --radius-r17: 50%;
+  --radius-r18: 60px;
+  --radius-r19: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(168, 232, 226, 0) 0px 0px 0px 0px;
+  --shadow-md: rgba(168, 232, 226, 0.1) 0px 0px 0px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.5s;
+  --duration-duration-6: 0.6s;
+  --duration-duration-7: 0.7s;
+  --duration-duration-8: 0.8s;
+  --duration-duration-9: 1s;
+  --duration-duration-10: 2s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -100;
+  --z-2: -1;
+  --z-3: 1;
+  --z-4: 2;
+  --z-5: 3;
+  --z-6: 10;
+  --z-7: 20;
+  --z-8: 25;
+  --z-9: 30;
+  --z-10: 35;
+  --z-11: 40;
+  --z-12: 50;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 639px;
+  --breakpoint-md: 640px;
+  --breakpoint-lg: 750px;
+  --breakpoint-xl: 767px;
+  --breakpoint-2xl: 768px;
+  --breakpoint-3xl: 1023px;
+  --breakpoint-bp-8: 1024px;
+  --breakpoint-bp-9: 1200px;
+  --breakpoint-bp-10: 1279px;
+  --breakpoint-bp-11: 1280px;
+  --breakpoint-bp-12: 1400px;
+  --breakpoint-bp-13: 1536px;
+  --breakpoint-bp-14: 1920px;
+  --breakpoint-bp-15: 2200px;
+
+  /* ── Opacity ── */
+  --opacity-7: 0.07;
+  --opacity-20: 0.2;
+  --opacity-30: 0.3;
+  --opacity-35: 0.35;
+  --opacity-40: 0.4;
+  --opacity-60: 0.6;
+  --opacity-65: 0.65;
+  --opacity-80: 0.8;
+}

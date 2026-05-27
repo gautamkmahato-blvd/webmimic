@@ -1,0 +1,184 @@
+/* ============================================
+ * Design Tokens — Presentation software for fast-moving teams | Pitch
+ * Source: https://pitch.com/
+ * Generated: 19/04/2026, 00:11:34
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #2B2A35; /* hsl(245, 12%, 19%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue: #6B53FF; /* hsl(248, 100%, 66%) · text */
+  --color-yellow: #FFD02C; /* hsl(47, 100%, 59%) · background */
+  --color-purple: #8D49F7; /* hsl(263, 92%, 63%) · background */
+  --color-dark-gray-2: #1E1D28; /* hsl(245, 16%, 14%) · text */
+  --color-blue-2: #545465; /* hsl(240, 9%, 36%) · text */
+  --color-light-gray: #DDDFE5; /* hsl(225, 13%, 88%) · border */
+  --color-mid-gray: #808080; /* hsl(0, 0%, 50%) · background */
+  --color-blue-3: #6F7387; /* hsl(230, 10%, 48%) · text */
+  --color-dark-blue: #3F4250; /* hsl(229, 12%, 28%) · text */
+  --color-orange: #FFA000; /* hsl(38, 100%, 50%) · background */
+  --color-blue-4: rgba(107, 83, 255, 0.05); /* hsl(247, 100%, 65%) · background */
+  --color-blue-5: #586EE0; /* hsl(230, 69%, 61%) · fill */
+  --color-light-gray-2: #D7D8E0; /* hsl(233, 13%, 86%) · border */
+  --color-orange-2: #FF9E2C; /* hsl(32, 100%, 59%) · gradient */
+  --color-blue-6: #5318EB; /* hsl(257, 84%, 51%) · gradient */
+  --color-light-purple: #AB6EF9; /* hsl(266, 92%, 70%) · gradient */
+  --color-blue-7: rgba(103, 110, 144, 0.2); /* hsl(232, 16%, 49%) · shadow */
+  --color-light-cyan: #81D4FA; /* hsl(199, 92%, 74%) · background */
+  --color-yellow-2: #FFD600; /* hsl(50, 100%, 50%) · background */
+  --color-dark-gray-3: rgba(43, 42, 53, 0.25); /* hsl(240, 8%, 19%) · shadow */
+  --color-dark-gray-4: rgba(43, 42, 53, 0.5); /* hsl(250, 13%, 19%) · shadow */
+  --color-dark-blue-2: #371789; /* hsl(257, 71%, 31%) · text */
+  --color-light-gray-3: #F0EFF4; /* hsl(252, 19%, 95%) · background */
+  --color-purple-2: #8A4CF9; /* hsl(262, 94%, 64%) · gradient */
+  --color-dark-blue-3: rgba(53, 27, 97, 0.04); /* hsl(260, 59%, 25%) · gradient */
+  --color-white-2: #F6F6F9; /* hsl(240, 20%, 97%) · gradient */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 13px;
+  --font-size-sm: 14px;
+  --font-size-base: 15px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 21px;
+  --font-size-3xl: 22px;
+  --font-size-4xl: 24px;
+  --font-size-5xl: 27px;
+  --font-size-6xl: 28px;
+  --font-size-36px: 36px;
+  --font-size-60px: 60px;
+  --font-size-80px: 80px;
+  --font-family-base: Eina01;
+  --font-family-2: Mark Pro;
+  --font-family-3: system-ui;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --line-height-tight: 13px;
+  --line-height-snug: 15.6px;
+  --line-height-normal: 17.6px;
+  --line-height-relaxed: 22.4px;
+  --line-height-loose: 23.4px;
+  --line-height-lh-6: 24px;
+  --line-height-lh-7: 27px;
+  --line-height-lh-8: 28.8px;
+  --line-height-lh-9: 30px;
+  --line-height-lh-10: 30.8px;
+  --line-height-lh-11: 32px;
+  --line-height-lh-12: 36px;
+  --line-height-lh-13: 37.8px;
+  --line-height-lh-14: 44px;
+  --line-height-lh-15: 50.4px;
+  --line-height-lh-16: 60px;
+  --line-height-lh-17: 80px;
+  --line-height-lh-18: 104px;
+  --letter-spacing-tight: -1.6px;
+  --letter-spacing-normal: -1.2px;
+  --letter-spacing-wide: -0.72px;
+  --letter-spacing-wider: -0.54px;
+  --letter-spacing-widest: -0.28px;
+  --letter-spacing-ls-6: 1.3px;
+  --letter-spacing-ls-7: 1.4px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 3.2px;
+  --space-5: 4px;
+  --space-6: 4.8px;
+  --space-8: 6px;
+  --space-10: 8px;
+  --space-12: 10px;
+  --space-16: 10.476px;
+  --space-20: 12px;
+  --space-24: 45px;
+  --space-32: 90px;
+  --space-40: 18px;
+  --space-48: 20px;
+  --space-64: 24px;
+  --space-80: 25px;
+  --space-96: 28px;
+  --space-128: 30px;
+  --space-160: 32px;
+  --space-192: 35px;
+  --space-256: 40px;
+  --space-23: 42.348px;
+  --space-25: 48px;
+  --space-26: 56px;
+  --space-27: 60px;
+  --space-28: 62.5625px;
+  --space-29: 70px;
+  --space-30: 80px;
+  --space-31: 84.702px;
+  --space-33: 103.94px;
+  --space-34: 120px;
+  --space-35: 128.562px;
+  --space-36: 142.562px;
+  --space-37: 147.281px;
+  --space-38: 231.281px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 9px;
+  --radius-sm: 3px;
+  --radius-md: 3px 3px 0px 0px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 8px 8px 0px 0px;
+  --radius-full: 10px;
+  --radius-r7: 12px;
+  --radius-r8: 14px;
+  --radius-r9: 16px;
+  --radius-r10: 20px;
+  --radius-r11: 26px;
+  --radius-r12: 50%;
+  --radius-r13: 56px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.15) 0px 3px 10px 0px;
+  --shadow-md: rgba(103, 110, 144, 0.2) 0px 8px 26px 0px;
+  --shadow-lg: rgba(43, 42, 53, 0.25) 0px 6px 27px 0px;
+  --shadow-xl: rgba(43, 42, 53, 0.5) 0px 6px 27px 0px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0.15) 0px 0px 0px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.12s;
+  --duration-normal: 0.15s;
+  --duration-slow: 0.2s;
+  --duration-slower: 0.225s;
+  --duration-duration-6: 0.3s;
+  --duration-duration-7: 0.4s;
+  --duration-duration-8: 0.5s;
+  --duration-duration-9: 0.8s;
+  --duration-duration-10: 1.4s;
+  --easing-ease-in-out: ease-in-out;
+  --easing-ease-out: ease-out;
+  --easing-ease-in: ease-in;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 2147483001;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 1082px;
+  --breakpoint-sm: 1123px;
+  --breakpoint-md: 1399px;
+  --breakpoint-lg: 1667px;
+  --breakpoint-xl: 1670px;
+  --breakpoint-2xl: 1820px;
+
+  /* ── Opacity ── */
+  --opacity-50: 0.5;
+  --opacity-70: 0.7;
+  --opacity-80: 0.8;
+  --opacity-85: 0.85;
+}

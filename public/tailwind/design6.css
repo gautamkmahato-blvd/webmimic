@@ -1,0 +1,183 @@
+/* ============================================
+ * Design Tokens — Dia | The browser that works with you
+ * Source: https://www.diabrowser.com/
+ * Generated: 05/05/2026, 21:23:35
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-gray: rgba(235, 235, 235, 0.7); /* hsl(0, 0%, 92%) · background */
+  --color-light-yellow: #F2FCB3; /* hsl(68, 92%, 85%) · background */
+  --color-yellow: #FFDC5C; /* hsl(47, 100%, 68%) · background */
+  --color-white-2: #F8F8F8; /* hsl(0, 0%, 97%) · background */
+  --color-blue: #4285F4; /* hsl(217, 89%, 61%) · fill */
+  --color-light-gray-2: #EFEFEF; /* hsl(0, 0%, 94%) · background */
+  --color-light-pink: #FFACE3; /* hsl(320, 100%, 84%) · gradient */
+  --color-light-yellow-2: rgba(255, 241, 172, 0.5); /* hsl(50, 100%, 84%) · gradient */
+  --color-light-blue: #79C9FF; /* hsl(204, 100%, 74%) · gradient */
+  --color-blue-2: #4A60D1; /* hsl(230, 59%, 55%) · gradient */
+  --color-blue-3: #5092C7; /* hsl(207, 52%, 55%) · gradient */
+  --color-blue-4: #3C6AFF; /* hsl(226, 100%, 62%) · gradient */
+  --color-dark-gray: #565656; /* hsl(0, 0%, 34%) · gradient */
+  --color-orange: #FBBC05; /* hsl(45, 97%, 50%) · fill */
+  --color-blue-5: #1967D2; /* hsl(215, 79%, 46%) · fill */
+  --color-dark-green: #188038; /* hsl(138, 68%, 30%) · fill */
+  --color-green: #34A853; /* hsl(136, 53%, 43%) · fill */
+  --color-red: #EA4335; /* hsl(5, 81%, 56%) · fill */
+  --color-light-gray-3: #C6C6C6; /* hsl(0, 0%, 78%) · fill */
+  --color-pink: #C679C4; /* hsl(302, 40%, 63%) · gradient */
+  --color-red-2: #FA3D1D; /* hsl(9, 96%, 55%) · gradient */
+  --color-orange-2: #FFB005; /* hsl(41, 100%, 51%) · gradient */
+  --color-light-blue-2: #E1E1FE; /* hsl(240, 94%, 94%) · gradient */
+  --color-blue-6: #0358F7; /* hsl(219, 98%, 49%) · gradient */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 4.5px;
+  --font-size-xs: 10px;
+  --font-size-sm: 10.4px;
+  --font-size-base: 11px;
+  --font-size-lg: 12px;
+  --font-size-xl: 13px;
+  --font-size-2xl: 14px;
+  --font-size-3xl: 16px;
+  --font-size-4xl: 17px;
+  --font-size-5xl: 18px;
+  --font-size-6xl: 20px;
+  --font-size-22px: 22px;
+  --font-size-24px: 24px;
+  --font-size-48px: 48px;
+  --font-size-54px: 54px;
+  --font-size-72px: 72px;
+  --font-size-96px: 96px;
+  --font-family-base: ABC Oracle;
+  --font-family-2: Exposure Variable;
+  --font-family-3: system-ui;
+  --font-family-4: Exposure VAR;
+  --font-family-5: ABC Favorit Mono;
+  --font-family-6: ABC Oracle Triple;
+  --font-weight-light: 300;
+  --font-weight-w350: 350;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-w650: 650;
+  --font-weight-bold: 700;
+  --line-height-tight: 6.75px;
+  --line-height-snug: 10px;
+  --line-height-normal: 10.5px;
+  --line-height-relaxed: 14px;
+  --line-height-loose: 15px;
+  --line-height-lh-6: 16px;
+  --line-height-lh-7: 17px;
+  --line-height-lh-8: 18px;
+  --line-height-lh-9: 18.9px;
+  --line-height-lh-10: 20px;
+  --line-height-lh-11: 22px;
+  --line-height-lh-12: 24px;
+  --line-height-lh-13: 27px;
+  --line-height-lh-14: 30px;
+  --line-height-lh-15: 33px;
+  --line-height-lh-16: 35px;
+  --line-height-lh-17: 56px;
+  --line-height-lh-18: 60px;
+  --line-height-lh-19: 84px;
+  --line-height-lh-20: 100.8px;
+  --letter-spacing-tight: -3.84px;
+  --letter-spacing-normal: -2.88px;
+  --letter-spacing-wide: -2.4px;
+  --letter-spacing-wider: -2.16px;
+  --letter-spacing-widest: -0.96px;
+  --letter-spacing-ls-6: -0.72px;
+  --letter-spacing-ls-7: -0.4px;
+  --letter-spacing-ls-8: -0.36px;
+  --letter-spacing-ls-9: 1.3px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-6: 6px;
+  --space-8: 7px;
+  --space-10: 8px;
+  --space-12: 10px;
+  --space-16: 11px;
+  --space-20: 12px;
+  --space-24: 90px;
+  --space-32: 209.07px;
+  --space-40: 16px;
+  --space-48: 20px;
+  --space-64: 24px;
+  --space-80: 28px;
+  --space-96: 30px;
+  --space-128: 32px;
+  --space-160: 40px;
+  --space-192: 50px;
+  --space-256: 70px;
+  --space-23: 80px;
+  --space-25: 96px;
+  --space-26: 100px;
+  --space-27: 120px;
+  --space-28: 124.164px;
+  --space-29: 150px;
+  --space-30: 172.2px;
+  --space-31: 186.5px;
+  --space-33: 209.078px;
+  --space-34: 238.844px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 4px;
+  --radius-md: 5px;
+  --radius-lg: 12px;
+  --radius-xl: 12px 12px 0px 0px;
+  --radius-2xl: 14px;
+  --radius-full: 16px;
+  --radius-r7: 20px;
+  --radius-r8: 24px;
+  --radius-r9: 30px;
+  --radius-r10: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.06) 0px 2px 8px 0px, rgba(0, 0, 0, 0.04) 0px 0px 2px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 8px 22px 0px, rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 6px 22px 0px, rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset;
+  --shadow-xl: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 6px 20px 0px, rgba(255, 255, 255, 0.6) 0px 1px 0px 0px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.2s;
+  --duration-fast: 0.25s;
+  --duration-normal: 0.3s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 3;
+  --z-4: 10;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 700px;
+  --breakpoint-lg: 768px;
+  --breakpoint-xl: 800px;
+  --breakpoint-2xl: 900px;
+  --breakpoint-3xl: 1000px;
+  --breakpoint-bp-8: 1100px;
+  --breakpoint-bp-9: 1200px;
+  --breakpoint-bp-10: 1300px;
+  --breakpoint-bp-11: 1400px;
+  --breakpoint-bp-12: 1500px;
+  --breakpoint-bp-13: 1600px;
+  --breakpoint-bp-14: 1700px;
+  --breakpoint-bp-15: 1800px;
+  --breakpoint-bp-16: 1900px;
+  --breakpoint-bp-17: 2000px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-70: 0.7;
+}

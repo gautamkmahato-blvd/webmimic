@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Spotify Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Circular+Std:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* Spotify Color Tokens */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-green: #1ED760;
+  --color-dark-gray-2: #1F1F1F;
+  --color-dark-gray-3: #121212;
+  --color-white-2: #F8F8F8;
+  --color-green-2: #468254;
+  --color-blue: #3860BE;
+  --color-dark-green: #346E4A;
+  --color-mid-gray-3: #777777;
+  --color-dark-gray-6: #292929;
+  --color-dark-gray-8: #333333;
+  --color-dark-red: #680808;
+  --color-cyan: #438080;
+  --color-orange: #A86741;
+  --color-cyan-2: #4F7F77;
+  --color-green-3: #1DB954;
+  --color-dark-gray-9: #535353;
+  --color-red: #A9635C;
+  --color-dark-red-2: #481008;
+  --color-pink-2: #E10096;
+  --color-dark-red-3: #A01010;
+  --color-green-4: #617F52;
+  --color-dark-gray-10: #404040;
+  --color-dark-gray-13: #282828;
+  --color-dark-gray-7: #2A2A2A;
+  --color-pink: #AF2896;
+  --color-blue-3: #509BF5;
+  --color-dark-blue-4: #2E3644;
+  --color-light-gray: #B3B3B3;
+  --color-mid-gray: #696969;
+  --color-dark-gray: #555555;
+  --color-mid-gray-2: #7C7C7C;
+  --color-dark-gray-4: #656565;
+  --color-blue-2: #0000EE;
+  --color-dark-gray-5: #101010;
+  --color-mid-gray-4: #808080;
+  --color-light-gray-4: #C5C5C5;
+  --color-cyan-3: #32AE88;
+  --color-light-gray-3: #C1C1C1;
+  --color-light-gray-6: #D8D8D8;
+  --color-mid-gray-7: #707070;
+  --color-light-gray-7: #BBBBBB;
+  --color-light-gray-2: #C7C5C7;
+  --color-mid-gray-6: #999999;
+  --color-purple: #584870;
+  --color-purple-2: #8E69A3;
+  --color-purple-3: #703090;
+  --color-dark-purple: #302048;
+  --color-dark-blue: #284050;
+  --color-dark-blue-2: #284058;
+  --color-dark-blue-3: #183860;
+  --color-blue-4: #4078B0;
+  --color-blue-5: #6A7983;
+  --color-blue-6: #3818A0;
+  --color-blue-7: #6F74A4;
+  --color-dark-cyan: #0080AF;
+  --color-dark-cyan-2: #106850;
+  --color-dark-cyan-3: #1B8857;
+  --color-dark-cyan-4: #086050;
+  --color-cyan-4: #637C7C;
+  --color-cyan-5: #5F7D75;
+  --color-cyan-6: #3D8282;
+  --color-dark-yellow: #857809;
+  --color-dark-gray-11: #484048;
+  --color-dark-gray-12: #383840;
+  --color-dark-green-2: #384030;
+  --color-green-5: #697F37;
+  --color-orange-2: #A16B20;
+  --color-orange-3: #A3694F;
+  --color-red-2: #985058;
+  --color-red-3: #804038;
+  --color-red-4: #A85050;
+  --color-red-5: #A4646F;
+  --color-red-6: #C0574A;
+  --color-red-7: #B82810;
+  --color-dark-red-4: #900808;
+  --color-dark-red-5: #582018;
+  --color-dark-red-6: #682828;
+  --color-dark-red-7: #501810;
+  --color-dark-red-8: #481818;
+  --color-light-gray-5: #EEEEEE;
+  --color-mid-gray-5: #767676;
+  --color-white-3: #F9FFFA;
+  --color-white-4: #F4F4F4;
+
+  /* Spotify Typography */
+  --font-size-2xs: 12px;
+  --font-size-xs: 12.992px;
+  --font-size-sm: 13.008px;
+  --font-size-base: 13.3333px;
+  --font-size-lg: 13.6px;
+  --font-size-xl: 14px;
+  --font-size-2xl: 14.4px;
+  --font-size-3xl: 16px;
+  --font-size-4xl: 24px;
+  --font-family-base: 'circular std', 'SpotifyMixUI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-family-2: 'circular std', 'SpotifyMixUI', sans-serif;
+  --font-family-3: 'circular std', 'SpotifyMixUITitle', serif;
+  --font-family-serif: Times, 'Times New Roman', serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 12px;
+  --line-height-snug: 14.4px;
+  --line-height-normal: 16.91px;
+  --line-height-relaxed: 17.6px;
+  --line-height-loose: 19.49px;
+  --line-height-lh-6: 20.8px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 38px;
+  --letter-spacing-tight: 0.144px;
+  --letter-spacing-normal: 0.16px;
+  --letter-spacing-wide: 1.2px;
+
+  /* Spotify Spacing */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 7px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 11px;
+  --space-10: 12px;
+  --space-12: 15px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 20.32px;
+  --space-32: 24px;
+  --space-40: 28px;
+  --space-48: 32px;
+  --space-64: 36px;
+  --space-80: 40px;
+  --space-96: 48px;
+  --space-128: 64px;
+  --space-160: 96px;
+  --space-192: 110.91px;
+  --space-256: 153.73px;
+
+  /* Spotify Borders */
+  --border-width-hairline: 1px;
+  --border-width-thin: 12px;
+  --radius-sm: 2px;
+  --radius-md: 2.5px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+  --radius-full: 8px;
+  --radius-r7: 10px;
+  --radius-r8: 16px;
+  --radius-r9: 17px;
+  --radius-r10: 20px;
+  --radius-r11: 32px;
+  --radius-r12: 50%;
+  --radius-r13: 50px;
+  --radius-r14: 500px;
+  --radius-r15: 9999px;
+
+  /* Spotify Shadows */
+  --shadow-sm: rgba(0,0,0,0.5) 0px 8px 24px 0px;
+  --shadow-md: rgba(0,0,0,0.3) 0px 8px 8px 0px;
+  --shadow-lg: rgb(18,18,18) 0px 1px 0px 0px, rgb(124,124,124) 0px 0px 0px 1px inset;
+  --shadow-xl: rgba(0,0,0,0.5) 0px 2px 4px 0px;
+  --shadow-shadow-5: rgb(128,128,128) 0px 0px 5px 0px;
+  --shadow-shadow-6: rgb(124,124,124) 0px 0px 0px 1px inset;
+
+  /* Spotify Motion */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.22s;
+  --duration-slower: 0.25s;
+  --duration-duration-6: 0.3s;
+  --duration-duration-7: 0.5s;
+  --duration-duration-8: 1s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in: ease-in;
+  --easing-ease-in-out: ease-in-out;
+
+  /* Z-Index */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 4;
+  --z-6: 5;
+  --z-7: 6;
+  --z-8: 7;
+  --z-9: 100;
+  --z-10: 9999;
+  --z-11: 2147483645;
+  --z-12: 2147483646;
+  --z-13: 2147483647;
+
+  /* Opacity */
+  --opacity-30: 0.3;
+  --opacity-70: 0.7;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family-base);background:var(--color-dark-gray-3);color:var(--color-light-gray);font-size:var(--font-size-xl);line-height:var(--line-height-normal);font-weight:var(--font-weight-regular);}
+.page{max-width:1200px;margin:0 auto;padding:64px 48px;}
+
+/* ── HEADER ── */
+.top-bar{border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-6);margin-bottom:32px;padding-bottom:20px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.header-left{display:flex;align-items:center;gap:16px;}
+.logo{width:38px;height:38px;background:var(--color-green);border-radius:var(--radius-r12);display:flex;align-items:center;justify-content:center;}
+.system-title{font-size:var(--font-size-4xl);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-lh-7);letter-spacing:var(--letter-spacing-tight);}
+.system-meta{font-size:var(--font-size-2xs);color:var(--color-mid-gray-2);margin-top:2px;line-height:var(--line-height-snug);}
+.hbadge{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);background:var(--color-dark-gray-6);color:var(--color-mid-gray-2);padding:2px 10px;border-radius:var(--radius-r15);border:var(--border-width-hairline) solid var(--color-dark-gray-8);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-hairline) solid var(--color-dark-gray-5);background:var(--color-dark-gray-6);color:var(--color-light-gray-2);box-shadow:0 1px 2px rgba(0,0,0,0.28);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-cyan);color:var(--color-cyan);box-shadow:0 4px 14px rgba(0,0,0,0.38);transform:translateY(-1px);}
+
+/* ── SECTION ── */
+.section{margin-bottom:64px;}
+.section-title{font-size:var(--font-size-4xl);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-lh-7);margin-bottom:24px;display:flex;align-items:center;gap:8px;letter-spacing:var(--letter-spacing-tight);}
+
+/* ── COLORS ── */
+.color-group{margin-bottom:32px;}
+.color-group-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-wide);text-transform:uppercase;color:var(--color-mid-gray-2);margin-bottom:8px;}
+.swatch-grid{display:grid;gap:8px;}
+.swatch-item{display:flex;flex-direction:column;gap:4px;}
+.swatch-box{height:60px;border-radius:var(--radius-2xl);border:var(--border-width-hairline) solid rgba(255,255,255,0.07);}
+.swatch-name{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray);line-height:var(--line-height-snug);}
+.swatch-hex{font-size:10px;color:var(--color-mid-gray-2);line-height:var(--line-height-tight);}
+
+/* ── TYPOGRAPHY ── */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px;}
+.font-card{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-6);border-radius:var(--radius-r8);padding:24px;}
+.font-token{font-size:var(--font-size-2xs);color:var(--color-green);font-weight:var(--font-weight-bold);margin-bottom:8px;letter-spacing:var(--letter-spacing-normal);}
+.font-display{font-size:28px;color:var(--color-white);line-height:var(--line-height-lh-7);margin-bottom:8px;font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-tight);}
+.font-sample{font-size:var(--font-size-xl);color:var(--color-mid-gray-2);line-height:var(--line-height-normal);font-weight:var(--font-weight-regular);}
+.fw-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.fw-chip{font-size:var(--font-size-2xs);padding:2px 10px;background:var(--color-dark-gray-3);border-radius:var(--radius-2xl);color:var(--color-light-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-6);}
+
+.type-scale{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-6);border-radius:var(--radius-r8);overflow:hidden;}
+.type-row{display:flex;flex-direction:column;padding:12px 24px;border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-6);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--color-white);margin-bottom:2px;}
+.type-meta{font-size:10px;color:var(--color-mid-gray-2);line-height:var(--line-height-snug);}
+
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.lh-item{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-6);border-radius:var(--radius-2xl);padding:8px;display:flex;flex-direction:column;gap:4px;}
+.lh-bar-wrap{background:var(--color-dark-gray-6);border-radius:2px;overflow:hidden;position:relative;}
+.lh-bar{background:linear-gradient(to bottom,var(--color-green-2),var(--color-green));width:100%;}
+.lh-token{font-size:var(--font-size-2xs);color:var(--color-green);}
+.lh-val{font-size:10px;color:var(--color-mid-gray-2);}
+
+.ls-row{display:flex;gap:8px;flex-wrap:wrap;}
+.ls-item{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-6);border-radius:var(--radius-2xl);padding:12px 24px;flex:1;}
+.ls-sample{font-size:var(--font-size-4xl);color:var(--color-white);font-weight:var(--font-weight-bold);margin-bottom:4px;}
+.ls-token{font-size:var(--font-size-2xs);color:var(--color-green);}
+.ls-desc{font-size:10px;color:var(--color-mid-gray-2);}
+
+/* ── SPACING ── */
+.token-wrap{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-6);border-radius:var(--radius-r8);padding:24px;}
+.tw-title{font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-lh-7);margin-bottom:2px;letter-spacing:var(--letter-spacing-tight);}
+.tw-sub{font-size:var(--font-size-2xs);color:var(--color-mid-gray-2);margin-bottom:24px;line-height:var(--line-height-normal);}
+.spacing-chart{display:flex;align-items:flex-end;gap:4px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;}
+.sp-bar{background:linear-gradient(to top,var(--color-green-2),var(--color-green));border-radius:2px 2px 0 0;width:100%;}
+.sp-lbl{font-size:9px;color:var(--color-mid-gray-2);text-align:center;}
+
+/* ── BORDERS ── */
+.border-card{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-6);border-radius:var(--radius-r8);padding:24px;margin-bottom:24px;}
+.bc-title{font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-lh-7);margin-bottom:12px;letter-spacing:var(--letter-spacing-tight);}
+.radius-row{display:flex;gap:16px;flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,var(--color-green-2),var(--color-green));border:var(--border-width-hairline) solid rgba(255,255,255,0.07);}
+.radius-lbl{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray);text-align:center;}
+.radius-val{font-size:10px;color:var(--color-mid-gray-2);text-align:center;}
+.bw-demo{display:flex;flex-direction:column;gap:8px;}
+.bw-item{display:flex;align-items:center;gap:16px;}
+.bw-token{font-size:var(--font-size-2xs);color:var(--color-green);white-space:nowrap;}
+.bw-val{font-size:10px;color:var(--color-mid-gray-2);white-space:nowrap;}
+
+/* ── SHADOWS ── */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sh-item{display:flex;flex-direction:column;gap:8px;}
+.sh-box{height:88px;background:var(--color-dark-gray-8);border-radius:var(--radius-2xl);}
+.sh-token{font-size:var(--font-size-xl);font-weight:var(--font-weight-bold);color:var(--color-light-gray);}
+.sh-usage{font-size:10px;color:var(--color-mid-gray-2);}
+.sh-desc{font-size:10px;color:var(--color-mid-gray);line-height:var(--line-height-normal);margin-top:2px;}
+
+/* ── Z-INDEX ── */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:10px 10px;text-align:left;font-size:var(--font-size-xl);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-6);line-height:var(--line-height-normal);}
+.z-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);text-transform:uppercase;letter-spacing:var(--letter-spacing-wide);color:var(--color-mid-gray-2);}
+.z-table td:first-child{color:var(--color-green);}
+.z-table td:nth-child(2){color:var(--color-white);font-weight:var(--font-weight-bold);}
+.z-table td:nth-child(3){color:var(--color-mid-gray-2);}
+.z-table tr:last-child td{border-bottom:none;}
+
+/* ── BREAKPOINTS ── */
+.bp-card{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-6);border-radius:var(--radius-r8);padding:24px;display:flex;align-items:center;gap:32px;}
+.bp-icon{font-size:24px;line-height:1;}
+.bp-token{font-size:var(--font-size-2xs);color:var(--color-green);margin-bottom:4px;}
+.bp-val{font-size:20px;font-weight:var(--font-weight-bold);color:var(--color-white);line-height:1;letter-spacing:var(--letter-spacing-tight);}
+.bp-desc{font-size:var(--font-size-2xs);color:var(--color-mid-gray-2);margin-top:4px;}
+
+/* ── OPACITY ── */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.op-item{display:flex;flex-direction:column;gap:4px;}
+.op-box{height:60px;border-radius:var(--radius-2xl);background:var(--color-green);}
+.op-token{font-size:var(--font-size-2xs);color:var(--color-green);}
+.op-val{font-size:10px;color:var(--color-mid-gray-2);}
+
+/* ── ACCESSIBILITY ── */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:10px 10px;text-align:left;font-size:var(--font-size-2xs);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-6);line-height:var(--line-height-normal);}
+.a11y-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);text-transform:uppercase;letter-spacing:var(--letter-spacing-wide);color:var(--color-mid-gray-2);}
+.a11y-table td:first-child,.a11y-table td:nth-child(2){font-size:10px;}
+.a11y-table td:nth-child(2){color:var(--color-mid-gray-2);}
+.a11y-table td:nth-child(3){color:var(--color-light-gray);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-bold);padding:2px 7px;border-radius:var(--radius-r15);}
+.wcag-aaa{background:rgba(30,215,96,0.15);color:var(--color-green);border:var(--border-width-hairline) solid rgba(30,215,96,0.3);}
+.wcag-aa{background:rgba(255,255,255,0.08);color:var(--color-light-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-8);}
+.wcag-aal{background:var(--color-dark-gray-6);color:var(--color-mid-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-8);}
+.wcag-fail{background:rgba(239,68,68,.08);color:#f87171;border:var(--border-width-hairline) solid rgba(239,68,68,.2);}
+
+/* ── COMPONENTS ── */
+.comp-row{background:var(--color-dark-gray-2);border-radius:var(--radius-r8);border:var(--border-width-hairline) solid var(--color-dark-gray-6);overflow:hidden;margin-bottom:20px;}
+.comp-header{padding:6px 12px;border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-6);background:var(--color-dark-gray-3);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray);letter-spacing:var(--letter-spacing-normal);}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-bold);background:var(--color-dark-gray-6);color:var(--color-mid-gray-2);padding:2px 8px;border-radius:var(--radius-r15);border:var(--border-width-hairline) solid var(--color-dark-gray-8);}
+.comp-body{padding:24px;}
+
+.btn-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-base);font-weight:var(--font-weight-bold);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-2xs);padding:8px 16px;border-radius:var(--radius-r15);line-height:var(--line-height-snug);transition:background var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);letter-spacing:var(--letter-spacing-normal);}
+.btn:hover{transform:scale(1.04);}
+.btn-primary{background:var(--color-green);color:var(--color-black);}
+.btn-primary:hover{background:#1fdf64;}
+.btn-secondary{background:var(--color-white);color:var(--color-black);}
+.btn-secondary:hover{background:var(--color-white-2);}
+.btn-outline{background:transparent;color:var(--color-white);border:var(--border-width-hairline) solid var(--color-light-gray);}
+.btn-outline:hover{border-color:var(--color-white);}
+.btn-ghost{background:transparent;color:var(--color-light-gray);border:var(--border-width-hairline) solid transparent;}
+.btn-ghost:hover{color:var(--color-white);}
+.btn-muted{background:var(--color-dark-gray-6);color:var(--color-light-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-8);}
+
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.inp-group{display:flex;flex-direction:column;gap:4px;}
+.inp-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray);line-height:var(--line-height-snug);letter-spacing:var(--letter-spacing-normal);}
+.inp{width:100%;font-family:var(--font-family-base);font-size:var(--font-size-xl);color:var(--color-white);background:var(--color-dark-gray-6);border:var(--border-width-hairline) solid var(--color-dark-gray-8);border-radius:var(--radius-2xl);padding:8px 12px;outline:none;transition:border var(--duration-fast) var(--easing-ease-out);line-height:var(--line-height-normal);}
+.inp:focus{border-color:var(--color-white);box-shadow:none;}
+.inp::placeholder{color:var(--color-mid-gray-2);}
+.inp-hint{font-size:var(--font-size-2xs);color:var(--color-mid-gray-2);line-height:var(--line-height-snug);}
+.inp-err{border-color:rgba(239,68,68,0.5) !important;}
+.inp-err-msg{font-size:var(--font-size-2xs);color:#f87171;line-height:var(--line-height-snug);}
+
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);padding:2px 8px;border-radius:var(--radius-r15);line-height:var(--line-height-snug);letter-spacing:var(--letter-spacing-normal);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--color-dark-gray-6);color:var(--color-light-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-8);}
+.badge-brand{background:rgba(30,215,96,0.15);color:var(--color-green);border:var(--border-width-hairline) solid rgba(30,215,96,0.3);}
+.badge-muted{background:var(--color-dark-gray-2);color:var(--color-mid-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-6);}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);padding:2px 8px;border-radius:var(--radius-r15);border:var(--border-width-hairline) solid var(--color-dark-gray-8);background:var(--color-dark-gray-6);color:var(--color-light-gray);line-height:var(--line-height-snug);letter-spacing:var(--letter-spacing-normal);}
+.tag-brand{color:var(--color-green);background:rgba(30,215,96,0.1);border-color:rgba(30,215,96,0.25);}
+
+.alert{display:flex;gap:8px;padding:10px 12px;border-radius:var(--radius-r8);font-size:var(--font-size-xl);}
+.alert-icon{font-size:18px;flex-shrink:0;line-height:1.4;}
+.alert-body h5{font-weight:var(--font-weight-bold);margin-bottom:2px;font-size:var(--font-size-xl);color:var(--color-white);line-height:var(--line-height-lh-6);letter-spacing:var(--letter-spacing-normal);}
+.alert-body p{font-size:var(--font-size-2xs);line-height:var(--line-height-normal);}
+.alert-neutral{background:var(--color-dark-gray-2);color:var(--color-light-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-6);}
+.alert-brand{background:rgba(30,215,96,0.1);color:var(--color-green);border:var(--border-width-hairline) solid rgba(30,215,96,0.2);}
+.alert-dim{background:var(--color-dark-gray-6);color:var(--color-light-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-8);}
+.alert-base{background:var(--color-dark-gray-3);color:var(--color-mid-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-6);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.feature-card{background:var(--color-dark-gray-13);border:var(--border-width-hairline) solid var(--color-dark-gray-6);border-radius:var(--radius-r8);padding:24px;transition:background var(--duration-fast) var(--easing-ease-out);}
+.feature-card:hover{background:var(--color-dark-gray-6);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-r12);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px;border:var(--border-width-hairline) solid var(--color-dark-gray-8);background:var(--color-dark-gray-2);}
+.fc-title{font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-lh-7);margin-bottom:4px;letter-spacing:var(--letter-spacing-tight);}
+.fc-desc{font-size:var(--font-size-2xs);color:var(--color-mid-gray-2);line-height:var(--line-height-normal);margin-bottom:12px;}
+
+.av-row{display:flex;align-items:center;gap:8px;margin-bottom:24px;}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-bold);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-3xl);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-xl);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-2xs);}
+.av-info h4{font-size:var(--font-size-3xl);font-weight:var(--font-weight-bold);color:var(--color-white);line-height:var(--line-height-lh-7);letter-spacing:var(--letter-spacing-tight);}
+.av-info p{font-size:var(--font-size-2xs);color:var(--color-mid-gray-2);line-height:var(--line-height-snug);}
+
+.prog-wrap{margin-bottom:8px;}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray);line-height:var(--line-height-snug);margin-bottom:3px;}
+.prog-track{height:4px;background:var(--color-dark-gray-8);border-radius:var(--radius-r15);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-r15);transition:width var(--duration-slow) var(--easing-ease-out);}
+
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:7px 10px;text-align:left;font-size:var(--font-size-xl);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-6);line-height:var(--line-height-normal);}
+.data-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);text-transform:uppercase;letter-spacing:var(--letter-spacing-wide);color:var(--color-mid-gray-2);background:var(--color-dark-gray-3);}
+.data-table tr:hover td{background:var(--color-dark-gray-13);transition:background var(--duration-fast) var(--easing-ease-out);}
+.data-table td:first-child{color:var(--color-green);font-weight:var(--font-weight-medium);}
+
+/* ── CSS VARIABLES REFERENCE ── */
+.tokens-section{margin-bottom:64px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.tokens-group{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-6);border-radius:var(--radius-r8);overflow:hidden;}
+.tokens-group-header{padding:8px 12px;border-bottom:var(--border-width-hairline) solid var(--color-dark-gray-6);background:var(--color-dark-gray-3);display:flex;align-items:center;gap:8px;}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--color-green);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);color:var(--color-light-gray);letter-spacing:var(--letter-spacing-wide);text-transform:uppercase;}
+.tokens-group-count{font-size:10px;color:var(--color-mid-gray-2);margin-left:auto;}
+.tokens-list{padding:4px 0;}
+.token-row{display:flex;align-items:center;gap:8px;padding:3px 12px;transition:background var(--duration-instant) var(--easing-ease-out);}
+.token-row:hover{background:var(--color-dark-gray-13);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-2xl);border:var(--border-width-hairline) solid rgba(255,255,255,0.08);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray);flex:1;min-width:0;}
+.token-css{font-size:10px;color:var(--color-green);white-space:nowrap;}
+.token-value{font-size:10px;color:var(--color-mid-gray-2);white-space:nowrap;}
+.token-preview-bar{height:4px;border-radius:var(--radius-r15);background:linear-gradient(to right,var(--color-green-2),var(--color-green));flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,var(--color-green-2),var(--color-green));flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-2xl);background:var(--color-green);flex-shrink:0;}
+.tokens-full{grid-column:1/-1;}
+.token-row-sep{height:var(--border-width-hairline);background:var(--color-dark-gray-6);margin:4px 0;}
+
+@media(max-width:600px){
+  .font-cards,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.622.622 0 11-.277-1.215c3.809-.87 7.076-.496 9.712 1.115a.623.623 0 01.207.857zm1.225-2.724a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.519-.972c3.632-1.102 8.147-.568 11.234 1.328a.78.78 0 01.257 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.937.937 0 11-.543-1.793c3.532-1.072 9.404-.865 13.115 1.338a.937.937 0 01-.953 1.61z" fill="#000"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">Spotify Design System</div>
+          <div class="system-meta">Dark · Generated 18/04/2026 · 85 colors · 27 type tokens · 22 spacing steps · 17 breakpoints · 11 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">v1.0.0</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- ── 1. COLOR PALETTE ── -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Core Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000;border-color:rgba(255,255,255,.1)"></div><div class="swatch-name">Black</div><div class="swatch-hex">#000000</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#121212;border-color:rgba(255,255,255,.08)"></div><div class="swatch-name">Dark Gray 3</div><div class="swatch-hex">#121212</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1F1F1F;border-color:rgba(255,255,255,.07)"></div><div class="swatch-name">Dark Gray 2</div><div class="swatch-hex">#1F1F1F</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#282828;border-color:rgba(255,255,255,.07)"></div><div class="swatch-name">Dark Gray 13</div><div class="swatch-hex">#282828</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#333333;border-color:rgba(255,255,255,.07)"></div><div class="swatch-name">Dark Gray 8</div><div class="swatch-hex">#333333</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1ED760"></div><div class="swatch-name">Green (Brand)</div><div class="swatch-hex">#1ED760</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1DB954"></div><div class="swatch-name">Green 3</div><div class="swatch-hex">#1DB954</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(9,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#B3B3B3;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#B3B3B3</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#696969"></div><div class="swatch-name">Mid Gray</div><div class="swatch-hex">#696969</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#555555"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#555555</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#7C7C7C"></div><div class="swatch-name">Mid Gray 2</div><div class="swatch-hex">#7C7C7C</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#656565"></div><div class="swatch-name">Dark Gray 4</div><div class="swatch-hex">#656565</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#808080"></div><div class="swatch-name">Mid Gray 4</div><div class="swatch-hex">#808080</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#C5C5C5;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Gray 4</div><div class="swatch-hex">#C5C5C5</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#101010;border-color:rgba(255,255,255,.08)"></div><div class="swatch-name">Dark Gray 5</div><div class="swatch-hex">#101010</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0000EE"></div><div class="swatch-name">Blue 2 (link)</div><div class="swatch-hex">#0000EE</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Album Art — Generated Palette (sample)</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(16,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#3860BE"></div><div class="swatch-name">Blue</div><div class="swatch-hex">#3860BE</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#468254"></div><div class="swatch-name">Green 2</div><div class="swatch-hex">#468254</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#346E4A"></div><div class="swatch-name">Dark Green</div><div class="swatch-hex">#346E4A</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#A86741"></div><div class="swatch-name">Orange</div><div class="swatch-hex">#A86741</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#438080"></div><div class="swatch-name">Cyan</div><div class="swatch-hex">#438080</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#4F7F77"></div><div class="swatch-name">Cyan 2</div><div class="swatch-hex">#4F7F77</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#AF2896"></div><div class="swatch-name">Pink</div><div class="swatch-hex">#AF2896</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E10096"></div><div class="swatch-name">Pink 2</div><div class="swatch-hex">#E10096</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#584870"></div><div class="swatch-name">Purple</div><div class="swatch-hex">#584870</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#302048"></div><div class="swatch-name">Dark Purple</div><div class="swatch-hex">#302048</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#703090"></div><div class="swatch-name">Purple 3</div><div class="swatch-hex">#703090</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#680808"></div><div class="swatch-name">Dark Red</div><div class="swatch-hex">#680808</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#A9635C"></div><div class="swatch-name">Red</div><div class="swatch-hex">#A9635C</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#B82810"></div><div class="swatch-name">Red 7</div><div class="swatch-hex">#B82810</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#857809"></div><div class="swatch-name">Dark Yellow</div><div class="swatch-hex">#857809</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0080AF"></div><div class="swatch-name">Dark Cyan</div><div class="swatch-hex">#0080AF</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Border &amp; Shadow Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(7,1fr);max-width:700px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#32AE88"></div><div class="swatch-name">Cyan 3</div><div class="swatch-hex">#32AE88</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#C1C1C1;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Gray 3</div><div class="swatch-hex">#C1C1C1</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#D8D8D8;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Gray 6</div><div class="swatch-hex">#D8D8D8</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#707070"></div><div class="swatch-name">Mid Gray 7</div><div class="swatch-hex">#707070</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#BBBBBB;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Gray 7</div><div class="swatch-hex">#BBBBBB</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#C7C5C7;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Gray 2</div><div class="swatch-hex">#C7C5C7</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#999999;border-color:rgba(0,0,0,.06)"></div><div class="swatch-name">Mid Gray 6</div><div class="swatch-hex">#999999</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. TYPOGRAPHY ── -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">Base Font · SpotifyMixUI / Circular</div>
+        <div class="font-display" style="letter-spacing:var(--letter-spacing-tight);">SpotifyMixUI</div>
+        <div class="font-sample">Music for everyone. Millions of songs and podcasts. No credit card needed.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:500">Medium · 500</span>
+          <span class="fw-chip" style="font-weight:600">Semibold · 600</span>
+          <span class="fw-chip" style="font-weight:700">Bold · 700</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Title Font · SpotifyMixUITitle / Times</div>
+        <div class="font-display" style="font-family:var(--font-family-serif);font-style:italic;letter-spacing:0;">SpotifyMixUITitle</div>
+        <div class="font-sample" style="font-family:var(--font-family-serif);">Now Playing · Your Daily Mix · Made For You · Artist Radio · Liked Songs</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:var(--font-family-serif);font-style:italic">Serif · Italic</span>
+          <span class="fw-chip" style="font-family:var(--font-family-serif)">Times fallback</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type Scale -->
+    <div class="type-scale" style="margin-bottom:24px;">
+      <div class="type-row">
+        <div class="type-sample" style="font-size:24px;font-weight:700;line-height:38px;letter-spacing:0.144px;">What do you want to play?</div>
+        <div class="type-meta">Display · 24px · Bold · line-height: 38px · letter-spacing: 0.144px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:16px;font-weight:700;line-height:24px;letter-spacing:0.16px;">Liked Songs</div>
+        <div class="type-meta">Heading · 16px · Bold · line-height: 24px · letter-spacing: 0.16px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:14.4px;font-weight:600;line-height:20.8px;letter-spacing:0.16px;">Made For You</div>
+        <div class="type-meta">Subheading · 14.4px · Semibold · line-height: 20.8px · letter-spacing: 0.16px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:14px;font-weight:400;line-height:17.6px;letter-spacing:0.16px;color:var(--color-light-gray);">Various Artists · 2024 · 52 songs, 3 hr 14 min</div>
+        <div class="type-meta">Body · 14px · Regular · line-height: 17.6px · letter-spacing: 0.16px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:13.6px;font-weight:400;line-height:16.91px;letter-spacing:0.16px;color:var(--color-light-gray);">Eminem · Rap God · Recovery · Popular song</div>
+        <div class="type-meta">Small Body · 13.6px · Regular · line-height: 16.91px · letter-spacing: 0.16px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:13px;font-weight:400;line-height:16.91px;letter-spacing:0.16px;color:var(--color-mid-gray-2);">Add to playlist · Go to artist · Share song</div>
+        <div class="type-meta">UI Small · 13px · Regular · line-height: 16.91px · letter-spacing: 0.16px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:12px;font-weight:700;line-height:14.4px;letter-spacing:1.2px;text-transform:uppercase;color:var(--color-mid-gray-2);">RECENTLY PLAYED · TOP MIXES · JUMP BACK IN</div>
+        <div class="type-meta">Label / Caption · 12px · Bold · line-height: 14.4px · letter-spacing: 1.2px</div>
+      </div>
+    </div>
+
+    <!-- Line Heights -->
+    <div style="margin-bottom:24px;">
+      <div style="font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-wide);text-transform:uppercase;color:var(--color-mid-gray-2);margin-bottom:12px;">Line Heights</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:12px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">12px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:14.4px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">14.4px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:16.91px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">16.91px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:17.6px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">17.6px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:19.49px;"></div></div><div class="lh-token">Loose</div><div class="lh-val">19.49px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:20.8px;"></div></div><div class="lh-token">LH-6</div><div class="lh-val">20.8px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">LH-7</div><div class="lh-val">24px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:38px;"></div></div><div class="lh-token">LH-8</div><div class="lh-val">38px</div></div>
+      </div>
+    </div>
+
+    <!-- Letter Spacing -->
+    <div>
+      <div style="font-size:var(--font-size-2xs);font-weight:var(--font-weight-bold);letter-spacing:var(--letter-spacing-wide);text-transform:uppercase;color:var(--color-mid-gray-2);margin-bottom:12px;">Letter Spacing</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:0.144px;">Spotify</div>
+          <div class="ls-token">Tight · 0.144px</div>
+          <div class="ls-desc">--letter-spacing-tight · display, headings</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:0.16px;">Music</div>
+          <div class="ls-token">Normal · 0.16px</div>
+          <div class="ls-desc">--letter-spacing-normal · body, UI text</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:1.2px;font-size:14px;text-transform:uppercase;">NOW PLAYING</div>
+          <div class="ls-token">Wide · 1.2px</div>
+          <div class="ls-desc">--letter-spacing-wide · all-caps labels</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. SPACING ── -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">22 tokens — 2px → 153.73px</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:2px"></div><div class="sp-lbl">2</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:6px"></div><div class="sp-lbl">6</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:7px"></div><div class="sp-lbl">7</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:11px"></div><div class="sp-lbl">11</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:15px"></div><div class="sp-lbl">15</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:16px"></div><div class="sp-lbl">16</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:20px"></div><div class="sp-lbl">20</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:24px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:28px"></div><div class="sp-lbl">28</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:32px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:36px"></div><div class="sp-lbl">36</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:40px"></div><div class="sp-lbl">40</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:48px"></div><div class="sp-lbl">48</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:64px"></div><div class="sp-lbl">64</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:96px"></div><div class="sp-lbl">96</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:111px"></div><div class="sp-lbl">110.9</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:130px;opacity:.9"></div><div class="sp-lbl">153.7</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. BORDERS ── -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:2px"></div><div class="radius-lbl">SM</div><div class="radius-val">2px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:3px"></div><div class="radius-lbl">LG</div><div class="radius-val">3px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">XL</div><div class="radius-val">4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:6px"></div><div class="radius-lbl">2XL</div><div class="radius-val">6px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-lbl">Full</div><div class="radius-val">8px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:16px"></div><div class="radius-lbl">R8</div><div class="radius-val">16px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:20px"></div><div class="radius-lbl">R10</div><div class="radius-val">20px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:32px"></div><div class="radius-lbl">R11</div><div class="radius-val">32px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:50%"></div><div class="radius-lbl">Circle</div><div class="radius-val">50%</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:500px"></div><div class="radius-lbl">R14</div><div class="radius-val">500px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px"></div><div class="radius-lbl">Pill</div><div class="radius-val">9999px</div></div>
+      </div>
+      <div style="margin-top:16px;font-size:var(--font-size-2xs);color:var(--color-mid-gray-2);line-height:var(--line-height-normal);">Spotify heavily favors fully rounded elements — pill shapes (<span style="color:var(--color-green);">9999px</span>) on buttons and tags, <span style="color:var(--color-green);">50%</span> circles for avatars and album art, and very minimal <span style="color:var(--color-green);">2–6px</span> on small UI chips.</div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Widths</div>
+      <div class="bw-demo">
+        <div class="bw-item"><div class="bw-token">--border-width-hairline</div><div class="bw-val">1px · dividers, card borders, inputs</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-thin</div><div class="bw-val">12px · thick decorative accent borders</div></div>
+        <div style="margin-top:10px;font-size:var(--font-size-2xs);color:var(--color-mid-gray-2);line-height:var(--line-height-normal);">The unusual <span style="color:var(--color-green);">12px</span> border width appears as a thick decorative stripe — used for progress bars and visual accent separators in the player UI.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. SHADOW / ELEVATION ── -->
+  <div class="section">
+    <div class="section-title">Shadow / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">6 tokens — drop, glow, inset</div>
+      <div class="shadows-row">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-sm);background:var(--color-dark-gray-13);border-radius:var(--radius-r8);"></div>
+          <div class="sh-token">--shadow-sm</div>
+          <div class="sh-usage">Album art, cards</div>
+          <div class="sh-desc">rgba(0,0,0,0.5) 0px 8px 24px — heavy drop shadow on album covers and floating menus</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-md);background:var(--color-dark-gray-13);border-radius:var(--radius-r8);"></div>
+          <div class="sh-token">--shadow-md</div>
+          <div class="sh-usage">Dropdowns, tooltips</div>
+          <div class="sh-desc">rgba(0,0,0,0.3) 0px 8px 8px — medium drop for context menus and popovers</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-lg);background:var(--color-dark-gray-2);border-radius:var(--radius-2xl);"></div>
+          <div class="sh-token">--shadow-lg</div>
+          <div class="sh-usage">Player bar, status</div>
+          <div class="sh-desc">rgb(18,18,18) 0px 1px + inset rgb(124,124,124) 1px ring — combined separator and subtle edge highlight</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-xl);background:var(--color-dark-gray-13);border-radius:var(--radius-2xl);"></div>
+          <div class="sh-token">--shadow-xl</div>
+          <div class="sh-usage">Buttons, small elements</div>
+          <div class="sh-desc">rgba(0,0,0,0.5) 0px 2px 4px — tight shadow for small interactive elements</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-shadow-5);background:var(--color-dark-gray-2);border-radius:var(--radius-2xl);"></div>
+          <div class="sh-token">--shadow-shadow-5</div>
+          <div class="sh-usage">Focus glow, outlines</div>
+          <div class="sh-desc">rgb(128,128,128) 0px 0px 5px — diffuse gray glow for focus states</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-shadow-6);background:var(--color-dark-gray-2);border-radius:var(--radius-2xl);"></div>
+          <div class="sh-token">--shadow-shadow-6</div>
+          <div class="sh-usage">Inset border ring</div>
+          <div class="sh-desc">rgb(124,124,124) 0px 0px 0px 1px inset — used as an inner 1px ring on surfaces</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6. Z-INDEX ── -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Layer</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>--z-1</td><td>-1</td><td>Behind content (artwork backgrounds, canvas decorations)</td></tr>
+          <tr><td>--z-2 → --z-8</td><td>1 – 7</td><td>Fine-grained stacking of UI layers within a section (1,2,3,4,5,6,7)</td></tr>
+          <tr><td>--z-9</td><td>100</td><td>Navigation, sticky player bar, floating controls</td></tr>
+          <tr><td>--z-10</td><td>9,999</td><td>High-priority modals, popovers, command palette</td></tr>
+          <tr><td>--z-11</td><td>2,147,483,645</td><td>Maximum browser z-index − 2 (iFrame / plugin escape)</td></tr>
+          <tr><td>--z-12</td><td>2,147,483,646</td><td>Maximum browser z-index − 1 (overlay layer)</td></tr>
+          <tr><td>--z-13</td><td>2,147,483,647</td><td>Maximum browser z-index (absolute top — true int32 max)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── 7. BREAKPOINTS ── -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px;">
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">--breakpoint-xs</div><div class="bp-val">400px</div><div class="bp-desc">Mobile XS</div></div></div>
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">--breakpoint-sm</div><div class="bp-val">425px</div><div class="bp-desc">Mobile SM upper</div></div></div>
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">--breakpoint-md</div><div class="bp-val">426px</div><div class="bp-desc">Mobile SM lower</div></div></div>
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">--breakpoint-lg</div><div class="bp-val">500px</div><div class="bp-desc">Mobile LG</div></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px;">
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">--breakpoint-xl</div><div class="bp-val">530px</div><div class="bp-desc">Phablet</div></div></div>
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">--breakpoint-2xl</div><div class="bp-val">550px</div><div class="bp-desc">Large phone</div></div></div>
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">--breakpoint-3xl</div><div class="bp-val">599.95px</div><div class="bp-desc">Below 600 (upper)</div></div></div>
+      <div class="bp-card"><div class="bp-icon">💻</div><div><div class="bp-token">--breakpoint-bp-8</div><div class="bp-val">600px</div><div class="bp-desc">Tablet lower</div></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px;">
+      <div class="bp-card"><div class="bp-icon">💻</div><div><div class="bp-token">--breakpoint-bp-9</div><div class="bp-val">768px</div><div class="bp-desc">Tablet MD</div></div></div>
+      <div class="bp-card"><div class="bp-icon">💻</div><div><div class="bp-token">--breakpoint-bp-10</div><div class="bp-val">769px</div><div class="bp-desc">Tablet MD+1</div></div></div>
+      <div class="bp-card"><div class="bp-icon">💻</div><div><div class="bp-token">--breakpoint-bp-11</div><div class="bp-val">890px</div><div class="bp-desc">Tablet LG</div></div></div>
+      <div class="bp-card"><div class="bp-icon">💻</div><div><div class="bp-token">--breakpoint-bp-12</div><div class="bp-val">896px</div><div class="bp-desc">Tablet LG+</div></div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+      <div class="bp-card"><div class="bp-icon">🖥️</div><div><div class="bp-token">--breakpoint-bp-14</div><div class="bp-val">992px</div><div class="bp-desc">Small desktop</div></div></div>
+      <div class="bp-card"><div class="bp-icon">🖥️</div><div><div class="bp-token">--breakpoint-bp-16</div><div class="bp-val">1024px</div><div class="bp-desc">Desktop</div></div></div>
+      <div class="bp-card"><div class="bp-icon">🖥️</div><div><div class="bp-token">--breakpoint-bp-17</div><div class="bp-val">1280px</div><div class="bp-desc">Wide desktop</div></div></div>
+    </div>
+  </div>
+
+  <!-- ── 8. OPACITY ── -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <div class="tw-sub">2 tokens — 0.3 and 0.7</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-width:240px;">
+        <div class="op-item"><div class="op-box" style="opacity:0.3;"></div><div class="op-token">--opacity-30</div><div class="op-val">30% · dim</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.7;"></div><div class="op-token">--opacity-70</div><div class="op-val">70% · muted</div></div>
+      </div>
+      <div style="margin-top:16px;font-size:var(--font-size-2xs);color:var(--color-mid-gray-2);line-height:var(--line-height-normal);">Spotify defines only 2 opacity tokens. Additional transparency is handled directly via rgba color values — e.g. <span style="color:var(--color-green);">rgba(0,0,0,0.5)</span> in shadows and <span style="color:var(--color-green);">rgba(255,255,255,0.07)</span> for subtle surface borders.</div>
+    </div>
+  </div>
+
+  <!-- ── 9. ACCESSIBILITY ── -->
+  <div class="section">
+    <div class="section-title">Accessibility — Contrast Ratios</div>
+    <div style="font-size:var(--font-size-2xs);color:var(--color-mid-gray-2);line-height:var(--line-height-normal);margin-bottom:16px;">WCAG 2.1 thresholds: <strong style="color:var(--color-light-gray);">AA</strong> ≥ 4.5:1 (normal text) · <strong style="color:var(--color-light-gray);">AA Large</strong> ≥ 3:1 (large/bold) · <strong style="color:var(--color-light-gray);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Token</th><th>Background Token</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>--color-light-gray</td><td>--color-black</td><td>10.02:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-light-gray</td><td>--color-dark-gray-2</td><td>7.86:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-light-gray</td><td>--color-dark-gray-3</td><td>8.93:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-light-gray</td><td>--color-white</td><td>2.1:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-light-gray</td><td>--color-green</td><td>1.09:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-white</td><td>5.49:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-black</td><td>3.83:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-dark-gray-2</td><td>3.0:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-mid-gray</td><td>--color-dark-gray-3</td><td>3.41:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-dark-gray</td><td>--color-white</td><td>7.46:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-dark-gray</td><td>--color-black</td><td>2.82:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-dark-gray</td><td>--color-green</td><td>3.89:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-white</td><td>4.17:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-black</td><td>5.03:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-dark-gray-3</td><td>4.49:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-dark-gray-4</td><td>--color-white</td><td>5.83:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-dark-gray-4</td><td>--color-dark-gray-3</td><td>3.21:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Play</button>
+          <button class="btn btn-secondary">Sign up free</button>
+          <button class="btn btn-outline">Log in</button>
+          <button class="btn btn-ghost">Learn more</button>
+          <button class="btn btn-muted">Remove from library</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Search</label>
+            <input class="inp" type="text" placeholder="Artists, songs, or podcasts"/>
+            <div class="inp-hint">Try searching for songs, artists, or podcasts</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Email address</label>
+            <input class="inp" type="email" placeholder="name@example.com" style="border-color:var(--color-white);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Password</label>
+            <input class="inp inp-err" type="password" value="••••••"/>
+            <div class="inp-err-msg">Your password is incorrect</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--color-mid-gray-2)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-green)"></span>Now Playing</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--color-dark-gray-4)"></span>Downloaded</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">🎵 Music</span>
+          <span class="tag">🎙 Podcasts</span>
+          <span class="tag">📻 Radio</span>
+          <span class="tag">📋 Playlists</span>
+          <span class="tag">🎤 Artists</span>
+          <span class="tag">💿 Albums</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="alert alert-neutral"><div class="alert-icon">ℹ️</div><div class="alert-body"><h5>New release from Taylor Swift</h5><p style="color:var(--color-mid-gray-2);">The Tortured Poets Department is now available. Add it to your library.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon">✅</div><div class="alert-body"><h5>Added to Your Library</h5><p>Liked Songs playlist has been updated with 3 new tracks.</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon">💾</div><div class="alert-body"><h5>Downloads available offline</h5><p style="color:var(--color-light-gray);">42 songs saved to this device. Available without internet.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon">❌</div><div class="alert-body"><h5 style="color:var(--color-light-gray);">Playback failed</h5><p>This track isn't available in your country. Try a similar artist.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Feature Cards</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">🎵</div>
+            <div class="fc-title">Your Daily Mix</div>
+            <div class="fc-desc">Personalized playlists built from your listening history, refreshed daily.</div>
+            <span class="tag tag-brand">Personalized</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🎙</div>
+            <div class="fc-title">Podcasts</div>
+            <div class="fc-desc">Discover thousands of podcasts across every topic. From true crime to tech news.</div>
+            <span class="tag">On demand</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">💡</div>
+            <div class="fc-title">Discover Weekly</div>
+            <div class="fc-desc">A new playlist every Monday featuring songs you haven't heard before.</div>
+            <span class="tag">Updated weekly</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars &amp; Progress</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:var(--color-green);color:var(--color-black);">SP</div>
+          <div class="av-info"><h4>Spotify Premium</h4><p>spotify@example.com · Premium plan · No ads</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:var(--color-green);color:var(--color-black)">A</div>
+          <div class="avatar av-md" style="background:var(--color-blue);color:white">M</div>
+          <div class="avatar av-md" style="background:var(--color-purple);color:white">R</div>
+          <div class="avatar av-sm" style="background:var(--color-dark-gray-6);color:var(--color-light-gray);border:var(--border-width-hairline) solid var(--color-dark-gray-8)">K</div>
+          <div class="avatar av-sm" style="background:var(--color-dark-gray-13);color:var(--color-mid-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-8)">+5</div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Track progress</span><span>2:41 / 4:18</span></div>
+            <div class="prog-track" style="background:rgba(255,255,255,0.2);"><div class="prog-fill" style="width:62%;background:var(--color-green);"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Volume</span><span>80%</span></div>
+            <div class="prog-track" style="background:rgba(255,255,255,0.2);"><div class="prog-fill" style="width:80%;background:var(--color-white);"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>Download progress</span><span>45%</span></div>
+            <div class="prog-track" style="background:rgba(255,255,255,0.2);"><div class="prog-fill" style="width:45%;background:var(--color-light-gray);"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Data Table</span><span class="comp-badge">Track list</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead>
+            <tr><th>#</th><th>title</th><th>artist</th><th>album</th><th>duration</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td style="color:var(--color-white);font-weight:600">Blinding Lights</td><td style="color:var(--color-light-gray)">The Weeknd</td><td style="color:var(--color-mid-gray-2)">After Hours</td><td style="color:var(--color-mid-gray-2)">3:20</td></tr>
+            <tr><td>2</td><td style="color:var(--color-white);font-weight:600">Flowers</td><td style="color:var(--color-light-gray)">Miley Cyrus</td><td style="color:var(--color-mid-gray-2)">Endless Summer Vacation</td><td style="color:var(--color-mid-gray-2)">3:21</td></tr>
+            <tr><td>3</td><td style="color:var(--color-green);font-weight:600">▶ Heat Waves</td><td style="color:var(--color-light-gray)">Glass Animals</td><td style="color:var(--color-mid-gray-2)">Dreamland</td><td style="color:var(--color-mid-gray-2)">3:59</td></tr>
+            <tr><td>4</td><td style="color:var(--color-white);font-weight:600">As It Was</td><td style="color:var(--color-light-gray)">Harry Styles</td><td style="color:var(--color-mid-gray-2)">Harry's House</td><td style="color:var(--color-mid-gray-2)">2:37</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- ── 11. CSS VARIABLES REFERENCE ── -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <!-- Core Colors -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Core Colors</span><span class="tokens-group-count">8 primary</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#000000;border-color:rgba(255,255,255,.15)"></div><span class="token-readable">Black</span><span class="token-css">--color-black</span><span class="token-value">#000000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#121212;border-color:rgba(255,255,255,.1)"></div><span class="token-readable">Dark Gray 3</span><span class="token-css">--color-dark-gray-3</span><span class="token-value">#121212</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1F1F1F;border-color:rgba(255,255,255,.08)"></div><span class="token-readable">Dark Gray 2</span><span class="token-css">--color-dark-gray-2</span><span class="token-value">#1F1F1F</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#282828"></div><span class="token-readable">Dark Gray 13</span><span class="token-css">--color-dark-gray-13</span><span class="token-value">#282828</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#292929"></div><span class="token-readable">Dark Gray 6</span><span class="token-css">--color-dark-gray-6</span><span class="token-value">#292929</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#333333"></div><span class="token-readable">Dark Gray 8</span><span class="token-css">--color-dark-gray-8</span><span class="token-value">#333333</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF;border-color:rgba(0,0,0,.15)"></div><span class="token-readable">White</span><span class="token-css">--color-white</span><span class="token-value">#FFFFFF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1ED760"></div><span class="token-readable">Green (Brand)</span><span class="token-css">--color-green</span><span class="token-value">#1ED760</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1DB954"></div><span class="token-readable">Green 3</span><span class="token-css">--color-green-3</span><span class="token-value">#1DB954</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#468254"></div><span class="token-readable">Green 2</span><span class="token-css">--color-green-2</span><span class="token-value">#468254</span></div>
+        </div>
+      </div>
+
+      <!-- Text Colors -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Text Colors</span><span class="tokens-group-count">9 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#B3B3B3;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">Light Gray</span><span class="token-css">--color-light-gray</span><span class="token-value">#B3B3B3</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#696969"></div><span class="token-readable">Mid Gray</span><span class="token-css">--color-mid-gray</span><span class="token-value">#696969</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#555555"></div><span class="token-readable">Dark Gray</span><span class="token-css">--color-dark-gray</span><span class="token-value">#555555</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#7C7C7C"></div><span class="token-readable">Mid Gray 2</span><span class="token-css">--color-mid-gray-2</span><span class="token-value">#7C7C7C</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#656565"></div><span class="token-readable">Dark Gray 4</span><span class="token-css">--color-dark-gray-4</span><span class="token-value">#656565</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#808080"></div><span class="token-readable">Mid Gray 4</span><span class="token-css">--color-mid-gray-4</span><span class="token-value">#808080</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#C5C5C5;border-color:rgba(0,0,0,.08)"></div><span class="token-readable">Light Gray 4</span><span class="token-css">--color-light-gray-4</span><span class="token-value">#C5C5C5</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#101010;border-color:rgba(255,255,255,.1)"></div><span class="token-readable">Dark Gray 5</span><span class="token-css">--color-dark-gray-5</span><span class="token-value">#101010</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0000EE"></div><span class="token-readable">Blue 2 (link)</span><span class="token-css">--color-blue-2</span><span class="token-value">#0000EE</span></div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Typography</span><span class="tokens-group-count">27 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Base Font</span><span class="token-css">--font-family-base</span><span class="token-value">SpotifyMixUI</span></div>
+          <div class="token-row"><span class="token-readable">UI Font</span><span class="token-css">--font-family-2</span><span class="token-value">SpotifyMixUI</span></div>
+          <div class="token-row"><span class="token-readable">Title Font</span><span class="token-css">--font-family-3</span><span class="token-value">SpotifyMixUITitle</span></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">Medium</span><span class="token-css">--font-weight-medium</span><span class="token-value">500</span></div>
+          <div class="token-row"><span class="token-readable">Semibold</span><span class="token-css">--font-weight-semibold</span><span class="token-value">600</span></div>
+          <div class="token-row"><span class="token-readable">Bold</span><span class="token-css">--font-weight-bold</span><span class="token-value">700</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">2XS</span><span class="token-css">--font-size-2xs</span><span class="token-value">12px</span></div>
+          <div class="token-row"><span class="token-readable">XS</span><span class="token-css">--font-size-xs</span><span class="token-value">12.99px</span></div>
+          <div class="token-row"><span class="token-readable">SM</span><span class="token-css">--font-size-sm</span><span class="token-value">13.008px</span></div>
+          <div class="token-row"><span class="token-readable">Base</span><span class="token-css">--font-size-base</span><span class="token-value">13.33px</span></div>
+          <div class="token-row"><span class="token-readable">LG</span><span class="token-css">--font-size-lg</span><span class="token-value">13.6px</span></div>
+          <div class="token-row"><span class="token-readable">XL</span><span class="token-css">--font-size-xl</span><span class="token-value">14px</span></div>
+          <div class="token-row"><span class="token-readable">2XL</span><span class="token-css">--font-size-2xl</span><span class="token-value">14.4px</span></div>
+          <div class="token-row"><span class="token-readable">3XL</span><span class="token-css">--font-size-3xl</span><span class="token-value">16px</span></div>
+          <div class="token-row"><span class="token-readable">4XL (display)</span><span class="token-css">--font-size-4xl</span><span class="token-value">24px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Tight</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">0.144px</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--letter-spacing-normal</span><span class="token-value">0.16px</span></div>
+          <div class="token-row"><span class="token-readable">Wide (caps)</span><span class="token-css">--letter-spacing-wide</span><span class="token-value">1.2px</span></div>
+        </div>
+      </div>
+
+      <!-- Spacing -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Spacing</span><span class="tokens-group-count">22 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-preview-bar" style="width:2px"></div><span class="token-readable">Space 1</span><span class="token-css">--space-1</span><span class="token-value">2px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:4px"></div><span class="token-readable">Space 2</span><span class="token-css">--space-2</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:6px"></div><span class="token-readable">Space 3</span><span class="token-css">--space-3</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:8px"></div><span class="token-readable">Space 5</span><span class="token-css">--space-5</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:12px"></div><span class="token-readable">Space 10</span><span class="token-css">--space-10</span><span class="token-value">12px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:16px"></div><span class="token-readable">Space 16</span><span class="token-css">--space-16</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:20px"></div><span class="token-readable">Space 20</span><span class="token-css">--space-20</span><span class="token-value">20px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:24px"></div><span class="token-readable">Space 32</span><span class="token-css">--space-32</span><span class="token-value">24px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:28px"></div><span class="token-readable">Space 40</span><span class="token-css">--space-40</span><span class="token-value">28px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:32px"></div><span class="token-readable">Space 48</span><span class="token-css">--space-48</span><span class="token-value">32px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:40px"></div><span class="token-readable">Space 80</span><span class="token-css">--space-80</span><span class="token-value">40px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:48px"></div><span class="token-readable">Space 96</span><span class="token-css">--space-96</span><span class="token-value">48px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:64px"></div><span class="token-readable">Space 128</span><span class="token-css">--space-128</span><span class="token-value">64px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:96px"></div><span class="token-readable">Space 160</span><span class="token-css">--space-160</span><span class="token-value">96px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:111px"></div><span class="token-readable">Space 192</span><span class="token-css">--space-192</span><span class="token-value">110.91px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:140px;opacity:.7"></div><span class="token-readable">Space 256</span><span class="token-css">--space-256</span><span class="token-value">153.73px</span></div>
+        </div>
+      </div>
+
+      <!-- Borders + Radius -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Borders &amp; Radius</span><span class="tokens-group-count">17 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Hairline</span><span class="token-css">--border-width-hairline</span><span class="token-value">1px</span></div>
+          <div class="token-row"><span class="token-readable">Thick accent</span><span class="token-css">--border-width-thin</span><span class="token-value">12px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:2px"></div><span class="token-readable">SM</span><span class="token-css">--radius-sm</span><span class="token-value">2px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px"></div><span class="token-readable">XL</span><span class="token-css">--radius-xl</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:6px"></div><span class="token-readable">2XL</span><span class="token-css">--radius-2xl</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:8px"></div><span class="token-readable">Full</span><span class="token-css">--radius-full</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:16px"></div><span class="token-readable">R8</span><span class="token-css">--radius-r8</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:20px"></div><span class="token-readable">R10</span><span class="token-css">--radius-r10</span><span class="token-value">20px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:32px"></div><span class="token-readable">R11</span><span class="token-css">--radius-r11</span><span class="token-value">32px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:50%;height:12px;width:12px"></div><span class="token-readable">Circle</span><span class="token-css">--radius-r12</span><span class="token-value">50%</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:500px;height:12px"></div><span class="token-readable">R14</span><span class="token-css">--radius-r14</span><span class="token-value">500px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:9999px;height:12px"></div><span class="token-readable">Pill</span><span class="token-css">--radius-r15</span><span class="token-value">9999px</span></div>
+        </div>
+      </div>
+
+      <!-- Motion + Opacity + Z-Index -->
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Motion, Opacity &amp; Layers</span><span class="tokens-group-count">15 tokens</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Instant</span><span class="token-css">--duration-instant</span><span class="token-value">100ms</span></div>
+          <div class="token-row"><span class="token-readable">Fast</span><span class="token-css">--duration-fast</span><span class="token-value">150ms</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--duration-normal</span><span class="token-value">200ms</span></div>
+          <div class="token-row"><span class="token-readable">Slow</span><span class="token-css">--duration-slow</span><span class="token-value">220ms</span></div>
+          <div class="token-row"><span class="token-readable">Slower</span><span class="token-css">--duration-slower</span><span class="token-value">250ms</span></div>
+          <div class="token-row"><span class="token-readable">Long</span><span class="token-css">--duration-duration-7</span><span class="token-value">500ms</span></div>
+          <div class="token-row"><span class="token-readable">Ease Out</span><span class="token-css">--easing-ease-out</span><span class="token-value">ease-out</span></div>
+          <div class="token-row"><span class="token-readable">Ease In</span><span class="token-css">--easing-ease-in</span><span class="token-value">ease-in</span></div>
+          <div class="token-row"><span class="token-readable">Ease In-Out</span><span class="token-css">--easing-ease-in-out</span><span class="token-value">ease-in-out</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.3"></div><span class="token-readable">Dim</span><span class="token-css">--opacity-30</span><span class="token-value">30%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.7"></div><span class="token-readable">Muted</span><span class="token-css">--opacity-70</span><span class="token-value">70%</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Behind BG</span><span class="token-css">--z-1</span><span class="token-value">-1</span></div>
+          <div class="token-row"><span class="token-readable">Base → Layer 7</span><span class="token-css">--z-2 → --z-8</span><span class="token-value">1–7</span></div>
+          <div class="token-row"><span class="token-readable">Player / Nav</span><span class="token-css">--z-9</span><span class="token-value">100</span></div>
+          <div class="token-row"><span class="token-readable">Priority UI</span><span class="token-css">--z-10</span><span class="token-value">9,999</span></div>
+          <div class="token-row"><span class="token-readable">Max (int32)</span><span class="token-css">--z-13</span><span class="token-value">2,147,483,647</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div style="text-align:center;padding:32px 0;color:var(--color-mid-gray-2);font-size:var(--font-size-2xs);border-top:var(--border-width-hairline) solid var(--color-dark-gray-6);line-height:var(--line-height-normal);">
+    Design System Preview · Spotify (Dark) · Generated 18/04/2026 · 85 color tokens · 9 font-size · 3 font-family · 4 font-weight · 8 line-height · 3 letter-spacing · 22 spacing · 15 radius · 2 border-width · 6 shadow · 8 duration · 3 easing · 13 z-index · 17 breakpoints · 2 opacity
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

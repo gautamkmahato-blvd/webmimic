@@ -1,0 +1,982 @@
+/* ============================================
+ * Design Tokens — General Intelligence Company
+ * Source: https://www.generalintelligencecompany.com/
+ * Generated: 05/05/2026, 21:20:25
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #171717; /* hsl(0, 0%, 9%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-2: #444141; /* hsl(0, 2%, 26%) · text */
+  --color-dark-gray-3: #2C2C2C; /* hsl(0, 0%, 17%) · text */
+  --color-dark-blue: #1F2937; /* hsl(215, 28%, 17%) · fill */
+  --color-white-2: #F9FAF7; /* hsl(80, 23%, 97%) · background */
+  --color-dark-gray-4: #646464; /* hsl(0, 0%, 39%) · background */
+  --color-light-gray: #B4B8B4; /* hsl(120, 3%, 71%) · background */
+  --color-white-3: #F3F5F2; /* hsl(100, 13%, 95%) · text */
+  --color-light-green: #ADBEAF; /* hsl(127, 12%, 71%) · other */
+  --color-white-4: #FEFFFC; /* hsl(80, 100%, 99%) · background */
+  --color-light-gray-2: #CFD3CF; /* hsl(120, 4%, 82%) · background */
+  --color-blue: #9DB0BD; /* hsl(204, 20%, 68%) · text */
+  --color-green: #91B737; /* hsl(78, 54%, 47%) · fill */
+  --color-dark-blue-2: #101828; /* hsl(220, 43%, 11%) · text */
+  --color-yellow: #FDEA65; /* hsl(52, 97%, 69%) · fill */
+  --color-yellow-2: #FDDE56; /* hsl(49, 98%, 66%) · fill */
+  --color-light-gray-3: #DEE2DE; /* hsl(120, 6%, 88%) · border */
+  --color-yellow-3: #FDEA64; /* hsl(53, 97%, 69%) · fill */
+  --color-dark-green: #667E1A; /* hsl(74, 66%, 30%) · fill */
+  --color-yellow-4: #FEDE56; /* hsl(49, 99%, 67%) · fill */
+  --color-yellow-5: #FCEA63; /* hsl(53, 96%, 69%) · fill */
+  --color-yellow-6: #FDE961; /* hsl(52, 98%, 69%) · fill */
+  --color-light-yellow: #FBF887; /* hsl(58, 94%, 76%) · fill */
+  --color-yellow-7: #FDEC67; /* hsl(53, 97%, 70%) · fill */
+  --color-green-2: #90B636; /* hsl(78, 54%, 46%) · fill */
+  --color-green-3: #7BA12B; /* hsl(79, 58%, 40%) · fill */
+  --color-dark-green-2: #6E8C24; /* hsl(77, 59%, 35%) · fill */
+  --color-dark-blue-3: #364153; /* hsl(217, 21%, 27%) · text */
+  --color-blue-2: rgba(156, 180, 192, 0.14); /* hsl(204, 21%, 68%) · background */
+  --color-light-gray-4: #CFD1D3; /* hsl(210, 4%, 82%) · border */
+  --color-blue-3: rgba(80, 115, 138, 0.24); /* hsl(201, 27%, 43%) · shadow */
+  --color-yellow-8: #FDEC65; /* hsl(53, 97%, 69%) · fill */
+  --color-light-yellow-2: #FBF986; /* hsl(59, 94%, 75%) · fill */
+  --color-yellow-9: #FDDD56; /* hsl(49, 98%, 66%) · fill */
+  --color-red: #B54931; /* hsl(11, 57%, 45%) · fill */
+  --color-orange: #F9C53D; /* hsl(43, 94%, 61%) · fill */
+  --color-dark-yellow: #3E4A00; /* hsl(70, 100%, 15%) · fill */
+  --color-green-4: #90B535; /* hsl(77, 55%, 46%) · fill */
+  --color-green-5: #90B635; /* hsl(78, 55%, 46%) · fill */
+  --color-green-6: #BBD545; /* hsl(71, 63%, 55%) · fill */
+  --color-green-7: #BBD544; /* hsl(71, 63%, 55%) · fill */
+  --color-green-8: #92B837; /* hsl(78, 54%, 47%) · fill */
+  --color-yellow-10: #D0E265; /* hsl(69, 68%, 64%) · fill */
+  --color-green-9: #8DB433; /* hsl(78, 56%, 45%) · fill */
+  --color-dark-green-3: #3E4B03; /* hsl(71, 92%, 15%) · fill */
+  --color-dark-green-4: #394700; /* hsl(72, 100%, 14%) · fill */
+  --color-dark-yellow-2: #656F07; /* hsl(66, 88%, 23%) · fill */
+  --color-dark-green-5: #384900; /* hsl(74, 100%, 14%) · fill */
+  --color-dark-gray-5: rgba(68, 65, 65, 0.12); /* hsl(0, 0%, 26%) · gradient */
+  --color-dark-gray-6: rgba(68, 65, 65, 0.07); /* hsl(0, 0%, 28%) · gradient */
+  --color-yellow-11: #FCD34A; /* hsl(46, 97%, 64%) · fill */
+  --color-yellow-12: #FDE75E; /* hsl(52, 98%, 68%) · fill */
+  --color-yellow-13: #FCE863; /* hsl(52, 96%, 69%) · fill */
+  --color-yellow-14: #FDEA62; /* hsl(53, 97%, 69%) · fill */
+  --color-yellow-15: #FDDC54; /* hsl(48, 98%, 66%) · fill */
+  --color-orange-2: #FCA962; /* hsl(28, 96%, 69%) · fill */
+  --color-orange-3: #FBAF60; /* hsl(31, 95%, 68%) · fill */
+  --color-light-yellow-3: #FFFF80; /* hsl(60, 100%, 75%) · fill */
+  --color-light-yellow-4: #FDEF6C; /* hsl(54, 97%, 71%) · fill */
+  --color-orange-4: #FCCF4C; /* hsl(45, 97%, 64%) · fill */
+  --color-yellow-16: #FCEA65; /* hsl(53, 96%, 69%) · fill */
+  --color-yellow-17: #FDE65F; /* hsl(51, 98%, 68%) · fill */
+  --color-orange-5: #FFBF40; /* hsl(40, 100%, 63%) · fill */
+  --color-yellow-18: #FCD14D; /* hsl(45, 97%, 65%) · fill */
+  --color-yellow-19: #FCDD57; /* hsl(49, 96%, 66%) · fill */
+  --color-yellow-20: #FCE961; /* hsl(53, 96%, 68%) · fill */
+  --color-orange-6: #F9C63F; /* hsl(44, 94%, 61%) · fill */
+  --color-yellow-21: #FCD853; /* hsl(47, 97%, 66%) · fill */
+  --color-orange-7: #F9C33C; /* hsl(43, 94%, 61%) · fill */
+  --color-light-yellow-5: #FCF374; /* hsl(56, 96%, 72%) · fill */
+  --color-orange-8: #E7A82D; /* hsl(40, 79%, 54%) · fill */
+  --color-yellow-22: #FDEB63; /* hsl(53, 97%, 69%) · fill */
+  --color-yellow-23: #FCD64F; /* hsl(47, 97%, 65%) · fill */
+  --color-yellow-24: #FEE25F; /* hsl(49, 99%, 68%) · fill */
+  --color-red-2: #B94B34; /* hsl(10, 56%, 46%) · fill */
+  --color-light-yellow-6: #FCF986; /* hsl(58, 95%, 76%) · fill */
+  --color-yellow-25: #FAE15B; /* hsl(51, 94%, 67%) · fill */
+  --color-green-10: #8FB536; /* hsl(78, 54%, 46%) · fill */
+  --color-dark-yellow-3: #3E4902; /* hsl(69, 95%, 15%) · fill */
+  --color-green-11: #86AB31; /* hsl(78, 55%, 43%) · fill */
+  --color-green-12: #92B738; /* hsl(77, 53%, 47%) · fill */
+  --color-orange-9: #E3B336; /* hsl(43, 76%, 55%) · fill */
+  --color-dark-yellow-4: #808000; /* hsl(60, 100%, 25%) · fill */
+  --color-dark-yellow-5: #686E14; /* hsl(64, 69%, 25%) · fill */
+  --color-dark-green-6: #465403; /* hsl(70, 93%, 17%) · fill */
+  --color-yellow-26: #CEE264; /* hsl(70, 68%, 64%) · fill */
+  --color-yellow-27: #CDE164; /* hsl(70, 68%, 64%) · fill */
+  --color-green-13: #8DB335; /* hsl(78, 54%, 45%) · fill */
+  --color-green-14: #91B738; /* hsl(78, 53%, 47%) · fill */
+  --color-green-15: #8CB135; /* hsl(78, 54%, 45%) · fill */
+  --color-dark-green-7: #425002; /* hsl(71, 95%, 16%) · fill */
+  --color-green-16: #8FB435; /* hsl(77, 55%, 46%) · fill */
+  --color-green-17: #91B637; /* hsl(77, 54%, 46%) · fill */
+  --color-green-18: #91B736; /* hsl(78, 54%, 46%) · fill */
+  --color-green-19: #90B536; /* hsl(77, 54%, 46%) · fill */
+  --color-green-20: #92B836; /* hsl(78, 55%, 47%) · fill */
+  --color-green-21: #BBD542; /* hsl(71, 64%, 55%) · fill */
+  --color-green-22: #92B737; /* hsl(77, 54%, 47%) · fill */
+  --color-dark-green-8: #647D18; /* hsl(75, 68%, 29%) · fill */
+  --color-green-23: #92B736; /* hsl(77, 54%, 46%) · fill */
+  --color-green-24: #90B735; /* hsl(78, 55%, 46%) · fill */
+  --color-green-25: #91B536; /* hsl(77, 54%, 46%) · fill */
+  --color-green-26: #93AC45; /* hsl(75, 43%, 47%) · fill */
+  --color-dark-green-9: #3E4E02; /* hsl(73, 95%, 16%) · fill */
+  --color-green-27: #88AD32; /* hsl(78, 55%, 44%) · fill */
+  --color-green-28: #8AAE33; /* hsl(78, 55%, 44%) · fill */
+  --color-green-29: #8BB132; /* hsl(78, 56%, 45%) · fill */
+  --color-yellow-28: #AAAA55; /* hsl(60, 33%, 50%) · fill */
+  --color-green-30: #8EB435; /* hsl(78, 55%, 46%) · fill */
+  --color-dark-yellow-6: #4E5906; /* hsl(68, 87%, 19%) · fill */
+  --color-dark-green-10: #3E4D02; /* hsl(72, 95%, 15%) · fill */
+  --color-dark-green-11: #3F4F03; /* hsl(73, 93%, 16%) · fill */
+  --color-green-31: #8BAF34; /* hsl(78, 54%, 45%) · fill */
+  --color-dark-yellow-7: #8B9914; /* hsl(66, 77%, 34%) · fill */
+  --color-dark-gray-7: #2D2D2D; /* hsl(0, 0%, 18%) · text */
+  --color-dark-gray-8: #1F1F29; /* hsl(240, 14%, 14%) · background */
+  --color-dark-gray-9: #282834; /* hsl(240, 13%, 18%) · border */
+  --color-dark-cyan: #334444; /* hsl(180, 14%, 23%) · background */
+  --color-cyan: #576A6A; /* hsl(180, 10%, 38%) · background */
+  --color-cyan-2: #728383; /* hsl(180, 7%, 48%) · background */
+  --color-mid-gray: #A5AFAF; /* hsl(180, 6%, 67%) · background */
+  --color-light-yellow-7: #FBF475; /* hsl(57, 94%, 72%) · fill */
+  --color-yellow-29: #FCD43A; /* hsl(48, 97%, 61%) · fill */
+  --color-yellow-30: #FDEC62; /* hsl(53, 97%, 69%) · fill */
+  --color-light-yellow-8: #FDEA6D; /* hsl(52, 97%, 71%) · fill */
+  --color-light-yellow-9: #FDF16F; /* hsl(55, 97%, 71%) · fill */
+  --color-light-yellow-10: #FBE974; /* hsl(52, 94%, 72%) · fill */
+  --color-yellow-31: #FCE15A; /* hsl(50, 96%, 67%) · fill */
+  --color-light-yellow-11: #FCF475; /* hsl(56, 96%, 72%) · fill */
+  --color-yellow-32: #FCE866; /* hsl(52, 96%, 69%) · fill */
+  --color-yellow-33: #FCCF44; /* hsl(45, 97%, 63%) · fill */
+  --color-yellow-34: #FCEB63; /* hsl(53, 96%, 69%) · fill */
+  --color-yellow-35: #FDE766; /* hsl(51, 97%, 70%) · fill */
+  --color-yellow-36: #FCE75F; /* hsl(52, 96%, 68%) · fill */
+  --color-yellow-37: #FFFF66; /* hsl(60, 100%, 70%) · fill */
+  --color-yellow-38: #FDDE55; /* hsl(49, 98%, 66%) · fill */
+  --color-yellow-39: #FCD048; /* hsl(45, 97%, 64%) · fill */
+  --color-light-yellow-12: #FDF472; /* hsl(56, 97%, 72%) · fill */
+  --color-yellow-40: #FDE65C; /* hsl(51, 98%, 68%) · fill */
+  --color-light-yellow-13: #FCF373; /* hsl(56, 96%, 72%) · fill */
+  --color-light-yellow-14: #FCF577; /* hsl(57, 96%, 73%) · fill */
+  --color-light-yellow-15: #FBFD7A; /* hsl(61, 97%, 74%) · fill */
+  --color-yellow-41: #FDEC60; /* hsl(54, 98%, 68%) · fill */
+  --color-yellow-42: #FCDF5B; /* hsl(49, 96%, 67%) · fill */
+  --color-orange-10: #FCC45D; /* hsl(39, 96%, 68%) · fill */
+  --color-light-yellow-16: #FDEE6B; /* hsl(54, 97%, 71%) · fill */
+  --color-yellow-43: #FAE960; /* hsl(53, 94%, 68%) · fill */
+  --color-yellow-44: #F8D54C; /* hsl(48, 92%, 64%) · fill */
+  --color-yellow-45: #FDDF58; /* hsl(49, 98%, 67%) · fill */
+  --color-light-yellow-17: #FBF68E; /* hsl(57, 93%, 77%) · fill */
+  --color-yellow-46: #F7DF51; /* hsl(51, 91%, 64%) · fill */
+  --color-light-yellow-18: #FAF373; /* hsl(57, 93%, 72%) · fill */
+  --color-light-yellow-19: #FCF478; /* hsl(56, 96%, 73%) · fill */
+  --color-yellow-47: #FBE159; /* hsl(50, 95%, 67%) · fill */
+  --color-orange-11: #FBA065; /* hsl(24, 95%, 69%) · fill */
+  --color-yellow-48: #FADB53; /* hsl(49, 94%, 65%) · fill */
+  --color-yellow-49: #FBE65E; /* hsl(52, 95%, 68%) · fill */
+  --color-orange-12: #FCA864; /* hsl(27, 96%, 69%) · fill */
+  --color-yellow-50: #FCE862; /* hsl(52, 96%, 69%) · fill */
+  --color-light-yellow-20: #FBF983; /* hsl(59, 94%, 75%) · fill */
+  --color-light-yellow-21: #FCE278; /* hsl(48, 96%, 73%) · fill */
+  --color-yellow-51: #FFFF00; /* hsl(60, 100%, 50%) · fill */
+  --color-light-yellow-22: #F7F294; /* hsl(57, 86%, 77%) · fill */
+  --color-light-yellow-23: #F8F58B; /* hsl(58, 89%, 76%) · fill */
+  --color-yellow-52: #FCEA62; /* hsl(53, 96%, 69%) · fill */
+  --color-yellow-53: #F9D852; /* hsl(48, 93%, 65%) · fill */
+  --color-light-yellow-24: #FBFB8D; /* hsl(60, 93%, 77%) · fill */
+  --color-yellow-54: #FDDC55; /* hsl(48, 98%, 66%) · fill */
+  --color-yellow-55: #FDEA63; /* hsl(53, 97%, 69%) · fill */
+  --color-light-yellow-25: #FBF375; /* hsl(56, 94%, 72%) · fill */
+  --color-yellow-56: #FDD951; /* hsl(47, 98%, 65%) · fill */
+  --color-yellow-57: #FDE761; /* hsl(52, 98%, 69%) · fill */
+  --color-orange-13: #FAA165; /* hsl(24, 94%, 69%) · fill */
+  --color-yellow-58: #FEDD53; /* hsl(48, 99%, 66%) · fill */
+  --color-orange-14: #FCA964; /* hsl(27, 96%, 69%) · fill */
+  --color-yellow-59: #F1D462; /* hsl(48, 84%, 66%) · fill */
+  --color-yellow-60: #FEEB64; /* hsl(53, 99%, 69%) · fill */
+  --color-light-yellow-26: #FCF477; /* hsl(56, 96%, 73%) · fill */
+  --color-orange-15: #FCCB43; /* hsl(44, 97%, 63%) · fill */
+  --color-yellow-61: #FDD64E; /* hsl(47, 98%, 65%) · fill */
+  --color-orange-16: #FA9155; /* hsl(22, 94%, 66%) · fill */
+  --color-yellow-62: #FDDB56; /* hsl(48, 98%, 66%) · fill */
+  --color-yellow-63: #FDE05C; /* hsl(49, 98%, 68%) · fill */
+  --color-light-yellow-27: #FCF171; /* hsl(55, 96%, 72%) · fill */
+  --color-yellow-64: #FDD952; /* hsl(47, 98%, 66%) · fill */
+  --color-yellow-65: #FDE760; /* hsl(52, 98%, 68%) · fill */
+  --color-orange-17: #FAA164; /* hsl(24, 94%, 69%) · fill */
+  --color-orange-18: #FCA963; /* hsl(27, 96%, 69%) · fill */
+  --color-yellow-66: #FDDE54; /* hsl(49, 98%, 66%) · fill */
+  --color-yellow-67: #FFE966; /* hsl(51, 100%, 70%) · fill */
+  --color-yellow-68: #FDDF57; /* hsl(49, 98%, 67%) · fill */
+  --color-yellow-69: #FDE661; /* hsl(51, 98%, 69%) · fill */
+  --color-light-yellow-28: #FCF16F; /* hsl(55, 96%, 71%) · fill */
+  --color-orange-19: #FBCA43; /* hsl(44, 96%, 62%) · fill */
+  --color-yellow-70: #FCD54E; /* hsl(47, 97%, 65%) · fill */
+  --color-light-yellow-29: #FBFA88; /* hsl(59, 93%, 76%) · fill */
+  --color-orange-20: #F99054; /* hsl(22, 93%, 65%) · fill */
+  --color-yellow-71: #FCEB64; /* hsl(53, 96%, 69%) · fill */
+  --color-yellow-72: #FCD952; /* hsl(48, 97%, 65%) · fill */
+  --color-light-yellow-30: #FCF06E; /* hsl(55, 96%, 71%) · fill */
+  --color-light-orange: #FEDB7B; /* hsl(44, 98%, 74%) · fill */
+  --color-orange-21: #FCA65E; /* hsl(27, 96%, 68%) · fill */
+  --color-yellow-73: #FEDA5A; /* hsl(47, 99%, 67%) · fill */
+  --color-yellow-74: #FDE75F; /* hsl(52, 98%, 68%) · fill */
+  --color-light-yellow-31: #FDEE6A; /* hsl(54, 97%, 70%) · fill */
+  --color-orange-22: #FCCA45; /* hsl(44, 97%, 63%) · fill */
+  --color-yellow-75: #FDD44E; /* hsl(46, 98%, 65%) · fill */
+  --color-light-yellow-32: #FCF989; /* hsl(58, 95%, 76%) · fill */
+  --color-light-yellow-33: #FCFCDF; /* hsl(60, 83%, 93%) · fill */
+  --color-orange-23: #FA9053; /* hsl(22, 94%, 65%) · fill */
+  --color-light-yellow-34: #FDF474; /* hsl(56, 97%, 72%) · fill */
+  --color-yellow-76: #FEDD56; /* hsl(48, 99%, 67%) · fill */
+  --color-yellow-77: #FDDB55; /* hsl(48, 98%, 66%) · fill */
+  --color-light-yellow-35: #FDDD7C; /* hsl(45, 97%, 74%) · fill */
+  --color-light-yellow-36: #FCF679; /* hsl(57, 96%, 73%) · fill */
+  --color-orange-24: #FDCB61; /* hsl(41, 98%, 69%) · fill */
+  --color-yellow-78: #FDDD58; /* hsl(48, 98%, 67%) · fill */
+  --color-yellow-79: #FDD34B; /* hsl(46, 98%, 64%) · fill */
+  --color-light-yellow-37: #FEF77D; /* hsl(57, 98%, 74%) · fill */
+  --color-orange-25: #FBBC5F; /* hsl(36, 95%, 68%) · fill */
+  --color-light-yellow-38: #FCF882; /* hsl(58, 95%, 75%) · fill */
+  --color-light-yellow-39: #FCDF77; /* hsl(47, 96%, 73%) · fill */
+  --color-yellow-80: #FEEE65; /* hsl(54, 99%, 70%) · fill */
+  --color-orange-26: #FB8B4C; /* hsl(22, 96%, 64%) · fill */
+  --color-light-orange-2: #FFD577; /* hsl(41, 100%, 73%) · fill */
+  --color-orange-27: #F3A439; /* hsl(35, 89%, 59%) · fill */
+  --color-orange-28: #FA8D50; /* hsl(22, 94%, 65%) · fill */
+  --color-yellow-81: #FBE055; /* hsl(50, 95%, 66%) · fill */
+  --color-yellow-82: #FEE25C; /* hsl(50, 99%, 68%) · fill */
+  --color-yellow-83: #FDDB57; /* hsl(48, 98%, 67%) · fill */
+  --color-light-orange-3: #FEDD7C; /* hsl(45, 98%, 74%) · fill */
+  --color-light-yellow-40: #FCF67A; /* hsl(57, 96%, 73%) · fill */
+  --color-light-yellow-41: #FDF67A; /* hsl(57, 97%, 74%) · fill */
+  --color-orange-29: #FEA163; /* hsl(24, 99%, 69%) · fill */
+  --color-light-yellow-42: #FBF878; /* hsl(59, 94%, 73%) · fill */
+  --color-orange-30: #FDA862; /* hsl(27, 97%, 69%) · fill */
+  --color-yellow-84: #FDDD57; /* hsl(48, 98%, 67%) · fill */
+  --color-yellow-85: #FCD44B; /* hsl(46, 97%, 64%) · fill */
+  --color-orange-31: #FDCB67; /* hsl(40, 97%, 70%) · fill */
+  --color-yellow-86: #FBE860; /* hsl(53, 95%, 68%) · fill */
+  --color-orange-32: #FA8D4F; /* hsl(22, 94%, 65%) · fill */
+  --color-light-orange-4: #FDD977; /* hsl(44, 97%, 73%) · fill */
+  --color-light-yellow-43: #FCF271; /* hsl(56, 96%, 72%) · fill */
+  --color-yellow-87: #FEE65D; /* hsl(51, 99%, 68%) · fill */
+  --color-yellow-88: #F7CB42; /* hsl(45, 92%, 61%) · fill */
+  --color-yellow-89: #FBD85B; /* hsl(47, 95%, 67%) · fill */
+  --color-yellow-90: #F9D04B; /* hsl(46, 94%, 64%) · fill */
+  --color-light-yellow-44: #F8DD77; /* hsl(47, 90%, 72%) · fill */
+  --color-light-yellow-45: #FCF880; /* hsl(58, 95%, 75%) · fill */
+  --color-yellow-91: #FDD54A; /* hsl(47, 98%, 64%) · fill */
+  --color-yellow-92: #FDEA60; /* hsl(53, 98%, 68%) · fill */
+  --color-yellow-93: #FCD84E; /* hsl(48, 97%, 65%) · fill */
+  --color-yellow-94: #F3CA49; /* hsl(46, 88%, 62%) · fill */
+  --color-light-yellow-46: #FBF990; /* hsl(59, 93%, 77%) · fill */
+  --color-light-orange-5: #F5D77E; /* hsl(45, 86%, 73%) · fill */
+  --color-orange-33: #CC7B21; /* hsl(32, 72%, 46%) · fill */
+  --color-orange-34: #EE9F38; /* hsl(34, 84%, 58%) · fill */
+  --color-yellow-95: #FCDA54; /* hsl(48, 97%, 66%) · fill */
+  --color-yellow-96: #F9CF4F; /* hsl(45, 93%, 64%) · fill */
+  --color-yellow-97: #FCEC68; /* hsl(54, 96%, 70%) · fill */
+  --color-yellow-98: #FDED66; /* hsl(54, 97%, 70%) · fill */
+  --color-orange-35: #BF7A27; /* hsl(33, 66%, 45%) · fill */
+  --color-yellow-99: #FBD359; /* hsl(45, 95%, 67%) · fill */
+  --color-orange-36: #BA8B20; /* hsl(42, 71%, 43%) · fill */
+  --color-orange-37: #F5C43F; /* hsl(44, 90%, 60%) · fill */
+  --color-light-yellow-47: #FEF079; /* hsl(54, 99%, 74%) · fill */
+  --color-orange-38: #FACB58; /* hsl(43, 94%, 66%) · fill */
+  --color-yellow-100: #FCD350; /* hsl(46, 97%, 65%) · fill */
+  --color-orange-39: #EEA147; /* hsl(32, 83%, 61%) · fill */
+  --color-yellow-101: #F2CD44; /* hsl(47, 87%, 61%) · fill */
+  --color-yellow-102: #F8DD5B; /* hsl(50, 92%, 66%) · fill */
+  --color-yellow-103: #F9DD5C; /* hsl(49, 93%, 67%) · fill */
+  --color-orange-40: #F8C749; /* hsl(43, 93%, 63%) · fill */
+  --color-light-orange-6: #FED96A; /* hsl(45, 99%, 71%) · fill */
+  --color-yellow-104: #FBEB6A; /* hsl(53, 95%, 70%) · fill */
+  --color-orange-41: #F8945C; /* hsl(22, 92%, 67%) · fill */
+  --color-light-yellow-48: #FCEE6C; /* hsl(54, 96%, 71%) · fill */
+  --color-yellow-105: #FDE058; /* hsl(49, 98%, 67%) · fill */
+  --color-yellow-106: #FEDF56; /* hsl(49, 99%, 67%) · fill */
+  --color-yellow-107: #FBE964; /* hsl(53, 95%, 69%) · fill */
+  --color-light-yellow-49: #FBF679; /* hsl(58, 94%, 73%) · fill */
+  --color-orange-42: #FBCB45; /* hsl(44, 96%, 63%) · fill */
+  --color-orange-43: #F7C13A; /* hsl(43, 92%, 60%) · fill */
+  --color-light-yellow-50: #FBF988; /* hsl(59, 93%, 76%) · fill */
+  --color-orange-44: #B87519; /* hsl(35, 76%, 41%) · fill */
+  --color-orange-45: #E0A32B; /* hsl(40, 74%, 52%) · fill */
+  --color-orange-46: #E0A32D; /* hsl(40, 74%, 53%) · fill */
+  --color-orange-47: #D47425; /* hsl(27, 70%, 49%) · fill */
+  --color-orange-48: #F9BD33; /* hsl(42, 94%, 59%) · fill */
+  --color-orange-49: #BA7A19; /* hsl(36, 76%, 41%) · fill */
+  --color-light-yellow-51: #FCFA88; /* hsl(59, 95%, 76%) · fill */
+  --color-orange-50: #FA9454; /* hsl(23, 94%, 65%) · fill */
+  --color-orange-51: #F8965A; /* hsl(23, 92%, 66%) · fill */
+  --color-orange-52: #F8C640; /* hsl(44, 93%, 61%) · fill */
+  --color-yellow-108: #FDD954; /* hsl(47, 98%, 66%) · fill */
+  --color-yellow-109: #FDDA52; /* hsl(48, 98%, 66%) · fill */
+  --color-orange-53: #FDD160; /* hsl(43, 98%, 68%) · fill */
+  --color-light-yellow-52: #FBEC84; /* hsl(52, 94%, 75%) · fill */
+  --color-red-3: #C45638; /* hsl(13, 56%, 49%) · fill */
+  --color-orange-54: #FAAA58; /* hsl(30, 94%, 66%) · fill */
+  --color-yellow-110: #FDEB67; /* hsl(53, 97%, 70%) · fill */
+  --color-yellow-111: #FCEC65; /* hsl(54, 96%, 69%) · fill */
+  --color-yellow-112: #FDEF66; /* hsl(54, 97%, 70%) · fill */
+  --color-orange-55: #FAA361; /* hsl(26, 94%, 68%) · fill */
+  --color-light-yellow-53: #FCF476; /* hsl(56, 96%, 73%) · fill */
+  --color-orange-56: #FCD04C; /* hsl(45, 97%, 64%) · fill */
+  --color-yellow-113: #FEE961; /* hsl(52, 99%, 69%) · fill */
+  --color-yellow-114: #FDD348; /* hsl(46, 98%, 64%) · fill */
+  --color-orange-57: #BA7A1A; /* hsl(36, 75%, 42%) · fill */
+  --color-light-orange-7: #FDDC8E; /* hsl(42, 97%, 77%) · fill */
+  --color-orange-58: #F9C33B; /* hsl(43, 94%, 60%) · fill */
+  --color-orange-59: #FAC43D; /* hsl(43, 95%, 61%) · fill */
+  --color-orange-60: #FCCE5A; /* hsl(43, 96%, 67%) · fill */
+  --color-orange-61: #EDA335; /* hsl(36, 84%, 57%) · fill */
+  --color-yellow-115: #FCD94F; /* hsl(48, 97%, 65%) · fill */
+  --color-red-4: #C05434; /* hsl(14, 57%, 48%) · fill */
+  --color-yellow-116: #F9E158; /* hsl(51, 93%, 66%) · fill */
+  --color-orange-62: #FAC63E; /* hsl(43, 95%, 61%) · fill */
+  --color-yellow-117: #FCE965; /* hsl(52, 96%, 69%) · fill */
+  --color-orange-63: #FAA565; /* hsl(26, 94%, 69%) · fill */
+  --color-yellow-118: #F4E05F; /* hsl(52, 87%, 66%) · fill */
+  --color-light-yellow-54: #FEF77F; /* hsl(57, 98%, 75%) · fill */
+  --color-light-yellow-55: #FBF982; /* hsl(59, 94%, 75%) · fill */
+  --color-red-5: #BC4F36; /* hsl(11, 55%, 47%) · fill */
+  --color-red-6: #BC5036; /* hsl(12, 55%, 47%) · fill */
+  --color-orange-64: #FDB962; /* hsl(34, 97%, 69%) · fill */
+  --color-light-yellow-56: #FEED69; /* hsl(53, 99%, 70%) · fill */
+  --color-red-7: #B64B34; /* hsl(11, 56%, 46%) · fill */
+  --color-orange-65: #F9A363; /* hsl(26, 93%, 68%) · fill */
+  --color-light-orange-8: #FDDB79; /* hsl(45, 97%, 73%) · fill */
+  --color-light-yellow-57: #FDFD76; /* hsl(60, 97%, 73%) · fill */
+  --color-yellow-119: #FDEB5F; /* hsl(53, 98%, 68%) · fill */
+  --color-orange-66: #F8C33B; /* hsl(43, 93%, 60%) · fill */
+  --color-orange-67: #B47419; /* hsl(35, 76%, 40%) · fill */
+  --color-orange-68: #FAC733; /* hsl(45, 95%, 59%) · fill */
+  --color-orange-69: #F2B438; /* hsl(40, 88%, 58%) · fill */
+  --color-orange-70: #F2B537; /* hsl(40, 88%, 58%) · fill */
+  --color-light-yellow-58: #FDDD74; /* hsl(46, 97%, 72%) · fill */
+  --color-orange-71: #F4B737; /* hsl(41, 90%, 59%) · fill */
+  --color-light-yellow-59: #FDF881; /* hsl(58, 97%, 75%) · fill */
+  --color-light-yellow-60: #F6EF7C; /* hsl(57, 87%, 73%) · fill */
+  --color-yellow-120: #FDD751; /* hsl(47, 98%, 65%) · fill */
+  --color-light-orange-9: #FAA574; /* hsl(22, 93%, 72%) · fill */
+  --color-light-yellow-61: #FBFA8D; /* hsl(59, 93%, 77%) · fill */
+  --color-yellow-121: #FDEF67; /* hsl(54, 97%, 70%) · fill */
+  --color-yellow-122: #FCE057; /* hsl(50, 96%, 66%) · fill */
+  --color-light-yellow-62: #FCF474; /* hsl(56, 96%, 72%) · fill */
+  --color-yellow-123: #FCD24A; /* hsl(46, 97%, 64%) · fill */
+  --color-yellow-124: #FFE056; /* hsl(49, 100%, 67%) · fill */
+  --color-light-yellow-63: #FBF783; /* hsl(58, 94%, 75%) · fill */
+  --color-light-yellow-64: #FBF984; /* hsl(59, 94%, 75%) · fill */
+  --color-light-orange-10: #FDD87A; /* hsl(43, 97%, 74%) · fill */
+  --color-red-8: #B84B33; /* hsl(11, 57%, 46%) · fill */
+  --color-red-9: #BA4E34; /* hsl(12, 56%, 47%) · fill */
+  --color-orange-72: #D88F27; /* hsl(35, 69%, 50%) · fill */
+  --color-orange-73: #FAA263; /* hsl(25, 94%, 68%) · fill */
+  --color-orange-74: #CD9023; /* hsl(38, 71%, 47%) · fill */
+  --color-yellow-125: #FDEB62; /* hsl(53, 97%, 69%) · fill */
+  --color-yellow-126: #FDEE64; /* hsl(54, 97%, 69%) · fill */
+  --color-orange-75: #D27722; /* hsl(29, 72%, 48%) · fill */
+  --color-orange-76: #E2A52A; /* hsl(40, 76%, 53%) · fill */
+  --color-orange-77: #E2A52B; /* hsl(40, 76%, 53%) · fill */
+  --color-orange-78: #D37823; /* hsl(29, 72%, 48%) · fill */
+  --color-orange-79: #F3B635; /* hsl(41, 89%, 58%) · fill */
+  --color-orange-80: #C2831C; /* hsl(37, 75%, 44%) · fill */
+  --color-yellow-127: #FCD248; /* hsl(46, 97%, 64%) · fill */
+  --color-yellow-128: #FBE760; /* hsl(52, 95%, 68%) · fill */
+  --color-yellow-129: #FDD752; /* hsl(47, 98%, 66%) · fill */
+  --color-orange-81: #F78E4E; /* hsl(23, 91%, 64%) · fill */
+  --color-orange-82: #E8AA30; /* hsl(40, 80%, 55%) · fill */
+  --color-orange-83: #FAC53C; /* hsl(43, 95%, 61%) · fill */
+  --color-orange-84: #FAC53D; /* hsl(43, 95%, 61%) · fill */
+  --color-orange-85: #FAC63D; /* hsl(43, 95%, 61%) · fill */
+  --color-yellow-130: #FDE25B; /* hsl(50, 98%, 67%) · fill */
+  --color-orange-86: #FAAB56; /* hsl(31, 94%, 66%) · fill */
+  --color-yellow-131: #FDD34D; /* hsl(46, 98%, 65%) · fill */
+  --color-yellow-132: #FCE962; /* hsl(53, 96%, 69%) · fill */
+  --color-light-yellow-65: #FCF883; /* hsl(58, 95%, 75%) · fill */
+  --color-light-yellow-66: #FCF984; /* hsl(58, 95%, 75%) · fill */
+  --color-yellow-133: #FCD54C; /* hsl(47, 97%, 64%) · fill */
+  --color-orange-87: #FAC33D; /* hsl(43, 95%, 61%) · fill */
+  --color-orange-88: #C5841F; /* hsl(37, 73%, 45%) · fill */
+  --color-orange-89: #C6851D; /* hsl(37, 74%, 45%) · fill */
+  --color-red-10: #AF482F; /* hsl(12, 58%, 44%) · fill */
+  --color-orange-90: #F78E50; /* hsl(22, 91%, 64%) · fill */
+  --color-yellow-134: #FED756; /* hsl(46, 99%, 67%) · fill */
+  --color-yellow-135: #FDEC66; /* hsl(53, 97%, 70%) · fill */
+  --color-yellow-136: #FDD34E; /* hsl(46, 98%, 65%) · fill */
+  --color-yellow-137: #FDEB65; /* hsl(53, 97%, 69%) · fill */
+  --color-orange-91: #B47516; /* hsl(36, 78%, 40%) · fill */
+  --color-yellow-138: #FCCF46; /* hsl(45, 97%, 63%) · fill */
+  --color-yellow-139: #FDEB66; /* hsl(53, 97%, 70%) · fill */
+  --color-orange-92: #F5BD39; /* hsl(42, 90%, 59%) · fill */
+  --color-yellow-140: #FDEB68; /* hsl(53, 97%, 70%) · fill */
+  --color-yellow-141: #FDEC68; /* hsl(53, 97%, 70%) · fill */
+  --color-yellow-142: #FBD248; /* hsl(46, 96%, 63%) · fill */
+  --color-orange-93: #F3A258; /* hsl(29, 87%, 65%) · fill */
+  --color-red-11: #B2472E; /* hsl(11, 59%, 44%) · fill */
+  --color-orange-94: #C98C1F; /* hsl(38, 73%, 45%) · fill */
+  --color-yellow-143: #FDE45A; /* hsl(51, 98%, 67%) · fill */
+  --color-light-yellow-67: #FDF16E; /* hsl(55, 97%, 71%) · fill */
+  --color-light-yellow-68: #FCF170; /* hsl(55, 96%, 71%) · fill */
+  --color-light-yellow-69: #FCF98C; /* hsl(58, 95%, 77%) · fill */
+  --color-light-yellow-70: #FCEB73; /* hsl(53, 96%, 72%) · fill */
+  --color-yellow-144: #FDE360; /* hsl(50, 98%, 68%) · fill */
+  --color-light-yellow-71: #F8F487; /* hsl(58, 89%, 75%) · fill */
+  --color-light-yellow-72: #FBF68F; /* hsl(57, 93%, 77%) · fill */
+  --color-yellow-145: #F5D252; /* hsl(47, 89%, 64%) · fill */
+  --color-yellow-146: #F3D151; /* hsl(47, 87%, 64%) · fill */
+  --color-orange-95: #EFBE40; /* hsl(43, 85%, 59%) · fill */
+  --color-orange-96: #DCA02D; /* hsl(39, 71%, 52%) · fill */
+  --color-orange-97: #B85E2A; /* hsl(22, 63%, 44%) · fill */
+  --color-orange-98: #E28550; /* hsl(22, 72%, 60%) · fill */
+  --color-yellow-147: #FADB59; /* hsl(48, 94%, 66%) · fill */
+  --color-orange-99: #F9B24F; /* hsl(35, 93%, 64%) · fill */
+  --color-yellow-148: #FDE25F; /* hsl(50, 98%, 68%) · fill */
+  --color-orange-100: #E7B33D; /* hsl(42, 78%, 57%) · fill */
+  --color-yellow-149: #F7D64D; /* hsl(48, 91%, 64%) · fill */
+  --color-light-yellow-73: #FBE375; /* hsl(49, 94%, 72%) · fill */
+  --color-orange-101: #FDD767; /* hsl(45, 97%, 70%) · fill */
+  --color-yellow-150: #FCEB67; /* hsl(53, 96%, 70%) · fill */
+  --color-light-yellow-74: #FBD96E; /* hsl(46, 95%, 71%) · fill */
+  --color-orange-102: #FCC161; /* hsl(37, 96%, 68%) · fill */
+  --color-orange-103: #E58955; /* hsl(22, 73%, 62%) · fill */
+  --color-orange-104: #BB6128; /* hsl(23, 65%, 45%) · fill */
+  --color-orange-105: #CD8C29; /* hsl(36, 67%, 48%) · fill */
+  --color-yellow-151: #F7D04B; /* hsl(46, 91%, 63%) · fill */
+  --color-yellow-152: #F8D754; /* hsl(48, 92%, 65%) · fill */
+  --color-yellow-153: #F8D853; /* hsl(48, 92%, 65%) · fill */
+  --color-yellow-154: #F7D853; /* hsl(49, 91%, 65%) · fill */
+  --color-light-yellow-75: #FDDA6B; /* hsl(46, 97%, 71%) · fill */
+  --color-light-yellow-76: #FFE26A; /* hsl(48, 100%, 71%) · fill */
+  --color-orange-106: #FCD162; /* hsl(43, 96%, 69%) · fill */
+  --color-light-yellow-77: #FCE374; /* hsl(49, 96%, 72%) · fill */
+  --color-orange-107: #FCD265; /* hsl(43, 96%, 69%) · fill */
+  --color-orange-108: #FF8000; /* hsl(30, 100%, 50%) · fill */
+  --color-red-12: #B94C36; /* hsl(10, 55%, 47%) · fill */
+  --color-orange-109: #FC9B57; /* hsl(25, 96%, 66%) · fill */
+  --color-light-yellow-78: #FBF985; /* hsl(59, 94%, 75%) · fill */
+  --color-orange-110: #F89B5B; /* hsl(24, 92%, 66%) · fill */
+  --color-red-13: #BD5136; /* hsl(12, 56%, 48%) · fill */
+  --color-orange-111: #F0B12F; /* hsl(40, 87%, 56%) · fill */
+  --color-orange-112: #F78A4E; /* hsl(21, 91%, 64%) · fill */
+  --color-orange-113: #F88A4F; /* hsl(21, 92%, 64%) · fill */
+  --color-red-14: #B34930; /* hsl(11, 58%, 45%) · fill */
+  --color-yellow-155: #FCD657; /* hsl(46, 96%, 66%) · fill */
+  --color-orange-114: #FCC761; /* hsl(39, 96%, 68%) · fill */
+  --color-orange-115: #FCC65F; /* hsl(39, 96%, 68%) · fill */
+  --color-red-15: #BD4B37; /* hsl(9, 55%, 48%) · fill */
+  --color-orange-116: #B57517; /* hsl(36, 77%, 40%) · fill */
+  --color-orange-117: #CA8E20; /* hsl(39, 73%, 46%) · fill */
+  --color-orange-118: #CB8E21; /* hsl(38, 72%, 46%) · fill */
+  --color-orange-119: #F6BD40; /* hsl(41, 91%, 61%) · fill */
+  --color-yellow-156: #FBD24A; /* hsl(46, 96%, 64%) · fill */
+  --color-orange-120: #FBC13D; /* hsl(42, 96%, 61%) · fill */
+  --color-orange-121: #FDCD63; /* hsl(41, 97%, 69%) · fill */
+  --color-orange-122: #FDCE62; /* hsl(42, 97%, 69%) · fill */
+  --color-orange-123: #F98B50; /* hsl(21, 93%, 65%) · fill */
+  --color-orange-124: #F88D4F; /* hsl(22, 92%, 64%) · fill */
+  --color-red-16: #BC4D37; /* hsl(10, 55%, 48%) · fill */
+  --color-red-17: #BC4C37; /* hsl(9, 55%, 48%) · fill */
+  --color-red-18: #BC4C38; /* hsl(9, 54%, 48%) · fill */
+  --color-orange-125: #FF9966; /* hsl(20, 100%, 70%) · fill */
+  --color-light-orange-11: #FCA884; /* hsl(18, 95%, 75%) · fill */
+  --color-light-orange-12: #FAA682; /* hsl(18, 92%, 75%) · fill */
+  --color-orange-126: #F1B439; /* hsl(40, 87%, 58%) · fill */
+  --color-orange-127: #F2B538; /* hsl(40, 88%, 58%) · fill */
+  --color-orange-128: #F2B536; /* hsl(41, 88%, 58%) · fill */
+  --color-red-19: #B64B33; /* hsl(11, 56%, 46%) · fill */
+  --color-orange-129: #FCAE5E; /* hsl(30, 96%, 68%) · fill */
+  --color-yellow-157: #FCD656; /* hsl(46, 97%, 66%) · fill */
+  --color-yellow-158: #FDD454; /* hsl(45, 98%, 66%) · fill */
+  --color-orange-130: #FBC05D; /* hsl(38, 95%, 67%) · fill */
+  --color-yellow-159: #FDE259; /* hsl(50, 98%, 67%) · fill */
+  --color-yellow-160: #FCED68; /* hsl(54, 96%, 70%) · fill */
+  --color-orange-131: #B6761A; /* hsl(35, 75%, 41%) · fill */
+  --color-orange-132: #B7781A; /* hsl(36, 75%, 41%) · fill */
+  --color-orange-133: #F98D51; /* hsl(21, 93%, 65%) · fill */
+  --color-orange-134: #F98F51; /* hsl(22, 93%, 65%) · fill */
+  --color-orange-135: #FAA267; /* hsl(24, 94%, 69%) · fill */
+  --color-light-yellow-79: #F8F880; /* hsl(60, 90%, 74%) · fill */
+  --color-orange-136: #F7B633; /* hsl(40, 92%, 58%) · fill */
+  --color-orange-137: #FAC740; /* hsl(44, 95%, 62%) · fill */
+  --color-orange-138: #F88C50; /* hsl(21, 92%, 64%) · fill */
+  --color-orange-139: #F68F59; /* hsl(21, 90%, 66%) · fill */
+  --color-red-20: #B44A32; /* hsl(11, 57%, 45%) · fill */
+  --color-red-21: #B54A31; /* hsl(11, 57%, 45%) · fill */
+  --color-orange-140: #FDCF5B; /* hsl(43, 98%, 67%) · fill */
+  --color-light-orange-13: #FBA06F; /* hsl(21, 95%, 71%) · fill */
+  --color-light-orange-14: #F8A173; /* hsl(21, 90%, 71%) · fill */
+  --color-orange-141: #C0841C; /* hsl(38, 75%, 43%) · fill */
+  --color-orange-142: #BF841B; /* hsl(38, 75%, 43%) · fill */
+  --color-red-22: #B34931; /* hsl(11, 57%, 45%) · fill */
+  --color-orange-143: #F88C4F; /* hsl(22, 92%, 64%) · fill */
+  --color-orange-144: #FBAC5C; /* hsl(30, 95%, 67%) · fill */
+  --color-orange-145: #FAAC5C; /* hsl(30, 94%, 67%) · fill */
+  --color-orange-146: #F2B638; /* hsl(41, 88%, 58%) · fill */
+  --color-orange-147: #C2681E; /* hsl(27, 73%, 44%) · fill */
+  --color-orange-148: #FAC642; /* hsl(43, 95%, 62%) · fill */
+  --color-orange-149: #FACA42; /* hsl(44, 95%, 62%) · fill */
+  --color-orange-150: #B77719; /* hsl(36, 76%, 41%) · fill */
+  --color-orange-151: #FDC33C; /* hsl(42, 98%, 61%) · fill */
+  --color-yellow-161: #FCEB65; /* hsl(53, 96%, 69%) · fill */
+  --color-light-yellow-80: #FBF987; /* hsl(59, 94%, 76%) · fill */
+  --color-orange-152: #DEA62F; /* hsl(41, 73%, 53%) · fill */
+  --color-orange-153: #FFCF59; /* hsl(43, 100%, 67%) · fill */
+  --color-orange-154: #F9A25F; /* hsl(26, 93%, 67%) · fill */
+  --color-orange-155: #F9A25E; /* hsl(26, 93%, 67%) · fill */
+  --color-yellow-162: #FCD552; /* hsl(46, 97%, 65%) · fill */
+  --color-yellow-163: #FCD550; /* hsl(46, 97%, 65%) · fill */
+  --color-yellow-164: #F7D669; /* hsl(46, 90%, 69%) · fill */
+  --color-light-orange-15: #FAA673; /* hsl(23, 93%, 72%) · fill */
+  --color-light-orange-16: #FBA672; /* hsl(23, 94%, 72%) · fill */
+  --color-red-23: #B74A35; /* hsl(10, 55%, 46%) · fill */
+  --color-orange-156: #F1B637; /* hsl(41, 87%, 58%) · fill */
+  --color-yellow-165: #FCD44C; /* hsl(46, 97%, 64%) · fill */
+  --color-yellow-166: #FBD44C; /* hsl(47, 96%, 64%) · fill */
+  --color-orange-157: #D89528; /* hsl(37, 69%, 50%) · fill */
+  --color-orange-158: #F9C640; /* hsl(43, 94%, 61%) · fill */
+  --color-yellow-167: #FDE25A; /* hsl(50, 98%, 67%) · fill */
+  --color-yellow-168: #FEEF67; /* hsl(54, 99%, 70%) · fill */
+  --color-yellow-169: #FAEA65; /* hsl(54, 94%, 69%) · fill */
+  --color-yellow-170: #FDDE57; /* hsl(49, 98%, 67%) · fill */
+  --color-yellow-171: #FBCE46; /* hsl(45, 96%, 63%) · fill */
+  --color-light-yellow-81: #FDF77A; /* hsl(57, 97%, 74%) · fill */
+  --color-orange-159: #A84B1C; /* hsl(20, 71%, 38%) · fill */
+  --color-orange-160: #FAB269; /* hsl(30, 94%, 70%) · fill */
+  --color-orange-161: #F89B4F; /* hsl(27, 92%, 64%) · fill */
+  --color-light-orange-17: #F9A97A; /* hsl(22, 91%, 73%) · fill */
+  --color-light-orange-18: #FCDA77; /* hsl(45, 96%, 73%) · fill */
+  --color-yellow-172: #FCEA64; /* hsl(53, 96%, 69%) · fill */
+  --color-yellow-173: #FEE05F; /* hsl(49, 99%, 68%) · fill */
+  --color-yellow-174: #FFEA63; /* hsl(52, 100%, 69%) · fill */
+  --color-yellow-175: #FDEB64; /* hsl(53, 97%, 69%) · fill */
+  --color-light-yellow-82: #FBF884; /* hsl(58, 94%, 75%) · fill */
+  --color-light-yellow-83: #F9FA82; /* hsl(60, 92%, 75%) · fill */
+  --color-dark-green-12: #3A4F00; /* hsl(76, 100%, 15%) · fill */
+  --color-light-yellow-84: #FDE17B; /* hsl(47, 97%, 74%) · fill */
+  --color-light-yellow-85: #FDF77C; /* hsl(57, 97%, 74%) · fill */
+  --color-yellow-176: #FEDE55; /* hsl(49, 99%, 66%) · fill */
+  --color-orange-162: #F99D68; /* hsl(22, 92%, 69%) · fill */
+  --color-yellow-177: #FBD751; /* hsl(47, 96%, 65%) · fill */
+  --color-yellow-178: #FCD854; /* hsl(47, 97%, 66%) · fill */
+  --color-yellow-179: #FEEA66; /* hsl(52, 99%, 70%) · fill */
+  --color-light-yellow-86: #FEDE79; /* hsl(46, 99%, 74%) · fill */
+  --color-yellow-180: #F9E05B; /* hsl(51, 93%, 67%) · fill */
+  --color-red-24: #B4492F; /* hsl(12, 59%, 45%) · fill */
+  --color-orange-163: #FCCC4A; /* hsl(44, 97%, 64%) · fill */
+  --color-orange-164: #FDCC48; /* hsl(44, 98%, 64%) · fill */
+  --color-orange-165: #FCCD47; /* hsl(44, 97%, 63%) · fill */
+  --color-light-yellow-87: #FEEC81; /* hsl(51, 98%, 75%) · fill */
+  --color-light-orange-19: #F69D74; /* hsl(19, 88%, 71%) · fill */
+  --color-yellow-181: #F7F45A; /* hsl(59, 91%, 66%) · fill */
+  --color-dark-green-13: #627E19; /* hsl(77, 67%, 30%) · fill */
+  --color-dark-green-14: #6D891E; /* hsl(76, 64%, 33%) · fill */
+  --color-light-yellow-88: #FFE484; /* hsl(47, 100%, 76%) · fill */
+  --color-light-yellow-89: #F7E57B; /* hsl(51, 89%, 73%) · fill */
+  --color-yellow-182: #FCDF5C; /* hsl(49, 96%, 67%) · fill */
+  --color-orange-166: #F99862; /* hsl(21, 93%, 68%) · fill */
+  --color-yellow-183: #FFDB4E; /* hsl(48, 100%, 65%) · fill */
+  --color-dark-green-15: #424F02; /* hsl(70, 95%, 16%) · fill */
+  --color-orange-167: #EE8661; /* hsl(16, 81%, 66%) · fill */
+  --color-orange-168: #F7B45C; /* hsl(34, 91%, 66%) · fill */
+  --color-light-yellow-90: #FDDE7E; /* hsl(45, 97%, 74%) · fill */
+  --color-light-yellow-91: #FDDF80; /* hsl(46, 97%, 75%) · fill */
+  --color-light-yellow-92: #FCF682; /* hsl(57, 95%, 75%) · fill */
+  --color-orange-169: #F6C94A; /* hsl(44, 91%, 63%) · fill */
+  --color-red-25: #A83E2C; /* hsl(9, 58%, 42%) · fill */
+  --color-red-26: #B6472E; /* hsl(11, 60%, 45%) · fill */
+  --color-orange-170: #F6BA40; /* hsl(40, 91%, 61%) · fill */
+  --color-orange-171: #EDB43F; /* hsl(40, 83%, 59%) · fill */
+  --color-dark-yellow-8: #5A670B; /* hsl(68, 81%, 22%) · fill */
+  --color-green-32: #8FB533; /* hsl(78, 56%, 45%) · fill */
+  --color-dark-green-16: #3F4D03; /* hsl(71, 93%, 16%) · fill */
+  --color-dark-green-17: #3F4C00; /* hsl(70, 100%, 15%) · fill */
+  --color-orange-172: #FDCA62; /* hsl(40, 97%, 69%) · fill */
+  --color-dark-green-18: #3D4B02; /* hsl(72, 95%, 15%) · fill */
+  --color-dark-green-19: #394900; /* hsl(73, 100%, 14%) · fill */
+  --color-dark-green-20: #3A4B00; /* hsl(74, 100%, 15%) · fill */
+  --color-dark-green-21: #3A4A02; /* hsl(73, 95%, 15%) · fill */
+  --color-green-33: #8EAF38; /* hsl(77, 52%, 45%) · fill */
+  --color-light-red: #F19781; /* hsl(12, 80%, 73%) · fill */
+  --color-dark-yellow-9: #525B0E; /* hsl(67, 73%, 21%) · fill */
+  --color-green-34: #B3CD3D; /* hsl(71, 59%, 52%) · fill */
+  --color-dark-yellow-10: #3F4A03; /* hsl(69, 92%, 15%) · fill */
+  --color-dark-yellow-11: #3F4A00; /* hsl(69, 100%, 15%) · fill */
+  --color-dark-green-22: #5A6D0B; /* hsl(72, 82%, 24%) · fill */
+  --color-dark-green-23: #5A6D0D; /* hsl(72, 79%, 24%) · fill */
+  --color-yellow-184: #CEE266; /* hsl(70, 68%, 64%) · fill */
+  --color-green-35: #87AC30; /* hsl(78, 56%, 43%) · fill */
+  --color-dark-green-24: #69831E; /* hsl(75, 63%, 32%) · fill */
+  --color-yellow-185: #CDE159; /* hsl(69, 69%, 62%) · fill */
+  --color-yellow-186: #CDE452; /* hsl(69, 73%, 61%) · fill */
+  --color-dark-yellow-12: #3F4B02; /* hsl(70, 95%, 15%) · fill */
+  --color-dark-green-25: #5C6F0B; /* hsl(71, 82%, 24%) · fill */
+  --color-green-36: #B7D049; /* hsl(71, 59%, 55%) · fill */
+  --color-green-37: #7B9B2B; /* hsl(77, 57%, 39%) · fill */
+  --color-green-38: #8DB334; /* hsl(78, 55%, 45%) · fill */
+  --color-green-39: #87AB32; /* hsl(78, 55%, 43%) · fill */
+  --color-dark-yellow-13: #404C02; /* hsl(70, 95%, 15%) · fill */
+  --color-dark-yellow-14: #3E4A02; /* hsl(70, 95%, 15%) · fill */
+  --color-dark-green-26: #3E4B00; /* hsl(70, 100%, 15%) · fill */
+  --color-dark-yellow-15: #515E0D; /* hsl(70, 76%, 21%) · fill */
+  --color-green-40: #7A9A2B; /* hsl(77, 56%, 39%) · fill */
+  --color-green-41: #BBCD71; /* hsl(72, 48%, 62%) · fill */
+  --color-green-42: #88AC32; /* hsl(78, 55%, 44%) · fill */
+  --color-dark-yellow-16: #677706; /* hsl(68, 90%, 25%) · fill */
+  --color-orange-173: #E6B942; /* hsl(44, 77%, 58%) · fill */
+  --color-dark-yellow-17: #3D4901; /* hsl(70, 97%, 15%) · fill */
+  --color-dark-yellow-18: #5B630D; /* hsl(66, 77%, 22%) · fill */
+  --color-dark-green-27: #5F7519; /* hsl(74, 65%, 28%) · fill */
+  --color-green-43: #89AF32; /* hsl(78, 56%, 44%) · fill */
+  --color-green-44: #98BA39; /* hsl(76, 53%, 48%) · fill */
+  --color-dark-yellow-19: #667805; /* hsl(69, 92%, 25%) · fill */
+  --color-yellow-187: #DAB53E; /* hsl(46, 68%, 55%) · fill */
+  --color-dark-green-28: #3D4A01; /* hsl(71, 97%, 15%) · fill */
+  --color-dark-yellow-20: #5A630D; /* hsl(66, 77%, 22%) · fill */
+  --color-dark-green-29: #556611; /* hsl(72, 71%, 23%) · fill */
+  --color-dark-yellow-21: #667706; /* hsl(69, 90%, 25%) · fill */
+  --color-dark-green-30: #4C5B05; /* hsl(70, 90%, 19%) · fill */
+  --color-dark-yellow-22: #4E5A05; /* hsl(68, 89%, 19%) · fill */
+  --color-dark-yellow-23: #59620C; /* hsl(66, 78%, 22%) · fill */
+  --color-dark-yellow-24: #4D5905; /* hsl(69, 89%, 18%) · fill */
+  --color-dark-yellow-25: #696E15; /* hsl(63, 68%, 26%) · fill */
+  --color-dark-yellow-26: #4D5906; /* hsl(69, 87%, 19%) · fill */
+  --color-dark-yellow-27: #837919; /* hsl(54, 68%, 31%) · fill */
+  --color-dark-yellow-28: #676D13; /* hsl(64, 70%, 25%) · fill */
+  --color-dark-yellow-29: #686C14; /* hsl(63, 69%, 25%) · fill */
+  --color-dark-green-31: #455303; /* hsl(71, 93%, 17%) · fill */
+  --color-orange-174: #E3B436; /* hsl(44, 76%, 55%) · fill */
+  --color-green-45: #90B434; /* hsl(77, 55%, 45%) · fill */
+  --color-dark-green-32: #455302; /* hsl(70, 95%, 17%) · fill */
+  --color-light-green-2: #CDDF8C; /* hsl(73, 56%, 71%) · fill */
+  --color-green-46: #94B937; /* hsl(77, 54%, 47%) · fill */
+  --color-dark-green-33: #708E23; /* hsl(77, 60%, 35%) · fill */
+  --color-yellow-188: #D6E96F; /* hsl(69, 73%, 67%) · fill */
+  --color-yellow-189: #CBE05E; /* hsl(70, 68%, 62%) · fill */
+  --color-green-47: #8FB535; /* hsl(78, 55%, 46%) · fill */
+  --color-dark-green-34: #445202; /* hsl(71, 95%, 16%) · fill */
+  --color-orange-175: #E3B335; /* hsl(43, 76%, 55%) · fill */
+  --color-green-48: #8DB036; /* hsl(77, 53%, 45%) · fill */
+  --color-green-49: #99B84B; /* hsl(77, 43%, 51%) · fill */
+  --color-green-50: #8DB238; /* hsl(78, 52%, 46%) · fill */
+  --color-green-51: #93A939; /* hsl(72, 50%, 44%) · fill */
+  --color-green-52: #749C35; /* hsl(83, 49%, 41%) · fill */
+  --color-green-53: #93AA3D; /* hsl(73, 47%, 45%) · fill */
+  --color-green-54: #7BA22E; /* hsl(80, 56%, 41%) · fill */
+  --color-green-55: #C5D77C; /* hsl(72, 53%, 66%) · fill */
+  --color-green-56: #B0CB3A; /* hsl(71, 58%, 51%) · fill */
+  --color-green-57: #92B639; /* hsl(77, 52%, 47%) · fill */
+  --color-dark-green-35: #435202; /* hsl(71, 95%, 16%) · fill */
+  --color-orange-176: #E3B334; /* hsl(44, 76%, 55%) · fill */
+  --color-yellow-190: #D1E262; /* hsl(68, 69%, 64%) · fill */
+  --color-green-58: #82A732; /* hsl(79, 54%, 43%) · fill */
+  --color-dark-green-36: #657F1D; /* hsl(76, 63%, 31%) · fill */
+  --color-dark-green-37: #647F1D; /* hsl(77, 63%, 31%) · fill */
+  --color-dark-green-38: #647F1E; /* hsl(77, 62%, 31%) · fill */
+  --color-dark-green-39: #65811F; /* hsl(77, 61%, 31%) · fill */
+  --color-dark-green-40: #65811E; /* hsl(77, 62%, 31%) · fill */
+  --color-dark-green-41: #67821E; /* hsl(76, 62%, 31%) · fill */
+  --color-dark-green-42: #67831F; /* hsl(77, 62%, 32%) · fill */
+  --color-green-59: #90B637; /* hsl(78, 54%, 46%) · fill */
+  --color-green-60: #83A830; /* hsl(79, 56%, 42%) · fill */
+  --color-green-61: #739932; /* hsl(82, 51%, 40%) · fill */
+  --color-green-62: #9BB54F; /* hsl(75, 41%, 51%) · fill */
+  --color-green-63: #94AA3C; /* hsl(72, 48%, 45%) · fill */
+  --color-green-64: #7AA02E; /* hsl(80, 55%, 40%) · fill */
+  --color-green-65: #B8C86B; /* hsl(70, 46%, 60%) · fill */
+  --color-green-66: #AECA3A; /* hsl(72, 58%, 51%) · fill */
+  --color-green-67: #C3DF6C; /* hsl(75, 64%, 65%) · fill */
+  --color-dark-green-43: #435101; /* hsl(70, 98%, 16%) · fill */
+  --color-dark-yellow-30: #8C8A0C; /* hsl(59, 84%, 30%) · fill */
+  --color-green-68: #93B837; /* hsl(77, 54%, 47%) · fill */
+  --color-green-69: #7CA02F; /* hsl(79, 55%, 41%) · fill */
+  --color-dark-green-44: #647F1A; /* hsl(76, 66%, 30%) · fill */
+  --color-dark-green-45: #647F1B; /* hsl(76, 65%, 30%) · fill */
+  --color-green-70: #92B438; /* hsl(76, 53%, 46%) · fill */
+  --color-green-71: #94B740; /* hsl(78, 48%, 48%) · fill */
+  --color-green-72: #92AA37; /* hsl(73, 51%, 44%) · fill */
+  --color-green-73: #719832; /* hsl(83, 50%, 40%) · fill */
+  --color-green-74: #7BA02D; /* hsl(79, 56%, 40%) · fill */
+  --color-green-75: #7CA22D; /* hsl(79, 57%, 41%) · fill */
+  --color-green-76: #93B73A; /* hsl(77, 52%, 47%) · fill */
+  --color-dark-yellow-31: #8C8A0D; /* hsl(59, 83%, 30%) · fill */
+  --color-dark-green-46: #647D19; /* hsl(75, 67%, 29%) · fill */
+  --color-green-77: #90B534; /* hsl(77, 55%, 46%) · fill */
+  --color-green-78: #BAD643; /* hsl(71, 64%, 55%) · fill */
+  --color-yellow-191: #CBE060; /* hsl(70, 67%, 63%) · fill */
+  --color-green-79: #BBD543; /* hsl(71, 63%, 55%) · fill */
+  --color-yellow-192: #CEE164; /* hsl(69, 68%, 64%) · fill */
+  --color-green-80: #90B634; /* hsl(78, 56%, 46%) · fill */
+  --color-dark-green-47: #647C18; /* hsl(74, 68%, 29%) · fill */
+  --color-dark-green-48: #56690A; /* hsl(72, 83%, 23%) · fill */
+  --color-green-81: #ACC73D; /* hsl(72, 55%, 51%) · fill */
+  --color-green-82: #ACC83D; /* hsl(72, 56%, 51%) · fill */
+  --color-green-83: #99B936; /* hsl(75, 55%, 47%) · fill */
+  --color-dark-green-49: #52630C; /* hsl(72, 78%, 22%) · fill */
+  --color-green-84: #93B836; /* hsl(77, 55%, 47%) · fill */
+  --color-dark-green-50: #415001; /* hsl(71, 98%, 16%) · fill */
+  --color-dark-yellow-32: #8B890E; /* hsl(59, 82%, 30%) · fill */
+  --color-dark-green-51: #637D17; /* hsl(75, 69%, 29%) · fill */
+  --color-green-85: #769930; /* hsl(80, 52%, 39%) · fill */
+  --color-green-86: #BAD543; /* hsl(71, 63%, 55%) · fill */
+  --color-green-87: #BBD644; /* hsl(71, 64%, 55%) · fill */
+  --color-yellow-193: #CEE262; /* hsl(69, 69%, 64%) · fill */
+  --color-yellow-194: #CEE261; /* hsl(69, 69%, 63%) · fill */
+  --color-yellow-195: #BFBF80; /* hsl(60, 33%, 63%) · fill */
+  --color-green-88: #8CB436; /* hsl(79, 54%, 46%) · fill */
+  --color-yellow-196: #C8DB54; /* hsl(68, 65%, 59%) · fill */
+  --color-green-89: #95B448; /* hsl(77, 43%, 49%) · fill */
+  --color-green-90: #94B448; /* hsl(78, 43%, 49%) · fill */
+  --color-green-91: #7A9F2D; /* hsl(79, 56%, 40%) · fill */
+  --color-light-green-3: #D8EA8F; /* hsl(72, 68%, 74%) · fill */
+  --color-green-92: #88AD46; /* hsl(82, 42%, 48%) · fill */
+  --color-green-93: #B5C666; /* hsl(71, 46%, 59%) · fill */
+  --color-green-94: #719425; /* hsl(79, 60%, 36%) · fill */
+  --color-dark-green-52: #3E5202; /* hsl(75, 95%, 16%) · fill */
+  --color-yellow-197: #BCCB62; /* hsl(69, 50%, 59%) · fill */
+  --color-green-95: #93AF32; /* hsl(73, 56%, 44%) · fill */
+  --color-dark-yellow-33: #525C0A; /* hsl(67, 80%, 20%) · fill */
+  --color-orange-177: #F2BE42; /* hsl(42, 87%, 60%) · fill */
+  --color-green-96: #92B834; /* hsl(77, 56%, 46%) · fill */
+  --color-green-97: #8DB237; /* hsl(78, 53%, 46%) · fill */
+  --color-green-98: #B0CB3F; /* hsl(72, 57%, 52%) · fill */
+  --color-green-99: #B0CC3D; /* hsl(72, 58%, 52%) · fill */
+  --color-green-100: #C8DC75; /* hsl(72, 60%, 66%) · fill */
+  --color-green-101: #84A732; /* hsl(78, 54%, 43%) · fill */
+  --color-green-102: #C4D87C; /* hsl(73, 54%, 67%) · fill */
+  --color-green-103: #91B538; /* hsl(77, 53%, 46%) · fill */
+  --color-dark-green-53: #607412; /* hsl(72, 73%, 26%) · fill */
+  --color-yellow-198: #C9DC54; /* hsl(68, 66%, 60%) · fill */
+  --color-yellow-199: #C8DB51; /* hsl(68, 66%, 59%) · fill */
+  --color-yellow-200: #C8DC52; /* hsl(69, 66%, 59%) · fill */
+  --color-green-104: #BBD842; /* hsl(72, 66%, 55%) · fill */
+  --color-green-105: #779C2B; /* hsl(80, 57%, 39%) · fill */
+  --color-green-106: #759A28; /* hsl(79, 59%, 38%) · fill */
+  --color-yellow-201: #BAC56D; /* hsl(68, 43%, 60%) · fill */
+  --color-green-107: #729325; /* hsl(78, 60%, 36%) · fill */
+  --color-green-108: #729424; /* hsl(78, 61%, 36%) · fill */
+  --color-dark-green-54: #404F02; /* hsl(72, 95%, 16%) · fill */
+  --color-dark-yellow-34: #515B0A; /* hsl(67, 80%, 20%) · fill */
+  --color-orange-178: #F6C146; /* hsl(42, 91%, 62%) · fill */
+  --color-dark-green-55: #657D18; /* hsl(74, 68%, 29%) · fill */
+  --color-green-109: #93B735; /* hsl(77, 55%, 46%) · fill */
+  --color-yellow-202: #CBDD5A; /* hsl(68, 66%, 61%) · fill */
+  --color-light-green-4: #D6E88E; /* hsl(72, 66%, 73%) · fill */
+  --color-green-110: #8DB434; /* hsl(78, 55%, 45%) · fill */
+  --color-green-111: #8DB534; /* hsl(79, 55%, 46%) · fill */
+  --color-green-112: #8FB734; /* hsl(78, 56%, 46%) · fill */
+  --color-green-113: #8FB636; /* hsl(78, 54%, 46%) · fill */
+  --color-green-114: #91B837; /* hsl(78, 54%, 47%) · fill */
+  --color-green-115: #94BA39; /* hsl(78, 53%, 48%) · fill */
+  --color-green-116: #BFD74A; /* hsl(70, 64%, 57%) · fill */
+  --color-green-117: #AAC641; /* hsl(73, 54%, 52%) · fill */
+  --color-green-118: #6C9231; /* hsl(84, 50%, 38%) · fill */
+  --color-dark-green-56: #637F19; /* hsl(76, 67%, 30%) · fill */
+  --color-dark-yellow-35: #505B09; /* hsl(68, 82%, 20%) · fill */
+  --color-dark-yellow-36: #717C0A; /* hsl(66, 85%, 26%) · fill */
+  --color-green-119: #749C36; /* hsl(84, 49%, 41%) · fill */
+  --color-green-120: #90B537; /* hsl(78, 53%, 46%) · fill */
+  --color-yellow-203: #D0E565; /* hsl(70, 71%, 65%) · fill */
+  --color-green-121: #85AB30; /* hsl(79, 56%, 43%) · fill */
+  --color-green-122: #739324; /* hsl(77, 61%, 36%) · fill */
+  --color-green-123: #9EB648; /* hsl(73, 43%, 50%) · fill */
+  --color-green-124: #7C9F2B; /* hsl(78, 57%, 40%) · fill */
+  --color-dark-yellow-37: #4D590A; /* hsl(69, 80%, 19%) · fill */
+  --color-dark-green-57: #657E19; /* hsl(75, 67%, 30%) · fill */
+  --color-dark-yellow-38: #4F5A07; /* hsl(68, 86%, 19%) · fill */
+  --color-yellow-204: #EFBF23; /* hsl(46, 86%, 54%) · fill */
+  --color-dark-green-58: #708418; /* hsl(71, 69%, 31%) · fill */
+  --color-green-125: #8FB338; /* hsl(78, 52%, 46%) · fill */
+  --color-dark-green-59: #65872A; /* hsl(82, 53%, 35%) · fill */
+  --color-green-126: #94B93B; /* hsl(78, 52%, 48%) · fill */
+  --color-yellow-205: #BDD445; /* hsl(70, 62%, 55%) · fill */
+  --color-green-127: #BAD541; /* hsl(71, 64%, 55%) · fill */
+  --color-green-128: #709125; /* hsl(78, 59%, 36%) · fill */
+  --color-green-129: #6F9226; /* hsl(79, 59%, 36%) · fill */
+  --color-dark-yellow-39: #4E5A07; /* hsl(69, 86%, 19%) · fill */
+  --color-dark-yellow-40: #797F0D; /* hsl(63, 81%, 27%) · fill */
+  --color-dark-green-60: #6F8C19; /* hsl(75, 70%, 32%) · fill */
+  --color-dark-yellow-41: #545E0E; /* hsl(68, 74%, 21%) · fill */
+  --color-green-130: #90B638; /* hsl(78, 53%, 47%) · fill */
+  --color-green-131: #B5CD3F; /* hsl(70, 59%, 53%) · fill */
+  --color-green-132: #B8D142; /* hsl(70, 61%, 54%) · fill */
+  --color-yellow-206: #B7B635; /* hsl(60, 55%, 46%) · fill */
+  --color-green-133: #A2C139; /* hsl(74, 54%, 49%) · fill */
+  --color-dark-yellow-42: #434F01; /* hsl(69, 98%, 16%) · fill */
+  --color-dark-yellow-43: #434F02; /* hsl(69, 95%, 16%) · fill */
+  --color-dark-yellow-44: #434F04; /* hsl(70, 90%, 16%) · fill */
+  --color-dark-green-61: #667F1A; /* hsl(75, 66%, 30%) · fill */
+  --color-dark-yellow-45: #7B7E0A; /* hsl(62, 85%, 27%) · fill */
+  --color-green-134: #88AB34; /* hsl(78, 53%, 44%) · fill */
+  --color-green-135: #7EA232; /* hsl(79, 53%, 42%) · fill */
+  --color-green-136: #7B9F2B; /* hsl(79, 57%, 40%) · fill */
+  --color-dark-green-62: #3E4E06; /* hsl(73, 86%, 16%) · fill */
+  --color-green-137: #9EB750; /* hsl(75, 42%, 52%) · fill */
+  --color-green-138: #A4C346; /* hsl(75, 51%, 52%) · fill */
+  --color-dark-green-63: #6F8C25; /* hsl(77, 58%, 35%) · fill */
+  --color-dark-green-64: #6D8E20; /* hsl(78, 63%, 34%) · fill */
+  --color-dark-green-65: #658019; /* hsl(76, 67%, 30%) · fill */
+  --color-dark-green-66: #677F1B; /* hsl(74, 65%, 30%) · fill */
+  --color-orange-179: #D8AD35; /* hsl(44, 68%, 53%) · fill */
+  --color-green-139: #92B638; /* hsl(77, 53%, 47%) · fill */
+  --color-green-140: #C4D97B; /* hsl(73, 55%, 67%) · fill */
+  --color-green-141: #77982C; /* hsl(78, 55%, 38%) · fill */
+  --color-green-142: #A6BF3B; /* hsl(71, 53%, 49%) · fill */
+  --color-green-143: #6C8F25; /* hsl(80, 59%, 35%) · fill */
+  --color-dark-green-67: #3D4D02; /* hsl(73, 95%, 15%) · fill */
+  --color-dark-green-68: #3F4E02; /* hsl(72, 95%, 16%) · fill */
+  --color-green-144: #AFCA3E; /* hsl(72, 57%, 52%) · fill */
+  --color-dark-green-69: #6E8C23; /* hsl(77, 60%, 34%) · fill */
+  --color-dark-green-70: #6E8D1F; /* hsl(77, 64%, 34%) · fill */
+  --color-dark-green-71: #68831A; /* hsl(75, 67%, 31%) · fill */
+  --color-dark-yellow-46: #4E5A06; /* hsl(69, 88%, 19%) · fill */
+  --color-orange-180: #D7AC34; /* hsl(44, 67%, 52%) · fill */
+  --color-green-145: #8EB636; /* hsl(79, 54%, 46%) · fill */
+  --color-green-146: #C2DB4E; /* hsl(71, 66%, 58%) · fill */
+  --color-green-147: #8DB135; /* hsl(77, 54%, 45%) · fill */
+  --color-green-148: #8AB034; /* hsl(78, 54%, 45%) · fill */
+  --color-dark-green-72: #415104; /* hsl(72, 91%, 17%) · fill */
+  --color-dark-green-73: #3F5103; /* hsl(74, 93%, 16%) · fill */
+  --color-dark-green-74: #3C4B00; /* hsl(72, 100%, 15%) · fill */
+  --color-dark-green-75: #3D4E01; /* hsl(73, 97%, 15%) · fill */
+  --color-dark-green-76: #3E4D03; /* hsl(72, 93%, 16%) · fill */
+  --color-dark-green-77: #3F4E04; /* hsl(72, 90%, 16%) · fill */
+  --color-dark-yellow-47: #4F5B0C; /* hsl(69, 77%, 20%) · fill */
+  --color-green-149: #8BB035; /* hsl(78, 54%, 45%) · fill */
+  --color-green-150: #809C28; /* hsl(74, 59%, 38%) · fill */
+  --color-dark-green-78: #465705; /* hsl(72, 89%, 18%) · fill */
+  --color-dark-yellow-48: #505B06; /* hsl(68, 88%, 19%) · fill */
+  --color-orange-181: #BA8717; /* hsl(41, 78%, 41%) · fill */
+  --color-yellow-207: #C8DC53; /* hsl(69, 66%, 59%) · fill */
+  --color-yellow-208: #C7DC53; /* hsl(69, 66%, 59%) · fill */
+  --color-green-151: #89AE33; /* hsl(78, 55%, 44%) · fill */
+  --color-dark-yellow-49: #535B0E; /* hsl(66, 73%, 21%) · fill */
+  --color-dark-yellow-50: #515B0D; /* hsl(68, 75%, 20%) · fill */
+  --color-dark-yellow-51: #525C0D; /* hsl(68, 75%, 21%) · fill */
+  --color-dark-green-79: #475505; /* hsl(70, 89%, 18%) · fill */
+  --color-dark-yellow-52: #515C06; /* hsl(68, 88%, 19%) · fill */
+  --color-orange-182: #B88516; /* hsl(41, 79%, 40%) · fill */
+  --color-green-152: #8CB036; /* hsl(78, 53%, 45%) · fill */
+  --color-dark-yellow-53: #565F0F; /* hsl(67, 73%, 22%) · fill */
+  --color-dark-yellow-54: #525D05; /* hsl(68, 90%, 19%) · fill */
+  --color-orange-183: #B98616; /* hsl(41, 79%, 41%) · fill */
+  --color-dark-yellow-55: #646F05; /* hsl(66, 91%, 23%) · fill */
+  --color-orange-184: #E0A71C; /* hsl(43, 78%, 49%) · fill */
+  --color-orange-185: #E0A71D; /* hsl(42, 77%, 50%) · fill */
+  --color-light-gray-5: rgba(222, 226, 222, 0.16); /* hsl(0, 0%, 88%) · background */
+  --color-light-gray-6: #CCCCCC; /* hsl(0, 0%, 80%) · other */
+  --color-dark-gray-10: #21212B; /* hsl(240, 13%, 15%) · fill */
+  --color-cyan-3: #0081C0; /* hsl(200, 100%, 38%) · background */
+  --color-cyan-4: #41A1CF; /* hsl(199, 60%, 53%) · border */
+  --color-light-gray-7: #E5E5E5; /* hsl(0, 0%, 90%) · border */
+  --color-light-cyan: rgba(207, 235, 231, 0.5); /* hsl(171, 41%, 87%) · background */
+  --color-light-cyan-2: rgba(160, 215, 209, 0.5); /* hsl(174, 41%, 73%) · background */
+  --color-light-cyan-3: #A0D7D1; /* hsl(173, 41%, 74%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 13px;
+  --font-size-xs: 14px;
+  --font-size-sm: 15px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 28px;
+  --font-size-2xl: 40px;
+  --font-size-3xl: 48px;
+  --font-size-4xl: 54px;
+  --font-family-base: ui-sans-serif;
+  --font-family-2: af;
+  --font-family-3: ppmondwest;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 15px;
+  --line-height-snug: 16.9px;
+  --line-height-normal: 18.2px;
+  --line-height-relaxed: 19.5px;
+  --line-height-loose: 21px;
+  --line-height-lh-6: 23.4px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 30.8px;
+  --line-height-lh-9: 44px;
+  --line-height-lh-10: 48px;
+  --line-height-lh-11: 59.4px;
+  --letter-spacing-tight: -1.08px;
+  --letter-spacing-normal: -0.96px;
+  --letter-spacing-wide: -0.56px;
+  --letter-spacing-wider: -0.18px;
+  --letter-spacing-widest: -0.15px;
+  --letter-spacing-ls-6: -0.13px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1.5px;
+  --space-2: 2px;
+  --space-3: 2.5px;
+  --space-4: 3.95px;
+  --space-5: 4px;
+  --space-6: 4.937px;
+  --space-8: 6px;
+  --space-10: 7px;
+  --space-12: 8px;
+  --space-16: 10px;
+  --space-20: 11.85px;
+  --space-24: 120px;
+  --space-32: 16px;
+  --space-40: 18px;
+  --space-48: 20px;
+  --space-64: 24px;
+  --space-80: 32px;
+  --space-96: 40px;
+  --space-128: 48px;
+  --space-160: 50.3906px;
+  --space-192: 64px;
+  --space-256: 80px;
+  --space-23: 100px;
+  --space-25: 128px;
+  --space-26: 140px;
+  --space-27: 160px;
+  --space-28: 229.523px;
+  --space-29: 229.531px;
+  --space-30: 246.5px;
+  --space-31: 400px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 0px 0px 500%;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 24px;
+  --radius-r7: 27px;
+  --radius-r8: 50.496px;
+  --radius-r9: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.04) 0px 1.01px 1.01px 0px;
+  --shadow-md: rgb(222, 226, 222) 0px 0px 0px 1px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(80, 115, 138, 0.24) 0px 2px 4px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.15) 0px 2px 6px 0px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px;
+  --shadow-shadow-6: rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0) 0px 6px 6px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.16s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.22s;
+  --duration-slower: 0.25s;
+  --duration-duration-6: 0.3s;
+  --duration-duration-7: 0.5s;
+  --duration-duration-8: 0.6s;
+  --duration-duration-9: 1s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 10;
+  --z-3: 20;
+  --z-4: 50;
+  --z-5: 100;
+  --z-6: 103;
+  --z-7: 112;
+  --z-8: 9999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 1920px;
+
+  /* ── Opacity ── */
+  --opacity-20: 0.2;
+  --opacity-70: 0.7;
+}

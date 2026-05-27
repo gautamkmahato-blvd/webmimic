@@ -1,0 +1,190 @@
+/* ============================================
+ * Design Tokens — Bloomberg Asia
+ * Source: https://www.bloomberg.com/asia
+ * Generated: 18/04/2026, 13:56:07
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-light-gray: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-gray-2: #B3B3B3; /* hsl(0, 0%, 70%) · text */
+  --color-light-gray-3: #CCCCCC; /* hsl(0, 0%, 80%) · background */
+  --color-dark-gray: #1C1C1C; /* hsl(0, 0%, 11%) · background */
+  --color-dark-gray-2: #3C3C3C; /* hsl(0, 0%, 24%) · background */
+  --color-light-gray-4: #EFEFEF; /* hsl(0, 0%, 94%) · background */
+  --color-dark-gray-3: #545454; /* hsl(0, 0%, 33%) · background */
+  --color-mid-gray: #767676; /* hsl(0, 0%, 46%) · background */
+  --color-light-gray-5: #F3F4EF; /* hsl(72, 19%, 95%) · text */
+  --color-mid-gray-2: #999999; /* hsl(0, 0%, 60%) · background */
+  --color-red: #E51503; /* hsl(5, 97%, 45%) · text */
+  --color-dark-blue: #2B333F; /* hsl(216, 19%, 21%) · background */
+  --color-blue: #0064FA; /* hsl(216, 100%, 49%) · background */
+  --color-dark-gray-4: #141414; /* hsl(0, 0%, 8%) · background */
+  --color-white-2: #F8F8F8; /* hsl(0, 0%, 97%) · background */
+  --color-yellow: #FFCD1E; /* hsl(47, 100%, 56%) · text */
+  --color-orange: #FFA028; /* hsl(33, 100%, 58%) · text */
+  --color-blue-2: rgba(115, 133, 159, 0.5); /* hsl(216, 18%, 54%) · background */
+  --color-red-2: #F34F4E; /* hsl(0, 87%, 63%) · text */
+  --color-white-3: #F2F7FF; /* hsl(217, 100%, 97%) · background */
+  --color-dark-gray-5: rgba(28, 28, 28, 0.8); /* hsl(0, 0%, 11%) · background */
+  --color-cyan: #04ACCC; /* hsl(190, 96%, 41%) · fill */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 15px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 28px;
+  --font-family-base: BWHaasGroteskWeb;
+  --font-family-2: AvenirNextPForBBG;
+  --font-family-3: PublicoText;
+  --font-family-4: VideoJS;
+  --font-family-5: Arial;
+  --font-family-6: BWHaasHead;
+  --font-family-7: PublicoHead;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 12px;
+  --line-height-snug: 14px;
+  --line-height-normal: 14.7px;
+  --line-height-relaxed: 16px;
+  --line-height-loose: 16.8px;
+  --line-height-lh-6: 18px;
+  --line-height-lh-7: 18.9px;
+  --line-height-lh-8: 19.6px;
+  --line-height-lh-9: 21px;
+  --line-height-lh-10: 21.6px;
+  --line-height-lh-11: 22.5px;
+  --line-height-lh-12: 24px;
+  --line-height-lh-13: 25.2px;
+  --line-height-lh-14: 29.4px;
+  --line-height-lh-15: 30px;
+  --letter-spacing-tight: 0.14px;
+  --letter-spacing-normal: 0.1408px;
+  --letter-spacing-wide: 0.2px;
+  --letter-spacing-wider: 0.4192px;
+  --letter-spacing-widest: 0.48px;
+  --letter-spacing-ls-6: 1px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 3.70312px;
+  --space-5: 4px;
+  --space-6: 5px;
+  --space-8: 5.00781px;
+  --space-10: 5.27344px;
+  --space-12: 6px;
+  --space-16: 7px;
+  --space-20: 8px;
+  --space-24: 24px;
+  --space-32: 52px;
+  --space-40: 11px;
+  --space-48: 12px;
+  --space-64: 15px;
+  --space-80: 16px;
+  --space-96: 17px;
+  --space-128: 18px;
+  --space-160: 19px;
+  --space-192: 20px;
+  --space-256: 22px;
+  --space-23: 23px;
+  --space-25: 27px;
+  --space-26: 30px;
+  --space-27: 32px;
+  --space-28: 34px;
+  --space-29: 35px;
+  --space-30: 40px;
+  --space-31: 44px;
+  --space-33: 76.5px;
+  --space-34: 198px;
+  --space-35: 370.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 1.5px;
+  --border-width-base: 8px;
+  --radius-sm: 0px 8px 8px 0px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 4.2px;
+  --radius-2xl: 5px;
+  --radius-full: 6px;
+  --radius-r7: 7px;
+  --radius-r8: 8px;
+  --radius-r9: 12px;
+  --radius-r10: 14px;
+  --radius-r11: 28px;
+  --radius-r12: 50%;
+  --radius-r13: 120px;
+  --radius-r14: 9999px;
+  --radius-r15: 13986px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+  --shadow-md: rgb(0, 0, 0) 0px 0px 8px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.25s;
+  --duration-slower: 0.3s;
+  --duration-duration-6: 0.35s;
+  --duration-duration-7: 0.5s;
+  --duration-duration-8: 0.6s;
+  --duration-duration-9: 1s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 3;
+  --z-4: 10;
+  --z-5: 30;
+  --z-6: 40;
+  --z-7: 50;
+  --z-8: 100;
+  --z-9: 14678;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 470px;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 600px;
+  --breakpoint-lg: 620px;
+  --breakpoint-xl: 675px;
+  --breakpoint-2xl: 759px;
+  --breakpoint-3xl: 760px;
+  --breakpoint-bp-8: 767px;
+  --breakpoint-bp-9: 768px;
+  --breakpoint-bp-10: 900px;
+  --breakpoint-bp-11: 911px;
+  --breakpoint-bp-12: 1019px;
+  --breakpoint-bp-13: 1020px;
+  --breakpoint-bp-14: 1122px;
+  --breakpoint-bp-15: 1123px;
+  --breakpoint-bp-16: 1279px;
+  --breakpoint-bp-17: 1280px;
+  --breakpoint-bp-18: 1300px;
+  --breakpoint-bp-19: 1334px;
+  --breakpoint-bp-20: 1335px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-73: 0.73;
+  --opacity-83: 0.83;
+  --opacity-85: 0.85;
+}

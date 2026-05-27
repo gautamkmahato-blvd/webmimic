@@ -1,0 +1,203 @@
+/* ============================================
+ * Design Tokens — Airbnb | Holiday rentals, cabins, beach houses & more
+ * Source: https://www.airbnb.co.in/
+ * Generated: 13/04/2026, 22:49:49
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #222222; /* hsl(0, 0%, 13%) · background */
+  --color-mid-gray: #6A6A6A; /* hsl(0, 0%, 42%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-light-gray: #C1C1C1; /* hsl(0, 0%, 76%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-gray-2: #DDDDDD; /* hsl(0, 0%, 87%) · background */
+  --color-light-gray-3: #F2F2F2; /* hsl(0, 0%, 95%) · background */
+  --color-red: #FF385C; /* hsl(349, 100%, 61%) · text */
+  --color-mid-gray-2: #B0B0B0; /* hsl(0, 0%, 69%) · background */
+  --color-dark-blue: rgba(60, 77, 107, 0.25); /* hsl(220, 29%, 33%) · shadow */
+  --color-light-yellow: #FFF8DF; /* hsl(47, 100%, 94%) · gradient */
+  --color-light-yellow-2: rgba(255, 254, 224, 0.2); /* hsl(60, 100%, 94%) · gradient */
+  --color-blue: #3E567C; /* hsl(217, 33%, 36%) · gradient */
+  --color-dark-blue-2: #3A5475; /* hsl(214, 34%, 34%) · gradient */
+  --color-dark-blue-3: #2D3C5B; /* hsl(220, 34%, 27%) · gradient */
+  --color-blue-2: #809DC0; /* hsl(213, 34%, 63%) · gradient */
+  --color-dark-blue-4: #001C40; /* hsl(214, 100%, 13%) · shadow */
+  --color-light-blue: #D7EBFF; /* hsl(210, 100%, 92%) · shadow */
+  --color-light-blue-2: rgba(191, 205, 213, 0.9); /* hsl(202, 21%, 79%) · gradient */
+  --color-white-2: #F7F7F7; /* hsl(0, 0%, 97%) · background */
+  --color-light-gray-4: #EBEBEB; /* hsl(0, 0%, 92%) · background */
+  --color-red-2: #E00B41; /* hsl(345, 91%, 46%) · background */
+  --color-white-3: #F8F8F8; /* hsl(0, 0%, 97%) · gradient */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 8px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-lg: 14px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 21px;
+  --font-size-4xl: 22px;
+  --font-size-5xl: 28px;
+  --font-family-base: Times;
+  --font-family-2: Airbnb Cereal VF;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 10px;
+  --line-height-snug: 11.44px;
+  --line-height-normal: 13px;
+  --line-height-relaxed: 16px;
+  --line-height-loose: 18px;
+  --line-height-lh-6: 20.02px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 26px;
+  --line-height-lh-9: 30.03px;
+  --line-height-lh-10: 40.04px;
+  --letter-spacing-tight: -0.44px;
+  --letter-spacing-normal: -0.18px;
+  --letter-spacing-wide: 0.32px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 2.5px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-6: 5.5px;
+  --space-8: 6px;
+  --space-10: 8px;
+  --space-12: 9.5px;
+  --space-16: 10px;
+  --space-20: 11px;
+  --space-24: 48px;
+  --space-32: 12.4531px;
+  --space-40: 15px;
+  --space-48: 16px;
+  --space-64: 20px;
+  --space-80: 22px;
+  --space-96: 24px;
+  --space-128: 26.4688px;
+  --space-160: 28px;
+  --space-192: 32px;
+  --space-256: 35px;
+  --space-23: 40px;
+  --space-25: 49px;
+  --space-26: 53px;
+  --space-27: 80px;
+  --space-28: 130.904px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 3px;
+  --radius-sm: 0px 1.5px 1.5px 0px;
+  --radius-md: 1.5px 0px 0px 1.5px;
+  --radius-lg: 4px;
+  --radius-xl: 8px;
+  --radius-2xl: 9px;
+  --radius-full: 10px 10px 10px 2px;
+  --radius-r7: 14px;
+  --radius-r8: 20px;
+  --radius-r9: 32px;
+  --radius-r10: 50px;
+  --radius-r11: 50%;
+  --radius-r12: 100px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.02) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 2px 6px 0px, rgba(0, 0, 0, 0.1) 0px 4px 8px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.02) 0px 0px 0px 1px, rgba(0, 0, 0, 0.16) 0px 2px 4px 0px;
+  --shadow-lg: rgba(60, 77, 107, 0.25) 0px 0.953955px 1.90791px 0px, rgba(60, 77, 107, 0.25) 0px 3.81582px 5.72373px 0px, rgb(0, 28, 64) 0px 0px 2px 0.5px inset, rgb(215, 235, 255) 0px -1px 3px 0px inset;
+  --shadow-xl: rgba(0, 0, 0, 0.02) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 8px 24px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.175s;
+  --duration-slow: 0.2s;
+  --duration-slower: 0.25s;
+  --duration-duration-6: 0.3s;
+  --duration-duration-7: 0.451754s;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -3;
+  --z-2: -2;
+  --z-3: -1;
+  --z-4: 1;
+  --z-5: 2;
+  --z-6: 3;
+  --z-7: 100;
+  --z-8: 2001;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 200px;
+  --breakpoint-sm: 220px;
+  --breakpoint-md: 299px;
+  --breakpoint-lg: 300px;
+  --breakpoint-xl: 320px;
+  --breakpoint-2xl: 330px;
+  --breakpoint-3xl: 344px;
+  --breakpoint-bp-8: 375px;
+  --breakpoint-bp-9: 376px;
+  --breakpoint-bp-10: 395px;
+  --breakpoint-bp-11: 400px;
+  --breakpoint-bp-12: 403px;
+  --breakpoint-bp-13: 412px;
+  --breakpoint-bp-14: 420px;
+  --breakpoint-bp-15: 429px;
+  --breakpoint-bp-16: 431px;
+  --breakpoint-bp-17: 440px;
+  --breakpoint-bp-18: 450px;
+  --breakpoint-bp-19: 474px;
+  --breakpoint-bp-20: 475px;
+  --breakpoint-bp-21: 479.99px;
+  --breakpoint-bp-22: 480px;
+  --breakpoint-bp-23: 481px;
+  --breakpoint-bp-24: 499px;
+  --breakpoint-bp-25: 500px;
+  --breakpoint-bp-26: 550px;
+  --breakpoint-bp-27: 551px;
+  --breakpoint-bp-28: 568px;
+  --breakpoint-bp-29: 600px;
+  --breakpoint-bp-30: 650px;
+  --breakpoint-bp-31: 660px;
+  --breakpoint-bp-32: 667px;
+  --breakpoint-bp-33: 680px;
+  --breakpoint-bp-34: 700px;
+  --breakpoint-bp-35: 743px;
+  --breakpoint-bp-36: 744px;
+  --breakpoint-bp-37: 768px;
+  --breakpoint-bp-38: 800px;
+  --breakpoint-bp-39: 880px;
+  --breakpoint-bp-40: 895px;
+  --breakpoint-bp-41: 916px;
+  --breakpoint-bp-42: 949px;
+  --breakpoint-bp-43: 950px;
+  --breakpoint-bp-44: 1024px;
+  --breakpoint-bp-45: 1028px;
+  --breakpoint-bp-46: 1127px;
+  --breakpoint-bp-47: 1127.99px;
+  --breakpoint-bp-48: 1128px;
+  --breakpoint-bp-49: 1194px;
+  --breakpoint-bp-50: 1238px;
+  --breakpoint-bp-51: 1240px;
+  --breakpoint-bp-52: 1280px;
+  --breakpoint-bp-53: 1348px;
+  --breakpoint-bp-54: 1440px;
+  --breakpoint-bp-55: 1600px;
+  --breakpoint-bp-56: 1735px;
+  --breakpoint-bp-57: 1760px;
+  --breakpoint-bp-58: 1880px;
+  --breakpoint-bp-59: 1920px;
+  --breakpoint-bp-60: 2120px;
+  --breakpoint-bp-61: 2560px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+}

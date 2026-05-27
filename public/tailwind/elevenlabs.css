@@ -1,0 +1,227 @@
+/* ============================================
+ * Design Tokens — Free AI Voice Generator & Voice Agents Platform | ElevenLabs
+ * Source: https://elevenlabs.io/
+ * Generated: 15/04/2026, 00:26:36
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray: #3D3D3D; /* hsl(0, 0%, 24%) · text */
+  --color-light-gray: #E5E5E5; /* hsl(0, 0%, 90%) · border */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-mid-gray: #777169; /* hsl(34, 6%, 44%) · text */
+  --color-white-2: #F5F3F1; /* hsl(30, 17%, 95%) · background */
+  --color-white-3: #FDFCFC; /* hsl(0, 20%, 99%) · background */
+  --color-dark-gray-2: #57534E; /* hsl(33, 5%, 32%) · text */
+  --color-mid-gray-2: #A59F97; /* hsl(34, 7%, 62%) · text */
+  --color-light-gray-2: #EBE8E4; /* hsl(34, 15%, 91%) · background */
+  --color-red: #F41A2F; /* hsl(354, 91%, 53%) · text */
+  --color-blue: #0A59D2; /* hsl(216, 91%, 43%) · text */
+  --color-dark-blue: #052F70; /* hsl(216, 91%, 23%) · text */
+  --color-mid-gray-3: #949494; /* hsl(0, 0%, 58%) · text */
+  --color-light-gray-3: #E0DFDD; /* hsl(40, 5%, 87%) · fill */
+  --color-blue-2: #635BFF; /* hsl(243, 100%, 68%) · fill */
+  --color-orange: #FF4704; /* hsl(16, 100%, 51%) · background */
+  --color-blue-3: #0447FF; /* hsl(224, 100%, 51%) · background */
+  --color-green: #76B900; /* hsl(82, 100%, 36%) · fill */
+  --color-cyan: #00CCBC; /* hsl(175, 100%, 40%) · fill */
+  --color-white-4: #FAF8F8; /* hsl(0, 17%, 98%) · background */
+  --color-dark-gray-3: #44403B; /* hsl(33, 7%, 25%) · text */
+  --color-black-2: #0C0A09; /* hsl(20, 14%, 4%) · text */
+  --color-white-5: #FFF9F5; /* hsl(24, 100%, 98%) · fill */
+  --color-white-6: #F5F8FF; /* hsl(222, 100%, 98%) · fill */
+  --color-light-gray-4: rgba(245, 242, 239, 0.8); /* hsl(30, 23%, 95%) · background */
+  --color-dark-orange: rgba(78, 50, 23, 0.04); /* hsl(29, 50%, 20%) · shadow */
+  --color-blue-4: #3D75D8; /* hsl(218, 67%, 54%) · gradient */
+  --color-blue-5: #2A68D2; /* hsl(218, 67%, 49%) · gradient */
+  --color-blue-6: #75BEE5; /* hsl(201, 68%, 68%) · gradient */
+  --color-cyan-2: #52D0E9; /* hsl(190, 77%, 62%) · gradient */
+  --color-blue-7: #2159BA; /* hsl(218, 70%, 43%) · gradient */
+  --color-blue-8: #3A74DA; /* hsl(218, 68%, 54%) · gradient */
+  --color-cyan-3: #6CD7EC; /* hsl(190, 77%, 67%) · gradient */
+  --color-blue-9: #5AB9F1; /* hsl(202, 84%, 65%) · gradient */
+  --color-blue-10: #33A1E5; /* hsl(203, 77%, 55%) · gradient */
+  --color-blue-11: #1F5FCF; /* hsl(218, 74%, 47%) · gradient */
+  --color-blue-12: #2C54CA; /* hsl(225, 64%, 48%) · gradient */
+  --color-cyan-4: #3A9ECF; /* hsl(200, 61%, 52%) · gradient */
+  --color-blue-13: #3167C5; /* hsl(218, 60%, 48%) · gradient */
+  --color-light-cyan: #ADE8F3; /* hsl(189, 74%, 82%) · gradient */
+  --color-light-cyan-2: #D8F1F5; /* hsl(188, 59%, 90%) · gradient */
+  --color-light-cyan-3: #A5DBE6; /* hsl(190, 57%, 77%) · gradient */
+  --color-cyan-5: #2B9DD6; /* hsl(200, 68%, 50%) · gradient */
+  --color-light-cyan-4: #AEE0E9; /* hsl(189, 57%, 80%) · gradient */
+  --color-cyan-6: #20BAD0; /* hsl(188, 73%, 47%) · gradient */
+  --color-blue-14: #1E53B0; /* hsl(218, 71%, 40%) · gradient */
+  --color-blue-15: #2F40D2; /* hsl(234, 64%, 50%) · gradient */
+  --color-dark-blue-2: #1C366A; /* hsl(220, 58%, 26%) · fill */
+  --color-cyan-7: #16E1FF; /* hsl(188, 100%, 54%) · fill */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-lg: 15px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 18px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 32px;
+  --font-size-5xl: 36px;
+  --font-size-6xl: 48px;
+  --font-family-base: Inter;
+  --font-family-2: Waldenburg;
+  --font-family-3: WaldenburgHF;
+  --font-family-4: ui-monospace;
+  --font-family-5: Geist Mono;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 12px;
+  --line-height-snug: 15px;
+  --line-height-normal: 16px;
+  --line-height-relaxed: 18px;
+  --line-height-loose: 19.6px;
+  --line-height-lh-6: 21px;
+  --line-height-lh-7: 22px;
+  --line-height-lh-8: 24px;
+  --line-height-lh-9: 26px;
+  --line-height-lh-10: 27px;
+  --line-height-lh-11: 28.8px;
+  --line-height-lh-12: 36px;
+  --line-height-lh-13: 42px;
+  --line-height-lh-14: 52px;
+  --letter-spacing-tight: -0.96px;
+  --letter-spacing-normal: 0.14px;
+  --letter-spacing-wide: 0.15px;
+  --letter-spacing-wider: 0.16px;
+  --letter-spacing-widest: 0.18px;
+  --letter-spacing-ls-6: 0.28px;
+  --letter-spacing-ls-7: 0.32px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 0.5px;
+  --space-2: 1px;
+  --space-3: 1.5px;
+  --space-4: 2px;
+  --space-5: 3px;
+  --space-6: 3.5px;
+  --space-8: 4px;
+  --space-10: 5.25px;
+  --space-12: 6px;
+  --space-16: 8px;
+  --space-20: 8.5px;
+  --space-24: 24px;
+  --space-32: 40px;
+  --space-40: 78.75px;
+  --space-48: 150.969px;
+  --space-64: 14px;
+  --space-80: 15.6406px;
+  --space-96: 16px;
+  --space-128: 17px;
+  --space-160: 18px;
+  --space-192: 19px;
+  --space-256: 20px;
+  --space-23: 22px;
+  --space-25: 26.5px;
+  --space-26: 27px;
+  --space-27: 28px;
+  --space-28: 32px;
+  --space-29: 35px;
+  --space-30: 35.5px;
+  --space-31: 36px;
+  --space-33: 44px;
+  --space-34: 48px;
+  --space-35: 56px;
+  --space-36: 64px;
+  --space-37: 66px;
+  --space-38: 72px;
+  --space-39: 73px;
+  --space-41: 85.4922px;
+  --space-42: 95.5px;
+  --space-43: 96px;
+  --space-44: 120px;
+  --space-45: 128px;
+  --space-46: 133.453px;
+  --space-47: 141.5px;
+  --space-49: 156.609px;
+  --space-50: 160px;
+  --space-51: 168.797px;
+  --space-52: 168.805px;
+  --space-53: 191.648px;
+  --space-54: 191.656px;
+  --space-55: 257.594px;
+  --space-56: 288px;
+  --space-57: 342px;
+  --space-58: 357.258px;
+  --space-59: 423px;
+  --space-60: 468px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 4px;
+  --radius-sm: 0px 0px 24px 24px;
+  --radius-md: 0px 0px 0px 20px;
+  --radius-lg: 2px;
+  --radius-xl: 4px;
+  --radius-2xl: 7px;
+  --radius-full: 7.2px 21.6px 21.6px;
+  --radius-r7: 8px 8px 0px 0px;
+  --radius-r8: 8px 0px 0px 8px;
+  --radius-r9: 8px;
+  --radius-r10: 10px;
+  --radius-r11: 11.5px;
+  --radius-r12: 12px;
+  --radius-r13: 16px;
+  --radius-r14: 18px;
+  --radius-r15: 20px;
+  --radius-r16: 24px;
+  --radius-r17: 30px;
+  --radius-r18: 50%;
+  --radius-r19: 50px;
+  --radius-r20: 100px;
+  --radius-r21: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 1px 2px 0px, rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+  --shadow-md: rgb(255, 255, 255) 0px 0px 0px 0px inset, rgba(0, 0, 0, 0.075) 0px 0px 0px 0.5px inset, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  --shadow-lg: rgb(255, 255, 255) 0px 0px 0px 0px inset, rgba(0, 0, 0, 0.1) 0px 0px 0px 0.5px inset, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0) 0px 0px 1px 0px, rgba(0, 0, 0, 0) 0px 4px 4px 0px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0.4) 0px 0px 1px 0px, rgba(0, 0, 0, 0.04) 0px 4px 4px 0px;
+  --shadow-shadow-6: rgba(0, 0, 0, 0.06) 0px 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 1px 2px 0px, rgba(0, 0, 0, 0.04) 0px 2px 4px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.36s;
+  --duration-duration-6: 0.5s;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -10;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 10;
+  --z-6: 20;
+  --z-7: 30;
+  --z-8: 50;
+  --z-9: 9998;
+  --z-10: 99999;
+  --z-11: 2147483645;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 1024px;
+
+  /* ── Opacity ── */
+  --opacity-10: 0.1;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-80: 0.8;
+}

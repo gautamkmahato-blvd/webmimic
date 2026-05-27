@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Railway Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --color-black: #000000;
+  --color-dark-gray: #33323E;
+  --color-white: #F7F7F8;
+  --color-white-2: #FFFFFF;
+  --color-dark-gray-2: #0B0B0F;
+  --color-dark-gray-3: #13111C;
+  --color-dark-gray-4: #201F2D;
+  --color-dark-gray-5: #3C3C3C;
+  --color-dark-gray-6: #545260;
+  --color-dark-gray-7: #535260;
+  --color-dark-gray-8: #181622;
+  --color-dark-gray-9: #0D0C14;
+  --color-mid-gray: #868593;
+  --color-mid-gray-2: #A1A0AB;
+  --color-light-gray: #D9D9D9;
+  --color-light-gray-2: #C4C4CA;
+  --color-light-gray-3: #DCDCE0;
+  --color-cyan: #42946E;
+  --color-cyan-2: #5B9A84;
+  --color-cyan-3: #4AA4CC;
+  --color-cyan-4: #609F89;
+  --color-cyan-5: #37CD8F;
+  --color-dark-cyan: #296852;
+  --color-dark-cyan-2: #0A6441;
+  --color-dark-cyan-3: #1C362A;
+  --color-orange: #F1CD69;
+  --color-orange-2: #D2AC53;
+  --color-orange-3: #EF9352;
+  --color-orange-4: #C67839;
+  --color-red: #D2352B;
+  --color-red-2: #912422;
+  --color-green: #83CD29;
+  --color-purple: #853BCE;
+  --color-light-purple: #BF92EC;
+  --color-light-pink: #F9A8D4;
+  --color-blue: #6B7280;
+  --color-blue-2: #6D6B7B;
+  --color-blue-3: #509EE3;
+  --color-blue-4: #336791;
+  --color-blue-5: #5E8EED;
+  --color-blue-6: #8A6FD5;
+  --color-blue-7: #1753ED;
+  --color-dark-blue: #180D43;
+  --color-dark-purple: #3D2259;
+  --color-dark-purple-2: #291839;
+  --color-yellow: #F0DB4F;
+  --color-dark-gray-11: #2A2734;
+  --color-dark-gray-13: #1C1A28;
+
+  --font-family-base: 'Inter', sans-serif;
+  --font-family-tight: 'Inter Tight', sans-serif;
+  --font-family-serif: 'IBM Plex Serif', serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+
+  --font-size-2xs: 11px;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 28px;
+  --font-size-4xl: 32px;
+  --font-size-5xl: 36px;
+  --font-size-6xl: 40px;
+  --font-size-hero: 54px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-8: 16px;
+  --space-10: 24px;
+  --space-12: 32px;
+  --space-16: 40px;
+  --space-20: 48px;
+  --space-24: 64px;
+  --space-32: 80px;
+  --space-40: 96px;
+
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  --shadow-inset: rgba(255,255,255,0.1) 0px 0px 0px 1px inset;
+  --shadow-inset-strong: rgba(255,255,255,0.2) 0px 0px 0px 1.5px inset;
+
+  --duration-instant: 0.05s;
+  --duration-fast: 0.1s;
+  --duration-normal: 0.15s;
+  --duration-slow: 0.2s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in-out: ease-in-out;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family-base);background:var(--color-dark-gray-3);color:var(--color-white);font-size:var(--font-size-base);line-height:1.5;font-weight:var(--font-weight-regular);}
+.page{max-width:1200px;margin:0 auto;padding:var(--space-24) var(--space-12);}
+
+/* HEADER */
+.top-bar{border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);margin-bottom:var(--space-20);padding-bottom:var(--space-6);}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3);}
+.header-left{display:flex;align-items:center;gap:var(--space-5);}
+.logo{width:38px;height:38px;background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;}
+.system-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--color-white-2);font-family:var(--font-family-tight);}
+.system-meta{font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-top:2px;}
+.hbadge{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);background:var(--color-dark-gray-8);color:var(--color-mid-gray);padding:2px var(--space-4);border-radius:var(--radius-full);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-hairline) solid var(--color-dark-gray-5);background:var(--color-dark-gray-6);color:var(--color-light-gray-3);box-shadow:0 1px 2px rgba(0,0,0,0.28);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-cyan);color:var(--color-cyan);box-shadow:0 4px 14px rgba(0,0,0,0.38);transform:translateY(-1px);}
+
+/* SECTION */
+.section{margin-bottom:var(--space-32);}
+.section-title{font-size:var(--font-size-3xl);font-weight:var(--font-weight-semibold);color:var(--color-white-2);font-family:var(--font-family-tight);margin-bottom:var(--space-8);display:flex;align-items:center;gap:var(--space-4);letter-spacing:-0.6px;}
+
+/* COLORS */
+.color-group{margin-bottom:var(--space-10);}
+.color-group-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);letter-spacing:0.24px;text-transform:uppercase;color:var(--color-dark-gray-6);margin-bottom:var(--space-4);}
+.swatch-grid{display:grid;gap:var(--space-3);}
+.swatch-item{display:flex;flex-direction:column;gap:var(--space-2);}
+.swatch-box{height:60px;border-radius:var(--radius-md);border:var(--border-width-hairline) solid rgba(255,255,255,0.06);}
+.swatch-name{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray-2);}
+.swatch-hex{font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-mono);}
+
+/* TYPOGRAPHY */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-8);}
+.font-card{background:var(--color-dark-gray-8);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-xl);padding:var(--space-8);}
+.font-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--color-cyan-5);font-weight:var(--font-weight-medium);margin-bottom:var(--space-3);}
+.font-display{font-size:var(--font-size-5xl);color:var(--color-white-2);margin-bottom:var(--space-3);font-weight:var(--font-weight-semibold);letter-spacing:-0.8px;}
+.font-sample{font-size:var(--font-size-base);color:var(--color-mid-gray);}
+.fw-row{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-4);}
+.fw-chip{font-size:var(--font-size-xs);padding:2px var(--space-4);background:var(--color-dark-gray-3);border-radius:var(--radius-sm);color:var(--color-light-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+
+.type-scale{background:var(--color-dark-gray-8);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-xl);overflow:hidden;}
+.type-row{display:flex;flex-direction:column;padding:var(--space-5) var(--space-8);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--color-white-2);margin-bottom:2px;}
+.type-meta{font-size:10px;color:var(--color-dark-gray-6);font-family:var(--font-family-mono);}
+
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);}
+.lh-item{background:var(--color-dark-gray-8);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-sm);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);}
+.lh-bar-wrap{background:var(--color-dark-gray);border-radius:2px;overflow:hidden;position:relative;}
+.lh-bar{background:linear-gradient(to bottom,var(--color-dark-cyan),var(--color-cyan-5));width:100%;}
+.lh-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--color-cyan-5);}
+.lh-val{font-size:10px;color:var(--color-mid-gray);}
+
+.ls-row{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.ls-item{background:var(--color-dark-gray-8);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-sm);padding:var(--space-5) var(--space-8);flex:1;}
+.ls-sample{font-size:var(--font-size-2xl);color:var(--color-white-2);font-weight:var(--font-weight-semibold);margin-bottom:var(--space-2);font-family:var(--font-family-tight);}
+.ls-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--color-cyan-5);}
+.ls-desc{font-size:10px;color:var(--color-mid-gray);}
+
+/* SPACING */
+.token-wrap{background:var(--color-dark-gray-8);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-xl);padding:var(--space-8);}
+.tw-title{font-size:var(--font-size-lg);font-weight:var(--font-weight-semibold);color:var(--color-white-2);margin-bottom:2px;font-family:var(--font-family-tight);}
+.tw-sub{font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-bottom:var(--space-8);}
+.spacing-chart{display:flex;align-items:flex-end;gap:var(--space-2);height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;}
+.sp-bar{background:linear-gradient(to top,var(--color-dark-cyan),var(--color-cyan-5));border-radius:2px 2px 0 0;width:100%;}
+.sp-lbl{font-size:9px;color:var(--color-mid-gray);text-align:center;font-family:var(--font-family-mono);}
+
+/* BORDERS */
+.border-card{background:var(--color-dark-gray-8);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-xl);padding:var(--space-8);margin-bottom:var(--space-8);}
+.bc-title{font-size:var(--font-size-lg);font-weight:var(--font-weight-semibold);color:var(--color-white-2);margin-bottom:var(--space-4);font-family:var(--font-family-tight);}
+.radius-row{display:flex;gap:var(--space-5);flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:var(--space-3);}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,var(--color-dark-cyan),var(--color-cyan-5));border:var(--border-width-hairline) solid rgba(255,255,255,0.06);}
+.radius-lbl{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray-2);text-align:center;font-family:var(--font-family-mono);}
+.radius-val{font-size:10px;color:var(--color-mid-gray);text-align:center;font-family:var(--font-family-mono);}
+
+/* SHADOWS */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);}
+.sh-item{display:flex;flex-direction:column;gap:var(--space-4);}
+.sh-box{height:88px;background:var(--color-dark-gray-4);border-radius:var(--radius-sm);}
+.sh-token{font-size:var(--font-size-base);font-weight:var(--font-weight-medium);color:var(--color-light-gray-2);font-family:var(--font-family-mono);}
+.sh-usage{font-size:10px;color:var(--color-mid-gray);}
+.sh-desc{font-size:10px;color:var(--color-dark-gray-6);line-height:1.5;margin-top:2px;}
+
+/* MOTION (not needed but spacing used) */
+
+/* Z-INDEX */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:var(--space-5) var(--space-5);text-align:left;font-size:var(--font-size-base);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);line-height:1.4;}
+.z-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:0.24px;color:var(--color-dark-gray-6);}
+.z-table td:first-child{font-family:var(--font-family-mono);color:var(--color-cyan-5);}
+.z-table td:nth-child(2){font-family:var(--font-family-mono);color:var(--color-white-2);}
+.z-table td:nth-child(3){color:var(--color-mid-gray);}
+.z-table tr:last-child td{border-bottom:none;}
+
+/* BREAKPOINTS */
+.bp-card{background:var(--color-dark-gray-8);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-xl);padding:var(--space-8);display:flex;align-items:center;gap:var(--space-10);margin-bottom:var(--space-4);}
+.bp-icon{font-size:var(--font-size-5xl);line-height:1;}
+.bp-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--color-cyan-5);margin-bottom:var(--space-2);}
+.bp-val{font-size:var(--font-size-5xl);font-weight:var(--font-weight-bold);color:var(--color-white-2);line-height:1;font-family:var(--font-family-tight);letter-spacing:-0.8px;}
+.bp-desc{font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-top:var(--space-2);}
+
+/* OPACITY */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-4);}
+.op-item{display:flex;flex-direction:column;gap:var(--space-3);}
+.op-box{height:60px;border-radius:var(--radius-sm);background:var(--color-cyan-5);}
+.op-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--color-cyan-5);}
+.op-val{font-size:10px;color:var(--color-mid-gray);}
+
+/* ACCESSIBILITY */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:var(--space-5) var(--space-5);text-align:left;font-size:var(--font-size-xs);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);line-height:1.4;}
+.a11y-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:0.24px;color:var(--color-dark-gray-6);}
+.a11y-table td:first-child,.a11y-table td:nth-child(2){font-family:var(--font-family-mono);font-size:10px;}
+.a11y-table td:nth-child(2){color:var(--color-mid-gray);}
+.a11y-table td:nth-child(3){color:var(--color-light-gray-2);font-family:var(--font-family-mono);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-medium);padding:2px 7px;border-radius:var(--radius-full);}
+.wcag-aaa{background:var(--color-dark-cyan-3);color:var(--color-cyan-5);border:var(--border-width-hairline) solid var(--color-dark-cyan);}
+.wcag-aa{background:var(--color-dark-gray-11);color:var(--color-light-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+.wcag-aal{background:var(--color-dark-gray-13);color:var(--color-mid-gray);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+.wcag-fail{background:rgba(210,53,43,.08);color:#ff6b5e;border:var(--border-width-hairline) solid rgba(210,53,43,.25);}
+
+/* COMPONENTS */
+.comp-row{background:var(--color-dark-gray-8);border-radius:var(--radius-xl);border:var(--border-width-hairline) solid var(--color-dark-gray);overflow:hidden;margin-bottom:var(--space-6);}
+.comp-header{padding:var(--space-3) var(--space-4);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);background:var(--color-dark-gray-3);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray-2);}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-medium);background:var(--color-dark-gray);color:var(--color-mid-gray);padding:2px 8px;border-radius:var(--radius-full);border:var(--border-width-hairline) solid var(--color-dark-gray-5);}
+.comp-body{padding:var(--space-8);}
+
+.btn-row{display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-base);font-weight:var(--font-weight-medium);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-base);padding:var(--space-4) var(--space-8);border-radius:var(--radius-sm);transition:opacity var(--duration-fast) var(--easing-ease-out),background var(--duration-fast) var(--easing-ease-out);}
+.btn-primary{background:var(--color-white-2);color:var(--color-dark-gray-3);}
+.btn-primary:hover{background:var(--color-white);}
+.btn-secondary{background:var(--color-dark-gray-4);color:var(--color-white);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+.btn-secondary:hover{background:var(--color-dark-gray-7);}
+.btn-outline{background:transparent;color:var(--color-cyan-5);border:var(--border-width-hairline) solid var(--color-cyan-5);}
+.btn-outline:hover{background:var(--color-dark-cyan-3);}
+.btn-ghost{background:transparent;color:var(--color-mid-gray-2);border:var(--border-width-hairline) solid transparent;}
+.btn-ghost:hover{background:var(--color-dark-gray-4);}
+.btn-muted{background:var(--color-dark-gray-3);color:var(--color-mid-gray);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8);}
+.inp-group{display:flex;flex-direction:column;gap:var(--space-2);}
+.inp-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray-2);}
+.inp{width:100%;font-family:var(--font-family-base);font-size:var(--font-size-base);color:var(--color-white);background:var(--color-dark-gray-3);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-sm);padding:var(--space-4) var(--space-4);outline:none;transition:border var(--duration-fast) var(--easing-ease-out);}
+.inp:focus{border-color:var(--color-cyan-5);box-shadow:0 0 0 3px var(--color-dark-cyan-3);}
+.inp::placeholder{color:var(--color-dark-gray-6);}
+.inp-hint{font-size:var(--font-size-xs);color:var(--color-mid-gray);}
+.inp-err{border-color:var(--color-dark-gray-5)!important;}
+.inp-err-msg{font-size:var(--font-size-xs);color:var(--color-mid-gray);}
+
+.badge{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);padding:2px var(--space-4);border-radius:var(--radius-full);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--color-dark-gray);color:var(--color-light-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray-5);}
+.badge-brand{background:var(--color-dark-cyan-3);color:var(--color-cyan-5);border:var(--border-width-hairline) solid var(--color-dark-cyan);}
+.badge-muted{background:var(--color-dark-gray-8);color:var(--color-mid-gray);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+.badge-row{display:flex;flex-wrap:wrap;gap:var(--space-3);}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);padding:2px var(--space-4);border-radius:var(--radius-sm);border:var(--border-width-hairline) solid var(--color-dark-gray);background:var(--color-dark-gray-3);color:var(--color-light-gray-2);}
+.tag-brand{color:var(--color-cyan-5);background:var(--color-dark-cyan-3);border-color:var(--color-dark-cyan);}
+.tag-orange{color:var(--color-orange);background:rgba(156,112,22,0.15);border-color:rgba(156,112,22,0.3);}
+.tag-purple{color:var(--color-light-purple);background:rgba(61,34,89,0.4);border-color:rgba(133,59,206,0.4);}
+
+.alert{display:flex;gap:var(--space-4);padding:var(--space-4) var(--space-5);border-radius:var(--radius-xl);font-size:var(--font-size-base);}
+.alert-icon{font-size:var(--font-size-xl);flex-shrink:0;line-height:1.4;}
+.alert-body h5{font-weight:var(--font-weight-medium);margin-bottom:2px;font-size:var(--font-size-base);color:var(--color-white-2);}
+.alert-body p{font-size:var(--font-size-xs);color:var(--color-mid-gray-2);}
+.alert-neutral{background:var(--color-dark-gray-8);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+.alert-brand{background:var(--color-dark-cyan-3);color:var(--color-cyan-5);border:var(--border-width-hairline) solid var(--color-dark-cyan);}
+.alert-warning{background:rgba(156,112,22,0.1);color:var(--color-orange);border:var(--border-width-hairline) solid rgba(156,112,22,0.3);}
+.alert-error{background:rgba(210,53,43,0.08);color:var(--color-white);border:var(--border-width-hairline) solid rgba(210,53,43,0.25);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);}
+.feature-card{background:var(--color-dark-gray-3);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-xl);padding:var(--space-8);transition:border-color var(--duration-normal) var(--easing-ease-out);}
+.feature-card:hover{border-color:var(--color-cyan-5);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:var(--space-4);border:var(--border-width-hairline) solid var(--color-dark-gray);background:var(--color-dark-gray-8);}
+.fc-title{font-size:var(--font-size-lg);font-weight:var(--font-weight-semibold);color:var(--color-white-2);font-family:var(--font-family-tight);margin-bottom:var(--space-2);}
+.fc-desc{font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-bottom:var(--space-4);}
+
+.av-row{display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-8);}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-medium);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-lg);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-base);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-xs);}
+.av-info h4{font-size:var(--font-size-lg);font-weight:var(--font-weight-medium);color:var(--color-white-2);font-family:var(--font-family-tight);}
+.av-info p{font-size:var(--font-size-xs);color:var(--color-mid-gray);}
+
+.prog-wrap{margin-bottom:var(--space-4);}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray-2);margin-bottom:2px;}
+.prog-track{height:4px;background:var(--color-dark-gray);border-radius:var(--radius-full);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-full);}
+
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:var(--space-4) var(--space-4);text-align:left;font-size:var(--font-size-base);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);}
+.data-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:0.24px;color:var(--color-dark-gray-6);background:var(--color-dark-gray-3);}
+.data-table tr:hover td{background:var(--color-dark-gray-4);transition:background var(--duration-fast) var(--easing-ease-out);}
+.data-table td:first-child{font-family:var(--font-family-mono);color:var(--color-cyan-5);}
+
+/* CSS VARS REFERENCE */
+.tokens-section{margin-bottom:var(--space-32);}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);}
+.tokens-group{background:var(--color-dark-gray-8);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-xl);overflow:hidden;}
+.tokens-group-header{padding:var(--space-4) var(--space-6);border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);background:var(--color-dark-gray-3);display:flex;align-items:center;gap:var(--space-4);}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--color-cyan-5);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray-2);letter-spacing:0.24px;text-transform:uppercase;}
+.tokens-group-count{font-size:10px;color:var(--color-dark-gray-6);margin-left:auto;}
+.tokens-list{padding:var(--space-3) 0;}
+.token-row{display:flex;align-items:center;gap:var(--space-4);padding:3px var(--space-6);transition:background var(--duration-instant);}
+.token-row:hover{background:var(--color-dark-gray-4);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-sm);border:var(--border-width-hairline) solid rgba(255,255,255,0.08);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--color-light-gray-2);flex:1;min-width:0;}
+.token-css{font-size:10px;font-family:var(--font-family-mono);color:var(--color-cyan-5);white-space:nowrap;}
+.token-value{font-size:10px;font-family:var(--font-family-mono);color:var(--color-dark-gray-6);white-space:nowrap;}
+.token-preview-bar{height:4px;border-radius:var(--radius-full);background:linear-gradient(to right,var(--color-dark-cyan),var(--color-cyan-5));flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,var(--color-dark-cyan),var(--color-cyan-5));flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-sm);background:var(--color-cyan-5);flex-shrink:0;}
+.tokens-full{grid-column:1/-1;}
+.token-row-sep{height:var(--border-width-hairline);background:var(--color-dark-gray);margin:var(--space-2) 0;}
+
+@media(max-width:600px){
+  .font-cards,.motion-grid,.shadows-row,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="22" height="16" viewBox="0 0 70 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="70" height="10" rx="2" fill="#F7F7F8"/>
+            <rect y="20" width="50" height="10" rx="2" fill="#F7F7F8"/>
+            <rect y="40" width="30" height="10" rx="2" fill="#F7F7F8"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">Railway Design System</div>
+          <div class="system-meta">Dark · Generated 19/04/2026 · 133 colors · 62 type tokens · 20 spacing steps · 12 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">v4.6</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- 1. COLOR PALETTE -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(9,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black</div><div class="swatch-hex">#000000</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0B0B0F"></div><div class="swatch-name">Dark Gray 2</div><div class="swatch-hex">#0B0B0F</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#13111C"></div><div class="swatch-name">Dark Gray 3</div><div class="swatch-hex">#13111C</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1C1A28"></div><div class="swatch-name">Dark Gray 13</div><div class="swatch-hex">#1C1A28</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#33323E"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#33323E</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#180D43"></div><div class="swatch-name">Dark Blue</div><div class="swatch-hex">#180D43</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#3D2259"></div><div class="swatch-name">Dark Purple</div><div class="swatch-hex">#3D2259</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#291839"></div><div class="swatch-name">Dark Purple 2</div><div class="swatch-hex">#291839</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(0,0,0,.12)"></div><div class="swatch-name">White 2</div><div class="swatch-hex">#FFFFFF</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);max-width:820px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#F7F7F8;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">White</div><div class="swatch-hex">#F7F7F8</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#A1A0AB;border-color:rgba(0,0,0,.06)"></div><div class="swatch-name">Mid Gray 2</div><div class="swatch-hex">#A1A0AB</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#6B7280"></div><div class="swatch-name">Blue (Gray)</div><div class="swatch-hex">#6B7280</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#545260"></div><div class="swatch-name">Dark Gray 6</div><div class="swatch-hex">#545260</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#42946E"></div><div class="swatch-name">Cyan</div><div class="swatch-hex">#42946E</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#C67839"></div><div class="swatch-name">Orange 4</div><div class="swatch-hex">#C67839</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F9A8D4"></div><div class="swatch-name">Light Pink</div><div class="swatch-hex">#F9A8D4</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#853BCE"></div><div class="swatch-name">Purple</div><div class="swatch-hex">#853BCE</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Brand & Accent Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);max-width:820px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#37CD8F"></div><div class="swatch-name">Cyan 5</div><div class="swatch-hex">#37CD8F</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#296852"></div><div class="swatch-name">Dark Cyan</div><div class="swatch-hex">#296852</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1C362A"></div><div class="swatch-name">Dark Cyan 3</div><div class="swatch-hex">#1C362A</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F1CD69"></div><div class="swatch-name">Orange</div><div class="swatch-hex">#F1CD69</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#EF9352"></div><div class="swatch-name">Orange 3</div><div class="swatch-hex">#EF9352</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#D2352B"></div><div class="swatch-name">Red</div><div class="swatch-hex">#D2352B</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#83CD29"></div><div class="swatch-name">Green</div><div class="swatch-hex">#83CD29</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#BF92EC"></div><div class="swatch-name">Light Purple</div><div class="swatch-hex">#BF92EC</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Border Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(2,1fr);max-width:200px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#A05FCF"></div><div class="swatch-name">Purple 4</div><div class="swatch-hex">#A05FCF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(51,50,62,0.1)"></div><div class="swatch-name">Dark Gray 28</div><div class="swatch-hex">rgba(51,50,62,0.1)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">Base Font · Inter</div>
+        <div class="font-display" style="font-family:'Inter',sans-serif;">Inter</div>
+        <div class="font-sample">The quick brown fox jumps over the lazy dog</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:500">Medium · 500</span>
+          <span class="fw-chip" style="font-weight:600">Semibold · 600</span>
+          <span class="fw-chip" style="font-weight:700">Bold · 700</span>
+          <span class="fw-chip" style="font-weight:800">Extrabold · 800</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Display Font · Inter Tight</div>
+        <div class="font-display" style="font-family:'Inter Tight',sans-serif;letter-spacing:-1.96px;">Inter Tight</div>
+        <div class="font-sample" style="font-family:'Inter Tight',sans-serif;">Deploy in seconds. Scale to billions.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:'Inter Tight',sans-serif;font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-family:'Inter Tight',sans-serif;font-weight:600">Semibold · 600</span>
+          <span class="fw-chip" style="font-family:'Inter Tight',sans-serif;font-weight:700">Bold · 700</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Serif Font · IBM Plex Serif</div>
+        <div class="font-display" style="font-family:'IBM Plex Serif',serif;font-size:28px;">IBM Plex Serif</div>
+        <div class="font-sample" style="font-family:'IBM Plex Serif',serif;">The intelligent cloud provider.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:'IBM Plex Serif',serif;font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-family:'IBM Plex Serif',serif;font-weight:500">Medium · 500</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Mono Font · JetBrains Mono</div>
+        <div class="font-display" style="font-family:'JetBrains Mono',monospace;font-size:22px;">JetBrains Mono</div>
+        <div class="font-sample" style="font-family:'JetBrains Mono',monospace;">railway up --detach --env production</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:'JetBrains Mono',monospace;font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-family:'JetBrains Mono',monospace;font-weight:500">Medium · 500</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type Scale -->
+    <div class="type-scale" style="margin-bottom:var(--space-8);">
+      <div class="type-row">
+        <div class="type-sample" style="font-size:54px;font-weight:800;line-height:65px;letter-spacing:-1.96px;font-family:'Inter Tight',sans-serif;">Deploy.</div>
+        <div class="type-meta">Hero Display · 54px · Extrabold · letter-spacing: −1.96px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:40px;font-weight:700;line-height:48px;letter-spacing:-0.8px;font-family:'Inter Tight',sans-serif;">Build. Ship. Scale.</div>
+        <div class="type-meta">Display XL · 40px · Bold · letter-spacing: −0.8px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:32px;font-weight:700;line-height:40px;letter-spacing:-0.72px;font-family:'Inter Tight',sans-serif;">The all-in-one cloud platform</div>
+        <div class="type-meta">Heading Large · 32px · Bold · letter-spacing: −0.72px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:20px;font-weight:600;line-height:28px;letter-spacing:-0.24px;">Infrastructure, simplified.</div>
+        <div class="type-meta">Heading Medium · 20px · Semibold · letter-spacing: −0.24px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:16px;font-weight:400;line-height:24px;color:var(--color-mid-gray-2);">Railway is the cloud that takes programs from your computer and runs them on the internet — no DevOps PhD required.</div>
+        <div class="type-meta">Body Default · 16px · Regular · line-height: 24px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:14px;font-weight:400;line-height:21px;color:var(--color-mid-gray-2);">Deploy from GitHub in 3 minutes. Automatic deploys on every push.</div>
+        <div class="type-meta">Body Small · 14px · Regular · line-height: 21px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:11px;font-weight:500;line-height:16px;letter-spacing:0.24px;text-transform:uppercase;color:var(--color-mid-gray);">DEPLOY · SCALE · MONITOR</div>
+        <div class="type-meta">Caption · 11px · Medium · letter-spacing: 0.24px · uppercase</div>
+      </div>
+    </div>
+
+    <!-- Line Heights -->
+    <div style="margin-bottom:var(--space-8);">
+      <div style="font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);letter-spacing:0.24px;text-transform:uppercase;color:var(--color-dark-gray-6);margin-bottom:var(--space-4);">Line Heights</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:9px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">9.5px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:16px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">16px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:21px;"></div></div><div class="lh-token">LH-7</div><div class="lh-val">21px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">LH-10</div><div class="lh-val">24px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:28px;"></div></div><div class="lh-token">LH-12</div><div class="lh-val">28px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:32px;"></div></div><div class="lh-token">LH-15</div><div class="lh-val">32px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:40px;"></div></div><div class="lh-token">LH-17</div><div class="lh-val">40px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:48px;"></div></div><div class="lh-token">LH-20</div><div class="lh-val">48px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:60px;"></div></div><div class="lh-token">LH-21</div><div class="lh-val">60.5px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:65px;"></div></div><div class="lh-token">LH-22</div><div class="lh-val">65px</div></div>
+      </div>
+    </div>
+
+    <!-- Letter Spacing -->
+    <div>
+      <div style="font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);letter-spacing:0.24px;text-transform:uppercase;color:var(--color-dark-gray-6);margin-bottom:var(--space-4);">Letter Spacing</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-1.96px;font-family:'Inter Tight',sans-serif;">Railway Platform</div>
+          <div class="ls-token">Tightest</div>
+          <div class="ls-desc">−1.96px · hero headings, display text</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.8px;font-family:'Inter Tight',sans-serif;">Deploy Fast</div>
+          <div class="ls-token">Normal (Tight)</div>
+          <div class="ls-desc">−0.8px · section headings</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.2px;">Scale globally</div>
+          <div class="ls-token">LS-7</div>
+          <div class="ls-desc">−0.2px · body text, UI labels</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:0.24px;text-transform:uppercase;font-size:13px;">DEPLOY · SCALE</div>
+          <div class="ls-token">LS-12</div>
+          <div class="ls-desc">0.24px · uppercase labels, captions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SPACING -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">20 tokens — 2px → 310px</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:2px"></div><div class="sp-lbl">2</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:6px"></div><div class="sp-lbl">6</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:16px"></div><div class="sp-lbl">16</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:24px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:32px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:40px"></div><div class="sp-lbl">40</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:48px"></div><div class="sp-lbl">48</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:64px"></div><div class="sp-lbl">64</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:80px"></div><div class="sp-lbl">80</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:96px"></div><div class="sp-lbl">96</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:104px"></div><div class="sp-lbl">104</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:128px"></div><div class="sp-lbl">128</div></div>
+        <div class="sp-col" style="opacity:.5"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">140+</div></div>
+        <div class="sp-col" style="opacity:.4"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">159+</div></div>
+        <div class="sp-col" style="opacity:.3"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">201+</div></div>
+        <div class="sp-col" style="opacity:.2"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">310+</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. BORDERS -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:0px 0px 4px 4px"></div><div class="radius-lbl">SM</div><div class="radius-val">0 0 4 4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">LG</div><div class="radius-val">4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px 4px 0 0"></div><div class="radius-lbl">XL</div><div class="radius-val">4 4 0 0px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:6px"></div><div class="radius-lbl">2XL</div><div class="radius-val">6px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-lbl">Full</div><div class="radius-val">8px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:12px"></div><div class="radius-lbl">R7</div><div class="radius-val">12px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:16px"></div><div class="radius-lbl">R8</div><div class="radius-val">16px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:28px"></div><div class="radius-lbl">R9</div><div class="radius-val">28px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px;height:30px;margin-top:15px"></div><div class="radius-lbl">R11</div><div class="radius-val">9999px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:50%"></div><div class="radius-lbl">R10</div><div class="radius-val">50%</div></div>
+      </div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Width</div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4);">
+        <div style="display:flex;align-items:center;gap:var(--space-5);">
+          <span style="font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--color-cyan-5);min-width:140px;">Hairline</span>
+          <div style="flex:1;height:1px;background:var(--color-mid-gray-2);"></div>
+          <span style="font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-mono);">1px · ×2296</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-5);">
+          <span style="font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--color-cyan-5);min-width:140px;">Thin</span>
+          <div style="flex:1;height:2px;background:var(--color-mid-gray-2);"></div>
+          <span style="font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-mono);">2px · ×8</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. SHADOWS / ELEVATION -->
+  <div class="section">
+    <div class="section-title">Shadows / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">6 tokens</div>
+      <div class="shadows-row">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(255,255,255,0.1) 0px 0px 0px 1px inset;border:var(--border-width-hairline) solid var(--color-dark-gray);"></div>
+          <div class="sh-token">Inset SM</div>
+          <div class="sh-usage">×2</div>
+          <div class="sh-desc">rgba(255,255,255,0.1) 1px inset — subtle inner highlight ring</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(255,255,255,0.2) 0px 0px 0px 1.5px inset;"></div>
+          <div class="sh-token">Inset LG</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">rgba(255,255,255,0.2) 1.5px inset — stronger inner ring for cards</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgb(204,204,204) 0px 0px 2px 2px;"></div>
+          <div class="sh-token">Outline MD</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">#CCCCCC 2px spread — focus outline or selected element</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(62,45,45,0.24) 0px 60px 120px 0px,rgba(62,45,45,0.165) 0px 24px 48px 0px;"></div>
+          <div class="sh-token">Depth XL</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">5-layer dark warm shadow — modals, dialogs, elevated panels</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(65,78,166,0.1) 0px -12px 127px 0px,rgba(65,78,166,0.07) 0px -4px 46px 0px;"></div>
+          <div class="sh-token">Glow Blue</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">Blue layered glow from below — hero sections, landing spotlights</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(180,40,180,0.25) 0px 0px 6px 0px,rgba(102,43,223,0.25) 0px 0px 16px 0px;"></div>
+          <div class="sh-token">Glow Purple</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">Pink+purple outer glow — interactive highlights, hover effects</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Z-INDEX -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>--z-1</td><td>1</td><td>Base stacking layer</td></tr>
+          <tr><td>--z-2</td><td>2</td><td>Slight elevation above base</td></tr>
+          <tr><td>--z-3</td><td>5</td><td>Sticky elements, minor overlays</td></tr>
+          <tr><td>--z-4</td><td>10</td><td>Navigation, sticky headers</td></tr>
+          <tr><td>--z-5</td><td>20</td><td>Dropdowns, popovers</td></tr>
+          <tr><td>--z-6</td><td>50</td><td>Overlays, modals, drawers</td></tr>
+          <tr><td>--z-7</td><td>9999</td><td>Top-level dialogs, toasts</td></tr>
+          <tr><td>--z-8</td><td>2147483636</td><td>Browser extension layer</td></tr>
+          <tr><td>--z-9</td><td>2147483637</td><td>Above extension layer</td></tr>
+          <tr><td>--z-10</td><td>2147483638</td><td>Absolute topmost layer</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. BREAKPOINTS -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);">
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;">
+        <div><div class="bp-token">--breakpoint-xs</div><div class="bp-val">376px</div><div class="bp-desc">Mobile XS — small phones</div></div>
+      </div>
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;">
+        <div><div class="bp-token">--breakpoint-sm</div><div class="bp-val">500px</div><div class="bp-desc">Small — large phones</div></div>
+      </div>
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;">
+        <div><div class="bp-token">--breakpoint-md</div><div class="bp-val">640px</div><div class="bp-desc">Medium — small tablets</div></div>
+      </div>
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;">
+        <div><div class="bp-token">--breakpoint-lg</div><div class="bp-val">768px</div><div class="bp-desc">Large — tablets</div></div>
+      </div>
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;">
+        <div><div class="bp-token">--breakpoint-3xl</div><div class="bp-val">1024px</div><div class="bp-desc">3XL — laptops</div></div>
+      </div>
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;">
+        <div><div class="bp-token">--breakpoint-bp-11</div><div class="bp-val">1280px</div><div class="bp-desc">BP-11 — desktops</div></div>
+      </div>
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;grid-column:1/-1;">
+        <div><div class="bp-token">--breakpoint-bp-13</div><div class="bp-val">1900px</div><div class="bp-desc">BP-13 — ultra-wide displays. Full range: 376px → 500px → 640px → 768px → 800px → 900px → 1024px → 1080px → 1100px → 1200px → 1280px → 1536px → 1900px</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. OPACITY -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <div class="tw-sub">14 tokens — 0.01 → 0.94</div>
+      <div class="opacity-grid" style="grid-template-columns:repeat(7,1fr);">
+        <div class="op-item"><div class="op-box" style="opacity:0.01;"></div><div class="op-token">1%</div><div class="op-val">--opacity-1</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.07;"></div><div class="op-token">7%</div><div class="op-val">--opacity-7</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.12;"></div><div class="op-token">12%</div><div class="op-val">--opacity-12</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.25;"></div><div class="op-token">25%</div><div class="op-val">--opacity-25</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.40;"></div><div class="op-token">40%</div><div class="op-val">--opacity-40</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.50;"></div><div class="op-token">50%</div><div class="op-val">--opacity-50</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.60;"></div><div class="op-token">60%</div><div class="op-val">--opacity-60</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.75;"></div><div class="op-token">75%</div><div class="op-val">--opacity-75</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.90;"></div><div class="op-token">90%</div><div class="op-val">--opacity-90</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.94;"></div><div class="op-token">94%</div><div class="op-val">--opacity-94</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. ACCESSIBILITY -->
+  <div class="section">
+    <div class="section-title">Accessibility — Contrast Ratios</div>
+    <div style="font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-bottom:var(--space-5);">WCAG 2.1 thresholds: <strong style="color:var(--color-light-gray-2);">AA</strong> ≥ 4.5:1 normal · <strong style="color:var(--color-light-gray-2);">AA Large</strong> ≥ 3:1 large/bold · <strong style="color:var(--color-light-gray-2);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Token</th><th>Background Token</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>--color-white</td><td>--color-black</td><td>19.61:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-white</td><td>--color-dark-gray</td><td>11.77:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-white</td><td>--color-dark-gray-2</td><td>18.35:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-white</td><td>--color-dark-gray-3</td><td>17.44:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-white</td><td>--color-white-2</td><td>1.07:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-blue (gray)</td><td>--color-black</td><td>4.34:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-blue (gray)</td><td>--color-white-2</td><td>4.83:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-blue (gray)</td><td>--color-dark-gray-2</td><td>4.06:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-cyan</td><td>--color-black</td><td>5.69:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-cyan</td><td>--color-dark-gray-2</td><td>5.33:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-cyan</td><td>--color-dark-gray-3</td><td>5.06:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>--color-cyan</td><td>--color-white-2</td><td>3.69:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-black</td><td>8.13:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-dark-gray-2</td><td>7.61:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-mid-gray-2</td><td>--color-dark-gray-3</td><td>7.23:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-dark-gray-6</td><td>--color-white-2</td><td>7.63:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-dark-gray-6</td><td>--color-black</td><td>2.75:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Deploy Now</button>
+          <button class="btn btn-secondary">Documentation</button>
+          <button class="btn btn-outline">View on GitHub</button>
+          <button class="btn btn-ghost">Learn more</button>
+          <button class="btn btn-muted">Delete service</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Service name</label>
+            <input class="inp" type="text" placeholder="my-api-service"/>
+            <div class="inp-hint">Used as your Railway service identifier</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Environment</label>
+            <input class="inp" type="text" placeholder="production" style="border-color:var(--color-cyan-5);box-shadow:0 0 0 3px var(--color-dark-cyan-3);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">API Token</label>
+            <input class="inp inp-err" type="text" value="railway-token-invalid"/>
+            <div class="inp-err-msg">Token format is invalid</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:var(--space-4);">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Idle</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-cyan-5)"></span>Deployed</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--color-dark-gray-7)"></span>Building</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Redis</span>
+          <span class="tag tag-orange">Python</span>
+          <span class="tag tag-purple">Go</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:var(--space-4);">
+        <div class="alert alert-neutral"><div class="alert-icon" style="font-size:16px">ℹ</div><div class="alert-body"><h5>New region available</h5><p>Asia Pacific (Singapore) is now available. Migrate your project to reduce latency.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon" style="font-size:16px">✓</div><div class="alert-body"><h5>Deployment successful</h5><p style="color:var(--color-cyan-4)">Your service deployed to production in 34 seconds.</p></div></div>
+        <div class="alert alert-warning"><div class="alert-icon" style="font-size:16px">!</div><div class="alert-body"><h5>Approaching usage limits</h5><p style="color:var(--color-orange-2)">You've used 85% of your compute hours this billing cycle.</p></div></div>
+        <div class="alert alert-error"><div class="alert-icon" style="font-size:16px">✕</div><div class="alert-body"><h5>Build failed</h5><p style="color:var(--color-mid-gray-2)">npm install returned exit code 1. Check build logs for details.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Service Cards</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">⚡</div>
+            <div class="fc-title">Deploy</div>
+            <div class="fc-desc">Push to Git and Railway deploys your app. Supports any language or framework.</div>
+            <span class="tag tag-brand">GitHub CI/CD</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🗄</div>
+            <div class="fc-title">Databases</div>
+            <div class="fc-desc">Provision PostgreSQL, MySQL, Redis, or MongoDB with one click. Automatic backups.</div>
+            <span class="tag">Managed · Scalable</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🌐</div>
+            <div class="fc-title">Networking</div>
+            <div class="fc-desc">Automatic TLS, custom domains, private networking between services.</div>
+            <span class="tag">Edge · Regions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars &amp; Progress</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:linear-gradient(135deg,var(--color-dark-cyan),var(--color-cyan-5));color:var(--color-dark-gray-3);">RW</div>
+          <div class="av-info"><h4>Railway Workspace</h4><p>Owner · team@startup.io · Pro plan</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:var(--color-cyan-5);color:var(--color-dark-gray-3)">A</div>
+          <div class="avatar av-md" style="background:var(--color-dark-gray);color:var(--color-white)">M</div>
+          <div class="avatar av-md" style="background:var(--color-dark-gray-4);color:var(--color-white)">R</div>
+          <div class="avatar av-sm" style="background:var(--color-orange-2);color:var(--color-dark-gray-3)">K</div>
+          <div class="avatar av-sm" style="background:var(--color-dark-gray-7);color:var(--color-light-gray-2)">+4</div>
+        </div>
+        <div style="margin-top:var(--space-4);">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Compute hours</span><span>72%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:72%;background:linear-gradient(to right,var(--color-dark-cyan),var(--color-cyan-5))"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Bandwidth used</span><span>38%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:38%;background:var(--color-mid-gray)"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>Storage</span><span>89%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:89%;background:var(--color-orange-2)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Deployments Table</span><span class="comp-badge">Data view</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead>
+            <tr><th>Deploy ID</th><th>Service</th><th>Branch</th><th>Deployed at</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>dep_01HX…</td><td style="color:var(--color-light-gray-2)">api-server</td><td style="color:var(--color-light-gray-2)">main</td><td style="color:var(--color-mid-gray)">2026-04-19 09:14:22</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-cyan-5)"></span>Active</span></td></tr>
+            <tr><td>dep_02KQ…</td><td style="color:var(--color-light-gray-2)">frontend</td><td style="color:var(--color-light-gray-2)">feat/dark-mode</td><td style="color:var(--color-mid-gray)">2026-04-18 14:32:07</td><td><span class="badge badge-muted" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-dark-gray-7)"></span>Building</span></td></tr>
+            <tr><td>dep_03MR…</td><td style="color:var(--color-light-gray-2)">postgres-db</td><td style="color:var(--color-light-gray-2)">main</td><td style="color:var(--color-mid-gray)">2026-04-17 18:00:55</td><td><span class="badge badge-default" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Idle</span></td></tr>
+            <tr><td>dep_04NX…</td><td style="color:var(--color-light-gray-2)">worker</td><td style="color:var(--color-light-gray-2)">fix/queue</td><td style="color:var(--color-mid-gray)">2026-04-16 11:21:44</td><td><span class="badge" style="font-size:10px;padding:2px 7px;background:rgba(210,53,43,.08);color:#ff6b5e;border:1px solid rgba(210,53,43,.25)"><span class="badge-dot" style="background:#ff6b5e"></span>Failed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- 11. CSS VARIABLES REFERENCE -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Background Colors</span>
+          <span class="tokens-group-count">9 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#000000"></div><span class="token-readable">Pure Black</span><span class="token-css">--color-black</span><span class="token-value">#000000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0B0B0F"></div><span class="token-readable">Near Black</span><span class="token-css">--color-dark-gray-2</span><span class="token-value">#0B0B0F</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#13111C"></div><span class="token-readable">App Background</span><span class="token-css">--color-dark-gray-3</span><span class="token-value">#13111C</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1C1A28"></div><span class="token-readable">Card Background</span><span class="token-css">--color-dark-gray-13</span><span class="token-value">#1C1A28</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#33323E"></div><span class="token-readable">Elevated Surface</span><span class="token-css">--color-dark-gray</span><span class="token-value">#33323E</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#180D43"></div><span class="token-readable">Deep Blue</span><span class="token-css">--color-dark-blue</span><span class="token-value">#180D43</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#3D2259"></div><span class="token-readable">Deep Purple</span><span class="token-css">--color-dark-purple</span><span class="token-value">#3D2259</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#291839"></div><span class="token-readable">Deep Purple 2</span><span class="token-css">--color-dark-purple-2</span><span class="token-value">#291839</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF;border-color:rgba(0,0,0,.15)"></div><span class="token-readable">Pure White</span><span class="token-css">--color-white-2</span><span class="token-value">#FFFFFF</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Text &amp; Accent Colors</span>
+          <span class="tokens-group-count">10 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#F7F7F8;border-color:rgba(0,0,0,.12)"></div><span class="token-readable">Text Primary</span><span class="token-css">--color-white</span><span class="token-value">#F7F7F8</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#A1A0AB;border-color:rgba(0,0,0,.08)"></div><span class="token-readable">Text Secondary</span><span class="token-css">--color-mid-gray-2</span><span class="token-value">#A1A0AB</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#6B7280"></div><span class="token-readable">Text Muted</span><span class="token-css">--color-blue</span><span class="token-value">#6B7280</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#545260"></div><span class="token-readable">Text Disabled</span><span class="token-css">--color-dark-gray-6</span><span class="token-value">#545260</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#37CD8F"></div><span class="token-readable">Brand Green</span><span class="token-css">--color-cyan-5</span><span class="token-value">#37CD8F</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#42946E"></div><span class="token-readable">Brand Green Dark</span><span class="token-css">--color-cyan</span><span class="token-value">#42946E</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F1CD69"></div><span class="token-readable">Accent Yellow</span><span class="token-css">--color-orange</span><span class="token-value">#F1CD69</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#EF9352"></div><span class="token-readable">Accent Orange</span><span class="token-css">--color-orange-3</span><span class="token-value">#EF9352</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#853BCE"></div><span class="token-readable">Purple</span><span class="token-css">--color-purple</span><span class="token-value">#853BCE</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#D2352B"></div><span class="token-readable">Error Red</span><span class="token-css">--color-red</span><span class="token-value">#D2352B</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Typography</span>
+          <span class="tokens-group-count">62 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Base Font</span><span class="token-css">--font-family-base</span><span class="token-value">Inter</span></div>
+          <div class="token-row"><span class="token-readable">Display Font</span><span class="token-css">--font-family-tight</span><span class="token-value">Inter Tight</span></div>
+          <div class="token-row"><span class="token-readable">Serif Font</span><span class="token-css">--font-family-serif</span><span class="token-value">IBM Plex Serif</span></div>
+          <div class="token-row"><span class="token-readable">Mono Font</span><span class="token-css">--font-family-mono</span><span class="token-value">JetBrains Mono</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">Medium</span><span class="token-css">--font-weight-medium</span><span class="token-value">500</span></div>
+          <div class="token-row"><span class="token-readable">Semibold</span><span class="token-css">--font-weight-semibold</span><span class="token-value">600</span></div>
+          <div class="token-row"><span class="token-readable">Bold</span><span class="token-css">--font-weight-bold</span><span class="token-value">700</span></div>
+          <div class="token-row"><span class="token-readable">Extrabold</span><span class="token-css">--font-weight-extrabold</span><span class="token-value">800</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Micro</span><span class="token-css">--font-size-sm (11px)</span><span class="token-value">11px</span></div>
+          <div class="token-row"><span class="token-readable">Caption</span><span class="token-css">--font-size-lg (12px)</span><span class="token-value">12px</span></div>
+          <div class="token-row"><span class="token-readable">Body Small</span><span class="token-css">--font-size-3xl (14px)</span><span class="token-value">14px</span></div>
+          <div class="token-row"><span class="token-readable">Body Default</span><span class="token-css">--font-size-4xl (16px)</span><span class="token-value">16px</span></div>
+          <div class="token-row"><span class="token-readable">Body Large</span><span class="token-css">--font-size-5xl (18px)</span><span class="token-value">18px</span></div>
+          <div class="token-row"><span class="token-readable">Heading MD</span><span class="token-css">--font-size-6xl (20px)</span><span class="token-value">20px</span></div>
+          <div class="token-row"><span class="token-readable">Display Hero</span><span class="token-css">--font-size-54px</span><span class="token-value">54px</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Spacing</span>
+          <span class="tokens-group-count">20 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-preview-bar" style="width:2px"></div><span class="token-readable">Space 1</span><span class="token-css">--space-1</span><span class="token-value">2px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:4px"></div><span class="token-readable">Space 2</span><span class="token-css">--space-2</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:6px"></div><span class="token-readable">Space 3</span><span class="token-css">--space-3</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:8px"></div><span class="token-readable">Space 4</span><span class="token-css">--space-4</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:10px"></div><span class="token-readable">Space 5</span><span class="token-css">--space-5</span><span class="token-value">10px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:12px"></div><span class="token-readable">Space Gutter</span><span class="token-css">--space-6</span><span class="token-value">12px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:16px"></div><span class="token-readable">Space MD</span><span class="token-css">--space-8</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:24px"></div><span class="token-readable">Space LG</span><span class="token-css">--space-10</span><span class="token-value">24px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:32px"></div><span class="token-readable">Space XL</span><span class="token-css">--space-12</span><span class="token-value">32px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:40px"></div><span class="token-readable">Section Gap</span><span class="token-css">--space-16</span><span class="token-value">40px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:48px"></div><span class="token-readable">Block Gap</span><span class="token-css">--space-20</span><span class="token-value">48px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:64px"></div><span class="token-readable">Page Padding</span><span class="token-css">--space-24</span><span class="token-value">64px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:80px"></div><span class="token-readable">Section Inset</span><span class="token-css">--space-32</span><span class="token-value">80px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:96px"></div><span class="token-readable">Section Padding</span><span class="token-css">--space-40</span><span class="token-value">96px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:104px"></div><span class="token-readable">Layout 48</span><span class="token-css">--space-48</span><span class="token-value">104px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:128px"></div><span class="token-readable">Layout 64</span><span class="token-css">--space-64</span><span class="token-value">128px</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Borders &amp; Radius</span>
+          <span class="tokens-group-count">13 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Hairline</span><span class="token-css">--border-width-hairline</span><span class="token-value">1px</span></div>
+          <div class="token-row"><span class="token-readable">Thin</span><span class="token-css">--border-width-thin</span><span class="token-value">2px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:0 0 4px 4px"></div><span class="token-readable">Bottom Rounded</span><span class="token-css">--radius-sm</span><span class="token-value">0 0 4 4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px"></div><span class="token-readable">Rounded</span><span class="token-css">--radius-lg</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px 4px 0 0"></div><span class="token-readable">Top Rounded</span><span class="token-css">--radius-xl</span><span class="token-value">4 4 0 0px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:6px"></div><span class="token-readable">Card Small</span><span class="token-css">--radius-2xl</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:8px"></div><span class="token-readable">Card Medium</span><span class="token-css">--radius-full</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:12px"></div><span class="token-readable">Card Large</span><span class="token-css">--radius-r7</span><span class="token-value">12px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:16px"></div><span class="token-readable">Dialog</span><span class="token-css">--radius-r8</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:28px"></div><span class="token-readable">Bubble</span><span class="token-css">--radius-r9</span><span class="token-value">28px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:9999px;height:12px;margin:6px 0"></div><span class="token-readable">Pill</span><span class="token-css">--radius-r11</span><span class="token-value">9999px</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Motion, Opacity &amp; Layers</span>
+          <span class="tokens-group-count">26 tokens</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Instant</span><span class="token-css">--duration-instant</span><span class="token-value">50ms</span></div>
+          <div class="token-row"><span class="token-readable">Fast</span><span class="token-css">--duration-fast</span><span class="token-value">100ms</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--duration-normal</span><span class="token-value">150ms</span></div>
+          <div class="token-row"><span class="token-readable">Slow</span><span class="token-css">--duration-slow</span><span class="token-value">200ms</span></div>
+          <div class="token-row"><span class="token-readable">Slower</span><span class="token-css">--duration-slower</span><span class="token-value">250ms</span></div>
+          <div class="token-row"><span class="token-readable">Ease Out</span><span class="token-css">--easing-ease-out</span><span class="token-value">ease-out</span></div>
+          <div class="token-row"><span class="token-readable">Ease In Out</span><span class="token-css">--easing-ease-in-out</span><span class="token-value">ease-in-out</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.12"></div><span class="token-readable">12%</span><span class="token-css">--opacity-12</span><span class="token-value">0.12</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.40"></div><span class="token-readable">40%</span><span class="token-css">--opacity-40</span><span class="token-value">0.40</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.50"></div><span class="token-readable">50%</span><span class="token-css">--opacity-50</span><span class="token-value">0.50</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.75"></div><span class="token-readable">75%</span><span class="token-css">--opacity-75</span><span class="token-value">0.75</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.90"></div><span class="token-readable">90%</span><span class="token-css">--opacity-90</span><span class="token-value">0.90</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Base</span><span class="token-css">--z-1</span><span class="token-value">1</span></div>
+          <div class="token-row"><span class="token-readable">Navigation</span><span class="token-css">--z-4</span><span class="token-value">10</span></div>
+          <div class="token-row"><span class="token-readable">Popover</span><span class="token-css">--z-5</span><span class="token-value">20</span></div>
+          <div class="token-row"><span class="token-readable">Overlay</span><span class="token-css">--z-6</span><span class="token-value">50</span></div>
+          <div class="token-row"><span class="token-readable">Dialog / Toast</span><span class="token-css">--z-7</span><span class="token-value">9999</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:var(--space-20) 0;color:var(--color-dark-gray-7);font-size:var(--font-size-xs);border-top:var(--border-width-hairline) solid var(--color-dark-gray);font-family:var(--font-family-mono);">
+    Railway Design System · Generated 19/04/2026 · 133 color tokens · 7 font families · 5 font weights · 16 font sizes · 22 line heights · 12 letter-spacing · 20 spacing · 11 radius · 2 border-width · 6 shadow · 9 duration · 3 easing · 10 z-index · 13 breakpoints · 14 opacity
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

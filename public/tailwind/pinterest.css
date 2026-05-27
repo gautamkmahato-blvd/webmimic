@@ -1,0 +1,132 @@
+/* ============================================
+ * Design Tokens — Pinterest - India
+ * Source: https://in.pinterest.com/
+ * Generated: 17/04/2026, 13:14:39
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #211922; /* hsl(293, 15%, 12%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-red: #E60023; /* hsl(351, 100%, 45%) · background */
+  --color-dark-gray-2: #62625B; /* hsl(60, 4%, 37%) · text */
+  --color-blue: #2B48D4; /* hsl(230, 66%, 50%) · text */
+  --color-red-2: #FA5F2E; /* hsl(14, 95%, 58%) · background */
+  --color-light-gray: #E0E0D9; /* hsl(60, 10%, 86%) · background */
+  --color-light-gray-2: #E5E5E0; /* hsl(60, 9%, 89%) · background */
+  --color-pink: #C856C8; /* hsl(300, 51%, 56%) · background */
+  --color-mid-gray: #91918C; /* hsl(60, 2%, 56%) · border */
+  --color-blue-2: #9270D7; /* hsl(260, 56%, 64%) · text */
+  --color-cyan: #2AA788; /* hsl(165, 60%, 41%) · text */
+  --color-blue-3: #526AE0; /* hsl(230, 70%, 60%) · text */
+  --color-light-yellow: #FFFD92; /* hsl(59, 100%, 79%) · background */
+  --color-light-gray-3: rgba(224, 224, 217, 0.26); /* hsl(60, 11%, 86%) · background */
+  --color-white-2: #F6F6F3; /* hsl(60, 14%, 96%) · gradient */
+  --color-dark-gray-3: rgba(36, 36, 33, 0.5); /* hsl(60, 3%, 14%) · background */
+  --color-dark-red: #9C0343; /* hsl(335, 96%, 31%) · background */
+  --color-mid-gray-2: #808080; /* hsl(0, 0%, 50%) · shadow */
+  --color-light-gray-4: #C1C1C1; /* hsl(0, 0%, 76%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 20px;
+  --font-size-lg: 28px;
+  --font-size-xl: 38px;
+  --font-size-2xl: 50px;
+  --font-size-3xl: 70px;
+  --font-family-base: -apple-system;
+  --font-family-2: Pin Sans;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  --line-height-tight: 18px;
+  --line-height-snug: 19.6px;
+  --line-height-normal: 22.4px;
+  --line-height-relaxed: 28px;
+  --line-height-loose: 50px;
+  --letter-spacing-tight: -1.2px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 7px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 11px;
+  --space-8: 12px;
+  --space-10: 14px;
+  --space-12: 15px;
+  --space-16: 16px;
+  --space-20: 18px;
+  --space-24: 343.523px;
+  --space-32: 22px;
+  --space-40: 24px;
+  --space-48: 32px;
+  --space-64: 39px;
+  --space-80: 48px;
+  --space-96: 64px;
+  --space-128: 80px;
+  --space-160: 90px;
+  --space-192: 97px;
+  --space-256: 100px;
+  --space-23: 150px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 8px;
+  --radius-sm: 0px 0px 32px 32px;
+  --radius-md: 2px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 20px;
+  --radius-r7: 24px;
+  --radius-r8: 28px;
+  --radius-r9: 32px;
+  --radius-r10: 40px;
+  --radius-r11: 50%;
+  --radius-r12: 999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.2) 0px 0.5px 3px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.45) 0px 2px 10px 0px;
+  --shadow-lg: rgb(128, 128, 128) 0px 0px 5px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.085s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 1s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 3;
+  --z-4: 4;
+  --z-5: 5;
+  --z-6: 671;
+  --z-7: 1500;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 576px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 890px;
+  --breakpoint-lg: 1312px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1680px;
+  --breakpoint-3xl: 2048px;
+
+  /* ── Opacity ── */
+  --opacity-22: 0.22;
+  --opacity-26: 0.26;
+  --opacity-74: 0.74;
+  --opacity-78: 0.78;
+}

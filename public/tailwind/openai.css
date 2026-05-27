@@ -1,0 +1,112 @@
+/* ============================================
+ * Design Tokens — OpenAI | OpenAI
+ * Source: https://openai.com/
+ * Generated: 17/04/2026, 13:14:09
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-light-gray: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-gray-2: #F1F1F1; /* hsl(0, 0%, 95%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 13px;
+  --font-size-xs: 14px;
+  --font-size-sm: 14.5765px;
+  --font-size-base: 16px;
+  --font-size-lg: 17px;
+  --font-size-xl: 17.4235px;
+  --font-size-2xl: 21.4235px;
+  --font-size-3xl: 28px;
+  --font-size-4xl: 43.3878px;
+  --font-family-base: OpenAI Sans;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 13px;
+  --line-height-snug: 14px;
+  --line-height-normal: 19.6px;
+  --line-height-relaxed: 22.1067px;
+  --line-height-loose: 22.6761px;
+  --line-height-lh-6: 24px;
+  --line-height-lh-7: 26.6477px;
+  --line-height-lh-8: 27.999px;
+  --line-height-lh-9: 34px;
+  --line-height-lh-10: 50.1454px;
+  --letter-spacing-tight: -1.20939px;
+  --letter-spacing-normal: -0.214235px;
+  --letter-spacing-wide: -0.174235px;
+  --letter-spacing-wider: -0.17px;
+  --letter-spacing-widest: -0.16px;
+  --letter-spacing-ls-6: -0.14px;
+  --letter-spacing-ls-7: 0.3px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 3.9px;
+  --space-2: 4px;
+  --space-3: 4.2px;
+  --space-4: 4.37296px;
+  --space-5: 4.79688px;
+  --space-6: 8px;
+  --space-8: 10px;
+  --space-10: 12px;
+  --space-12: 16px;
+  --space-16: 18px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 52px;
+  --space-80: 64px;
+  --space-96: 80px;
+  --space-128: 111.5px;
+  --space-160: 120px;
+  --space-192: 178.766px;
+  --space-256: 392.805px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 4px;
+  --radius-md: 6.08px;
+  --radius-lg: 24px;
+  --radius-xl: 40px;
+  --radius-2xl: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.02) 0px 4px 6px 0px, rgba(0, 0, 0, 0.05) 0px 0px 2px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.06) 0px 2px 5px 0px, rgba(0, 0, 0, 0.01) 0px 4px 4px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.25s;
+  --duration-slower: 0.3s;
+  --duration-duration-6: 0.4s;
+  --duration-duration-7: 0.5s;
+  --duration-duration-8: 0.64s;
+  --duration-duration-9: 0.8s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 10;
+  --z-3: 40;
+  --z-4: 50;
+  --z-5: 51;
+  --z-6: 52;
+  --z-7: 56;
+  --z-8: 57;
+  --z-9: 103;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 640px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-xl: 1536px;
+
+  /* ── Opacity ── */
+}

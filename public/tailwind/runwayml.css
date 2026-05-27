@@ -1,0 +1,137 @@
+/* ============================================
+ * Design Tokens — Runway | Building AI to Simulate the World
+ * Source: https://runwayml.com/
+ * Generated: 17/04/2026, 13:25:43
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-light-gray: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray: #404040; /* hsl(0, 0%, 25%) · text */
+  --color-black-2: #0C0C0C; /* hsl(0, 0%, 5%) · background */
+  --color-dark-gray-2: #1A1A1A; /* hsl(0, 0%, 10%) · text */
+  --color-blue: #6B7280; /* hsl(220, 9%, 46%) · text */
+  --color-black-3: rgba(9, 9, 11, 0.7); /* hsl(240, 10%, 4%) · background */
+  --color-dark-gray-3: #27272A; /* hsl(240, 4%, 16%) · border */
+  --color-dark-gray-4: #2A2A2A; /* hsl(0, 0%, 16%) · text */
+  --color-mid-gray: #999999; /* hsl(0, 0%, 60%) · text */
+  --color-dark-gray-5: #262626; /* hsl(0, 0%, 15%) · background */
+  --color-blue-2: #666E7A; /* hsl(216, 9%, 44%) · text */
+  --color-dark-gray-6: #303030; /* hsl(0, 0%, 19%) · background */
+  --color-white-2: #F7F7F7; /* hsl(0, 0%, 97%) · background */
+  --color-blue-3: #2B22FA; /* hsl(243, 96%, 56%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 11px;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 40px;
+  --font-size-6xl: 48px;
+  --font-family-base: Times;
+  --font-family-2: abcNormal;
+  --font-weight-regular: 400;
+  --font-weight-w450: 450;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 14px;
+  --line-height-snug: 15px;
+  --line-height-normal: 16px;
+  --line-height-relaxed: 16.9px;
+  --line-height-loose: 17.5px;
+  --line-height-lh-6: 20px;
+  --line-height-lh-7: 20.8px;
+  --line-height-lh-8: 24px;
+  --line-height-lh-9: 25px;
+  --line-height-lh-10: 36px;
+  --line-height-lh-11: 40px;
+  --line-height-lh-12: 44px;
+  --line-height-lh-13: 48px;
+  --letter-spacing-tight: -1.2px;
+  --letter-spacing-normal: -1px;
+  --letter-spacing-wide: -0.9px;
+  --letter-spacing-wider: -0.26px;
+  --letter-spacing-widest: -0.16px;
+  --letter-spacing-ls-6: 0%;
+  --letter-spacing-ls-7: 0.35px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 11.3516px;
+  --space-6: 12px;
+  --space-8: 14px;
+  --space-10: 16px;
+  --space-12: 20px;
+  --space-16: 21.9062px;
+  --space-20: 22.7031px;
+  --space-24: 60.2109px;
+  --space-32: 112px;
+  --space-40: 32px;
+  --space-48: 36px;
+  --space-64: 40px;
+  --space-80: 41.5px;
+  --space-96: 43.8125px;
+  --space-128: 48px;
+  --space-160: 54.6484px;
+  --space-192: 55.0469px;
+  --space-256: 56px;
+  --space-23: 57.2734px;
+  --space-25: 64px;
+  --space-26: 68.3125px;
+  --space-27: 68.8125px;
+  --space-28: 80px;
+  --space-29: 96px;
+  --space-30: 109.297px;
+  --space-31: 110.094px;
+  --space-33: 128px;
+  --space-34: 160px;
+  --space-35: 176px;
+  --space-36: 208px;
+  --space-37: 240px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.5s;
+  --duration-slower: 1s;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 10;
+  --z-2: 20;
+  --z-3: 40;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 640px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1600px;
+
+  /* ── Opacity ── */
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+}

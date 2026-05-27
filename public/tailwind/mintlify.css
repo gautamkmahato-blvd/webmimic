@@ -1,0 +1,164 @@
+/* ============================================
+ * Design Tokens — Mintlify - The Intelligent Knowledge Platform
+ * Source: https://www.mintlify.com/
+ * Generated: 15/04/2026, 23:39:34
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black-2: #08090A; /* hsl(210, 11%, 4%) · background */
+  --color-black-3: #080A0A; /* hsl(180, 11%, 4%) · text */
+  --color-black-4: #080909; /* hsl(180, 6%, 3%) · fill */
+  --color-dark-cyan: #0C8C5E; /* hsl(158, 84%, 30%) · background */
+  --color-dark-gray: #0E0E0E; /* hsl(0, 0%, 5%) · background */
+  --color-black-5: #0A0A0A; /* hsl(0, 0%, 4%) · background */
+  --color-black-6: #070707; /* hsl(0, 0%, 3%) · background */
+  --color-light-gray: #F2F2F2; /* hsl(0, 0%, 95%) · other */
+  --color-white-2: #F7F7F7; /* hsl(0, 0%, 97%) · gradient */
+  --color-dark-cyan-2: #0C8B5D; /* hsl(158, 84%, 30%) · fill */
+  --color-white-3: #F6F6F6; /* hsl(0, 0%, 96%) · fill */
+  --color-dark-blue: #003087; /* hsl(219, 100%, 26%) · fill */
+  --color-blue: #0070E0; /* hsl(210, 100%, 44%) · fill */
+  --color-mid-gray: #828383; /* hsl(180, 0%, 51%) · other */
+  --color-cyan: #18E299; /* hsl(158, 81%, 49%) · fill */
+  --color-blue-2: #0052FF; /* hsl(221, 100%, 50%) · fill */
+  --color-red: #FF7A59; /* hsl(12, 100%, 67%) · fill */
+  --color-white-4: #FDFFFF; /* hsl(180, 100%, 100%) · background */
+  --color-light-gray-2: #DDDDDD; /* hsl(0, 0%, 87%) · other */
+  --color-black-7: #08080A; /* hsl(240, 11%, 4%) · text */
+  --color-orange: #F1511B; /* hsl(15, 88%, 53%) · fill */
+  --color-green: #80CC28; /* hsl(88, 67%, 48%) · fill */
+  --color-cyan-2: #00ADEF; /* hsl(197, 100%, 47%) · fill */
+  --color-orange-2: #FBBC09; /* hsl(44, 97%, 51%) · fill */
+  --color-dark-cyan-3: #20808D; /* hsl(187, 63%, 34%) · fill */
+  --color-dark-blue-2: #001C64; /* hsl(223, 100%, 20%) · fill */
+  --color-blue-3: #4B73FF; /* hsl(227, 100%, 65%) · fill */
+  --color-pink: #FF66F4; /* hsl(304, 100%, 70%) · fill */
+  --color-red-2: #FF0105; /* hsl(359, 100%, 50%) · fill */
+  --color-orange-3: #FE7B02; /* hsl(29, 99%, 50%) · fill */
+  --color-cyan-3: #00DC8D; /* hsl(158, 100%, 43%) · fill */
+  --color-orange-4: #FF4F00; /* hsl(19, 100%, 50%) · fill */
+  --color-white-5: rgba(247, 247, 247, 0.54); /* hsl(0, 0%, 97%) · gradient */
+  --color-white-6: rgba(247, 247, 247, 0.176); /* hsl(0, 0%, 98%) · gradient */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-lg: 15px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 18px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 24px;
+  --font-size-5xl: 40px;
+  --font-size-6xl: 45.32px;
+  --font-family-base: ui-sans-serif;
+  --font-family-2: inter;
+  --font-family-3: Geist Mono;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 15px;
+  --line-height-snug: 18px;
+  --line-height-normal: 19.5px;
+  --line-height-relaxed: 21px;
+  --line-height-loose: 22.5px;
+  --line-height-lh-6: 24px;
+  --line-height-lh-7: 26px;
+  --line-height-lh-8: 27px;
+  --line-height-lh-9: 31.2px;
+  --line-height-lh-10: 32px;
+  --line-height-lh-11: 44px;
+  --line-height-lh-12: 52.118px;
+  --letter-spacing-tight: -0.9064px;
+  --letter-spacing-normal: -0.8px;
+  --letter-spacing-wide: -0.26px;
+  --letter-spacing-wider: -0.24px;
+  --letter-spacing-widest: -0.2px;
+  --letter-spacing-ls-6: 0.6px;
+  --letter-spacing-ls-7: 0.65px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 0.8px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 4.5px;
+  --space-5: 5px;
+  --space-6: 6px;
+  --space-8: 7px;
+  --space-10: 8px;
+  --space-12: 10px;
+  --space-16: 12px;
+  --space-20: 14.5px;
+  --space-24: 94px;
+  --space-32: 144px;
+  --space-40: 26.5px;
+  --space-48: 28px;
+  --space-64: 32px;
+  --space-80: 48px;
+  --space-96: 48.5px;
+  --space-128: 54.5px;
+  --space-160: 55.5px;
+  --space-192: 56px;
+  --space-256: 64px;
+  --space-23: 72px;
+  --space-25: 96px;
+  --space-26: 99px;
+  --space-27: 104px;
+  --space-28: 112px;
+  --space-29: 120px;
+  --space-30: 122px;
+  --space-31: 137.5px;
+  --space-33: 150px;
+  --space-34: 168px;
+  --space-35: 203.938px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --border-width-base: 3px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px 24px 0px 0px;
+  --radius-full: 24px;
+  --radius-r7: 50%;
+  --radius-r8: 60px;
+  --radius-r9: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, lab(2.42579 -0.165291 -0.470081 / 0.03) 0px 2px 4px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, lab(100 0 0 / 0.05) 0px 2px 4px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.25s;
+  --duration-slower: 0.3s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1000;
+  --z-2: -1;
+  --z-3: 9;
+  --z-4: 10;
+  --z-5: 20;
+  --z-6: 50;
+  --z-7: 100;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 768px;
+
+  /* ── Opacity ── */
+  --opacity-1: 0.01;
+  --opacity-10: 0.1;
+  --opacity-15: 0.15;
+  --opacity-20: 0.2;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-70: 0.7;
+}

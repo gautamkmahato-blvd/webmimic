@@ -1,0 +1,167 @@
+/* ============================================
+ * Design Tokens — ClickHouse Cloud | Cloud Based DBMS | ClickHouse
+ * Source: https://clickhouse.com/cloud?utm_campaign=google-brand-india&utm_source=google&utm_medium=paid-search&utm_source=google.com&utm_medium=paid_search&utm_campaign=22984766092_190587179971&utm_content=772371566379&utm_term=clickhouse_g_c&gad_source=1&gad_campaignid=22984766092&gbraid=0AAAAAocOPCbIRgo17_PrdCjsAq5QgzJqu&gclid=Cj0KCQjwy_fOBhC6ARIsAHKFB79Vj2OQ2aEud6xBO4mM1VKULf5qkSFulPVv6POKaVD045gZj9q6gPAaAvesEALw_wcB
+ * Generated: 15/04/2026, 00:23:49
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · shadow */
+  --color-white-2: #F9F9F9; /* hsl(0, 0%, 98%) · text */
+  --color-mid-gray: #A0A0A0; /* hsl(0, 0%, 63%) · background */
+  --color-dark-gray: #151515; /* hsl(0, 0%, 8%) · background */
+  --color-dark-gray-2: #414141; /* hsl(0, 0%, 25%) · border */
+  --color-light-gray-2: #DFDFDF; /* hsl(0, 0%, 87%) · text */
+  --color-light-yellow: #FCFF74; /* hsl(61, 100%, 73%) · text */
+  --color-light-yellow-2: #FAFF69; /* hsl(62, 100%, 71%) · background */
+  --color-mid-gray-2: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-light-gray-3: #B3B6BD; /* hsl(222, 7%, 72%) · text */
+  --color-dark-gray-3: #1F1F1C; /* hsl(60, 5%, 12%) · background */
+  --color-light-yellow-3: #FEF08A; /* hsl(53, 98%, 77%) · border */
+  --color-dark-yellow: #4F5100; /* hsl(61, 100%, 16%) · border */
+  --color-dark-gray-4: rgba(20, 20, 20, 0.1); /* hsl(0, 0%, 8%) · background */
+  --color-black-2: #161600; /* hsl(60, 100%, 4%) · text */
+  --color-dark-gray-5: #282828; /* hsl(0, 0%, 16%) · background */
+  --color-dark-gray-6: #1D1D1D; /* hsl(0, 0%, 11%) · background */
+  --color-yellow: rgba(251, 255, 70, 0.08); /* hsl(60, 100%, 63%) · gradient */
+  --color-orange: #FF9900; /* hsl(36, 100%, 50%) · fill */
+  --color-yellow-2: #FBFF46; /* hsl(61, 100%, 64%) · border */
+  --color-dark-gray-7: #131312; /* hsl(60, 3%, 7%) · background */
+  --color-dark-gray-8: #292924; /* hsl(60, 6%, 15%) · gradient */
+  --color-dark-gray-9: #0F0F0F; /* hsl(0, 0%, 6%) · gradient */
+  --color-dark-gray-10: #373439; /* hsl(276, 5%, 21%) · background */
+  --color-red: #EA4335; /* hsl(5, 81%, 56%) · fill */
+  --color-blue: #4285F4; /* hsl(217, 89%, 61%) · fill */
+  --color-green: #34A853; /* hsl(136, 53%, 43%) · fill */
+  --color-orange-2: #FBBC05; /* hsl(45, 97%, 50%) · fill */
+  --color-blue-2: #0078D4; /* hsl(206, 100%, 42%) · fill */
+  --color-light-gray-4: #C0C0C0; /* hsl(0, 0%, 75%) · text */
+  --color-cyan: #0CEDC8; /* hsl(170, 90%, 49%) · text */
+  --color-dark-gray-11: #212121; /* hsl(0, 0%, 13%) · background */
+  --color-red-2: #FF4B59; /* hsl(355, 100%, 65%) · background */
+  --color-yellow-3: #FFC600; /* hsl(47, 100%, 50%) · background */
+  --color-green-2: #00CA48; /* hsl(141, 100%, 40%) · background */
+  --color-mid-gray-3: rgba(161, 161, 161, 0.1); /* hsl(0, 0%, 62%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 11.2px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 36px;
+  --font-size-3xl: 56px;
+  --font-family-base: sans-serif;
+  --font-family-2: __Inter_d1b8ee;
+  --font-family-3: __basier_a58b65;
+  --font-family-4: ui-monospace;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 14px;
+  --line-height-snug: 16px;
+  --line-height-normal: 20px;
+  --line-height-relaxed: 22.75px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 26px;
+  --line-height-lh-7: 28px;
+  --line-height-lh-8: 30px;
+  --line-height-lh-9: 32px;
+  --line-height-lh-10: 40px;
+  --line-height-lh-11: 46.8px;
+  --line-height-lh-12: 70px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 5px;
+  --space-5: 5.5px;
+  --space-6: 6px;
+  --space-8: 6.5px;
+  --space-10: 8px;
+  --space-12: 9px;
+  --space-16: 10px;
+  --space-20: 12px;
+  --space-24: 44.5469px;
+  --space-32: 182.5px;
+  --space-40: 234.5px;
+  --space-48: 15.5px;
+  --space-64: 16px;
+  --space-80: 20px;
+  --space-96: 24px;
+  --space-128: 25px;
+  --space-160: 28px;
+  --space-192: 32px;
+  --space-256: 40px;
+  --space-23: 44px;
+  --space-25: 48px;
+  --space-26: 54.5px;
+  --space-27: 64px;
+  --space-28: 80.3438px;
+  --space-29: 96px;
+  --space-30: 112px;
+  --space-31: 170.5px;
+  --space-33: 192px;
+  --space-34: 198.5px;
+  --space-35: 199.273px;
+  --space-36: 202.984px;
+  --space-37: 202.992px;
+  --space-38: 218.5px;
+  --space-39: 225.984px;
+  --space-41: 278.5px;
+  --space-42: 494.5px;
+  --space-43: 499.383px;
+  --space-44: 499.391px;
+  --space-45: 499.414px;
+  --space-46: 499.422px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 4px;
+  --radius-sm: 0px 0px 8px 8px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-full: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.06) 0px 4px 4px 0px, rgba(0, 0, 0, 0.14) 0px 4px 25px 0px inset;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
+  --shadow-xl: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(250, 255, 105) 0px 0px 100px -12px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 1s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -50;
+  --z-2: 5;
+  --z-3: 10;
+  --z-4: 20;
+  --z-5: 50;
+  --z-6: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 640px;
+  --breakpoint-sm: 704px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 896px;
+  --breakpoint-xl: 1024px;
+  --breakpoint-2xl: 1152px;
+  --breakpoint-3xl: 1280px;
+  --breakpoint-bp-8: 1408px;
+  --breakpoint-bp-9: 1536px;
+  --breakpoint-bp-10: 2200px;
+
+  /* ── Opacity ── */
+  --opacity-50: 0.5;
+}

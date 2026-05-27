@@ -1,0 +1,123 @@
+/* ============================================
+ * Design Tokens — Arc from The Browser Company
+ * Source: https://arc.net/
+ * Generated: 19/04/2026, 00:12:37
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-blue: #3139FB; /* hsl(238, 96%, 59%) · background */
+  --color-white: #FFFCEC; /* hsl(51, 100%, 96%) · background */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-yellow: #FFFADD; /* hsl(51, 100%, 93%) · text */
+  --color-blue-2: #2702C2; /* hsl(252, 98%, 38%) · background */
+  --color-mid-gray: #696969; /* hsl(0, 0%, 41%) · text */
+  --color-white-3: #FFFCEA; /* hsl(51, 100%, 96%) · fill */
+  --color-dark-blue: #210784; /* hsl(252, 90%, 27%) · fill */
+  --color-dark-blue-2: #26069C; /* hsl(253, 93%, 32%) · fill */
+  --color-dark-blue-3: #2404AA; /* hsl(252, 95%, 34%) · fill */
+  --color-light-red: #FF9999; /* hsl(0, 100%, 80%) · fill */
+  --color-red: #FF5060; /* hsl(355, 100%, 66%) · fill */
+  --color-blue-3: #0034FE; /* hsl(228, 100%, 50%) · fill */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 17px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 28px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 40px;
+  --font-size-6xl: 45.51px;
+  --font-family-base: Times;
+  --font-family-2: Marlin;
+  --font-family-3: Marlin Soft SQ;
+  --font-family-4: Exposure VAR;
+  --font-family-5: ABC Oracle;
+  --font-family-6: -apple-system;
+  --font-family-7: ABC Favorit Mono;
+  --font-family-8: InterVariable;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 24px;
+  --line-height-snug: 25.5px;
+  --line-height-normal: 28.8px;
+  --line-height-relaxed: 30px;
+  --line-height-loose: 30.8px;
+  --line-height-lh-6: 36px;
+  --line-height-lh-7: 39px;
+  --line-height-lh-8: 42.25px;
+  --letter-spacing-tight: -1.8204px;
+  --letter-spacing-normal: -1.6px;
+  --letter-spacing-wide: -1.4px;
+  --letter-spacing-wider: -0.72px;
+  --letter-spacing-widest: -0.28px;
+  --letter-spacing-ls-6: -0.14px;
+  --letter-spacing-ls-7: 0.4px;
+  --letter-spacing-ls-8: 0.6px;
+  --letter-spacing-ls-9: 1.8px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 3px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 12px;
+  --space-10: 16px;
+  --space-12: 20px;
+  --space-16: 22px;
+  --space-20: 24px;
+  --space-24: 152.5px;
+  --space-32: 32px;
+  --space-40: 33.99px;
+  --space-48: 37px;
+  --space-64: 40px;
+  --space-80: 48px;
+  --space-96: 72px;
+  --space-128: 80px;
+  --space-160: 90px;
+  --space-192: 128px;
+  --space-256: 147.5px;
+  --space-23: 150px;
+  --space-25: 309.18px;
+  --space-26: 459.391px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 22px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.1) 0px 5px 5px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.25) 0px 2px 8px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 3;
+  --z-3: 99;
+  --z-4: 100;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+}

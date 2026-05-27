@@ -1,0 +1,124 @@
+/* ============================================
+ * Design Tokens — AI App Builder | Vibe Code Apps & Websites with AI, Fast
+ * Source: https://lovable.dev/
+ * Generated: 15/04/2026, 23:35:13
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #ECEAE4; /* hsl(45, 17%, 91%) · border */
+  --color-dark-gray: #1C1C1C; /* hsl(0, 0%, 11%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FCFBF8; /* hsl(45, 40%, 98%) · background */
+  --color-dark-gray-2: #5F5F5D; /* hsl(60, 1%, 37%) · text */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-white-3: #FAFAFA; /* hsl(0, 0%, 98%) · text */
+  --color-dark-gray-3: #2E2E2D; /* hsl(60, 1%, 18%) · text */
+  --color-light-gray-2: #F7F4ED; /* hsl(42, 38%, 95%) · background */
+  --color-black-2: #030303; /* hsl(0, 0%, 1%) · text */
+  --color-pink: #FF66F4; /* hsl(304, 100%, 70%) · fill */
+  --color-orange: #FE7B02; /* hsl(29, 99%, 50%) · fill */
+  --color-light-blue: #82BCFF; /* hsl(212, 100%, 75%) · gradient */
+  --color-blue: #2483FF; /* hsl(214, 100%, 57%) · gradient */
+  --color-red: #FF3029; /* hsl(2, 100%, 58%) · gradient */
+  --color-blue-2: #4B73FF; /* hsl(227, 100%, 65%) · fill */
+  --color-red-2: #FF0105; /* hsl(359, 100%, 50%) · fill */
+  --color-mid-gray: #707070; /* hsl(0, 0%, 44%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 14px;
+  --font-size-xs: 15px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 36px;
+  --font-size-2xl: 48px;
+  --font-size-3xl: 60px;
+  --font-family-base: Camera Plain Variable;
+  --font-weight-regular: 400;
+  --font-weight-w480: 480;
+  --font-weight-semibold: 600;
+  --line-height-tight: 21px;
+  --line-height-snug: 22px;
+  --line-height-normal: 24px;
+  --line-height-relaxed: 24.75px;
+  --line-height-loose: 30px;
+  --line-height-lh-6: 39.6px;
+  --line-height-lh-7: 48px;
+  --line-height-lh-8: 52.8px;
+  --line-height-lh-9: 60px;
+  --line-height-lh-10: 66px;
+  --letter-spacing-tight: -1.5px;
+  --letter-spacing-normal: -1.2px;
+  --letter-spacing-wide: -0.9px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 12px;
+  --space-10: 14px;
+  --space-12: 16px;
+  --space-16: 20px;
+  --space-20: 24px;
+  --space-24: 206.64px;
+  --space-32: 40px;
+  --space-40: 48px;
+  --space-48: 54.5px;
+  --space-64: 56px;
+  --space-80: 64px;
+  --space-96: 80px;
+  --space-128: 128px;
+  --space-160: 144px;
+  --space-192: 160px;
+  --space-256: 172.2px;
+  --space-23: 176px;
+  --space-25: 278.5px;
+  --space-26: 363.781px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 28px;
+  --radius-r7: 32px;
+  --radius-r8: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.08) 0px 0.5px 0px 0px inset, rgba(0, 0, 0, 0.16) 0px -0.5px 0px 0px inset, rgb(0, 0, 0) 0px 0px 0px 0.5px inset, rgba(255, 255, 255, 0.24) 0px 1px 0px 0px inset, rgba(255, 255, 255, 0.16) 0px -1px 0px 0px inset, rgba(0, 0, 0, 0.12) 0px 2px 2px -1px, rgba(0, 0, 0, 0.12) 0px 4px 4px -2px;
+  --shadow-md: rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.35s;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 10;
+  --z-2: 50;
+  --z-3: 9500;
+  --z-4: 9999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 600px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 700px;
+  --breakpoint-lg: 768px;
+  --breakpoint-xl: 1024px;
+  --breakpoint-2xl: 1280px;
+  --breakpoint-3xl: 1536px;
+
+  /* ── Opacity ── */
+  --opacity-50: 0.5;
+}

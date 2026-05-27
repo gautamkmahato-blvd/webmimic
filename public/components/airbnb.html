@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Airbnb Components</title>
+<style>
+  /* ---------- Airbnb design tokens ---------- */
+  :root {
+    --rausch: #e31c5f;          /* Airbnb primary pink/red */
+    --rausch-dark: #d70466;
+    --rausch-gradient-start: #e61e4d;
+    --rausch-gradient-mid: #e31c5f;
+    --rausch-gradient-end: #bd1e59;
+
+    --text-primary: #222222;
+    --text-secondary: #6a6a6a;
+    --text-tertiary: #717171;
+
+    --border-light: #dddddd;
+    --border-subtle: #ebebeb;
+    --bg-white: #ffffff;
+    --bg-page: #f7f7f7;
+    --bg-hover: #f5f5f5;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-page);
+    color: var(--text-primary);
+    font-family: "Circular", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .component-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .component-label {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  /* ============================================= */
+  /* Component 1: Search bar (Where / When / Who)    */
+  /* ============================================= */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--bg-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: 9999px;
+    padding: 8px 8px 8px 0;
+    box-shadow: var(--shadow-sm);
+    max-width: 900px;
+    width: 100%;
+    transition: box-shadow 200ms ease;
+  }
+  .search-bar:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .search-field {
+    flex: 1;
+    padding: 14px 24px;
+    border-radius: 9999px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    transition: background-color 200ms ease;
+  }
+  .search-field:hover {
+    background-color: #ebebeb;
+  }
+
+  .search-field__label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+  .search-field__value {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-tertiary);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .search-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--border-light);
+    flex-shrink: 0;
+  }
+
+  .search-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: var(--rausch);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-left: 8px;
+    transition: background-color 200ms ease;
+  }
+  .search-btn:hover {
+    background: var(--rausch-dark);
+  }
+  .search-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 4;
+  }
+
+  /* ============================================= */
+  /* Component 2 & 3: Listing cards                  */
+  /* ============================================= */
+  .cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .listing-card {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .listing-card__image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #e5e5e5;
+  }
+
+  .listing-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 300ms ease;
+  }
+  .listing-card:hover .listing-card__image {
+    transform: scale(1.04);
+  }
+
+  /* Heart / favorite button (top-right) */
+  .listing-card__heart {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .listing-card__heart svg {
+    width: 24px;
+    height: 24px;
+    fill: rgba(0, 0, 0, 0.5);
+    stroke: #ffffff;
+    stroke-width: 2;
+    transition: transform 150ms ease, fill 150ms ease;
+  }
+  .listing-card__heart:hover svg {
+    transform: scale(1.1);
+  }
+  .listing-card__heart[data-liked="true"] svg {
+    fill: var(--rausch);
+    stroke: #ffffff;
+  }
+
+  /* Guest favourite badge (top-left) */
+  .listing-card__badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #ffffff;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 9999px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+  }
+
+  .listing-card__info {
+    padding: 0 2px;
+  }
+
+  .listing-card__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin: 6px 0 2px;
+  }
+
+  .listing-card__meta {
+    font-size: 14px;
+    color: var(--text-primary);
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .listing-card__dot {
+    color: var(--text-primary);
+    font-size: 14px;
+  }
+
+  .listing-card__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .listing-card__rating svg {
+    width: 12px;
+    height: 12px;
+    fill: var(--text-primary);
+  }
+
+  /* ============================================= */
+  /* Component 4: Gradient "Get started" button      */
+  /* ============================================= */
+  .gradient-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 48px;
+    min-width: 220px;
+    border: none;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to right,
+      var(--rausch-gradient-start) 0%,
+      var(--rausch-gradient-mid) 50%,
+      var(--rausch-gradient-end) 100%
+    );
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(227, 28, 95, 0.35);
+    transition: transform 150ms ease, box-shadow 200ms ease, filter 200ms ease;
+  }
+  .gradient-btn:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 6px 16px rgba(227, 28, 95, 0.45);
+  }
+  .gradient-btn:active {
+    transform: translateY(1px);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== Component 1: Search bar ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 1 — Search bar</div>
+      <div class="search-bar" role="search">
+        <div class="search-field" tabindex="0">
+          <div class="search-field__label">Where</div>
+          <div class="search-field__value">Search destinations</div>
+        </div>
+
+        <div class="search-divider"></div>
+
+        <div class="search-field" tabindex="0">
+          <div class="search-field__label">When</div>
+          <div class="search-field__value">Add dates</div>
+        </div>
+
+        <div class="search-divider"></div>
+
+        <div class="search-field" tabindex="0">
+          <div class="search-field__label">Who</div>
+          <div class="search-field__value">Add guests</div>
+        </div>
+
+        <button type="button" class="search-btn" aria-label="Search">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+              d="M13 24a11 11 0 1 0 0-22 11 11 0 0 0 0 22zm8-3 9 9"
+            />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== Component 2 & 3: Listing cards ===== -->
+    <section class="component-block">
+      <div class="component-label">Components 2 &amp; 3 — Listing cards</div>
+      <div class="cards-row">
+
+        <!-- Card 1: Guest suite in Pune City -->
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img
+              class="listing-card__image"
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+              alt="Guest suite in Pune City"
+              loading="lazy"
+            />
+            <button
+              class="listing-card__heart"
+              type="button"
+              aria-label="Save to wishlist"
+              data-liked="false"
+              onclick="this.dataset.liked = this.dataset.liked === 'true' ? 'false' : 'true'"
+            >
+              <svg viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z" />
+              </svg>
+            </button>
+          </div>
+          <div class="listing-card__info">
+            <h3 class="listing-card__title">Guest suite in Pune City</h3>
+            <div class="listing-card__meta">
+              <span>₹9,998 for 2 nights</span>
+              <span class="listing-card__dot">·</span>
+              <span class="listing-card__rating">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                  <path d="m15.1 1.6-3.9 8-8.8 1.3c-1.6.2-2.2 2.2-1.1 3.3l6.4 6.2-1.5 8.8c-.3 1.6 1.4 2.8 2.8 2.1l7.9-4.1 7.9 4.2c1.4.7 3.1-.5 2.8-2.1l-1.5-8.8 6.4-6.2a1.9 1.9 0 0 0-1.1-3.3l-8.8-1.3-3.9-8a1.9 1.9 0 0 0-3.6-.1z" />
+                </svg>
+                4.79
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Home in Pune City with Guest favourite badge -->
+        <article class="listing-card">
+          <div class="listing-card__image-wrap">
+            <img
+              class="listing-card__image"
+              src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80"
+              alt="Home in Pune City"
+              loading="lazy"
+            />
+            <span class="listing-card__badge">Guest favourite</span>
+            <button
+              class="listing-card__heart"
+              type="button"
+              aria-label="Save to wishlist"
+              data-liked="true"
+              onclick="this.dataset.liked = this.dataset.liked === 'true' ? 'false' : 'true'"
+            >
+              <svg viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M16 28c7-4.73 14-10 14-17a6.98 6.98 0 0 0-7-7c-1.8 0-3.58.68-4.95 2.05L16 8.1l-2.05-2.05a6.98 6.98 0 0 0-9.9 0A6.98 6.98 0 0 0 2 11c0 7 7 12.27 14 17z" />
+              </svg>
+            </button>
+          </div>
+          <div class="listing-card__info">
+            <h3 class="listing-card__title">Home in Pune City</h3>
+            <div class="listing-card__meta">
+              <span>₹10,956 for 2 nights</span>
+              <span class="listing-card__dot">·</span>
+              <span class="listing-card__rating">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                  <path d="m15.1 1.6-3.9 8-8.8 1.3c-1.6.2-2.2 2.2-1.1 3.3l6.4 6.2-1.5 8.8c-.3 1.6 1.4 2.8 2.8 2.1l7.9-4.1 7.9 4.2c1.4.7 3.1-.5 2.8-2.1l-1.5-8.8 6.4-6.2a1.9 1.9 0 0 0-1.1-3.3l-8.8-1.3-3.9-8a1.9 1.9 0 0 0-3.6-.1z" />
+                </svg>
+                4.86
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== Component 4: Get started gradient button ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 4 — Gradient button</div>
+      <div>
+        <button type="button" class="gradient-btn">Get started</button>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

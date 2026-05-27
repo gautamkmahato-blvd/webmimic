@@ -1,0 +1,151 @@
+/* ============================================
+ * Design Tokens — Microsoft 365 | Write, Create & Collaborate with AI
+ * Source: https://www.office.com/
+ * Generated: 13/04/2026, 22:51:16
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray: #262626; /* hsl(0, 0%, 15%) · text */
+  --color-blue: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-dark-gray-2: #616161; /* hsl(0, 0%, 38%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-blue: #121D2F; /* hsl(217, 45%, 13%) · text */
+  --color-dark-blue-2: #17253D; /* hsl(218, 45%, 16%) · text */
+  --color-dark-gray-3: #605E5C; /* hsl(30, 2%, 37%) · text */
+  --color-light-gray: #EDEBE9; /* hsl(30, 10%, 92%) · border */
+  --color-blue-2: rgba(70, 79, 235, 0.05); /* hsl(240, 80%, 61%) · gradient */
+  --color-blue-3: rgba(123, 104, 238, 0.05); /* hsl(249, 77%, 65%) · gradient */
+  --color-light-gray-2: #F2F2F2; /* hsl(0, 0%, 95%) · background */
+  --color-light-gray-3: #E6E6E6; /* hsl(0, 0%, 90%) · background */
+  --color-dark-gray-4: #333333; /* hsl(0, 0%, 20%) · text */
+  --color-light-gray-4: #E1E1E1; /* hsl(0, 0%, 88%) · border */
+  --color-blue-4: #0066FF; /* hsl(216, 100%, 50%) · fill */
+  --color-dark-gray-5: #323130; /* hsl(30, 2%, 19%) · text */
+  --color-white-2: #F7F5F4; /* hsl(20, 16%, 96%) · gradient */
+  --color-white-3: #F5F5F5; /* hsl(0, 0%, 96%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 11px;
+  --font-size-xs: 13px;
+  --font-size-sm: 13.3333px;
+  --font-size-base: 14px;
+  --font-size-lg: 15px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 18px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 24px;
+  --font-size-5xl: 32px;
+  --font-size-6xl: 40px;
+  --font-size-48px: 48px;
+  --font-family-base: Times;
+  --font-family-2: SegoeUI;
+  --font-family-3: Segoe UI;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 3px;
+  --line-height-snug: 16px;
+  --line-height-normal: 20px;
+  --line-height-relaxed: 22px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 25px;
+  --line-height-lh-7: 26px;
+  --line-height-lh-8: 28px;
+  --line-height-lh-9: 40px;
+  --line-height-lh-10: 48px;
+  --line-height-lh-11: 58px;
+  --letter-spacing-tight: -3.1px;
+  --letter-spacing-normal: -3%;
+  --letter-spacing-wide: -2px;
+  --letter-spacing-wider: -1.6px;
+  --letter-spacing-widest: -0.6px;
+  --letter-spacing-ls-6: -0.48px;
+  --letter-spacing-ls-7: -0.3px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-6: 6px;
+  --space-8: 7px;
+  --space-10: 8px;
+  --space-12: 10px;
+  --space-16: 12px;
+  --space-20: 15px;
+  --space-24: 96px;
+  --space-32: 18px;
+  --space-40: 20px;
+  --space-48: 24px;
+  --space-64: 30px;
+  --space-80: 32px;
+  --space-96: 36px;
+  --space-128: 40px;
+  --space-160: 48px;
+  --space-192: 56.6484px;
+  --space-256: 56.6562px;
+  --space-23: 80px;
+  --space-25: 100px;
+  --space-26: 208px;
+  --space-27: 232px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 24px;
+  --radius-2xl: 50%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.08) 0px 4px 16px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.1) 0px 0px 8px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.2s;
+  --duration-fast: 0.3s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -2;
+  --z-2: 2;
+  --z-3: 502;
+  --z-4: 700;
+  --z-5: 701;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 500px;
+  --breakpoint-lg: 536px;
+  --breakpoint-xl: 539px;
+  --breakpoint-2xl: 540px;
+  --breakpoint-3xl: 639px;
+  --breakpoint-bp-8: 640px;
+  --breakpoint-bp-9: 767px;
+  --breakpoint-bp-10: 768px;
+  --breakpoint-bp-11: 860px;
+  --breakpoint-bp-12: 899px;
+  --breakpoint-bp-13: 1023px;
+  --breakpoint-bp-14: 1024px;
+  --breakpoint-bp-15: 1025px;
+  --breakpoint-bp-16: 1083px;
+  --breakpoint-bp-17: 1084px;
+  --breakpoint-bp-18: 1200px;
+  --breakpoint-bp-19: 1201px;
+  --breakpoint-bp-20: 1300px;
+  --breakpoint-bp-21: 1301px;
+  --breakpoint-bp-22: 1399px;
+  --breakpoint-bp-23: 1600px;
+  --breakpoint-bp-24: 1778px;
+  --breakpoint-bp-25: 1793px;
+  --breakpoint-bp-26: 1800px;
+  --breakpoint-bp-27: 1920px;
+
+  /* ── Opacity ── */
+}

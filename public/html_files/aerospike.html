@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Aerospike — Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* ── Aerospike Color Tokens ── */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-white-2: #EEF6FF;
+  --color-yellow: #F8F413;
+  --color-white-5: #FBFAF8;
+  --color-white-6: #F4F4F4;
+  --color-light-gray-3: #ECEFF4;
+  --color-dark-blue-8: #0D1B32;
+  --color-cyan: #0097D3;
+  --color-dark-gray: #212121;
+  --color-light-gray: #B4B4B4;
+  --color-dark-gray-2: #1A1A1A;
+  --color-white-3: #F6F8FF;
+  --color-dark-blue: #0C1424;
+  --color-light-cyan: #89DDFF;
+  --color-dark-gray-3: #5C5C5C;
+  --color-white-4: #EEFFFF;
+  --color-blue: #59617E;
+  --color-blue-2: #5C6475;
+  --color-light-blue: #82AAFF;
+  --color-light-green: #C3E88D;
+  --color-dark-blue-2: #051028;
+  --color-dark-blue-3: #152D54;
+  --color-dark-blue-6: #12305C;
+  --color-dark-blue-7: #050E1D;
+  --color-dark-blue-5: #464E6A;
+  --color-mid-gray: #6C6C6C;
+  --color-light-gray-4: #E8E8E8;
+  --color-light-gray-2: #D5D5D5;
+  --color-dark-green: #008000;
+
+  /* Aerospike brand color scales */
+  --sol-yellow-500: #F8F413;
+  --sky-blue-600: #0097D3;
+  --sky-blue-900: #00548B;
+  --airglow-red-500: #F55937;
+  --space-blue-900: #051028;
+  --space-blue-700: #464E6A;
+  --moon-gray-50: #FBFAF8;
+
+  /* ── Derived surfaces ── */
+  --bg-page: #000000;
+  --bg-card: #0D1B32;
+  --bg-elevated: #152D54;
+  --bg-hover: #12305C;
+  --bg-dark: #050E1D;
+  --bg-light: #FBFAF8;
+  --border-default: rgba(255,255,255,0.1);
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-strong: rgba(255,255,255,0.2);
+  --border-yellow: rgba(248,244,19,0.3);
+  --text-primary: #FFFFFF;
+  --text-secondary: #B4B4B4;
+  --text-tertiary: rgba(180,180,180,0.55);
+  --text-yellow: #F8F413;
+  --text-cyan: #89DDFF;
+  --yellow-tint: rgba(248,244,19,0.07);
+  --yellow-tint-border: rgba(248,244,19,0.2);
+  --cyan-tint: rgba(0,151,211,0.1);
+
+  /* ── Aerospike Typography ── */
+  --font-family-base: 'Helvetica Now Pro Display', 'Lato', Helvetica, Arial, sans-serif;
+  --font-family-2: 'Fira Code', 'Source Code Pro', 'Courier New', monospace;
+  --font-family-3: 'Tiempos Headline', Georgia, serif;
+  --font-family-4: Arial, Helvetica, sans-serif;
+  --font-family-ui: 'Lato', Helvetica, Arial, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-size-2xs: 11.2px; --font-size-xs: 12px; --font-size-sm: 13px;
+  --font-size-base: 13.3333px; --font-size-lg: 14px; --font-size-xl: 15px;
+  --font-size-2xl: 16px; --font-size-3xl: 17px; --font-size-4xl: 18px;
+  --font-size-5xl: 20px; --font-size-6xl: 24px; --font-size-26px: 26px;
+  --font-size-30px: 30px; --font-size-32px: 32px; --font-size-40px: 40px;
+  --font-size-42px: 42px; --font-size-60px: 60px;
+  --line-height-tight: 12.75px; --line-height-snug: 14.4px; --line-height-normal: 16px;
+  --line-height-relaxed: 18px; --line-height-loose: 19.2px; --line-height-lh-6: 19.6px;
+  --line-height-lh-7: 20.7px; --line-height-lh-8: 22.1px; --line-height-lh-9: 22.5px;
+  --line-height-lh-10: 23.8px; --line-height-lh-11: 25.2px; --line-height-lh-12: 26.4px;
+  --line-height-lh-13: 27px; --line-height-lh-14: 28.8px; --line-height-lh-15: 30.6px;
+  --line-height-lh-16: 35.2px; --line-height-lh-17: 38.4px; --line-height-lh-18: 39.9px;
+  --line-height-lh-19: 44.1px; --line-height-lh-20: 46px; --line-height-lh-21: 63px;
+  --letter-spacing-tight: -0.6px;
+  --letter-spacing-normal: -0.4px;
+  --letter-spacing-wide: -0.08px;
+  --letter-spacing-wider: 0.32px;
+  --letter-spacing-widest: 0.4px;
+  --letter-spacing-ls-6: 1.2px;
+  --letter-spacing-ls-7: 1.44px;
+  --letter-spacing-ls-8: 2.28px;
+
+  /* ── Spacing ── */
+  --space-1:1px;--space-2:1.20312px;--space-3:2px;--space-4:4px;--space-5:5px;
+  --space-6:6px;--space-8:8px;--space-10:9px;--space-12:10px;--space-16:12px;
+  --space-20:14px;--space-40:20px;--space-48:22px;--space-64:24px;--space-80:25px;
+  --space-96:26px;--space-128:30px;--space-192:32px;--space-23:40px;--space-25:48px;
+  --space-26:50px;--space-28:60px;--space-30:80px;--space-31:100px;--space-33:120px;
+  --space-35:180px;--space-36:240px;
+
+  /* ── Borders ── */
+  --border-width-hairline:0.5px;--border-width-thin:1px;--border-width-base:2px;
+  --radius-md:6px;--radius-xl:8px;--radius-2xl:10px;--radius-full:12px;
+  --radius-r7:14px;--radius-r9:18px;--radius-r10:20px;--radius-r14:40px;
+  --radius-r15:50px;--radius-r20:300px;--radius-r21:999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:rgba(39,48,74,0.08) 0px 10px 14px 0px;
+  --shadow-md:rgba(2,10,27,0.24) 0px 1px 2px 0px,rgba(255,255,255,0.35) 0px 1px 0px 0px inset;
+  --shadow-lg:rgba(0,0,0,0.55) 0px 32px 80px 0px;
+  --shadow-xl:rgba(0,0,0,0.12) 0px 8px 24px 0px;
+
+  /* ── Motion ── */
+  --duration-instant:0.1s;--duration-fast:0.15s;--duration-normal:0.2s;
+  --duration-slow:0.22s;--duration-slower:0.24s;--duration-6:0.25s;
+  --duration-12:0.6s;
+  --easing-ease-out:ease-out;--easing-ease-in-out:ease-in-out;--easing-linear:linear;
+
+  /* ── Z-Index ── */
+  --z-1:-1;--z-2:1;--z-3:2;--z-4:100;--z-5:200;
+  --z-6:1000;--z-7:9999999;--z-8:99999999;--z-9:999999999;--z-10:2147483642;
+
+  /* ── Opacity ── */
+  --opacity-40:0.4;--opacity-50:0.5;--opacity-90:0.9;--opacity-91:0.91;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family-ui);background:var(--bg-page);color:var(--text-primary);font-size:var(--font-size-lg);line-height:var(--line-height-lh-7);font-weight:var(--font-weight-regular);}
+.page{max-width:1200px;margin:0 auto;padding:64px 24px;}
+
+/* HEADER */
+.top-bar{border-bottom:var(--border-width-thin) solid var(--border-default);margin-bottom:32px;padding-bottom:12px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.header-left{display:flex;align-items:center;gap:16px;}
+.logo{width:38px;height:38px;background:var(--color-yellow);border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;}
+.system-title{font-family:var(--font-family-ui);font-size:18px;font-weight:var(--font-weight-bold);color:var(--text-primary);line-height:1.2;letter-spacing:var(--letter-spacing-wide);}
+.system-meta{font-size:var(--font-size-sm);color:var(--text-tertiary);margin-top:2px;line-height:1.5;}
+.hbadge{font-family:var(--font-family-ui);font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);background:var(--yellow-tint);color:var(--text-yellow);padding:3px 10px;border-radius:var(--radius-r21);border:var(--border-width-thin) solid var(--yellow-tint-border);letter-spacing:var(--letter-spacing-ls-6);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-thin) solid var(--yellow-tint-border);background:var(--yellow-tint);color:var(--color-light-gray-3);box-shadow:0 1px 2px rgba(0,0,0,0.28);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-cyan);color:var(--color-cyan);box-shadow:0 4px 14px rgba(0,0,0,0.38);transform:translateY(-1px);}
+
+/* SECTION */
+.section{margin-bottom:64px;}
+.section-title{font-family:var(--font-family-ui);font-size:var(--font-size-6xl);font-weight:var(--font-weight-bold);color:var(--text-primary);line-height:1.2;margin-bottom:20px;letter-spacing:var(--letter-spacing-wide);}
+
+/* COLORS */
+.color-group{margin-bottom:24px;}
+.color-group-label{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);letter-spacing:var(--letter-spacing-ls-6);text-transform:uppercase;color:var(--text-tertiary);margin-bottom:8px;}
+.swatch-grid{display:grid;gap:8px;}
+.swatch-item{display:flex;flex-direction:column;gap:4px;}
+.swatch-box{height:60px;border-radius:var(--radius-r10);border:var(--border-width-thin) solid var(--border-subtle);}
+.swatch-name{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--text-secondary);line-height:1.2;}
+.swatch-hex{font-size:10px;color:var(--text-tertiary);font-family:var(--font-family-2);line-height:1.2;}
+
+/* TYPOGRAPHY */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
+.font-card{background:var(--bg-card);border:var(--border-width-thin) solid var(--border-default);border-radius:var(--radius-r10);padding:24px;box-shadow:var(--shadow-sm);}
+.font-token{font-size:var(--font-size-sm);color:var(--text-yellow);font-weight:var(--font-weight-semibold);margin-bottom:6px;letter-spacing:var(--letter-spacing-ls-6);}
+.font-display{font-size:32px;color:var(--text-primary);line-height:1.2;margin-bottom:6px;font-weight:300;letter-spacing:var(--letter-spacing-tight);}
+.font-sample{font-size:var(--font-size-lg);color:var(--text-secondary);line-height:1.7;}
+.fw-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.fw-chip{font-size:var(--font-size-sm);padding:2px 10px;background:var(--bg-elevated);border-radius:var(--radius-r21);color:var(--text-secondary);border:var(--border-width-thin) solid var(--border-default);}
+.type-scale{background:var(--bg-card);border:var(--border-width-thin) solid var(--border-default);border-radius:var(--radius-r10);overflow:hidden;box-shadow:var(--shadow-sm);}
+.type-row{display:flex;flex-direction:column;padding:12px 20px;border-bottom:var(--border-width-thin) solid var(--border-subtle);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--text-primary);margin-bottom:3px;}
+.type-meta{font-size:10px;color:var(--text-tertiary);font-family:var(--font-family-2);line-height:1.2;}
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.lh-item{background:var(--bg-card);border:var(--border-width-thin) solid var(--border-default);border-radius:var(--radius-xl);padding:8px;display:flex;flex-direction:column;gap:4px;}
+.lh-bar-wrap{background:var(--bg-elevated);border-radius:2px;overflow:hidden;}
+.lh-bar{background:linear-gradient(to bottom,var(--color-dark-blue-8),var(--color-cyan));width:100%;}
+.lh-token{font-size:var(--font-size-sm);color:var(--text-yellow);}
+.lh-val{font-size:10px;color:var(--text-tertiary);}
+.ls-row{display:flex;gap:8px;flex-wrap:wrap;}
+.ls-item{background:var(--bg-card);border:var(--border-width-thin) solid var(--border-default);border-radius:var(--radius-xl);padding:12px 20px;flex:1;box-shadow:var(--shadow-sm);}
+.ls-sample{font-size:var(--font-size-6xl);color:var(--text-primary);font-weight:300;margin-bottom:4px;}
+.ls-token{font-size:var(--font-size-sm);color:var(--text-yellow);}
+.ls-desc{font-size:10px;color:var(--text-tertiary);}
+
+/* SPACING */
+.token-wrap{background:var(--bg-card);border:var(--border-width-thin) solid var(--border-default);border-radius:var(--radius-r10);padding:20px;box-shadow:var(--shadow-sm);}
+.tw-title{font-family:var(--font-family-ui);font-size:var(--font-size-2xl);font-weight:var(--font-weight-bold);color:var(--text-primary);margin-bottom:4px;letter-spacing:var(--letter-spacing-wide);}
+.tw-sub{font-size:var(--font-size-sm);color:var(--text-tertiary);margin-bottom:16px;}
+.spacing-chart{display:flex;align-items:flex-end;gap:3px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;}
+.sp-bar{background:linear-gradient(to top,var(--color-dark-blue-8),var(--color-cyan));border-radius:2px 2px 0 0;width:100%;}
+.sp-lbl{font-size:9px;color:var(--text-tertiary);text-align:center;}
+
+/* BORDERS */
+.border-card{background:var(--bg-card);border:var(--border-width-thin) solid var(--border-default);border-radius:var(--radius-r10);padding:20px;margin-bottom:16px;box-shadow:var(--shadow-sm);}
+.bc-title{font-family:var(--font-family-ui);font-size:var(--font-size-2xl);font-weight:var(--font-weight-bold);color:var(--text-primary);margin-bottom:12px;letter-spacing:var(--letter-spacing-wide);}
+.radius-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,var(--color-dark-blue-8),var(--color-cyan));border:var(--border-width-thin) solid var(--border-subtle);}
+.radius-lbl{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--text-secondary);text-align:center;}
+.radius-val{font-size:10px;color:var(--text-tertiary);text-align:center;font-family:var(--font-family-2);}
+.bw-item{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.bw-line{flex:1;background:var(--text-secondary);}
+.bw-token{font-size:var(--font-size-sm);color:var(--text-yellow);white-space:nowrap;font-weight:var(--font-weight-semibold);}
+.bw-val{font-size:10px;color:var(--text-tertiary);white-space:nowrap;font-family:var(--font-family-2);}
+
+/* SHADOWS */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sh-item{display:flex;flex-direction:column;gap:6px;}
+.sh-box{height:88px;background:var(--bg-elevated);border-radius:var(--radius-xl);}
+.sh-token{font-size:var(--font-size-lg);font-weight:var(--font-weight-semibold);color:var(--text-secondary);letter-spacing:var(--letter-spacing-wide);}
+.sh-usage{font-size:10px;color:var(--text-tertiary);}
+.sh-desc{font-size:10px;color:var(--text-secondary);line-height:1.5;margin-top:2px;}
+
+/* Z-TABLE */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:10px 12px;text-align:left;font-size:var(--font-size-lg);border-bottom:var(--border-width-thin) solid var(--border-subtle);line-height:1.5;}
+.z-table th{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-6);color:var(--text-tertiary);background:var(--bg-elevated);}
+.z-table td:first-child{color:var(--text-yellow);font-weight:var(--font-weight-semibold);font-family:var(--font-family-2);}
+.z-table td:nth-child(2){color:var(--text-primary);font-weight:var(--font-weight-bold);font-family:var(--font-family-2);}
+.z-table td:nth-child(3){color:var(--text-secondary);}
+.z-table tr:last-child td{border-bottom:none;}
+.z-table tr:hover td{background:var(--bg-hover);}
+
+/* BREAKPOINTS */
+.bp-cards{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.bp-card{background:var(--bg-card);border:var(--border-width-thin) solid var(--border-default);border-radius:var(--radius-xl);padding:12px 16px;display:flex;align-items:center;gap:10px;flex:1;min-width:100px;box-shadow:var(--shadow-sm);}
+.bp-icon{font-size:14px;line-height:1;flex-shrink:0;}
+.bp-token{font-size:10px;color:var(--text-yellow);margin-bottom:2px;font-weight:var(--font-weight-semibold);letter-spacing:var(--letter-spacing-ls-6);}
+.bp-val{font-size:var(--font-size-5xl);font-weight:var(--font-weight-bold);color:var(--text-primary);line-height:1;letter-spacing:var(--letter-spacing-tight);}
+
+/* OPACITY */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.op-item{display:flex;flex-direction:column;gap:4px;}
+.op-box{height:60px;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--color-dark-blue-8),var(--color-cyan));}
+.op-token{font-size:var(--font-size-sm);color:var(--text-yellow);font-weight:var(--font-weight-semibold);}
+.op-val{font-size:10px;color:var(--text-tertiary);}
+
+/* A11Y */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:10px 12px;text-align:left;font-size:var(--font-size-sm);border-bottom:var(--border-width-thin) solid var(--border-subtle);line-height:1.5;}
+.a11y-table th{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-6);color:var(--text-tertiary);background:var(--bg-elevated);}
+.a11y-table td:first-child{font-size:10px;color:var(--text-secondary);font-family:var(--font-family-2);}
+.a11y-table td:nth-child(2){font-size:10px;color:var(--text-tertiary);font-family:var(--font-family-2);}
+.a11y-table td:nth-child(3){color:var(--text-primary);font-weight:var(--font-weight-bold);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.a11y-table tr:hover td{background:var(--bg-hover);}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-semibold);padding:2px 7px;border-radius:var(--radius-r21);}
+.wcag-aaa{background:var(--yellow-tint);color:var(--text-yellow);border:var(--border-width-thin) solid var(--yellow-tint-border);}
+.wcag-aa{background:var(--bg-elevated);color:var(--text-secondary);border:var(--border-width-thin) solid var(--border-default);}
+.wcag-aal{background:var(--bg-card);color:var(--text-tertiary);border:var(--border-width-thin) solid var(--border-subtle);}
+.wcag-fail{background:rgba(245,89,55,0.08);color:#f55937;border:var(--border-width-thin) solid rgba(245,89,55,0.25);}
+
+/* COMPONENTS */
+.comp-row{background:var(--bg-card);border-radius:var(--radius-r10);border:var(--border-width-thin) solid var(--border-default);overflow:hidden;margin-bottom:12px;box-shadow:var(--shadow-sm);}
+.comp-header{padding:6px 12px;border-bottom:var(--border-width-thin) solid var(--border-subtle);background:var(--bg-dark);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--text-secondary);letter-spacing:var(--letter-spacing-ls-6);text-transform:uppercase;}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-semibold);background:var(--yellow-tint);color:var(--text-yellow);padding:2px 8px;border-radius:var(--radius-r21);border:var(--border-width-thin) solid var(--yellow-tint-border);}
+.comp-body{padding:20px;}
+.btn-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-ui);font-weight:var(--font-weight-semibold);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-lg);padding:9px 22px;border-radius:var(--radius-r10);line-height:1;letter-spacing:var(--letter-spacing-wide);transition:all var(--duration-fast) var(--easing-ease-out);}
+.btn-primary{background:var(--color-yellow);color:#000000;}
+.btn-primary:hover{background:#fff200;}
+.btn-secondary{background:var(--bg-card);color:var(--text-primary);border:var(--border-width-base) solid var(--border-strong);}
+.btn-secondary:hover{background:var(--bg-elevated);}
+.btn-outline{background:transparent;color:var(--text-yellow);border:var(--border-width-base) solid var(--color-yellow);}
+.btn-outline:hover{background:var(--yellow-tint);}
+.btn-ghost{background:transparent;color:var(--text-secondary);border:var(--border-width-thin) solid transparent;}
+.btn-ghost:hover{background:var(--bg-elevated);color:var(--text-primary);}
+.btn-muted{background:var(--bg-elevated);color:var(--text-tertiary);border:var(--border-width-thin) solid var(--border-default);}
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.inp-group{display:flex;flex-direction:column;gap:4px;}
+.inp-label{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--text-secondary);letter-spacing:var(--letter-spacing-wide);}
+.inp{width:100%;font-family:var(--font-family-ui);font-size:var(--font-size-lg);color:var(--text-primary);background:var(--bg-dark);border:var(--border-width-thin) solid var(--border-strong);border-radius:var(--radius-xl);padding:8px 12px;outline:none;transition:all var(--duration-fast) var(--easing-ease-out);line-height:1.5;}
+.inp:focus{border-color:var(--color-yellow);box-shadow:0 0 0 3px var(--yellow-tint);}
+.inp::placeholder{color:var(--text-tertiary);}
+.inp-hint{font-size:var(--font-size-sm);color:var(--text-tertiary);}
+.inp-err{border-color:rgba(245,89,55,0.6)!important;}
+.inp-err-msg{font-size:var(--font-size-sm);color:#f55937;}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);padding:2px 8px;border-radius:var(--radius-r21);line-height:1.2;letter-spacing:var(--letter-spacing-wide);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--bg-elevated);color:var(--text-secondary);border:var(--border-width-thin) solid var(--border-default);}
+.badge-brand{background:var(--yellow-tint);color:var(--text-yellow);border:var(--border-width-thin) solid var(--yellow-tint-border);}
+.badge-muted{background:var(--bg-card);color:var(--text-tertiary);border:var(--border-width-thin) solid var(--border-subtle);}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);padding:2px 8px;border-radius:var(--radius-xl);border:var(--border-width-thin) solid var(--border-default);background:var(--bg-elevated);color:var(--text-secondary);letter-spacing:var(--letter-spacing-wide);}
+.tag-brand{color:#000;background:var(--color-yellow);border-color:var(--color-yellow);}
+.alert{display:flex;gap:10px;padding:12px 16px;border-radius:var(--radius-r10);font-size:var(--font-size-lg);}
+.alert-icon{font-size:18px;flex-shrink:0;line-height:1.4;}
+.alert-body h5{font-weight:var(--font-weight-bold);margin-bottom:3px;font-size:var(--font-size-lg);color:var(--text-primary);line-height:1.4;letter-spacing:var(--letter-spacing-wide);}
+.alert-body p{font-size:var(--font-size-sm);line-height:1.5;color:var(--text-secondary);}
+.alert-neutral{background:var(--bg-elevated);border:var(--border-width-thin) solid var(--border-default);}
+.alert-brand{background:var(--yellow-tint);border:var(--border-width-thin) solid var(--yellow-tint-border);}
+.alert-brand h5{color:var(--text-yellow);}
+.alert-dim{background:var(--bg-dark);border:var(--border-width-thin) solid var(--border-strong);}
+.alert-base{background:var(--bg-card);border:var(--border-width-thin) solid var(--border-subtle);}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.feature-card{background:var(--bg-dark);border:var(--border-width-thin) solid var(--border-default);border-radius:var(--radius-r10);padding:20px;transition:all var(--duration-slow) var(--easing-ease-out);box-shadow:var(--shadow-sm);}
+.feature-card:hover{border-color:var(--color-yellow);box-shadow:var(--shadow-xl);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-xl);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px;background:var(--yellow-tint);border:var(--border-width-thin) solid var(--yellow-tint-border);}
+.fc-title{font-family:var(--font-family-ui);font-size:var(--font-size-2xl);font-weight:var(--font-weight-bold);color:var(--text-primary);line-height:1.4;margin-bottom:4px;letter-spacing:var(--letter-spacing-wide);}
+.fc-desc{font-size:var(--font-size-sm);color:var(--text-secondary);line-height:1.5;margin-bottom:12px;}
+.av-row{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-bold);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-2xl);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-lg);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-sm);}
+.av-info h4{font-family:var(--font-family-ui);font-size:var(--font-size-2xl);font-weight:var(--font-weight-bold);color:var(--text-primary);letter-spacing:var(--letter-spacing-wide);}
+.av-info p{font-size:var(--font-size-sm);color:var(--text-tertiary);}
+.prog-wrap{margin-bottom:8px;}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--text-secondary);margin-bottom:4px;letter-spacing:var(--letter-spacing-wide);}
+.prog-track{height:4px;background:var(--bg-elevated);border-radius:var(--radius-r21);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-r21);}
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:8px 16px;text-align:left;font-size:var(--font-size-lg);border-bottom:var(--border-width-thin) solid var(--border-subtle);line-height:1.5;}
+.data-table th{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-6);color:var(--text-tertiary);background:var(--bg-dark);}
+.data-table tr:hover td{background:var(--bg-hover);}
+.data-table td:first-child{color:var(--text-yellow);font-weight:var(--font-weight-semibold);font-family:var(--font-family-2);}
+
+/* TOKENS */
+.tokens-section{margin-bottom:64px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.tokens-group{background:var(--bg-card);border:var(--border-width-thin) solid var(--border-default);border-radius:var(--radius-r10);overflow:hidden;box-shadow:var(--shadow-sm);}
+.tokens-group-header{padding:8px 16px;border-bottom:var(--border-width-thin) solid var(--border-subtle);background:var(--bg-dark);display:flex;align-items:center;gap:8px;}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--color-yellow);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--text-secondary);letter-spacing:var(--letter-spacing-ls-6);text-transform:uppercase;}
+.tokens-group-count{font-size:10px;color:var(--text-tertiary);margin-left:auto;}
+.tokens-list{padding:4px 0;}
+.token-row{display:flex;align-items:center;gap:8px;padding:4px 16px;transition:background var(--duration-instant);}
+.token-row:hover{background:var(--bg-hover);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-md);border:var(--border-width-thin) solid var(--border-subtle);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);color:var(--text-secondary);flex:1;min-width:0;}
+.token-css{font-size:10px;color:var(--text-yellow);white-space:nowrap;font-family:var(--font-family-2);}
+.token-value{font-size:10px;color:var(--text-tertiary);white-space:nowrap;font-family:var(--font-family-2);}
+.token-preview-bar{height:4px;border-radius:var(--radius-r21);background:linear-gradient(to right,var(--color-dark-blue-8),var(--color-cyan));flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,var(--color-dark-blue-8),var(--color-cyan));flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--color-dark-blue-8),var(--color-cyan));flex-shrink:0;}
+.token-row-sep{height:var(--border-width-thin);background:var(--border-subtle);margin:4px 0;}
+
+@media(max-width:600px){
+  .font-cards,.shadows-row,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="22" height="18" viewBox="0 0 22 18" fill="none">
+            <path d="M1 17L11 1L21 17H1Z" fill="#000000" stroke="#000000" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">Aerospike</div>
+          <div class="system-meta">Design System · Generated 15/04/2026 · 50 colors · 54 type tokens · 35 spacing steps · 15 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">April 2026</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- 1. COLOR PALETTE -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Core Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black</div><div class="swatch-hex">#000000 · ×1443</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#050E1D"></div><div class="swatch-name">Deep Navy</div><div class="swatch-hex">#050E1D · ×16</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0D1B32"></div><div class="swatch-name">Dark Navy</div><div class="swatch-hex">#0D1B32 · ×9</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0C1424"></div><div class="swatch-name">Dark Blue</div><div class="swatch-hex">#0C1424 · ×252</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#051028"></div><div class="swatch-name">Space Blue</div><div class="swatch-hex">#051028 · ×40</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#152D54"></div><div class="swatch-name">Navy Mid</div><div class="swatch-hex">#152D54 · ×28</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#12305C"></div><div class="swatch-name">Navy Deep</div><div class="swatch-hex">#12305C · ×16</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#040B1D"></div><div class="swatch-name">Abyss</div><div class="swatch-hex">#040B1D · ×24</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Light / Warm Surface Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(7,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(0,0,0,0.1)"></div><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF · ×719</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#EEF6FF;border-color:rgba(0,0,0,0.06)"></div><div class="swatch-name">Ice Blue</div><div class="swatch-hex">#EEF6FF · ×406</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FBFAF8;border-color:rgba(0,0,0,0.06)"></div><div class="swatch-name">Moon Gray (warm off-white)</div><div class="swatch-hex">#FBFAF8 · ×31</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F4F4F4;border-color:rgba(0,0,0,0.06)"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#F4F4F4 · ×19</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#ECEFF4;border-color:rgba(0,0,0,0.06)"></div><div class="swatch-name">Blue-Gray</div><div class="swatch-hex">#ECEFF4 · ×14</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F6F8FF;border-color:rgba(0,0,0,0.06)"></div><div class="swatch-name">Near-White</div><div class="swatch-hex">#F6F8FF · ×280</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#EEFFFF;border-color:rgba(0,0,0,0.06)"></div><div class="swatch-name">Cyan Tint</div><div class="swatch-hex">#EEFFFF · ×96</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Brand & Accent Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#F8F413"></div><div class="swatch-name">Sol Yellow (Brand)</div><div class="swatch-hex">#F8F413 · ×39</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0097D3"></div><div class="swatch-name">Sky Blue</div><div class="swatch-hex">#0097D3 · ×4</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#89DDFF"></div><div class="swatch-name">Light Cyan</div><div class="swatch-hex">#89DDFF · ×196</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#82AAFF"></div><div class="swatch-name">Light Blue</div><div class="swatch-hex">#82AAFF · ×40</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#C3E88D"></div><div class="swatch-name">Light Green</div><div class="swatch-hex">#C3E88D · ×40</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#61BFE4"></div><div class="swatch-name">Cyan 2</div><div class="swatch-hex">#61BFE4 · ×1</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#00548B"></div><div class="swatch-name">Deep Sky</div><div class="swatch-hex">#00548B · ×1</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#008000"></div><div class="swatch-name">Dark Green</div><div class="swatch-hex">#008000 · ×2</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text & Border Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#212121"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#212121 · ×819</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1A1A1A"></div><div class="swatch-name">Near-Black</div><div class="swatch-hex">#1A1A1A · ×537</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#5C5C5C"></div><div class="swatch-name">Mid Dark</div><div class="swatch-hex">#5C5C5C · ×179</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#B4B4B4"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#B4B4B4 · ×622</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#59617E"></div><div class="swatch-name">Space Blue</div><div class="swatch-hex">#59617E · ×58</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#464E6A"></div><div class="swatch-name">Border Dark</div><div class="swatch-hex">#464E6A · ×17</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E8E8E8"></div><div class="swatch-name">Border Light</div><div class="swatch-hex">#E8E8E8 · ×9</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#D5D5D5"></div><div class="swatch-name">Mid Border</div><div class="swatch-hex">#D5D5D5 · ×14</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">DISPLAY · TIEMPOS HEADLINE</div>
+        <div class="font-display" style="font-family:Georgia,serif;font-weight:300;letter-spacing:-0.6px;">Tiempos Headline</div>
+        <div class="font-sample" style="font-family:Georgia,serif;">Aerospike: the real-time data platform for the world's most demanding applications.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:Georgia,serif;font-weight:300">Light · 300</span>
+          <span class="fw-chip" style="font-family:Georgia,serif;font-weight:400">Regular · 400</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">UI · HELVETICA NOW PRO DISPLAY</div>
+        <div class="font-display" style="font-family:'Lato',Helvetica,Arial,sans-serif;font-weight:400;letter-spacing:-0.4px;">Helvetica Now Pro</div>
+        <div class="font-sample" style="font-family:'Lato',Helvetica,Arial,sans-serif;">Sub-millisecond latency. Billions of operations per second. Predictable at scale.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:500">Medium · 500</span>
+          <span class="fw-chip" style="font-weight:600">Semibold · 600</span>
+          <span class="fw-chip" style="font-weight:700">Bold · 700</span>
+          <span class="fw-chip" style="font-family:var(--font-family-2)">Fira Code · mono</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-scale" style="margin-bottom:16px;">
+      <div class="type-row"><div class="type-sample" style="font-size:60px;font-weight:300;line-height:63px;letter-spacing:-0.6px;font-family:Georgia,serif;">The Real-Time Data Platform</div><div class="type-meta">Display 60px · Tiempos Headline Light · line-height: 63px · letter-spacing: −0.6px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:42px;font-weight:300;line-height:46px;letter-spacing:-0.4px;font-family:Georgia,serif;">Built for extreme scale</div><div class="type-meta">Hero 42px · Tiempos Light · line-height: 46px · letter-spacing: −0.4px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:32px;font-weight:500;line-height:38.4px;letter-spacing:-0.08px;">Performance at Any Scale</div><div class="type-meta">Heading 32px · Helvetica Now Medium · line-height: 38.4px · ls: −0.08px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:24px;font-weight:400;line-height:28.8px;letter-spacing:-0.08px;color:var(--text-secondary);">Fast. Consistent. Always on.</div><div class="type-meta">Heading 24px · Regular · line-height: 28.8px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:18px;font-weight:400;line-height:30.6px;letter-spacing:0.32px;color:var(--text-secondary);">Aerospike delivers real-time, consistent performance for the planet's most complex data challenges.</div><div class="type-meta">Body 18px · Regular · line-height: 30.6px · letter-spacing: +0.32px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:14px;font-weight:400;line-height:23.8px;letter-spacing:0.32px;color:var(--text-secondary);">99.999% uptime SLA · Sub-millisecond latency · 1M+ ops/sec per node</div><div class="type-meta">Body 14px · Regular · line-height: 23.8px · letter-spacing: +0.32px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:15px;font-weight:500;line-height:22.5px;letter-spacing:1.44px;text-transform:uppercase;color:var(--text-yellow);">PLATFORM · DATABASE · CLOUD</div><div class="type-meta">All-Caps 15px · Medium · letter-spacing: +1.44px · uppercase eyebrow</div></div>
+      <div class="type-row"><div class="type-sample" style="font-family:var(--font-family-2);font-size:14px;line-height:22.1px;letter-spacing:-0.08px;color:var(--color-light-cyan);">client.put("namespace", "set", key, bins);</div><div class="type-meta">Code · Fira Code · 14px · line-height: 22.1px</div></div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <div style="font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);letter-spacing:var(--letter-spacing-ls-6);text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px;">Line Heights — 21 tokens</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:12.75px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">12.75px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:14.4px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">14.4px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:16px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">16px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:18px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">18px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:19.2px;"></div></div><div class="lh-token">Loose</div><div class="lh-val">19.2px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:20.7px;"></div></div><div class="lh-token">LH-7</div><div class="lh-val">20.7px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:22.1px;"></div></div><div class="lh-token">LH-8</div><div class="lh-val">22.1px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:22.5px;"></div></div><div class="lh-token">LH-9</div><div class="lh-val">22.5px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:23.8px;"></div></div><div class="lh-token">LH-10</div><div class="lh-val">23.8px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:25.2px;"></div></div><div class="lh-token">LH-11</div><div class="lh-val">25.2px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:26.4px;"></div></div><div class="lh-token">LH-12</div><div class="lh-val">26.4px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:28.8px;"></div></div><div class="lh-token">LH-14</div><div class="lh-val">28.8px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:30.6px;"></div></div><div class="lh-token">LH-15</div><div class="lh-val">30.6px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:35.2px;"></div></div><div class="lh-token">LH-16</div><div class="lh-val">35.2px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:38.4px;"></div></div><div class="lh-token">LH-17</div><div class="lh-val">38.4px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:44.1px;"></div></div><div class="lh-token">LH-19</div><div class="lh-val">44.1px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:46px;"></div></div><div class="lh-token">LH-20</div><div class="lh-val">46px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:63px;"></div></div><div class="lh-token">LH-21</div><div class="lh-val">63px</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:var(--font-size-sm);font-weight:var(--font-weight-semibold);letter-spacing:var(--letter-spacing-ls-6);text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px;">Letter Spacing — Bidirectional (−0.6px → +2.28px)</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.6px;font-weight:300;font-family:Georgia,serif;">Display</div>
+          <div class="ls-token">--letter-spacing-tight</div>
+          <div class="ls-desc">−0.6px · hero display, Tiempos Headline</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.4px;font-size:18px;">Heading</div>
+          <div class="ls-token">--letter-spacing-normal</div>
+          <div class="ls-desc">−0.4px · h2/h3 subheadings</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:1.2px;font-size:13px;font-weight:600;text-transform:uppercase;">SECTION TITLE</div>
+          <div class="ls-token">--letter-spacing-ls-6</div>
+          <div class="ls-desc">+1.2px · uppercase category labels</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:2.28px;font-size:11px;font-weight:700;text-transform:uppercase;">EYEBROW LABEL</div>
+          <div class="ls-token">--letter-spacing-ls-8</div>
+          <div class="ls-desc">+2.28px · maximum · allCaps eyebrow copy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SPACING -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">35 tokens — 1px → 331.5px (includes sub-pixel and fractional values)</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:1px"></div><div class="sp-lbl">1</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:2px"></div><div class="sp-lbl">2</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:5px"></div><div class="sp-lbl">5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:6px"></div><div class="sp-lbl">6</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:9px"></div><div class="sp-lbl">9</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:14px"></div><div class="sp-lbl">14</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:20px"></div><div class="sp-lbl">20</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:22px"></div><div class="sp-lbl">22</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:24px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:25px"></div><div class="sp-lbl">25</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:30px"></div><div class="sp-lbl">30</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:32px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:35px"></div><div class="sp-lbl">35</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:40px"></div><div class="sp-lbl">40</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:45px"></div><div class="sp-lbl">45.3</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:48px"></div><div class="sp-lbl">48</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:50px"></div><div class="sp-lbl">50</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:58px"></div><div class="sp-lbl">57.9</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:60px"></div><div class="sp-lbl">60</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:68px"></div><div class="sp-lbl">68</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:80px"></div><div class="sp-lbl">80</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:100px"></div><div class="sp-lbl">100</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:103px"></div><div class="sp-lbl">103.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:120px"></div><div class="sp-lbl">120</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:139px"></div><div class="sp-lbl">139.5</div></div>
+        <div class="sp-col" style="opacity:0.5"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">180</div></div>
+        <div class="sp-col" style="opacity:0.3"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">240</div></div>
+        <div class="sp-col" style="opacity:0.2"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">331.5</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. BORDERS -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii — 21 tokens (from 6px to 300px)</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:0 0 40px 40px;height:50px;width:50px"></div><div class="radius-lbl">sm (bottom)</div><div class="radius-val">0/0/40/40px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:6px"></div><div class="radius-lbl">md</div><div class="radius-val">6px · ×10</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:6.4px"></div><div class="radius-lbl">lg</div><div class="radius-val">6.4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-lbl">xl</div><div class="radius-val">8px · ×29</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:10px"></div><div class="radius-lbl">2xl</div><div class="radius-val">10px · ×8</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:12px"></div><div class="radius-lbl">full</div><div class="radius-val">12px · ×18</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:14px"></div><div class="radius-lbl">r7</div><div class="radius-val">14px · ×8</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:18px"></div><div class="radius-lbl">r9</div><div class="radius-val">18px · ×14</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:20px"></div><div class="radius-lbl">r10</div><div class="radius-val">20px · ×140</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:32px;height:50px"></div><div class="radius-lbl">r11</div><div class="radius-val">32px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:36px;height:50px"></div><div class="radius-lbl">r12</div><div class="radius-val">36px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:40px 40px 0 0;height:50px;width:50px"></div><div class="radius-lbl">r13 (top)</div><div class="radius-val">40/40/0/0px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:40px;height:50px"></div><div class="radius-lbl">r14</div><div class="radius-val">40px · ×12</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:50px;height:50px"></div><div class="radius-lbl">r15</div><div class="radius-val">50px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:50%;height:50px;width:50px"></div><div class="radius-lbl">r16 (circle)</div><div class="radius-val">50% · ×7</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:70px;height:50px"></div><div class="radius-lbl">r17</div><div class="radius-val">70px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:100px;height:50px"></div><div class="radius-lbl">r18</div><div class="radius-val">100px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:200px;height:50px"></div><div class="radius-lbl">r19</div><div class="radius-val">200px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:300px;height:50px;min-width:50px"></div><div class="radius-lbl">r20</div><div class="radius-val">300px · ×20</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:999px;height:40px;min-width:50px"></div><div class="radius-lbl">r21 (pill)</div><div class="radius-val">999px · ×28</div></div>
+      </div>
+      <div style="margin-top:12px;font-size:var(--font-size-sm);color:var(--text-tertiary);line-height:1.5;">At 300px (×20) and 999px (×28), Aerospike heavily uses extreme curves for hero section "bubbles" and pill shapes. The r10 value of 20px (×140) is the most-used standard card corner — comparable to GitHub's 16px or HF's 25px but with a softer feel.</div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Widths</div>
+      <div>
+        <div class="bw-item"><div class="bw-token">--border-width-hairline</div><div class="bw-line" style="height:0.5px;"></div><div class="bw-val">0.5px · ×24 — sub-pixel (retina only)</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-thin</div><div class="bw-line" style="height:1px;"></div><div class="bw-val">1px · ×477 — standard UI borders</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-base</div><div class="bw-line" style="height:2px;"></div><div class="bw-val">2px · ×24 — focus rings, CTAs, emphasis</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. SHADOW / ELEVATION -->
+  <div class="section">
+    <div class="section-title">Shadow / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">6 tokens — ranging from subtle 8% blue-tint to dramatic 55% black blur</div>
+      <div class="shadows-row" style="grid-template-columns:repeat(3,1fr);gap:8px;">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(39,48,74,0.08) 0px 10px 14px 0px;"></div>
+          <div class="sh-token">sm — Blue-tint lift</div><div class="sh-usage">×8</div>
+          <div class="sh-desc">8% blue-navy · 10px offset — card resting state, unique tint (not black)</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(2,10,27,0.24) 0px 1px 2px 0px,rgba(255,255,255,0.35) 0px 1px 0px 0px inset;background:var(--color-dark-blue-8);"></div>
+          <div class="sh-token">md — Button bevel</div><div class="sh-usage">×8</div>
+          <div class="sh-desc">24% dark inset + 35% white inner highlight — button pressed/raised glass effect</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(0,0,0,0.55) 0px 32px 80px 0px;"></div>
+          <div class="sh-token">lg — Dramatic float</div><div class="sh-usage">×2</div>
+          <div class="sh-desc">55% black · 32px offset, 80px spread — modal overlays, hero floating panels</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(0,0,0,0.12) 0px 8px 24px 0px;"></div>
+          <div class="sh-token">xl — Soft float</div><div class="sh-usage">×2</div>
+          <div class="sh-desc">12% black · 8px offset, 24px spread — elevated cards, dropdowns</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(0,0,0,0.25) 0px 8px 24px 0px;"></div>
+          <div class="sh-token">shadow-5 — Medium float</div><div class="sh-usage">×2</div>
+          <div class="sh-desc">25% black · 8px offset, 24px spread — midweight elevated surfaces</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:rgba(172,171,171,0.3) 0px -1px 10px 0px;background:#FBFAF8;"></div>
+          <div class="sh-token">shadow-6 — Upward gray</div><div class="sh-usage">×1</div>
+          <div class="sh-desc">30% gray · −1px (upward) — footer/bottom bar in light mode context</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Z-INDEX -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div style="font-size:var(--font-size-sm);color:var(--text-secondary);margin-bottom:12px;line-height:1.5;">10 layers — includes 4 values exceeding <code style="background:var(--bg-card);padding:1px 5px;border-radius:4px;font-family:var(--font-family-2);">INT_MAX</code> territory. The top value of <strong style="color:var(--text-primary);">2,147,483,642</strong> sits just below the 32-bit signed integer maximum (2,147,483,647), marking Aerospike as one of only 3 systems in this series using extreme z-index values for absolute overlay guarantees.</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Layer</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>z-1 (Below)</td><td>-1</td><td>Decorative background elements, pseudo-element underlays</td></tr>
+          <tr><td>z-2 (Base)</td><td>1</td><td>Base positioned elements</td></tr>
+          <tr><td>z-3 (Raised)</td><td>2</td><td>Slightly elevated inline cards</td></tr>
+          <tr><td>z-4 (Navigation)</td><td>100</td><td>Sticky top navigation bar</td></tr>
+          <tr><td>z-5 (Sub-nav)</td><td>200</td><td>Dropdown menus, mega-nav panels</td></tr>
+          <tr><td>z-6 (Modal)</td><td>1,000</td><td>Modal dialogs, drawer overlays</td></tr>
+          <tr><td>z-7 (Mega-overlay)</td><td>9,999,999</td><td>Full-screen modals, campaign overlays</td></tr>
+          <tr><td>z-8 (Ultra)</td><td>99,999,999</td><td>Cookie banners, critical notices</td></tr>
+          <tr><td>z-9 (Absolute)</td><td>999,999,999</td><td>Near-absolute top-level overlays</td></tr>
+          <tr><td>z-10 (INT_MAX−5)</td><td>2,147,483,642</td><td>Maximum stacking context — below browser chrome only</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. BREAKPOINTS -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div style="font-size:var(--font-size-sm);color:var(--text-secondary);margin-bottom:16px;line-height:1.5;">22 breakpoints — 352px → 1439px. The most fine-grained mobile range in this series: 9 steps between 352–615px (increments of 3–15px), suggesting highly specific device targeting. Desktop maxes at 1439px, stopping before 1440.</div>
+    <div class="bp-cards">
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">XS</div><div class="bp-val">352</div></div></div>
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">SM</div><div class="bp-val">375</div></div></div>
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">MD/LG</div><div class="bp-val">400/425</div></div></div>
+      <div class="bp-card"><div class="bp-icon">📱</div><div><div class="bp-token">XL/2XL</div><div class="bp-val">440/480</div></div></div>
+      <div class="bp-card"><div class="bp-icon">📲</div><div><div class="bp-token">3XL/BP-8</div><div class="bp-val">555/576</div></div></div>
+      <div class="bp-card"><div class="bp-icon">📲</div><div><div class="bp-token">BP-9/10/11/12</div><div class="bp-val">599–615</div></div></div>
+    </div>
+    <div class="bp-cards">
+      <div class="bp-card"><div class="bp-icon">📲</div><div><div class="bp-token">BP-13</div><div class="bp-val">660</div></div></div>
+      <div class="bp-card"><div class="bp-icon">💻</div><div><div class="bp-token">BP-14</div><div class="bp-val">768</div></div></div>
+      <div class="bp-card"><div class="bp-icon">💻</div><div><div class="bp-token">BP-15/16</div><div class="bp-val">845/996</div></div></div>
+      <div class="bp-card"><div class="bp-icon">💻</div><div><div class="bp-token">BP-17/18</div><div class="bp-val">1023/1024</div></div></div>
+      <div class="bp-card"><div class="bp-icon">🖥️</div><div><div class="bp-token">BP-19/20</div><div class="bp-val">1240/1280</div></div></div>
+      <div class="bp-card"><div class="bp-icon">🖥️</div><div><div class="bp-token">BP-21/22 (Max)</div><div class="bp-val">1366/1439</div></div></div>
+    </div>
+  </div>
+
+  <!-- 8. OPACITY -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <div class="tw-sub">4 tokens — 0.4 · 0.5 · 0.9 · 0.91 (high-end cluster with unusual 0.91)</div>
+      <div class="opacity-grid" style="grid-template-columns:repeat(4,1fr);max-width:440px;">
+        <div class="op-item"><div class="op-box" style="opacity:0.4;"></div><div class="op-token">--opacity-40</div><div class="op-val">40% · ×1</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.5;"></div><div class="op-token">--opacity-50</div><div class="op-val">50% · ×2</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.9;"></div><div class="op-token">--opacity-90</div><div class="op-val">90% · ×28</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.91;"></div><div class="op-token">--opacity-91</div><div class="op-val">91% · ×6</div></div>
+      </div>
+      <div style="margin-top:12px;font-size:var(--font-size-sm);color:var(--text-secondary);line-height:1.5;">Note the tight cluster at 90/91% — used heavily (×28 and ×6) for near-opaque glassmorphism effects in the frosted nav bar and hero panels. The separate 90 vs 91 tokens suggest pixel-level tuning for specific scroll-blur scenarios. No values below 40% are defined.</div>
+    </div>
+  </div>
+
+  <!-- 9. ACCESSIBILITY -->
+  <div class="section">
+    <div class="section-title">Accessibility</div>
+    <div style="font-size:var(--font-size-sm);color:var(--text-secondary);margin-bottom:12px;line-height:1.5;">WCAG 2.1: <strong style="color:var(--text-primary);">AA</strong> ≥ 4.5:1 · <strong style="color:var(--text-primary);">AA Large</strong> ≥ 3:1 · <strong style="color:var(--text-primary);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Color</th><th>Background Color</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>#212121 (Dark Gray)</td><td>#FFFFFF (White)</td><td>16.1:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#212121 (Dark Gray)</td><td>#EEF6FF (Ice Blue)</td><td>14.77:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#212121 (Dark Gray)</td><td>#F8F413 (Yellow)</td><td>13.76:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#212121 (Dark Gray)</td><td>#FBFAF8 (Moon Gray)</td><td>15.44:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#B4B4B4 (Light Gray)</td><td>#000000 (Black)</td><td>10.13:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#B4B4B4 (Light Gray)</td><td>#FFFFFF (White)</td><td>2.07:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>#1A1A1A (Near-Black)</td><td>#FFFFFF (White)</td><td>17.4:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#1A1A1A (Near-Black)</td><td>#F8F413 (Yellow)</td><td>14.87:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#F6F8FF (Near-White)</td><td>#000000 (Black)</td><td>19.79:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#0C1424 (Dark Blue)</td><td>#FFFFFF (White)</td><td>18.4:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#0C1424 (Dark Blue)</td><td>#F8F413 (Yellow)</td><td>15.72:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#0C1424 (Dark Blue)</td><td>#FBFAF8 (Moon Gray)</td><td>17.64:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">BUTTONS</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Get started free</button>
+          <button class="btn btn-secondary">Read the docs</button>
+          <button class="btn btn-outline">View demos</button>
+          <button class="btn btn-ghost">Learn more</button>
+          <button class="btn btn-muted">Dismiss</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">FORM INPUTS</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Namespace</label>
+            <input class="inp" type="text" placeholder="my_namespace"/>
+            <div class="inp-hint">Unique identifier for your Aerospike namespace.</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Connection host</label>
+            <input class="inp" type="text" value="aerospike://cluster-01:3000" style="font-family:var(--font-family-2);font-size:12px;border-color:var(--color-yellow);box-shadow:0 0 0 3px var(--yellow-tint);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Replication factor</label>
+            <input class="inp inp-err" type="text" value="9"/>
+            <div class="inp-err-msg">Must be ≤ number of rack nodes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">BADGES & TAGS</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--text-tertiary)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-yellow)"></span>Online</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--text-tertiary)"></span>Maintenance</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">⚡ Real-Time</span>
+          <span class="tag">🗄️ In-Memory</span>
+          <span class="tag">☁️ Multi-Cloud</span>
+          <span class="tag">🔄 Cross-Datacenter</span>
+          <span class="tag">🔒 Strong Consistency</span>
+          <span class="tag">📈 Auto-Sharding</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">ALERTS</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="alert alert-neutral"><div class="alert-icon" style="color:var(--text-secondary)">ℹ</div><div class="alert-body"><h5>Aerospike 8.0 now available</h5><p>New batch processing improvements deliver up to 3× throughput on mixed read/write workloads.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon" style="color:var(--color-yellow)">✓</div><div class="alert-body"><h5>Cluster health: Optimal</h5><p>All 12 nodes reporting healthy. Replication factor maintained across 3 availability zones.</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon" style="color:var(--text-secondary)">⚠</div><div class="alert-body"><h5>Approaching memory threshold</h5><p>Namespace <code style="font-family:var(--font-family-2);background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px;">prod_data</code> is at 82% capacity. Consider adding nodes.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon" style="color:var(--text-tertiary)">✕</div><div class="alert-body"><h5>Migration validation failed</h5><p>Schema mismatch detected in set <code style="font-family:var(--font-family-2);background:rgba(255,255,255,0.06);padding:1px 5px;border-radius:3px;">user_profiles</code>. Check field types.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">FEATURE CARDS</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">⚡</div>
+            <div class="fc-title">Real-Time Performance</div>
+            <div class="fc-desc">Sub-millisecond latency at billions of operations per second — predictable under any load.</div>
+            <span class="tag tag-brand">In-Memory + NVMe</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🌍</div>
+            <div class="fc-title">Cross-Datacenter</div>
+            <div class="fc-desc">Synchronous and asynchronous replication across geographies with configurable conflict resolution.</div>
+            <span class="tag">XDR · Active-Active</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">☁️</div>
+            <div class="fc-title">Aerospike Cloud</div>
+            <div class="fc-desc">Fully managed database-as-a-service on AWS, GCP, and Azure. Zero ops overhead.</div>
+            <span class="tag">Serverless available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">AVATARS & PROGRESS</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:linear-gradient(135deg,var(--color-dark-blue-8),var(--color-cyan));color:var(--color-yellow);font-family:Georgia,serif;">AS</div>
+          <div class="av-info"><h4>Aerospike, Inc.</h4><p>Founded 2009 · San Jose, CA · Real-Time Data Platform leader · 500+ enterprise customers</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:var(--color-yellow);color:#000">A</div>
+          <div class="avatar av-md" style="background:var(--color-cyan);color:#000">M</div>
+          <div class="avatar av-md" style="background:var(--color-dark-blue-6);color:#fff">R</div>
+          <div class="avatar av-sm" style="background:var(--bg-elevated);color:var(--text-secondary);border:1px solid var(--border-default)">+7</div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Memory utilization</span><span>68%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:68%;background:linear-gradient(to right,var(--color-dark-blue-8),var(--color-cyan))"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Replication sync</span><span>34%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:34%;background:var(--color-yellow)"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>Query throughput</span><span>91%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:91%;background:var(--color-cyan)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">DATA TABLE</span><span class="comp-badge">Namespace view</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead><tr><th>Namespace</th><th>Memory</th><th>Records</th><th>Replication</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>prod_users</td><td style="color:var(--text-primary)">32 GB</td><td style="color:var(--text-secondary)">1.2B</td><td style="color:var(--text-secondary)">RF=3</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:var(--color-yellow)"></span>Healthy</span></td></tr>
+            <tr><td>prod_sessions</td><td style="color:var(--text-primary)">8 GB</td><td style="color:var(--text-secondary)">480M</td><td style="color:var(--text-secondary)">RF=2</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:var(--color-yellow)"></span>Healthy</span></td></tr>
+            <tr><td>analytics_raw</td><td style="color:var(--text-primary)">128 GB</td><td style="color:var(--text-secondary)">8.6B</td><td style="color:var(--text-secondary)">RF=2</td><td><span class="badge badge-muted" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:var(--text-tertiary)"></span>Compacting</span></td></tr>
+            <tr><td>dev_sandbox</td><td style="color:var(--text-primary)">4 GB</td><td style="color:var(--text-secondary)">12M</td><td style="color:var(--text-secondary)">RF=1</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:var(--color-yellow)"></span>Healthy</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- 11. CSS VARIABLES REFERENCE -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Background Colors</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#000000"></div><span class="token-readable">Black (page)</span><span class="token-css">--color-black</span><span class="token-value">#000000 · ×1443</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0C1424"></div><span class="token-readable">Dark Blue (body text bg)</span><span class="token-css">--color-dark-blue</span><span class="token-value">#0C1424 · ×252</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#050E1D"></div><span class="token-readable">Deep Navy (card dark)</span><span class="token-css">--color-dark-blue-7</span><span class="token-value">#050E1D · ×16</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0D1B32"></div><span class="token-readable">Dark Navy (card)</span><span class="token-css">--color-dark-blue-8</span><span class="token-value">#0D1B32 · ×9</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#152D54"></div><span class="token-readable">Navy Mid (elevated)</span><span class="token-css">--color-dark-blue-3</span><span class="token-value">#152D54 · ×28</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#12305C"></div><span class="token-readable">Navy Deep (hover)</span><span class="token-css">--color-dark-blue-6</span><span class="token-value">#12305C · ×16</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#051028"></div><span class="token-readable">Space Blue</span><span class="token-css">--color-dark-blue-2</span><span class="token-value">#051028 · ×40</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF"></div><span class="token-readable">White</span><span class="token-css">--color-white</span><span class="token-value">#FFFFFF · ×719</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#EEF6FF"></div><span class="token-readable">Ice Blue</span><span class="token-css">--color-white-2</span><span class="token-value">#EEF6FF · ×406</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FBFAF8"></div><span class="token-readable">Moon Gray (warm off-white)</span><span class="token-css">--color-white-5</span><span class="token-value">#FBFAF8 · ×31</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F8F413"></div><span class="token-readable">Sol Yellow (Brand)</span><span class="token-css">--color-yellow</span><span class="token-value">#F8F413 · ×39</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0097D3"></div><span class="token-readable">Sky Blue</span><span class="token-css">--color-cyan</span><span class="token-value">#0097D3 · ×4</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Text & Accent Colors</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#212121"></div><span class="token-readable">Dark Gray (body light mode)</span><span class="token-css">--color-dark-gray</span><span class="token-value">#212121 · ×819</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#B4B4B4"></div><span class="token-readable">Light Gray (secondary)</span><span class="token-css">--color-light-gray</span><span class="token-value">#B4B4B4 · ×622</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1A1A1A"></div><span class="token-readable">Near-Black</span><span class="token-css">--color-dark-gray-2</span><span class="token-value">#1A1A1A · ×537</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#89DDFF"></div><span class="token-readable">Light Cyan (dark mode body)</span><span class="token-css">--color-light-cyan</span><span class="token-value">#89DDFF · ×196</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#5C5C5C"></div><span class="token-readable">Mid Dark Gray</span><span class="token-css">--color-dark-gray-3</span><span class="token-value">#5C5C5C · ×179</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#82AAFF"></div><span class="token-readable">Light Blue</span><span class="token-css">--color-light-blue</span><span class="token-value">#82AAFF · ×40</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#C3E88D"></div><span class="token-readable">Light Green</span><span class="token-css">--color-light-green</span><span class="token-value">#C3E88D · ×40</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#59617E"></div><span class="token-readable">Space Blue text</span><span class="token-css">--color-blue</span><span class="token-value">#59617E · ×58</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:#464E6A"></div><span class="token-readable">Border (dark mode)</span><span class="token-css">--color-dark-blue-5</span><span class="token-value">#464E6A · ×17</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#E8E8E8"></div><span class="token-readable">Border (light mode)</span><span class="token-css">--color-light-gray-4</span><span class="token-value">#E8E8E8 · ×9</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#D5D5D5"></div><span class="token-readable">Mid Border</span><span class="token-css">--color-light-gray-2</span><span class="token-value">#D5D5D5 · ×14</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#008000"></div><span class="token-readable">Dark Green</span><span class="token-css">--color-dark-green</span><span class="token-value">#008000 · ×2</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Typography</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Helvetica Now Pro Display (UI)</span><span class="token-css">--font-family-base</span><span class="token-value">Helvetica Now Pro</span></div>
+          <div class="token-row"><span class="token-readable">Arial (fallback)</span><span class="token-css">--font-family-2 (fallback)</span><span class="token-value">Arial</span></div>
+          <div class="token-row"><span class="token-readable">Tiempos Headline (display/serif)</span><span class="token-css">--font-family-3</span><span class="token-value">Tiempos Headline</span></div>
+          <div class="token-row"><span class="token-readable">Fira Code (mono/code)</span><span class="token-css">--font-family-4</span><span class="token-value">Fira Code</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">Medium</span><span class="token-css">--font-weight-medium</span><span class="token-value">500</span></div>
+          <div class="token-row"><span class="token-readable">Semibold</span><span class="token-css">--font-weight-semibold</span><span class="token-value">600</span></div>
+          <div class="token-row"><span class="token-readable">Bold</span><span class="token-css">--font-weight-bold</span><span class="token-value">700</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">11.2px → 60px (17 sizes)</span><span class="token-css">2xs → 60px</span><span class="token-value"></span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Tight (display) ←</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">−0.6px</span></div>
+          <div class="token-row"><span class="token-readable">Normal (headings) ←</span><span class="token-css">--letter-spacing-normal</span><span class="token-value">−0.4px</span></div>
+          <div class="token-row"><span class="token-readable">Wide (body) →</span><span class="token-css">--letter-spacing-wide</span><span class="token-value">−0.08px</span></div>
+          <div class="token-row"><span class="token-readable">Wider (labels) →</span><span class="token-css">--letter-spacing-wider</span><span class="token-value">+0.32px</span></div>
+          <div class="token-row"><span class="token-readable">Widest →</span><span class="token-css">--letter-spacing-widest</span><span class="token-value">+0.4px</span></div>
+          <div class="token-row"><span class="token-readable">Caps label →</span><span class="token-css">--letter-spacing-ls-6</span><span class="token-value">+1.2px</span></div>
+          <div class="token-row"><span class="token-readable">Eyebrow →</span><span class="token-css">--letter-spacing-ls-7</span><span class="token-value">+1.44px</span></div>
+          <div class="token-row"><span class="token-readable">Max uppercase →</span><span class="token-css">--letter-spacing-ls-8</span><span class="token-value">+2.28px</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Motion, Opacity & Layers</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Instant (100ms)</span><span class="token-css">--duration-instant</span><span class="token-value">0.1s · ×8</span></div>
+          <div class="token-row"><span class="token-readable">Fast (150ms) — most used</span><span class="token-css">--duration-fast</span><span class="token-value">0.15s · ×171</span></div>
+          <div class="token-row"><span class="token-readable">Normal (200ms)</span><span class="token-css">--duration-normal</span><span class="token-value">0.2s · ×165</span></div>
+          <div class="token-row"><span class="token-readable">Slow (220ms)</span><span class="token-css">--duration-slow</span><span class="token-value">0.22s · ×42</span></div>
+          <div class="token-row"><span class="token-readable">Slower (240ms)</span><span class="token-css">--duration-slower</span><span class="token-value">0.24s · ×12</span></div>
+          <div class="token-row"><span class="token-readable">250ms</span><span class="token-css">--duration-duration-6</span><span class="token-value">0.25s · ×36</span></div>
+          <div class="token-row"><span class="token-readable">Reveal (600ms)</span><span class="token-css">--duration-duration-12</span><span class="token-value">0.6s · ×110</span></div>
+          <div class="token-row"><span class="token-readable">Ease Out</span><span class="token-css">--easing-ease-out</span><span class="token-value">ease-out · ×52</span></div>
+          <div class="token-row"><span class="token-readable">Ease In-Out</span><span class="token-css">--easing-ease-in-out</span><span class="token-value">ease-in-out · ×23</span></div>
+          <div class="token-row"><span class="token-readable">Linear</span><span class="token-css">--easing-linear</span><span class="token-value">linear · ×1</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:0.4"></div><span class="token-readable">Semi (40%)</span><span class="token-css">--opacity-40</span><span class="token-value">0.4 · ×1</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:0.5"></div><span class="token-readable">Half (50%)</span><span class="token-css">--opacity-50</span><span class="token-value">0.5 · ×2</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:0.9"></div><span class="token-readable">Frosted (90%)</span><span class="token-css">--opacity-90</span><span class="token-value">0.9 · ×28</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:0.91"></div><span class="token-readable">Frosted+ (91%)</span><span class="token-css">--opacity-91</span><span class="token-value">0.91 · ×6</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Below</span><span class="token-css">--z-1</span><span class="token-value">−1</span></div>
+          <div class="token-row"><span class="token-readable">Base / Raised</span><span class="token-css">--z-2 / z-3</span><span class="token-value">1 / 2</span></div>
+          <div class="token-row"><span class="token-readable">Navigation</span><span class="token-css">--z-4</span><span class="token-value">100</span></div>
+          <div class="token-row"><span class="token-readable">Sub-nav</span><span class="token-css">--z-5</span><span class="token-value">200</span></div>
+          <div class="token-row"><span class="token-readable">Modal</span><span class="token-css">--z-6</span><span class="token-value">1,000</span></div>
+          <div class="token-row"><span class="token-readable">Mega-overlay → INT_MAX</span><span class="token-css">--z-7 → z-10</span><span class="token-value">9.9M → 2.1B</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:40px 0;color:var(--text-tertiary);font-size:var(--font-size-sm);border-top:var(--border-width-thin) solid var(--border-default);line-height:1.5;">
+    Aerospike Design System · Generated 15/04/2026 · 50 color tokens · 4 font families · 4 font weights · 17 font sizes · 21 line heights · 8 letter-spacing (bidirectional) · 35 spacing steps · 21 radius · 3 border widths · 6 shadows · 12 durations · 3 easings · 10 z-index layers · 22 breakpoints · 4 opacity tokens
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

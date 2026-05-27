@@ -1,0 +1,122 @@
+/* ============================================
+ * Design Tokens — Banking & Beyond | Revolut United Kingdom
+ * Source: https://www.revolut.com/
+ * Generated: 17/04/2026, 13:26:33
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #191C1F; /* hsl(210, 11%, 11%) · background */
+  --color-white: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+  --color-blue: #8D969E; /* hsl(208, 8%, 59%) · background */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-blue-2: #505A63; /* hsl(208, 11%, 35%) · text */
+  --color-mid-gray: #717173; /* hsl(240, 1%, 45%) · text */
+  --color-white-3: #F7F7F7; /* hsl(0, 0%, 97%) · background */
+  --color-white-4: rgba(244, 244, 244, 0.1); /* hsl(0, 0%, 96%) · background */
+  --color-blue-3: #4C8ACC; /* hsl(211, 56%, 55%) · gradient */
+  --color-blue-4: #3991D8; /* hsl(207, 67%, 54%) · gradient */
+  --color-light-gray: #C9C9CD; /* hsl(240, 4%, 80%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;
+  --font-size-2xl: 40px;
+  --font-size-3xl: 50.0906px;
+  --font-size-4xl: 84.1812px;
+  --font-family-base: Inter;
+  --font-family-2: Aeonik Pro;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 18px;
+  --line-height-snug: 22px;
+  --line-height-normal: 24px;
+  --line-height-relaxed: 28px;
+  --line-height-loose: 38px;
+  --line-height-lh-6: 48px;
+  --line-height-lh-7: 50.0906px;
+  --line-height-lh-8: 84.1812px;
+  --letter-spacing-tight: -2.08px;
+  --letter-spacing-normal: -0.6px;
+  --letter-spacing-wide: -0.4px;
+  --letter-spacing-wider: -0.32px;
+  --letter-spacing-widest: -0.24px;
+  --letter-spacing-ls-6: -0.07008px;
+  --letter-spacing-ls-7: 0.12px;
+  --letter-spacing-ls-8: 0.18px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-8: 18px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-16: 26px;
+  --space-20: 32px;
+  --space-24: 237.336px;
+  --space-32: 48px;
+  --space-40: 56px;
+  --space-48: 60px;
+  --space-64: 64px;
+  --space-80: 66.5px;
+  --space-96: 72px;
+  --space-128: 80px;
+  --space-160: 100px;
+  --space-192: 109.43px;
+  --space-256: 123.094px;
+  --space-23: 237.328px;
+  --space-25: 407.992px;
+  --space-26: 408px;
+  --space-27: 414.383px;
+  --space-28: 500px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 3px;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 21.525px 21.525px 0px 0px;
+  --radius-xl: 21.525px;
+  --radius-2xl: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.35s;
+  --duration-duration-6: 0.6s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 3;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 400px;
+  --breakpoint-md: 719px;
+  --breakpoint-lg: 720px;
+  --breakpoint-xl: 1023px;
+  --breakpoint-2xl: 1024px;
+  --breakpoint-3xl: 1280px;
+  --breakpoint-bp-8: 1920px;
+
+  /* ── Opacity ── */
+  --opacity-70: 0.7;
+}

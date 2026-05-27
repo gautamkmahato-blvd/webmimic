@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Binance Components</title>
+<style>
+  /* ---------- Binance design tokens ---------- */
+  :root {
+    --binance-yellow: #fcd535;        /* primary yellow */
+    --binance-yellow-hover: #ffd953;
+    --binance-yellow-dark: #f0b90b;   /* deeper accent yellow */
+
+    --bg-page: #0b0e11;               /* page background (near-black) */
+    --bg-card: #1e2329;               /* card surface */
+    --bg-card-hover: #2b3139;
+    --border-subtle: #2b3139;
+    --border-input: #474d57;
+
+    --text-primary: #eaecef;
+    --text-secondary: #848e9c;
+    --text-tertiary: #5e6673;
+
+    --green-positive: #0ecb81;        /* Binance "up" green */
+
+    --coin-btc: #f7931a;
+    --coin-eth: #627eea;
+    --coin-bnb: #f3ba2f;
+    --coin-xrp: #23292f;
+    --coin-aster: #1a1a1a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-page);
+    color: var(--text-primary);
+    font-family: "Binance Plex", "BinancePlex", -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+      sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .component-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .component-label {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  /* ============================================= */
+  /* Component 1: Sign Up yellow button              */
+  /* ============================================= */
+  .bn-btn--primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 340px;
+    height: 48px;
+    padding: 0 24px;
+    background: var(--binance-yellow);
+    color: #1e2329;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+  }
+  .bn-btn--primary:hover {
+    background: var(--binance-yellow-hover);
+  }
+
+  /* ============================================= */
+  /* Component 2: Email/Phone input                  */
+  /* ============================================= */
+  .bn-input-wrapper {
+    display: inline-block;
+    width: 100%;
+    max-width: 560px;
+  }
+  .bn-input {
+    width: 100%;
+    height: 56px;
+    padding: 0 20px;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-input);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 150ms ease;
+  }
+  .bn-input::placeholder {
+    color: var(--text-secondary);
+  }
+  .bn-input:hover {
+    border-color: var(--binance-yellow);
+  }
+  .bn-input:focus {
+    border-color: var(--binance-yellow);
+  }
+
+  /* ============================================= */
+  /* Component 3: Crypto list card                   */
+  /* ============================================= */
+  .crypto-card {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 28px 32px;
+    width: 100%;
+    max-width: 880px;
+  }
+
+  .crypto-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 12px;
+  }
+
+  .crypto-card__tabs {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .crypto-card__tab {
+    background: none;
+    border: none;
+    padding: 8px 0;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    position: relative;
+    transition: color 150ms ease;
+  }
+  .crypto-card__tab:hover {
+    color: var(--text-primary);
+  }
+  .crypto-card__tab--active {
+    color: var(--text-primary);
+  }
+  .crypto-card__tab--active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--binance-yellow);
+  }
+
+  .crypto-card__view-all {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 0;
+    transition: color 150ms ease;
+  }
+  .crypto-card__view-all:hover {
+    color: var(--text-primary);
+  }
+  .crypto-card__view-all svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  /* Rows */
+  .crypto-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .crypto-row {
+    display: grid;
+    grid-template-columns: 1fr auto 110px;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    transition: background-color 150ms ease;
+    border-radius: 8px;
+  }
+  .crypto-row:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .crypto-row__left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .crypto-row__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #ffffff;
+    font-weight: 700;
+  }
+  .crypto-row__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .crypto-row__name {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .crypto-row__ticker {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .crypto-row__label {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .crypto-row__price {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .crypto-row__change {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--green-positive);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Individual coin icon backgrounds */
+  .coin-btc { background: var(--coin-btc); }
+  .coin-eth { background: var(--coin-eth); }
+  .coin-bnb { background: var(--coin-bnb); }
+  .coin-xrp { background: var(--coin-xrp); border: 1px solid #2b3139; }
+  .coin-aster {
+    background: radial-gradient(
+      circle at 50% 50%,
+      #f9c79a 0%,
+      #e7a679 45%,
+      #2a1a10 80%
+    );
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== Component 1: Sign Up button ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 1 — Sign Up button</div>
+      <div>
+        <button type="button" class="bn-btn--primary">Sign Up</button>
+      </div>
+    </section>
+
+    <!-- ===== Component 2: Email input ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 2 — Email / phone input</div>
+      <div class="bn-input-wrapper">
+        <input
+          type="text"
+          class="bn-input"
+          placeholder="Email/Phone number"
+          autocomplete="off"
+        />
+      </div>
+    </section>
+
+    <!-- ===== Component 3: Crypto list card ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 3 — Popular coins card</div>
+      <div class="crypto-card">
+        <div class="crypto-card__header">
+          <div class="crypto-card__tabs">
+            <button
+              type="button"
+              class="crypto-card__tab crypto-card__tab--active"
+            >
+              Popular
+            </button>
+            <button type="button" class="crypto-card__tab">New Listing</button>
+          </div>
+          <button type="button" class="crypto-card__view-all">
+            View All 350+ Coins
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M9 6l6 6-6 6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="crypto-list">
+
+          <!-- BTC -->
+          <div class="crypto-row">
+            <div class="crypto-row__left">
+              <div class="crypto-row__icon coin-btc">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                  <path
+                    fill="#fff"
+                    d="M21.5 14.3c.3-2-1.2-3-3.3-3.8l.7-2.7-1.7-.4-.7 2.6-1.3-.3.7-2.6-1.7-.4-.7 2.7-1 -.3h-.1l-2.3-.6-.4 1.8s1.2.3 1.2.3c.7.2.8.6.8 1L11 14.4v.1l-1 4.4c-.1.2-.3.5-.7.4 0 0-1.2-.3-1.2-.3l-.8 2 2.2.5 1.2.3-.7 2.7 1.6.4.7-2.7 1.3.3-.7 2.7 1.7.4.7-2.7c2.8.5 4.9.3 5.8-2.2.7-2 0-3.2-1.5-3.9 1.1-.3 1.8-1 2-2.4zm-3.6 5.2c-.5 2-3.9.9-5 .6l.9-3.6c1.1.3 4.6.8 4.1 3zm.5-5.2c-.5 1.8-3.3.9-4.2.6l.8-3.3c1 .2 3.9.7 3.4 2.7z"
+                  />
+                </svg>
+              </div>
+              <div class="crypto-row__name">
+                <span class="crypto-row__ticker">BTC</span>
+                <span class="crypto-row__label">Bitcoin</span>
+              </div>
+            </div>
+            <div class="crypto-row__price">$77,134.66</div>
+            <div class="crypto-row__change">+3.33%</div>
+          </div>
+
+          <!-- ETH -->
+          <div class="crypto-row">
+            <div class="crypto-row__left">
+              <div class="crypto-row__icon coin-eth">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                  <path fill="#fff" fill-opacity=".6" d="M16 4v8.87l7.5 3.35z" />
+                  <path fill="#fff" d="M16 4L8.5 16.22 16 12.87z" />
+                  <path
+                    fill="#fff"
+                    fill-opacity=".6"
+                    d="M16 21.97v6.02L23.5 17.63z"
+                  />
+                  <path fill="#fff" d="M16 27.99v-6.02L8.5 17.63z" />
+                  <path
+                    fill="#fff"
+                    fill-opacity=".2"
+                    d="M16 20.57l7.5-4.35L16 12.87z"
+                  />
+                  <path
+                    fill="#fff"
+                    fill-opacity=".6"
+                    d="M8.5 16.22l7.5 4.35v-7.7z"
+                  />
+                </svg>
+              </div>
+              <div class="crypto-row__name">
+                <span class="crypto-row__ticker">ETH</span>
+                <span class="crypto-row__label">Ethereum</span>
+              </div>
+            </div>
+            <div class="crypto-row__price">$2,408.95</div>
+            <div class="crypto-row__change">+3.87%</div>
+          </div>
+
+          <!-- BNB -->
+          <div class="crypto-row">
+            <div class="crypto-row__left">
+              <div class="crypto-row__icon coin-bnb">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                  <path
+                    fill="#fff"
+                    d="M11.1 14.2L16 9.3l4.9 4.9 2.8-2.8L16 3.7 8.3 11.4zM5.7 16L8.5 13.2 11.3 16l-2.8 2.8zM11.1 17.8L16 22.7l4.9-4.9 2.8 2.8L16 28.3l-7.7-7.7zM20.7 16l2.8-2.8L26.3 16l-2.8 2.8zM18.8 16L16 13.2 13.9 15.3l-.3.3.3.3L16 18.8l2.8-2.8z"
+                  />
+                </svg>
+              </div>
+              <div class="crypto-row__name">
+                <span class="crypto-row__ticker">BNB</span>
+                <span class="crypto-row__label">BNB</span>
+              </div>
+            </div>
+            <div class="crypto-row__price">$645.13</div>
+            <div class="crypto-row__change">+2.70%</div>
+          </div>
+
+          <!-- XRP -->
+          <div class="crypto-row">
+            <div class="crypto-row__left">
+              <div class="crypto-row__icon coin-xrp">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                  <path
+                    fill="#fff"
+                    d="M22.4 7.5h3.4l-7 6.9c-1.6 1.6-4.3 1.6-6 0L5.9 7.5h3.4l5 4.9c.7.6 1.7.6 2.3 0zM9.3 24.5H5.9l7-6.9c1.6-1.6 4.3-1.6 6 0l7 6.9h-3.4l-5-4.9c-.7-.6-1.7-.6-2.3 0z"
+                  />
+                </svg>
+              </div>
+              <div class="crypto-row__name">
+                <span class="crypto-row__ticker">XRP</span>
+                <span class="crypto-row__label">XRP</span>
+              </div>
+            </div>
+            <div class="crypto-row__price">$1.47</div>
+            <div class="crypto-row__change">+3.02%</div>
+          </div>
+
+          <!-- ASTER -->
+          <div class="crypto-row">
+            <div class="crypto-row__left">
+              <div class="crypto-row__icon coin-aster">
+                <svg viewBox="0 0 32 32" aria-hidden="true">
+                  <path
+                    fill="#1a1a1a"
+                    d="M16 8l2.5 5 5.5.8-4 4 1 5.5-5-2.7-5 2.7 1-5.5-4-4 5.5-.8z"
+                  />
+                </svg>
+              </div>
+              <div class="crypto-row__name">
+                <span class="crypto-row__ticker">ASTER</span>
+                <span class="crypto-row__label">Aster</span>
+              </div>
+            </div>
+            <div class="crypto-row__price">$0.685</div>
+            <div class="crypto-row__change">+1.48%</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

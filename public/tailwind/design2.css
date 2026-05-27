@@ -1,0 +1,105 @@
+/* ============================================
+ * Design Tokens — Superhuman: Docs, Mail, and AI That Work Everywhere
+ * Source: https://superhuman.com/?utm_source=google-brand&utm_medium=cpc&utm_campaign=23178916234&utm_content=780512411908&utm_term=superhuman&target=&targetid=kwd-301001118161&adgroup=193121668051&device=c&matchtype=e&placement=&network=g&extension=&clickid=CjwKCAjwqubPBhBOEiwAzgZX2lzfA5eQ1YQ6sSSXRKZpMYoi9jsKH0ja3ZoWtTA0CZwBcJFaipAPNxoCzu0QAvD_BwE&gad_source=1&gad_campaignid=23178916234&gbraid=0AAAABBoNLYx8qXe3Q12_H4T37FQ8pbMCC&gclid=CjwKCAjwqubPBhBOEiwAzgZX2lzfA5eQ1YQ6sSSXRKZpMYoi9jsKH0ja3ZoWtTA0CZwBcJFaipAPNxoCzu0QAvD_BwE
+ * Generated: 05/05/2026, 21:19:58
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #292827; /* hsl(30, 3%, 16%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-2: #141412; /* hsl(60, 5%, 7%) · text */
+  --color-purple: #714CB6; /* hsl(261, 42%, 51%) · background */
+  --color-white-2: #F7F5F2; /* hsl(36, 24%, 96%) · background */
+  --color-dark-red: #421D24; /* hsl(349, 39%, 19%) · background */
+  --color-purple-2: #9E6EE5; /* hsl(264, 70%, 66%) · fill */
+  --color-light-blue: #D4C7FF; /* hsl(254, 100%, 89%) · fill */
+  --color-dark-gray-3: #141413; /* hsl(60, 3%, 8%) · fill */
+  --color-dark-cyan: #027E6F; /* hsl(173, 97%, 25%) · fill */
+  --color-red: #FF4814; /* hsl(13, 100%, 54%) · fill */
+  --color-blue: #1173A8; /* hsl(201, 82%, 36%) · fill */
+  --color-dark-cyan-2: #0C4243; /* hsl(181, 70%, 15%) · background */
+  --color-light-blue-2: #E8E0FF; /* hsl(255, 100%, 94%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 14px;
+  --font-size-xs: 16px;
+  --font-size-sm: 18px;
+  --font-size-base: 18.72px;
+  --font-size-lg: 19.2325px;
+  --font-size-xl: 22px;
+  --font-size-2xl: 28px;
+  --font-size-3xl: 28.3137px;
+  --font-size-4xl: 34.7788px;
+  --font-size-5xl: 42.4762px;
+  --font-family-base: Times;
+  --font-family-2: Super Sans VF;
+  --font-weight-regular: 400;
+  --font-weight-w460: 460;
+  --font-weight-medium: 500;
+  --font-weight-w540: 540;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 16px;
+  --line-height-snug: 16.8px;
+  --line-height-normal: 18px;
+  --line-height-relaxed: 19.2px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 27px;
+  --line-height-lh-7: 28.08px;
+  --line-height-lh-8: 28.8487px;
+  --line-height-lh-9: 32px;
+  --line-height-lh-10: 33.9765px;
+  --line-height-lh-11: 41.7345px;
+  --line-height-lh-12: 50.9715px;
+  --letter-spacing-tight: -1.1681px;
+  --letter-spacing-normal: -0.956416px;
+  --letter-spacing-wide: -0.778628px;
+  --letter-spacing-wider: -0.63px;
+  --letter-spacing-widest: -0.315px;
+  --letter-spacing-ls-6: -0.144244px;
+  --letter-spacing-ls-7: -0.135px;
+  --letter-spacing-ls-8: -0.12px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-8: 18px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-16: 32px;
+  --space-20: 36px;
+  --space-24: 40px;
+  --space-32: 48px;
+  --space-40: 64px;
+  --space-48: 80px;
+  --space-64: 96px;
+  --space-80: 282.492px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: color(srgb 0.278431 0.270588 0.262745 / 0.16) 0px -4px 8px 0.5px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.2s;
+  --duration-fast: 0.3s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 201;
+  --z-3: 2147483647;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+}

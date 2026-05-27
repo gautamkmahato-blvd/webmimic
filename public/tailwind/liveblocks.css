@@ -1,0 +1,179 @@
+/* ============================================
+ * Design Tokens — Liveblocks | Realtime infrastructure for multiplayer apps and agents
+ * Source: https://liveblocks.io/
+ * Generated: 19/04/2026, 00:20:54
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-mid-gray: #918D8D; /* hsl(0, 2%, 56%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-light-gray: #EDECEE; /* hsl(270, 6%, 93%) · text */
+  --color-mid-gray-2: #A3A3A3; /* hsl(0, 0%, 64%) · text */
+  --color-light-purple: #BF7AF0; /* hsl(275, 80%, 71%) · text */
+  --color-dark-gray: #111111; /* hsl(0, 0%, 7%) · text */
+  --color-light-blue: #9F8DFC; /* hsl(250, 95%, 77%) · text */
+  --color-light-gray-2: #B7B4B4; /* hsl(0, 2%, 71%) · text */
+  --color-dark-gray-2: #424242; /* hsl(0, 0%, 26%) · text */
+  --color-dark-gray-3: #272626; /* hsl(0, 1%, 15%) · shadow */
+  --color-dark-gray-4: #635F5F; /* hsl(0, 2%, 38%) · text */
+  --color-cyan: #6CEFCE; /* hsl(165, 80%, 68%) · background */
+  --color-blue: #0090FF; /* hsl(206, 100%, 50%) · background */
+  --color-mid-gray-3: #727272; /* hsl(0, 0%, 45%) · text */
+  --color-white-2: rgba(247, 247, 248, 0.12); /* hsl(0, 0%, 97%) · gradient */
+  --color-blue-2: #34A7FF; /* hsl(206, 100%, 60%) · text */
+  --color-cyan-2: #70E1C8; /* hsl(167, 65%, 66%) · text */
+  --color-cyan-3: #00C1D6; /* hsl(186, 100%, 42%) · text */
+  --color-white-3: #F7F7F8; /* hsl(240, 7%, 97%) · gradient */
+  --color-light-gray-3: rgba(247, 247, 248, 0.08); /* hsl(0, 0%, 95%) · gradient */
+  --color-dark-gray-5: #100F0F; /* hsl(0, 3%, 6%) · background */
+  --color-light-gray-4: #ECECEC; /* hsl(0, 0%, 93%) · background */
+  --color-red: #F76E99; /* hsl(341, 90%, 70%) · text */
+  --color-light-purple-2: #A667FF; /* hsl(265, 100%, 70%) · text */
+  --color-white-4: #F9FBFD; /* hsl(210, 50%, 98%) · background */
+  --color-white-5: #EBF6FF; /* hsl(207, 100%, 96%) · background */
+  --color-light-purple-3: #A569FF; /* hsl(264, 100%, 71%) · background */
+  --color-white-6: #FEFEFE; /* hsl(0, 0%, 100%) · background */
+  --color-light-gray-5: #EAEAEA; /* hsl(0, 0%, 92%) · background */
+  --color-mid-gray-4: #808080; /* hsl(0, 0%, 50%) · background */
+  --color-black-2: rgba(3, 4, 4, 0.36); /* hsl(0, 0%, 1%) · shadow */
+  --color-black-3: rgba(3, 3, 4, 0.5); /* hsl(0, 0%, 2%) · shadow */
+  --color-light-pink: #CFB5C5; /* hsl(323, 21%, 76%) · background */
+  --color-dark-gray-6: #21222B; /* hsl(234, 13%, 15%) · background */
+  --color-light-gray-6: #E5E5E5; /* hsl(0, 0%, 90%) · background */
+  --color-dark-gray-7: #141716; /* hsl(160, 7%, 8%) · background */
+  --color-white-7: #F3F3F3; /* hsl(0, 0%, 95%) · background */
+  --color-light-gray-7: #EBECF0; /* hsl(228, 14%, 93%) · background */
+  --color-light-orange: #F6ECE2; /* hsl(30, 53%, 93%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 9.8px;
+  --font-size-xs: 10px;
+  --font-size-sm: 11.008px;
+  --font-size-base: 12px;
+  --font-size-lg: 13.6px;
+  --font-size-xl: 14px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 24px;
+  --font-size-5xl: 32px;
+  --font-size-6xl: 36px;
+  --font-size-48px: 48px;
+  --font-size-52px: 52px;
+  --font-size-64px: 64px;
+  --font-family-base: suisse;
+  --font-family-2: JetBrains Mono;
+  --font-family-3: Apple Color Emoji;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --line-height-tight: 10px;
+  --line-height-snug: 11.008px;
+  --line-height-normal: 13.6px;
+  --line-height-relaxed: 14.7px;
+  --line-height-loose: 15.7257px;
+  --line-height-lh-6: 17.5px;
+  --line-height-lh-7: 19.25px;
+  --line-height-lh-8: 20px;
+  --line-height-lh-9: 21px;
+  --line-height-lh-10: 22px;
+  --line-height-lh-11: 24px;
+  --line-height-lh-12: 27.5px;
+  --line-height-lh-13: 33px;
+  --line-height-lh-14: 38.4px;
+  --line-height-lh-15: 40px;
+  --line-height-lh-16: 50.4px;
+  --line-height-lh-17: 57.2px;
+  --line-height-lh-18: 70.4px;
+  --letter-spacing-tight: -1.28px;
+  --letter-spacing-normal: -1.04px;
+  --letter-spacing-wide: -0.32px;
+  --letter-spacing-wider: 0.056px;
+  --letter-spacing-widest: 0.064px;
+  --letter-spacing-ls-6: 0.08px;
+  --letter-spacing-ls-7: 0.14px;
+  --letter-spacing-ls-8: 0.25px;
+  --letter-spacing-ls-9: 0.35px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 1.6px;
+  --space-3: 2px;
+  --space-4: 2.72px;
+  --space-5: 4px;
+  --space-6: 4.8px;
+  --space-8: 5.44px;
+  --space-10: 6px;
+  --space-12: 8px;
+  --space-16: 9.2px;
+  --space-20: 10px;
+  --space-24: 48px;
+  --space-32: 193.297px;
+  --space-40: 16px;
+  --space-48: 20px;
+  --space-64: 24px;
+  --space-80: 28px;
+  --space-96: 32px;
+  --space-128: 36px;
+  --space-160: 40px;
+  --space-192: 43.3281px;
+  --space-256: 44px;
+  --space-23: 45.3125px;
+  --space-25: 56px;
+  --space-26: 64px;
+  --space-27: 80px;
+  --space-28: 96px;
+  --space-29: 118.5px;
+  --space-30: 160.305px;
+  --space-31: 190.5px;
+  --space-33: 196px;
+  --space-34: 236px;
+  --space-35: 238.5px;
+  --space-36: 270.5px;
+  --space-37: 280px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 6px 6px 0px;
+  --radius-md: 4px;
+  --radius-lg: 5.1px;
+  --radius-xl: 5.4px;
+  --radius-2xl: 6px;
+  --radius-full: 6px 0px 0px 6px;
+  --radius-r7: 8px;
+  --radius-r8: 12px;
+  --radius-r9: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(39, 38, 38) 0px 0px 0px 1px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(39, 38, 38) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  --shadow-xl: color(srgb 0.925333 0.925333 0.925333) 0px 0px 0px 1px inset;
+  --shadow-shadow-5: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(3, 4, 4, 0.36) 0px 8px 12px 0px, rgba(3, 3, 4, 0.5) 0px 0px 1px 0px;
+  --shadow-shadow-6: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 2.767px 2.214px 0px, rgba(0, 0, 0, 0.07) 0px 6.65px 5.32px 0px, rgba(0, 0, 0, 0.09) 0px 12.522px 10.017px 0px, rgba(0, 0, 0, 0.1) 0px 22.336px 17.869px 0px, rgba(0, 0, 0, 0.12) 0px 41.778px 33.422px 0px, rgba(0, 0, 0, 0.17) 0px 100px 80px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.075s;
+  --duration-fast: 0.1s;
+  --duration-normal: 0.15s;
+  --duration-slow: 0.2s;
+  --duration-slower: 0.3s;
+  --duration-duration-6: 0.5s;
+  --duration-duration-7: 1s;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 10;
+  --z-2: 20;
+  --z-3: 30;
+  --z-4: 40;
+  --z-5: 999999;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+  --opacity-20: 0.2;
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+}

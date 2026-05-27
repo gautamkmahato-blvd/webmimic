@@ -1,0 +1,155 @@
+/* ============================================
+ * Design Tokens — FedEx | Express Delivery, Courier & Shipping Services | India
+ * Source: https://www.fedex.com/en-in/home.html
+ * Generated: 13/04/2026, 22:52:44
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #333333; /* hsl(0, 0%, 20%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-cyan: #007AB7; /* hsl(200, 100%, 36%) · text */
+  --color-red: #DE002E; /* hsl(348, 100%, 44%) · text */
+  --color-mid-gray: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-dark-purple: #4D148C; /* hsl(268, 75%, 31%) · background */
+  --color-white-2: #FAFAFA; /* hsl(0, 0%, 98%) · background */
+  --color-dark-gray-2: rgba(89, 89, 91, 0.5); /* hsl(240, 1%, 36%) · border */
+  --color-mid-gray-2: #777777; /* hsl(0, 0%, 47%) · text */
+  --color-dark-gray-3: #646464; /* hsl(0, 0%, 39%) · text */
+  --color-orange: #FF6200; /* hsl(23, 100%, 50%) · background */
+  --color-mid-gray-3: #8E8E8E; /* hsl(0, 0%, 56%) · border */
+  --color-light-gray: #F2F2F2; /* hsl(0, 0%, 95%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 19px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 22px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-size-5xl: 32px;
+  --font-size-6xl: 40px;
+  --font-size-44px: 44px;
+  --font-family-base: Times;
+  --font-family-2: FedExSans;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 11.5px;
+  --line-height-snug: 13.8px;
+  --line-height-normal: 15.6px;
+  --line-height-relaxed: 18px;
+  --line-height-loose: 21px;
+  --line-height-lh-6: 24px;
+  --line-height-lh-7: 24.7px;
+  --line-height-lh-8: 28.6px;
+  --line-height-lh-9: 30px;
+  --line-height-lh-10: 31.2px;
+  --line-height-lh-11: 34.5px;
+  --line-height-lh-12: 39px;
+  --line-height-lh-13: 41.6px;
+  --line-height-lh-14: 52px;
+  --line-height-lh-15: 66px;
+  --letter-spacing-tight: -0.63px;
+  --letter-spacing-normal: -0.4px;
+  --letter-spacing-wide: -0.18px;
+  --letter-spacing-wider: -0.1px;
+  --letter-spacing-widest: 0.75px;
+  --letter-spacing-ls-6: 0.95px;
+  --letter-spacing-ls-7: 1px;
+  --letter-spacing-ls-8: 1.11px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 7px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12.5px;
+  --space-8: 15px;
+  --space-10: 16px;
+  --space-12: 17px;
+  --space-16: 18px;
+  --space-20: 19px;
+  --space-24: 45px;
+  --space-32: 21px;
+  --space-40: 24px;
+  --space-48: 25px;
+  --space-64: 28px;
+  --space-80: 30px;
+  --space-96: 32px;
+  --space-128: 34px;
+  --space-160: 35px;
+  --space-192: 36px;
+  --space-256: 40px;
+  --space-23: 44px;
+  --space-25: 52px;
+  --space-26: 60px;
+  --space-27: 66.5px;
+  --space-28: 75px;
+  --space-29: 81.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 40px;
+  --radius-md: 40px 0px 0px 40px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.5) 0px 5px 15px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.5s;
+  --easing-linear: linear;
+  --easing-ease-out: ease-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -20;
+  --z-2: -1;
+  --z-3: 1;
+  --z-4: 2;
+  --z-5: 10;
+  --z-6: 1000;
+  --z-7: 1050;
+  --z-8: 11000;
+  --z-9: 9999999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 350px;
+  --breakpoint-md: 425px;
+  --breakpoint-lg: 426px;
+  --breakpoint-xl: 480px;
+  --breakpoint-2xl: 499px;
+  --breakpoint-3xl: 500px;
+  --breakpoint-bp-8: 600px;
+  --breakpoint-bp-9: 663px;
+  --breakpoint-bp-10: 664px;
+  --breakpoint-bp-11: 767px;
+  --breakpoint-bp-12: 768px;
+  --breakpoint-bp-13: 769px;
+  --breakpoint-bp-14: 800px;
+  --breakpoint-bp-15: 989px;
+  --breakpoint-bp-16: 991px;
+  --breakpoint-bp-17: 992px;
+  --breakpoint-bp-18: 993px;
+  --breakpoint-bp-19: 1000px;
+  --breakpoint-bp-20: 1023px;
+  --breakpoint-bp-21: 1024px;
+  --breakpoint-bp-22: 1100px;
+  --breakpoint-bp-23: 1199px;
+  --breakpoint-bp-24: 1200px;
+  --breakpoint-bp-25: 1300px;
+  --breakpoint-bp-26: 1439px;
+
+  /* ── Opacity ── */
+}

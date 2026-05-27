@@ -1,0 +1,158 @@
+/* ============================================
+ * Design Tokens — MiniMax
+ * Source: https://www.minimax.io/
+ * Generated: 15/04/2026, 23:38:22
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #E5E7EB; /* hsl(220, 13%, 91%) · border */
+  --color-dark-gray: #18181B; /* hsl(240, 6%, 10%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray-2: #181E25; /* hsl(212, 21%, 12%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-3: #292929; /* hsl(0, 0%, 16%) · text */
+  --color-mid-gray: #8E8E93; /* hsl(240, 2%, 57%) · text */
+  --color-dark-gray-4: #171717; /* hsl(0, 0%, 9%) · text */
+  --color-white-2: #F2F3F5; /* hsl(220, 13%, 95%) · background */
+  --color-dark-blue: #45515E; /* hsl(211, 15%, 32%) · text */
+  --color-dark-blue-2: rgba(44, 30, 116, 0.16); /* hsl(249, 58%, 29%) · shadow */
+  --color-dark-gray-5: #424242; /* hsl(0, 0%, 26%) · background */
+  --color-blue: #86909C; /* hsl(213, 10%, 57%) · text */
+  --color-blue-2: #AAB1BA; /* hsl(214, 10%, 70%) · text */
+  --color-dark-gray-6: rgba(24, 30, 37, 0.4); /* hsl(215, 19%, 12%) · text */
+  --color-dark-gray-7: rgba(36, 36, 36, 0.08); /* hsl(0, 0%, 15%) · shadow */
+  --color-dark-blue-3: rgba(44, 30, 116, 0.11); /* hsl(253, 63%, 28%) · shadow */
+  --color-light-blue: #C7B0FE; /* hsl(258, 98%, 84%) · background */
+  --color-light-blue-2: #ACAAFF; /* hsl(241, 100%, 83%) · background */
+  --color-light-blue-3: #886CFF; /* hsl(251, 100%, 71%) · background */
+  --color-light-blue-4: #A782FF; /* hsl(258, 100%, 75%) · background */
+  --color-light-blue-5: #CAC9FF; /* hsl(241, 100%, 89%) · background */
+  --color-light-blue-6: #B8A8FF; /* hsl(251, 100%, 83%) · background */
+  --color-dark-gray-8: rgba(24, 30, 37, 0.384); /* hsl(203, 22%, 12%) · border */
+  --color-red: #D01316; /* hsl(359, 83%, 45%) · background */
+  --color-dark-blue-4: #050038; /* hsl(245, 100%, 11%) · text */
+  --color-white-3: #F5F5F5; /* hsl(0, 0%, 96%) · background */
+  --color-light-orange: #FFD388; /* hsl(38, 100%, 77%) · background */
+  --color-dark-gray-9: #5C5F63; /* hsl(214, 4%, 37%) · text */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 10.5px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-lg: 14px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 18px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 24px;
+  --font-size-5xl: 28px;
+  --font-size-6xl: 31px;
+  --font-size-32px: 32px;
+  --font-size-80px: 80px;
+  --font-family-base: DM Sans;
+  --font-family-2: Outfit;
+  --font-family-3: Poppins;
+  --font-family-4: Roboto;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --line-height-tight: 15px;
+  --line-height-snug: 15.75px;
+  --line-height-normal: 18px;
+  --line-height-relaxed: 19.5px;
+  --line-height-loose: 21px;
+  --line-height-lh-6: 22px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 27px;
+  --line-height-lh-9: 28px;
+  --line-height-lh-10: 28.8px;
+  --line-height-lh-11: 30px;
+  --line-height-lh-12: 36px;
+  --line-height-lh-13: 46.5px;
+  --line-height-lh-14: 48px;
+  --line-height-lh-15: 88px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 12px;
+  --space-10: 14px;
+  --space-12: 16px;
+  --space-16: 17px;
+  --space-20: 18px;
+  --space-24: 20px;
+  --space-32: 24px;
+  --space-40: 32px;
+  --space-48: 40px;
+  --space-64: 60px;
+  --space-80: 64px;
+  --space-96: 80px;
+  --space-128: 111.93px;
+  --space-160: 120px;
+  --space-192: 179.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 0px 24px 24px;
+  --radius-md: 4px;
+  --radius-lg: 5.4px;
+  --radius-xl: 11px;
+  --radius-2xl: 12px;
+  --radius-full: 13px;
+  --radius-r7: 16px;
+  --radius-r8: 20px;
+  --radius-r9: 22px;
+  --radius-r10: 24px;
+  --radius-r11: 30px;
+  --radius-r12: 32px;
+  --radius-r13: 55px;
+  --radius-r14: 60px;
+  --radius-r15: 65px;
+  --radius-r16: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.08) 0px 4px 6px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.08) 0px 0px 22.576px 0px;
+  --shadow-lg: rgba(44, 30, 116, 0.16) 0px 0px 15px 0px;
+  --shadow-xl: rgba(36, 36, 36, 0.08) 0px 12px 16px -4px;
+  --shadow-shadow-5: rgba(44, 30, 116, 0.11) 6.5px 2px 17.5px 0px;
+  --shadow-shadow-6: rgba(44, 30, 116, 0.16) 0px 0px 22.5px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.4s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -8;
+  --z-2: -6;
+  --z-3: -3;
+  --z-4: -1;
+  --z-5: 1;
+  --z-6: 3;
+  --z-7: 5;
+  --z-8: 6;
+  --z-9: 8;
+  --z-10: 10;
+  --z-11: 20;
+  --z-12: 30;
+  --z-13: 100;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 768px;
+  --breakpoint-sm: 1024px;
+
+  /* ── Opacity ── */
+  --opacity-50: 0.5;
+  --opacity-70: 0.7;
+  --opacity-90: 0.9;
+}

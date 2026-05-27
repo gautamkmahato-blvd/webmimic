@@ -1,0 +1,139 @@
+/* ============================================
+ * Design Tokens — Augen Pro
+ * Source: https://augen.pro/
+ * Generated: 06/05/2026, 17:20:56
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #0F1012; /* hsl(220, 9%, 6%) · background */
+  --color-white: #F2F2F4; /* hsl(240, 8%, 95%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-blue: #0071E3; /* hsl(210, 100%, 45%) · background */
+  --color-dark-gray-2: #5E5E5E; /* hsl(0, 0%, 37%) · text */
+  --color-black-2: #020201; /* hsl(60, 33%, 1%) · text */
+  --color-mid-gray: rgba(120, 120, 120, 0.1); /* hsl(0, 0%, 46%) · background */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-light-gray: #EFEFEF; /* hsl(0, 0%, 94%) · background */
+  --color-dark-gray-3: rgba(15, 16, 18, 0.2); /* hsl(240, 14%, 7%) · border */
+  --color-white-3: #FDFDFD; /* hsl(0, 0%, 99%) · background */
+  --color-dark-gray-4: rgba(12, 13, 15, 0.05); /* hsl(0, 0%, 8%) · background */
+  --color-dark-gray-5: rgba(29, 30, 32, 0.5); /* hsl(240, 3%, 12%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 25px;
+  --font-size-2xl: 35px;
+  --font-size-3xl: 110.153px;
+  --font-family-base: PP Neue Montreal;
+  --font-weight-light: 300;
+  --font-weight-w350: 350;
+  --line-height-tight: 12px;
+  --line-height-snug: 14.4px;
+  --line-height-normal: 16.8px;
+  --line-height-relaxed: 19.2px;
+  --line-height-loose: 21.6px;
+  --line-height-lh-6: 30px;
+  --line-height-lh-7: 42px;
+  --line-height-lh-8: 132.183px;
+  --letter-spacing-tight: -0.7px;
+  --letter-spacing-normal: -0.5px;
+  --letter-spacing-wide: -0.36px;
+  --letter-spacing-wider: -0.32px;
+  --letter-spacing-widest: -0.28px;
+  --letter-spacing-ls-6: -0.24px;
+  --letter-spacing-ls-7: -0.2px;
+  --letter-spacing-ls-8: 0.881222px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2.1px;
+  --space-2: 3px;
+  --space-3: 3.6px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-6: 6px;
+  --space-8: 10px;
+  --space-10: 11px;
+  --space-12: 12px;
+  --space-16: 19.6701px;
+  --space-20: 20px;
+  --space-24: 39.3403px;
+  --space-32: 59.0104px;
+  --space-40: 86.5486px;
+  --space-48: 118.021px;
+  --space-64: 28px;
+  --space-80: 30px;
+  --space-96: 31.4722px;
+  --space-128: 34px;
+  --space-160: 35px;
+  --space-192: 36px;
+  --space-256: 36.1931px;
+  --space-23: 38px;
+  --space-25: 42px;
+  --space-26: 43px;
+  --space-27: 50px;
+  --space-28: 50.3556px;
+  --space-29: 52px;
+  --space-30: 54.3405px;
+  --space-31: 55.0764px;
+  --space-33: 60px;
+  --space-34: 65px;
+  --space-35: 66.8785px;
+  --space-36: 72px;
+  --space-37: 73.9597px;
+  --space-38: 82px;
+  --space-39: 85px;
+  --space-41: 88.909px;
+  --space-42: 92.0563px;
+  --space-43: 94px;
+  --space-44: 94.4167px;
+  --space-45: 102.285px;
+  --space-46: 110.153px;
+  --space-47: 113.3px;
+  --space-49: 133.757px;
+  --space-50: 173.097px;
+  --space-51: 362.156px;
+  --space-52: 362.164px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --radius-sm: 1.5px;
+  --radius-md: 1.8px;
+  --radius-lg: 10px;
+  --radius-xl: 26px;
+  --radius-2xl: 50%;
+  --radius-full: 54px;
+  --radius-r7: 63px;
+  --radius-r8: 94px;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.2s;
+  --duration-fast: 0.3s;
+  --duration-normal: 0.4s;
+  --duration-slow: 0.6s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 101;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 833px;
+  --breakpoint-sm: 834px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1440px;
+
+  /* ── Opacity ── */
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+  --opacity-80: 0.8;
+}

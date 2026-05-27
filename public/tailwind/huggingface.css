@@ -1,0 +1,144 @@
+/* ============================================
+ * Design Tokens — Hugging Face – The AI community building the future.
+ * Source: https://huggingface.co/
+ * Generated: 15/04/2026, 23:42:03
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #E5E7EB; /* hsl(220, 13%, 91%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue: #99A1AF; /* hsl(218, 12%, 64%) · text */
+  --color-white-2: #F3F4F6; /* hsl(220, 14%, 96%) · background */
+  --color-blue-2: #6A7282; /* hsl(220, 10%, 46%) · text */
+  --color-dark-blue: #4A5565; /* hsl(216, 15%, 34%) · text */
+  --color-light-gray-2: #D1D5DC; /* hsl(218, 14%, 84%) · text */
+  --color-dark-blue-2: #364153; /* hsl(217, 21%, 27%) · text */
+  --color-dark-blue-3: #101828; /* hsl(220, 43%, 11%) · background */
+  --color-blue-3: #155DFC; /* hsl(221, 97%, 54%) · text */
+  --color-red: #FF3939; /* hsl(0, 100%, 61%) · fill */
+  --color-orange: #FFA600; /* hsl(39, 100%, 50%) · fill */
+  --color-mid-gray: #86898F; /* hsl(220, 4%, 54%) · fill */
+  --color-dark-gray: #4A4E57; /* hsl(222, 8%, 32%) · fill */
+  --color-dark-gray-2: #0B0F19; /* hsl(223, 39%, 7%) · background */
+  --color-orange-2: #FF6900; /* hsl(25, 100%, 50%) · background */
+  --color-purple: #8E51FF; /* hsl(261, 100%, 66%) · background */
+  --color-blue-4: #2B7FFF; /* hsl(216, 100%, 58%) · background */
+  --color-red-2: #FB2C36; /* hsl(357, 96%, 58%) · background */
+  --color-blue-5: #145EFF; /* hsl(221, 100%, 54%) · background */
+  --color-light-gray-3: #D1D6DC; /* hsl(213, 14%, 84%) · text */
+  --color-red-3: #FF3270; /* hsl(342, 100%, 60%) · fill */
+  --color-purple-2: #861FFF; /* hsl(268, 100%, 56%) · fill */
+  --color-blue-6: #097EFF; /* hsl(211, 100%, 52%) · fill */
+  --color-yellow: #FFD702; /* hsl(51, 100%, 50%) · fill */
+  --color-white-3: #F9FAFB; /* hsl(210, 20%, 98%) · background */
+  --color-blue-7: #615FFF; /* hsl(241, 100%, 69%) · background */
+  --color-green: #7CCF00; /* hsl(84, 100%, 41%) · background */
+  --color-orange-3: #FE9A00; /* hsl(36, 100%, 50%) · background */
+  --color-pink: #F6339A; /* hsl(328, 92%, 58%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10.4px;
+  --font-size-xs: 12px;
+  --font-size-sm: 13.4px;
+  --font-size-base: 14px;
+  --font-size-lg: 15.04px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 18px;
+  --font-size-3xl: 20px;
+  --font-size-4xl: 24px;
+  --font-size-5xl: 30px;
+  --font-size-6xl: 48px;
+  --font-family-base: Source Sans Pro;
+  --font-family-2: IBM Plex Mono;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 12px;
+  --line-height-snug: 13px;
+  --line-height-normal: 14px;
+  --line-height-relaxed: 15.04px;
+  --line-height-loose: 16px;
+  --line-height-lh-6: 17.5px;
+  --line-height-lh-7: 20px;
+  --line-height-lh-8: 22.56px;
+  --line-height-lh-9: 24px;
+  --line-height-lh-10: 25px;
+  --line-height-lh-11: 28px;
+  --line-height-lh-12: 32px;
+  --line-height-lh-13: 36px;
+  --line-height-lh-14: 48px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-8: 14px;
+  --space-10: 16px;
+  --space-12: 20px;
+  --space-16: 21.6px;
+  --space-20: 24px;
+  --space-24: 96px;
+  --space-32: 32px;
+  --space-40: 33.8516px;
+  --space-48: 40px;
+  --space-64: 44px;
+  --space-80: 48px;
+  --space-96: 49px;
+  --space-128: 54.5px;
+  --space-160: 56px;
+  --space-192: 64px;
+  --space-256: 73px;
+  --space-23: 80px;
+  --space-25: 112px;
+  --space-26: 128px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 0px 16px 16px;
+  --radius-md: 0px 12px 12px 0px;
+  --radius-lg: 0px 0px 50% 50%;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
+  --radius-full: 8px;
+  --radius-r7: 12px;
+  --radius-r8: 25px;
+  --radius-r9: 25.6px;
+  --radius-r10: 32px 32px 0px 0px;
+  --radius-r11: 50%;
+  --radius-r12: 50% 50% 0px 0px;
+  --radius-r13: 1.67772e+07px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 2px 4px 0px inset;
+  --shadow-xl: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 10;
+  --z-4: 20;
+  --z-5: 40;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+  --opacity-10: 0.1;
+  --opacity-25: 0.25;
+  --opacity-40: 0.4;
+  --opacity-45: 0.45;
+  --opacity-50: 0.5;
+  --opacity-75: 0.75;
+  --opacity-85: 0.85;
+  --opacity-90: 0.9;
+}

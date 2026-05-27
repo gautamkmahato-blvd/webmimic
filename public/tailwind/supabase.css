@@ -1,0 +1,121 @@
+/* ============================================
+ * Design Tokens — Supabase | The Postgres Development Platform.
+ * Source: https://supabase.com/
+ * Generated: 12/04/2026, 10:53:23
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #2E2E2E; /* hsl(0, 0%, 18%) · background */
+  --color-white: #FAFAFA; /* hsl(0, 0%, 98%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-mid-gray: #898989; /* hsl(0, 0%, 54%) · background */
+  --color-light-gray: #B4B4B4; /* hsl(0, 0%, 71%) · text */
+  --color-dark-gray-2: #4D4D4D; /* hsl(0, 0%, 30%) · text */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · text */
+  --color-dark-gray-3: #171717; /* hsl(0, 0%, 9%) · background */
+  --color-dark-gray-4: #121212; /* hsl(0, 0%, 7%) · background */
+  --color-dark-gray-5: #393939; /* hsl(0, 0%, 22%) · border */
+  --color-dark-gray-6: #242424; /* hsl(0, 0%, 14%) · background */
+  --color-cyan: #3ECF8E; /* hsl(153, 60%, 53%) · background */
+  --color-dark-gray-7: #363636; /* hsl(0, 0%, 21%) · border */
+  --color-dark-cyan: #006239; /* hsl(155, 100%, 19%) · background */
+  --color-cyan-2: rgba(62, 207, 142, 0.3); /* hsl(152, 61%, 53%) · border */
+  --color-dark-gray-8: #1F1F1F; /* hsl(0, 0%, 12%) · background */
+  --color-dark-gray-9: #0F0F0F; /* hsl(0, 0%, 6%) · background */
+  --color-dark-gray-10: #292929; /* hsl(0, 0%, 16%) · border */
+  --color-dark-gray-11: #212121; /* hsl(0, 0%, 13%) · fill */
+  --color-dark-cyan-2: #002918; /* hsl(155, 100%, 8%) · background */
+  --color-cyan-3: #00C573; /* hsl(155, 100%, 39%) · text */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 24px;
+  --font-size-xl: 36px;
+  --font-size-2xl: 72px;
+  --font-family-base: Circular;
+  --font-family-2: Source Code Pro;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --line-height-tight: 14px;
+  --line-height-snug: 16px;
+  --line-height-normal: 19.25px;
+  --line-height-relaxed: 20px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 28px;
+  --line-height-lh-7: 32px;
+  --line-height-lh-8: 40px;
+  --line-height-lh-9: 43.2px;
+  --line-height-lh-10: 45px;
+  --line-height-lh-11: 72px;
+  --letter-spacing-tight: -0.16px;
+  --letter-spacing-normal: 1.2px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 12px;
+  --space-10: 16px;
+  --space-12: 20px;
+  --space-16: 24px;
+  --space-20: 32px;
+  --space-24: 40px;
+  --space-32: 48px;
+  --space-40: 54.5px;
+  --space-48: 61.1953px;
+  --space-64: 64px;
+  --space-80: 90px;
+  --space-96: 96px;
+  --space-128: 112px;
+  --space-160: 119px;
+  --space-192: 128px;
+  --space-256: 230.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 11px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.1) 0px 2px 4px -2px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.075s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.75s;
+  --duration-duration-6: 1s;
+  --easing-ease-out: ease-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -10;
+  --z-2: 1;
+  --z-3: 10;
+  --z-4: 20;
+  --z-5: 30;
+  --z-6: 40;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 600px;
+
+  /* ── Opacity ── */
+  --opacity-10: 0.1;
+  --opacity-20: 0.2;
+  --opacity-50: 0.5;
+  --opacity-70: 0.7;
+  --opacity-80: 0.8;
+}

@@ -1,0 +1,161 @@
+/* ============================================
+ * Design Tokens — 
+ * Source: https://app.emergent.sh/landing/?utm_source=google&utm_medium=search&utm_campaign=23761608622&utm_adgroup=194967236386&utm_term=lovable&matchtype=e&device=c&network=g&gad_source=1&gad_campaignid=23761608622&gbraid=0AAAABA86LmDFYTMmv3x1brpt5IsTpTsua&gclid=CjwKCAjw7vzOBhBxEiwAc7WNr5DrWbWJzukBJtAKx5Aqf2XR5Ql57o1W7aK1iPPZ86PA19HLlZOfmhoCLnIQAvD_BwE
+ * Generated: 15/04/2026, 23:35:35
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-light-gray: #E5E3E1; /* hsl(30, 7%, 89%) · border */
+  --color-dark-gray: #666666; /* hsl(0, 0%, 40%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray-2: #0E0E0E; /* hsl(0, 0%, 5%) · text */
+  --color-dark-gray-3: #262629; /* hsl(240, 4%, 15%) · text */
+  --color-mid-gray: #8A8A8A; /* hsl(0, 0%, 54%) · fill */
+  --color-dark-blue: #4B5563; /* hsl(215, 14%, 34%) · text */
+  --color-dark-green: #00661F; /* hsl(138, 100%, 20%) · text */
+  --color-dark-gray-4: #525252; /* hsl(0, 0%, 32%) · background */
+  --color-light-gray-2: #EBEBEB; /* hsl(0, 0%, 92%) · background */
+  --color-dark-gray-5: #0E0E0F; /* hsl(240, 3%, 6%) · text */
+  --color-dark-green-2: #00330F; /* hsl(138, 100%, 10%) · text */
+  --color-mid-gray-2: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-black-2: #050505; /* hsl(0, 0%, 2%) · text */
+  --color-dark-gray-6: #1A1A1A; /* hsl(0, 0%, 10%) · fill */
+  --color-light-green: #E5FFED; /* hsl(138, 100%, 95%) · background */
+  --color-blue: #4E9BEE; /* hsl(211, 82%, 62%) · gradient */
+  --color-cyan: #57D5FE; /* hsl(195, 99%, 67%) · gradient */
+  --color-blue-2: #3489FE; /* hsl(215, 99%, 60%) · gradient */
+  --color-dark-gray-7: #252528; /* hsl(240, 4%, 15%) · background */
+  --color-orange: #E57845; /* hsl(19, 75%, 58%) · background */
+  --color-black-3: #0A0A0A; /* hsl(0, 0%, 4%) · fill */
+  --color-red: #FF5F57; /* hsl(3, 100%, 67%) · fill */
+  --color-orange-2: #FFBD2E; /* hsl(41, 100%, 59%) · fill */
+  --color-green: #28C840; /* hsl(129, 67%, 47%) · fill */
+  --color-dark-gray-8: #2A2A2A; /* hsl(0, 0%, 16%) · fill */
+  --color-white-2: #F5F4F2; /* hsl(40, 13%, 95%) · background */
+  --color-light-gray-3: #F0F0EF; /* hsl(60, 3%, 94%) · background */
+  --color-light-gray-4: #E3E3E2; /* hsl(60, 2%, 89%) · border */
+  --color-green-2: #338037; /* hsl(123, 43%, 35%) · text */
+  --color-green-3: rgba(0, 204, 11, 0.1); /* hsl(123, 100%, 40%) · background */
+  --color-blue-3: #6B7280; /* hsl(220, 9%, 46%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 15px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 22px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 72px;
+  --font-family-base: ui-sans-serif;
+  --font-family-2: -apple-system;
+  --font-family-3: Brockmann;
+  --font-family-4: Inter;
+  --font-family-5: brockmann;
+  --font-family-6: Ndot;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 20px;
+  --line-height-snug: 21px;
+  --line-height-normal: 24px;
+  --line-height-relaxed: 32px;
+  --line-height-loose: 33px;
+  --line-height-lh-6: 36px;
+  --line-height-lh-7: 40px;
+  --line-height-lh-8: 72px;
+  --letter-spacing-tight: -3px;
+  --letter-spacing-normal: -1.8px;
+  --letter-spacing-wide: -1.2px;
+  --letter-spacing-wider: -1px;
+  --letter-spacing-widest: -1%;
+  --letter-spacing-ls-6: -0.9px;
+  --letter-spacing-ls-7: -0.72px;
+  --letter-spacing-ls-8: -0.44px;
+  --letter-spacing-ls-9: -0.32px;
+  --letter-spacing-ls-10: -0.15px;
+  --letter-spacing-ls-11: 0.4px;
+  --letter-spacing-ls-12: 1.2px;
+  --letter-spacing-ls-13: 1.4px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-16: 28px;
+  --space-20: 32px;
+  --space-24: 150px;
+  --space-32: 40px;
+  --space-40: 47.75px;
+  --space-48: 48px;
+  --space-64: 50px;
+  --space-80: 64px;
+  --space-96: 68.4297px;
+  --space-128: 80px;
+  --space-160: 85.7812px;
+  --space-192: 102.5px;
+  --space-256: 120px;
+  --space-23: 146.07px;
+  --space-25: 200px;
+  --space-26: 218.031px;
+  --space-27: 279px;
+  --space-28: 428.25px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 0px 6px 6px;
+  --radius-md: 4px;
+  --radius-lg: 5px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-full: 12px;
+  --radius-r7: 16px;
+  --radius-r8: 20px;
+  --radius-r9: 28px;
+  --radius-r10: 50px;
+  --radius-r11: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
+  --shadow-lg: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -10;
+  --z-2: 10;
+  --z-3: 100;
+  --z-4: 1000;
+  --z-5: 1002;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 379px;
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 640px;
+  --breakpoint-lg: 767px;
+  --breakpoint-xl: 768px;
+  --breakpoint-2xl: 1024px;
+  --breakpoint-3xl: 1280px;
+  --breakpoint-bp-8: 1536px;
+  --breakpoint-bp-9: 1920px;
+
+  /* ── Opacity ── */
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-80: 0.8;
+}

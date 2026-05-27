@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Mintlify — Design System (Light)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* ── Mintlify Color Tokens ── */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-black-2: #08090A;
+  --color-dark-cyan: #0C8C5E;
+  --color-dark-gray: #0E0E0E;
+  --color-black-5: #0A0A0A;
+  --color-black-6: #070707;
+  --color-white-4: #FDFFFF;
+  --color-black-3: #080A0A;
+  --color-black-7: #08080A;
+  --color-black-4: #080909;
+  --color-white-2: #F7F7F7;
+  --color-dark-cyan-2: #0C8B5D;
+  --color-white-3: #F6F6F6;
+  --color-dark-blue: #003087;
+  --color-blue: #0070E0;
+  --color-cyan: #18E299;
+  --color-blue-2: #0052FF;
+  --color-red: #FF7A59;
+  --color-orange: #F1511B;
+  --color-green: #80CC28;
+  --color-cyan-2: #00ADEF;
+  --color-orange-2: #FBBC09;
+  --color-dark-cyan-3: #20808D;
+  --color-dark-blue-2: #001C64;
+  --color-blue-3: #4B73FF;
+  --color-pink: #FF66F4;
+  --color-red-2: #FF0105;
+  --color-orange-3: #FE7B02;
+  --color-cyan-3: #00DC8D;
+  --color-orange-4: #FF4F00;
+  --color-light-gray: #F2F2F2;
+  --color-mid-gray: #828383;
+  --color-light-gray-2: #DDDDDD;
+
+  /* ── Semantic tokens (light mode) ── */
+  --color-bg-main: #FFFFFF;
+  --color-bg-invert: #08090A;
+  --color-text-main: #08090A;
+  --color-text-invert: #FFFFFF;
+  --color-text-soft: rgba(8,9,10,0.8);
+  --color-text-sub: rgba(8,9,10,0.6);
+  --color-muted: rgba(8,9,10,0.5);
+  --color-text-tertiary: rgba(8,9,10,0.4);
+  --color-border-sub: rgba(8,9,10,0.07);
+  --color-bg-soft: rgba(8,9,10,0.03);
+  --color-border-surface: rgba(8,9,10,0.05);
+  --color-border-soft: rgba(8,9,10,0.15);
+  --color-brand: #0C8C5E;
+  --color-border-solid: #08090A;
+  --color-muted-invert: rgba(255,255,255,0.5);
+  --color-bg-gray-emphasis: #E6E5E3;
+  --color-bg-gray-subtle: #F9F8F7;
+  --color-foreground-gray-subtle: #554b42;
+
+  /* ── Light UI surface tokens ── */
+  --surface-page: #FFFFFF;
+  --surface-card: #FAFAFA;
+  --surface-elevated: #F4F4F2;
+  --surface-hover: #EFEFED;
+  --surface-border: rgba(8,9,10,0.08);
+  --surface-border-strong: rgba(8,9,10,0.14);
+  --text-primary: #08090A;
+  --text-secondary: rgba(8,9,10,0.7);
+  --text-tertiary: rgba(8,9,10,0.45);
+  --text-brand: #0A7A51;
+  --text-brand-bright: #0C8C5E;
+  --text-brand-accent: #18E299;
+  --brand-tint: rgba(12,140,94,0.07);
+  --brand-tint-border: rgba(12,140,94,0.2);
+  --brand-tint-strong: rgba(12,140,94,0.12);
+
+  /* ── Typography ── */
+  --font-family-base: 'Inter', ui-sans-serif, sans-serif;
+  --font-family-2: 'Inter', ui-sans-serif, sans-serif;
+  --font-family-mono: 'Fira Code', 'Fira Mono', ui-monospace, monospace;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-size-2xs: 10px; --font-size-xs: 12px; --font-size-sm: 13px;
+  --font-size-base: 14px; --font-size-lg: 15px; --font-size-xl: 16px;
+  --font-size-2xl: 18px; --font-size-3xl: 20px; --font-size-4xl: 24px;
+  --font-size-5xl: 40px; --font-size-6xl: 45.32px;
+  --line-height-tight: 15px; --line-height-snug: 18px; --line-height-normal: 19.5px;
+  --line-height-relaxed: 21px; --line-height-loose: 22.5px; --line-height-lh-6: 24px;
+  --line-height-lh-7: 26px; --line-height-lh-8: 27px; --line-height-lh-9: 31.2px;
+  --line-height-lh-10: 32px; --line-height-lh-11: 44px; --line-height-lh-12: 52.118px;
+  --letter-spacing-tight: -0.9064px;
+  --letter-spacing-normal: -0.8px;
+  --letter-spacing-wide: -0.26px;
+  --letter-spacing-wider: -0.24px;
+  --letter-spacing-widest: -0.2px;
+  --letter-spacing-ls-6: 0.6px;
+  --letter-spacing-ls-7: 0.65px;
+
+  /* ── Spacing ── */
+  --space-1:0.8px;--space-2:2px;--space-3:4px;--space-4:4.5px;--space-5:5px;
+  --space-6:6px;--space-8:7px;--space-10:8px;--space-12:10px;--space-16:12px;
+  --space-20:14.5px;--space-24:94px;--space-32:144px;--space-40:26.5px;--space-48:28px;
+  --space-64:32px;--space-80:48px;--space-96:48.5px;--space-128:54.5px;--space-160:55.5px;
+  --space-192:56px;--space-256:64px;--space-23:72px;--space-25:96px;--space-26:99px;
+  --space-27:104px;--space-28:112px;--space-29:120px;--space-30:122px;--space-31:137.5px;
+  --space-33:150px;--space-34:168px;--space-35:203.938px;
+
+  /* ── Borders ── */
+  --border-width-hairline:0.5px;--border-width-thin:1px;--border-width-base:3px;
+  --radius-sm:4px;--radius-md:8px;--radius-lg:14px;--radius-xl:16px;
+  --radius-full:24px;--radius-r8:60px;--radius-r9:9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(8,9,10,0.06), 0 1px 2px rgba(8,9,10,0.04);
+  --shadow-md: 0 4px 12px rgba(8,9,10,0.06), 0 1px 4px rgba(8,9,10,0.04);
+
+  /* ── Motion ── */
+  --duration-instant:0.1s;--duration-fast:0.15s;--duration-normal:0.2s;
+  --duration-slow:0.25s;--duration-slower:0.3s;
+
+  /* ── Z-Index ── */
+  --z-1:-1000;--z-2:-1;--z-3:9;--z-4:10;--z-5:20;--z-6:50;--z-7:100;
+
+  /* ── Breakpoints / Opacity ── */
+  --breakpoint-xs:768px;
+  --opacity-1:0.01;--opacity-10:0.1;--opacity-15:0.15;--opacity-20:0.2;
+  --opacity-40:0.4;--opacity-50:0.5;--opacity-70:0.7;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family-base);background:var(--surface-page);color:var(--text-primary);font-size:var(--font-size-base);line-height:var(--line-height-normal);font-weight:var(--font-weight-regular);}
+.page{max-width:1200px;margin:0 auto;padding:48px 24px;}
+
+/* HEADER */
+.top-bar{border-bottom:var(--border-width-thin) solid var(--surface-border);margin-bottom:32px;padding-bottom:12px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.header-left{display:flex;align-items:center;gap:16px;}
+.logo{width:38px;height:38px;background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);}
+.system-title{font-size:var(--font-size-2xl);font-weight:var(--font-weight-semibold);color:var(--text-primary);line-height:var(--line-height-lh-7);letter-spacing:var(--letter-spacing-wide);}
+.system-meta{font-size:var(--font-size-xs);color:var(--text-tertiary);margin-top:2px;line-height:var(--line-height-lh-6);}
+.hbadge{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);background:var(--brand-tint-strong);color:var(--text-brand);padding:2px 10px;border-radius:var(--radius-r9);border:var(--border-width-thin) solid var(--brand-tint-border);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-thin) solid var(--brand-tint-border);background:var(--color-white-2);color:var(--text-primary);box-shadow:0 1px 2px rgba(15,23,42,0.08);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-cyan);color:var(--color-cyan);box-shadow:0 4px 14px rgba(15,23,42,0.14);transform:translateY(-1px);}
+
+/* SECTION */
+.section{margin-bottom:48px;}
+.section-title{font-size:var(--font-size-4xl);font-weight:var(--font-weight-semibold);color:var(--text-primary);line-height:var(--line-height-lh-8);margin-bottom:20px;letter-spacing:var(--letter-spacing-normal);}
+
+/* COLORS */
+.color-group{margin-bottom:24px;}
+.color-group-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);letter-spacing:var(--letter-spacing-ls-6);text-transform:uppercase;color:var(--text-tertiary);margin-bottom:8px;}
+.swatch-grid{display:grid;gap:8px;}
+.swatch-item{display:flex;flex-direction:column;gap:4px;}
+.swatch-box{height:60px;border-radius:var(--radius-md);border:var(--border-width-thin) solid var(--surface-border);}
+.swatch-name{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--text-primary);line-height:var(--line-height-tight);}
+.swatch-hex{font-size:10px;color:var(--text-tertiary);font-family:var(--font-family-mono);line-height:var(--line-height-tight);}
+
+/* TYPOGRAPHY */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
+.font-card{background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border);border-radius:var(--radius-xl);padding:20px;box-shadow:var(--shadow-sm);}
+.font-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--text-brand);font-weight:var(--font-weight-medium);margin-bottom:6px;}
+.font-display{font-size:var(--font-size-5xl);color:var(--text-primary);line-height:var(--line-height-lh-11);margin-bottom:6px;font-weight:var(--font-weight-semibold);letter-spacing:var(--letter-spacing-tight);}
+.font-sample{font-size:var(--font-size-base);color:var(--text-secondary);line-height:var(--line-height-normal);}
+.fw-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.fw-chip{font-size:var(--font-size-xs);padding:2px 10px;background:var(--surface-elevated);border-radius:var(--radius-sm);color:var(--text-secondary);border:var(--border-width-thin) solid var(--surface-border);}
+.type-scale{background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm);}
+.type-row{display:flex;flex-direction:column;padding:12px 20px;border-bottom:var(--border-width-thin) solid var(--surface-border);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--text-primary);margin-bottom:3px;}
+.type-meta{font-size:10px;color:var(--text-tertiary);font-family:var(--font-family-mono);line-height:var(--line-height-tight);}
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.lh-item{background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border);border-radius:var(--radius-sm);padding:8px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow-sm);}
+.lh-bar-wrap{background:var(--surface-elevated);border-radius:2px;overflow:hidden;}
+.lh-bar{background:linear-gradient(to bottom,var(--color-dark-cyan),#14C47A);width:100%;}
+.lh-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--text-brand);}
+.lh-val{font-size:10px;color:var(--text-tertiary);}
+.ls-row{display:flex;gap:8px;flex-wrap:wrap;}
+.ls-item{background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border);border-radius:var(--radius-sm);padding:12px 20px;flex:1;box-shadow:var(--shadow-sm);}
+.ls-sample{font-size:var(--font-size-4xl);color:var(--text-primary);font-weight:var(--font-weight-semibold);margin-bottom:4px;}
+.ls-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--text-brand);}
+.ls-desc{font-size:10px;color:var(--text-tertiary);}
+
+/* SPACING */
+.token-wrap{background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border);border-radius:var(--radius-xl);padding:20px;box-shadow:var(--shadow-sm);}
+.tw-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--text-primary);margin-bottom:4px;letter-spacing:var(--letter-spacing-wide);}
+.tw-sub{font-size:var(--font-size-xs);color:var(--text-tertiary);margin-bottom:16px;}
+.spacing-chart{display:flex;align-items:flex-end;gap:3px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;}
+.sp-bar{background:linear-gradient(to top,var(--color-dark-cyan),#14C47A);border-radius:2px 2px 0 0;width:100%;}
+.sp-lbl{font-size:9px;color:var(--text-tertiary);text-align:center;font-family:var(--font-family-mono);}
+
+/* BORDERS */
+.border-card{background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border);border-radius:var(--radius-xl);padding:20px;margin-bottom:16px;box-shadow:var(--shadow-sm);}
+.bc-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--text-primary);margin-bottom:12px;letter-spacing:var(--letter-spacing-wide);}
+.radius-row{display:flex;gap:12px;flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,var(--color-dark-cyan),#14C47A);border:var(--border-width-thin) solid var(--surface-border);}
+.radius-lbl{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--text-primary);text-align:center;font-family:var(--font-family-mono);}
+.radius-val{font-size:10px;color:var(--text-tertiary);text-align:center;font-family:var(--font-family-mono);}
+.bw-demo{display:flex;flex-direction:column;gap:8px;}
+.bw-item{display:flex;align-items:center;gap:12px;}
+.bw-line{flex:1;background:var(--surface-border-strong);}
+.bw-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--text-brand);white-space:nowrap;}
+.bw-val{font-size:10px;color:var(--text-tertiary);font-family:var(--font-family-mono);white-space:nowrap;}
+
+/* SHADOWS */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sh-item{display:flex;flex-direction:column;gap:6px;}
+.sh-box{height:88px;background:var(--surface-card);border-radius:var(--radius-md);border:var(--border-width-thin) solid var(--surface-border);}
+.sh-token{font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);color:var(--text-primary);font-family:var(--font-family-mono);}
+.sh-usage{font-size:10px;color:var(--text-tertiary);}
+.sh-desc{font-size:10px;color:var(--text-secondary);line-height:var(--line-height-normal);margin-top:2px;}
+
+/* Z-TABLE */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:10px 12px;text-align:left;font-size:var(--font-size-base);border-bottom:var(--border-width-thin) solid var(--surface-border);line-height:var(--line-height-normal);}
+.z-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-6);color:var(--text-tertiary);background:var(--surface-elevated);}
+.z-table td:first-child{font-family:var(--font-family-mono);color:var(--text-brand);}
+.z-table td:nth-child(2){font-family:var(--font-family-mono);color:var(--text-primary);font-weight:var(--font-weight-semibold);}
+.z-table td:nth-child(3){color:var(--text-secondary);}
+.z-table tr:last-child td{border-bottom:none;}
+.z-table tr:hover td{background:var(--surface-hover);}
+.z-deep td:first-child{color:var(--text-tertiary);}
+
+/* BREAKPOINTS */
+.bp-card{background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border);border-radius:var(--radius-xl);padding:20px;display:flex;align-items:center;gap:20px;max-width:480px;box-shadow:var(--shadow-sm);}
+.bp-icon{font-size:32px;line-height:1;}
+.bp-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--text-brand);margin-bottom:4px;}
+.bp-val{font-size:var(--font-size-5xl);font-weight:var(--font-weight-semibold);color:var(--text-primary);line-height:1;letter-spacing:var(--letter-spacing-tight);}
+.bp-desc{font-size:var(--font-size-xs);color:var(--text-tertiary);margin-top:4px;}
+
+/* OPACITY */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.op-item{display:flex;flex-direction:column;gap:4px;}
+.op-box{height:60px;border-radius:var(--radius-md);background:linear-gradient(135deg,var(--color-dark-cyan),#14C47A);}
+.op-token{font-size:var(--font-size-xs);font-family:var(--font-family-mono);color:var(--text-brand);}
+.op-val{font-size:10px;color:var(--text-tertiary);}
+
+/* A11Y */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:10px 12px;text-align:left;font-size:var(--font-size-xs);border-bottom:var(--border-width-thin) solid var(--surface-border);line-height:var(--line-height-normal);}
+.a11y-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-6);color:var(--text-tertiary);background:var(--surface-elevated);}
+.a11y-table td:first-child{font-family:var(--font-family-mono);font-size:10px;color:var(--text-primary);}
+.a11y-table td:nth-child(2){font-family:var(--font-family-mono);font-size:10px;color:var(--text-tertiary);}
+.a11y-table td:nth-child(3){color:var(--text-primary);font-weight:var(--font-weight-semibold);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.a11y-table tr:hover td{background:var(--surface-hover);}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-r9);}
+.wcag-aaa{background:rgba(12,140,94,0.1);color:var(--text-brand);border:var(--border-width-thin) solid rgba(12,140,94,0.22);}
+.wcag-aa{background:rgba(8,9,10,0.05);color:var(--text-secondary);border:var(--border-width-thin) solid var(--surface-border);}
+.wcag-aal{background:rgba(8,9,10,0.03);color:var(--text-tertiary);border:var(--border-width-thin) solid var(--surface-border);}
+.wcag-fail{background:rgba(255,122,89,0.08);color:#C94E00;border:var(--border-width-thin) solid rgba(255,122,89,0.2);}
+
+/* COMPONENTS */
+.comp-row{background:var(--surface-card);border-radius:var(--radius-xl);border:var(--border-width-thin) solid var(--surface-border);overflow:hidden;margin-bottom:12px;box-shadow:var(--shadow-sm);}
+.comp-header{padding:6px 12px;border-bottom:var(--border-width-thin) solid var(--surface-border);background:var(--surface-elevated);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--text-secondary);}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-medium);background:var(--brand-tint-strong);color:var(--text-brand);padding:2px 8px;border-radius:var(--radius-r9);border:var(--border-width-thin) solid var(--brand-tint-border);}
+.comp-body{padding:20px;}
+.btn-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-base);font-weight:var(--font-weight-medium);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-base);padding:6px 16px;border-radius:var(--radius-md);line-height:var(--line-height-normal);letter-spacing:var(--letter-spacing-wide);transition:all var(--duration-fast);}
+.btn-primary{background:var(--color-dark-cyan);color:#FFFFFF;box-shadow:0 1px 3px rgba(12,140,94,0.3);}
+.btn-primary:hover{background:#0A7A51;}
+.btn-secondary{background:var(--surface-card);color:var(--text-primary);border:var(--border-width-thin) solid var(--surface-border-strong);box-shadow:var(--shadow-sm);}
+.btn-secondary:hover{background:var(--surface-elevated);border-color:rgba(8,9,10,0.2);}
+.btn-outline{background:transparent;color:var(--text-brand);border:var(--border-width-thin) solid var(--brand-tint-border);}
+.btn-outline:hover{background:var(--brand-tint);}
+.btn-ghost{background:transparent;color:var(--text-secondary);border:var(--border-width-thin) solid transparent;}
+.btn-ghost:hover{background:var(--surface-elevated);color:var(--text-primary);}
+.btn-muted{background:var(--surface-elevated);color:var(--text-tertiary);border:var(--border-width-thin) solid var(--surface-border);}
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.inp-group{display:flex;flex-direction:column;gap:4px;}
+.inp-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--text-primary);line-height:var(--line-height-tight);}
+.inp{width:100%;font-family:var(--font-family-base);font-size:var(--font-size-base);color:var(--text-primary);background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border-strong);border-radius:var(--radius-md);padding:6px 10px;outline:none;transition:all var(--duration-fast);line-height:var(--line-height-normal);box-shadow:0 1px 2px rgba(8,9,10,0.04);}
+.inp:focus{border-color:var(--color-brand);box-shadow:0 0 0 3px rgba(12,140,94,0.1);}
+.inp::placeholder{color:var(--text-tertiary);}
+.inp-hint{font-size:var(--font-size-xs);color:var(--text-tertiary);line-height:var(--line-height-tight);}
+.inp-err{border-color:rgba(201,78,0,0.4)!important;}
+.inp-err-msg{font-size:var(--font-size-xs);color:#C94E00;}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-r9);line-height:var(--line-height-tight);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--surface-elevated);color:var(--text-secondary);border:var(--border-width-thin) solid var(--surface-border);}
+.badge-brand{background:var(--brand-tint-strong);color:var(--text-brand);border:var(--border-width-thin) solid var(--brand-tint-border);}
+.badge-muted{background:var(--surface-card);color:var(--text-tertiary);border:var(--border-width-thin) solid var(--surface-border);}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-sm);border:var(--border-width-thin) solid var(--surface-border);background:var(--surface-elevated);color:var(--text-secondary);line-height:var(--line-height-tight);}
+.tag-brand{color:var(--text-brand);background:var(--brand-tint);border-color:var(--brand-tint-border);}
+.alert{display:flex;gap:10px;padding:10px 14px;border-radius:var(--radius-lg);font-size:var(--font-size-base);}
+.alert-icon{font-size:var(--font-size-2xl);flex-shrink:0;line-height:1.4;}
+.alert-body h5{font-weight:var(--font-weight-semibold);margin-bottom:2px;font-size:var(--font-size-base);color:var(--text-primary);line-height:var(--line-height-relaxed);letter-spacing:var(--letter-spacing-wide);}
+.alert-body p{font-size:var(--font-size-xs);line-height:var(--line-height-normal);color:var(--text-secondary);}
+.alert-neutral{background:var(--surface-elevated);border:var(--border-width-thin) solid var(--surface-border);}
+.alert-brand{background:rgba(12,140,94,0.07);border:var(--border-width-thin) solid rgba(12,140,94,0.18);}
+.alert-dim{background:rgba(241,81,27,0.05);border:var(--border-width-thin) solid rgba(241,81,27,0.15);}
+.alert-base{background:rgba(201,78,0,0.05);border:var(--border-width-thin) solid rgba(201,78,0,0.15);}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.feature-card{background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border);border-radius:var(--radius-xl);padding:20px;transition:all var(--duration-slow);box-shadow:var(--shadow-sm);}
+.feature-card:hover{border-color:rgba(12,140,94,0.3);box-shadow:var(--shadow-md);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px;background:rgba(12,140,94,0.08);border:var(--border-width-thin) solid rgba(12,140,94,0.15);}
+.fc-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--text-primary);line-height:var(--line-height-lh-6);margin-bottom:4px;letter-spacing:var(--letter-spacing-wide);}
+.fc-desc{font-size:var(--font-size-xs);color:var(--text-secondary);line-height:var(--line-height-normal);margin-bottom:12px;}
+.av-row{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-semibold);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-xl);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-base);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-xs);}
+.av-info h4{font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);color:var(--text-primary);letter-spacing:var(--letter-spacing-wide);}
+.av-info p{font-size:var(--font-size-xs);color:var(--text-tertiary);}
+.prog-wrap{margin-bottom:8px;}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--text-secondary);margin-bottom:4px;}
+.prog-track{height:3px;background:var(--surface-elevated);border-radius:var(--radius-r9);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-r9);}
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:6px 16px;text-align:left;font-size:var(--font-size-base);border-bottom:var(--border-width-thin) solid var(--surface-border);line-height:var(--line-height-normal);}
+.data-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-6);color:var(--text-tertiary);background:var(--surface-elevated);}
+.data-table tr:hover td{background:var(--surface-hover);}
+.data-table td:first-child{font-family:var(--font-family-mono);color:var(--text-brand);}
+
+/* TOKENS */
+.tokens-section{margin-bottom:48px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.tokens-group{background:var(--surface-card);border:var(--border-width-thin) solid var(--surface-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-sm);}
+.tokens-group-header{padding:8px 16px;border-bottom:var(--border-width-thin) solid var(--surface-border);background:var(--surface-elevated);display:flex;align-items:center;gap:8px;}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,var(--color-dark-cyan),#14C47A);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--text-secondary);letter-spacing:var(--letter-spacing-ls-6);text-transform:uppercase;}
+.tokens-group-count{font-size:10px;color:var(--text-tertiary);margin-left:auto;}
+.tokens-list{padding:4px 0;}
+.token-row{display:flex;align-items:center;gap:8px;padding:4px 16px;transition:background var(--duration-instant);}
+.token-row:hover{background:var(--surface-hover);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-sm);border:var(--border-width-thin) solid var(--surface-border);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);color:var(--text-primary);flex:1;min-width:0;}
+.token-css{font-size:10px;font-family:var(--font-family-mono);color:var(--text-brand);white-space:nowrap;}
+.token-value{font-size:10px;font-family:var(--font-family-mono);color:var(--text-tertiary);white-space:nowrap;}
+.token-preview-bar{height:4px;border-radius:var(--radius-r9);background:linear-gradient(to right,var(--color-dark-cyan),#14C47A);flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,var(--color-dark-cyan),#14C47A);flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--color-dark-cyan),#14C47A);flex-shrink:0;}
+.token-row-sep{height:var(--border-width-thin);background:var(--surface-border);margin:4px 0;}
+
+@media(max-width:768px){
+  .font-cards,.shadows-row,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+            <rect width="40" height="40" rx="8" fill="#0C8C5E" opacity="0.12"/>
+            <path d="M12 28 L20 12 L28 28" stroke="#0C8C5E" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M15 22 L25 22" stroke="#0C8C5E" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">Mintlify</div>
+          <div class="system-meta">Design System · Light Theme · Generated 15/04/2026 · 36 colors · 36 type tokens · 33 spacing steps · 5 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">April 2026</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- 1. COLOR PALETTE -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(7,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black</div><div class="swatch-hex">#000000</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#070707"></div><div class="swatch-name">Black 6</div><div class="swatch-hex">#070707</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#08090A"></div><div class="swatch-name">Near Black</div><div class="swatch-hex">#08090A</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0A0A0A"></div><div class="swatch-name">Black 5</div><div class="swatch-hex">#0A0A0A</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0E0E0E"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#0E0E0E</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0C8C5E"></div><div class="swatch-name">Brand</div><div class="swatch-hex">#0C8C5E</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF"></div><div class="swatch-name">White (Canvas)</div><div class="swatch-hex">#FFFFFF</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Semantic Light Surfaces (from :root)</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(6,1fr);max-width:700px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF"></div><div class="swatch-name">--color-bg-main</div><div class="swatch-hex">#FFFFFF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F9F8F7"></div><div class="swatch-name">bg-gray-subtle</div><div class="swatch-hex">#F9F8F7</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E6E5E3"></div><div class="swatch-name">bg-gray-emphasis</div><div class="swatch-hex">#E6E5E3</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(8,9,10,0.03)"></div><div class="swatch-name">bg-soft (3%)</div><div class="swatch-hex">rgba(8,9,10,.03)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(8,9,10,0.07)"></div><div class="swatch-name">border-sub (7%)</div><div class="swatch-hex">rgba(8,9,10,.07)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(8,9,10,0.15)"></div><div class="swatch-name">border-soft (15%)</div><div class="swatch-hex">rgba(8,9,10,.15)</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Brand & Accent Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#18E299"></div><div class="swatch-name">Cyan Bright</div><div class="swatch-hex">#18E299</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0C8B5D"></div><div class="swatch-name">Dark Cyan 2</div><div class="swatch-hex">#0C8B5D</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#00DC8D"></div><div class="swatch-name">Cyan 3</div><div class="swatch-hex">#00DC8D</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#20808D"></div><div class="swatch-name">Dark Cyan 3</div><div class="swatch-hex">#20808D</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0070E0"></div><div class="swatch-name">Blue</div><div class="swatch-hex">#0070E0</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#4B73FF"></div><div class="swatch-name">Blue 3</div><div class="swatch-hex">#4B73FF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF66F4"></div><div class="swatch-name">Pink</div><div class="swatch-hex">#FF66F4</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#80CC28"></div><div class="swatch-name">Green</div><div class="swatch-hex">#80CC28</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Neutral & Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(6,1fr);max-width:700px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#080A0A"></div><div class="swatch-name">Black 3 (Text Primary)</div><div class="swatch-hex">#080A0A</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#828383"></div><div class="swatch-name">Mid Gray</div><div class="swatch-hex">#828383</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F2F2F2"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#F2F2F2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#DDDDDD"></div><div class="swatch-name">Light Gray 2</div><div class="swatch-hex">#DDDDDD</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F7F7F7"></div><div class="swatch-name">White 2</div><div class="swatch-hex">#F7F7F7</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#554b42"></div><div class="swatch-name">Foreground Gray</div><div class="swatch-hex">#554b42</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Vivid Fill Colors (Integration Logos)</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF7A59"></div><div class="swatch-name">Red (Salesforce)</div><div class="swatch-hex">#FF7A59</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F1511B"></div><div class="swatch-name">Orange</div><div class="swatch-hex">#F1511B</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FBBC09"></div><div class="swatch-name">Yellow</div><div class="swatch-hex">#FBBC09</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0052FF"></div><div class="swatch-name">Blue 2 (Coinbase)</div><div class="swatch-hex">#0052FF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#003087"></div><div class="swatch-name">Dark Blue (PayPal)</div><div class="swatch-hex">#003087</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#00ADEF"></div><div class="swatch-name">Cyan 2</div><div class="swatch-hex">#00ADEF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF0105"></div><div class="swatch-name">Red 2</div><div class="swatch-hex">#FF0105</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF4F00"></div><div class="swatch-name">Orange 4</div><div class="swatch-hex">#FF4F00</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">Primary · Inter / ui-sans-serif</div>
+        <div class="font-display" style="letter-spacing:var(--letter-spacing-tight);">Inter</div>
+        <div class="font-sample">The intelligent documentation platform. Write docs that think for themselves.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:500">Medium · 500</span>
+          <span class="fw-chip" style="font-weight:600">Semibold · 600</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Mono · Geist Mono</div>
+        <div class="font-display" style="font-family:var(--font-family-mono);font-size:var(--font-size-3xl);letter-spacing:0;">Geist Mono</div>
+        <div class="font-sample" style="font-family:var(--font-family-mono);">npx mintlify dev --port 3000</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:var(--font-family-mono);font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-family:var(--font-family-mono);font-weight:500">Medium · 500</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-scale" style="margin-bottom:16px;">
+      <div class="type-row"><div class="type-sample" style="font-size:45.32px;font-weight:600;line-height:52.118px;letter-spacing:var(--letter-spacing-tight);background:linear-gradient(135deg,#0C8C5E,#14C47A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Intelligent docs.</div><div class="type-meta">Display 6xl · 45.32px · Semibold · line-height: 52.118px · letter-spacing: −0.9064px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:40px;font-weight:600;line-height:44px;letter-spacing:var(--letter-spacing-normal);">The knowledge platform</div><div class="type-meta">Heading 5xl · 40px · Semibold · line-height: 44px · letter-spacing: −0.8px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:24px;font-weight:600;line-height:32px;letter-spacing:var(--letter-spacing-wide);">Documentation that works for you</div><div class="type-meta">Heading 4xl · 24px · Semibold · line-height: 32px · letter-spacing: −0.26px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:20px;font-weight:500;line-height:27px;letter-spacing:var(--letter-spacing-wider);">Write once, share everywhere</div><div class="type-meta">Heading 3xl · 20px · Medium · line-height: 27px · letter-spacing: −0.24px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:16px;font-weight:400;line-height:24px;letter-spacing:var(--letter-spacing-widest);color:rgba(8,9,10,0.65);">Mintlify turns your docs into an intelligent knowledge base, powered by AI search and real-time collaboration.</div><div class="type-meta">Body XL · 16px · Regular · line-height: 24px · letter-spacing: −0.2px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:14px;font-weight:400;line-height:21px;color:rgba(8,9,10,0.55);">Connect your docs to your code. Automatically sync changelogs, keep references up to date.</div><div class="type-meta">Body Base · 14px · Regular · line-height: 21px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:12px;font-weight:400;line-height:18px;color:rgba(8,9,10,0.4);">Last deployed 3 minutes ago · 248 pages indexed</div><div class="type-meta">Body XS · 12px · Regular · line-height: 18px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:10px;font-weight:500;line-height:15px;letter-spacing:var(--letter-spacing-ls-6);text-transform:uppercase;color:rgba(8,9,10,0.35);">COMPONENTS · GUIDES · API REFERENCE</div><div class="type-meta">Label · 10px · Medium · uppercase · letter-spacing: +0.6px</div></div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <div style="font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);letter-spacing:var(--letter-spacing-ls-6);text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px;">Line Heights</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:15px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">15px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:18px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">18px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:19.5px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">19.5px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:21px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">21px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:22.5px;"></div></div><div class="lh-token">Loose</div><div class="lh-val">22.5px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">LH-6</div><div class="lh-val">24px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:26px;"></div></div><div class="lh-token">LH-7</div><div class="lh-val">26px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:27px;"></div></div><div class="lh-token">LH-8</div><div class="lh-val">27px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:31.2px;"></div></div><div class="lh-token">LH-9</div><div class="lh-val">31.2px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:32px;"></div></div><div class="lh-token">LH-10</div><div class="lh-val">32px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:44px;"></div></div><div class="lh-token">LH-11</div><div class="lh-val">44px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:52.118px;"></div></div><div class="lh-token">LH-12</div><div class="lh-val">52.118px</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:var(--font-size-xs);font-weight:var(--font-weight-medium);letter-spacing:var(--letter-spacing-ls-6);text-transform:uppercase;color:var(--text-tertiary);margin-bottom:10px;">Letter Spacing — All Negative (except labels)</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-tight);">Mintlify</div>
+          <div class="ls-token">--letter-spacing-tight</div>
+          <div class="ls-desc">−0.9064px · display hero, large headlines</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-normal);">Documentation</div>
+          <div class="ls-token">--letter-spacing-normal</div>
+          <div class="ls-desc">−0.8px · large headings, section titles</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-widest);font-size:16px;">Intelligent</div>
+          <div class="ls-token">--letter-spacing-widest</div>
+          <div class="ls-desc">−0.2px · body text, descriptions</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:var(--letter-spacing-ls-6);font-size:12px;text-transform:uppercase;">COMPONENTS</div>
+          <div class="ls-token">--letter-spacing-ls-6</div>
+          <div class="ls-desc">+0.6px · uppercase labels only (positive exception)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SPACING -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">33 tokens — 0.8px → 203.94px</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:1px"></div><div class="sp-lbl">0.8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:2px"></div><div class="sp-lbl">2</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:5px"></div><div class="sp-lbl">4.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:5px"></div><div class="sp-lbl">5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:6px"></div><div class="sp-lbl">6</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:7px"></div><div class="sp-lbl">7</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:14.5px"></div><div class="sp-lbl">14.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:26.5px"></div><div class="sp-lbl">26.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:28px"></div><div class="sp-lbl">28</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:32px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:48px"></div><div class="sp-lbl">48</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:54.5px"></div><div class="sp-lbl">54.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:56px"></div><div class="sp-lbl">56</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:64px"></div><div class="sp-lbl">64</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:72px"></div><div class="sp-lbl">72</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:94px"></div><div class="sp-lbl">94</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:96px"></div><div class="sp-lbl">96</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:99px"></div><div class="sp-lbl">99</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:104px"></div><div class="sp-lbl">104</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:112px"></div><div class="sp-lbl">112</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:120px"></div><div class="sp-lbl">120</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:122px"></div><div class="sp-lbl">122</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:130px"></div><div class="sp-lbl">137.5</div></div>
+        <div class="sp-col" style="opacity:0.6"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">144</div></div>
+        <div class="sp-col" style="opacity:0.5"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">150</div></div>
+        <div class="sp-col" style="opacity:0.4"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">168</div></div>
+        <div class="sp-col" style="opacity:0.3"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">204</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. BORDERS -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">sm</div><div class="radius-val">4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-lbl">md</div><div class="radius-val">8px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:14px"></div><div class="radius-lbl">lg</div><div class="radius-val">14px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:16px"></div><div class="radius-lbl">xl</div><div class="radius-val">16px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:24px 24px 0 0;height:40px"></div><div class="radius-lbl">2xl (top)</div><div class="radius-val">24/24/0/0px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:24px;height:40px"></div><div class="radius-lbl">full</div><div class="radius-val">24px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:50%;width:48px;height:48px"></div><div class="radius-lbl">r7</div><div class="radius-val">50%</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:60px;height:36px"></div><div class="radius-lbl">r8</div><div class="radius-val">60px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px;height:32px"></div><div class="radius-lbl">r9 (Pill)</div><div class="radius-val">9999px</div></div>
+      </div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Widths</div>
+      <div class="bw-demo">
+        <div class="bw-item"><div class="bw-token">--border-width-hairline</div><div class="bw-line" style="height:0.5px;"></div><div class="bw-val">0.5px · ×8 — sub-pixel hairline</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-thin</div><div class="bw-line" style="height:1px;"></div><div class="bw-val">1px · ×191 — standard border</div></div>
+        <div class="bw-item"><div class="bw-token">--border-width-base</div><div class="bw-line" style="height:3px;"></div><div class="bw-val">3px · ×3 — accent / highlight border</div></div>
+      </div>
+      <div style="margin-top:10px;font-size:var(--font-size-xs);color:var(--text-secondary);line-height:var(--line-height-normal);">Mintlify's <span style="font-family:var(--font-family-mono);color:var(--text-brand);">0.5px</span> hairline is the only sub-pixel border in this set — used in code blocks and the inline editor preview for ultra-fine dividers.</div>
+    </div>
+  </div>
+
+  <!-- 5. SHADOW / ELEVATION -->
+  <div class="section">
+    <div class="section-title">Shadow / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">2 tokens — adapted from CSS Lab() originals to light-surface equivalents</div>
+      <div class="shadows-row" style="grid-template-columns:1fr 1fr;">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:0 1px 3px rgba(8,9,10,0.06), 0 1px 2px rgba(8,9,10,0.04);"></div>
+          <div class="sh-token">sm — Soft Lift</div><div class="sh-usage">×8</div>
+          <div class="sh-desc">Light-mode adaptation of <code style="font-family:var(--font-family-mono);font-size:10px;background:var(--surface-elevated);padding:1px 4px;border-radius:3px;">lab(2.43 … / 3%)</code> — cards, panels on white.</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:0 4px 12px rgba(8,9,10,0.06), 0 1px 4px rgba(8,9,10,0.04);"></div>
+          <div class="sh-token">md — Medium Lift</div><div class="sh-usage">×2</div>
+          <div class="sh-desc">Light-mode adaptation of <code style="font-family:var(--font-family-mono);font-size:10px;background:var(--surface-elevated);padding:1px 4px;border-radius:3px;">lab(100 0 0 / 5%)</code> — elevated elements.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Z-INDEX -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Layer</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr class="z-deep"><td>z-1 (Deep Background)</td><td>-1000</td><td>Deeply buried decorative layers, particle effects, background animations</td></tr>
+          <tr class="z-deep"><td>z-2 (Behind)</td><td>-1</td><td>Elements directly behind content, pseudo-element backgrounds</td></tr>
+          <tr><td>z-3 (Raised)</td><td>9</td><td>Slightly elevated content elements</td></tr>
+          <tr><td>z-4 (Sticky)</td><td>10</td><td>Sticky headers, navigation bars</td></tr>
+          <tr><td>z-5 (Overlay)</td><td>20</td><td>Dropdowns, popovers, floating menus</td></tr>
+          <tr><td>z-6 (Modal)</td><td>50</td><td>Modal dialogs, sidesheets, overlays</td></tr>
+          <tr><td>z-7 (Top)</td><td>100</td><td>Toasts, critical alerts, global banners</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. BREAKPOINTS -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div class="bp-card">
+      <div class="bp-icon">📱</div>
+      <div>
+        <div class="bp-token">--breakpoint-xs</div>
+        <div class="bp-val">768px</div>
+        <div class="bp-desc">Single breakpoint — layouts adapt at 768px (tablet / mobile threshold)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. OPACITY -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <div class="tw-sub">7 tokens — 0.01 → 0.7 (all values low-range: tint and hierarchy focused)</div>
+      <div class="opacity-grid" style="grid-template-columns:repeat(7,1fr);">
+        <div class="op-item"><div class="op-box" style="opacity:0.01;"></div><div class="op-token">--opacity-1</div><div class="op-val">1%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.1;"></div><div class="op-token">--opacity-10</div><div class="op-val">10% · ×5</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.15;"></div><div class="op-token">--opacity-15</div><div class="op-val">15%</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.2;"></div><div class="op-token">--opacity-20</div><div class="op-val">20% · ×14</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.4;"></div><div class="op-token">--opacity-40</div><div class="op-val">40% · ×4</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.5;"></div><div class="op-token">--opacity-50</div><div class="op-val">50% · ×15</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.7;"></div><div class="op-token">--opacity-70</div><div class="op-val">70% · ×3</div></div>
+      </div>
+      <div style="margin-top:12px;font-size:var(--font-size-xs);color:var(--text-secondary);line-height:var(--line-height-normal);">Opacity tops out at 70% — the most restrained ceiling in the set. On light surfaces, these values drive text hierarchy via rgba(8,9,10, n) — the semantic token pattern from Mintlify's own <code style="font-family:var(--font-family-mono);background:var(--surface-elevated);padding:1px 4px;border-radius:3px;font-size:10px;">--color-text-soft/sub/muted</code> tokens.</div>
+    </div>
+  </div>
+
+  <!-- 9. ACCESSIBILITY -->
+  <div class="section">
+    <div class="section-title">Accessibility</div>
+    <div style="font-size:var(--font-size-xs);color:var(--text-secondary);margin-bottom:12px;line-height:var(--line-height-normal);">WCAG 2.1 thresholds: <strong style="color:var(--text-primary);">AA</strong> ≥ 4.5:1 · <strong style="color:var(--text-primary);">AA Large</strong> ≥ 3:1 · <strong style="color:var(--text-primary);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Color</th><th>Background Color</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>#080A0A (Black 3)</td><td>#000000</td><td>1.06:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>#080A0A (Black 3)</td><td>#FFFFFF</td><td>19.85:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#080A0A (Black 3)</td><td>#F9F8F7 (Gray Subtle)</td><td>18.6:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#080A0A (Black 3)</td><td>#0C8C5E (Brand)</td><td>4.66:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>#080A0A (Black 3)</td><td>#0E0E0E (Dark Gray)</td><td>1.03:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>#08080A (Black 7)</td><td>#000000</td><td>1.05:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>#08080A (Black 7)</td><td>#FFFFFF</td><td>20.01:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#08080A (Black 7)</td><td>#F9F8F7 (Gray Subtle)</td><td>18.75:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#08080A (Black 7)</td><td>#0C8C5E (Brand)</td><td>4.7:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>#08080A (Black 7)</td><td>#0E0E0E</td><td>1.04:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Get started free</button>
+          <button class="btn btn-secondary">View docs</button>
+          <button class="btn btn-outline">See examples</button>
+          <button class="btn btn-ghost">Learn more</button>
+          <button class="btn btn-muted">Dismiss</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Documentation title</label>
+            <input class="inp" type="text" placeholder="Getting started with Mintlify…"/>
+            <div class="inp-hint">Used as the page title and meta description.</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">API endpoint</label>
+            <input class="inp" type="text" value="https://api.mintlify.com" style="border-color:var(--color-brand);box-shadow:0 0 0 3px rgba(12,140,94,0.1);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Deploy key</label>
+            <input class="inp inp-err" type="text" value="invalid-deploy-key"/>
+            <div class="inp-err-msg">Deploy key format is invalid.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges & Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--text-tertiary)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-dark-cyan)"></span>Published</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--text-tertiary)"></span>Draft</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">📄 Guides</span>
+          <span class="tag">🔌 API Reference</span>
+          <span class="tag">🧩 Components</span>
+          <span class="tag">🔍 AI Search</span>
+          <span class="tag">⚡ Changelog</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="alert alert-neutral"><div class="alert-icon" style="color:var(--text-secondary)">ℹ</div><div class="alert-body"><h5>New feature: AI search</h5><p>Your docs now support semantic search powered by AI. Enable it in your dashboard settings.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon" style="color:var(--text-brand)">✓</div><div class="alert-body"><h5>Deployment successful</h5><p>Your documentation was deployed to mintlify.app. Changes are live in 30 seconds.</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon" style="color:#C94E00">⚠</div><div class="alert-body"><h5>Build warning</h5><p>3 broken internal links detected. Resolve these to ensure a smooth reader experience.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon" style="color:#C94E00">✕</div><div class="alert-body"><h5>Sync failed</h5><p>Unable to connect to your GitHub repository. Check your access token and permissions.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Feature Cards</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">🔍</div>
+            <div class="fc-title">AI Search</div>
+            <div class="fc-desc">Semantic search that understands context, not just keywords. Zero config required.</div>
+            <span class="tag tag-brand">Built-in</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">✍️</div>
+            <div class="fc-title">MDX Editor</div>
+            <div class="fc-desc">Write with Markdown + React components. Version-controlled, developer-first workflow.</div>
+            <span class="tag">Git-synced</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🎨</div>
+            <div class="fc-title">Custom Themes</div>
+            <div class="fc-desc">Brand your docs with custom colors, fonts, and layouts. No-code theme editor included.</div>
+            <span class="tag">Pro plan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars & Progress</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:linear-gradient(135deg,var(--color-dark-cyan),#14C47A);color:#000000;">MT</div>
+          <div class="av-info"><h4>Mintlify Docs</h4><p>Workspace · docs.company.io · Pro plan · 248 pages</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:linear-gradient(135deg,#0C8C5E,#14C47A);color:#FFFFFF">A</div>
+          <div class="avatar av-md" style="background:linear-gradient(135deg,#0052FF,#00ADEF);color:#FFFFFF">M</div>
+          <div class="avatar av-md" style="background:var(--surface-elevated);color:var(--text-secondary);border:1px solid var(--surface-border)">R</div>
+          <div class="avatar av-sm" style="background:var(--surface-elevated);color:var(--text-tertiary);border:1px solid var(--surface-border)">+4</div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Pages indexed</span><span>87%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:87%;background:linear-gradient(to right,var(--color-dark-cyan),#14C47A)"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Search queries this month</span><span>62%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:62%;background:linear-gradient(to right,#003087,#0070E0)"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>Storage used</span><span>24%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:24%;background:var(--surface-border-strong)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Data Table</span><span class="comp-badge">Page analytics</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead><tr><th>Page</th><th>Views</th><th>Avg. Time</th><th>Last Updated</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>/introduction</td><td style="color:var(--text-primary)">12,480</td><td style="color:var(--text-primary)">2m 14s</td><td style="color:var(--text-tertiary)">2026-04-12 09:14</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:var(--color-dark-cyan)"></span>Live</span></td></tr>
+            <tr><td>/quickstart</td><td style="color:var(--text-primary)">8,922</td><td style="color:var(--text-primary)">3m 41s</td><td style="color:var(--text-tertiary)">2026-04-10 14:22</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:var(--color-dark-cyan)"></span>Live</span></td></tr>
+            <tr><td>/api-reference</td><td style="color:var(--text-primary)">6,301</td><td style="color:var(--text-primary)">5m 08s</td><td style="color:var(--text-tertiary)">2026-04-14 18:00</td><td><span class="badge badge-muted" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:var(--text-tertiary)"></span>Draft</span></td></tr>
+            <tr><td>/components</td><td style="color:var(--text-primary)">4,187</td><td style="color:var(--text-primary)">4m 22s</td><td style="color:var(--text-tertiary)">2026-04-15 11:21</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 8px"><span class="badge-dot" style="background:var(--color-dark-cyan)"></span>Live</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- 11. CSS VARIABLES REFERENCE -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Background Colors</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF"></div><span class="token-readable">White (Canvas)</span><span class="token-css">--color-bg-main</span><span class="token-value">#FFFFFF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F9F8F7"></div><span class="token-readable">Gray Subtle</span><span class="token-css">--color-bg-gray-subtle</span><span class="token-value">#F9F8F7</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#E6E5E3"></div><span class="token-readable">Gray Emphasis</span><span class="token-css">--color-bg-gray-emphasis</span><span class="token-value">#E6E5E3</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(8,9,10,0.03)"></div><span class="token-readable">BG Soft (3%)</span><span class="token-css">--color-bg-soft</span><span class="token-value">rgba(8,9,10,.03)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F2F2F2"></div><span class="token-readable">Light Gray</span><span class="token-css">--color-light-gray</span><span class="token-value">#F2F2F2</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#DDDDDD"></div><span class="token-readable">Light Gray 2</span><span class="token-css">--color-light-gray-2</span><span class="token-value">#DDDDDD</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F7F7F7"></div><span class="token-readable">White 2</span><span class="token-css">--color-white-2</span><span class="token-value">#F7F7F7</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0C8C5E"></div><span class="token-readable">Brand</span><span class="token-css">--color-brand / --color-dark-cyan</span><span class="token-value">#0C8C5E</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Text Colors (Semantic)</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#08090A"></div><span class="token-readable">Text Main</span><span class="token-css">--color-text-main</span><span class="token-value">#08090A</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(8,9,10,0.8)"></div><span class="token-readable">Text Soft (80%)</span><span class="token-css">--color-text-soft</span><span class="token-value">rgba(8,9,10,.8)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(8,9,10,0.6)"></div><span class="token-readable">Text Sub (60%)</span><span class="token-css">--color-text-sub</span><span class="token-value">rgba(8,9,10,.6)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(8,9,10,0.5)"></div><span class="token-readable">Muted (50%)</span><span class="token-css">--color-muted</span><span class="token-value">rgba(8,9,10,.5)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(8,9,10,0.4)"></div><span class="token-readable">Tertiary (40%)</span><span class="token-css">--color-text-tertiary</span><span class="token-value">rgba(8,9,10,.4)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(8,9,10,0.07)"></div><span class="token-readable">Border Sub (7%)</span><span class="token-css">--color-border-sub</span><span class="token-value">rgba(8,9,10,.07)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(8,9,10,0.05)"></div><span class="token-readable">Border Surface (5%)</span><span class="token-css">--color-border-surface</span><span class="token-value">rgba(8,9,10,.05)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(8,9,10,0.15)"></div><span class="token-readable">Border Soft (15%)</span><span class="token-css">--color-border-soft</span><span class="token-value">rgba(8,9,10,.15)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#08090A"></div><span class="token-readable">Border Solid</span><span class="token-css">--color-border-solid</span><span class="token-value">#08090a</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#554b42"></div><span class="token-readable">Foreground Gray</span><span class="token-css">--color-foreground-gray-subtle</span><span class="token-value">#554b42</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Typography</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Inter (Primary)</span><span class="token-css">--font-family-2</span><span class="token-value">inter</span></div>
+          <div class="token-row"><span class="token-readable">Geist Mono</span><span class="token-css">--font-family-3</span><span class="token-value">Geist Mono</span></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">Medium</span><span class="token-css">--font-weight-medium</span><span class="token-value">500</span></div>
+          <div class="token-row"><span class="token-readable">Semibold</span><span class="token-css">--font-weight-semibold</span><span class="token-value">600</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">2xs → xs → sm → base</span><span class="token-css">10px → 12px → 13px → 14px</span><span class="token-value"></span></div>
+          <div class="token-row"><span class="token-readable">lg → xl → 2xl → 3xl</span><span class="token-css">15px → 16px → 18px → 20px</span><span class="token-value"></span></div>
+          <div class="token-row"><span class="token-readable">4xl → 5xl → 6xl (Display)</span><span class="token-css">24px → 40px → 45.32px</span><span class="token-value"></span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Display (tight)</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">−0.9064px</span></div>
+          <div class="token-row"><span class="token-readable">Heading (normal)</span><span class="token-css">--letter-spacing-normal</span><span class="token-value">−0.8px</span></div>
+          <div class="token-row"><span class="token-readable">Body (widest)</span><span class="token-css">--letter-spacing-widest</span><span class="token-value">−0.2px</span></div>
+          <div class="token-row"><span class="token-readable">Labels (positive)</span><span class="token-css">--letter-spacing-ls-6</span><span class="token-value">+0.6px</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Motion, Opacity & Layers</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Instant</span><span class="token-css">--duration-instant</span><span class="token-value">100ms · ×75</span></div>
+          <div class="token-row"><span class="token-readable">Fast</span><span class="token-css">--duration-fast</span><span class="token-value">150ms · ×60</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--duration-normal</span><span class="token-value">200ms · ×21</span></div>
+          <div class="token-row"><span class="token-readable">Slow</span><span class="token-css">--duration-slow</span><span class="token-value">250ms · ×37</span></div>
+          <div class="token-row"><span class="token-readable">Slower</span><span class="token-css">--duration-slower</span><span class="token-value">300ms · ×20</span></div>
+          <div class="token-row"><span class="token-readable">Easing functions</span><span class="token-css">—</span><span class="token-value">None defined</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:0.01"></div><span class="token-readable">Ghost (1%)</span><span class="token-css">--opacity-1</span><span class="token-value">0.01</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:0.1"></div><span class="token-readable">Near-invisible (10%)</span><span class="token-css">--opacity-10</span><span class="token-value">0.1</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:0.2"></div><span class="token-readable">Subtle (20%)</span><span class="token-css">--opacity-20</span><span class="token-value">0.2</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:0.5"></div><span class="token-readable">Dim (50%)</span><span class="token-css">--opacity-50</span><span class="token-value">0.5</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:0.7"></div><span class="token-readable">Muted (70%)</span><span class="token-css">--opacity-70</span><span class="token-value">0.7</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Deep Background</span><span class="token-css">--z-1</span><span class="token-value">−1000</span></div>
+          <div class="token-row"><span class="token-readable">Behind Content</span><span class="token-css">--z-2</span><span class="token-value">−1</span></div>
+          <div class="token-row"><span class="token-readable">Raised</span><span class="token-css">--z-3</span><span class="token-value">9</span></div>
+          <div class="token-row"><span class="token-readable">Sticky / Nav</span><span class="token-css">--z-4</span><span class="token-value">10</span></div>
+          <div class="token-row"><span class="token-readable">Dropdown / Popover</span><span class="token-css">--z-5</span><span class="token-value">20</span></div>
+          <div class="token-row"><span class="token-readable">Modal / Sheet</span><span class="token-css">--z-6</span><span class="token-value">50</span></div>
+          <div class="token-row"><span class="token-readable">Toast / Top Layer</span><span class="token-css">--z-7</span><span class="token-value">100</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Borders & Radius</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Hairline</span><span class="token-css">--border-width-hairline</span><span class="token-value">0.5px · ×8</span></div>
+          <div class="token-row"><span class="token-readable">Thin</span><span class="token-css">--border-width-thin</span><span class="token-value">1px · ×191</span></div>
+          <div class="token-row"><span class="token-readable">Base</span><span class="token-css">--border-width-base</span><span class="token-value">3px · ×3</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px"></div><span class="token-readable">sm</span><span class="token-css">--radius-sm</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:8px"></div><span class="token-readable">md</span><span class="token-css">--radius-md</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:14px"></div><span class="token-readable">lg</span><span class="token-css">--radius-lg</span><span class="token-value">14px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:16px"></div><span class="token-readable">xl</span><span class="token-css">--radius-xl</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:24px;height:16px"></div><span class="token-readable">full (24px)</span><span class="token-css">--radius-full</span><span class="token-value">24px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:50%;height:24px"></div><span class="token-readable">r7 (Circle)</span><span class="token-css">--radius-r7</span><span class="token-value">50%</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:9999px;height:12px"></div><span class="token-readable">r9 (Pill)</span><span class="token-css">--radius-r9</span><span class="token-value">9999px</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Brand & Accent Colors</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#0C8C5E"></div><span class="token-readable">Brand / Dark Cyan</span><span class="token-css">--color-dark-cyan</span><span class="token-value">#0C8C5E</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0C8B5D"></div><span class="token-readable">Dark Cyan 2</span><span class="token-css">--color-dark-cyan-2</span><span class="token-value">#0C8B5D</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#18E299"></div><span class="token-readable">Cyan Bright</span><span class="token-css">--color-cyan</span><span class="token-value">#18E299</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#00DC8D"></div><span class="token-readable">Cyan 3</span><span class="token-css">--color-cyan-3</span><span class="token-value">#00DC8D</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#20808D"></div><span class="token-readable">Dark Cyan 3</span><span class="token-css">--color-dark-cyan-3</span><span class="token-value">#20808D</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0070E0"></div><span class="token-readable">Blue</span><span class="token-css">--color-blue</span><span class="token-value">#0070E0</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#4B73FF"></div><span class="token-readable">Blue 3</span><span class="token-css">--color-blue-3</span><span class="token-value">#4B73FF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FF66F4"></div><span class="token-readable">Pink</span><span class="token-css">--color-pink</span><span class="token-value">#FF66F4</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FF7A59"></div><span class="token-readable">Red</span><span class="token-css">--color-red</span><span class="token-value">#FF7A59</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FBBC09"></div><span class="token-readable">Orange 2</span><span class="token-css">--color-orange-2</span><span class="token-value">#FBBC09</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:40px 0;color:var(--text-tertiary);font-size:var(--font-size-xs);border-top:var(--border-width-thin) solid var(--surface-border);line-height:var(--line-height-normal);">
+    Mintlify Design System · Light Theme · Generated 15/04/2026 · 36 color tokens · 36 type tokens · 33 spacing steps · 9 border radii · 3 border widths · 2 shadows · 5 durations · 0 easing functions · 7 z-index layers · 1 breakpoint · 7 opacity tokens
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+/* ============================================
+ * Design Tokens — Wise: The international account | Money without borders | Wise India
+ * Source: https://wise.com/in/?utm_source=google&matchtype=e&device=c&userlocation=1007749&keyword=wise&campaignid=21842513458&adgroupid=176102742944&utm_campaign=21842513458___176102742944&gad_source=1&gad_campaignid=21842513458&gbraid=0AAAAADqE2bAgJKdpCpHrFYEX9pDmbf-9u&gclid=CjwKCAjw14zPBhAuEiwAP3-Eb2O4H3OP4w_yQGMptEmpdbofRkdP-d772W1AClQEcntreflzXGmMzxoChm0QAvD_BwE
+ * Generated: 18/04/2026, 14:18:14
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #454745; /* hsl(120, 1%, 27%) · text */
+  --color-dark-green: #163300; /* hsl(94, 100%, 10%) · background */
+  --color-dark-gray-2: #0E0F0C; /* hsl(80, 11%, 5%) · text */
+  --color-dark-green-2: rgba(22, 51, 0, 0.08); /* hsl(89, 100%, 10%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-green: #9FE870; /* hsl(97, 72%, 67%) · background */
+  --color-dark-blue: #0B4C72; /* hsl(202, 82%, 25%) · text */
+  --color-light-gray: #E8EBE6; /* hsl(96, 11%, 91%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black-2: rgba(14, 15, 12, 0.12) rgb(69, 71, 69) rgb(69, 71, 69); /* hsl(60, 33%, 5%) · background */
+  --color-dark-green-3: rgba(22, 51, 0, 0.2); /* hsl(96, 100%, 10%) · background */
+  --color-mid-gray: #6A6C6A; /* hsl(120, 1%, 42%) · text */
+  --color-dark-green-4: rgba(22, 51, 0, 0.12); /* hsl(89, 100%, 10%) · border */
+  --color-light-cyan: #A0E1E1; /* hsl(180, 52%, 75%) · background */
+  --color-white-2: #ECF9F9; /* hsl(180, 52%, 95%) · background */
+  --color-mid-gray-2: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-mid-gray-3: #868685; /* hsl(60, 0%, 52%) · border */
+  --color-light-gray-2: #ECEFEB; /* hsl(105, 11%, 93%) · gradient */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 14px;
+  --font-size-xs: 16px;
+  --font-size-sm: 17.2368px;
+  --font-size-base: 18px;
+  --font-size-lg: 19.2368px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 22.4737px;
+  --font-size-3xl: 40px;
+  --font-size-4xl: 40.0921px;
+  --font-size-5xl: 50px;
+  --font-size-6xl: 52.1841px;
+  --font-size-72px: 72.2632px;
+  --font-size-81px: 80.7369px;
+  --font-family-base: Inter;
+  --font-family-2: Wise Sans;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-black: 900;
+  --line-height-tight: 18.4px;
+  --line-height-snug: 20px;
+  --line-height-normal: 21px;
+  --line-height-relaxed: 21.7px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 26px;
+  --line-height-lh-7: 28px;
+  --line-height-lh-8: 32px;
+  --line-height-lh-9: 34px;
+  --line-height-lh-10: 44.3565px;
+  --line-height-lh-11: 57px;
+  --line-height-lh-12: 61.4237px;
+  --line-height-lh-13: 68.6264px;
+  --line-height-lh-14: 75px;
+  --letter-spacing-tight: -1.20276px;
+  --letter-spacing-normal: -0.337106px;
+  --letter-spacing-wide: -0.22px;
+  --letter-spacing-wider: -0.176px;
+  --letter-spacing-widest: -0.154px;
+  --letter-spacing-ls-6: -0.108px;
+  --letter-spacing-ls-7: -0.084px;
+  --letter-spacing-ls-8: 0.08px;
+  --letter-spacing-ls-9: 0.096184px;
+  --letter-spacing-ls-10: 0.172368px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 3px;
+  --space-3: 4px;
+  --space-4: 4.49553px;
+  --space-5: 5px;
+  --space-6: 6.4px;
+  --space-8: 8px;
+  --space-10: 8.99102px;
+  --space-12: 11px;
+  --space-16: 12px;
+  --space-20: 13.4866px;
+  --space-24: 107.892px;
+  --space-32: 17.9821px;
+  --space-40: 19px;
+  --space-48: 22px;
+  --space-64: 24px;
+  --space-80: 26.9731px;
+  --space-96: 32px;
+  --space-128: 35.9642px;
+  --space-160: 40px;
+  --space-192: 48px;
+  --space-256: 53.9461px;
+  --space-23: 80px;
+  --space-25: 331.969px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 2px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 10px 10px 0px 0px;
+  --radius-2xl: 11.2388px;
+  --radius-full: 16px;
+  --radius-r7: 17.9821px;
+  --radius-r8: 26.9731px;
+  --radius-r9: 32px 32px 0px 0px;
+  --radius-r10: 35.9642px;
+  --radius-r11: 50%;
+  --radius-r12: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(22, 51, 0, 0.12) 0px 0px 0px 1px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.35s;
+  --duration-slower: 1s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 1040;
+  --z-4: 1049;
+  --z-5: 1050;
+  --z-6: 1060;
+  --z-7: 1070;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 332px;
+  --breakpoint-md: 399px;
+  --breakpoint-lg: 479.98px;
+  --breakpoint-xl: 480px;
+  --breakpoint-2xl: 481px;
+  --breakpoint-3xl: 566px;
+  --breakpoint-bp-8: 575px;
+  --breakpoint-bp-9: 575.98px;
+  --breakpoint-bp-10: 576px;
+  --breakpoint-bp-11: 592px;
+  --breakpoint-bp-12: 596px;
+  --breakpoint-bp-13: 767px;
+  --breakpoint-bp-14: 767.98px;
+  --breakpoint-bp-15: 768px;
+  --breakpoint-bp-16: 770px;
+  --breakpoint-bp-17: 991px;
+  --breakpoint-bp-18: 991.98px;
+  --breakpoint-bp-19: 992px;
+  --breakpoint-bp-20: 1199px;
+  --breakpoint-bp-21: 1199.98px;
+  --breakpoint-bp-22: 1200px;
+  --breakpoint-bp-23: 1366px;
+  --breakpoint-bp-24: 1439.98px;
+  --breakpoint-bp-25: 1440px;
+  --breakpoint-bp-26: 1601px;
+  --breakpoint-bp-27: 1640px;
+  --breakpoint-bp-28: 1920px;
+
+  /* ── Opacity ── */
+  --opacity-6: 0.06;
+  --opacity-45: 0.45;
+  --opacity-94: 0.94;
+}

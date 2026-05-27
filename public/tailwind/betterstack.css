@@ -1,0 +1,152 @@
+/* ============================================
+ * Design Tokens — Error tracking by Better Stack
+ * Source: https://betterstack.com/error-tracking?utm_medium=c&utm_campaign=adwords23216280213&utm_source=adwords&utm_content=785453681038&utm_term=sentry&gad_source=1&gad_campaignid=23216280213&gbraid=0AAAAAoQQaXqxHfUF3rrcPEXeh0Bt6X0eV&gclid=CjwKCAjw14zPBhAuEiwAP3-EbxbloEEGeUvq7gZ0cjfkfbaplvl7kO09aLyCsM1oGmwiAoAxF_fXZRoCZjsQAvD_BwE
+ * Generated: 18/04/2026, 13:48:49
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-blue: #939DB8; /* hsl(224, 21%, 65%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · fill */
+  --color-light-blue: #C9D3EE; /* hsl(224, 52%, 86%) · text */
+  --color-dark-blue: #3B4254; /* hsl(223, 17%, 28%) · text */
+  --color-blue-2: #646E87; /* hsl(223, 15%, 46%) · text */
+  --color-light-blue-2: #7C87F7; /* hsl(235, 88%, 73%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · text */
+  --color-blue-3: #656A7B; /* hsl(226, 10%, 44%) · text */
+  --color-dark-gray: #0F101A; /* hsl(235, 27%, 8%) · background */
+  --color-blue-4: #6C769D; /* hsl(228, 20%, 52%) · background */
+  --color-blue-5: #737DA0; /* hsl(227, 19%, 54%) · border */
+  --color-dark-gray-2: #0B0C14; /* hsl(233, 29%, 6%) · background */
+  --color-dark-gray-3: #0F1019; /* hsl(234, 25%, 8%) · text */
+  --color-blue-6: rgba(147, 157, 184, 0.1); /* hsl(225, 22%, 65%) · border */
+  --color-blue-7: #5B63D3; /* hsl(236, 58%, 59%) · gradient */
+  --color-dark-gray-4: #181925; /* hsl(235, 21%, 12%) · background */
+  --color-dark-blue-2: #1F2433; /* hsl(225, 24%, 16%) · background */
+  --color-blue-8: rgba(114, 125, 161, 0.07); /* hsl(219, 18%, 53%) · border */
+  --color-blue-9: #919BB9; /* hsl(225, 22%, 65%) · border */
+  --color-dark-blue-3: rgba(47, 53, 71, 0.5); /* hsl(225, 20%, 24%) · background */
+  --color-blue-10: #626C80; /* hsl(220, 13%, 44%) · border */
+  --color-blue-11: rgba(147, 157, 184, 0.12); /* hsl(225, 18%, 65%) · border */
+  --color-dark-blue-4: #171926; /* hsl(232, 25%, 12%) · background */
+  --color-light-blue-3: #98A4F7; /* hsl(232, 86%, 78%) · gradient */
+  --color-dark-blue-5: #101828; /* hsl(220, 43%, 11%) · background */
+  --color-blue-12: #7280A1; /* hsl(222, 20%, 54%) · border */
+  --color-dark-gray-5: rgba(23, 24, 36, 0.5); /* hsl(240, 20%, 12%) · background */
+  --color-dark-blue-6: rgba(35, 40, 56, 0.3); /* hsl(228, 22%, 18%) · border */
+  --color-dark-blue-7: rgba(41, 47, 64, 0.2); /* hsl(228, 24%, 21%) · gradient */
+  --color-dark-blue-8: rgba(41, 47, 64, 0.5); /* hsl(224, 21%, 21%) · gradient */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 10.4px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-lg: 14px;
+  --font-size-xl: 16px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 28px;
+  --font-size-5xl: 36px;
+  --font-size-6xl: 40px;
+  --font-size-66px: 66px;
+  --font-family-base: Roobert;
+  --font-family-2: Helvetica Now Text;
+  --font-family-3: Helvetica Now Display;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 13px;
+  --line-height-snug: 13.8667px;
+  --line-height-normal: 14.5px;
+  --line-height-relaxed: 17.1429px;
+  --line-height-loose: 18px;
+  --line-height-lh-6: 18.85px;
+  --line-height-lh-7: 20.8px;
+  --line-height-lh-8: 21.7px;
+  --line-height-lh-9: 23.2px;
+  --line-height-lh-10: 24px;
+  --line-height-lh-11: 24.8px;
+  --line-height-lh-12: 25.6px;
+  --line-height-lh-13: 28px;
+  --line-height-lh-14: 32.76px;
+  --line-height-lh-15: 38.88px;
+  --line-height-lh-16: 42.12px;
+  --line-height-lh-17: 43.2px;
+  --line-height-lh-18: 66px;
+  --letter-spacing-tight: -0.4px;
+  --letter-spacing-normal: -0.36px;
+  --letter-spacing-wide: -0.24px;
+  --letter-spacing-wider: -0.16px;
+  --letter-spacing-widest: -0.14px;
+  --letter-spacing-ls-6: -0.12px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 11.5px;
+  --space-8: 12px;
+  --space-10: 14px;
+  --space-12: 16px;
+  --space-16: 18px;
+  --space-20: 20px;
+  --space-24: 80px;
+  --space-32: 386.703px;
+  --space-40: 30px;
+  --space-48: 32px;
+  --space-64: 36px;
+  --space-80: 40px;
+  --space-96: 44px;
+  --space-128: 48px;
+  --space-160: 56px;
+  --space-192: 57.5px;
+  --space-256: 64px;
+  --space-23: 66.5px;
+  --space-25: 96px;
+  --space-26: 100px;
+  --space-27: 120px;
+  --space-28: 128px;
+  --space-29: 130px;
+  --space-30: 144px;
+  --space-31: 296.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --radius-sm: 0px 0px 16px 16px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-2xl: 10px;
+  --radius-full: 12px;
+  --radius-r7: 16px 16px 0px 0px;
+  --radius-r8: 16px;
+  --radius-r9: 26px;
+  --radius-r10: 43px;
+  --radius-r11: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(255, 255, 255, 0.25) 0px 1px 3px 0px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.05s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 1s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -10;
+  --z-2: 10;
+  --z-3: 20;
+  --z-4: 40;
+  --z-5: 99999999;
+  --z-6: 100000000;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+}

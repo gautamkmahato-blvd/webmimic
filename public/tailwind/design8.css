@@ -1,0 +1,144 @@
+/* ============================================
+ * Design Tokens — Home \ Anthropic
+ * Source: https://www.anthropic.com/
+ * Generated: 05/05/2026, 21:28:58
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #141413; /* hsl(60, 3%, 8%) · background */
+  --color-white: #FAF9F5; /* hsl(48, 33%, 97%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-mid-gray: #B0AEA5; /* hsl(49, 7%, 67%) · text */
+  --color-mid-gray-2: #87867F; /* hsl(53, 3%, 51%) · background */
+  --color-dark-gray-2: #141412; /* hsl(60, 5%, 7%) · text */
+  --color-light-gray: #F0EEE6; /* hsl(48, 25%, 92%) · background */
+  --color-dark-gray-3: rgba(20, 20, 19, 0.1) rgb(20, 20, 19) rgb(20, 20, 19); /* hsl(0, 0%, 8%) · border */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · text */
+  --color-dark-gray-4: #181818; /* hsl(0, 0%, 9%) · fill */
+  --color-light-gray-2: #E8E6DC; /* hsl(50, 21%, 89%) · text */
+  --color-light-orange: #E3DACC; /* hsl(37, 29%, 85%) · background */
+  --color-red: #D97757; /* hsl(15, 63%, 60%) · background */
+  --color-dark-gray-5: #3D3D3A; /* hsl(60, 3%, 23%) · background */
+  --color-orange: #C6613F; /* hsl(15, 54%, 51%) · background */
+  --color-mid-gray-3: #A1A0A0; /* hsl(0, 1%, 63%) · text */
+  --color-white-3: #F9F9F7; /* hsl(60, 14%, 97%) · fill */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 15px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 54.8506px;
+  --font-size-4xl: 80.751px;
+  --font-family-base: sans-serif;
+  --font-family-2: Anthropic Serif;
+  --font-family-3: Anthropic Sans;
+  --font-family-4: Anthropic Mono;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 15px;
+  --line-height-snug: 16px;
+  --line-height-normal: 16.8px;
+  --line-height-relaxed: 18.2px;
+  --line-height-loose: 20px;
+  --line-height-lh-6: 21px;
+  --line-height-lh-7: 22.4px;
+  --line-height-lh-8: 25.2px;
+  --line-height-lh-9: 26px;
+  --line-height-lh-10: 28px;
+  --line-height-lh-11: 31.2px;
+  --line-height-lh-12: 33.6px;
+  --line-height-lh-13: 60.3357px;
+  --line-height-lh-14: 88.8261px;
+  --letter-spacing-tight: -0.24px;
+  --letter-spacing-normal: -0.08px;
+  --letter-spacing-wide: -0.0375px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 0.203125px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 5px;
+  --space-5: 8px;
+  --space-6: 12px;
+  --space-8: 12.3984px;
+  --space-10: 16px;
+  --space-12: 21px;
+  --space-16: 22.4px;
+  --space-20: 24px;
+  --space-24: 75.8906px;
+  --space-32: 30.4751px;
+  --space-40: 32px;
+  --space-48: 43.4253px;
+  --space-64: 52.8438px;
+  --space-80: 52.8516px;
+  --space-96: 55px;
+  --space-128: 58.5547px;
+  --space-160: 58.5625px;
+  --space-192: 61.5px;
+  --space-256: 61.7031px;
+  --space-23: 67.8008px;
+  --space-25: 78.4219px;
+  --space-26: 80.751px;
+  --space-27: 99.5547px;
+  --space-28: 141.844px;
+  --space-29: 149.156px;
+  --space-30: 165.195px;
+  --space-31: 214.484px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 0px 0px 8px 8px;
+  --radius-md: 0px 8px 8px 0px;
+  --radius-lg: 8px 0px 0px 8px;
+  --radius-xl: 8px;
+  --radius-2xl: 12px;
+  --radius-full: 16px;
+  --radius-r7: 24px;
+  --radius-r8: 1600px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.01) 0px 2px 2px 0px, rgba(0, 0, 0, 0.02) 0px 4px 4px 0px, rgba(0, 0, 0, 0.04) 0px 16px 24px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.111817s;
+  --duration-normal: 0.114977s;
+  --duration-slow: 0.145867s;
+  --duration-slower: 0.148286s;
+  --duration-duration-6: 0.2s;
+  --duration-duration-7: 0.232643s;
+  --duration-duration-8: 0.279883s;
+  --duration-duration-9: 0.3s;
+  --duration-duration-10: 0.310642s;
+  --duration-duration-11: 0.328988s;
+  --duration-duration-12: 0.395088s;
+  --duration-duration-13: 0.4s;
+  --duration-duration-14: 0.476454s;
+  --duration-duration-15: 0.8s;
+  --easing-ease-out: ease-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 3;
+  --z-4: 101;
+  --z-5: 1000;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 479px;
+  --breakpoint-sm: 501px;
+  --breakpoint-md: 767px;
+  --breakpoint-lg: 768px;
+  --breakpoint-xl: 991px;
+
+  /* ── Opacity ── */
+  --opacity-50: 0.5;
+}

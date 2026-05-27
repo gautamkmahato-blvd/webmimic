@@ -1,0 +1,171 @@
+/* ============================================
+ * Design Tokens — Titan | A Dedicated Financial Advisor for Your Wealth
+ * Source: https://www.titan.com/
+ * Generated: 05/05/2026, 21:30:47
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #111111; /* hsl(0, 0%, 7%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-mid-gray: #8A8A87; /* hsl(60, 1%, 54%) · text */
+  --color-dark-gray-2: #615E5B; /* hsl(30, 3%, 37%) · text */
+  --color-light-gray: #E9EAEB; /* hsl(210, 5%, 92%) · border */
+  --color-light-gray-2: #F3EFEB; /* hsl(30, 25%, 94%) · background */
+  --color-light-gray-3: rgba(216, 211, 204, 0.1) rgb(17, 17, 17) rgb(17, 17, 17); /* hsl(60, 11%, 83%) · border */
+  --color-dark-gray-3: rgba(17, 17, 17, 0.5); /* hsl(0, 0%, 7%) · background */
+  --color-light-gray-4: #D9D9D9; /* hsl(0, 0%, 85%) · other */
+  --color-light-gray-5: #D8D3CC; /* hsl(35, 13%, 82%) · background */
+  --color-orange: #FF9900; /* hsl(36, 100%, 50%) · gradient */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 12.5889px;
+  --font-size-lg: 13px;
+  --font-size-xl: 13.8478px;
+  --font-size-2xl: 14px;
+  --font-size-3xl: 15.7361px;
+  --font-size-4xl: 16px;
+  --font-size-5xl: 18px;
+  --font-size-6xl: 20px;
+  --font-size-21px: 20.7717px;
+  --font-size-22px: 22.0306px;
+  --font-size-25px: 25.1778px;
+  --font-size-31px: 31.4722px;
+  --font-size-38px: 37.7667px;
+  --font-size-47px: 47.2083px;
+  --font-family-base: sans-serif;
+  --font-family-2: Geist;
+  --font-family-3: Geist Mono;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-tight: 11px;
+  --line-height-snug: 13px;
+  --line-height-normal: 14px;
+  --line-height-relaxed: 15px;
+  --line-height-loose: 15.7361px;
+  --line-height-lh-6: 17.6px;
+  --line-height-lh-7: 19.2px;
+  --line-height-lh-8: 20px;
+  --line-height-lh-9: 20.8px;
+  --line-height-lh-10: 23.4px;
+  --line-height-lh-11: 24.2336px;
+  --line-height-lh-12: 27.6956px;
+  --line-height-lh-13: 32.7311px;
+  --line-height-lh-14: 34.6194px;
+  --line-height-lh-15: 41.5433px;
+  --line-height-lh-16: 51.9292px;
+  --letter-spacing-tight: -1.41625px;
+  --letter-spacing-normal: -0.944167px;
+  --letter-spacing-wide: -0.755333px;
+  --letter-spacing-wider: -0.48px;
+  --letter-spacing-widest: -0.377667px;
+  --letter-spacing-ls-6: -0.220306px;
+  --letter-spacing-ls-7: 0.28px;
+  --letter-spacing-ls-8: 0.3px;
+  --letter-spacing-ls-9: 0.33px;
+  --letter-spacing-ls-10: 0.39px;
+  --letter-spacing-ls-11: 0.472083px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 3.93403px;
+  --space-2: 4px;
+  --space-3: 4.72083px;
+  --space-4: 5px;
+  --space-5: 6px;
+  --space-6: 7.86806px;
+  --space-8: 8px;
+  --space-10: 9.44167px;
+  --space-12: 10px;
+  --space-16: 11px;
+  --space-20: 11.0153px;
+  --space-24: 26.7514px;
+  --space-32: 50.3556px;
+  --space-40: 80.2542px;
+  --space-48: 15.7361px;
+  --space-64: 16px;
+  --space-80: 17.3097px;
+  --space-96: 18px;
+  --space-128: 18.8833px;
+  --space-160: 20px;
+  --space-192: 22.0306px;
+  --space-256: 24px;
+  --space-23: 25.1778px;
+  --space-25: 28.325px;
+  --space-26: 31.4722px;
+  --space-27: 37.7667px;
+  --space-28: 40px;
+  --space-29: 40.9139px;
+  --space-30: 44.0611px;
+  --space-31: 47.2083px;
+  --space-33: 51.7578px;
+  --space-34: 56.65px;
+  --space-35: 62.9444px;
+  --space-36: 66.0917px;
+  --space-37: 67.6653px;
+  --space-38: 75.5333px;
+  --space-39: 80px;
+  --space-41: 81.8278px;
+  --space-42: 88px;
+  --space-43: 94.4167px;
+  --space-44: 99.1375px;
+  --space-45: 103.858px;
+  --space-46: 340.367px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 0px 0px 4px;
+  --radius-md: 7.86806px;
+  --radius-lg: 15.7361px;
+  --radius-xl: 23.6042px;
+  --radius-2xl: 25.1778px;
+  --radius-full: 50%;
+  --radius-r7: 125.889px;
+  --radius-r8: 140px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.2s;
+  --duration-fast: 0.3s;
+  --duration-normal: 0.4s;
+  --duration-slow: 0.6s;
+  --duration-slower: 0.8s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1000;
+  --z-2: -1;
+  --z-3: 1;
+  --z-4: 5;
+  --z-5: 10;
+  --z-6: 100;
+  --z-7: 200;
+  --z-8: 9999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 375px;
+  --breakpoint-sm: 479px;
+  --breakpoint-md: 767px;
+  --breakpoint-lg: 768px;
+  --breakpoint-xl: 800px;
+  --breakpoint-2xl: 991px;
+  --breakpoint-3xl: 992px;
+  --breakpoint-bp-8: 1080px;
+  --breakpoint-bp-9: 1100px;
+  --breakpoint-bp-10: 1180px;
+  --breakpoint-bp-11: 1200px;
+  --breakpoint-bp-12: 1300px;
+
+  /* ── Opacity ── */
+  --opacity-10: 0.1;
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+}

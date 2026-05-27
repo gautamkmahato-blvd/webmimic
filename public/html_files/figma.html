@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Figma Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* ── Figma Colors ── */
+  --color-black: #000000;
+  --color-black-2: #000102;
+  --color-white: #F5F5F5;
+  --color-white-2: #FFFFFF;
+  --color-white-3: #F2F9FF;
+  --color-white-4: #F4F3FE;
+  --color-white-5: #FAFAFA;
+  --color-light-gray: #E6E6E6;
+  --color-light-gray-2: #EEEEEE;
+  --color-light-gray-3: #F2F2F2;
+  --color-dark-gray: #2C2C2C;
+  --color-dark-gray-2: #1E1E1E;
+  --color-blue: #0000EE;
+  --color-blue-2: #0D99FF;
+  --color-blue-3: #007BE5;
+  --color-blue-4: #4D49FC;
+  --color-light-blue: #E5F4FF;
+  --color-purple: #9747FF;
+  --color-orange: #FF5C16;
+  --color-pink: #FF24BD;
+
+  /* ── Internal ramp reference colors ── */
+  --ramp-grey-800: #2c2c2c;
+  --ramp-grey-900: #1e1e1e;
+  --ramp-grey-100: #f5f5f5;
+  --ramp-grey-200: #e6e6e6;
+
+  /* ── Figma Typography ── */
+  --font-family-base: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-family-display: 'Inter', ui-sans-serif, sans-serif;
+  --font-family-mono: 'Roboto Mono', 'Monaco', 'Courier New', monospace;
+  --font-size-2xs: 8px;
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-base: 16px;
+  --font-weight-regular: 400;
+  --font-weight-w450: 450;
+  --font-weight-medium: 500;
+  --font-weight-w550: 550;
+  --line-height-tight: 16px;
+  --line-height-snug: 22px;
+  --line-height-normal: 24px;
+  --letter-spacing-tight: -0.032px;
+  --letter-spacing-normal: -0.003px;
+  --letter-spacing-wide: 0.005px;
+  --letter-spacing-wider: 0.05504px;
+
+  /* ── Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-8: 16px;
+  --space-10: 24px;
+  --space-12: 28px;
+  --space-16: 32px;
+  --space-20: 34px;
+  --space-24: 138.188px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 4px;
+  --radius-sm: 0px 0px 13px 13px;
+  --radius-md: 2px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+  --radius-2xl: 4.5px;
+  --radius-full: 5px;
+  --radius-r7: 6px;
+  --radius-r8: 8px;
+  --radius-r9: 13px;
+  --radius-r10: 13px 13px 0px 0px;
+  --radius-r11: 100%;
+  --radius-r12: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: rgb(230,230,230) 0px 0px 0px 1px inset;
+  --shadow-md: rgba(0,0,0,0.15) 0px 1px 3px 0px, rgba(0,0,0,0.3) 0px 0px 0.5px 0px;
+  --shadow-lg: rgb(230,230,230) 0px 0px 0px 1px;
+  --shadow-xl: rgba(0,0,0,0.15) 0px 2px 5px 0px, rgba(0,0,0,0.12) 0px 10px 16px 0px, rgba(0,0,0,0.12) 0px 0px 0.5px 0px;
+  --shadow-5: rgba(255,255,255,0.4) 0px 0px 0px 1px inset;
+  --shadow-6: rgba(0,0,0,0.18) 0px 0px 0.5px 0px, rgba(0,0,0,0.1) 0px 3px 8px 0px, rgba(0,0,0,0.1) 0px 1px 3px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.4s;
+  --duration-slower: 0.5s;
+  --easing-ease-in-out: ease-in-out;
+  --easing-ease-out: ease-out;
+
+  /* ── Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 4;
+  --z-6: 6;
+  --z-7: 8;
+  --z-8: 11;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 645px;
+  --breakpoint-sm: 832px;
+  --breakpoint-md: 849px;
+  --breakpoint-lg: 1000px;
+  --breakpoint-xl: 1023px;
+  --breakpoint-2xl: 1440px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-59: 0.59;
+  --opacity-60: 0.6;
+  --opacity-89: 0.89;
+  --opacity-92: 0.92;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:var(--font-family-base);
+  background:var(--color-black);
+  color:var(--color-white);
+  font-size:13px;
+  line-height:1.5;
+  font-weight:var(--font-weight-w450);
+  -webkit-font-smoothing:antialiased;
+}
+.page{max-width:1200px;margin:0 auto;padding:64px 48px;}
+
+/* ── HEADER ── */
+.top-bar{border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);margin-bottom:32px;padding-bottom:20px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.header-left{display:flex;align-items:center;gap:16px;}
+.logo{width:38px;height:38px;background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r8);display:flex;align-items:center;justify-content:center;}
+.system-title{font-size:16px;font-weight:var(--font-weight-w550);color:var(--color-white-2);letter-spacing:var(--letter-spacing-tight);}
+.system-meta{font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px;letter-spacing:var(--letter-spacing-wide);}
+.hbadge{font-size:11px;font-weight:var(--font-weight-w550);background:var(--color-dark-gray-2);color:rgba(255,255,255,0.45);padding:2px 10px;border-radius:var(--radius-r12);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-hairline) solid var(--color-dark-gray);background:var(--color-dark-gray-2);color:var(--color-light-gray-3);box-shadow:0 1px 2px rgba(0,0,0,0.28);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-blue);color:var(--color-blue);box-shadow:0 4px 14px rgba(0,0,0,0.38);transform:translateY(-1px);}
+
+/* ── SECTION ── */
+.section{margin-bottom:64px;}
+.section-title{font-size:20px;font-weight:var(--font-weight-w550);color:var(--color-white-2);letter-spacing:var(--letter-spacing-tight);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+
+/* ── COLORS ── */
+.color-group{margin-bottom:20px;}
+.color-group-label{font-size:10px;font-weight:var(--font-weight-w550);letter-spacing:0.06px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:8px;}
+.swatch-grid{display:grid;gap:6px;}
+.swatch-item{display:flex;flex-direction:column;gap:4px;}
+.swatch-box{height:60px;border-radius:var(--radius-lg);border:var(--border-width-hairline) solid rgba(255,255,255,0.06);}
+.swatch-name{font-size:10px;font-weight:var(--font-weight-w550);color:rgba(255,255,255,0.7);letter-spacing:var(--letter-spacing-wide);}
+.swatch-hex{font-size:10px;color:rgba(255,255,255,0.35);font-family:var(--font-family-mono);}
+
+/* ── TYPOGRAPHY ── */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+.font-card{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r9);padding:20px;box-shadow:var(--shadow-md);}
+.font-token{font-size:10px;font-family:var(--font-family-mono);color:var(--color-blue-2);font-weight:var(--font-weight-w550);margin-bottom:6px;letter-spacing:var(--letter-spacing-wider);}
+.font-display{font-size:32px;color:var(--color-white-2);line-height:1.1;margin-bottom:6px;font-weight:var(--font-weight-w550);letter-spacing:var(--letter-spacing-tight);}
+.font-sample{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.5;}
+.fw-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.fw-chip{font-size:10px;padding:2px 10px;background:var(--color-dark-gray);border-radius:var(--radius-xl);color:rgba(255,255,255,0.6);border:var(--border-width-hairline) solid rgba(255,255,255,0.08);}
+
+.type-scale{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r9);overflow:hidden;}
+.type-row{display:flex;flex-direction:column;padding:12px 20px;border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--color-white-2);margin-bottom:2px;}
+.type-meta{font-size:10px;color:rgba(255,255,255,0.3);font-family:var(--font-family-mono);letter-spacing:var(--letter-spacing-wider);}
+
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.lh-item{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r7);padding:8px;display:flex;flex-direction:column;gap:4px;}
+.lh-bar-wrap{background:var(--color-dark-gray);border-radius:1px;overflow:hidden;}
+.lh-bar{background:linear-gradient(to bottom,var(--color-blue-3),var(--color-blue-2));width:100%;}
+.lh-token{font-size:10px;font-family:var(--font-family-mono);color:var(--color-blue-2);letter-spacing:var(--letter-spacing-wider);}
+.lh-val{font-size:10px;color:rgba(255,255,255,0.35);}
+
+.ls-row{display:flex;gap:8px;flex-wrap:wrap;}
+.ls-item{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r7);padding:12px 20px;flex:1;}
+.ls-sample{font-size:20px;color:var(--color-white-2);font-weight:var(--font-weight-w550);margin-bottom:4px;letter-spacing:var(--letter-spacing-tight);}
+.ls-token{font-size:10px;font-family:var(--font-family-mono);color:var(--color-blue-2);letter-spacing:var(--letter-spacing-wider);}
+.ls-desc{font-size:10px;color:rgba(255,255,255,0.35);}
+
+/* ── SPACING ── */
+.token-wrap{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r9);padding:20px;box-shadow:var(--shadow-md);}
+.tw-title{font-size:16px;font-weight:var(--font-weight-w550);color:var(--color-white-2);margin-bottom:2px;letter-spacing:var(--letter-spacing-tight);}
+.tw-sub{font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:20px;letter-spacing:var(--letter-spacing-wide);}
+.spacing-chart{display:flex;align-items:flex-end;gap:3px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;}
+.sp-bar{background:linear-gradient(to top,var(--color-blue-3),var(--color-blue-2));border-radius:1px 1px 0 0;width:100%;}
+.sp-lbl{font-size:8px;color:rgba(255,255,255,0.35);text-align:center;font-family:var(--font-family-mono);}
+
+/* ── BORDERS ── */
+.border-card{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r9);padding:20px;margin-bottom:16px;box-shadow:var(--shadow-md);}
+.bc-title{font-size:16px;font-weight:var(--font-weight-w550);color:var(--color-white-2);margin-bottom:12px;letter-spacing:var(--letter-spacing-tight);}
+.radius-row{display:flex;gap:12px;flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,var(--color-blue-3),var(--color-blue-2));border:var(--border-width-hairline) solid rgba(255,255,255,0.06);}
+.radius-lbl{font-size:10px;font-weight:var(--font-weight-w550);color:rgba(255,255,255,0.6);text-align:center;font-family:var(--font-family-mono);}
+.radius-val{font-size:10px;color:rgba(255,255,255,0.35);text-align:center;}
+.bw-demo{display:flex;flex-direction:column;gap:10px;}
+.bw-item{display:flex;align-items:center;gap:12px;}
+.bw-line{flex:1;background:rgba(255,255,255,0.6);}
+.bw-token{font-size:10px;font-family:var(--font-family-mono);color:var(--color-blue-2);white-space:nowrap;letter-spacing:var(--letter-spacing-wider);}
+.bw-val{font-size:10px;color:rgba(255,255,255,0.35);font-family:var(--font-family-mono);white-space:nowrap;}
+
+/* ── SHADOWS ── */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sh-item{display:flex;flex-direction:column;gap:8px;}
+.sh-box{height:88px;background:var(--color-dark-gray-2);border-radius:var(--radius-r7);}
+.sh-token{font-size:13px;font-weight:var(--font-weight-w550);color:rgba(255,255,255,0.6);font-family:var(--font-family-mono);}
+.sh-usage{font-size:10px;color:rgba(255,255,255,0.35);}
+.sh-desc{font-size:10px;color:rgba(255,255,255,0.3);line-height:1.5;margin-top:2px;}
+
+/* ── Z-INDEX ── */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:8px 12px;text-align:left;font-size:13px;border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);line-height:1.5;}
+.z-table th{font-size:10px;font-weight:var(--font-weight-w550);text-transform:uppercase;letter-spacing:0.06px;color:rgba(255,255,255,0.35);background:var(--color-dark-gray-2);}
+.z-table td:first-child{font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:11px;letter-spacing:var(--letter-spacing-wider);}
+.z-table td:nth-child(2){font-family:var(--font-family-mono);color:var(--color-white-2);font-weight:var(--font-weight-w550);}
+.z-table td:nth-child(3){color:rgba(255,255,255,0.45);}
+.z-table tr:last-child td{border-bottom:none;}
+.z-table tr:hover td{background:rgba(255,255,255,0.03);}
+
+/* ── BREAKPOINTS ── */
+.bp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.bp-card{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r9);padding:20px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow-md);}
+.bp-icon{font-size:20px;line-height:1;margin-bottom:4px;}
+.bp-token{font-size:10px;font-family:var(--font-family-mono);color:var(--color-blue-2);letter-spacing:var(--letter-spacing-wider);}
+.bp-val{font-size:22px;font-weight:var(--font-weight-w550);color:var(--color-white-2);line-height:1;letter-spacing:var(--letter-spacing-tight);}
+.bp-desc{font-size:10px;color:rgba(255,255,255,0.35);margin-top:2px;}
+
+/* ── OPACITY ── */
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.op-item{display:flex;flex-direction:column;gap:4px;}
+.op-box{height:60px;border-radius:var(--radius-xl);background:var(--color-blue-2);border:var(--border-width-hairline) solid rgba(255,255,255,0.06);}
+.op-token{font-size:10px;font-family:var(--font-family-mono);color:var(--color-blue-2);letter-spacing:var(--letter-spacing-wider);}
+.op-val{font-size:10px;color:rgba(255,255,255,0.35);}
+
+/* ── ACCESSIBILITY ── */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:8px 12px;text-align:left;font-size:11px;border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);line-height:1.5;}
+.a11y-table th{font-size:10px;font-weight:var(--font-weight-w550);text-transform:uppercase;letter-spacing:0.06px;color:rgba(255,255,255,0.35);background:var(--color-dark-gray-2);}
+.a11y-table td:first-child,.a11y-table td:nth-child(2){font-family:var(--font-family-mono);font-size:10px;letter-spacing:var(--letter-spacing-wider);}
+.a11y-table td:nth-child(2){color:rgba(255,255,255,0.35);}
+.a11y-table td:nth-child(3){color:rgba(255,255,255,0.6);font-family:var(--font-family-mono);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.a11y-table tr:hover td{background:rgba(255,255,255,0.03);}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-w550);padding:2px 7px;border-radius:var(--radius-r12);}
+.wcag-aaa{background:rgba(13,153,255,0.1);color:var(--color-blue-2);border:var(--border-width-hairline) solid rgba(13,153,255,0.3);}
+.wcag-aa{background:rgba(13,153,255,0.07);color:rgba(128,202,255,0.9);border:var(--border-width-hairline) solid rgba(13,153,255,0.2);}
+.wcag-aal{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.5);border:var(--border-width-hairline) solid rgba(255,255,255,0.1);}
+.wcag-fail{background:rgba(242,72,34,0.08);color:rgba(255,175,163,0.9);border:var(--border-width-hairline) solid rgba(242,72,34,0.2);}
+
+/* ── COMPONENTS ── */
+.comp-row{background:var(--color-dark-gray-2);border-radius:var(--radius-r9);border:var(--border-width-hairline) solid var(--color-dark-gray);overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow-md);}
+.comp-header{padding:8px 12px;border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);background:var(--color-black);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:11px;font-weight:var(--font-weight-w550);color:rgba(255,255,255,0.7);letter-spacing:var(--letter-spacing-wide);}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-w550);background:var(--color-dark-gray);color:rgba(255,255,255,0.4);padding:2px 8px;border-radius:var(--radius-r12);border:var(--border-width-hairline) solid rgba(255,255,255,0.08);}
+.comp-body{padding:20px;}
+
+.btn-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-base);font-weight:var(--font-weight-w550);border:none;cursor:pointer;white-space:nowrap;font-size:13px;padding:7px 16px;border-radius:var(--radius-r7);line-height:1.5;transition:opacity var(--duration-fast) var(--easing-ease-out),background var(--duration-fast) var(--easing-ease-out);letter-spacing:var(--letter-spacing-wide);}
+.btn-primary{background:var(--color-blue-2);color:var(--color-white-2);}
+.btn-primary:hover{background:var(--color-blue-3);}
+.btn-secondary{background:var(--color-dark-gray);color:var(--color-white);border:var(--border-width-hairline) solid rgba(255,255,255,0.08);}
+.btn-secondary:hover{background:var(--color-dark-gray-2);}
+.btn-outline{background:transparent;color:var(--color-blue-2);border:var(--border-width-hairline) solid var(--color-blue-2);}
+.btn-outline:hover{background:rgba(13,153,255,0.08);}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.5);border:var(--border-width-hairline) solid transparent;}
+.btn-ghost:hover{background:rgba(255,255,255,0.06);}
+.btn-muted{background:var(--color-dark-gray-2);color:rgba(255,255,255,0.4);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.inp-group{display:flex;flex-direction:column;gap:4px;}
+.inp-label{font-size:10px;font-weight:var(--font-weight-w550);color:rgba(255,255,255,0.6);letter-spacing:var(--letter-spacing-wide);}
+.inp{width:100%;font-family:var(--font-family-base);font-size:13px;color:var(--color-white-2);background:var(--color-black);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r7);padding:7px 10px;outline:none;transition:border var(--duration-fast) var(--easing-ease-out);box-shadow:var(--shadow-md);}
+.inp:focus{border-color:var(--color-blue-2);box-shadow:0 0 0 3px rgba(13,153,255,0.15);}
+.inp::placeholder{color:rgba(255,255,255,0.2);}
+.inp-hint{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:var(--letter-spacing-wide);}
+.inp-err{border-color:rgba(242,72,34,0.7)!important;}
+.inp-err-msg{font-size:10px;color:rgba(255,111,88,0.9);}
+
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:var(--font-weight-w550);padding:2px 8px;border-radius:var(--radius-r12);letter-spacing:var(--letter-spacing-wide);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--color-dark-gray);color:rgba(255,255,255,0.6);border:var(--border-width-hairline) solid rgba(255,255,255,0.08);}
+.badge-brand{background:rgba(13,153,255,0.12);color:var(--color-blue-2);border:var(--border-width-hairline) solid rgba(13,153,255,0.25);}
+.badge-muted{background:var(--color-dark-gray-2);color:rgba(255,255,255,0.3);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-w550);padding:2px 8px;border-radius:var(--radius-r7);border:var(--border-width-hairline) solid var(--color-dark-gray);background:var(--color-dark-gray-2);color:rgba(255,255,255,0.6);letter-spacing:var(--letter-spacing-wide);}
+.tag-brand{color:var(--color-blue-2);background:rgba(13,153,255,0.08);border-color:rgba(13,153,255,0.2);}
+
+.alert{display:flex;gap:8px;padding:10px 14px;border-radius:var(--radius-r9);font-size:13px;}
+.alert-icon{font-size:16px;flex-shrink:0;line-height:1.4;}
+.alert-body h5{font-weight:var(--font-weight-w550);margin-bottom:2px;font-size:13px;color:var(--color-white-2);letter-spacing:var(--letter-spacing-tight);}
+.alert-body p{font-size:11px;line-height:1.5;letter-spacing:var(--letter-spacing-wide);}
+.alert-neutral{background:var(--color-dark-gray-2);color:rgba(255,255,255,0.6);border:var(--border-width-hairline) solid var(--color-dark-gray);}
+.alert-brand{background:rgba(13,153,255,0.08);color:var(--color-blue-2);border:var(--border-width-hairline) solid rgba(13,153,255,0.2);}
+.alert-brand h5{color:var(--color-white-2);}
+.alert-dim{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.6);border:var(--border-width-hairline) solid rgba(255,255,255,0.08);}
+.alert-base{background:var(--color-black);color:rgba(255,255,255,0.35);border:var(--border-width-hairline) solid var(--color-dark-gray);box-shadow:var(--shadow-md);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.feature-card{background:var(--color-black);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r9);padding:20px;transition:border-color var(--duration-normal) var(--easing-ease-out);box-shadow:var(--shadow-md);}
+.feature-card:hover{border-color:var(--color-blue-2);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-r7);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:10px;border:var(--border-width-hairline) solid var(--color-dark-gray);background:var(--color-dark-gray-2);}
+.fc-title{font-size:14px;font-weight:var(--font-weight-w550);color:var(--color-white-2);margin-bottom:4px;letter-spacing:var(--letter-spacing-tight);}
+.fc-desc{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.5;margin-bottom:10px;letter-spacing:var(--letter-spacing-wide);}
+
+.av-row{display:flex;align-items:center;gap:8px;margin-bottom:20px;}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-w550);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:16px;}
+.av-md{width:34px;height:34px;font-size:13px;}
+.av-sm{width:24px;height:24px;font-size:11px;}
+.av-info h4{font-size:14px;font-weight:var(--font-weight-w550);color:var(--color-white-2);letter-spacing:var(--letter-spacing-tight);}
+.av-info p{font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:var(--letter-spacing-wide);}
+
+.prog-wrap{margin-bottom:8px;}
+.prog-label{display:flex;justify-content:space-between;font-size:10px;font-weight:var(--font-weight-w550);color:rgba(255,255,255,0.6);margin-bottom:2px;letter-spacing:var(--letter-spacing-wide);}
+.prog-track{height:4px;background:var(--color-dark-gray);border-radius:var(--radius-r12);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-r12);transition:width var(--duration-slow) var(--easing-ease-out);}
+
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:8px 12px;text-align:left;font-size:12px;border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);line-height:1.5;}
+.data-table th{font-size:10px;font-weight:var(--font-weight-w550);text-transform:uppercase;letter-spacing:0.06px;color:rgba(255,255,255,0.35);background:var(--color-black);}
+.data-table tr:hover td{background:rgba(255,255,255,0.03);transition:background var(--duration-fast) var(--easing-ease-out);}
+.data-table td:first-child{font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:11px;letter-spacing:var(--letter-spacing-wider);}
+
+/* ── CSS VARIABLES REFERENCE ── */
+.tokens-section{margin-bottom:64px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.tokens-group{background:var(--color-dark-gray-2);border:var(--border-width-hairline) solid var(--color-dark-gray);border-radius:var(--radius-r9);overflow:hidden;box-shadow:var(--shadow-md);}
+.tokens-group-header{padding:10px 14px;border-bottom:var(--border-width-hairline) solid var(--color-dark-gray);background:var(--color-black);display:flex;align-items:center;gap:8px;}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--color-blue-2);flex-shrink:0;}
+.tokens-group-title{font-size:10px;font-weight:var(--font-weight-w550);color:rgba(255,255,255,0.6);letter-spacing:0.06px;text-transform:uppercase;}
+.tokens-list{padding:4px 0;}
+.token-row{display:flex;align-items:center;gap:8px;padding:3px 14px;transition:background var(--duration-instant);}
+.token-row:hover{background:rgba(255,255,255,0.03);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-md);border:var(--border-width-hairline) solid rgba(255,255,255,0.08);flex-shrink:0;}
+.token-readable{font-size:11px;font-weight:var(--font-weight-w450);color:rgba(255,255,255,0.6);flex:1;min-width:0;}
+.token-css{font-size:10px;font-family:var(--font-family-mono);color:var(--color-blue-2);white-space:nowrap;letter-spacing:var(--letter-spacing-wider);}
+.token-value{font-size:10px;font-family:var(--font-family-mono);color:rgba(255,255,255,0.25);white-space:nowrap;}
+.token-preview-bar{height:4px;border-radius:var(--radius-r12);background:linear-gradient(to right,var(--color-blue-3),var(--color-blue-2));flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,var(--color-blue-3),var(--color-blue-2));flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-md);background:var(--color-blue-2);flex-shrink:0;border:var(--border-width-hairline) solid rgba(255,255,255,0.08);}
+.token-row-sep{height:var(--border-width-hairline);background:var(--color-dark-gray);margin:4px 0;}
+
+@media(max-width:768px){
+  .font-cards,.motion-grid,.shadows-row,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid,.bp-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="20" height="20" viewBox="0 0 38 57" fill="none">
+            <path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/>
+            <path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/>
+            <path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/>
+            <circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/>
+            <path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">Figma Design System</div>
+          <div class="system-meta">Dark · Generated 15/04/2026 · 20 colors · 17 type tokens · 12 spacing steps · 6 breakpoints · 7 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">v1.0.0</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- ── 1. COLOR PALETTE ── -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(9,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black</div><div class="swatch-hex">#000000</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#000102"></div><div class="swatch-name">Black 2</div><div class="swatch-hex">#000102</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#1E1E1E"></div><div class="swatch-name">Dark Gray 2</div><div class="swatch-hex">#1E1E1E</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#2C2C2C"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#2C2C2C</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F5F5F5;border-color:rgba(0,0,0,.12)"></div><div class="swatch-name">White</div><div class="swatch-hex">#F5F5F5</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(0,0,0,.12)"></div><div class="swatch-name">White 2</div><div class="swatch-hex">#FFFFFF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E6E6E6;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#E6E6E6</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0D99FF"></div><div class="swatch-name">Blue 2</div><div class="swatch-hex">#0D99FF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#007BE5"></div><div class="swatch-name">Blue 3</div><div class="swatch-hex">#007BE5</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(1,1fr);max-width:100px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#0000EE"></div><div class="swatch-name">Blue (link)</div><div class="swatch-hex">#0000EE</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Accent & Brand Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(8,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#4D49FC"></div><div class="swatch-name">Blue 4</div><div class="swatch-hex">#4D49FC</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#9747FF"></div><div class="swatch-name">Purple</div><div class="swatch-hex">#9747FF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF24BD"></div><div class="swatch-name">Pink</div><div class="swatch-hex">#FF24BD</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FF5C16"></div><div class="swatch-name">Orange</div><div class="swatch-hex">#FF5C16</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E5F4FF;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">Light Blue</div><div class="swatch-hex">#E5F4FF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F2F9FF;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">White 3</div><div class="swatch-hex">#F2F9FF</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F4F3FE;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">White 4</div><div class="swatch-hex">#F4F3FE</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FAFAFA;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">White 5</div><div class="swatch-hex">#FAFAFA</div></div>
+      </div>
+    </div>
+
+    <div class="color-group" style="background:rgba(255,255,255,0.03);border-radius:var(--radius-r7);padding:12px;border:var(--border-width-hairline) solid var(--color-dark-gray);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.45);font-style:italic;">No border colors detected in the extracted token set. Figma uses a programmatic border color system via <code style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">--color-border</code> → <code style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">--ramp-grey-200</code> semantic aliases rather than raw hex tokens at the surface level.</div>
+    </div>
+  </div>
+
+  <!-- ── 2. TYPOGRAPHY ── -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">Base · Inter (--font-family-default)</div>
+        <div class="font-display" style="font-weight:450;">Inter</div>
+        <div class="font-sample">Where great design is made. Collaborate, prototype, and ship — together.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:450">Default · 450</span>
+          <span class="fw-chip" style="font-weight:500">Medium · 500</span>
+          <span class="fw-chip" style="font-weight:550">Strong · 550</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Display · Whyte (--font-family-display)</div>
+        <div class="font-display" style="font-weight:400;letter-spacing:-0.032px;">Whyte Display</div>
+        <div class="font-sample">The collaborative interface design tool. Build products, together.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-scale" style="margin-bottom:20px;">
+      <div class="type-row">
+        <div class="type-sample" style="font-size:48px;font-weight:400;line-height:1.1;letter-spacing:-0.032px;">Display</div>
+        <div class="type-meta">--text-display · 48px (3rem) · Regular · Whyte · letter-spacing: −0.09rem · line-height: 3.5rem</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:24px;font-weight:550;line-height:32px;letter-spacing:-0.032px;">Heading Large</div>
+        <div class="type-meta">--text-heading-large · 24px (1.5rem) · Strong 550 · letter-spacing: −0.025rem · line-height: 2rem</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:15px;font-weight:550;line-height:25.2px;letter-spacing:-0.003px;">Heading Medium — Figma unifies design and engineering</div>
+        <div class="type-meta">--text-heading-medium · 15px (0.9375rem) · Strong 550 · letter-spacing: −0.005rem · line-height: 1.5625rem</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:13px;font-weight:550;line-height:22px;letter-spacing:-0.003px;">Heading Small — Build together in real time</div>
+        <div class="type-meta">--text-heading-small · 13px (0.8125rem) · Strong 550 · letter-spacing: −0.002rem · line-height: 1.375rem</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:13px;font-weight:450;line-height:22px;letter-spacing:-0.002px;color:rgba(255,255,255,0.6);">Body Large — Figma connects everyone in the design process so teams can deliver better products, faster.</div>
+        <div class="type-meta">--text-body-large · 13px (0.8125rem) · Default 450 · letter-spacing: −0.002rem · line-height: 1.375rem</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:11px;font-weight:450;line-height:16px;letter-spacing:0.003px;color:rgba(255,255,255,0.6);">Body Medium — Start for free. Build anything.</div>
+        <div class="type-meta">--text-body-medium · 11px (0.6875rem) · Default 450 · letter-spacing: 0.003rem · line-height: 1rem</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:9px;font-weight:450;line-height:14px;letter-spacing:0.003px;color:rgba(255,255,255,0.45);">Body Small — Caption and micro-copy at the smallest scale</div>
+        <div class="type-meta">--text-body-small · 9px (0.5625rem) · Default 450 · letter-spacing: 0.003rem · line-height: 0.875rem</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <div style="font-size:10px;font-weight:550;letter-spacing:0.06px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px;">Line Heights</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:16px;"></div></div><div class="lh-token">tight</div><div class="lh-val">16px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:22px;"></div></div><div class="lh-token">snug</div><div class="lh-val">22px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">normal</div><div class="lh-val">24px</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:10px;font-weight:550;letter-spacing:0.06px;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px;">Letter Spacing</div>
+      <div class="ls-row">
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.032px;">Display</div>
+          <div class="ls-token">letter-spacing-tight</div>
+          <div class="ls-desc">−0.032px · display, large headings</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:-0.003px;">Heading</div>
+          <div class="ls-token">letter-spacing-normal</div>
+          <div class="ls-desc">−0.003px · body text default</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:0.005px;font-size:14px;">Body Wide</div>
+          <div class="ls-token">letter-spacing-wide</div>
+          <div class="ls-desc">0.005px · body copy</div>
+        </div>
+        <div class="ls-item">
+          <div class="ls-sample" style="letter-spacing:0.055px;font-size:11px;text-transform:uppercase;">LABELS</div>
+          <div class="ls-token">letter-spacing-wider</div>
+          <div class="ls-desc">0.055px · small labels, caps</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. SPACING ── -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">12 tokens — 2px → 138.188px</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:2px"></div><div class="sp-lbl">2</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:6px"></div><div class="sp-lbl">6</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:16px"></div><div class="sp-lbl">16</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:24px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:28px"></div><div class="sp-lbl">28</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:32px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:34px"></div><div class="sp-lbl">34</div></div>
+        <div class="sp-col" style="opacity:.5;"><div class="sp-bar" style="height:140px;"></div><div class="sp-lbl">138.2</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. BORDERS ── -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:2px"></div><div class="radius-lbl">MD</div><div class="radius-val">2px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:3px"></div><div class="radius-lbl">LG</div><div class="radius-val">3px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">XL</div><div class="radius-val">4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:4.5px"></div><div class="radius-lbl">2XL</div><div class="radius-val">4.5px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:5px"></div><div class="radius-lbl">Full</div><div class="radius-val">5px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:6px"></div><div class="radius-lbl">R7</div><div class="radius-val">6px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-lbl">R8</div><div class="radius-val">8px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:13px"></div><div class="radius-lbl">R9</div><div class="radius-val">13px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:100%"></div><div class="radius-lbl">R11</div><div class="radius-val">100%</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px;width:80px;height:60px"></div><div class="radius-lbl">R12 / Pill</div><div class="radius-val">9999px</div></div>
+      </div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Widths</div>
+      <div class="bw-demo">
+        <div class="bw-item">
+          <div class="bw-token">Hairline</div>
+          <div class="bw-line" style="height:1px;"></div>
+          <div class="bw-val">1px — standard UI borders, panels, inputs</div>
+        </div>
+        <div class="bw-item">
+          <div class="bw-token">Thin</div>
+          <div class="bw-line" style="height:4px;"></div>
+          <div class="bw-val">4px — focus rings, selection handles</div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:rgba(255,255,255,0.3);line-height:1.5;">The <span style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">1px hairline</span> is used universally throughout the Figma UI. The <span style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">4px thin</span> width appears on selected component frames and focus indicators.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. SHADOWS / ELEVATION ── -->
+  <div class="section">
+    <div class="section-title">Shadows / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">6 levels</div>
+      <div class="shadows-row">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-sm);border:1px solid rgba(255,255,255,0.05);"></div>
+          <div class="sh-token">shadow-sm</div>
+          <div class="sh-usage">Inset ring</div>
+          <div class="sh-desc">rgb(230,230,230) 1px inset — panel borders rendered as inset shadows</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-md);"></div>
+          <div class="sh-token">shadow-md</div>
+          <div class="sh-usage">Floating elements</div>
+          <div class="sh-desc">rgba(0,0,0,.15) 1px/3px + rgba(0,0,0,.3) 0.5px — dropdowns, popovers</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,0.05);"></div>
+          <div class="sh-token">shadow-lg</div>
+          <div class="sh-usage">Outer ring</div>
+          <div class="sh-desc">rgb(230,230,230) 1px — card outline drawn as a shadow (not border)</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-xl);"></div>
+          <div class="sh-token">shadow-xl</div>
+          <div class="sh-usage">Modals</div>
+          <div class="sh-desc">0.15 2px/5px + 0.12 10px/16px + 0.12 hairline — dialog elevation</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-5);background:var(--color-dark-gray);"></div>
+          <div class="sh-token">shadow-5</div>
+          <div class="sh-usage">White inner ring</div>
+          <div class="sh-desc">rgba(255,255,255,.4) 1px inset — white glow ring on dark toolbar buttons</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-6);"></div>
+          <div class="sh-token">shadow-6</div>
+          <div class="sh-usage">Context menus</div>
+          <div class="sh-desc">0.18 hairline + 0.1 3px/8px + 0.1 1px/3px — layered context menu depth</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6. Z-INDEX ── -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Layer</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>z-1 · Behind</td><td>-1</td><td>Elements placed behind the main content layer</td></tr>
+          <tr><td>z-2 · Base</td><td>1</td><td>Default content — canvas nodes, base layer (canvas-base: 0)</td></tr>
+          <tr><td>z-3 · Canvas pin</td><td>2</td><td>Canvas modifier overlays and pin elements</td></tr>
+          <tr><td>z-4 · Cursor</td><td>3</td><td>Multiplayer cursor positions on canvas</td></tr>
+          <tr><td>z-5 · Pin active</td><td>4</td><td>Active canvas pin state / cursor emote</td></tr>
+          <tr><td>z-6 · Sidebar</td><td>6</td><td>Left/right sidebars, panels, property inspector</td></tr>
+          <tr><td>z-7 · Toolbar</td><td>8</td><td>Toolbar widgets, nav, context-editing UI</td></tr>
+          <tr><td>z-8 · Overlay</td><td>11</td><td>Modals, visual bell, assistant overlay, user cursor</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:rgba(255,255,255,0.3);line-height:1.5;font-family:var(--font-family-base);">
+      Note: The full z-index taxonomy is richer. Named semantic layers in the CSS include <span style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">--z-index-canvas-base: 0</span>, <span style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">--z-index-dropdown: 13</span>, <span style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">--z-index-modal: 12</span>, and <span style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">--z-index-scrub-cursor: 2147483647</span> (browser max int — always on top).
+    </div>
+  </div>
+
+  <!-- ── 7. BREAKPOINTS ── -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div class="bp-grid">
+      <div class="bp-card">
+        <div class="bp-icon">📱</div>
+        <div class="bp-token">breakpoint-xs</div>
+        <div class="bp-val">645px</div>
+        <div class="bp-desc">Compact — single-column layout threshold</div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">📱</div>
+        <div class="bp-token">breakpoint-sm</div>
+        <div class="bp-val">832px</div>
+        <div class="bp-desc">Small tablet — navigation collapse point</div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">💻</div>
+        <div class="bp-token">breakpoint-md</div>
+        <div class="bp-val">849px</div>
+        <div class="bp-desc">Medium — minor layout shift (17px from sm)</div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">💻</div>
+        <div class="bp-token">breakpoint-lg</div>
+        <div class="bp-val">1000px</div>
+        <div class="bp-desc">Desktop — standard widescreen layout</div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">🖥️</div>
+        <div class="bp-token">breakpoint-xl</div>
+        <div class="bp-val">1023px</div>
+        <div class="bp-desc">Wide desktop (23px from lg — granular shift)</div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-icon">🖥️</div>
+        <div class="bp-token">breakpoint-2xl</div>
+        <div class="bp-val">1440px</div>
+        <div class="bp-desc">Full HD — maximum content width, large monitors</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 8. OPACITY ── -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <div class="tw-sub">5 tokens — 0.30 → 0.92</div>
+      <div class="opacity-grid">
+        <div class="op-item"><div class="op-box" style="opacity:0.3;"></div><div class="op-token">opacity-30</div><div class="op-val">30% — disabled overlays</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.59;"></div><div class="op-token">opacity-59</div><div class="op-val">59% — secondary content</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.6;"></div><div class="op-token">opacity-60</div><div class="op-val">60% — muted text</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.89;"></div><div class="op-token">opacity-89</div><div class="op-val">89% — near-full focus</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.92;"></div><div class="op-token">opacity-92</div><div class="op-val">92% — frosted overlays</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 9. ACCESSIBILITY ── -->
+  <div class="section">
+    <div class="section-title">Accessibility — Contrast Ratios</div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:10px;">WCAG 2.1 thresholds: <strong style="color:rgba(255,255,255,0.6);">AA</strong> ≥ 4.5:1 · <strong style="color:rgba(255,255,255,0.6);">AA Large</strong> ≥ 3:1 · <strong style="color:rgba(255,255,255,0.6);">AAA</strong> ≥ 7:1</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Token</th><th>Background Token</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>--color-blue</td><td>--color-black</td><td>2.23:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>--color-blue</td><td>--color-white</td><td>8.62:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-blue</td><td>--color-white-2</td><td>9.4:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-blue</td><td>--color-light-gray</td><td>7.53:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>--color-blue</td><td>--color-blue-2</td><td>3.14:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:rgba(255,255,255,0.3);line-height:1.5;">Only 5 contrast pairs were extracted. Figma's full color system uses a semantic token model (e.g. <span style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">--color-text</span>, <span style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">--color-bg</span>) via the <span style="font-family:var(--font-family-mono);color:var(--color-blue-2);font-size:10px;">--ramp-*</span> color scale, which provides accessible pairings at each elevation level.</div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Get started</button>
+          <button class="btn btn-secondary">View pricing</button>
+          <button class="btn btn-outline">Open in Figma</button>
+          <button class="btn btn-ghost">Learn more</button>
+          <button class="btn btn-muted">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">File name</label>
+            <input class="inp" type="text" placeholder="Untitled"/>
+            <div class="inp-hint">Visible to all collaborators</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Team email</label>
+            <input class="inp" type="email" placeholder="name@company.com" style="border-color:var(--color-blue-2);box-shadow:0 0 0 3px rgba(13,153,255,0.15);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Plugin ID</label>
+            <input class="inp inp-err" type="text" value="invalid-plugin-id"/>
+            <div class="inp-err-msg">Plugin not found in the registry</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:rgba(255,255,255,0.4)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-blue-2)"></span>Published</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:rgba(255,255,255,0.15)"></span>Draft</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">✏️ Design</span>
+          <span class="tag">🧩 Components</span>
+          <span class="tag">🔌 Plugins</span>
+          <span class="tag">🤝 Dev Mode</span>
+          <span class="tag">📐 FigJam</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="alert alert-neutral"><div class="alert-icon">ℹ️</div><div class="alert-body"><h5>New feature available</h5><p>Variable modes are now available in all paid plans. Set up design tokens across themes.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon">✅</div><div class="alert-body"><h5>Component published</h5><p>Your updated button component has been published to the team library successfully.</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon">⚠️</div><div class="alert-body"><h5>Approaching seat limit</h5><p>Your workspace has 48 of 50 seats used. Upgrade to add more collaborators.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon">❌</div><div class="alert-body"><h5>Connection lost</h5><p>Figma cannot reach the server. Changes will sync when your connection is restored.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Feature Cards</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">✏️</div>
+            <div class="fc-title">Design</div>
+            <div class="fc-desc">Vector tools, components, auto layout, and variables for building production-ready UIs.</div>
+            <span class="tag tag-brand">Editor</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🤝</div>
+            <div class="fc-title">Dev Mode</div>
+            <div class="fc-desc">Hand off designs to engineering with annotated specs, code snippets, and assets.</div>
+            <span class="tag">Inspect · Export</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">📐</div>
+            <div class="fc-title">FigJam</div>
+            <div class="fc-desc">Interactive whiteboard for brainstorming, diagrams, and cross-team collaboration.</div>
+            <span class="tag">Whiteboard · AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars &amp; Progress</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:linear-gradient(135deg,var(--color-blue-3),var(--color-blue-2));color:#fff;">FG</div>
+          <div class="av-info"><h4>Figma Team Workspace</h4><p>Professional plan · 48 members · 3 teams</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:var(--color-blue-2);color:#fff">A</div>
+          <div class="avatar av-md" style="background:var(--color-purple);color:#fff">M</div>
+          <div class="avatar av-md" style="background:var(--color-orange);color:#fff">R</div>
+          <div class="avatar av-sm" style="background:var(--color-pink);color:#fff">K</div>
+          <div class="avatar av-sm" style="background:var(--color-dark-gray);color:rgba(255,255,255,0.5)">+4</div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Seat usage</span><span>96%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:96%;background:linear-gradient(to right,var(--color-blue-3),var(--color-blue-2))"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Component coverage</span><span>74%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:74%;background:rgba(255,255,255,0.15)"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>File storage</span><span>38%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:38%;background:rgba(255,255,255,0.1)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Data Table</span><span class="comp-badge">File Grid</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead>
+            <tr><th>file_id</th><th>name</th><th>type</th><th>last_modified</th><th>status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>fig_01HX…</td><td style="color:rgba(255,255,255,0.7)">Design System v4</td><td style="color:rgba(255,255,255,0.5)">Design file</td><td style="color:rgba(255,255,255,0.3)">2026-04-15 11:42</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-blue-2)"></span>Published</span></td></tr>
+            <tr><td>fig_02KQ…</td><td style="color:rgba(255,255,255,0.7)">Mobile App – iOS</td><td style="color:rgba(255,255,255,0.5)">Design file</td><td style="color:rgba(255,255,255,0.3)">2026-04-14 09:22</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-blue-2)"></span>Published</span></td></tr>
+            <tr><td>fj_03MR…</td><td style="color:rgba(255,255,255,0.7)">Q2 Roadmap</td><td style="color:rgba(255,255,255,0.5)">FigJam</td><td style="color:rgba(255,255,255,0.3)">2026-04-13 15:00</td><td><span class="badge badge-muted" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:rgba(255,255,255,0.15)"></span>Draft</span></td></tr>
+            <tr><td>fig_04NX…</td><td style="color:rgba(255,255,255,0.7)">Component Library</td><td style="color:rgba(255,255,255,0.5)">Design file</td><td style="color:rgba(255,255,255,0.3)">2026-04-15 08:11</td><td><span class="badge badge-default" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:rgba(255,255,255,0.4)"></span>Shared</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- ── 11. CSS VARIABLES REFERENCE ── -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <!-- Background Colors -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Background Colors</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#000000"></div><span class="token-readable">Black</span><span class="token-css">--color-black</span><span class="token-value">#000000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#000102"></div><span class="token-readable">Black 2</span><span class="token-css">--color-black-2</span><span class="token-value">#000102</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#1E1E1E"></div><span class="token-readable">Dark Gray 2 (canvas)</span><span class="token-css">--color-dark-gray-2</span><span class="token-value">#1E1E1E</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#2C2C2C"></div><span class="token-readable">Dark Gray (toolbar)</span><span class="token-css">--color-dark-gray</span><span class="token-value">#2C2C2C</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F5F5F5;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">White (content bg)</span><span class="token-css">--color-white</span><span class="token-value">#F5F5F5</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">White 2 (pure white)</span><span class="token-css">--color-white-2</span><span class="token-value">#FFFFFF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#E6E6E6;border-color:rgba(0,0,0,.08)"></div><span class="token-readable">Light Gray</span><span class="token-css">--color-light-gray</span><span class="token-value">#E6E6E6</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#EEEEEE;border-color:rgba(0,0,0,.08)"></div><span class="token-readable">Light Gray 2</span><span class="token-css">--color-light-gray-2</span><span class="token-value">#EEEEEE</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F2F2F2;border-color:rgba(0,0,0,.08)"></div><span class="token-readable">Light Gray 3</span><span class="token-css">--color-light-gray-3</span><span class="token-value">#F2F2F2</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0D99FF"></div><span class="token-readable">Blue 2 (brand)</span><span class="token-css">--color-blue-2</span><span class="token-value">#0D99FF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#007BE5"></div><span class="token-readable">Blue 3 (brand hover)</span><span class="token-css">--color-blue-3</span><span class="token-value">#007BE5</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#4D49FC"></div><span class="token-readable">Blue 4 (violet)</span><span class="token-css">--color-blue-4</span><span class="token-value">#4D49FC</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#E5F4FF;border-color:rgba(0,0,0,.08)"></div><span class="token-readable">Light Blue</span><span class="token-css">--color-light-blue</span><span class="token-value">#E5F4FF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#9747FF"></div><span class="token-readable">Purple (FigJam)</span><span class="token-css">--color-purple</span><span class="token-value">#9747FF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FF5C16"></div><span class="token-readable">Orange (persimmon)</span><span class="token-css">--color-orange</span><span class="token-value">#FF5C16</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FF24BD"></div><span class="token-readable">Pink (template)</span><span class="token-css">--color-pink</span><span class="token-value">#FF24BD</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0000EE"></div><span class="token-readable">Blue (link text)</span><span class="token-css">--color-blue</span><span class="token-value">#0000EE</span></div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Typography</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Default (Inter)</span><span class="token-css">--font-family-base</span><span class="token-value">Inter</span></div>
+          <div class="token-row"><span class="token-readable">Display (Whyte)</span><span class="token-css">--font-family-display</span><span class="token-value">Whyte</span></div>
+          <div class="token-row"><span class="token-readable">Mono (Roboto Mono)</span><span class="token-css">--font-family-mono</span><span class="token-value">Roboto Mono</span></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">Default</span><span class="token-css">--font-weight-w450</span><span class="token-value">450</span></div>
+          <div class="token-row"><span class="token-readable">Medium</span><span class="token-css">--font-weight-medium</span><span class="token-value">500</span></div>
+          <div class="token-row"><span class="token-readable">Strong</span><span class="token-css">--font-weight-w550</span><span class="token-value">550</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">2xs (8px)</span><span class="token-css">--font-size-2xs</span><span class="token-value">8px</span></div>
+          <div class="token-row"><span class="token-readable">xs (11px)</span><span class="token-css">--font-size-xs</span><span class="token-value">11px</span></div>
+          <div class="token-row"><span class="token-readable">sm (13px)</span><span class="token-css">--font-size-sm</span><span class="token-value">13px</span></div>
+          <div class="token-row"><span class="token-readable">base (16px)</span><span class="token-css">--font-size-base</span><span class="token-value">16px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">LH tight</span><span class="token-css">--line-height-tight</span><span class="token-value">16px</span></div>
+          <div class="token-row"><span class="token-readable">LH snug</span><span class="token-css">--line-height-snug</span><span class="token-value">22px</span></div>
+          <div class="token-row"><span class="token-readable">LH normal</span><span class="token-css">--line-height-normal</span><span class="token-value">24px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">LS tight (−0.032px)</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">−0.032px</span></div>
+          <div class="token-row"><span class="token-readable">LS normal (−0.003px)</span><span class="token-css">--letter-spacing-normal</span><span class="token-value">−0.003px</span></div>
+          <div class="token-row"><span class="token-readable">LS wide (0.005px)</span><span class="token-css">--letter-spacing-wide</span><span class="token-value">0.005px</span></div>
+          <div class="token-row"><span class="token-readable">LS wider (0.055px)</span><span class="token-css">--letter-spacing-wider</span><span class="token-value">0.055px</span></div>
+        </div>
+      </div>
+
+      <!-- Spacing -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Spacing</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-preview-bar" style="width:2px"></div><span class="token-readable">1 (2px)</span><span class="token-css">--space-1</span><span class="token-value">2px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:4px"></div><span class="token-readable">2 (4px)</span><span class="token-css">--space-2</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:6px"></div><span class="token-readable">3 (6px)</span><span class="token-css">--space-3</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:8px"></div><span class="token-readable">4 (8px)</span><span class="token-css">--space-4</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:10px"></div><span class="token-readable">5 (10px)</span><span class="token-css">--space-5</span><span class="token-value">10px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:12px"></div><span class="token-readable">6 (12px)</span><span class="token-css">--space-6</span><span class="token-value">12px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:16px"></div><span class="token-readable">8 (16px)</span><span class="token-css">--space-8</span><span class="token-value">16px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:24px"></div><span class="token-readable">10 (24px)</span><span class="token-css">--space-10</span><span class="token-value">24px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:28px"></div><span class="token-readable">12 (28px)</span><span class="token-css">--space-12</span><span class="token-value">28px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:32px"></div><span class="token-readable">16 (32px)</span><span class="token-css">--space-16</span><span class="token-value">32px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:34px"></div><span class="token-readable">20 (34px)</span><span class="token-css">--space-20</span><span class="token-value">34px</span></div>
+          <div class="token-row"><div class="token-preview-bar" style="width:100px;opacity:.6"></div><span class="token-readable">24 (138px)</span><span class="token-css">--space-24</span><span class="token-value">138.188px</span></div>
+        </div>
+      </div>
+
+      <!-- Borders + Radius -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Borders &amp; Radius</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Hairline</span><span class="token-css">--border-width-hairline</span><span class="token-value">1px</span></div>
+          <div class="token-row"><span class="token-readable">Thin (focus ring)</span><span class="token-css">--border-width-thin</span><span class="token-value">4px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:2px"></div><span class="token-readable">MD</span><span class="token-css">--radius-md</span><span class="token-value">2px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:3px"></div><span class="token-readable">LG</span><span class="token-css">--radius-lg</span><span class="token-value">3px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px"></div><span class="token-readable">XL</span><span class="token-css">--radius-xl</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4.5px"></div><span class="token-readable">2XL</span><span class="token-css">--radius-2xl</span><span class="token-value">4.5px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:5px"></div><span class="token-readable">Full</span><span class="token-css">--radius-full</span><span class="token-value">5px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:6px"></div><span class="token-readable">R7</span><span class="token-css">--radius-r7</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:8px"></div><span class="token-readable">R8</span><span class="token-css">--radius-r8</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:13px"></div><span class="token-readable">R9</span><span class="token-css">--radius-r9</span><span class="token-value">13px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:100%"></div><span class="token-readable">R11</span><span class="token-css">--radius-r11</span><span class="token-value">100%</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:9999px;height:12px"></div><span class="token-readable">R12 / Pill</span><span class="token-css">--radius-r12</span><span class="token-value">9999px</span></div>
+        </div>
+      </div>
+
+      <!-- Motion + Opacity + Z-index + Breakpoints -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Motion, Opacity, Layers &amp; Breakpoints</span>
+        </div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Instant</span><span class="token-css">--duration-instant</span><span class="token-value">100ms</span></div>
+          <div class="token-row"><span class="token-readable">Fast</span><span class="token-css">--duration-fast</span><span class="token-value">200ms</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--duration-normal</span><span class="token-value">300ms</span></div>
+          <div class="token-row"><span class="token-readable">Slow</span><span class="token-css">--duration-slow</span><span class="token-value">400ms</span></div>
+          <div class="token-row"><span class="token-readable">Slower</span><span class="token-css">--duration-slower</span><span class="token-value">500ms</span></div>
+          <div class="token-row"><span class="token-readable">Ease In-Out</span><span class="token-css">--easing-ease-in-out</span><span class="token-value">ease-in-out</span></div>
+          <div class="token-row"><span class="token-readable">Ease Out</span><span class="token-css">--easing-ease-out</span><span class="token-value">ease-out</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.3"></div><span class="token-readable">Ghost</span><span class="token-css">--opacity-30</span><span class="token-value">30%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.59"></div><span class="token-readable">Muted</span><span class="token-css">--opacity-59</span><span class="token-value">59%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.6"></div><span class="token-readable">Dim</span><span class="token-css">--opacity-60</span><span class="token-value">60%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.89"></div><span class="token-readable">Near-full</span><span class="token-css">--opacity-89</span><span class="token-value">89%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.92"></div><span class="token-readable">Frosted</span><span class="token-css">--opacity-92</span><span class="token-value">92%</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Behind</span><span class="token-css">--z-1</span><span class="token-value">-1</span></div>
+          <div class="token-row"><span class="token-readable">Canvas base</span><span class="token-css">--z-2</span><span class="token-value">1</span></div>
+          <div class="token-row"><span class="token-readable">Canvas pin</span><span class="token-css">--z-3</span><span class="token-value">2</span></div>
+          <div class="token-row"><span class="token-readable">Sidebar</span><span class="token-css">--z-6</span><span class="token-value">6</span></div>
+          <div class="token-row"><span class="token-readable">Toolbar</span><span class="token-css">--z-7</span><span class="token-value">8</span></div>
+          <div class="token-row"><span class="token-readable">Modal / Overlay</span><span class="token-css">--z-8</span><span class="token-value">11</span></div>
+          <div class="token-row"><span class="token-readable">Scrub cursor (max int)</span><span class="token-css">--z-index-scrub-cursor</span><span class="token-value">2147483647</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Compact</span><span class="token-css">--breakpoint-xs</span><span class="token-value">645px</span></div>
+          <div class="token-row"><span class="token-readable">Small tablet</span><span class="token-css">--breakpoint-sm</span><span class="token-value">832px</span></div>
+          <div class="token-row"><span class="token-readable">Desktop</span><span class="token-css">--breakpoint-lg</span><span class="token-value">1000px</span></div>
+          <div class="token-row"><span class="token-readable">Full HD</span><span class="token-css">--breakpoint-2xl</span><span class="token-value">1440px</span></div>
+        </div>
+      </div>
+
+      <!-- Semantic Design Tokens (bonus — the ramp system) -->
+      <div class="tokens-group">
+        <div class="tokens-group-header">
+          <div class="tokens-group-icon"></div>
+          <span class="tokens-group-title">Semantic Color System (Ramp Scale)</span>
+        </div>
+        <div class="tokens-list">
+          <div style="padding:12px 14px;font-size:11px;color:rgba(255,255,255,0.4);line-height:1.5;">Figma's real color architecture is a semantic alias system mapping named roles to a comprehensive ramp scale. Extracted examples from the published CSS:</div>
+          <div class="token-row"><div class="token-swatch" style="background:#f5f5f5;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">Background default</span><span class="token-css">--color-bg</span><span class="token-value">--ramp-white-1000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0d99ff"></div><span class="token-readable">Background brand</span><span class="token-css">--color-bg-brand</span><span class="token-value">--ramp-blue-500</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#9747ff"></div><span class="token-readable">Background component</span><span class="token-css">--color-bg-component</span><span class="token-value">--ramp-purple-500</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#f24822"></div><span class="token-readable">Background danger</span><span class="token-css">--color-bg-danger</span><span class="token-value">--ramp-red-500</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#14ae5c"></div><span class="token-readable">Background success</span><span class="token-css">--color-bg-success</span><span class="token-value">--ramp-green-500</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#ffcd29"></div><span class="token-readable">Background warning</span><span class="token-css">--color-bg-warning</span><span class="token-value">--ramp-yellow-500</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#ff24bd"></div><span class="token-readable">Background template</span><span class="token-css">--color-bg-template</span><span class="token-value">--ramp-pink-500</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:#e6e6e6;border-color:rgba(0,0,0,.08)"></div><span class="token-readable">Border default</span><span class="token-css">--color-border</span><span class="token-value">--ramp-grey-200</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#2c2c2c"></div><span class="token-readable">Border strong</span><span class="token-css">--color-border-strong</span><span class="token-value">--ramp-grey-800</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#000000e5"></div><span class="token-readable">Text default</span><span class="token-css">--color-text</span><span class="token-value">--ramp-black-800</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#00000080"></div><span class="token-readable">Text secondary</span><span class="token-css">--color-text-secondary</span><span class="token-value">--ramp-black-500</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div style="text-align:center;padding:24px 0;color:rgba(255,255,255,0.2);font-size:11px;border-top:var(--border-width-hairline) solid var(--color-dark-gray);line-height:1.5;font-family:var(--font-family-mono);letter-spacing:var(--letter-spacing-wider);">
+    Design System Preview · Figma · Generated 15/04/2026 · 20 color tokens + ramp semantic system · 4 font-size · 3 font-family · 4 font-weight · 3 line-height · 4 letter-spacing · 12 spacing · 12 radius · 2 border-width · 6 shadow · 5 duration · 2 easing · 8 z-index · 6 breakpoints · 5 opacity
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>OpenAI Design System</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* ── OpenAI Color Tokens (4 extracted) ── */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-light-gray: #E5E7EB;
+  --color-light-gray-2: #F1F1F1;
+
+  /* ── OpenAI :root semantic system ── */
+  --color-primary-2: #00000005;
+  --color-primary-4: #0000000a;
+  --color-primary-12: #0000001f;
+  --color-primary-44: #00000070;
+  --color-primary-60: #0009;
+  --color-primary-80: #000c;
+  --color-primary-100: #000;
+  --color-secondary-4: #ffffff0a;
+  --color-secondary-12: #ffffff1f;
+  --color-secondary-44: #ffffff70;
+  --color-secondary-60: #fff9;
+  --color-secondary-80: #fffc;
+  --color-secondary-100: #fff;
+  --color-tertiary-100: #f1f1f1;
+  --color-hue-lime: #9dca1c;
+  --color-hue-magenta: #eb56c5;
+  --color-hue-blue: #29bdfd;
+  --color-hue-yellow: #ffaf00;
+  --color-syntax-copy: #000;
+  --color-syntax-error: #f22f4d;
+  --color-syntax-operator: #c93b00;
+  --color-syntax-variable: #8a6e07;
+  --color-syntax-string: #027f41;
+  --color-syntax-data: #1d7899;
+  --color-syntax-keyword: #1e60e4;
+  --color-syntax-function: #7a4ff5;
+  --color-syntax-const: #d6008d;
+
+  /* ── Derived surfaces (light theme — OpenAI is a white/light site) ── */
+  --bg-page: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-surface: #F1F1F1;
+  --bg-elevated: #F9F9F9;
+  --bg-hover: #F1F1F1;
+  --bg-dark: #000000;
+  --border-default: #E5E7EB;
+  --border-subtle: #F1F1F1;
+  --border-strong: #D1D5DB;
+  --text-primary: #000000;
+  --text-secondary: #374151;
+  --text-muted: #6B7280;
+  --text-dim: #9CA3AF;
+  --text-on-dark: #FFFFFF;
+
+  /* ── OpenAI Typography — OpenAI Sans proprietary ── */
+  --font-family-base: 'OpenAI Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: 'Source Code Pro', ui-monospace, monospace;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Sub-pixel precision sizes — fluid clamp system in :root */
+  --font-size-2xs: 13px;
+  --font-size-xs: 14px;
+  --font-size-sm: 14.5765px;
+  --font-size-base: 16px;
+  --font-size-lg: 17px;
+  --font-size-xl: 17.4235px;
+  --font-size-2xl: 21.4235px;
+  --font-size-3xl: 28px;
+  --font-size-4xl: 43.3878px;
+
+  --line-height-tight: 13px;
+  --line-height-snug: 14px;
+  --line-height-normal: 19.6px;
+  --line-height-relaxed: 22.1067px;
+  --line-height-loose: 22.6761px;
+  --line-height-lh-6: 24px;
+  --line-height-lh-7: 26.6477px;
+  --line-height-lh-8: 27.999px;
+  --line-height-lh-9: 34px;
+  --line-height-lh-10: 50.1454px;
+
+  /* ALL NEGATIVE except one positive (+0.3px for micro labels) */
+  --letter-spacing-tight: -1.20939px;
+  --letter-spacing-normal: -0.214235px;
+  --letter-spacing-wide: -0.174235px;
+  --letter-spacing-wider: -0.17px;
+  --letter-spacing-widest: -0.16px;
+  --letter-spacing-ls-6: -0.14px;
+  --letter-spacing-ls-7: 0.3px;
+
+  /* ── Spacing ── */
+  --space-1:3.9px;--space-2:4px;--space-3:4.2px;--space-4:4.37296px;
+  --space-5:4.79688px;--space-6:8px;--space-8:10px;--space-10:12px;
+  --space-12:16px;--space-16:18px;--space-20:20px;--space-24:24px;
+  --space-32:32px;--space-40:40px;--space-48:48px;--space-64:52px;
+  --space-80:64px;--space-96:80px;--space-128:111.5px;--space-160:120px;
+  --space-192:178.766px;--space-256:392.805px;
+
+  /* ── Borders ── */
+  --border-width-hairline:1px;
+  --radius-sm:4px;--radius-md:6.08px;--radius-lg:24px;
+  --radius-xl:40px;--radius-2xl:9999px;
+
+  /* ── Shadows (6-stop with 4 transparent layers) ── */
+  --shadow-sm:rgba(0,0,0,0) 0px 0px 0px 0px,rgba(0,0,0,0) 0px 0px 0px 0px,rgba(0,0,0,0) 0px 0px 0px 0px,rgba(0,0,0,0) 0px 0px 0px 0px,rgba(0,0,0,0.02) 0px 4px 6px 0px,rgba(0,0,0,0.05) 0px 0px 2px 0px;
+  --shadow-md:rgba(0,0,0,0) 0px 0px 0px 0px,rgba(0,0,0,0) 0px 0px 0px 0px,rgba(0,0,0,0) 0px 0px 0px 0px,rgba(0,0,0,0) 0px 0px 0px 0px,rgba(0,0,0,0.06) 0px 2px 5px 0px,rgba(0,0,0,0.01) 0px 4px 4px 0px;
+
+  /* ── Motion (0.25s dominant ×1472) ── */
+  --duration-instant:0.1s;--duration-fast:0.15s;--duration-normal:0.2s;
+  --duration-slow:0.25s;--duration-slower:0.3s;--duration-6:0.4s;
+  --duration-7:0.5s;--duration-8:0.64s;--duration-9:0.8s;
+  /* No easing tokens detected */
+
+  /* ── Z-Index ── */
+  --z-1:1;--z-2:10;--z-3:40;--z-4:50;--z-5:51;
+  --z-6:52;--z-7:56;--z-8:57;--z-9:103;
+
+  /* No opacity tokens detected */
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family-base);background:var(--bg-page);color:var(--text-primary);font-size:var(--font-size-base);line-height:var(--line-height-normal);font-weight:var(--font-weight-regular);letter-spacing:var(--letter-spacing-widest);}
+.page{max-width:1200px;margin:0 auto;padding:64px 48px;}
+
+/* HEADER */
+.top-bar{border-bottom:var(--border-width-hairline) solid var(--border-default);margin-bottom:32px;padding-bottom:12px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.header-left{display:flex;align-items:center;gap:16px;}
+.logo{width:38px;height:38px;background:var(--bg-dark);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;}
+.system-title{font-family:var(--font-family-base);font-size:18px;font-weight:var(--font-weight-semibold);color:var(--text-primary);line-height:24px;letter-spacing:var(--letter-spacing-ls-6);}
+.system-meta{font-size:var(--font-size-2xs);color:var(--text-muted);margin-top:2px;line-height:20px;letter-spacing:var(--letter-spacing-ls-6);}
+.hbadge{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);background:var(--bg-surface);color:var(--text-muted);padding:2px 10px;border-radius:var(--radius-2xl);border:var(--border-width-hairline) solid var(--border-default);letter-spacing:var(--letter-spacing-ls-7);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:var(--border-width-hairline) solid var(--border-default);background:var(--bg-surface);color:var(--text-primary);box-shadow:0 1px 2px rgba(15,23,42,0.08);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-hue-blue);color:var(--color-hue-blue);box-shadow:0 4px 14px rgba(15,23,42,0.14);transform:translateY(-1px);}
+
+/* SECTION */
+.section{margin-bottom:64px;}
+.section-title{font-family:var(--font-family-base);font-size:var(--font-size-3xl);font-weight:var(--font-weight-semibold);color:var(--text-primary);line-height:var(--line-height-lh-9);margin-bottom:24px;display:flex;align-items:center;gap:8px;letter-spacing:var(--letter-spacing-normal);}
+
+/* COLORS */
+.color-group{margin-bottom:24px;}
+.color-group-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;}
+.swatch-grid{display:grid;gap:6px;}
+.swatch-item{display:flex;flex-direction:column;gap:4px;}
+.swatch-box{height:60px;border-radius:var(--radius-md);border:var(--border-width-hairline) solid var(--border-default);}
+.swatch-name{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--text-secondary);line-height:16px;letter-spacing:var(--letter-spacing-ls-6);}
+.swatch-hex{font-size:10px;color:var(--text-muted);font-family:var(--font-family-mono);line-height:14px;}
+
+/* TYPOGRAPHY */
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
+.font-card{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-sm);}
+.font-token{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--text-muted);font-weight:var(--font-weight-medium);margin-bottom:6px;}
+.font-display{font-size:36px;color:var(--text-primary);line-height:40px;margin-bottom:6px;font-weight:var(--font-weight-medium);letter-spacing:var(--letter-spacing-normal);}
+.font-sample{font-size:var(--font-size-xs);color:var(--text-muted);line-height:22px;font-weight:var(--font-weight-regular);letter-spacing:var(--letter-spacing-ls-6);}
+.fw-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+.fw-chip{font-size:var(--font-size-2xs);padding:2px 8px;background:var(--bg-surface);border-radius:var(--radius-xl);color:var(--text-muted);border:var(--border-width-hairline) solid var(--border-default);letter-spacing:var(--letter-spacing-ls-6);}
+.type-scale{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);}
+.type-row{display:flex;flex-direction:column;padding:12px 20px;border-bottom:var(--border-width-hairline) solid var(--border-subtle);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--text-primary);margin-bottom:3px;}
+.type-meta{font-size:10px;color:var(--text-muted);font-family:var(--font-family-mono);line-height:14px;}
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.lh-item{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-md);padding:8px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow-sm);}
+.lh-bar-wrap{background:var(--bg-surface);border-radius:2px;overflow:hidden;}
+.lh-bar{background:linear-gradient(to bottom,rgba(0,0,0,0.2),rgba(0,0,0,0.8));width:100%;}
+.lh-token{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--text-muted);}
+.lh-val{font-size:10px;color:var(--text-dim);}
+.ls-row{display:flex;gap:8px;flex-wrap:wrap;}
+.ls-item{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-lg);padding:12px 20px;flex:1;box-shadow:var(--shadow-sm);}
+.ls-sample{font-size:24px;color:var(--text-primary);font-weight:var(--font-weight-medium);margin-bottom:4px;}
+.ls-token{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--text-muted);}
+.ls-desc{font-size:10px;color:var(--text-dim);}
+
+/* SPACING */
+.token-wrap{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-sm);}
+.tw-title{font-family:var(--font-family-base);font-size:var(--font-size-lg);font-weight:var(--font-weight-semibold);color:var(--text-primary);margin-bottom:4px;letter-spacing:var(--letter-spacing-ls-6);}
+.tw-sub{font-size:var(--font-size-2xs);color:var(--text-muted);margin-bottom:16px;letter-spacing:var(--letter-spacing-ls-6);}
+.spacing-chart{display:flex;align-items:flex-end;gap:3px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;}
+.sp-bar{background:linear-gradient(to top,rgba(0,0,0,0.3),rgba(0,0,0,0.85));border-radius:2px 2px 0 0;width:100%;}
+.sp-lbl{font-size:9px;color:var(--text-dim);text-align:center;font-family:var(--font-family-mono);}
+
+/* BORDERS */
+.border-card{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px;box-shadow:var(--shadow-sm);}
+.bc-title{font-family:var(--font-family-base);font-size:var(--font-size-lg);font-weight:var(--font-weight-semibold);color:var(--text-primary);margin-bottom:12px;letter-spacing:var(--letter-spacing-ls-6);}
+.radius-row{display:flex;gap:12px;flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,rgba(0,0,0,0.15),rgba(0,0,0,0.7));border:var(--border-width-hairline) solid var(--border-default);}
+.radius-lbl{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--text-muted);text-align:center;font-family:var(--font-family-mono);}
+.radius-val{font-size:10px;color:var(--text-dim);text-align:center;font-family:var(--font-family-mono);}
+.bw-demo{display:flex;flex-direction:column;gap:10px;}
+.bw-item{display:flex;align-items:center;gap:12px;}
+.bw-line{flex:1;background:var(--border-default);}
+.bw-token{font-size:var(--font-size-2xs);font-family:var(--font-family-mono);color:var(--text-muted);white-space:nowrap;}
+.bw-val{font-size:10px;color:var(--text-dim);white-space:nowrap;font-family:var(--font-family-mono);}
+
+/* SHADOWS */
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sh-item{display:flex;flex-direction:column;gap:6px;}
+.sh-box{height:88px;background:var(--bg-card);border-radius:var(--radius-md);}
+.sh-token{font-size:var(--font-size-base);font-weight:var(--font-weight-medium);color:var(--text-secondary);}
+.sh-usage{font-size:10px;color:var(--text-muted);}
+.sh-desc{font-size:10px;color:var(--text-dim);line-height:16px;margin-top:2px;}
+
+/* Z-TABLE */
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:10px 12px;text-align:left;font-size:var(--font-size-xs);border-bottom:var(--border-width-hairline) solid var(--border-default);line-height:20px;}
+.z-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-7);color:var(--text-muted);}
+.z-table td:first-child{font-family:var(--font-family-mono);color:var(--text-primary);font-size:var(--font-size-2xs);}
+.z-table td:nth-child(2){font-family:var(--font-family-mono);color:var(--text-primary);font-weight:var(--font-weight-semibold);}
+.z-table td:nth-child(3){color:var(--text-muted);font-size:var(--font-size-2xs);}
+.z-table tr:last-child td{border-bottom:none;}
+.z-table tr:hover td{background:var(--bg-surface);}
+.z-nav-cluster{color:#000;font-weight:700!important;}
+
+/* BREAKPOINTS */
+.bp-scroller{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;}
+.bp-item{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-md);padding:8px 12px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow-sm);}
+.bp-token{font-size:10px;font-family:var(--font-family-mono);color:var(--text-muted);}
+.bp-val{font-size:var(--font-size-lg);font-weight:var(--font-weight-semibold);color:var(--text-primary);letter-spacing:var(--letter-spacing-ls-6);}
+
+/* OPACITY */
+.op-empty{background:var(--bg-surface);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-lg);padding:40px;text-align:center;}
+.op-empty-msg{font-size:var(--font-size-xs);color:var(--text-muted);font-family:var(--font-family-mono);}
+.op-empty-note{font-size:var(--font-size-xs);color:var(--text-dim);margin-top:8px;line-height:24px;}
+
+/* A11Y */
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:8px 12px;text-align:left;font-size:var(--font-size-2xs);border-bottom:var(--border-width-hairline) solid var(--border-default);line-height:20px;}
+.a11y-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-7);color:var(--text-muted);}
+.a11y-table td:first-child,.a11y-table td:nth-child(2){font-size:10px;font-family:var(--font-family-mono);}
+.a11y-table td:nth-child(2){color:var(--text-muted);}
+.a11y-table td:nth-child(3){font-family:var(--font-family-mono);color:var(--text-secondary);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.a11y-table tr:hover td{background:var(--bg-surface);}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-semibold);padding:2px 7px;border-radius:var(--radius-2xl);letter-spacing:var(--letter-spacing-ls-7);}
+.wcag-aaa{background:#000;color:#fff;border:var(--border-width-hairline) solid #000;}
+.wcag-aa{background:var(--bg-surface);color:var(--text-secondary);border:var(--border-width-hairline) solid var(--border-default);}
+.wcag-aal{background:var(--bg-card);color:var(--text-muted);border:var(--border-width-hairline) solid var(--border-default);}
+.wcag-fail{background:rgba(242,47,77,.06);color:#f22f4d;border:var(--border-width-hairline) solid rgba(242,47,77,.2);}
+
+/* COMPONENTS */
+.comp-row{background:var(--bg-card);border-radius:var(--radius-lg);border:var(--border-width-hairline) solid var(--border-default);overflow:hidden;margin-bottom:10px;box-shadow:var(--shadow-sm);}
+.comp-header{padding:6px 12px;border-bottom:var(--border-width-hairline) solid var(--border-default);background:var(--bg-surface);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);color:var(--text-muted);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-medium);background:var(--bg-card);color:var(--text-muted);padding:2px 8px;border-radius:var(--radius-2xl);border:var(--border-width-hairline) solid var(--border-default);}
+.comp-body{padding:20px;}
+.btn-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-base);font-weight:var(--font-weight-medium);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-xs);padding:8px 16px;border-radius:var(--radius-2xl);line-height:20px;letter-spacing:var(--letter-spacing-ls-6);transition:all var(--duration-slow);}
+.btn-primary{background:var(--bg-dark);color:var(--text-on-dark);}
+.btn-primary:hover{background:#111;}
+.btn-secondary{background:var(--bg-card);color:var(--text-primary);border:var(--border-width-hairline) solid var(--border-default);}
+.btn-secondary:hover{background:var(--bg-surface);}
+.btn-outline{background:transparent;color:var(--text-primary);border:var(--border-width-hairline) solid var(--text-primary);}
+.btn-outline:hover{background:var(--bg-surface);}
+.btn-ghost{background:transparent;color:var(--text-muted);border:var(--border-width-hairline) solid transparent;}
+.btn-ghost:hover{background:var(--bg-surface);}
+.btn-muted{background:var(--bg-surface);color:var(--text-muted);border:var(--border-width-hairline) solid var(--border-default);}
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.inp-group{display:flex;flex-direction:column;gap:4px;}
+.inp-label{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--text-secondary);letter-spacing:var(--letter-spacing-ls-6);}
+.inp{width:100%;font-family:var(--font-family-base);font-size:var(--font-size-xs);color:var(--text-primary);background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-md);padding:8px 12px;outline:none;transition:all var(--duration-slow);line-height:20px;letter-spacing:var(--letter-spacing-ls-6);}
+.inp:focus{border-color:var(--text-primary);box-shadow:0 0 0 2px rgba(0,0,0,0.08);}
+.inp::placeholder{color:var(--text-dim);}
+.inp-hint{font-size:var(--font-size-2xs);color:var(--text-dim);letter-spacing:var(--letter-spacing-ls-6);}
+.inp-err{border-color:#f22f4d!important;}
+.inp-err-msg{font-size:var(--font-size-2xs);color:#f22f4d;}
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-2xl);line-height:16px;letter-spacing:var(--letter-spacing-ls-7);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--bg-surface);color:var(--text-muted);border:var(--border-width-hairline) solid var(--border-default);}
+.badge-brand{background:var(--bg-dark);color:var(--text-on-dark);border:var(--border-width-hairline) solid var(--bg-dark);}
+.badge-muted{background:var(--bg-card);color:var(--text-dim);border:var(--border-width-hairline) solid var(--border-default);}
+.badge-row{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);padding:2px 8px;border-radius:var(--radius-md);border:var(--border-width-hairline) solid var(--border-default);background:var(--bg-surface);color:var(--text-muted);line-height:16px;letter-spacing:var(--letter-spacing-ls-6);}
+.tag-brand{color:var(--text-on-dark);background:var(--bg-dark);border-color:var(--bg-dark);}
+.alert{display:flex;gap:10px;padding:10px 14px;border-radius:var(--radius-lg);font-size:var(--font-size-xs);}
+.alert-icon{font-size:18px;flex-shrink:0;line-height:1.4;}
+.alert-body h5{font-weight:var(--font-weight-semibold);margin-bottom:3px;font-size:var(--font-size-xs);color:var(--text-primary);line-height:20px;letter-spacing:var(--letter-spacing-ls-6);}
+.alert-body p{font-size:var(--font-size-2xs);line-height:20px;color:var(--text-muted);letter-spacing:var(--letter-spacing-ls-6);}
+.alert-neutral{background:var(--bg-surface);border:var(--border-width-hairline) solid var(--border-default);}
+.alert-brand{background:var(--bg-dark);border:var(--border-width-hairline) solid var(--bg-dark);}
+.alert-brand h5,.alert-brand p{color:var(--text-on-dark)!important;}
+.alert-dim{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);}
+.alert-base{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-strong);}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.feature-card{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-lg);padding:20px;transition:all var(--duration-slow);box-shadow:var(--shadow-sm);}
+.feature-card:hover{border-color:var(--text-primary);box-shadow:var(--shadow-md);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px;border:var(--border-width-hairline) solid var(--border-default);background:var(--bg-surface);}
+.fc-title{font-family:var(--font-family-base);font-size:var(--font-size-base);font-weight:var(--font-weight-semibold);color:var(--text-primary);line-height:24px;margin-bottom:6px;letter-spacing:var(--letter-spacing-ls-6);}
+.fc-desc{font-size:var(--font-size-2xs);color:var(--text-muted);line-height:20px;margin-bottom:12px;letter-spacing:var(--letter-spacing-ls-6);}
+.av-row{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-semibold);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-base);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-xs);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-2xs);}
+.av-info h4{font-family:var(--font-family-base);font-size:var(--font-size-base);font-weight:var(--font-weight-semibold);color:var(--text-primary);line-height:24px;letter-spacing:var(--letter-spacing-ls-6);}
+.av-info p{font-size:var(--font-size-2xs);color:var(--text-muted);letter-spacing:var(--letter-spacing-ls-6);}
+.prog-wrap{margin-bottom:8px;}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--text-secondary);margin-bottom:4px;letter-spacing:var(--letter-spacing-ls-6);}
+.prog-track{height:4px;background:var(--bg-surface);border-radius:var(--radius-2xl);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-2xl);transition:width var(--duration-slow);}
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:8px 12px;text-align:left;font-size:var(--font-size-xs);border-bottom:var(--border-width-hairline) solid var(--border-default);line-height:20px;}
+.data-table th{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-7);color:var(--text-muted);background:var(--bg-surface);}
+.data-table tr:hover td{background:var(--bg-surface);transition:background var(--duration-slow);}
+.data-table td:first-child{font-family:var(--font-family-mono);color:var(--text-primary);font-size:var(--font-size-2xs);}
+
+/* TOKENS */
+.tokens-section{margin-bottom:64px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.tokens-group{background:var(--bg-card);border:var(--border-width-hairline) solid var(--border-default);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);}
+.tokens-group-header{padding:8px 14px;border-bottom:var(--border-width-hairline) solid var(--border-default);background:var(--bg-surface);display:flex;align-items:center;gap:8px;}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--text-primary);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-2xs);font-weight:var(--font-weight-semibold);color:var(--text-muted);letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;}
+.tokens-group-count{font-size:10px;color:var(--text-dim);margin-left:auto;font-family:var(--font-family-mono);}
+.tokens-list{padding:4px 0;}
+.token-row{display:flex;align-items:center;gap:8px;padding:4px 14px;transition:background var(--duration-slow);}
+.token-row:hover{background:var(--bg-surface);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-md);border:var(--border-width-hairline) solid var(--border-default);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-2xs);font-weight:var(--font-weight-medium);color:var(--text-secondary);flex:1;min-width:0;letter-spacing:var(--letter-spacing-ls-6);}
+.token-css{font-size:10px;font-family:var(--font-family-mono);color:var(--text-muted);white-space:nowrap;}
+.token-value{font-size:10px;font-family:var(--font-family-mono);color:var(--text-dim);white-space:nowrap;}
+.token-preview-bar{height:4px;border-radius:var(--radius-2xl);background:linear-gradient(to right,rgba(0,0,0,0.2),rgba(0,0,0,0.8));flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,rgba(0,0,0,0.15),rgba(0,0,0,0.7));flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-md);background:var(--text-primary);flex-shrink:0;}
+.tokens-full{grid-column:1/-1;}
+.token-row-sep{height:var(--border-width-hairline);background:var(--border-default);margin:4px 0;}
+
+/* Syntax color chips for :root section */
+.syntax-chip{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-family:var(--font-family-mono);padding:2px 6px;border-radius:var(--radius-md);border:var(--border-width-hairline) solid var(--border-default);background:var(--bg-surface);margin:2px;}
+.syntax-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+@media(max-width:600px){
+  .font-cards,.shadows-row,.cards-grid,.inputs-grid,.lh-grid,.tokens-grid,.bp-scroller{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <!-- OpenAI wordmark logo simplified -->
+          <svg width="20" height="20" viewBox="0 0 100 100" fill="none">
+            <path d="M97.4 40.9a25.7 25.7 0 0 0-2.2-21.1 26 26 0 0 0-28-12.5A25.7 25.7 0 0 0 48 2.4a26 26 0 0 0-24.8 18 25.7 25.7 0 0 0-17.1 12.4 26 26 0 0 0 3.2 30.4 25.7 25.7 0 0 0 2.2 21 26 26 0 0 0 28 12.5 25.7 25.7 0 0 0 19.2 5A26 26 0 0 0 83.5 83a25.7 25.7 0 0 0 17.1-12.5 26 26 0 0 0-3.2-29.7zM58.5 92.4a19.3 19.3 0 0 1-12.4-4.5l.6-.4 20.6-11.9a3.4 3.4 0 0 0 1.7-3V46.3l8.7 5a.3.3 0 0 1 .2.3v24c0 9.3-7.5 16.8-19.4 16.8zM15.3 75.6a19.3 19.3 0 0 1-2.3-13l.6.4 20.6 11.9a3.3 3.3 0 0 0 3.4 0L61 61.6V71.6a.3.3 0 0 1-.1.3L40.1 83.8a19.3 19.3 0 0 1-24.8-8.2zm-2.5-44.8A19.3 19.3 0 0 1 22.9 20l-.1.7V44.4a3.3 3.3 0 0 0 1.7 2.9l23.4 13.5L39.1 66a.3.3 0 0 1-.3 0L18.1 54.1a19.3 19.3 0 0 1-5.3-23.3zm44.5 15.7L34.9 33l8.7-5a.3.3 0 0 1 .3 0l20.7 11.9a19.3 19.3 0 0 1-3 34.9v-24.1a3.3 3.3 0 0 0-1.7-3.2h-.6zm8.7-13.1-.6-.4-20.6-11.9a3.3 3.3 0 0 0-3.4 0L17.9 34.3V24.3a.3.3 0 0 1 .1-.3L38.7 12.2a19.3 19.3 0 0 1 28.9 20l-.6-.7zm-50.7 16L7 44.5a.3.3 0 0 1-.2-.3v-24A19.3 19.3 0 0 1 23.6 4.8l-.1.7v23.7a3.3 3.3 0 0 0 1.7 2.9l23.4 13.5-8.6 5zm4.7-10.2L32.5 50 23.8 45V35a.3.3 0 0 1 .2-.3L32.5 30l8.7 5v10l-8.7 5z" fill="#fff"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">OpenAI Design System</div>
+          <div class="system-meta">Generated 17/04/2026 · 4 extracted colors · 30 type tokens · 22 spacing steps · 5 breakpoints · 9 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">openai.com 2026</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- 1. COLOR PALETTE -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+
+    <div class="color-group">
+      <div class="color-group-label">Extracted Colors — Fewest in this series (4 tokens)</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(4,1fr);max-width:500px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black (dominant)</div><div class="swatch-hex">#000000 · ×1180</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E5E7EB"></div><div class="swatch-name">Light Gray (border)</div><div class="swatch-hex">#E5E7EB · ×1016</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(0,0,0,0.1)"></div><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF · ×11</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#F1F1F1"></div><div class="swatch-name">Light Gray 2</div><div class="swatch-hex">#F1F1F1 · ×3</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">:root Semantic Alpha Scale — Primary (black at opacity steps)</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(7,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#00000005"></div><div class="swatch-name">Primary 2%</div><div class="swatch-hex">--color-primary-2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0000000a"></div><div class="swatch-name">Primary 4%</div><div class="swatch-hex">--color-primary-4</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0000001f"></div><div class="swatch-name">Primary 12%</div><div class="swatch-hex">--color-primary-12</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#00000070"></div><div class="swatch-name">Primary 44%</div><div class="swatch-hex">--color-primary-44</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0009"></div><div class="swatch-name">Primary 60%</div><div class="swatch-hex">--color-primary-60</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#000c"></div><div class="swatch-name">Primary 80%</div><div class="swatch-hex">--color-primary-80</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Primary 100%</div><div class="swatch-hex">--color-primary-100</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">:root Accent Hues — Lime, Magenta, Blue, Yellow</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(4,1fr);max-width:500px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#9dca1c"></div><div class="swatch-name">Lime</div><div class="swatch-hex">--color-hue-lime</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#eb56c5"></div><div class="swatch-name">Magenta</div><div class="swatch-hex">--color-hue-magenta</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#29bdfd"></div><div class="swatch-name">Blue</div><div class="swatch-hex">--color-hue-blue</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#ffaf00"></div><div class="swatch-name">Yellow</div><div class="swatch-hex">--color-hue-yellow</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">:root Syntax Highlighting Colors — Code editor palette</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">
+        <span class="syntax-chip"><span class="syntax-dot" style="background:#000"></span>copy</span>
+        <span class="syntax-chip"><span class="syntax-dot" style="background:#f22f4d"></span>error</span>
+        <span class="syntax-chip"><span class="syntax-dot" style="background:#c93b00"></span>operator</span>
+        <span class="syntax-chip"><span class="syntax-dot" style="background:#8a6e07"></span>variable</span>
+        <span class="syntax-chip"><span class="syntax-dot" style="background:#027f41"></span>string</span>
+        <span class="syntax-chip"><span class="syntax-dot" style="background:#1d7899"></span>data</span>
+        <span class="syntax-chip"><span class="syntax-dot" style="background:#1e60e4"></span>keyword</span>
+        <span class="syntax-chip"><span class="syntax-dot" style="background:#7a4ff5"></span>function</span>
+        <span class="syntax-chip"><span class="syntax-dot" style="background:#d6008d"></span>const</span>
+      </div>
+      <div style="margin-top:8px;font-size:var(--font-size-2xs);color:var(--text-muted);line-height:20px;letter-spacing:var(--letter-spacing-ls-6);">The :root layer defines a complete code editor theme for OpenAI's documentation and API playground. These are not surfaced as UI design tokens but as a dedicated syntax highlighting sub-system.</div>
+    </div>
+  </div>
+
+  <!-- 2. TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">--font-family-base · OpenAI Sans (proprietary)</div>
+        <div class="font-display" style="letter-spacing:-0.214235px;">OpenAI Sans</div>
+        <div class="font-sample">Used at scale across openai.com, ChatGPT, and the API platform. Single font family for all UI — no secondary serif or display typeface.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:500">Medium · 500</span>
+          <span class="fw-chip" style="font-weight:600">Semibold · 600</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Fluid type scale — clamp() from :root</div>
+        <div class="font-display" style="font-size:24px;letter-spacing:-0.17px;">Fluid sizing system</div>
+        <div class="font-sample">The :root layer defines <code style="font-family:var(--font-family-mono);background:var(--bg-surface);padding:1px 4px;border-radius:4px;font-size:12px;">--type-xl-size</code> through <code style="font-family:var(--font-family-mono);background:var(--bg-surface);padding:1px 4px;border-radius:4px;font-size:12px;">--type-2xs-size</code> as fluid clamp() expressions interpolating between 375px and 1440px viewports. Sub-pixel extracted sizes are rendered instances of this system.</div>
+        <div class="fw-row">
+          <span class="fw-chip">xl: clamp(4rem → 7rem)</span>
+          <span class="fw-chip">h1: clamp(2rem → 4rem)</span>
+          <span class="fw-chip">h2: clamp(2rem → 3rem)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-scale" style="margin-bottom:16px;">
+      <div class="type-row"><div class="type-sample" style="font-size:43.3878px;font-weight:500;line-height:50.1454px;letter-spacing:-1.20939px;">Introducing GPT-5</div><div class="type-meta">Display · 43.39px · Medium · line-height: 50.15px · letter-spacing: −1.209px (most negative in series)</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:28px;font-weight:500;line-height:34px;letter-spacing:-0.214235px;">Explore the API</div><div class="type-meta">Heading XL · 28px · Medium · line-height: 34px · letter-spacing: −0.214px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:21.4235px;font-weight:500;line-height:27.999px;letter-spacing:-0.174235px;">Powerful language models</div><div class="type-meta">Heading LG · 21.42px · Medium · line-height: 28px · letter-spacing: −0.174px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:17px;font-weight:400;line-height:26.6477px;letter-spacing:-0.17px;color:var(--text-secondary);">Build on the most capable AI models in the world. Start with our models, fine-tune them for your use case, or build your own.</div><div class="type-meta">Body · 17px · Regular · line-height: 26.65px · letter-spacing: −0.17px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:16px;font-weight:400;line-height:19.6px;letter-spacing:-0.16px;color:var(--text-secondary);">Get started with the OpenAI API. Access GPT-4, DALL·E, Whisper, and more.</div><div class="type-meta">Body Default · 16px · Regular · line-height: 19.6px · letter-spacing: −0.16px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:14px;font-weight:400;line-height:22.1067px;letter-spacing:-0.16px;color:var(--text-secondary);">Last updated 2 minutes ago · Free tier · 100 requests/min</div><div class="type-meta">Body Small · 14px · Regular · line-height: 22.11px</div></div>
+      <div class="type-row"><div class="type-sample" style="font-size:13px;font-weight:500;line-height:13px;letter-spacing:0.3px;color:var(--text-muted);">PRODUCTS · RESEARCH · SAFETY · COMPANY</div><div class="type-meta">Nav/Label · 13px · Medium · letter-spacing: +0.3px (sole positive token)</div></div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Line Heights — 10 tokens</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:13px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">13px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:14px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">14px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:19.6px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">19.6px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:22.1px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">22.11px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:22.7px;"></div></div><div class="lh-token">Loose</div><div class="lh-val">22.68px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">LH-6</div><div class="lh-val">24px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:26.6px;"></div></div><div class="lh-token">LH-7</div><div class="lh-val">26.65px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:28px;"></div></div><div class="lh-token">LH-8</div><div class="lh-val">28px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:34px;"></div></div><div class="lh-token">LH-9</div><div class="lh-val">34px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:50.1px;"></div></div><div class="lh-token">LH-10 (display)</div><div class="lh-val">50.15px</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:var(--font-size-2xs);font-weight:600;letter-spacing:var(--letter-spacing-ls-7);text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Letter Spacing — 6 negative + 1 positive (−1.209px tightest in series)</div>
+      <div class="ls-row">
+        <div class="ls-item"><div class="ls-sample" style="letter-spacing:-1.20939px;font-size:36px;">Display hero</div><div class="ls-token">--letter-spacing-tight</div><div class="ls-desc">−1.209px · 43px+ display · most negative in entire series</div></div>
+        <div class="ls-item"><div class="ls-sample" style="letter-spacing:-0.214235px;font-size:24px;">Heading text</div><div class="ls-token">--letter-spacing-normal</div><div class="ls-desc">−0.214px · sub-pixel heading compression</div></div>
+        <div class="ls-item"><div class="ls-sample" style="letter-spacing:-0.16px;font-size:16px;">Body default</div><div class="ls-token">--letter-spacing-widest</div><div class="ls-desc">−0.16px · 16px body text</div></div>
+        <div class="ls-item"><div class="ls-sample" style="letter-spacing:0.3px;font-size:13px;text-transform:uppercase;">NAV LABELS</div><div class="ls-token">--letter-spacing-ls-7</div><div class="ls-desc">+0.3px · sole positive · uppercase nav items</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SPACING -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">22 steps — 3.9px → 392.805px · dense sub-pixel cluster at 3.9–4.797px then standard steps through to 392.8px (viewport-scale hero spacing)</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">3.9</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4.2</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4.4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:5px"></div><div class="sp-lbl">4.8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:16px"></div><div class="sp-lbl">16</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:18px"></div><div class="sp-lbl">18</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:20px"></div><div class="sp-lbl">20</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:24px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:32px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:40px"></div><div class="sp-lbl">40</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:48px"></div><div class="sp-lbl">48</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:52px"></div><div class="sp-lbl">52</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:64px"></div><div class="sp-lbl">64</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:80px"></div><div class="sp-lbl">80</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:111px"></div><div class="sp-lbl">111.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:120px"></div><div class="sp-lbl">120</div></div>
+        <div class="sp-col" style="opacity:.5"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">179</div></div>
+        <div class="sp-col" style="opacity:.25"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">393</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. BORDERS -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii — 5 tokens (4px to 9999px pill)</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">sm</div><div class="radius-val">4px · ×4</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:6.08px"></div><div class="radius-lbl">md (dominant)</div><div class="radius-val">6.08px · ×42</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:24px"></div><div class="radius-lbl">lg</div><div class="radius-val">24px · ×1</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:40px;height:44px"></div><div class="radius-lbl">xl (button)</div><div class="radius-val">40px · ×7</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px;height:44px"></div><div class="radius-lbl">2xl (pill)</div><div class="radius-val">9999px · ×15</div></div>
+      </div>
+      <div style="margin-top:12px;font-size:var(--font-size-2xs);color:var(--text-muted);line-height:20px;letter-spacing:var(--letter-spacing-ls-6);">The sub-pixel 6.08px radius is the computed value of a rem-based token — the dominant card radius. The 40px radius is applied to OpenAI's signature pill-style CTA buttons.</div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Widths</div>
+      <div class="bw-demo">
+        <div class="bw-item"><div class="bw-token">--border-width-hairline</div><div class="bw-line" style="height:1px;background:var(--border-default)"></div><div class="bw-val">1px · ×24 — single universal border width throughout the system</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. SHADOWS -->
+  <div class="section">
+    <div class="section-title">Shadows / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">2 tokens — 6-stop shadows with 4 transparent leading layers · ultra-subtle elevation</div>
+      <div class="shadows-row" style="grid-template-columns:repeat(2,1fr);">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-sm);border:1px solid var(--border-default);"></div>
+          <div class="sh-token">sm — Card default</div><div class="sh-usage">×5</div>
+          <div class="sh-desc">6-stop: 4 transparent layers + 2% 4px 6px + 5% ambient 2px — imperceptible elevation, definition from border</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-md);border:1px solid var(--border-default);"></div>
+          <div class="sh-token">md — Raised card</div><div class="sh-usage">×1</div>
+          <div class="sh-desc">6-stop: 4 transparent layers + 6% 2px 5px + 1% 4px 4px — minimal lift for interactive elements</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Z-INDEX -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div style="font-size:var(--font-size-2xs);color:var(--text-muted);margin-bottom:12px;line-height:20px;letter-spacing:var(--letter-spacing-ls-6);">9 layers — clean 1→10→40→50→51→52→56→57→103. The 50–52 cluster handles OpenAI's navigation system (desktop nav, mobile nav, nav overlay). The gap from 57 to 103 suggests a deliberate jump for the highest priority overlay — likely the ChatGPT interface modal.</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Layer</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>--z-1 (Base)</td><td>1</td><td>Base content stacking context</td></tr>
+          <tr><td>--z-2 (Navigation)</td><td>10</td><td>Sticky navigation, announcement bar</td></tr>
+          <tr><td>--z-3 (Overlay bg)</td><td>40</td><td>Overlay backgrounds, backdrop</td></tr>
+          <tr><td>--z-4 (Nav cluster 1)</td><td class="z-nav-cluster">50</td><td>Navigation layer — desktop nav start</td></tr>
+          <tr><td>--z-5 (Nav cluster 2)</td><td class="z-nav-cluster">51</td><td>Navigation layer — nav dropdown</td></tr>
+          <tr><td>--z-6 (Nav cluster 3)</td><td class="z-nav-cluster">52</td><td>Navigation layer — nav top rail</td></tr>
+          <tr><td>--z-7 (Priority 1)</td><td>56</td><td>Priority overlays, tooltips</td></tr>
+          <tr><td>--z-8 (Priority 2)</td><td>57</td><td>High-priority popovers, drawers</td></tr>
+          <tr><td>--z-9 (Absolute top)</td><td>103</td><td>Modals, critical overlays — ChatGPT interface panels</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 7. BREAKPOINTS -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div style="font-size:var(--font-size-2xs);color:var(--text-muted);margin-bottom:16px;line-height:20px;letter-spacing:var(--letter-spacing-ls-6);">5 breakpoints — 640px → 1536px. Standard Tailwind CSS breakpoints: <code style="font-family:var(--font-family-mono);background:var(--bg-surface);padding:1px 4px;border-radius:4px;font-size:11px;">sm/md/lg/xl/2xl</code>. The :root layer also encodes fluid clamp() type scales interpolating from 375px to 1440px for continuous responsive typography.</div>
+    <div class="bp-scroller">
+      <div class="bp-item"><div class="bp-token">--breakpoint-xs</div><div class="bp-val">640px</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;font-family:var(--font-family-mono);">sm (Tailwind)</div></div>
+      <div class="bp-item"><div class="bp-token">--breakpoint-sm</div><div class="bp-val">768px</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;font-family:var(--font-family-mono);">md (Tailwind)</div></div>
+      <div class="bp-item"><div class="bp-token">--breakpoint-md</div><div class="bp-val">1024px</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;font-family:var(--font-family-mono);">lg (Tailwind)</div></div>
+      <div class="bp-item"><div class="bp-token">--breakpoint-lg</div><div class="bp-val">1280px</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;font-family:var(--font-family-mono);">xl (Tailwind)</div></div>
+      <div class="bp-item"><div class="bp-token">--breakpoint-xl</div><div class="bp-val">1536px</div><div style="font-size:10px;color:var(--text-dim);margin-top:2px;font-family:var(--font-family-mono);">2xl (Tailwind)</div></div>
+    </div>
+  </div>
+
+  <!-- 8. OPACITY -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="op-empty">
+      <div class="op-empty-msg">— No opacity tokens detected —</div>
+      <div class="op-empty-note">OpenAI's design system encodes opacity as named CSS custom properties in the <code style="font-family:var(--font-family-mono);background:var(--bg-surface);padding:1px 4px;border-radius:4px;font-size:12px;">--color-primary-*</code> and <code style="font-family:var(--font-family-mono);background:var(--bg-surface);padding:1px 4px;border-radius:4px;font-size:12px;">--color-secondary-*</code> alpha scale rather than standalone opacity properties. For example, <code style="font-family:var(--font-family-mono);background:var(--bg-surface);padding:1px 4px;border-radius:4px;font-size:12px;">--color-primary-44: #00000070</code> represents 44% opacity black — opacity is baked into the color token itself.</div>
+    </div>
+  </div>
+
+  <!-- 9. ACCESSIBILITY -->
+  <div class="section">
+    <div class="section-title">Accessibility</div>
+    <div style="font-size:var(--font-size-2xs);color:var(--text-muted);margin-bottom:12px;line-height:20px;letter-spacing:var(--letter-spacing-ls-6);">WCAG 2.1: <strong>AA</strong> ≥ 4.5:1 · <strong>AA Large</strong> ≥ 3:1 · <strong>AAA</strong> ≥ 7:1. OpenAI's extracted palette is extreme — #000000 vs #FFFFFF at 21:1 (maximum possible). The #E5E7EB border color (×1016) creates complexity when used as background.</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Color</th><th>Background Color</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>#000000 (Black)</td><td>#FFFFFF (White)</td><td>21:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#000000 (Black)</td><td>#F1F1F1 (Lt Gray 2)</td><td>18.1:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#000000 (Black)</td><td>#E5E7EB (Lt Gray)</td><td>15.8:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#FFFFFF (White)</td><td>#000000 (Black)</td><td>21:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#000000 (Black)</td><td>#8f8f8f (Solid-44)</td><td>3.9:1</td><td><span class="wcag-badge wcag-aal">AA Large</span></td></tr>
+          <tr><td>#000000 (Black)</td><td>#666 (Solid-60)</td><td>5.74:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>#FFFFFF (White)</td><td>#333 (Solid-80)</td><td>12.63:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#000000 (Black)</td><td>#f5f5f5 (Solid-4)</td><td>19.5:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#9dca1c (Hue Lime)</td><td>#000000 (Black)</td><td>7.1:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#9dca1c (Hue Lime)</td><td>#FFFFFF (White)</td><td>2.95:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>#29bdfd (Hue Blue)</td><td>#000000 (Black)</td><td>9.1:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#29bdfd (Hue Blue)</td><td>#FFFFFF (White)</td><td>2.3:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>#ffaf00 (Hue Yellow)</td><td>#000000 (Black)</td><td>9.8:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>#ffaf00 (Hue Yellow)</td><td>#FFFFFF (White)</td><td>2.14:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>#eb56c5 (Hue Magenta)</td><td>#000000 (Black)</td><td>4.5:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">Try ChatGPT</button>
+          <button class="btn btn-secondary">See pricing</button>
+          <button class="btn btn-outline">API reference</button>
+          <button class="btn btn-ghost">Learn more</button>
+          <button class="btn btn-muted">Dismiss</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">Email address</label>
+            <input class="inp" type="text" placeholder="you@company.com"/>
+            <div class="inp-hint">Used to sign in to your account</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">API key</label>
+            <input class="inp" type="text" value="sk-proj-abc123..." style="border-color:#000;box-shadow:0 0 0 2px rgba(0,0,0,0.08);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Organization ID</label>
+            <input class="inp inp-err" type="text" value="org-invalid"/>
+            <div class="inp-err-msg">Organization ID not found</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--text-dim)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:#fff"></span>New</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--text-dim)"></span>Beta</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">⚡ GPT-4o</span>
+          <span class="tag">🎨 DALL·E 3</span>
+          <span class="tag">🎙️ Whisper</span>
+          <span class="tag">🔊 TTS</span>
+          <span class="tag">👁️ Vision</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="alert alert-neutral"><div class="alert-icon">ℹ️</div><div class="alert-body"><h5>New model available</h5><p>GPT-4o mini is now available via the API with a 128k context window.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon">✅</div><div class="alert-body"><h5>API key created</h5><p>Your new API key has been created. Copy it now — it won't be shown again.</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon">⚠️</div><div class="alert-body"><h5>Rate limit approaching</h5><p>You've used 89% of your monthly token quota. Upgrade to continue.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon">❌</div><div class="alert-body"><h5>Request failed</h5><p>Invalid API key provided. Check your API key and try again.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Feature Cards</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="fc-icon">💬</div>
+            <div class="fc-title">ChatGPT</div>
+            <div class="fc-desc">Interact with GPT-4o through a conversational interface. Available on web, mobile, and desktop.</div>
+            <span class="tag tag-brand">GPT-4o · Voice</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🔌</div>
+            <div class="fc-title">API Platform</div>
+            <div class="fc-desc">Build with OpenAI models. Access GPT-4, embeddings, DALL·E, Whisper via simple REST API.</div>
+            <span class="tag">REST · Streaming</span>
+          </div>
+          <div class="feature-card">
+            <div class="fc-icon">🎨</div>
+            <div class="fc-title">DALL·E 3</div>
+            <div class="fc-desc">Generate and edit images from natural language. Integrated into ChatGPT and available via API.</div>
+            <span class="tag">1024×1024 · HD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars &amp; Progress</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:#000;color:#fff;">OA</div>
+          <div class="av-info"><h4>OpenAI Platform</h4><p>Free tier · 100K tokens/month · GPT-4o access · API key active</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:#000;color:#fff">G</div>
+          <div class="avatar av-md" style="background:var(--bg-surface);color:var(--text-primary);border:1px solid var(--border-default)">D</div>
+          <div class="avatar av-md" style="background:var(--bg-surface);color:var(--text-secondary);border:1px solid var(--border-default)">W</div>
+          <div class="avatar av-sm" style="background:var(--bg-surface);color:var(--text-muted);border:1px solid var(--border-default)">+4</div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Monthly token usage</span><span>89%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:89%;background:#000"></div></div>
+          </div>
+          <div class="prog-wrap">
+            <div class="prog-label"><span>Storage used</span><span>34%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:34%;background:var(--border-strong)"></div></div>
+          </div>
+          <div class="prog-wrap" style="margin-bottom:0">
+            <div class="prog-label"><span>Rate limit headroom</span><span>68%</span></div>
+            <div class="prog-track"><div class="prog-fill" style="width:68%;background:var(--text-muted)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Data Table</span><span class="comp-badge">API usage</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead><tr><th>Model</th><th>Tokens used</th><th>Requests</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>gpt-4o</td><td style="color:var(--text-secondary)">1,284,502</td><td style="color:var(--text-secondary)">4,821</td><td style="color:var(--text-muted)">Apr 17, 2026</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px">Active</span></td></tr>
+            <tr><td>gpt-4o-mini</td><td style="color:var(--text-secondary)">889,201</td><td style="color:var(--text-secondary)">12,440</td><td style="color:var(--text-muted)">Apr 16, 2026</td><td><span class="badge badge-default" style="font-size:10px;padding:2px 7px">Active</span></td></tr>
+            <tr><td>text-embedding-3</td><td style="color:var(--text-secondary)">5,120,000</td><td style="color:var(--text-secondary)">1,024</td><td style="color:var(--text-muted)">Apr 15, 2026</td><td><span class="badge badge-default" style="font-size:10px;padding:2px 7px">Active</span></td></tr>
+            <tr><td>dall-e-3</td><td style="color:var(--text-secondary)">—</td><td style="color:var(--text-secondary)">248</td><td style="color:var(--text-muted)">Apr 14, 2026</td><td><span class="badge badge-muted" style="font-size:10px;padding:2px 7px">Paused</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- 11. CSS VARIABLES REFERENCE -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Colors (Extracted)</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#000000"></div><span class="token-readable">Black (dominant ×1180)</span><span class="token-css">--color-black</span><span class="token-value">#000000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#E5E7EB"></div><span class="token-readable">Light Gray (border ×1016)</span><span class="token-css">--color-light-gray</span><span class="token-value">#E5E7EB</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF;border-color:rgba(0,0,0,0.1)"></div><span class="token-readable">White (bg ×11)</span><span class="token-css">--color-white</span><span class="token-value">#FFFFFF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#F1F1F1"></div><span class="token-readable">Light Gray 2 (bg ×3)</span><span class="token-css">--color-light-gray-2</span><span class="token-value">#F1F1F1</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">OpenAI Sans (proprietary)</span><span class="token-css">--font-family-base</span><span class="token-value">OpenAI Sans</span></div>
+          <div class="token-row"><span class="token-readable">Regular / Medium / Semibold</span><span class="token-css">weights</span><span class="token-value">400/500/600</span></div>
+          <div class="token-row"><span class="token-readable">Display (sub-pixel fluid)</span><span class="token-css">--font-size-4xl</span><span class="token-value">43.3878px</span></div>
+          <div class="token-row"><span class="token-readable">Heading XL</span><span class="token-css">--font-size-3xl</span><span class="token-value">28px</span></div>
+          <div class="token-row"><span class="token-readable">Body default</span><span class="token-css">--font-size-base</span><span class="token-value">16px</span></div>
+          <div class="token-row"><span class="token-readable">Display tight (most extreme)</span><span class="token-css">--letter-spacing-tight</span><span class="token-value">−1.209px</span></div>
+          <div class="token-row"><span class="token-readable">Nav labels (sole positive)</span><span class="token-css">--letter-spacing-ls-7</span><span class="token-value">+0.3px</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Motion, Borders & Layers</span><span class="tokens-group-count"></span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Instant · ×142</span><span class="token-css">--duration-instant</span><span class="token-value">0.1s</span></div>
+          <div class="token-row"><span class="token-readable">Fast · ×13</span><span class="token-css">--duration-fast</span><span class="token-value">0.15s</span></div>
+          <div class="token-row"><span class="token-readable">Normal · ×443</span><span class="token-css">--duration-normal</span><span class="token-value">0.2s</span></div>
+          <div class="token-row"><span class="token-readable">Slow (dominant ×1472)</span><span class="token-css">--duration-slow</span><span class="token-value">0.25s</span></div>
+          <div class="token-row"><span class="token-readable">Slower · ×148</span><span class="token-css">--duration-slower</span><span class="token-value">0.3s</span></div>
+          <div class="token-row"><span class="token-readable">No easing tokens detected</span><span class="token-css">easing</span><span class="token-value">—</span></div>
+          <div class="token-row"><span class="token-readable">No opacity tokens detected</span><span class="token-css">opacity</span><span class="token-value">—</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px"></div><span class="token-readable">sm</span><span class="token-css">--radius-sm</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:6.08px"></div><span class="token-readable">md (dominant ×42)</span><span class="token-css">--radius-md</span><span class="token-value">6.08px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:40px;height:12px"></div><span class="token-readable">xl (CTA button ×7)</span><span class="token-css">--radius-xl</span><span class="token-value">40px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:9999px;height:12px"></div><span class="token-readable">2xl (pill ×15)</span><span class="token-css">--radius-2xl</span><span class="token-value">9999px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Base</span><span class="token-css">--z-1</span><span class="token-value">1</span></div>
+          <div class="token-row"><span class="token-readable">Navigation</span><span class="token-css">--z-2</span><span class="token-value">10</span></div>
+          <div class="token-row"><span class="token-readable">Nav cluster (50/51/52)</span><span class="token-css">--z-4/5/6</span><span class="token-value" style="font-weight:600">50/51/52</span></div>
+          <div class="token-row"><span class="token-readable">Modal / Critical</span><span class="token-css">--z-9</span><span class="token-value">103</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:32px 0;color:var(--text-dim);font-size:var(--font-size-2xs);border-top:var(--border-width-hairline) solid var(--border-default);line-height:20px;letter-spacing:var(--letter-spacing-ls-6);">
+    OpenAI Design System · Generated 17/04/2026 · 4 extracted colors (most minimal in series) · 1 font family (OpenAI Sans) · 3 font weights · 9 font sizes (sub-pixel fluid) · 10 line heights · 7 letter-spacing (6 negative, 1 positive at −1.209px extreme) · 22 spacing steps · 5 radius · 1 border width · 2 shadows (6-stop) · 9 durations · no easing tokens · no opacity tokens · 9 z-index layers · 5 breakpoints (Tailwind)
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+/* ============================================
+ * Design Tokens — AI Web App Builder | From idea to app – Hostinger Horizons
+ * Source: https://www.hostinger.com/in/horizons?utm_source=google&utm_medium=cpc&utm_id=23294607330&utm_campaign=Generic-Horizons-Competitors|NT:SE|LO:IN&utm_term=lovable&utm_content=785607961183&matchtype=p&headingtype=&placement=&creative=785607961183&targetid=kwd-290208748&extensionid=&adgroup_id={adgroup_id}&adgroup_name={adgroupname}&network=g&gclid=CjwKCAjw7vzOBhBxEiwAc7WNr7fgFF3bK_yZVLRBf4GDCvtLEcfIEMNuKzmWFI_1MpzYmL_KhS7vnRoCDawQAvD_BwE&gclid=CjwKCAjw7vzOBhBxEiwAc7WNr7fgFF3bK_yZVLRBf4GDCvtLEcfIEMNuKzmWFI_1MpzYmL_KhS7vnRoCDawQAvD_BwE&gad_source=1&gad_campaignid=23294607330&gbraid=0AAAAADMy-haVGXPML0U3p3rfj_xA7GIHN
+ * Generated: 15/04/2026, 23:36:00
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray: #222225; /* hsl(240, 4%, 14%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white-2: #F8F9FA; /* hsl(210, 17%, 98%) · text */
+  --color-dark-cyan: #009E5B; /* hsl(155, 100%, 31%) · text */
+  --color-blue: #673DE6; /* hsl(255, 77%, 57%) · background */
+  --color-dark-gray-2: #18181A; /* hsl(240, 4%, 10%) · background */
+  --color-mid-gray: #9D9EA4; /* hsl(231, 4%, 63%) · text */
+  --color-light-gray: #DEDEE2; /* hsl(240, 6%, 88%) · text */
+  --color-blue-2: #7B66FF; /* hsl(248, 100%, 70%) · text */
+  --color-light-blue: #9D99FF; /* hsl(242, 100%, 80%) · text */
+  --color-mid-gray-2: #797980; /* hsl(240, 3%, 49%) · text */
+  --color-dark-gray-3: #36363B; /* hsl(240, 4%, 22%) · background */
+  --color-dark-gray-4: #58585E; /* hsl(240, 3%, 36%) · background */
+  --color-dark-gray-5: #161718; /* hsl(210, 4%, 9%) · text */
+  --color-dark-gray-6: #101011; /* hsl(240, 3%, 6%) · background */
+  --color-light-orange: #FF9875; /* hsl(15, 100%, 73%) · background */
+  --color-purple: #B452FF; /* hsl(274, 100%, 66%) · background */
+  --color-black-2: #0C0D0D; /* hsl(180, 4%, 5%) · gradient */
+  --color-blue-3: #6D7081; /* hsl(231, 8%, 47%) · text */
+  --color-light-blue-2: rgba(123, 102, 255, 0.25); /* hsl(248, 100%, 70%) · background */
+  --color-dark-gray-7: #1D1E20; /* hsl(220, 5%, 12%) · text */
+  --color-blue-4: rgba(123, 102, 255, 0.1); /* hsl(251, 100%, 69%) · background */
+  --color-white-3: #E6E8FF; /* hsl(235, 100%, 95%) · background */
+  --color-dark-cyan-2: rgba(0, 158, 91, 0.1); /* hsl(154, 100%, 31%) · background */
+  --color-dark-gray-8: rgba(29, 30, 32, 0.16); /* hsl(0, 0%, 12%) · shadow */
+  --color-red: #BE1025; /* hsl(353, 84%, 40%) · text */
+  --color-blue-5: #5025D1; /* hsl(255, 70%, 48%) · gradient */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-base: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 32px;
+  --font-size-2xl: 36px;
+  --font-size-3xl: 48px;
+  --font-size-4xl: 80px;
+  --font-family-base: DM Sans;
+  --font-family-2: Times;
+  --font-weight-w399: 399;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-w599: 599;
+  --font-weight-semibold: 600;
+  --font-weight-w699: 699;
+  --font-weight-bold: 700;
+  --line-height-tight: 16px;
+  --line-height-snug: 20px;
+  --line-height-normal: 24px;
+  --line-height-relaxed: 26px;
+  --line-height-loose: 28px;
+  --line-height-lh-6: 40px;
+  --line-height-lh-7: 44px;
+  --line-height-lh-8: 56px;
+  --line-height-lh-9: 88px;
+  --letter-spacing-tight: -0.4px;
+  --letter-spacing-normal: -0.24px;
+  --letter-spacing-wide: -0.18px;
+  --letter-spacing-wider: -0.16px;
+  --letter-spacing-widest: -0.1px;
+  --letter-spacing-ls-6: -0.09px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 7px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-8: 11px;
+  --space-10: 12px;
+  --space-12: 15px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 128px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 44px;
+  --space-64: 47px;
+  --space-80: 48px;
+  --space-96: 56px;
+  --space-128: 64px;
+  --space-160: 68.5px;
+  --space-192: 79.7344px;
+  --space-256: 80px;
+  --space-23: 96px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 3px;
+  --radius-sm: 0px 0px 16px 16px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 16px 16px 0px 0px;
+  --radius-r7: 24px;
+  --radius-r8: 24px 24px 0px 0px;
+  --radius-r9: 30px;
+  --radius-r10: 50%;
+  --radius-r11: 99px;
+  --radius-r12: 100px;
+  --radius-r13: 999px;
+  --radius-r14: 1200px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px inset;
+  --shadow-md: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+  --shadow-lg: rgba(29, 30, 32, 0.16) 0px 0px 12px 0px;
+  --shadow-xl: rgb(123, 102, 255) 0px 0px 0px 1px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 1000;
+  --z-4: 1001;
+  --z-5: 1008;
+  --z-6: 2000;
+  --z-7: 9996;
+  --z-8: 9999;
+  --z-9: 999999;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 340px;
+  --breakpoint-sm: 450px;
+  --breakpoint-md: 460px;
+  --breakpoint-lg: 500px;
+  --breakpoint-xl: 575px;
+  --breakpoint-2xl: 576px;
+  --breakpoint-3xl: 600px;
+  --breakpoint-bp-8: 610px;
+  --breakpoint-bp-9: 728px;
+  --breakpoint-bp-10: 767px;
+  --breakpoint-bp-11: 768px;
+  --breakpoint-bp-12: 930px;
+  --breakpoint-bp-13: 992px;
+  --breakpoint-bp-14: 1000px;
+  --breakpoint-bp-15: 1024px;
+  --breakpoint-bp-16: 1025px;
+  --breakpoint-bp-17: 1056px;
+  --breakpoint-bp-18: 1140px;
+  --breakpoint-bp-19: 1310px;
+  --breakpoint-bp-20: 1360px;
+  --breakpoint-bp-21: 1384px;
+  --breakpoint-bp-22: 1525px;
+  --breakpoint-bp-23: 1712px;
+
+  /* ── Opacity ── */
+  --opacity-60: 0.6;
+}

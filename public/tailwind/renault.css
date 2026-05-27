@@ -1,0 +1,167 @@
+/* ============================================
+ * Design Tokens — Renault India | Best Cars to Buy in India
+ * Source: https://www.renault.co.in/
+ * Generated: 17/04/2026, 13:21:02
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-dark-gray: #656666; /* hsl(180, 0%, 40%) · text */
+  --color-light-gray: #F2F2F2; /* hsl(0, 0%, 95%) · background */
+  --color-dark-gray-2: #555555; /* hsl(0, 0%, 33%) · text */
+  --color-white-2: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+  --color-mid-gray: #A1A1A1; /* hsl(0, 0%, 63%) · background */
+  --color-dark-gray-3: #565656; /* hsl(0, 0%, 34%) · text */
+  --color-dark-gray-4: #3D3D3D; /* hsl(0, 0%, 24%) · background */
+  --color-cyan: #32AE88; /* hsl(162, 55%, 44%) · border */
+  --color-light-gray-2: #C7C5C7; /* hsl(300, 2%, 78%) · shadow */
+  --color-yellow: #EFDF00; /* hsl(56, 100%, 47%) · background */
+  --color-dark-blue: rgba(50, 50, 93, 0.1); /* hsl(240, 28%, 27%) · shadow */
+  --color-white-3: #F9FFFA; /* hsl(130, 100%, 99%) · background */
+  --color-dark-gray-5: #656565; /* hsl(0, 0%, 40%) · fill */
+  --color-light-gray-3: #D1D1D1; /* hsl(0, 0%, 82%) · border */
+  --color-dark-blue-2: #2E3644; /* hsl(218, 19%, 22%) · fill */
+  --color-blue-2: #3860BE; /* hsl(222, 54%, 48%) · background */
+  --color-light-gray-4: #BBBBBB; /* hsl(0, 0%, 73%) · border */
+  --color-blue-3: #6699CC; /* hsl(210, 50%, 60%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 0px;
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-base: 12.8px;
+  --font-size-lg: 13px;
+  --font-size-xl: 13.008px;
+  --font-size-2xl: 14px;
+  --font-size-3xl: 14.4px;
+  --font-size-4xl: 16px;
+  --font-size-5xl: 18px;
+  --font-size-6xl: 19.2px;
+  --font-size-22px: 21.92px;
+  --font-size-24px: 24px;
+  --font-size-32px: 32px;
+  --font-size-40px: 40px;
+  --font-family-base: Times;
+  --font-family-2: NouvelR;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 9.5px;
+  --line-height-snug: 11.5px;
+  --line-height-normal: 13.3px;
+  --line-height-relaxed: 14px;
+  --line-height-loose: 14.5px;
+  --line-height-lh-6: 15.6096px;
+  --line-height-lh-7: 16.8px;
+  --line-height-lh-8: 18px;
+  --line-height-lh-9: 19.2px;
+  --line-height-lh-10: 19.512px;
+  --line-height-lh-11: 20.8px;
+  --line-height-lh-12: 22.4px;
+  --line-height-lh-13: 22.8px;
+  --line-height-lh-14: 24.96px;
+  --line-height-lh-15: 26.304px;
+  --line-height-lh-16: 30.4px;
+  --line-height-lh-17: 38px;
+  --letter-spacing-tight: 0.13008px;
+  --letter-spacing-normal: 0.144px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 15px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-16: 32px;
+  --space-20: 40px;
+  --space-24: 44px;
+  --space-32: 48px;
+  --space-40: 64px;
+  --space-48: 72px;
+  --space-64: 80px;
+  --space-80: 96px;
+  --space-96: 121.195px;
+  --space-128: 121.203px;
+  --space-160: 131.141px;
+  --space-192: 140.5px;
+  --space-256: 489.414px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 10px;
+  --border-width-base: 12px;
+  --radius-sm: 0px 0px 2px 2px;
+  --radius-md: 2px;
+  --radius-lg: 3px;
+  --radius-xl: 10px;
+  --radius-2xl: 17px;
+  --radius-full: 46px;
+  --radius-r7: 50px;
+  --radius-r8: 100px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.2) 0px 0px 18px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 2px 4px 0px, rgba(50, 50, 93, 0.1) 0px 7px 14px 0px;
+  --shadow-lg: rgb(199, 197, 199) -3px -3px 5px -2px;
+  --shadow-xl: rgb(199, 197, 199) 0px 0px 12px 2px;
+  --shadow-shadow-5: rgba(0, 0, 0, 0.2) 5px 5px 8px 0px;
+  --shadow-shadow-6: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.15s;
+  --duration-normal: 0.2s;
+  --duration-slow: 0.25s;
+  --duration-slower: 0.3s;
+  --duration-duration-6: 0.4s;
+  --duration-duration-7: 0.5s;
+  --duration-duration-8: 0.6s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in: ease-in;
+  --easing-linear: linear;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 19;
+  --z-4: 24;
+  --z-5: 1000;
+  --z-6: 2147483645;
+  --z-7: 2147483646;
+  --z-8: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 425px;
+  --breakpoint-md: 426px;
+  --breakpoint-lg: 530px;
+  --breakpoint-xl: 550px;
+  --breakpoint-2xl: 600px;
+  --breakpoint-3xl: 610px;
+  --breakpoint-bp-8: 640px;
+  --breakpoint-bp-9: 669px;
+  --breakpoint-bp-10: 670px;
+  --breakpoint-bp-11: 767px;
+  --breakpoint-bp-12: 768px;
+  --breakpoint-bp-13: 769px;
+  --breakpoint-bp-14: 890px;
+  --breakpoint-bp-15: 896px;
+  --breakpoint-bp-16: 897px;
+  --breakpoint-bp-17: 1023px;
+  --breakpoint-bp-18: 1024px;
+  --breakpoint-bp-19: 1280px;
+  --breakpoint-bp-20: 1440px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-60: 0.6;
+  --opacity-75: 0.75;
+}

@@ -1,0 +1,233 @@
+/* ============================================
+ * Design Tokens — Automobili Lamborghini - Official Website | Lamborghini.com
+ * Source: https://www.lamborghini.com/en-en
+ * Generated: 15/04/2026, 23:33:24
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray: #202020; /* hsl(0, 0%, 13%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-white-2: #F5F5F5; /* hsl(0, 0%, 96%) · text */
+  --color-dark-gray-2: #313131; /* hsl(0, 0%, 19%) · text */
+  --color-dark-gray-3: #181818; /* hsl(0, 0%, 9%) · background */
+  --color-dark-gray-4: #555555; /* hsl(0, 0%, 33%) · text */
+  --color-dark-gray-5: #333333; /* hsl(0, 0%, 20%) · other */
+  --color-mid-gray: #969696; /* hsl(0, 0%, 59%) · background */
+  --color-cyan: #29ABE2; /* hsl(198, 76%, 52%) · background */
+  --color-mid-gray-2: #7D7D7D; /* hsl(0, 0%, 49%) · background */
+  --color-dark-blue: #27455C; /* hsl(206, 40%, 26%) · background */
+  --color-dark-gray-6: #494949; /* hsl(0, 0%, 29%) · text */
+  --color-dark-yellow: #917300; /* hsl(48, 100%, 28%) · background */
+  --color-dark-gray-7: #2F2F2F; /* hsl(0, 0%, 18%) · text */
+  --color-white-3: #F8F8F8; /* hsl(0, 0%, 97%) · background */
+  --color-yellow: #FFC000; /* hsl(45, 100%, 50%) · background */
+  --color-dark-gray-8: #656565; /* hsl(0, 0%, 40%) · text */
+  --color-light-gray: #F2F1F1; /* hsl(0, 4%, 95%) · background */
+  --color-light-gray-2: #DDDDDD; /* hsl(0, 0%, 87%) · border */
+  --color-orange: #FFCE3E; /* hsl(45, 100%, 62%) · text */
+  --color-cyan-2: #32AE88; /* hsl(162, 55%, 44%) · border */
+  --color-mid-gray-3: #696969; /* hsl(0, 0%, 41%) · text */
+  --color-light-gray-3: #C7C5C7; /* hsl(300, 2%, 78%) · shadow */
+  --color-dark-gray-9: #525252; /* hsl(0, 0%, 32%) · background */
+  --color-dark-gray-10: #424242; /* hsl(0, 0%, 26%) · background */
+  --color-dark-gray-11: #666666; /* hsl(0, 0%, 40%) · background */
+  --color-light-gray-4: #E6E6E6; /* hsl(0, 0%, 90%) · background */
+  --color-mid-gray-4: #808080; /* hsl(0, 0%, 50%) · shadow */
+  --color-light-gray-5: #C1C1C1; /* hsl(0, 0%, 76%) · border */
+  --color-mid-gray-5: #999999; /* hsl(0, 0%, 60%) · shadow */
+  --color-white-4: #F9FFFA; /* hsl(130, 100%, 99%) · background */
+  --color-light-gray-6: #D8D8D8; /* hsl(0, 0%, 85%) · border */
+  --color-light-gray-7: #D1D1D1; /* hsl(0, 0%, 82%) · border */
+  --color-dark-blue-2: #2E3644; /* hsl(218, 19%, 22%) · fill */
+  --color-blue: #3860BE; /* hsl(222, 54%, 48%) · background */
+  --color-light-gray-8: #BBBBBB; /* hsl(0, 0%, 73%) · border */
+  --color-white-5: #F4F4F4; /* hsl(0, 0%, 96%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 7.33333px;
+  --font-size-xs: 8.8064px;
+  --font-size-sm: 10px;
+  --font-size-base: 11.008px;
+  --font-size-lg: 11.52px;
+  --font-size-xl: 12px;
+  --font-size-2xl: 12.992px;
+  --font-size-3xl: 13.008px;
+  --font-size-4xl: 13.6px;
+  --font-size-5xl: 14px;
+  --font-size-6xl: 14.4px;
+  --font-size-16px: 16px;
+  --font-size-17px: 17px;
+  --font-size-18px: 18px;
+  --font-size-27px: 27px;
+  --font-size-40px: 40px;
+  --font-size-54px: 54px;
+  --font-size-80px: 80px;
+  --font-size-120px: 120px;
+  --font-family-base: sans-serif;
+  --font-family-2: LamboType;
+  --font-family-3: Open Sans;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 10px;
+  --line-height-snug: 11px;
+  --line-height-normal: 12px;
+  --line-height-relaxed: 14.4px;
+  --line-height-loose: 15.4112px;
+  --line-height-lh-6: 15.6096px;
+  --line-height-lh-7: 16.9104px;
+  --line-height-lh-8: 17.6px;
+  --line-height-lh-9: 19px;
+  --line-height-lh-10: 20px;
+  --line-height-lh-11: 20.8px;
+  --line-height-lh-12: 22px;
+  --line-height-lh-13: 24px;
+  --line-height-lh-14: 25.5px;
+  --line-height-lh-15: 28px;
+  --line-height-lh-16: 37px;
+  --line-height-lh-17: 40px;
+  --line-height-lh-18: 46px;
+  --line-height-lh-19: 64px;
+  --line-height-lh-20: 70px;
+  --line-height-lh-21: 90px;
+  --line-height-lh-22: 110px;
+  --letter-spacing-tight: -0.42px;
+  --letter-spacing-normal: -0.36px;
+  --letter-spacing-wide: 0.13008px;
+  --letter-spacing-wider: 0.144px;
+  --letter-spacing-widest: 0.16px;
+  --letter-spacing-ls-6: 0.2px;
+  --letter-spacing-ls-7: 0.225px;
+  --letter-spacing-ls-8: 0.96px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 40px;
+  --space-10: 48px;
+  --space-12: 50px;
+  --space-16: 56px;
+  --space-20: 64px;
+  --space-24: 77.9922px;
+  --space-32: 80px;
+  --space-40: 86.5px;
+  --space-48: 160px;
+  --space-64: 260.008px;
+  --space-80: 296px;
+  --space-96: 364.641px;
+  --space-128: 439.492px;
+  --space-160: 439.5px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --border-width-base: 12px;
+  --radius-sm: 1px;
+  --radius-md: 2px;
+  --radius-lg: 2.5px;
+  --radius-xl: 3px;
+  --radius-2xl: 17px;
+  --radius-full: 20px;
+  --radius-r7: 50px;
+  --radius-r8: 100%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgb(128, 128, 128) 0px 0px 5px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.2) 0px 0px 18px 0px;
+  --shadow-lg: rgb(153, 153, 153) 0px 2px 10px -3px;
+  --shadow-xl: rgb(199, 197, 199) -3px -3px 5px -2px;
+  --shadow-shadow-5: rgb(199, 197, 199) 0px 0px 12px 2px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.3s;
+  --duration-slower: 0.4s;
+  --duration-duration-6: 0.5s;
+  --duration-duration-7: 0.8s;
+  --duration-duration-8: 1s;
+  --duration-duration-9: 4s;
+  --easing-ease-in-out: ease-in-out;
+  --easing-ease-out: ease-out;
+  --easing-ease-in: ease-in;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1000;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 5;
+  --z-6: 8;
+  --z-7: 10;
+  --z-8: 11;
+  --z-9: 12;
+  --z-10: 13;
+  --z-11: 20;
+  --z-12: 99;
+  --z-13: 100;
+  --z-14: 200;
+  --z-15: 999;
+  --z-16: 1010;
+  --z-17: 1040;
+  --z-18: 9999;
+  --z-19: 2147483645;
+  --z-20: 2147483646;
+  --z-21: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 400px;
+  --breakpoint-sm: 425px;
+  --breakpoint-md: 426px;
+  --breakpoint-lg: 450px;
+  --breakpoint-xl: 476px;
+  --breakpoint-2xl: 530px;
+  --breakpoint-3xl: 550px;
+  --breakpoint-bp-8: 575.98px;
+  --breakpoint-bp-9: 576px;
+  --breakpoint-bp-10: 600px;
+  --breakpoint-bp-11: 767px;
+  --breakpoint-bp-12: 767.98px;
+  --breakpoint-bp-13: 768px;
+  --breakpoint-bp-14: 769px;
+  --breakpoint-bp-15: 890px;
+  --breakpoint-bp-16: 896px;
+  --breakpoint-bp-17: 897px;
+  --breakpoint-bp-18: 991.98px;
+  --breakpoint-bp-19: 992px;
+  --breakpoint-bp-20: 1023px;
+  --breakpoint-bp-21: 1024px;
+  --breakpoint-bp-22: 1199.98px;
+  --breakpoint-bp-23: 1200px;
+  --breakpoint-bp-24: 1280px;
+  --breakpoint-bp-25: 1440px;
+
+  /* ── Opacity ── */
+  --opacity-10: 0.1;
+  --opacity-19: 0.19;
+  --opacity-25: 0.25;
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-44: 0.44;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-61: 0.61;
+  --opacity-73: 0.73;
+  --opacity-82: 0.82;
+  --opacity-87: 0.87;
+  --opacity-90: 0.9;
+  --opacity-92: 0.92;
+  --opacity-95: 0.95;
+  --opacity-97: 0.97;
+  --opacity-98: 0.98;
+  --opacity-99: 0.99;
+}

@@ -1,0 +1,119 @@
+/* ============================================
+ * Design Tokens — Nike. Just Do It. Nike IN
+ * Source: https://www.nike.in/?utm_source=Google&utm_medium=Search&utm_campaign=Core_11-02-26_Acquisition_Google_Search_Text_Low_Keyword_PanIndia_Web&gad_source=1&gad_campaignid=23550254850&gbraid=0AAAABCZeWhgzdeNR531pi6W-JcC8cgt9a&gclid=CjwKCAjwtIfPBhAzEiwAv9RTJmzekcDQTjhRNEWmy7CdoLb06nf92bbVBo81NTqSwZiNo4Rwejn1KBoCCmcQAvD_BwE
+ * Generated: 17/04/2026, 13:08:50
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #111111; /* hsl(0, 0%, 7%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-mid-gray: #707072; /* hsl(240, 1%, 44%) · text */
+  --color-dark-blue: #2B333F; /* hsl(216, 19%, 21%) · background */
+  --color-mid-gray-2: #767676; /* hsl(0, 0%, 46%) · border */
+  --color-white-2: #F5F5F5; /* hsl(0, 0%, 96%) · background */
+  --color-blue: rgba(115, 133, 159, 0.5); /* hsl(216, 18%, 54%) · background */
+  --color-mid-gray-3: #888888; /* hsl(0, 0%, 53%) · text */
+  --color-blue-2: #73859F; /* hsl(215, 19%, 54%) · gradient */
+  --color-blue-3: rgba(115, 133, 159, 0.75); /* hsl(214, 19%, 54%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 15px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 32px;
+  --font-size-5xl: 72px;
+  --font-family-base: Times;
+  --font-family-2: Helvetica Now Text;
+  --font-family-3: Helvetica Now Text Medium;
+  --font-family-4: Arial;
+  --font-family-5: VideoJS;
+  --font-family-6: Nike Futura ND;
+  --font-family-7: Helvetica Now Display;
+  --font-family-8: Inter;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 10px;
+  --line-height-snug: 16.8px;
+  --line-height-normal: 18px;
+  --line-height-relaxed: 20px;
+  --line-height-loose: 21px;
+  --line-height-lh-6: 22.8571px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 30px;
+  --line-height-lh-9: 45px;
+  --line-height-lh-10: 45.7143px;
+  --line-height-lh-11: 64.8px;
+  --letter-spacing-tight: -0.5px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 4px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 9px;
+  --space-8: 10px;
+  --space-10: 12px;
+  --space-12: 14px;
+  --space-16: 16px;
+  --space-20: 16.9922px;
+  --space-24: 20px;
+  --space-32: 24px;
+  --space-40: 48px;
+  --space-48: 54px;
+  --space-64: 60px;
+  --space-80: 64px;
+  --space-96: 80px;
+  --space-128: 84px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 0.5px;
+  --border-width-thin: 1px;
+  --border-width-base: 1.5px;
+  --border-width-thick: 6px;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 9px;
+  --radius-xl: 24px;
+  --radius-2xl: 100%;
+  --radius-full: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+
+  /* ── Motion ── */
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.4s;
+  --duration-slower: 0.5s;
+  --duration-duration-6: 1s;
+  --easing-linear: linear;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 10;
+  --z-4: 100;
+  --z-5: 999;
+  --z-6: 1000;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 340px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 1300px;
+  --breakpoint-xl: 1600px;
+
+  /* ── Opacity ── */
+  --opacity-85: 0.85;
+}

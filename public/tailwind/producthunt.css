@@ -1,0 +1,138 @@
+/* ============================================
+ * Design Tokens — Product Hunt – The best new products in tech.
+ * Source: https://www.producthunt.com/
+ * Generated: 17/04/2026, 13:18:59
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-light-gray: #EAECF0; /* hsl(220, 17%, 93%) · background */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-blue: #344054; /* hsl(218, 24%, 27%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue: #667085; /* hsl(221, 13%, 46%) · text */
+  --color-dark-blue-2: #101828; /* hsl(220, 43%, 11%) · background */
+  --color-blue-2: #4B587C; /* hsl(224, 25%, 39%) · text */
+  --color-blue-3: #98A2B3; /* hsl(218, 15%, 65%) · text */
+  --color-red: #B6453B; /* hsl(5, 51%, 47%) · other */
+  --color-dark-blue-3: #475467; /* hsl(216, 18%, 34%) · text */
+  --color-dark-blue-4: #21293C; /* hsl(222, 29%, 18%) · text */
+  --color-red-2: #FF6154; /* hsl(5, 100%, 66%) · background */
+  --color-red-3: #F86C60; /* hsl(5, 92%, 67%) · other */
+  --color-light-blue: #D9E1EC; /* hsl(215, 33%, 89%) · border */
+  --color-blue-4: #3979E3; /* hsl(217, 75%, 56%) · other */
+  --color-blue-5: #6D68D4; /* hsl(243, 56%, 62%) · other */
+  --color-pink: #DE62B6; /* hsl(319, 65%, 63%) · other */
+  --color-red-4: #F10202; /* hsl(0, 98%, 48%) · other */
+  --color-green: #3F9E58; /* hsl(136, 43%, 43%) · other */
+  --color-light-red: rgba(255, 230, 228, 0.25); /* hsl(9, 100%, 95%) · gradient */
+  --color-light-red-2: #FFE6E4; /* hsl(4, 100%, 95%) · background */
+  --color-red-5: #F468AC; /* hsl(331, 86%, 68%) · other */
+  --color-green-2: #579167; /* hsl(137, 25%, 45%) · other */
+  --color-light-orange: #FEF0C7; /* hsl(45, 96%, 89%) · border */
+  --color-white-2: #F9FAFB; /* hsl(210, 20%, 98%) · background */
+  --color-white-3: #F5F5F5; /* hsl(0, 0%, 96%) · gradient */
+  --color-light-green: #ABEFC6; /* hsl(144, 68%, 80%) · shadow */
+  --color-white-4: #F2F4F7; /* hsl(216, 24%, 96%) · background */
+  --color-white-5: rgba(255, 232, 230, 0.25); /* hsl(0, 100%, 95%) · gradient */
+  --color-white-6: #FFE8E6; /* hsl(5, 100%, 95%) · background */
+  --color-white-7: #F5F8FF; /* hsl(222, 100%, 98%) · background */
+  --color-light-blue-2: rgba(229, 239, 255, 0.25); /* hsl(214, 100%, 95%) · gradient */
+  --color-light-blue-3: #E5EFFF; /* hsl(217, 100%, 95%) · background */
+  --color-white-8: rgba(234, 233, 255, 0.25); /* hsl(250, 100%, 95%) · gradient */
+  --color-white-9: #EAE9FF; /* hsl(243, 100%, 96%) · background */
+  --color-white-10: rgba(255, 233, 244, 0.25); /* hsl(330, 100%, 95%) · gradient */
+  --color-white-11: #FFE9F4; /* hsl(330, 100%, 96%) · background */
+  --color-light-green-2: rgba(207, 252, 219, 0.25); /* hsl(136, 85%, 90%) · gradient */
+  --color-light-green-3: #CFFCDB; /* hsl(136, 88%, 90%) · background */
+  --color-white-12: rgba(255, 233, 248, 0.25); /* hsl(320, 100%, 95%) · gradient */
+  --color-white-13: #FFE9F8; /* hsl(319, 100%, 96%) · background */
+  --color-light-red-3: rgba(255, 228, 228, 0.25); /* hsl(0, 100%, 95%) · gradient */
+  --color-light-red-4: #FFE4E4; /* hsl(0, 100%, 95%) · background */
+  --color-light-green-4: rgba(207, 242, 216, 0.25); /* hsl(133, 60%, 88%) · gradient */
+  --color-light-green-5: #CFF2D8; /* hsl(135, 57%, 88%) · background */
+  --color-white-14: #FFF4ED; /* hsl(23, 100%, 96%) · background */
+  --color-dark-gray: #111111; /* hsl(0, 0%, 7%) · background */
+  --color-cyan: #17B26A; /* hsl(152, 77%, 39%) · background */
+  --color-dark-blue-5: #1D2939; /* hsl(214, 33%, 17%) · border */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-family-base: -apple-system;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 14px;
+  --line-height-snug: 16px;
+  --line-height-normal: 18.4px;
+  --line-height-relaxed: 20px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 28px;
+  --line-height-lh-7: 32px;
+  --letter-spacing-tight: 0.3px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 16px;
+  --space-6: 20px;
+  --space-8: 24px;
+  --space-10: 28px;
+  --space-12: 32px;
+  --space-16: 40px;
+  --space-20: 90px;
+  --space-24: 131.469px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(171, 239, 198) 0px 4px 6px -1px, rgb(171, 239, 198) 0px 2px 4px -2px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.7s;
+  --easing-ease-out: ease-out;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 10;
+  --z-2: 20;
+  --z-3: 50;
+  --z-4: 100;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 501px;
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 740px;
+  --breakpoint-lg: 758px;
+  --breakpoint-xl: 759px;
+  --breakpoint-2xl: 760px;
+  --breakpoint-3xl: 1098px;
+  --breakpoint-bp-8: 1099px;
+  --breakpoint-bp-9: 1439px;
+  --breakpoint-bp-10: 1536px;
+  --breakpoint-bp-11: 1728px;
+
+  /* ── Opacity ── */
+  --opacity-45: 0.45;
+  --opacity-50: 0.5;
+}

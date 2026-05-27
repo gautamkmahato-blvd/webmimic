@@ -1,0 +1,173 @@
+/* ============================================
+ * Design Tokens — Apple Store Online - Apple (IN)
+ * Source: https://www.apple.com/in/store?afid=p240%7Cgo~cmp-11141176048~adg-112258962467~ad-799103667040_kwd-10778630~dev-c~ext-~prd-~mca-~nt-search&cid=aos-in-kwgo-txt-brand-brand--
+ * Generated: 13/04/2026, 22:50:27
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-dark-gray: #1D1D1F; /* hsl(240, 3%, 12%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-dark-gray-2: #333336; /* hsl(240, 3%, 21%) · text */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-mid-gray: #6E6E73; /* hsl(240, 2%, 44%) · text */
+  --color-orange: #B64400; /* hsl(22, 100%, 36%) · text */
+  --color-blue: #007AFF; /* hsl(211, 100%, 50%) · text */
+  --color-dark-gray-3: #424245; /* hsl(240, 2%, 26%) · text */
+  --color-blue-2: #0066CC; /* hsl(210, 100%, 40%) · text */
+  --color-light-gray: rgba(210, 210, 215, 0.64); /* hsl(240, 5%, 83%) · background */
+  --color-dark-green: #008009; /* hsl(124, 100%, 25%) · text */
+  --color-purple: #AC39FF; /* hsl(275, 100%, 61%) · text */
+  --color-light-gray-2: #E8E8ED; /* hsl(240, 12%, 92%) · background */
+  --color-orange-2: #FF791B; /* hsl(25, 100%, 55%) · text */
+  --color-white-2: #F5F5F7; /* hsl(240, 11%, 96%) · background */
+  --color-mid-gray-2: #86868B; /* hsl(240, 2%, 54%) · text */
+  --color-white-3: #FAFAFC; /* hsl(240, 25%, 98%) · background */
+  --color-light-blue: #ADD8FF; /* hsl(209, 100%, 84%) · background */
+  --color-orange-3: #F8AB5E; /* hsl(30, 92%, 67%) · gradient */
+  --color-red: #F36961; /* hsl(3, 86%, 67%) · gradient */
+  --color-purple-2: #A176C8; /* hsl(271, 43%, 62%) · gradient */
+  --color-blue-3: #759BEB; /* hsl(221, 75%, 69%) · gradient */
+  --color-cyan: #65BEB3; /* hsl(173, 41%, 57%) · gradient */
+  --color-green: #70DB96; /* hsl(141, 60%, 65%) · gradient */
+  --color-dark-gray-4: #635B61; /* hsl(315, 4%, 37%) · background */
+  --color-blue-4: #0079D0; /* hsl(205, 100%, 41%) · gradient */
+  --color-purple-3: #9E52D8; /* hsl(274, 63%, 58%) · gradient */
+  --color-red-2: #DA365C; /* hsl(346, 69%, 53%) · gradient */
+  --color-orange-4: #D04901; /* hsl(21, 99%, 41%) · gradient */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 8.4px;
+  --font-size-xs: 10px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-lg: 14.04px;
+  --font-size-xl: 14.4px;
+  --font-size-2xl: 15.3px;
+  --font-size-3xl: 17px;
+  --font-size-4xl: 18px;
+  --font-size-5xl: 19.89px;
+  --font-size-6xl: 21.6px;
+  --font-size-24px: 24px;
+  --font-size-28px: 28px;
+  --font-size-37px: 37px;
+  --font-size-80px: 80px;
+  --font-family-base: SF Pro Text;
+  --font-family-2: SF Pro Display;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --line-height-tight: 10.8005px;
+  --line-height-snug: 12px;
+  --line-height-normal: 14.7059px;
+  --line-height-relaxed: 16.0005px;
+  --line-height-loose: 16.8px;
+  --line-height-lh-6: 18.0008px;
+  --line-height-lh-7: 18.7206px;
+  --line-height-lh-8: 20.0003px;
+  --line-height-lh-9: 21.0012px;
+  --line-height-lh-10: 24.0007px;
+  --line-height-lh-11: 25px;
+  --line-height-lh-12: 28px;
+  --line-height-lh-13: 29.25px;
+  --line-height-lh-14: 32px;
+  --line-height-lh-15: 54.4118px;
+  --line-height-lh-16: 84px;
+  --letter-spacing-tight: -1.2px;
+  --letter-spacing-normal: -0.374px;
+  --letter-spacing-wide: -0.224px;
+  --letter-spacing-wider: -0.12px;
+  --letter-spacing-widest: -0.08px;
+  --letter-spacing-ls-6: 0.196px;
+  --letter-spacing-ls-7: 0.216px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-6: 5.616px;
+  --space-8: 6px;
+  --space-10: 7px;
+  --space-12: 8px;
+  --space-16: 9px;
+  --space-20: 9.6px;
+  --space-24: 25px;
+  --space-32: 41px;
+  --space-40: 64px;
+  --space-48: 15px;
+  --space-64: 16px;
+  --space-80: 17px;
+  --space-96: 18px;
+  --space-128: 19px;
+  --space-160: 20px;
+  --space-192: 22px;
+  --space-256: 22.4px;
+  --space-23: 24px;
+  --space-25: 27px;
+  --space-26: 30px;
+  --space-27: 32px;
+  --space-28: 34px;
+  --space-29: 37px;
+  --space-30: 38px;
+  --space-31: 40px;
+  --space-33: 44px;
+  --space-34: 46px;
+  --space-35: 48px;
+  --space-36: 52.9182px;
+  --space-37: 54px;
+  --space-38: 54.5px;
+  --space-39: 62px;
+  --space-41: 76.5px;
+  --space-42: 80px;
+  --space-43: 84px;
+  --space-44: 88px;
+  --space-45: 90px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --radius-sm: 0px 0px 18px 18px;
+  --radius-md: 5px;
+  --radius-lg: 18px;
+  --radius-xl: 50%;
+  --radius-2xl: 56px;
+  --radius-full: 100%;
+  --radius-r7: 980px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.08) 2px 4px 12px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.02s;
+  --duration-fast: 0.04s;
+  --duration-normal: 0.06s;
+  --duration-slow: 0.08s;
+  --duration-slower: 0.1s;
+  --duration-duration-6: 0.12s;
+  --duration-duration-7: 0.14s;
+  --duration-duration-8: 0.16s;
+  --duration-duration-9: 0.18s;
+  --duration-duration-10: 0.2s;
+  --duration-duration-11: 0.22s;
+  --duration-duration-12: 0.24s;
+  --duration-duration-13: 0.25s;
+  --duration-duration-14: 0.3s;
+  --duration-duration-15: 0.32s;
+  --duration-duration-16: 0.5s;
+  --duration-duration-17: 0.7s;
+  --easing-linear: linear;
+  --easing-ease-in: ease-in;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 10;
+  --z-5: 9998;
+  --z-6: 9999;
+
+  /* ── Breakpoints ── */
+
+  /* ── Opacity ── */
+  --opacity-80: 0.8;
+}

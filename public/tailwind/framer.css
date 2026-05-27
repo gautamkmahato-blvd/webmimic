@@ -1,0 +1,140 @@
+/* ============================================
+ * Design Tokens — Framer: Create a professional website, free. No code website builder loved by designers.
+ * Source: https://www.framer.com/?utm_source=google&utm_medium=adwords&utm_campaign=22283959363_172357934141&utm_content=746821181202_framer_e_c_g&gad_source=1&gad_campaignid=22283959363&gbraid=0AAAAAC3AKQX_ZQa-FeQ1lFzIqcegP3PHb&gclid=Cj0KCQjwy_fOBhC6ARIsAHKFB7-px50VU8UMM5D7-mjytfA7HbDxGBilYHkEKmr4AXMwxqff1uDsGewaAkJlEALw_wcB
+ * Generated: 15/04/2026, 00:28:14
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-blue: #0000EE; /* hsl(240, 100%, 47%) · text */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-blue-2: #0099FF; /* hsl(204, 100%, 50%) · background */
+  --color-dark-gray: #222222; /* hsl(0, 0%, 13%) · text */
+  --color-blue-3: #0055FF; /* hsl(220, 100%, 50%) · fill */
+  --color-light-gray: #EEEEEE; /* hsl(0, 0%, 93%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 7px;
+  --font-size-xs: 8px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-lg: 14px;
+  --font-size-xl: 15px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 18px;
+  --font-size-4xl: 20px;
+  --font-size-5xl: 24px;
+  --font-size-6xl: 48px;
+  --font-size-62px: 62px;
+  --font-size-84px: 84px;
+  --font-family-base: Times;
+  --font-family-2: sans-serif;
+  --font-family-3: Inter Variable;
+  --font-family-4: Inter;
+  --font-family-5: GT Walsheim Framer Medium;
+  --font-family-6: GT Walsheim Medium;
+  --font-family-7: Inter Framer Regular;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --line-height-tight: 6.4px;
+  --line-height-snug: 7px;
+  --line-height-normal: 12px;
+  --line-height-relaxed: 13px;
+  --line-height-loose: 14px;
+  --line-height-lh-6: 15px;
+  --line-height-lh-7: 16.8px;
+  --line-height-lh-8: 18.2px;
+  --line-height-lh-9: 19.5px;
+  --line-height-lh-10: 21.6px;
+  --line-height-lh-11: 23.4px;
+  --line-height-lh-12: 28px;
+  --line-height-lh-13: 30px;
+  --line-height-lh-14: 52.8px;
+  --line-height-lh-15: 62px;
+  --line-height-lh-16: 71.4px;
+  --letter-spacing-tight: -4.2px;
+  --letter-spacing-normal: -3.1px;
+  --letter-spacing-wide: -1.8px;
+  --letter-spacing-wider: -0.5px;
+  --letter-spacing-widest: -0.36px;
+  --letter-spacing-ls-6: -0.3px;
+  --letter-spacing-ls-7: -0.28px;
+  --letter-spacing-ls-8: -0.25px;
+  --letter-spacing-ls-9: -0.18px;
+  --letter-spacing-ls-10: -0.15px;
+  --letter-spacing-ls-11: -0.13px;
+  --letter-spacing-ls-12: -0.12px;
+  --letter-spacing-ls-13: -0.01px;
+  --letter-spacing-ls-14: 0.21px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2px;
+  --space-3: 2.5px;
+  --space-4: 3px;
+  --space-5: 4px;
+  --space-6: 4.4px;
+  --space-8: 5px;
+  --space-10: 6px;
+  --space-12: 8px;
+  --space-16: 10px;
+  --space-20: 11px;
+  --space-24: 12px;
+  --space-32: 14px;
+  --space-40: 15px;
+  --space-48: 20px;
+  --space-64: 30px;
+  --space-80: 38px;
+  --space-96: 40px;
+  --space-128: 47px;
+  --space-160: 60px;
+  --space-192: 64px;
+  --space-256: 80px;
+  --space-23: 100px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 14px;
+  --radius-full: 15px;
+  --radius-r7: 20px;
+  --radius-r8: 40px;
+  --radius-r9: 50px;
+  --radius-r10: 50%;
+  --radius-r11: 100px;
+  --radius-r12: 100%;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.5) 0px 20px 30px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.1) 0px 10px 20px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;
+
+  /* ── Motion ── */
+  --duration-instant: 0.3s;
+  --easing-ease-in-out: ease-in-out;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: 1;
+  --z-2: 2;
+  --z-3: 10;
+  --z-4: 99;
+  --z-5: 100;
+  --z-6: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 809px;
+  --breakpoint-sm: 809.98px;
+  --breakpoint-md: 810px;
+  --breakpoint-lg: 1199px;
+  --breakpoint-xl: 1199.98px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-80: 0.8;
+}

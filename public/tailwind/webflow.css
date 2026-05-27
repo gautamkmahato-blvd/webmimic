@@ -1,0 +1,186 @@
+/* ============================================
+ * Design Tokens — Webflow: Create a custom website | Visual website builder
+ * Source: https://webflow.com/
+ * Generated: 18/04/2026, 14:16:47
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #080808; /* hsl(0, 0%, 3%) · background */
+  --color-white: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-black-2: #000000; /* hsl(0, 0%, 0%) · text */
+  --color-dark-gray: #5A5A5A; /* hsl(0, 0%, 35%) · background */
+  --color-light-blue: #6CA7FF; /* hsl(216, 100%, 71%) · text */
+  --color-light-gray: #D8D8D8; /* hsl(0, 0%, 85%) · background */
+  --color-orange: #FFA666; /* hsl(25, 100%, 70%) · text */
+  --color-blue: #146EF5; /* hsl(216, 92%, 52%) · background */
+  --color-light-gray-2: #F0F0F0; /* hsl(0, 0%, 94%) · background */
+  --color-blue-2: #1366E2; /* hsl(216, 84%, 48%) · text */
+  --color-green: #60ED76; /* hsl(129, 80%, 65%) · text */
+  --color-blue-3: #146CEB; /* hsl(215, 84%, 50%) · background */
+  --color-blue-4: rgba(20, 110, 245, 0.1); /* hsl(217, 92%, 52%) · background */
+  --color-dark-gray-2: #464646; /* hsl(0, 0%, 27%) · background */
+  --color-dark-gray-3: #171717; /* hsl(0, 0%, 9%) · background */
+  --color-mid-gray: #808080; /* hsl(0, 0%, 50%) · text */
+  --color-light-gray-3: #EFEFEF; /* hsl(0, 0%, 94%) · background */
+  --color-dark-gray-4: #292929; /* hsl(0, 0%, 16%) · background */
+  --color-dark-gray-5: #222222; /* hsl(0, 0%, 13%) · background */
+  --color-light-blue-2: #CAB1FF; /* hsl(259, 100%, 85%) · gradient */
+  --color-dark-gray-6: #363636; /* hsl(0, 0%, 21%) · border */
+  --color-dark-gray-7: #111111; /* hsl(0, 0%, 7%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 10px;
+  --font-size-xs: 12px;
+  --font-size-sm: 12.8px;
+  --font-size-base: 13.8011px;
+  --font-size-lg: 14px;
+  --font-size-xl: 15px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 18.9036px;
+  --font-size-4xl: 19.3421px;
+  --font-size-5xl: 19.4518px;
+  --font-size-6xl: 20px;
+  --font-size-23px: 22.9036px;
+  --font-size-27px: 27.4843px;
+  --font-size-29px: 29.2589px;
+  --font-size-30px: 29.8071px;
+  --font-size-37px: 36.7107px;
+  --font-size-40px: 39.5371px;
+  --font-size-49px: 49.4214px;
+  --font-size-70px: 70.1321px;
+  --font-family-base: sans-serif;
+  --font-family-2: WF Visual Sans Variable;
+  --font-family-3: WFVisualSans-Mono;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-w550: 550;
+  --font-weight-semibold: 600;
+  --line-height-tight: 12px;
+  --line-height-snug: 13px;
+  --line-height-normal: 14px;
+  --line-height-relaxed: 15.36px;
+  --line-height-loose: 16px;
+  --line-height-lh-6: 18px;
+  --line-height-lh-7: 19.2px;
+  --line-height-lh-8: 19.5px;
+  --line-height-lh-9: 22.0818px;
+  --line-height-lh-10: 24px;
+  --line-height-lh-11: 25.6px;
+  --line-height-lh-12: 27.2325px;
+  --line-height-lh-13: 29.0132px;
+  --line-height-lh-14: 29.7746px;
+  --line-height-lh-15: 32px;
+  --line-height-lh-16: 35.1107px;
+  --line-height-lh-17: 38.0366px;
+  --line-height-lh-18: 41.1186px;
+  --line-height-lh-19: 41.73px;
+  --line-height-lh-20: 43.9749px;
+  --line-height-lh-21: 51.3983px;
+  --line-height-lh-22: 72.9374px;
+  --letter-spacing-tight: -0.701321px;
+  --letter-spacing-normal: -0.274843px;
+  --letter-spacing-wide: -0.16px;
+  --letter-spacing-wider: -0.138011px;
+  --letter-spacing-widest: 0.6px;
+  --letter-spacing-ls-6: 1px;
+  --letter-spacing-ls-7: 1.5px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 1px;
+  --space-2: 2.4px;
+  --space-3: 3.2px;
+  --space-4: 3.72589px;
+  --space-5: 4px;
+  --space-6: 4.14033px;
+  --space-8: 4.94214px;
+  --space-10: 6px;
+  --space-12: 6.4px;
+  --space-16: 6.7636px;
+  --space-20: 7.17768px;
+  --space-24: 24px;
+  --space-32: 56.6562px;
+  --space-40: 9.6px;
+  --space-48: 10px;
+  --space-64: 12px;
+  --space-80: 14.3554px;
+  --space-96: 15.4518px;
+  --space-128: 16px;
+  --space-160: 16.5613px;
+  --space-192: 17.9414px;
+  --space-256: 18px;
+  --space-23: 22.9036px;
+  --space-25: 29.8438px;
+  --space-26: 29.8516px;
+  --space-27: 30.9036px;
+  --space-28: 32px;
+  --space-29: 40px;
+  --space-30: 44.7107px;
+  --space-31: 56.6484px;
+  --space-33: 57.5938px;
+  --space-34: 71.2286px;
+  --space-35: 88px;
+  --space-36: 192.289px;
+  --space-37: 380px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 0px 2px 2px 0px;
+  --radius-md: 0px 0px 4px 4px;
+  --radius-lg: 0px 4px 0px 0px;
+  --radius-xl: 0px 0px 4px;
+  --radius-2xl: 0px 0px 8px 8px;
+  --radius-full: 2px 2px 0px 0px;
+  --radius-r7: 2px;
+  --radius-r8: 4px;
+  --radius-r9: 4px 0px 0px 4px;
+  --radius-r10: 4px 0px 0px;
+  --radius-r11: 8px;
+  --radius-r12: 50%;
+  --radius-r13: 1133px;
+  --radius-r14: 1600px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0) 0px 84px 24px 0px, rgba(0, 0, 0, 0.01) 0px 54px 22px 0px, rgba(0, 0, 0, 0.04) 0px 30px 18px 0px, rgba(0, 0, 0, 0.08) 0px 13px 13px 0px, rgba(0, 0, 0, 0.09) 0px 3px 7px 0px;
+  --shadow-md: rgba(0, 0, 0, 0) 0px 105px 30px 0px, rgba(0, 0, 0, 0.02) 0px 67px 27px 0px, rgba(0, 0, 0, 0.06) 0px 38px 23px 0px, rgba(0, 0, 0, 0.1) 0px 17px 17px 0px, rgba(0, 0, 0, 0.12) 0px 4px 9px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.01) 0px 148px 42px 0px, rgba(0, 0, 0, 0.04) 0px 95px 38px 0px, rgba(0, 0, 0, 0.15) 0px 53px 32px 0px, rgba(0, 0, 0, 0.26) 0px 24px 24px 0px, rgba(0, 0, 0, 0.29) 0px 6px 13px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.15s;
+  --duration-fast: 0.3s;
+  --duration-normal: 0.45s;
+  --duration-slow: 1.2s;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1000;
+  --z-2: -2;
+  --z-3: 1;
+  --z-4: 2;
+  --z-5: 3;
+  --z-6: 4;
+  --z-7: 10;
+  --z-8: 20;
+  --z-9: 30;
+  --z-10: 40;
+  --z-11: 50;
+  --z-12: 900;
+  --z-13: 999;
+  --z-14: 9998;
+  --z-15: 9999;
+  --z-16: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 479px;
+  --breakpoint-sm: 767px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 991px;
+  --breakpoint-xl: 992px;
+
+  /* ── Opacity ── */
+  --opacity-30: 0.3;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-65: 0.65;
+  --opacity-90: 0.9;
+}

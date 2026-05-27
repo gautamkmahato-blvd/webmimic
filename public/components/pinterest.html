@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Pinterest Components</title>
+<style>
+  /* ---------- Pinterest design tokens ---------- */
+  :root {
+    --sema-color-background-secondary: #e9e9e7;
+    --sema-color-text-default: #111111;
+    --sema-color-text-subtle: #767676;
+    --pinterest-red: #e60023;
+    --pinterest-red-hover: #ad081b;
+    --card-title: #111111;
+    --card-desc: #333333;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+      "Helvetica Neue", Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol", Arial, sans-serif;
+    color: var(--sema-color-text-default);
+  }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .component-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .component-label {
+    font-size: 13px;
+    color: #767676;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+  }
+
+  /* ============================================= */
+  /* Component 1: Join Pinterest for free button   */
+  /* ============================================= */
+  .join-btn-wrapper {
+    display: inline-block;
+  }
+
+  .join-btn {
+    background-color: var(--pinterest-red);
+    color: #ffffff;
+    border: none;
+    border-radius: 24px;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    min-width: 220px;
+    text-align: center;
+    transition: background-color 120ms ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .join-btn:hover {
+    background-color: var(--pinterest-red-hover);
+  }
+
+  .join-btn:focus-visible {
+    outline: 2px solid #0074e8;
+    outline-offset: 2px;
+  }
+
+  /* ============================================= */
+  /* Component 2: Pin card                          */
+  /* ============================================= */
+  .pin-card {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: inherit;
+  }
+
+  .pin-card__image-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #553620;
+    cursor: zoom-in;
+  }
+
+  .pin-card__image-wrapper::before {
+    content: "";
+    display: block;
+    padding-bottom: 133.051%;
+  }
+
+  .pin-card__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pin-card__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 120ms ease-in-out;
+    pointer-events: none;
+  }
+
+  .pin-card__image-wrapper:hover .pin-card__overlay {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .pin-card__body {
+    padding: 0 2px;
+  }
+
+  .pin-card__title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .pin-card__title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--card-title);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    cursor: pointer;
+  }
+
+  .pin-card__more-btn {
+    background: transparent;
+    border: none;
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #111111;
+    flex-shrink: 0;
+    transition: background-color 120ms ease-in-out;
+  }
+
+  .pin-card__more-btn:hover {
+    background-color: #e9e9e7;
+  }
+
+  .pin-card__more-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  .pin-card__desc {
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--card-desc);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    cursor: pointer;
+  }
+
+  /* ============================================= */
+  /* Component 3: Search bar                        */
+  /* ============================================= */
+  .search-box {
+    width: 100%;
+    max-width: 1100px;
+    height: 48px;
+    background-color: var(--sema-color-background-secondary);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .search-box__icon {
+    width: 16px;
+    height: 16px;
+    fill: #767676;
+    flex-shrink: 0;
+  }
+
+  .search-box__input {
+    flex: 1;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-family: inherit;
+    color: var(--sema-color-text-default);
+    padding: 0;
+  }
+
+  .search-box__input::placeholder {
+    color: var(--sema-color-text-subtle);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== Component 1 ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 1 — Join button</div>
+      <div class="join-btn-wrapper">
+        <button
+          type="button"
+          class="join-btn"
+          aria-label="Join Pinterest for free"
+        >
+          Join Pinterest for free
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== Component 2 ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 2 — Pin card</div>
+      <article class="pin-card">
+        <a
+          href="#"
+          class="pin-card__image-wrapper"
+          aria-label="two girls walking down the stairs in a building with paintings on the wall behind them"
+        >
+          <img
+            class="pin-card__image"
+            src="https://i.pinimg.com/736x/dc/93/b0/dc93b072c87cbbc86574ee273144260e.jpg"
+            alt="two girls walking down the stairs in a building with paintings on the wall behind them"
+            draggable="true"
+          />
+          <div class="pin-card__overlay"></div>
+        </a>
+
+        <div class="pin-card__body">
+          <div class="pin-card__title-row">
+            <div class="pin-card__title" title="Sexy fish Miami">
+              Sexy fish Miami
+            </div>
+            <button
+              type="button"
+              class="pin-card__more-btn"
+              aria-label="More actions"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2.5 9.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5m9.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5m9.5 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5" />
+              </svg>
+            </button>
+          </div>
+          <div class="pin-card__desc">Bestie and I at sexy fish</div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== Component 3 ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 3 — Search bar</div>
+      <div class="search-box" role="search">
+        <svg
+          class="search-box__icon"
+          viewBox="0 0 24 24"
+          aria-label="Search icon"
+          role="img"
+        >
+          <path d="M17.33 18.74a10 10 0 1 1 1.41-1.41l4.47 4.47-1.41 1.41zM11 3a8 8 0 1 0 0 16 8 8 0 0 0 0-16" />
+        </svg>
+        <input
+          type="text"
+          class="search-box__input"
+          placeholder="Search for easy dinners, fashion, etc."
+          aria-label="Search"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+        />
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

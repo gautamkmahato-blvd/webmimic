@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Retool Design System</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --color-light-gray: #E9EBDF;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --color-dark-gray: #282522;
+  --color-light-gray-2: #CBCCC4;
+  --color-dark-gray-2: #433E38;
+  --color-dark-gray-3: #151515;
+  --color-light-gray-3: rgba(233, 235, 223, 0.4);
+  --color-mid-gray: #8B867F;
+  --color-dark-gray-4: #242424;
+  --color-light-green: rgba(233, 235, 223, 0.12);
+  --color-white-2: rgba(247, 248, 244, 0.6);
+  --color-light-gray-4: rgba(233, 235, 223, 0.2);
+  --color-dark-gray-5: rgba(21, 21, 21, 0.12);
+  --color-light-gray-5: #DED9D3;
+  --color-light-blue: #B0CCEA;
+  --color-light-yellow: rgba(233, 235, 223, 0.063);
+  --color-light-gray-6: #B6B8AF;
+  --color-red: #E8765E;
+  --color-blue: #518DD2;
+  --color-dark-cyan: #0E352C;
+  --color-light-blue-2: #D8E6F3;
+  --color-dark-gray-6: #0E0E0E;
+
+  --color-surface: #151515;
+  --color-surface-card: #1e1b18;
+  --color-surface-elevated: #282522;
+  --color-border: rgba(233, 235, 223, 0.12);
+  --color-border-strong: rgba(233, 235, 223, 0.2);
+  --color-accent-tint: rgba(233, 235, 223, 0.08);
+
+  --font-family-base: 'Inter', ui-sans-serif, sans-serif;
+  --font-family-2: 'Inter', sans-serif;
+  --font-family-3: ui-monospace, 'Courier New', monospace;
+  --font-size-2xs: 10.8192px;
+  --font-size-xs: 12px;
+  --font-size-sm: 12.524px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 21.0481px;
+  --font-size-3xl: 26.0962px;
+  --font-size-4xl: 30.0962px;
+  --font-size-5xl: 42.0962px;
+  --font-size-6xl: 54.0962px;
+  --font-weight-light: 300;
+  --font-weight-w380: 380;
+  --font-weight-regular: 400;
+  --font-weight-w570: 500;
+  --line-height-tight: 12.524px;
+  --line-height-snug: 14.4px;
+  --line-height-normal: 15.0288px;
+  --line-height-relaxed: 16px;
+  --line-height-loose: 16.8px;
+  --line-height-lh-6: 21px;
+  --line-height-lh-7: 24px;
+  --line-height-lh-8: 25.2577px;
+  --line-height-lh-9: 27px;
+  --line-height-lh-10: 31.601px;
+  --line-height-lh-11: 44.201px;
+  --line-height-lh-12: 56.801px;
+  --letter-spacing-tight: -1.08192px;
+  --letter-spacing-normal: -0.420962px;
+  --letter-spacing-wide: -0.300962px;
+  --letter-spacing-wider: -0.260962px;
+  --letter-spacing-widest: -0.210481px;
+  --letter-spacing-ls-6: 0.108192px;
+  --letter-spacing-ls-7: 0.12px;
+  --letter-spacing-ls-9: 0.14px;
+  --letter-spacing-ls-12: 0.28px;
+
+  --space-1: 1px; --space-2: 2px; --space-3: 3.2px; --space-4: 4px;
+  --space-5: 5px; --space-6: 6px; --space-8: 8px; --space-10: 9.92px;
+  --space-12: 10px; --space-16: 12px; --space-20: 14px; --space-24: 64px;
+  --space-32: 16px; --space-40: 16.96px; --space-48: 20px; --space-64: 24px;
+  --space-80: 28px; --space-96: 31.4722px; --space-128: 32px; --space-160: 33.92px;
+  --space-192: 36px; --space-256: 40px; --space-23: 56px; --space-25: 80px;
+  --space-26: 112px; --space-27: 120px; --space-28: 160px; --space-29: 176px;
+  --space-30: 430.5px;
+
+  --border-width-hairline: 1px;
+  --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px;
+  --radius-xl: 200px; --radius-2xl: 9999px;
+
+  --shadow-sm: rgba(233, 235, 223, 0.2) 0px 0px 0px 1px inset;
+  --shadow-md: rgba(0, 0, 0, 0.12) 0px 1px 2px 0px, rgb(0, 0, 0) 0px 0px 0px 0.5px;
+
+  --duration-instant: 0.1s; --duration-fast: 0.2s; --duration-normal: 0.3s;
+  --duration-slow: 0.4s; --duration-slower: 0.6s;
+
+  --z-1: 6; --z-2: 10; --z-3: 20; --z-4: 1500; --z-5: 2000; --z-6: 9999;
+
+  --opacity-40: 0.4; --opacity-50: 0.5; --opacity-60: 0.6; --opacity-75: 0.75;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-family-base);background:var(--color-dark-gray-3);color:var(--color-light-gray-2);font-size:var(--font-size-base);line-height:var(--line-height-lh-7);font-weight:var(--font-weight-regular);}
+.page{max-width:1200px;margin:0 auto;padding:64px 48px;}
+
+.top-bar{border-bottom:1px solid var(--color-border);margin-bottom:32px;padding-bottom:16px;}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.header-left{display:flex;align-items:center;gap:16px;}
+.logo{width:38px;height:38px;background:var(--color-light-gray);border:1px solid var(--color-border-strong);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;}
+.system-title{font-size:var(--font-size-xl);font-weight:var(--font-weight-w570);color:var(--color-white);line-height:var(--line-height-lh-9);letter-spacing:var(--letter-spacing-normal);}
+.system-meta{font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-top:2px;line-height:var(--line-height-lh-7);}
+.hbadge{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);background:var(--color-accent-tint);color:var(--color-light-gray-2);padding:2px 10px;border-radius:var(--radius-2xl);border:1px solid var(--color-border);}
+.toolbar{display:flex;gap:var(--space-4);flex-wrap:wrap;}
+.tbtn{display:inline-flex;align-items:center;gap:var(--space-4);font-family:var(--font-family-base);font-size:12px;font-weight:var(--font-weight-medium);padding:var(--space-3) var(--space-8);border-radius:9999px;cursor:pointer;border:1px solid var(--color-dark-gray-5);background:var(--color-dark-gray-6);color:var(--color-light-gray);box-shadow:0 1px 2px rgba(0,0,0,0.28);transition:border-color var(--duration-fast) var(--easing-ease-out),color var(--duration-fast) var(--easing-ease-out),box-shadow var(--duration-fast) var(--easing-ease-out),transform var(--duration-fast) var(--easing-ease-out);}
+.tbtn:hover{border-color:var(--color-blue);color:var(--color-blue);box-shadow:0 4px 14px rgba(0,0,0,0.38);transform:translateY(-1px);}
+
+.section{margin-bottom:64px;}
+.section-title{font-size:var(--font-size-3xl);font-weight:var(--font-weight-w570);color:var(--color-white);line-height:var(--line-height-lh-10);margin-bottom:24px;letter-spacing:var(--letter-spacing-wide);}
+
+.color-group{margin-bottom:32px;}
+.color-group-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);letter-spacing:var(--letter-spacing-ls-12);text-transform:uppercase;color:var(--color-mid-gray);margin-bottom:8px;}
+.swatch-grid{display:grid;gap:6px;}
+.swatch-item{display:flex;flex-direction:column;gap:5px;}
+.swatch-box{height:60px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.05);}
+.swatch-name{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);color:var(--color-light-gray-2);line-height:var(--line-height-snug);}
+.swatch-hex{font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-3);line-height:var(--line-height-tight);}
+
+.font-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px;}
+.font-card{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:24px;}
+.font-token{font-size:var(--font-size-xs);font-family:var(--font-family-3);color:var(--color-light-gray);font-weight:var(--font-weight-w570);margin-bottom:6px;letter-spacing:var(--letter-spacing-ls-7);}
+.font-display{font-size:var(--font-size-4xl);color:var(--color-white);line-height:var(--line-height-lh-11);margin-bottom:6px;font-weight:var(--font-weight-w570);letter-spacing:var(--letter-spacing-tight);}
+.font-sample{font-size:var(--font-size-base);color:var(--color-mid-gray);line-height:var(--line-height-lh-7);font-weight:var(--font-weight-regular);}
+.fw-row{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;}
+.fw-chip{font-size:var(--font-size-xs);padding:2px 8px;background:var(--color-accent-tint);border-radius:var(--radius-md);color:var(--color-light-gray-2);border:1px solid var(--color-border);}
+
+.type-scale{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;}
+.type-row{display:flex;flex-direction:column;padding:16px 24px;border-bottom:1px solid var(--color-border);}
+.type-row:last-child{border-bottom:none;}
+.type-sample{color:var(--color-white);margin-bottom:4px;}
+.type-meta{font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-3);line-height:var(--line-height-snug);}
+
+.lh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.lh-item{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:10px;display:flex;flex-direction:column;gap:4px;}
+.lh-bar-wrap{background:rgba(233,235,223,0.07);border-radius:2px;overflow:hidden;}
+.lh-bar{background:linear-gradient(to bottom,rgba(233,235,223,0.3),var(--color-light-gray));width:100%;}
+.lh-token{font-size:var(--font-size-xs);font-family:var(--font-family-3);color:var(--color-light-gray-2);}
+.lh-val{font-size:10px;color:var(--color-mid-gray);}
+
+.ls-row{display:flex;gap:10px;flex-wrap:wrap;}
+.ls-item{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:16px 24px;flex:1;}
+.ls-sample{font-size:var(--font-size-3xl);color:var(--color-white);font-weight:var(--font-weight-w570);margin-bottom:4px;}
+.ls-token{font-size:var(--font-size-xs);font-family:var(--font-family-3);color:var(--color-light-gray-2);}
+.ls-desc{font-size:10px;color:var(--color-mid-gray);}
+
+.token-wrap{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:24px;}
+.tw-title{font-size:var(--font-size-lg);font-weight:var(--font-weight-w570);color:var(--color-white);line-height:var(--line-height-lh-7);margin-bottom:4px;}
+.tw-sub{font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-bottom:24px;line-height:var(--line-height-lh-7);}
+.spacing-chart{display:flex;align-items:flex-end;gap:3px;height:140px;}
+.sp-col{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;}
+.sp-bar{background:linear-gradient(to top,rgba(233,235,223,0.2),rgba(233,235,223,0.6));border-radius:2px 2px 0 0;width:100%;}
+.sp-lbl{font-size:7px;color:var(--color-mid-gray);text-align:center;font-family:var(--font-family-3);}
+
+.border-card{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;}
+.bc-title{font-size:var(--font-size-lg);font-weight:var(--font-weight-w570);color:var(--color-white);line-height:var(--line-height-lh-7);margin-bottom:12px;}
+.radius-row{display:flex;gap:16px;flex-wrap:wrap;}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:6px;}
+.radius-box{width:60px;height:60px;background:linear-gradient(135deg,rgba(233,235,223,0.15),rgba(233,235,223,0.5));border:1px solid rgba(255,255,255,0.05);}
+.radius-lbl{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);color:var(--color-light-gray-2);text-align:center;font-family:var(--font-family-3);}
+.radius-val{font-size:10px;color:var(--color-mid-gray);text-align:center;font-family:var(--font-family-3);}
+.bw-token{font-size:var(--font-size-xs);font-family:var(--font-family-3);color:var(--color-light-gray);white-space:nowrap;}
+.bw-val{font-size:10px;color:var(--color-mid-gray);font-family:var(--font-family-3);white-space:nowrap;}
+
+.shadows-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sh-item{display:flex;flex-direction:column;gap:8px;}
+.sh-box{height:88px;background:var(--color-surface-elevated);border-radius:var(--radius-sm);}
+.sh-token{font-size:var(--font-size-sm);font-weight:var(--font-weight-w570);color:var(--color-light-gray-2);font-family:var(--font-family-3);}
+.sh-usage{font-size:10px;color:var(--color-mid-gray);}
+.sh-desc{font-size:10px;color:var(--color-mid-gray);line-height:var(--line-height-lh-7);margin-top:2px;}
+
+.z-table{width:100%;border-collapse:collapse;}
+.z-table th,.z-table td{padding:10px 12px;text-align:left;font-size:var(--font-size-base);border-bottom:1px solid var(--color-border);line-height:var(--line-height-lh-7);}
+.z-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-12);color:var(--color-mid-gray);background:var(--color-surface-card);}
+.z-table td:first-child{font-family:var(--font-family-3);color:var(--color-light-gray);}
+.z-table td:nth-child(2){font-family:var(--font-family-3);color:var(--color-white);font-weight:var(--font-weight-w570);}
+.z-table td:nth-child(3){color:var(--color-mid-gray);}
+.z-table tr:last-child td{border-bottom:none;}
+
+.bp-card{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:20px;display:flex;align-items:center;gap:16px;}
+.bp-icon{font-size:24px;line-height:1;}
+.bp-token{font-size:var(--font-size-xs);font-family:var(--font-family-3);color:var(--color-light-gray);margin-bottom:4px;letter-spacing:var(--letter-spacing-ls-7);}
+.bp-val{font-size:var(--font-size-2xl);font-weight:var(--font-weight-w570);color:var(--color-white);line-height:1;letter-spacing:var(--letter-spacing-normal);}
+.bp-desc{font-size:var(--font-size-xs);color:var(--color-mid-gray);margin-top:4px;}
+
+.opacity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+.op-item{display:flex;flex-direction:column;gap:6px;}
+.op-box{height:60px;border-radius:var(--radius-sm);background:var(--color-light-gray);}
+.op-token{font-size:var(--font-size-xs);font-family:var(--font-family-3);color:var(--color-light-gray-2);}
+.op-val{font-size:10px;color:var(--color-mid-gray);}
+
+.a11y-table{width:100%;border-collapse:collapse;}
+.a11y-table th,.a11y-table td{padding:10px 12px;text-align:left;font-size:var(--font-size-xs);border-bottom:1px solid var(--color-border);line-height:var(--line-height-lh-7);}
+.a11y-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-12);color:var(--color-mid-gray);background:var(--color-surface-card);}
+.a11y-table td:first-child,.a11y-table td:nth-child(2){font-family:var(--font-family-3);font-size:10px;}
+.a11y-table td:nth-child(2){color:var(--color-mid-gray);}
+.a11y-table td:nth-child(3){color:var(--color-light-gray-2);font-family:var(--font-family-3);}
+.a11y-table tr:last-child td{border-bottom:none;}
+.wcag-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:var(--font-weight-w570);padding:2px 8px;border-radius:var(--radius-2xl);}
+.wcag-aaa{background:rgba(233,235,223,0.1);color:var(--color-light-gray);border:1px solid var(--color-border-strong);}
+.wcag-aa{background:rgba(233,235,223,0.06);color:var(--color-light-gray-2);border:1px solid var(--color-border);}
+.wcag-aal{background:rgba(233,235,223,0.03);color:var(--color-mid-gray);border:1px solid var(--color-border);}
+.wcag-fail{background:rgba(232,118,94,.08);color:#E8765E;border:1px solid rgba(232,118,94,.2);}
+
+.comp-row{background:var(--color-surface-card);border-radius:var(--radius-lg);border:1px solid var(--color-border);overflow:hidden;margin-bottom:16px;}
+.comp-header{padding:5px 10px;border-bottom:1px solid var(--color-border);background:var(--color-surface);display:flex;justify-content:space-between;align-items:center;}
+.comp-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);color:var(--color-light-gray-2);}
+.comp-badge{font-size:10px;font-weight:var(--font-weight-w570);background:var(--color-accent-tint);color:var(--color-light-gray-2);padding:2px 8px;border-radius:var(--radius-2xl);border:1px solid var(--color-border);}
+.comp-body{padding:24px;}
+
+.btn-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-family-base);font-weight:var(--font-weight-w570);border:none;cursor:pointer;white-space:nowrap;font-size:var(--font-size-base);padding:6px 14px;border-radius:var(--radius-md);line-height:var(--line-height-lh-7);letter-spacing:var(--letter-spacing-ls-9);transition:opacity var(--duration-fast),background var(--duration-fast);}
+.btn-primary{background:var(--color-light-gray);color:var(--color-dark-gray-3);}
+.btn-primary:hover{background:var(--color-white);}
+.btn-secondary{background:var(--color-surface-elevated);color:var(--color-white);border:1px solid var(--color-border-strong);}
+.btn-secondary:hover{background:var(--color-dark-gray-2);}
+.btn-outline{background:transparent;color:var(--color-light-gray);border:1px solid var(--color-light-gray);}
+.btn-outline:hover{background:var(--color-accent-tint);}
+.btn-ghost{background:transparent;color:var(--color-light-gray-2);border:1px solid transparent;}
+.btn-ghost:hover{background:var(--color-accent-tint);}
+.btn-muted{background:var(--color-accent-tint);color:var(--color-mid-gray);border:1px solid var(--color-border);}
+
+.inputs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.inp-group{display:flex;flex-direction:column;gap:4px;}
+.inp-label{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);color:var(--color-light-gray-2);line-height:var(--line-height-snug);}
+.inp{width:100%;font-family:var(--font-family-base);font-size:var(--font-size-base);color:var(--color-white);background:var(--color-surface-elevated);border:1px solid var(--color-border-strong);border-radius:var(--radius-sm);padding:6px 10px;outline:none;transition:border var(--duration-fast);line-height:var(--line-height-lh-7);}
+.inp:focus{border-color:var(--color-light-gray);box-shadow:0 0 0 2px rgba(233,235,223,0.1);}
+.inp::placeholder{color:var(--color-mid-gray);}
+.inp-hint{font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);}
+.inp-err{border-color:rgba(232,118,94,0.5)!important;}
+.inp-err-msg{font-size:var(--font-size-xs);color:var(--color-red);line-height:var(--line-height-snug);}
+
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);padding:2px 8px;border-radius:var(--radius-2xl);line-height:var(--line-height-snug);}
+.badge-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-default{background:var(--color-surface-elevated);color:var(--color-light-gray-2);border:1px solid var(--color-border);}
+.badge-brand{background:rgba(233,235,223,0.12);color:var(--color-light-gray);border:1px solid var(--color-border-strong);}
+.badge-muted{background:var(--color-accent-tint);color:var(--color-mid-gray);border:1px solid var(--color-border);}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{display:inline-flex;align-items:center;font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);padding:2px 8px;border-radius:var(--radius-sm);border:1px solid var(--color-border);background:var(--color-accent-tint);color:var(--color-light-gray-2);line-height:var(--line-height-snug);}
+.tag-brand{color:var(--color-light-gray);background:rgba(233,235,223,0.1);border-color:var(--color-border-strong);}
+
+.alert{display:flex;gap:10px;padding:10px 14px;border-radius:var(--radius-lg);font-size:var(--font-size-base);}
+.alert-icon{font-size:1rem;flex-shrink:0;line-height:1.7;}
+.alert-body h5{font-weight:var(--font-weight-w570);margin-bottom:2px;font-size:var(--font-size-base);color:var(--color-white);line-height:var(--line-height-lh-7);}
+.alert-body p{font-size:var(--font-size-xs);line-height:var(--line-height-lh-7);}
+.alert-neutral{background:var(--color-surface-elevated);color:var(--color-light-gray-2);border:1px solid var(--color-border);}
+.alert-brand{background:rgba(233,235,223,0.1);color:var(--color-light-gray);border:1px solid var(--color-border-strong);}
+.alert-dim{background:var(--color-surface-card);color:var(--color-light-gray-2);border:1px solid var(--color-border);}
+.alert-base{background:var(--color-surface);color:var(--color-mid-gray);border:1px solid var(--color-border);}
+
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.feature-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:24px;transition:border-color var(--duration-fast);}
+.feature-card:hover{border-color:var(--color-light-gray-2);}
+.fc-icon{width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px;border:1px solid var(--color-border);background:var(--color-surface-card);}
+.fc-title{font-size:var(--font-size-lg);font-weight:var(--font-weight-w570);color:var(--color-white);line-height:var(--line-height-lh-7);margin-bottom:4px;}
+.fc-desc{font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-lh-7);margin-bottom:12px;}
+
+.av-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.avatar{border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:var(--font-weight-w570);flex-shrink:0;}
+.av-lg{width:48px;height:48px;font-size:var(--font-size-lg);}
+.av-md{width:34px;height:34px;font-size:var(--font-size-base);}
+.av-sm{width:24px;height:24px;font-size:var(--font-size-xs);}
+.av-info h4{font-size:var(--font-size-lg);font-weight:var(--font-weight-w570);color:var(--color-white);line-height:var(--line-height-lh-7);}
+.av-info p{font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-snug);}
+
+.prog-wrap{margin-bottom:8px;}
+.prog-label{display:flex;justify-content:space-between;font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);color:var(--color-light-gray-2);line-height:var(--line-height-snug);margin-bottom:4px;}
+.prog-track{height:3px;background:rgba(233,235,223,0.1);border-radius:var(--radius-2xl);overflow:hidden;}
+.prog-fill{height:100%;border-radius:var(--radius-2xl);transition:width var(--duration-slow);}
+
+.data-table{width:100%;border-collapse:collapse;}
+.data-table th,.data-table td{padding:6px 10px;text-align:left;font-size:var(--font-size-base);border-bottom:1px solid var(--color-border);line-height:var(--line-height-lh-7);}
+.data-table th{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);text-transform:uppercase;letter-spacing:var(--letter-spacing-ls-12);color:var(--color-mid-gray);background:var(--color-surface-card);}
+.data-table tr:hover td{background:var(--color-surface-elevated);transition:background var(--duration-instant);}
+.data-table td:first-child{font-family:var(--font-family-3);color:var(--color-light-gray);}
+
+.tokens-section{margin-bottom:64px;}
+.tokens-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.tokens-group{background:var(--color-surface-card);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;}
+.tokens-group-header{padding:8px 12px;border-bottom:1px solid var(--color-border);background:var(--color-surface);display:flex;align-items:center;gap:8px;}
+.tokens-group-icon{width:6px;height:6px;border-radius:50%;background:var(--color-light-gray);flex-shrink:0;}
+.tokens-group-title{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);color:var(--color-light-gray-2);letter-spacing:var(--letter-spacing-ls-12);text-transform:uppercase;}
+.tokens-group-count{font-size:10px;color:var(--color-mid-gray);margin-left:auto;}
+.tokens-list{padding:6px 0;}
+.token-row{display:flex;align-items:center;gap:10px;padding:4px 12px;transition:background var(--duration-instant);}
+.token-row:hover{background:var(--color-surface-elevated);}
+.token-swatch{width:20px;height:20px;border-radius:var(--radius-sm);border:1px solid rgba(255,255,255,0.08);flex-shrink:0;}
+.token-readable{font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);color:var(--color-light-gray-2);flex:1;min-width:0;}
+.token-css{font-size:10px;font-family:var(--font-family-3);color:var(--color-light-gray);white-space:nowrap;}
+.token-value{font-size:10px;font-family:var(--font-family-3);color:var(--color-mid-gray);white-space:nowrap;}
+.token-preview-bar{height:3px;border-radius:var(--radius-2xl);background:linear-gradient(to right,rgba(233,235,223,0.3),var(--color-light-gray));flex-shrink:0;}
+.token-preview-radius{width:24px;height:24px;background:linear-gradient(135deg,rgba(233,235,223,0.2),var(--color-light-gray));flex-shrink:0;}
+.token-preview-opacity{width:20px;height:20px;border-radius:var(--radius-sm);background:var(--color-light-gray);flex-shrink:0;border:1px solid var(--color-border);}
+.token-row-sep{height:1px;background:var(--color-border);margin:4px 0;}
+
+@media(max-width:768px){
+  .font-cards,.shadows-row,.cards-grid,.inputs-grid,.lh-grid,.opacity-grid,.tokens-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="top-bar">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">
+          <svg width="20" height="14" viewBox="0 0 80 56" fill="none">
+            <rect width="20" height="20" rx="2" fill="#282522"/>
+            <rect x="30" width="20" height="20" rx="2" fill="#282522"/>
+            <rect x="60" width="20" height="20" rx="2" fill="#282522"/>
+            <rect y="30" width="20" height="20" rx="2" fill="#282522"/>
+            <rect x="30" y="30" width="20" height="20" rx="2" fill="#282522"/>
+          </svg>
+        </div>
+        <div>
+          <div class="system-title">Retool</div>
+          <div class="system-meta">Dark · Generated 19/04/2026 · 23 colors · 43 type tokens · 29 spacing steps · 16 breakpoints · 5 motion tokens</div>
+        </div>
+      </div>
+      <span class="hbadge">v1.0.0</span>
+    </div>
+    <div class="toolbar">
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 54 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0C19.8 0 15.3 3.6 13.5 10.8C16.2 7.2 19.35 5.85 22.95 6.75C25.004 7.263 26.472 8.754 28.097 10.403C30.744 13.09 33.808 16.2 40.5 16.2C47.7 16.2 52.2 12.6 54 5.4C51.3 9 48.15 10.35 44.55 9.45C42.496 8.937 41.028 7.446 39.403 5.797C36.756 3.11 33.692 0 27 0ZM13.5 16.2C6.3 16.2 1.8 19.8 0 27C2.7 23.4 5.85 22.05 9.45 22.95C11.504 23.463 12.972 24.954 14.597 26.603C17.244 29.29 20.308 32.4 27 32.4C34.2 32.4 38.7 28.8 40.5 21.6C37.8 25.2 34.65 26.55 31.05 25.65C28.996 25.137 27.528 23.646 25.903 21.997C23.256 19.31 20.192 16.2 13.5 16.2Z" fill="#06B6D4"/></svg>
+        Tailwind CSS
+      </button>
+      <button class="tbtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="13" height="13" fill="#CC785C"><path d="m19.6 66.5 19.7-11 .3-1-.3-.5h-1l-3.3-.2-11.2-.3L14 53l-9.5-.5-2.4-.5L0 49l.2-1.5 2-1.3 2.9.2 6.3.5 9.5.6 6.9.4L38 49.1h1.6l.2-.7-.5-.4-.4-.4L29 41l-10.6-7-5.6-4.1-3-2-1.5-2-.6-4.2 2.7-3 3.7.3.9.2 3.7 2.9 8 6.1L37 36l1.5 1.2.6-.4.1-.3-.7-1.1L33 25l-6-10.4-2.7-4.3-.7-2.6c-.3-1-.4-2-.4-3l3-4.2L28 0l4.2.6L33.8 2l2.6 6 4.1 9.3L47 29.9l2 3.8 1 3.4.3 1h.7v-.5l.5-7.2 1-8.7 1-11.2.3-3.2 1.6-3.8 3-2L61 2.6l2 2.9-.3 1.8-1.1 7.7L59 27.1l-1.5 8.2h.9l1-1.1 4.1-5.4 6.9-8.6 3-3.5L77 13l2.3-1.8h4.3l3.1 4.7-1.4 4.9-4.4 5.6-3.7 4.7-5.3 7.1-3.2 5.7.3.4h.7l12-2.6 6.4-1.1 7.6-1.3 3.5 1.6.4 1.6-1.4 3.4-8.2 2-9.6 2-14.3 3.3-.2.1.2.3 6.4.6 2.8.2h6.8l12.6 1 3.3 2 1.9 2.7-.3 2-5.1 2.6-6.8-1.6-16-3.8-5.4-1.3h-.8v.4l4.6 4.5 8.3 7.5L89 80.1l.5 2.4-1.3 2-1.4-.2-9.2-7-3.6-3-8-6.8h-.5v.7l1.8 2.7 9.8 14.7.5 4.5-.7 1.4-2.6 1-2.7-.6-5.8-8-6-9-4.7-8.2-.5.4-2.9 30.2-1.3 1.5-3 1.2-2.5-2-1.4-3 1.4-6.2 1.6-8 1.3-6.4 1.2-7.9.7-2.6v-.2H49L43 72l-9 12.3-7.2 7.6-1.7.7-3-1.5.3-2.8L24 86l10-12.8 6-7.9 4-4.6-.1-.5h-.3L17.2 77.4l-4.7.6-2-2 .2-3 1-1 8-5.5Z"/></svg>
+        Claude Skills
+      </button>
+      <button class="tbtn">
+        <svg width="11" height="15" viewBox="0 0 38 57" fill="none"><path d="M19 19H9.5C4.253 19 0 14.747 0 9.5S4.253 0 9.5 0H19v19z" fill="#F24E1E"/><path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/><path d="M19 38H9.5C4.253 38 0 33.747 0 28.5S4.253 19 9.5 19H19v19z" fill="#A259FF"/><circle cx="28.5" cy="28.5" r="9.5" fill="#1ABCFE"/><path d="M9.5 57C4.253 57 0 52.747 0 47.5S4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57z" fill="#0ACF83"/></svg>
+        Figma Design
+      </button>
+      <button class="tbtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09A6.52 6.52 0 0 1 5.47 12a6.52 6.52 0 0 1 .37-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+        google design
+      </button>
+    </div>
+  </div>
+
+  <!-- ── 1. COLOR PALETTE ── -->
+  <div class="section">
+    <div class="section-title">Color Palette</div>
+    <div class="color-group">
+      <div class="color-group-label">Background Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(6,1fr);">
+        <div class="swatch-item"><div class="swatch-box" style="background:#E9EBDF;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">Light Gray</div><div class="swatch-hex">#E9EBDF · ×3138</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#000000"></div><div class="swatch-name">Black</div><div class="swatch-hex">#000000 · ×449</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#282522"></div><div class="swatch-name">Dark Gray</div><div class="swatch-hex">#282522 · ×195</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#433E38"></div><div class="swatch-name">Dark Gray 2</div><div class="swatch-hex">#433E38 · ×129</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#151515"></div><div class="swatch-name">Dark Gray 3</div><div class="swatch-hex">#151515 · ×127</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#8B867F"></div><div class="swatch-name">Mid Gray</div><div class="swatch-hex">#8B867F · ×86</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#242424"></div><div class="swatch-name">Dark Gray 4</div><div class="swatch-hex">#242424 · ×11</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(233,235,223,0.12)"></div><div class="swatch-name">Light Green</div><div class="swatch-hex">rgba(233,235,223,.12)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(247,248,244,0.6)"></div><div class="swatch-name">White 2</div><div class="swatch-hex">rgba(247,248,244,.6)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(233,235,223,0.063)"></div><div class="swatch-name">Light Yellow</div><div class="swatch-hex">rgba(233,235,223,.063)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0E352C"></div><div class="swatch-name">Dark Cyan</div><div class="swatch-hex">#0E352C</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#0E0E0E"></div><div class="swatch-name">Dark Gray 6</div><div class="swatch-hex">#0E0E0E</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Text Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(4,1fr);max-width:440px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#FFFFFF;border-color:rgba(0,0,0,.1)"></div><div class="swatch-name">White</div><div class="swatch-hex">#FFFFFF · ×318</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#CBCCC4;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Gray 2</div><div class="swatch-hex">#CBCCC4 · ×193</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(233,235,223,0.4)"></div><div class="swatch-name">Light Gray 3</div><div class="swatch-hex">rgba(233,235,223,.4)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#B6B8AF;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Gray 6</div><div class="swatch-hex">#B6B8AF</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Border Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(2,1fr);max-width:220px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(233,235,223,0.2)"></div><div class="swatch-name">Light Gray 4</div><div class="swatch-hex">rgba(233,235,223,.2)</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:rgba(21,21,21,0.12)"></div><div class="swatch-name">Dark Gray 5</div><div class="swatch-hex">rgba(21,21,21,.12)</div></div>
+      </div>
+    </div>
+
+    <div class="color-group">
+      <div class="color-group-label">Fill &amp; Gradient Colors</div>
+      <div class="swatch-grid" style="grid-template-columns:repeat(5,1fr);max-width:550px;">
+        <div class="swatch-item"><div class="swatch-box" style="background:#DED9D3;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Gray 5</div><div class="swatch-hex">#DED9D3</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#B0CCEA;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Blue</div><div class="swatch-hex">#B0CCEA</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#E8765E"></div><div class="swatch-name">Red</div><div class="swatch-hex">#E8765E</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#518DD2"></div><div class="swatch-name">Blue</div><div class="swatch-hex">#518DD2</div></div>
+        <div class="swatch-item"><div class="swatch-box" style="background:#D8E6F3;border-color:rgba(0,0,0,.08)"></div><div class="swatch-name">Light Blue 2</div><div class="swatch-hex">#D8E6F3</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. TYPOGRAPHY ── -->
+  <div class="section">
+    <div class="section-title">Typography</div>
+
+    <div class="font-cards">
+      <div class="font-card">
+        <div class="font-token">Primary · pxGroteskFont</div>
+        <div class="font-display" style="letter-spacing:var(--letter-spacing-tight);">pxGrotesk</div>
+        <div class="font-sample">Build internal tools faster. From database queries to full-featured apps.</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-weight:300">Light · 300</span>
+          <span class="fw-chip" style="font-weight:400">Regular · 400</span>
+          <span class="fw-chip" style="font-weight:500">Semi · 570</span>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-token">Mono · ui-monospace</div>
+        <div class="font-display" style="font-family:var(--font-family-3);font-size:var(--font-size-2xl);letter-spacing:0;">ui-monospace</div>
+        <div class="font-sample" style="font-family:var(--font-family-3);">SELECT * FROM users WHERE active = true LIMIT 50;</div>
+        <div class="fw-row">
+          <span class="fw-chip" style="font-family:var(--font-family-3);">Regular · 400</span>
+          <span class="fw-chip">saansFont</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-scale" style="margin-bottom:24px;">
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-6xl);font-weight:var(--font-weight-w570);line-height:var(--line-height-lh-12);letter-spacing:var(--letter-spacing-tight);color:var(--color-white);">Build faster</div>
+        <div class="type-meta">6xl · 54.10px · w570 · line-height: 56.80px · tracking: −1.08px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-5xl);font-weight:var(--font-weight-w570);line-height:var(--line-height-lh-11);letter-spacing:var(--letter-spacing-normal);color:var(--color-white);">Build internal tools</div>
+        <div class="type-meta">5xl · 42.10px · w570 · line-height: 44.20px · tracking: −0.42px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-3xl);font-weight:var(--font-weight-w570);line-height:var(--line-height-lh-9);letter-spacing:var(--letter-spacing-wide);color:var(--color-white);">Ship powerful tools, faster than ever</div>
+        <div class="type-meta">3xl · 26.10px · w570 · line-height: 27px · tracking: −0.30px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-xl);font-weight:var(--font-weight-regular);line-height:var(--line-height-lh-8);letter-spacing:var(--letter-spacing-widest);color:var(--color-light-gray-2);">Connect your database, API, or any data source in minutes. Build and share internal tools using a drag-and-drop interface.</div>
+        <div class="type-meta">xl · 18px · Regular · line-height: 25.26px · tracking: −0.21px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-base);font-weight:var(--font-weight-regular);line-height:var(--line-height-lh-7);letter-spacing:var(--letter-spacing-ls-9);color:var(--color-light-gray-2);">Retool is the fastest way to build internal software. Connect to any database or API and build CRUD apps, dashboards, and admin panels.</div>
+        <div class="type-meta">base · 14px · Regular · line-height: 24px · tracking: +0.14px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-xs);font-weight:var(--font-weight-regular);line-height:var(--line-height-lh-6);letter-spacing:var(--letter-spacing-ls-12);color:var(--color-light-gray-3);">Last deploy 3 minutes ago · 12 components · 3 queries</div>
+        <div class="type-meta">xs · 12px · Regular · line-height: 21px · tracking: +0.28px</div>
+      </div>
+      <div class="type-row">
+        <div class="type-sample" style="font-size:var(--font-size-2xs);font-weight:var(--font-weight-w570);line-height:var(--line-height-tight);letter-spacing:var(--letter-spacing-ls-12);text-transform:uppercase;color:var(--color-mid-gray);">COMPONENTS · QUERIES · RESOURCES</div>
+        <div class="type-meta">2xs · 10.82px · w570 · line-height: 12.52px · tracking: +0.28px</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:24px;">
+      <div style="font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);letter-spacing:var(--letter-spacing-ls-12);text-transform:uppercase;color:var(--color-mid-gray);margin-bottom:12px;">Line Heights</div>
+      <div class="lh-grid">
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:12.5px;"></div></div><div class="lh-token">Tight</div><div class="lh-val">12.52px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:14.4px;"></div></div><div class="lh-token">Snug</div><div class="lh-val">14.4px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:15px;"></div></div><div class="lh-token">Normal</div><div class="lh-val">15.03px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:16px;"></div></div><div class="lh-token">Relaxed</div><div class="lh-val">16px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:16.8px;"></div></div><div class="lh-token">Loose</div><div class="lh-val">16.8px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:21px;"></div></div><div class="lh-token">lh-6</div><div class="lh-val">21px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:24px;"></div></div><div class="lh-token">lh-7</div><div class="lh-val">24px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:25.3px;"></div></div><div class="lh-token">lh-8</div><div class="lh-val">25.26px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:27px;"></div></div><div class="lh-token">lh-9</div><div class="lh-val">27px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:31.6px;"></div></div><div class="lh-token">lh-10</div><div class="lh-val">31.6px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:44.2px;"></div></div><div class="lh-token">lh-11</div><div class="lh-val">44.20px</div></div>
+        <div class="lh-item"><div class="lh-bar-wrap" style="height:80px;"><div class="lh-bar" style="height:56.8px;"></div></div><div class="lh-token">lh-12</div><div class="lh-val">56.80px</div></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:var(--font-size-xs);font-weight:var(--font-weight-w570);letter-spacing:var(--letter-spacing-ls-12);text-transform:uppercase;color:var(--color-mid-gray);margin-bottom:12px;">Letter Spacing — 12 tokens (bidirectional)</div>
+      <div class="ls-row">
+        <div class="ls-item"><div class="ls-sample" style="letter-spacing:var(--letter-spacing-tight);">Retool</div><div class="ls-token">Tight</div><div class="ls-desc">−1.08px · hero display</div></div>
+        <div class="ls-item"><div class="ls-sample" style="letter-spacing:var(--letter-spacing-normal);">Build tools</div><div class="ls-token">Normal</div><div class="ls-desc">−0.42px · headings</div></div>
+        <div class="ls-item"><div class="ls-sample" style="letter-spacing:var(--letter-spacing-ls-12);text-transform:uppercase;font-size:var(--font-size-xs);">COMPONENTS</div><div class="ls-token">ls-12</div><div class="ls-desc">+0.28px · labels</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. SPACING ── -->
+  <div class="section">
+    <div class="section-title">Spacing</div>
+    <div class="token-wrap">
+      <div class="tw-title">Spacing Scale</div>
+      <div class="tw-sub">29 tokens — 1px → 430.5px (non-linear, modular-scale derived)</div>
+      <div class="spacing-chart">
+        <div class="sp-col"><div class="sp-bar" style="height:1px"></div><div class="sp-lbl">1</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:2px"></div><div class="sp-lbl">2</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:3.2px"></div><div class="sp-lbl">3.2</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:4px"></div><div class="sp-lbl">4</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:5px"></div><div class="sp-lbl">5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:6px"></div><div class="sp-lbl">6</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:8px"></div><div class="sp-lbl">8</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:9.9px"></div><div class="sp-lbl">9.9</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:10px"></div><div class="sp-lbl">10</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:12px"></div><div class="sp-lbl">12</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:14px"></div><div class="sp-lbl">14</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:16px"></div><div class="sp-lbl">16</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:17px"></div><div class="sp-lbl">17</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:20px"></div><div class="sp-lbl">20</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:24px"></div><div class="sp-lbl">24</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:28px"></div><div class="sp-lbl">28</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:31.5px"></div><div class="sp-lbl">31.5</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:32px"></div><div class="sp-lbl">32</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:34px"></div><div class="sp-lbl">34</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:36px"></div><div class="sp-lbl">36</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:40px"></div><div class="sp-lbl">40</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:56px"></div><div class="sp-lbl">56</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:64px"></div><div class="sp-lbl">64</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:80px"></div><div class="sp-lbl">80</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:112px"></div><div class="sp-lbl">112</div></div>
+        <div class="sp-col"><div class="sp-bar" style="height:120px"></div><div class="sp-lbl">120</div></div>
+        <div class="sp-col" style="opacity:.5"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">160</div></div>
+        <div class="sp-col" style="opacity:.35"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">176</div></div>
+        <div class="sp-col" style="opacity:.2"><div class="sp-bar" style="height:140px"></div><div class="sp-lbl">430.5</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. BORDERS ── -->
+  <div class="section">
+    <div class="section-title">Borders</div>
+    <div class="border-card">
+      <div class="bc-title">Border Radii</div>
+      <div class="radius-row">
+        <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">sm</div><div class="radius-val">4px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:6px"></div><div class="radius-lbl">md</div><div class="radius-val">6px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-lbl">lg</div><div class="radius-val">8px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:200px;width:120px;height:48px;"></div><div class="radius-lbl">xl (Capsule)</div><div class="radius-val">200px</div></div>
+        <div class="radius-item"><div class="radius-box" style="border-radius:9999px;width:80px;height:40px;"></div><div class="radius-lbl">2xl (Pill)</div><div class="radius-val">9999px</div></div>
+      </div>
+      <div style="margin-top:12px;font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-lh-7);">The 200px capsule radius is notable — used for large pill-shaped CTAs distinct from the 9999px full-pill. Only 5 tokens cover UI components (4–8px) and pill shapes (200px, 9999px).</div>
+    </div>
+    <div class="border-card">
+      <div class="bc-title">Border Width</div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div class="bw-token">Hairline</div>
+        <div style="flex:1;height:1px;background:rgba(233,235,223,0.25);"></div>
+        <div class="bw-val">1px · ×107</div>
+      </div>
+      <div style="margin-top:10px;font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-lh-7);">Single 1px hairline used throughout. The shadow-sm token uses a 1px inset as a sage-tinted border substitute on dark surfaces, complementing the border-width token.</div>
+    </div>
+  </div>
+
+  <!-- ── 5. SHADOW / ELEVATION ── -->
+  <div class="section">
+    <div class="section-title">Shadows / Elevation</div>
+    <div class="token-wrap">
+      <div class="tw-title">Shadow Tokens</div>
+      <div class="tw-sub">2 tokens</div>
+      <div class="shadows-row" style="grid-template-columns:repeat(2,1fr);">
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-sm);border:1px solid var(--color-border);"></div>
+          <div class="sh-token">sm</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">rgba(233,235,223,.2) 1px inset — sage-tinted outline ring on dark surfaces</div>
+        </div>
+        <div class="sh-item">
+          <div class="sh-box" style="box-shadow:var(--shadow-md);"></div>
+          <div class="sh-token">md</div>
+          <div class="sh-usage">×1</div>
+          <div class="sh-desc">rgba(0,0,0,.12) 1px 2px + 0.5px black ring — crisp card elevation</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-lh-7);">Elevation hierarchy is primarily achieved through background color stepping — <span style="font-family:var(--font-family-3);color:var(--color-light-gray-2);">#151515</span> → <span style="font-family:var(--font-family-3);color:var(--color-light-gray-2);">#1e1b18</span> → <span style="font-family:var(--font-family-3);color:var(--color-light-gray-2);">#282522</span> — rather than drop shadows alone.</div>
+    </div>
+  </div>
+
+  <!-- ── 6. Z-INDEX ── -->
+  <div class="section">
+    <div class="section-title">Z-Index</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="z-table">
+        <thead><tr><th>Layer</th><th>Value</th><th>Usage</th></tr></thead>
+        <tbody>
+          <tr><td>z-1</td><td>6</td><td>Base interactive content, sticky table headers</td></tr>
+          <tr><td>z-2</td><td>10</td><td>Floating labels, anchored tooltips</td></tr>
+          <tr><td>z-3</td><td>20</td><td>Navigation bars, dropdowns</td></tr>
+          <tr><td>z-4</td><td>1500</td><td>Modal backdrops, drawer overlays</td></tr>
+          <tr><td>z-5</td><td>2000</td><td>Modal dialogs, full-screen panels</td></tr>
+          <tr><td>z-6</td><td>9999</td><td>Toast notifications, global alerts</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:12px;font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-lh-7);">Notable gap: z-3 (20) → z-4 (1500). Normal UI chrome in single/double digits; modal system chrome jumps to four digits. Maximum at 9999 ensures toast notifications always appear over user-built Retool components.</div>
+  </div>
+
+  <!-- ── 7. BREAKPOINTS ── -->
+  <div class="section">
+    <div class="section-title">Breakpoints</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;">
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;padding:16px;"><div style="font-size:1.2rem;margin-bottom:6px;">📱</div><div class="bp-token">XS</div><div class="bp-val" style="font-size:var(--font-size-xl);">400px</div></div>
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;padding:16px;"><div style="font-size:1.2rem;margin-bottom:6px;">📲</div><div class="bp-token">SM / MD</div><div class="bp-val" style="font-size:var(--font-size-xl);">543–544px</div></div>
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;padding:16px;"><div style="font-size:1.2rem;margin-bottom:6px;">💻</div><div class="bp-token">LG / XL</div><div class="bp-val" style="font-size:var(--font-size-xl);">640–768px</div></div>
+      <div class="bp-card" style="flex-direction:column;align-items:flex-start;padding:16px;"><div style="font-size:1.2rem;margin-bottom:6px;">🖥️</div><div class="bp-token">3XL → BP-16</div><div class="bp-val" style="font-size:var(--font-size-xl);">900–1920px</div></div>
+    </div>
+    <div style="font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-lh-7);">16 breakpoints from 400px to 1920px. Paired floor/ceiling values (543/544, 767/768, 1279/1280px) for precise boundary handling. Max at 1920px reflects Retool's focus on wide-screen dashboard layouts. A 26-column grid system (<span style="font-family:var(--font-family-3);color:var(--color-light-gray-2);">--dvt-grid-items: 26</span>) scales fluidly across all breakpoints with 4 named cubic-bezier easing functions.</div>
+  </div>
+
+  <!-- ── 8. OPACITY ── -->
+  <div class="section">
+    <div class="section-title">Opacity</div>
+    <div class="token-wrap">
+      <div class="tw-title">Opacity Tokens</div>
+      <div class="tw-sub">4 tokens — 40% → 75%</div>
+      <div class="opacity-grid" style="grid-template-columns:repeat(4,1fr);max-width:440px;">
+        <div class="op-item"><div class="op-box" style="opacity:0.4;"></div><div class="op-token">opacity-40</div><div class="op-val">40% · ×4</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.5;"></div><div class="op-token">opacity-50</div><div class="op-val">50% · ×3</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.6;"></div><div class="op-token">opacity-60</div><div class="op-val">60% · ×6</div></div>
+        <div class="op-item"><div class="op-box" style="opacity:0.75;"></div><div class="op-token">opacity-75</div><div class="op-val">75% · ×46</div></div>
+      </div>
+      <div style="margin-top:16px;font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-lh-7);">Opacity-75 (×46) dominates — used for image overlays and disabled state dimming. Scale starts at 40%; lighter transparency is handled via RGBA color values in the raw token layer.</div>
+    </div>
+  </div>
+
+  <!-- ── 9. ACCESSIBILITY ── -->
+  <div class="section">
+    <div class="section-title">Accessibility — Contrast Ratios</div>
+    <div style="font-size:var(--font-size-xs);color:var(--color-mid-gray);line-height:var(--line-height-lh-7);margin-bottom:12px;">WCAG 2.1: <strong style="color:var(--color-light-gray-2);">AA</strong> ≥ 4.5:1 · <strong style="color:var(--color-light-gray-2);">AA Large</strong> ≥ 3:1 · <strong style="color:var(--color-light-gray-2);">AAA</strong> ≥ 7:1</div>
+    <div style="margin-bottom:12px;padding:10px 16px;background:rgba(232,118,94,0.08);border:1px solid rgba(232,118,94,0.2);border-radius:var(--radius-sm);font-size:var(--font-size-xs);color:var(--color-red);line-height:var(--line-height-lh-7);">⚠️ White and light gray text on the brand sage-green (#E9EBDF) all Fail — confirming that #E9EBDF is a background for dark content, not a canvas for light text.</div>
+    <div class="token-wrap" style="padding:0;overflow:hidden;">
+      <table class="a11y-table">
+        <thead><tr><th>Text Color</th><th>Background Color</th><th>Ratio</th><th>WCAG Rating</th></tr></thead>
+        <tbody>
+          <tr><td>White</td><td>Light Gray (#E9EBDF)</td><td>1.21:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>White</td><td>Black (#000)</td><td>21:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>White</td><td>Dark Gray (#282522)</td><td>15.24:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>White</td><td>Dark Gray 2 (#433E38)</td><td>10.58:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>White</td><td>Dark Gray 3 (#151515)</td><td>18.26:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Light Gray 2 (#CBCCC4)</td><td>Light Gray (#E9EBDF)</td><td>1.34:1</td><td><span class="wcag-badge wcag-fail">Fail</span></td></tr>
+          <tr><td>Light Gray 2 (#CBCCC4)</td><td>Black (#000)</td><td>12.97:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Light Gray 2 (#CBCCC4)</td><td>Dark Gray (#282522)</td><td>9.42:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Light Gray 2 (#CBCCC4)</td><td>Dark Gray 2 (#433E38)</td><td>6.54:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>Light Gray 2 (#CBCCC4)</td><td>Dark Gray 3 (#151515)</td><td>11.28:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Light Gray 3 (40%)</td><td>Black (#000)</td><td>17.37:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Light Gray 3 (40%)</td><td>Dark Gray (#282522)</td><td>12.61:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Light Gray 6 (#B6B8AF)</td><td>Dark Gray (#282522)</td><td>7.59:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+          <tr><td>Light Gray 6 (#B6B8AF)</td><td>Dark Gray 2 (#433E38)</td><td>5.27:1</td><td><span class="wcag-badge wcag-aa">AA</span></td></tr>
+          <tr><td>Light Gray 6 (#B6B8AF)</td><td>Dark Gray 3 (#151515)</td><td>9.1:1</td><td><span class="wcag-badge wcag-aaa">AAA</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- UI COMPONENTS (hidden)
+  <div class="section">
+    <div class="section-title">UI Components</div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Buttons</span><span class="comp-badge">5 variants</span></div>
+      <div class="comp-body">
+        <div class="btn-row">
+          <button class="btn btn-primary">New app</button>
+          <button class="btn btn-secondary">Documentation</button>
+          <button class="btn btn-outline">Deploy</button>
+          <button class="btn btn-ghost">Preview</button>
+          <button class="btn btn-muted">Delete app</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Form Inputs</span><span class="comp-badge">3 states</span></div>
+      <div class="comp-body">
+        <div class="inputs-grid">
+          <div class="inp-group">
+            <label class="inp-label">App name</label>
+            <input class="inp" type="text" placeholder="My internal tool"/>
+            <div class="inp-hint">Lowercase, no spaces</div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Database URL</label>
+            <input class="inp" type="text" placeholder="postgresql://..." style="border-color:var(--color-light-gray);box-shadow:0 0 0 2px rgba(233,235,223,0.1);"/>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">API key</label>
+            <input class="inp inp-err" type="text" value="invalid-api-key-format"/>
+            <div class="inp-err-msg">Invalid API key format</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Badges &amp; Tags</span><span class="comp-badge">Variants</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="badge-row">
+          <span class="badge badge-default"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Default</span>
+          <span class="badge badge-brand"><span class="badge-dot" style="background:var(--color-light-gray)"></span>Deployed</span>
+          <span class="badge badge-muted"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Draft</span>
+        </div>
+        <div class="badge-row">
+          <span class="tag tag-brand">🛠 Components</span>
+          <span class="tag">🔍 Queries</span>
+          <span class="tag">🔗 Resources</span>
+          <span class="tag">⚙️ Settings</span>
+          <span class="tag">📊 Analytics</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Alerts</span><span class="comp-badge">4 types</span></div>
+      <div class="comp-body" style="display:flex;flex-direction:column;gap:8px;">
+        <div class="alert alert-neutral"><div class="alert-icon">ℹ️</div><div class="alert-body"><h5>New Retool version available</h5><p>v3.44 is ready. Includes improved query caching and new table component features.</p></div></div>
+        <div class="alert alert-brand"><div class="alert-icon">✅</div><div class="alert-body"><h5>App deployed successfully</h5><p>Your app is now live and accessible to your team at retool.company.com/apps/dashboard.</p></div></div>
+        <div class="alert alert-dim"><div class="alert-icon">⚠️</div><div class="alert-body"><h5>Query performance warning</h5><p>getUserData is taking over 3 seconds. Consider adding an index or optimizing the query.</p></div></div>
+        <div class="alert alert-base"><div class="alert-icon">❌</div><div class="alert-body"><h5>Database connection failed</h5><p>Cannot reach postgresql://prod-db:5432. Check credentials and network access.</p></div></div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Feature Cards</span><span class="comp-badge">Product card</span></div>
+      <div class="comp-body">
+        <div class="cards-grid">
+          <div class="feature-card"><div class="fc-icon">🧩</div><div class="fc-title">Component Library</div><div class="fc-desc">100+ prebuilt UI components. Tables, forms, charts, modals — all drag-and-drop.</div><span class="tag tag-brand">Drag &amp; Drop</span></div>
+          <div class="feature-card"><div class="fc-icon">🔌</div><div class="fc-title">Integrations</div><div class="fc-desc">Connect to any database or API. PostgreSQL, MySQL, REST, GraphQL, and 100+ more.</div><span class="tag">100+ sources</span></div>
+          <div class="feature-card"><div class="fc-icon">🤖</div><div class="fc-title">Retool AI</div><div class="fc-desc">Generate queries, write logic, and build UI faster with AI-powered assistance.</div><span class="tag">AI-powered</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Avatars &amp; Progress</span><span class="comp-badge">Mixed</span></div>
+      <div class="comp-body">
+        <div class="av-row">
+          <div class="avatar av-lg" style="background:linear-gradient(135deg,var(--color-dark-gray-2),var(--color-dark-gray));color:var(--color-light-gray);">RT</div>
+          <div class="av-info"><h4>Retool Workspace</h4><p>admin@acme.com · Enterprise plan · 42 apps</p></div>
+        </div>
+        <div class="av-row">
+          <div class="avatar av-md" style="background:var(--color-light-gray);color:var(--color-dark-gray-3)">A</div>
+          <div class="avatar av-md" style="background:var(--color-surface-elevated);color:var(--color-light-gray-2)">M</div>
+          <div class="avatar av-md" style="background:var(--color-dark-gray-2);color:var(--color-light-gray-2)">R</div>
+          <div class="avatar av-sm" style="background:var(--color-mid-gray);color:var(--color-dark-gray-3)">K</div>
+          <div class="avatar av-sm" style="background:rgba(233,235,223,0.08);color:var(--color-mid-gray)">+9</div>
+        </div>
+        <div style="margin-top:12px;">
+          <div class="prog-wrap"><div class="prog-label"><span>Query execution</span><span>68%</span></div><div class="prog-track"><div class="prog-fill" style="width:68%;background:linear-gradient(to right,rgba(233,235,223,0.3),var(--color-light-gray))"></div></div></div>
+          <div class="prog-wrap"><div class="prog-label"><span>API usage</span><span>34%</span></div><div class="prog-track"><div class="prog-fill" style="width:34%;background:rgba(233,235,223,0.3)"></div></div></div>
+          <div class="prog-wrap" style="margin-bottom:0"><div class="prog-label"><span>Storage used</span><span>91%</span></div><div class="prog-track"><div class="prog-fill" style="width:91%;background:rgba(233,235,223,0.5)"></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-header"><span class="comp-label">Data Table</span><span class="comp-badge">App Explorer</span></div>
+      <div class="comp-body" style="padding:0;overflow:hidden;">
+        <table class="data-table">
+          <thead><tr><th>app name</th><th>type</th><th>last edited</th><th>editor</th><th>status</th></tr></thead>
+          <tbody>
+            <tr><td>user-admin</td><td style="color:var(--color-light-gray-2)">Internal</td><td style="color:var(--color-light-gray-2)">Today, 9:14 AM</td><td style="color:var(--color-mid-gray)">alice@acme.com</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-light-gray)"></span>Live</span></td></tr>
+            <tr><td>order-dashboard</td><td style="color:var(--color-light-gray-2)">Dashboard</td><td style="color:var(--color-light-gray-2)">Yesterday</td><td style="color:var(--color-mid-gray)">bob@acme.com</td><td><span class="badge badge-muted" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Draft</span></td></tr>
+            <tr><td>support-portal</td><td style="color:var(--color-light-gray-2)">Customer</td><td style="color:var(--color-light-gray-2)">Apr 15</td><td style="color:var(--color-mid-gray)">carol@acme.com</td><td><span class="badge badge-brand" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-light-gray)"></span>Live</span></td></tr>
+            <tr><td>inventory-mgmt</td><td style="color:var(--color-light-gray-2)">Internal</td><td style="color:var(--color-light-gray-2)">Apr 9</td><td style="color:var(--color-mid-gray)">david@acme.com</td><td><span class="badge badge-default" style="font-size:10px;padding:2px 7px"><span class="badge-dot" style="background:var(--color-mid-gray)"></span>Archived</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  -->
+
+  <!-- ── 11. CSS VARIABLES REFERENCE ── -->
+  <div class="tokens-section">
+    <div class="section-title">CSS Variables Reference</div>
+    <div class="tokens-grid">
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Background Colors</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#E9EBDF;border-color:rgba(0,0,0,.15)"></div><span class="token-readable">Light Gray (Sage)</span><span class="token-css">--color-light-gray</span><span class="token-value">#E9EBDF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#000000"></div><span class="token-readable">Black</span><span class="token-css">--color-black</span><span class="token-value">#000000</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#282522"></div><span class="token-readable">Dark Gray</span><span class="token-css">--color-dark-gray</span><span class="token-value">#282522</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#433E38"></div><span class="token-readable">Dark Gray 2</span><span class="token-css">--color-dark-gray-2</span><span class="token-value">#433E38</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#151515"></div><span class="token-readable">Dark Gray 3</span><span class="token-css">--color-dark-gray-3</span><span class="token-value">#151515</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#8B867F"></div><span class="token-readable">Mid Gray</span><span class="token-css">--color-mid-gray</span><span class="token-value">#8B867F</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#242424"></div><span class="token-readable">Dark Gray 4</span><span class="token-css">--color-dark-gray-4</span><span class="token-value">#242424</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(233,235,223,0.12)"></div><span class="token-readable">Light Green</span><span class="token-css">--color-light-green</span><span class="token-value">rgba(233,235,223,.12)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0E352C"></div><span class="token-readable">Dark Cyan</span><span class="token-css">--color-dark-cyan</span><span class="token-value">#0E352C</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#0E0E0E"></div><span class="token-readable">Dark Gray 6</span><span class="token-css">--color-dark-gray-6</span><span class="token-value">#0E0E0E</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Text, Border &amp; Fill</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><div class="token-swatch" style="background:#FFFFFF;border-color:rgba(0,0,0,.15)"></div><span class="token-readable">White</span><span class="token-css">--color-white</span><span class="token-value">#FFFFFF</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#CBCCC4;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">Light Gray 2</span><span class="token-css">--color-light-gray-2</span><span class="token-value">#CBCCC4</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(233,235,223,0.4)"></div><span class="token-readable">Light Gray 3</span><span class="token-css">--color-light-gray-3</span><span class="token-value">rgba(233,235,223,.4)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#B6B8AF;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">Light Gray 6</span><span class="token-css">--color-light-gray-6</span><span class="token-value">#B6B8AF</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(233,235,223,0.2)"></div><span class="token-readable">Border Light</span><span class="token-css">--color-light-gray-4</span><span class="token-value">rgba(233,235,223,.2)</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:rgba(21,21,21,0.12)"></div><span class="token-readable">Border Dark</span><span class="token-css">--color-dark-gray-5</span><span class="token-value">rgba(21,21,21,.12)</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-swatch" style="background:#DED9D3;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">Light Gray 5</span><span class="token-css">--color-light-gray-5</span><span class="token-value">#DED9D3</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#B0CCEA;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">Light Blue</span><span class="token-css">--color-light-blue</span><span class="token-value">#B0CCEA</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#E8765E"></div><span class="token-readable">Red</span><span class="token-css">--color-red</span><span class="token-value">#E8765E</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#518DD2"></div><span class="token-readable">Blue</span><span class="token-css">--color-blue</span><span class="token-value">#518DD2</span></div>
+          <div class="token-row"><div class="token-swatch" style="background:#D8E6F3;border-color:rgba(0,0,0,.1)"></div><span class="token-readable">Light Blue 2</span><span class="token-css">--color-light-blue-2</span><span class="token-value">#D8E6F3</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Typography</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">pxGroteskFont</span><span class="token-css">--font-family-2</span><span class="token-value">pxGrotesk</span></div>
+          <div class="token-row"><span class="token-readable">System sans</span><span class="token-css">--font-family-base</span><span class="token-value">ui-sans-serif</span></div>
+          <div class="token-row"><span class="token-readable">Mono</span><span class="token-css">--font-family-3</span><span class="token-value">ui-monospace</span></div>
+          <div class="token-row"><span class="token-readable">saansFont</span><span class="token-css">--font-family-4</span><span class="token-value">saansFont</span></div>
+          <div class="token-row"><span class="token-readable">Light</span><span class="token-css">--font-weight-light</span><span class="token-value">300</span></div>
+          <div class="token-row"><span class="token-readable">w380</span><span class="token-css">--font-weight-w380</span><span class="token-value">380</span></div>
+          <div class="token-row"><span class="token-readable">Regular</span><span class="token-css">--font-weight-regular</span><span class="token-value">400</span></div>
+          <div class="token-row"><span class="token-readable">w570</span><span class="token-css">--font-weight-w570</span><span class="token-value">570</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">2xs</span><span class="token-css">--font-size-2xs</span><span class="token-value">10.82px</span></div>
+          <div class="token-row"><span class="token-readable">xs</span><span class="token-css">--font-size-xs</span><span class="token-value">12px</span></div>
+          <div class="token-row"><span class="token-readable">sm</span><span class="token-css">--font-size-sm</span><span class="token-value">12.52px</span></div>
+          <div class="token-row"><span class="token-readable">base</span><span class="token-css">--font-size-base</span><span class="token-value">14px</span></div>
+          <div class="token-row"><span class="token-readable">lg</span><span class="token-css">--font-size-lg</span><span class="token-value">16px</span></div>
+          <div class="token-row"><span class="token-readable">xl</span><span class="token-css">--font-size-xl</span><span class="token-value">18px</span></div>
+          <div class="token-row"><span class="token-readable">2xl</span><span class="token-css">--font-size-2xl</span><span class="token-value">21.05px</span></div>
+          <div class="token-row"><span class="token-readable">3xl</span><span class="token-css">--font-size-3xl</span><span class="token-value">26.10px</span></div>
+          <div class="token-row"><span class="token-readable">4xl</span><span class="token-css">--font-size-4xl</span><span class="token-value">30.10px</span></div>
+          <div class="token-row"><span class="token-readable">5xl</span><span class="token-css">--font-size-5xl</span><span class="token-value">42.10px</span></div>
+          <div class="token-row"><span class="token-readable">6xl (Hero)</span><span class="token-css">--font-size-6xl</span><span class="token-value">54.10px</span></div>
+        </div>
+      </div>
+
+      <div class="tokens-group">
+        <div class="tokens-group-header"><div class="tokens-group-icon"></div><span class="tokens-group-title">Borders, Motion &amp; Layers</span></div>
+        <div class="tokens-list">
+          <div class="token-row"><span class="token-readable">Hairline</span><span class="token-css">--border-width-hairline</span><span class="token-value">1px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:4px"></div><span class="token-readable">sm</span><span class="token-css">--radius-sm</span><span class="token-value">4px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:6px"></div><span class="token-readable">md</span><span class="token-css">--radius-md</span><span class="token-value">6px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:8px"></div><span class="token-readable">lg</span><span class="token-css">--radius-lg</span><span class="token-value">8px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:200px;height:10px;width:24px"></div><span class="token-readable">xl (Capsule)</span><span class="token-css">--radius-xl</span><span class="token-value">200px</span></div>
+          <div class="token-row"><div class="token-preview-radius" style="border-radius:9999px;height:8px;width:24px"></div><span class="token-readable">2xl (Pill)</span><span class="token-css">--radius-2xl</span><span class="token-value">9999px</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">Instant</span><span class="token-css">--duration-instant</span><span class="token-value">100ms</span></div>
+          <div class="token-row"><span class="token-readable">Fast</span><span class="token-css">--duration-fast</span><span class="token-value">200ms</span></div>
+          <div class="token-row"><span class="token-readable">Normal</span><span class="token-css">--duration-normal</span><span class="token-value">300ms</span></div>
+          <div class="token-row"><span class="token-readable">Slow</span><span class="token-css">--duration-slow</span><span class="token-value">400ms</span></div>
+          <div class="token-row"><span class="token-readable">Slower</span><span class="token-css">--duration-slower</span><span class="token-value">600ms</span></div>
+          <div class="token-row"><span style="font-size:10px;color:var(--color-mid-gray)">4 cubic-bezier easing in :root vars</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.4"></div><span class="token-readable">opacity-40</span><span class="token-css">--opacity-40</span><span class="token-value">40%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.5"></div><span class="token-readable">opacity-50</span><span class="token-css">--opacity-50</span><span class="token-value">50%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.6"></div><span class="token-readable">opacity-60</span><span class="token-css">--opacity-60</span><span class="token-value">60%</span></div>
+          <div class="token-row"><div class="token-preview-opacity" style="opacity:.75"></div><span class="token-readable">opacity-75</span><span class="token-css">--opacity-75</span><span class="token-value">75%</span></div>
+          <div class="token-row-sep"></div>
+          <div class="token-row"><span class="token-readable">UI Content</span><span class="token-css">--z-1</span><span class="token-value">6</span></div>
+          <div class="token-row"><span class="token-readable">Tooltips</span><span class="token-css">--z-2</span><span class="token-value">10</span></div>
+          <div class="token-row"><span class="token-readable">Navigation</span><span class="token-css">--z-3</span><span class="token-value">20</span></div>
+          <div class="token-row"><span class="token-readable">Modal Backdrop</span><span class="token-css">--z-4</span><span class="token-value">1500</span></div>
+          <div class="token-row"><span class="token-readable">Modal Dialog</span><span class="token-css">--z-5</span><span class="token-value">2000</span></div>
+          <div class="token-row"><span class="token-readable">Toast / Alerts</span><span class="token-css">--z-6</span><span class="token-value">9999</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div style="text-align:center;padding:48px 0 24px;color:var(--color-mid-gray);font-size:var(--font-size-xs);border-top:1px solid var(--color-border);line-height:var(--line-height-lh-7);">
+    Design System Preview · Retool (Dark) · Generated 19/04/2026 · 23 color tokens · 11 font-size · 4 font-family · 4 font-weight · 12 line-height · 12 letter-spacing · 29 spacing · 5 radius · 1 border-width · 2 shadow · 5 duration · 0 easing tokens · 6 z-index · 16 breakpoints · 4 opacity
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var SLUG_ALIASES = {
+    x: "xcom",
+    verge: "theverge",
+    runway: "runwayml",
+    "microsoft-office": "office"
+  };
+  var MD_FILE_ALIASES = {
+    xcom: "x-com",
+    xai: "x-ai"
+  };
+
+  function htmlSlug() {
+    var path = window.location.pathname || "";
+    var name = path.split("/").pop() || "";
+    return name.replace(/\.html$/i, "");
+  }
+
+  function assetKey(slug) {
+    if (!slug) return "";
+    if (Object.prototype.hasOwnProperty.call(SLUG_ALIASES, slug)) return SLUG_ALIASES[slug];
+    return slug.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+  }
+
+  function mdFileName(key) {
+    return MD_FILE_ALIASES[key] || key;
+  }
+
+  function downloadBlob(blob, filename) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 0);
+  }
+
+  async function fetchAndDownload(path, filename) {
+    try {
+      var res = await fetch(path);
+      if (!res || !res.ok) return false;
+      var blob = await res.blob();
+      if (!blob || blob.size === 0) return false;
+      downloadBlob(blob, filename);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function onTailwindClick(e) {
+    e.preventDefault();
+    var key = assetKey(htmlSlug());
+    if (!key) return;
+    fetchAndDownload("/tailwind/" + key + ".css", key + ".css");
+  }
+
+  async function onClaudeClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/files/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+
+  async function onGoogleDesignClick(e) {
+    e.preventDefault();
+    var slug = htmlSlug();
+    var key = assetKey(slug);
+    if (!key) return;
+    var candidates = [mdFileName(key)];
+    var slugLower = slug.toLowerCase();
+    if (candidates.indexOf(slugLower) === -1) candidates.push(slugLower);
+    if (candidates.indexOf(key) === -1) candidates.push(key);
+    for (var i = 0; i < candidates.length; i++) {
+      var name = candidates[i];
+      if (await fetchAndDownload("/google/" + name + ".md", name + ".md")) return;
+    }
+  }
+
+  function initToolbarDownloads() {
+    var toolbar = document.querySelector(".toolbar");
+    if (!toolbar) return;
+    var buttons = toolbar.querySelectorAll(".tbtn");
+    if (buttons.length < 2) return;
+    buttons[0].type = "button";
+    buttons[1].type = "button";
+    buttons[0].addEventListener("click", onTailwindClick);
+    buttons[1].addEventListener("click", onClaudeClick);
+    if (buttons[2]) buttons[2].type = "button";
+    if (buttons[3]) {
+      buttons[3].type = "button";
+      buttons[3].addEventListener("click", onGoogleDesignClick);
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initToolbarDownloads);
+  } else {
+    initToolbarDownloads();
+  }
+})();
+</script>
+
+</body>
+</html>

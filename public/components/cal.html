@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Cal.com Components</title>
+<style>
+  /* ---------- Cal.com design tokens ---------- */
+  :root {
+    --cal-black: #101010;
+    --cal-black-deep: #1a1a1a;
+    --cal-text-primary: #101010;
+    --cal-text-secondary: #6b7280;
+    --cal-text-muted: #9ca3af;
+
+    --cal-page-bg: #ffffff;
+    --cal-subtle-bg: #f3f4f6;        /* soft grey for secondary pill */
+    --cal-subtle-hover: #e5e7eb;
+    --cal-subtle-border: #e5e7eb;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--cal-page-bg);
+    color: var(--cal-text-primary);
+    /* Cal.com's display font is "Cal Sans" with Inter as body/fallback */
+    font-family: "Cal Sans", "Inter", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.4;
+  }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 32px 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  .component-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .component-label {
+    font-size: 12px;
+    color: var(--cal-text-muted);
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  /* ============================================= */
+  /* Component 1: "Get started" dark pill            */
+  /* ============================================= */
+  /* Cal.com's characteristic look: a near-black pill with
+     a subtle top-highlight gradient and soft outer shadow,
+     giving it a very slight 3D puffed feel. */
+  .cal-get-started {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 22px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    /* Dual gradient = top highlight + bottom deep black */
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0) 50%
+      ),
+      var(--cal-black-deep);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 1px 2px rgba(0, 0, 0, 0.18),
+      0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: transform 150ms ease, box-shadow 200ms ease;
+  }
+  .cal-get-started:hover {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      0 2px 4px rgba(0, 0, 0, 0.22),
+      0 6px 18px rgba(0, 0, 0, 0.16);
+  }
+  .cal-get-started:active {
+    transform: translateY(1px);
+  }
+  .cal-get-started__chevron {
+    width: 14px;
+    height: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+  }
+  .cal-get-started__chevron svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ============================================= */
+  /* Component 2: Hero section                       */
+  /* ============================================= */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    max-width: 720px;
+  }
+
+  /* Small launch announcement chip */
+  .hero__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--cal-subtle-bg);
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--cal-text-primary);
+    text-decoration: none;
+    transition: background-color 150ms ease;
+    border: 1px solid transparent;
+  }
+  .hero__chip:hover {
+    background: var(--cal-subtle-hover);
+  }
+  .hero__chip svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* The big display headline — Cal Sans aesthetic */
+  .hero__title {
+    font-family: "Cal Sans", "Inter", sans-serif;
+    font-size: clamp(48px, 7vw, 92px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: var(--cal-text-primary);
+    margin: 0;
+  }
+
+  .hero__subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--cal-text-secondary);
+    margin: 0;
+    max-width: 620px;
+    letter-spacing: -0.005em;
+  }
+
+  /* Action buttons — full width rounded pills */
+  .hero__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 640px;
+    margin-top: 8px;
+  }
+
+  .cal-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 56px;
+    padding: 0 24px;
+    border-radius: 9999px;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background-color 150ms ease, box-shadow 200ms ease,
+      transform 150ms ease;
+  }
+
+  /* Primary dark signup (Google) */
+  .cal-action--dark {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0) 45%
+      ),
+      var(--cal-black-deep);
+    color: #ffffff;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 1px 2px rgba(0, 0, 0, 0.2),
+      0 4px 14px rgba(0, 0, 0, 0.12);
+  }
+  .cal-action--dark:hover {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      0 2px 4px rgba(0, 0, 0, 0.22),
+      0 8px 22px rgba(0, 0, 0, 0.18);
+  }
+  .cal-action--dark:active {
+    transform: translateY(1px);
+  }
+
+  /* Secondary email signup */
+  .cal-action--subtle {
+    background: var(--cal-subtle-bg);
+    color: var(--cal-text-primary);
+    border-color: var(--cal-subtle-border);
+  }
+  .cal-action--subtle:hover {
+    background: var(--cal-subtle-hover);
+  }
+  .cal-action--subtle svg {
+    width: 16px;
+    height: 16px;
+    color: var(--cal-text-primary);
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* Google "G" mark */
+  .google-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .hero__legal {
+    font-size: 15px;
+    color: var(--cal-text-secondary);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ===== Component 1: "Get started" dark pill ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 1 — Get started pill</div>
+      <div>
+        <button type="button" class="cal-get-started">
+          Get started
+          <span class="cal-get-started__chevron">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== Component 2: Hero section ===== -->
+    <section class="component-block">
+      <div class="component-label">Component 2 — Hero</div>
+      <div class="hero">
+
+        <!-- Launch chip -->
+        <a href="#" class="hero__chip">
+          Cal.com launches v6.4
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </a>
+
+        <!-- Big display headline -->
+        <h1 class="hero__title">
+          The better way to schedule your meetings
+        </h1>
+
+        <!-- Supporting paragraph -->
+        <p class="hero__subtitle">
+          A fully customizable scheduling software for individuals, businesses
+          taking calls and developers building scheduling platforms where users
+          meet users.
+        </p>
+
+        <!-- Action buttons -->
+        <div class="hero__actions">
+
+          <!-- Primary: Sign up with Google -->
+          <button type="button" class="cal-action cal-action--dark">
+            <!-- Official Google "G" logo -->
+            <svg class="google-icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path
+                fill="#FFC107"
+                d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"
+              />
+              <path
+                fill="#FF3D00"
+                d="m6.3 14.1 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.1z"
+              />
+              <path
+                fill="#4CAF50"
+                d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.3C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"
+              />
+              <path
+                fill="#1976D2"
+                d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.3-4.1 5.7l6.2 5.3c-.4.4 6.6-4.8 6.6-15 0-1.3-.1-2.4-.4-3.5z"
+              />
+            </svg>
+            Sign up with Google
+          </button>
+
+          <!-- Secondary: Sign up with email -->
+          <button type="button" class="cal-action cal-action--subtle">
+            Sign up with email
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+
+        </div>
+
+        <p class="hero__legal">No credit card required</p>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

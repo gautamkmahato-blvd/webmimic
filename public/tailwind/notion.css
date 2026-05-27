@@ -1,0 +1,193 @@
+/* ============================================
+ * Design Tokens — The AI workspace that works for you. | Notion
+ * Source: https://www.notion.com/
+ * Generated: 17/04/2026, 13:10:25
+ * ============================================ */
+
+:root {
+  /* ── Core: Colors ── */
+  --color-black: #000000; /* hsl(0, 0%, 0%) · background */
+  --color-white: #F6F5F4; /* hsl(30, 10%, 96%) · background */
+  --color-mid-gray: #A39E98; /* hsl(33, 6%, 62%) · text */
+  --color-white-2: #FFFFFF; /* hsl(0, 0%, 100%) · background */
+  --color-dark-gray: #31302E; /* hsl(40, 3%, 19%) · text */
+  --color-dark-gray-2: #615D59; /* hsl(30, 4%, 36%) · text */
+  --color-blue: #2537B1; /* hsl(232, 65%, 42%) · fill */
+  --color-blue-2: #0075DE; /* hsl(208, 100%, 44%) · background */
+  --color-blue-3: #097FE8; /* hsl(208, 93%, 47%) · background */
+  --color-blue-4: #62AEF0; /* hsl(208, 83%, 66%) · background */
+  --color-red: #F64932; /* hsl(7, 92%, 58%) · background */
+  --color-orange: #9C7054; /* hsl(23, 30%, 47%) · text */
+  --color-orange-2: #FF6D00; /* hsl(26, 100%, 50%) · text */
+  --color-mid-gray-2: #78736F; /* hsl(27, 4%, 45%) · text */
+  --color-purple: #9849E8; /* hsl(270, 78%, 60%) · text */
+  --color-orange-3: #FFB110; /* hsl(40, 100%, 53%) · background */
+  --color-cyan: #27918D; /* hsl(178, 58%, 36%) · text */
+  --color-dark-blue: #02093A; /* hsl(233, 93%, 12%) · background */
+  --color-dark-blue-2: #005BAB; /* hsl(208, 100%, 34%) · text */
+  --color-white-3: #F2F9FF; /* hsl(208, 100%, 97%) · background */
+  --color-white-4: #F9F9F8; /* hsl(60, 8%, 97%) · background */
+  --color-cyan-2: #2A9D99; /* hsl(178, 58%, 39%) · background */
+  --color-white-5: #F7F7F5; /* hsl(60, 11%, 96%) · background */
+  --color-white-6: #FCF8F5; /* hsl(26, 54%, 97%) · background */
+  --color-white-7: #FFF5ED; /* hsl(27, 100%, 96%) · background */
+  --color-white-8: #FEF3F1; /* hsl(9, 87%, 97%) · background */
+  --color-white-9: #F8F5FC; /* hsl(266, 54%, 97%) · background */
+  --color-blue-5: #455DD3; /* hsl(230, 62%, 55%) · background */
+  --color-orange-4: #FFC95E; /* hsl(40, 100%, 68%) · background */
+  --color-red-2: #F77463; /* hsl(7, 90%, 68%) · background */
+  --color-purple-2: #AD6DED; /* hsl(270, 78%, 68%) · background */
+  --color-orange-5: #FF8A33; /* hsl(26, 100%, 60%) · background */
+  --color-light-pink: #FF83DD; /* hsl(316, 100%, 76%) · background */
+  --color-orange-6: #B18164; /* hsl(23, 33%, 54%) · background */
+  --color-dark-gray-3: #191918; /* hsl(60, 2%, 10%) · background */
+  --color-white-10: #F2FAFA; /* hsl(180, 44%, 96%) · background */
+  --color-light-orange: #FFF5E0; /* hsl(41, 100%, 94%) · background */
+  --color-dark-blue-3: #213183; /* hsl(230, 60%, 32%) · background */
+  --color-green: #1AAE39; /* hsl(133, 74%, 39%) · background */
+  --color-light-gray: #C0C0C0; /* hsl(0, 0%, 75%) · border */
+  --color-light-gray-2: #DDDDDD; /* hsl(0, 0%, 87%) · border */
+  --color-dark-gray-4: #111111; /* hsl(0, 0%, 7%) · background */
+
+  /* ── Core: Typography ── */
+  --font-size-2xs: 0px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 15px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 22px;
+  --font-size-4xl: 26px;
+  --font-size-5xl: 32px;
+  --font-size-6xl: 42px;
+  --font-size-64px: 64px;
+  --font-family-base: NotionInter;
+  --font-family-2: Lyon Text;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --line-height-tight: 14px;
+  --line-height-snug: 16px;
+  --line-height-normal: 20px;
+  --line-height-relaxed: 21.6px;
+  --line-height-loose: 24px;
+  --line-height-lh-6: 28px;
+  --line-height-lh-7: 32px;
+  --line-height-lh-8: 40px;
+  --line-height-lh-9: 48px;
+  --line-height-lh-10: 64px;
+  --letter-spacing-tight: -2.125px;
+  --letter-spacing-normal: -1.5px;
+  --letter-spacing-wide: -0.625px;
+  --letter-spacing-wider: -0.25px;
+  --letter-spacing-widest: -0.125px;
+  --letter-spacing-ls-6: 0.125px;
+
+  /* ── Layout: Spacing ── */
+  --space-1: 2px;
+  --space-2: 3px;
+  --space-3: 3.2px;
+  --space-4: 4px;
+  --space-5: 5px;
+  --space-6: 6px;
+  --space-8: 6.4px;
+  --space-10: 7px;
+  --space-12: 8px;
+  --space-16: 10px;
+  --space-20: 11px;
+  --space-24: 48px;
+  --space-32: 113.008px;
+  --space-40: 15px;
+  --space-48: 16px;
+  --space-64: 20px;
+  --space-80: 24px;
+  --space-96: 28px;
+  --space-128: 32px;
+  --space-160: 34px;
+  --space-192: 36px;
+  --space-256: 40px;
+  --space-23: 44px;
+  --space-25: 56px;
+  --space-26: 60px;
+  --space-27: 64px;
+  --space-28: 80px;
+  --space-29: 83.2px;
+  --space-30: 92px;
+  --space-31: 103.172px;
+  --space-33: 125px;
+  --space-34: 161.219px;
+  --space-35: 180px;
+  --space-36: 185.969px;
+  --space-37: 316.312px;
+  --space-38: 490.766px;
+
+  /* ── Borders ── */
+  --border-width-hairline: 1px;
+  --border-width-thin: 2px;
+  --radius-sm: 4px;
+  --radius-md: 5px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 12px 0px 0px;
+  --radius-full: 12px 12px 0px 0px;
+  --radius-r7: 16px;
+  --radius-r8: 50%;
+  --radius-r9: 100%;
+  --radius-r10: 1000px;
+  --radius-r11: 9999px;
+
+  /* ── Surfaces: Shadows ── */
+  --shadow-sm: rgba(0, 0, 0, 0.04) 0px 4px 18px 0px, rgba(0, 0, 0, 0.027) 0px 2.025px 7.84688px 0px, rgba(0, 0, 0, 0.02) 0px 0.8px 2.925px 0px, rgba(0, 0, 0, 0.01) 0px 0.175px 1.04062px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.01) 0px 1px 3px 0px, rgba(0, 0, 0, 0.02) 0px 3px 7px 0px, rgba(0, 0, 0, 0.02) 0px 7px 15px 0px, rgba(0, 0, 0, 0.04) 0px 14px 28px 0px, rgba(0, 0, 0, 0.05) 0px 23px 52px 0px;
+  --shadow-lg: rgba(0, 0, 0, 0.08) 0px 20px 50px 0px, rgba(0, 0, 0, 0.04) 0px 6px 16px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0) 0px 1px 0px 0px;
+  --shadow-shadow-5: rgba(255, 255, 255, 0.2) 0px 0px 20px 5px;
+  --shadow-shadow-6: rgba(0, 0, 0, 0.03) 0px 3px 9px 0px, rgba(0, 0, 0, 0.016) 0px 0.7px 1.4625px 0px;
+
+  /* ── Motion ── */
+  --duration-instant: 0.075s;
+  --duration-fast: 0.1s;
+  --duration-normal: 0.15s;
+  --duration-slow: 0.2s;
+  --easing-ease-in: ease-in;
+  --easing-ease-in-out: ease-in-out;
+  --easing-linear: linear;
+
+  /* ── Layout: Z-Index ── */
+  --z-1: -1;
+  --z-2: 1;
+  --z-3: 2;
+  --z-4: 3;
+  --z-5: 90;
+  --z-6: 100;
+  --z-7: 1000;
+  --z-8: 2147483647;
+
+  /* ── Breakpoints ── */
+  --breakpoint-xs: 374px;
+  --breakpoint-sm: 375px;
+  --breakpoint-md: 400px;
+  --breakpoint-lg: 440px;
+  --breakpoint-xl: 600px;
+  --breakpoint-2xl: 668px;
+  --breakpoint-3xl: 712px;
+  --breakpoint-bp-8: 768px;
+  --breakpoint-bp-9: 839px;
+  --breakpoint-bp-10: 840px;
+  --breakpoint-bp-11: 908px;
+  --breakpoint-bp-12: 942px;
+  --breakpoint-bp-13: 1032px;
+  --breakpoint-bp-14: 1080px;
+  --breakpoint-bp-15: 1156px;
+  --breakpoint-bp-16: 1200px;
+  --breakpoint-bp-17: 1280px;
+  --breakpoint-bp-18: 1300px;
+  --breakpoint-bp-19: 1440px;
+  --breakpoint-bp-20: 1800px;
+  --breakpoint-bp-21: 1900px;
+
+  /* ── Opacity ── */
+  --opacity-60: 0.6;
+}
