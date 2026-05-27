@@ -9,11 +9,16 @@ import { supabaseAdmin } from '@/config/supabase/supabaseAdmin';
 import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
 import { grantFreeSignupCredits } from '@/app/service/supabase/user/grantFreeSignupCredits';
 
-/** When no `users` row exists (e.g. webhook missed), create it from Clerk. */
+/** When no `users` row exists (e.g. webhook missed), create it from Clerk — new accounts only. */
 async function syncUserFromClerkIfMissing(clerkId: string): Promise<boolean> {
   try {
     const client = await clerkClient();
     const u = await client.users.getUser(clerkId);
+    const createdAt = u.createdAt ? new Date(u.createdAt).getTime() : 0;
+    const webhookGraceMs = 10 * 60 * 1000;
+    if (!createdAt || Date.now() - createdAt > webhookGraceMs) {
+      return false;
+    }
     const email = u.emailAddresses?.[0]?.emailAddress ?? null;
     const name =
       [u.firstName, u.lastName].filter(Boolean).join(' ').trim() || u.username || null;

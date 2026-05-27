@@ -1,5 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
+import { supabaseUserExistsByClerkId } from '@/lib/auth/supabase-user-exists';
 
 const isProtectedRoute = createRouteMatcher([
   '/auth(.*)',
@@ -15,7 +16,19 @@ const isProtectedRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
-  if (isProtectedRoute(req)) await auth.protect();
+  if (isProtectedRoute(req)) {
+    await auth.protect();
+
+    const { userId } = await auth();
+    if (userId) {
+      const hasAppUser = await supabaseUserExistsByClerkId(userId);
+      if (!hasAppUser) {
+        const signOutUrl = new URL('/sign-out', req.url);
+        signOutUrl.searchParams.set('reason', 'account_not_found');
+        return NextResponse.redirect(signOutUrl);
+      }
+    }
+  }
 
   const res = NextResponse.next();
 
