@@ -1,40 +1,11 @@
 // app/api/user/details/route.ts
 import { NextResponse } from 'next/server';
-import { clerkClient } from '@clerk/nextjs/server';
 import { getUser } from '@/app/service/supabase/user/getUser';
-import createOrUpdateUser from '@/app/service/supabase/user/createOrUpdateUser';
 import { ApiResponse } from '@/types/ApiResponse';
 import { resolveClerkId, getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
 import { supabaseAdmin } from '@/config/supabase/supabaseAdmin';
 import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
-import { grantFreeSignupCredits } from '@/app/service/supabase/user/grantFreeSignupCredits';
-
-/** When no `users` row exists (e.g. webhook missed), create it from Clerk — new accounts only. */
-async function syncUserFromClerkIfMissing(clerkId: string): Promise<boolean> {
-  try {
-    const client = await clerkClient();
-    const u = await client.users.getUser(clerkId);
-    const createdAt = u.createdAt ? new Date(u.createdAt).getTime() : 0;
-    const webhookGraceMs = 10 * 60 * 1000;
-    if (!createdAt || Date.now() - createdAt > webhookGraceMs) {
-      return false;
-    }
-    const email = u.emailAddresses?.[0]?.emailAddress ?? null;
-    const name =
-      [u.firstName, u.lastName].filter(Boolean).join(' ').trim() || u.username || null;
-    const res = await createOrUpdateUser({
-      clerk_id: clerkId,
-      name,
-      username: u.username ?? null,
-      email,
-      image: u.imageUrl ?? null,
-    });
-    return res.success;
-  } catch (e) {
-    console.error('[user/details] syncUserFromClerkIfMissing', e);
-    return false;
-  }
-}
+import { syncUserFromClerkIfMissing } from '@/lib/auth/sync-user-from-clerk';
 
 const corsHeadersFor = (req: Request) => getExtensionCorsHeaders(req);
 
@@ -66,11 +37,6 @@ export async function GET(req: Request): Promise<NextResponse<ApiResponse>> {
         const synced = await syncUserFromClerkIfMissing(clerkId);
         if (synced) {
           res = await getUser(clerkId);
-          // Grant free credits for the newly created user (idempotent — safe for existing users)
-          const freshUser = res.result as { id?: string } | undefined;
-          if (freshUser?.id) {
-            await grantFreeSignupCredits(String(freshUser.id));
-          }
         }
       }
     }
