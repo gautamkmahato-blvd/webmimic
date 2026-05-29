@@ -99,7 +99,7 @@ export async function POST(req: NextRequest) {
         clerk_id: clerkId,
         billing_type: 'custom',
         env: isSandbox ? 'sandbox' : 'production',
-      },
+      } satisfies Record<string, string>,
     };
 
     if (priceOverrideCents) {

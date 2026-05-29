@@ -13,7 +13,8 @@ export function getPolarAccessTokenForApi(): string | undefined {
 }
 
 export function getPolarCheckoutApiUrl(): string {
+  // Trailing slash required — bare URL returns 307 and follow-up POST can fail validation.
   return isPolarSandbox()
-    ? 'https://sandbox-api.polar.sh/v1/checkouts'
-    : 'https://api.polar.sh/v1/checkouts';
+    ? 'https://sandbox-api.polar.sh/v1/checkouts/'
+    : 'https://api.polar.sh/v1/checkouts/';
 }

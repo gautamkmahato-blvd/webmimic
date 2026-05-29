@@ -38,14 +38,14 @@ export function Navbar() {
           <a href="#" className="hover:text-[#1463ff] transition-colors">
             Resources
           </a>
-          <a href="#" className="hover:text-[#1463ff] transition-colors">Pricing</a>
+          <a href="/billing" className="hover:text-[#1463ff] transition-colors">Pricing</a>
           <a href="#" className="hover:text-[#1463ff] transition-colors">Changelog</a>
         </nav>
 
         <div className="flex items-center gap-[30px]">
           {/* <a href="#" className="hover:text-[#1463ff] transition-colors">Log in</a> */}
           <a
-            href="#"
+            href="/sign-in"
             className="min-h-[38px] inline-flex items-center gap-[10px] px-[18px] rounded-lg bg-[#05070a] text-white text-[12px] font-bold whitespace-nowrap shadow-[0_10px_20px_rgba(0,0,0,.18)]"
           >
             Get webmimic Free <span>→</span>

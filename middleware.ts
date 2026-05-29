@@ -1,6 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
-import { ensureAppUserForClerkSession } from '@/lib/auth/sync-user-from-clerk';
 
 const isProtectedRoute = createRouteMatcher([
   '/auth(.*)',
@@ -33,3 +32,4 @@ export const config = {
     '/(api|trpc)(.*)',
   ],
 };
+

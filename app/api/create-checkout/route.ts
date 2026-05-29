@@ -97,11 +97,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const metadata = {
+    /** Polar metadata values must be strings — null/numbers cause 422 RequestValidationError. */
+    const metadata: Record<string, string> = {
       clerk_id: clerkId,
-      plan_id: planRow.id,
+      plan_id: String(planRow.id),
       product_id: productId,
-      provider_product_id: planRow.provider_product_id ?? null,
+      provider_product_id: polarProductId,
       env: isSandbox ? 'sandbox' : 'production',
       internal_order_id: `order_${Date.now()}`,
     };
@@ -123,11 +124,15 @@ export async function POST(request: NextRequest) {
     const data = await response.json().catch(() => null);
 
     if (!response.ok) {
+      const detail =
+        Array.isArray(data?.detail) && data.detail.length > 0
+          ? data.detail.map((d: { msg?: string; loc?: unknown[] }) => d.msg).filter(Boolean).join('; ')
+          : null;
       console.error('Polar checkout creation failed', { status: response.status, body: data });
       return NextResponse.json(
         {
           success: false,
-          error: data?.error?.message || 'Failed to create checkout',
+          error: detail || data?.error?.message || data?.error || 'Failed to create checkout',
           message: 'Polar API error',
         },
         { status: 502 }
