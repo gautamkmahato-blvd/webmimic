@@ -1,3 +1,17 @@
+type TypographySample = {
+  fontFamily?: unknown;
+  fontSize?: unknown;
+  fontWeight?: unknown;
+  sample?: unknown;
+};
+
+type StructureNode = {
+  selector?: unknown;
+  tag?: unknown;
+  rect?: { height?: number };
+  textPreview?: unknown;
+};
+
 type EvidencePackage = {
   meta?: {
     url?: string;
@@ -9,8 +23,8 @@ type EvidencePackage = {
   authorTokens?: Record<string, string>;
   elementSamples?: unknown[];
   interactive?: { buttons?: unknown[]; links?: unknown[]; inputs?: unknown[] };
-  typography?: unknown[];
-  structure?: unknown[];
+  typography?: TypographySample[];
+  structure?: StructureNode[];
   cssVariables?: { fromRoot?: Record<string, string>; referenced?: Record<string, number> };
   thirdPartyFlags?: unknown[];
   contrastMatrix?: Array<{ textToken: string; bgToken: string; ratio: number; wcag: string }>;
@@ -99,16 +113,16 @@ export function buildCuratedSpecMarkdown(pkg: EvidencePackage): string {
   }
 
   lines.push('', '---', '', '## Typography Samples', '');
-  (pkg.typography || []).slice(0, 15).forEach((t: Record<string, unknown>) => {
+  (pkg.typography || []).slice(0, 15).forEach((t) => {
     lines.push(
       `- **${esc(t.fontFamily)}** ${esc(t.fontSize)} / weight ${esc(t.fontWeight)} — sample: _${esc(t.sample)}_`
     );
   });
 
   lines.push('', '---', '', '## Structural Skeleton (depth ≤ 2)', '');
-  (pkg.structure || []).slice(0, 12).forEach((node: Record<string, unknown>) => {
+  (pkg.structure || []).slice(0, 12).forEach((node) => {
     lines.push(
-      `- \`${esc(node.selector)}\` (${esc(node.tag)}, ${esc(node.rect && (node.rect as { height: number }).height)}px tall) — ${esc(node.textPreview)}`
+      `- \`${esc(node.selector)}\` (${esc(node.tag)}, ${esc(node.rect?.height)}px tall) — ${esc(node.textPreview)}`
     );
   });
 
