@@ -3,8 +3,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useAuth } from "@clerk/nextjs";
 
 export function Navbar() {
+  const { isLoaded, isSignedIn } = useAuth();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -31,9 +33,6 @@ export function Navbar() {
         </a>
 
         <nav className="hidden md:flex gap-11 ml-[105px] text-[#111827]">
-          <a href="#" className="hover:text-[#1463ff] transition-colors">
-            Product
-          </a>
           <a href="#" className="hover:text-[#1463ff] transition-colors">Features</a>
           <a href="#" className="hover:text-[#1463ff] transition-colors">
             Resources
@@ -43,13 +42,14 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-[30px]">
-          {/* <a href="#" className="hover:text-[#1463ff] transition-colors">Log in</a> */}
-          <a
-            href="/sign-in"
-            className="min-h-[38px] inline-flex items-center gap-[10px] px-[18px] rounded-lg bg-[#05070a] text-white text-[12px] font-bold whitespace-nowrap shadow-[0_10px_20px_rgba(0,0,0,.18)]"
-          >
-            Get webmimic Free <span>→</span>
-          </a>
+          {isLoaded && (
+            <a
+              href={isSignedIn ? "/design-systems" : "/sign-in"}
+              className="min-h-[38px] inline-flex items-center gap-[10px] px-[18px] rounded-lg bg-[#05070a] text-white text-[12px] font-bold whitespace-nowrap shadow-[0_10px_20px_rgba(0,0,0,.18)]"
+            >
+              {isSignedIn ? "Dashboard" : "Sign in"} <span>→</span>
+            </a>
+          )}
         </div>
       </div>
     </motion.header>

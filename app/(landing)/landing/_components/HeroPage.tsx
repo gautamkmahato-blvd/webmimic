@@ -125,7 +125,7 @@ export function HeroPage() {
               href="#"
               className="min-h-[44px] inline-flex items-center justify-center gap-[10px] px-[21px] rounded-lg text-[#171b24] text-[13px] font-bold whitespace-nowrap border border-[#dce3ee] bg-[rgba(255,255,255,.82)] shadow-[0_8px_18px_rgba(15,23,42,.05)]"
             >
-              <span className="text-[11px]">▶</span>Explore Dashboard
+              <span className="text-[11px]">▶</span>View Demo
             </a>
           </motion.div>
 

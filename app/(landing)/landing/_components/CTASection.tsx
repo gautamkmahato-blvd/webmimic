@@ -36,14 +36,14 @@ export default function CTASection() {
               href="#"
               className="min-h-[48px] inline-flex items-center justify-center gap-[10px] px-[22px] rounded-lg bg-white text-[#080d14] text-[13px] font-bold shadow-[0_10px_24px_rgba(0,0,0,.32)] whitespace-nowrap"
             >
-              Add to Chrome it&apos;s free →
+              Get Started Free →
             </a>
 
             <a
               href="#"
               className="min-h-[48px] inline-flex items-center justify-center gap-[10px] px-[22px] rounded-lg border border-[rgba(255,255,255,.18)] bg-white/8 text-white/80 text-[13px] font-bold whitespace-nowrap"
             >
-              View on Chrome Web Store
+              See How It Works
             </a>
           </div>
 

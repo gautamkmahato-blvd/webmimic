@@ -17,12 +17,12 @@ interface FSFeature {
 }
 
 const FS_FEATURES: FSFeature[] = [
-    { id: 1, title: "Assets, Colors & Typography", description: "Extract images, SVGs, videos, color palettes, and full typography from any website in one click.", icon: Palette, image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" },
-    { id: 2, title: "Element Code Extraction", description: "Hover any element to instantly grab its CSS properties and clean HTML markup.", icon: Code2, image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" },
-    { id: 3, title: "AI Component Cloner", description: "Pick any section and let AI recreate it as production-ready code you can drop straight into your project.", icon: Wand2, image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" },
-    { id: 4, title: "WCAG 2.1 Accessibility Scan", description: "Scan the full page for alt text, contrast, labels, headings, landmarks, ARIA roles, keyboard access, skip links, and more.", icon: ShieldCheck, image: "https://images.unsplash.com/photo-1768839720936-87ce3adf2d08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" },
-    { id: 5, title: "Animation Extractor & AI Cloner", description: "Detect Lottie animations on any page, preview them, and let AI recreate the component with its full animation.", icon: Clapperboard, image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" },
-    { id: 6, title: "Design System Export", description: "Extract the complete design style as a Tailwind config, Claude skills file, or Figma design system in one shot.", icon: Layers, image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" },
+    { id: 1, title: "Assets, Colors & Typography", description: "Extract images, SVGs, videos, color palettes, and full typography from any website in one click.", icon: Palette, image: "/landing-page/1.png" },
+    { id: 2, title: "Element Code Extraction", description: "Hover any element to instantly grab its CSS properties and clean HTML markup.", icon: Code2, image: "/landing-page/2.png" },
+    { id: 3, title: "AI Component Cloner", description: "Pick any section and let AI recreate it as production-ready code you can drop straight into your project.", icon: Wand2, image: "/landing-page/3.png" },
+    { id: 4, title: "WCAG 2.1 Accessibility Scan", description: "Scan the full page for alt text, contrast, labels, headings, landmarks, ARIA roles, keyboard access, skip links, and more.", icon: ShieldCheck, image: "/landing-page/4.png" },
+    { id: 5, title: "Animation Extractor & AI Cloner", description: "Detect Lottie animations on any page, preview them, and let AI recreate the component with its full animation.", icon: Clapperboard, image: "/landing-page/5.png" },
+    { id: 6, title: "Design System Export", description: "Extract the complete design style as a Tailwind config, Claude skills file, or Figma design system in one shot.", icon: Layers, image: "/landing-page/6.png" },
 ];
 
 const FS_INTERVAL = 4000;
