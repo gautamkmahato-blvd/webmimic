@@ -26,132 +26,9 @@ const textItem: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
 };
 
-const bounceLeft = {
-  y: [0, -10, 0],
-  transition: { duration: 2.8, repeat: Infinity, ease: "easeInOut" as const },
-};
-
-const bounceRight = {
-  y: [0, -10, 0],
-  transition: { duration: 3.2, repeat: Infinity, ease: "easeInOut" as const, delay: 0.4 },
-};
-
-function DecorSphere({
-  tone = "light",
-  size = "sm",
-  className = "",
-}: {
-  tone?: "light" | "dark" | "silver";
-  size?: "xs" | "sm" | "md";
-  className?: string;
-}) {
-  const sizeClass =
-    size === "md" ? "w-5 h-5" : size === "sm" ? "w-3.5 h-3.5" : "w-2.5 h-2.5";
-  const toneClass =
-    tone === "dark"
-      ? "bg-gradient-to-br from-[#2f2f2f] to-[#0a0a0a] shadow-[0_8px_18px_rgba(0,0,0,.28)]"
-      : tone === "silver"
-        ? "bg-gradient-to-br from-[#ffffff] via-[#d8dee8] to-[#9aa6b8] shadow-[0_8px_18px_rgba(0,0,0,.16)]"
-        : "bg-gradient-to-br from-white to-[#e7edf5] shadow-[0_8px_16px_rgba(0,0,0,.12),inset_0_-1px_2px_rgba(0,0,0,.05)]";
-
-  return (
-    <span
-      aria-hidden
-      className={`absolute rounded-full ${sizeClass} ${toneClass} ${className}`}
-    />
-  );
-}
-
-function DecorRing({ className = "" }: { className?: string }) {
-  return (
-    <span
-      aria-hidden
-      className={`absolute w-5 h-5 rounded-full border-[5px] border-[#141414] bg-transparent shadow-[0_10px_22px_rgba(0,0,0,.22)] ${className}`}
-    />
-  );
-}
-
-function DecorOctagon({ className = "" }: { className?: string }) {
-  return (
-    <span
-      aria-hidden
-      className={`absolute w-4 h-4 bg-gradient-to-br from-[#434343] to-[#101010] shadow-[0_10px_20px_rgba(0,0,0,.24)] ${className}`}
-      style={{
-        clipPath:
-          "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
-      }}
-    />
-  );
-}
-
-function HeroIconCluster({
-  side,
-  src,
-  bounce,
-}: {
-  side: "left" | "right";
-  src: string;
-  bounce: typeof bounceLeft;
-}) {
-  const positionClass =
-    side === "left"
-      ? "left-4 sm:left-8 lg:left-12 xl:left-16"
-      : "right-4 sm:right-8 lg:right-12 xl:right-16";
-
-  return (
-    <div
-      className={`absolute ${positionClass} top-1/2 -translate-y-1/2 hidden md:block z-[2] pointer-events-none select-none`}
-    >
-      <div className="relative">
-        <motion.img
-          src={src}
-          alt=""
-          className="relative z-[2] w-[88px] sm:w-[120px] lg:w-[150px] xl:w-[180px] h-auto"
-          animate={bounce}
-        />
-
-        {side === "left" ? (
-          <>
-            <DecorRing className="-bottom-3 -left-5 z-[1]" />
-            <DecorSphere tone="dark" size="xs" className="-top-2 right-0 z-[3]" />
-            <DecorSphere tone="light" size="sm" className="top-4 -right-8 lg:-right-10 z-[1]" />
-            <DecorOctagon className="top-10 -left-7 opacity-80 z-[1]" />
-          </>
-        ) : (
-          <>
-            <DecorSphere tone="silver" size="sm" className="-top-4 -left-6 z-[3]" />
-            <DecorOctagon className="-bottom-4 -right-5 z-[1]" />
-            <DecorSphere tone="dark" size="xs" className="bottom-2 -left-3 z-[1]" />
-            <DecorSphere tone="light" size="xs" className="-top-1 right-0 z-[1]" />
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
-
 export function HeroPage() {
   return (
     <section className="relative overflow-hidden min-h-screen bg-white flex flex-col items-center justify-center">
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none bg-[url('/features/bg-image.jpg')] bg-cover bg-center bg-no-repeat"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: [
-            "radial-gradient(ellipse 52% 42% at 96% 6%, #ffffff 0%, rgba(255,255,255,0.96) 28%, rgba(255,255,255,0.55) 52%, transparent 78%)",
-            "radial-gradient(ellipse 52% 42% at 4% 94%, #ffffff 0%, rgba(255,255,255,0.96) 28%, rgba(255,255,255,0.55) 52%, transparent 78%)",
-            "linear-gradient(to right, #ffffff 0%, rgba(255,255,255,0.92) 8%, transparent 24%, transparent 76%, rgba(255,255,255,0.92) 92%, #ffffff 100%)",
-          ].join(", "),
-        }}
-      />
-
-      <HeroIconCluster side="left" src="/features/left-icon.png" bounce={bounceLeft} />
-      <HeroIconCluster side="right" src="/features/right-icon.png" bounce={bounceRight} />
-
       {/* SVG gradient background with all-edge fade */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -198,7 +75,7 @@ export function HeroPage() {
         </svg>
       </div>
 
-      <div className="mx-auto relative z-10 w-full max-w-[1400px] px-6 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-center text-center pt-[80px] pb-16">
+      <div className="mx-auto relative w-full max-w-[1400px] px-6 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-center text-center pt-[80px] pb-16">
         <motion.div
           className="flex flex-col items-center"
           variants={textContainer}
@@ -218,7 +95,7 @@ export function HeroPage() {
           {/* Heading */}
           <motion.h1
             variants={textItem}
-            className="mt-[16px] mb-[20px] leading-[.955] tracking-[-0.055em] font-bold text-[#090b12] text-[clamp(46px,6.2vw,78px)]"
+            className="mt-[16px] mb-[20px] leading-[.955] tracking-[-0.055em] font-bold text-[#090b12] text-[clamp(56px,6.8vw,88px)]"
           >
             Extract. Clone.<br />Build Beautiful<br />Websites{" "}
             <span className="text-[#778091]">10x Faster.</span>

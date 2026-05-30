@@ -43,9 +43,9 @@ function LinkedInIcon() {
   );
 }
 
-export default function Footer() {
+export default function Footer({ dark = false }: { dark?: boolean }) {
   return (
-    <footer className="border-t border-[#edf1f7] mt-16 bg-white">
+    <footer className={`border-t mt-16 ${dark ? "border-[rgba(255,255,255,0.08)] bg-[#080d14]" : "border-[#edf1f7] bg-white"}`}>
       <div className={`mx-auto py-[56px] ${sectionWidth}`}>
 
         {/* Main row */}
@@ -55,9 +55,9 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-[8px] mb-[12px]">
               <Image src="/landing-page/logo.jpg" alt="webmimic" width={28} height={28} className="rounded-[6px]" />
-              <span className="font-extrabold text-[18px] text-[#090b12] tracking-tight">webmimic</span>
+              <span className={`font-extrabold text-[18px] tracking-tight ${dark ? "text-white" : "text-[#090b12]"}`}>webmimic</span>
             </div>
-            <p className="text-[13px] text-[#667489] leading-[1.65] max-w-[280px] mb-[24px]">
+            <p className={`text-[13px] leading-[1.65] max-w-[280px] mb-[24px] ${dark ? "text-[#8b9ab0]" : "text-[#667489]"}`}>
               The fastest way to capture, inspect, and reuse design assets from any website.
             </p>
             <div className="flex gap-[8px]">
@@ -70,7 +70,11 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-[34px] h-[34px] rounded-[8px] border border-[#e5e7eb] bg-white flex items-center justify-center text-[#536174] hover:text-[#090b12] hover:border-[#c5ccd7] transition-colors"
+                  className={`w-[34px] h-[34px] rounded-[8px] border flex items-center justify-center transition-colors ${
+                    dark
+                      ? "border-[rgba(255,255,255,0.12)] bg-[#111827] text-[#8b9ab0] hover:text-white hover:border-[rgba(255,255,255,0.2)]"
+                      : "border-[#e5e7eb] bg-white text-[#536174] hover:text-[#090b12] hover:border-[#c5ccd7]"
+                  }`}
                 >
                   {icon}
                 </a>
@@ -82,7 +86,7 @@ export default function Footer() {
           <div className="grid grid-cols-3 gap-[32px]">
             {nav.map(({ heading, links }) => (
               <div key={heading}>
-                <p className="text-[10px] font-extrabold tracking-[.16em] text-[#9aa3b2] mb-[18px]">
+                <p className={`text-[10px] font-extrabold tracking-[.16em] mb-[18px] ${dark ? "text-[#667489]" : "text-[#9aa3b2]"}`}>
                   {heading}
                 </p>
                 <ul className="flex flex-col gap-[13px]">
@@ -90,7 +94,9 @@ export default function Footer() {
                     <li key={link}>
                       <a
                         href="#"
-                        className="text-[13px] text-[#536174] hover:text-[#090b12] transition-colors"
+                        className={`text-[13px] transition-colors ${
+                          dark ? "text-[#8b9ab0] hover:text-white" : "text-[#536174] hover:text-[#090b12]"
+                        }`}
                       >
                         {link}
                       </a>
@@ -105,16 +111,16 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className={`mx-auto border-t border-[#edf1f7] ${sectionWidth}`}>
+      <div className={`mx-auto border-t ${sectionWidth} ${dark ? "border-[rgba(255,255,255,0.08)]" : "border-[#edf1f7]"}`}>
         <div className="py-[20px] flex items-center justify-between">
-          <p className="text-[12px] text-[#9aa3b2]">© 2026 webmimic. All rights reserved.</p>
+          <p className={`text-[12px] ${dark ? "text-[#667489]" : "text-[#9aa3b2]"}`}>© 2026 webmimic. All rights reserved.</p>
           <div className="flex items-center gap-[7px]">
             <span className="w-[7px] h-[7px] rounded-full bg-[#22c55e] inline-block" />
-            <span className="text-[12px] text-[#536174]">All systems operational</span>
+            <span className={`text-[12px] ${dark ? "text-[#8b9ab0]" : "text-[#536174]"}`}>All systems operational</span>
           </div>
           <div className="flex items-center gap-[20px]">
             {["Privacy", "Terms", "Cookies"].map((item) => (
-              <a key={item} href="#" className="text-[12px] text-[#9aa3b2] hover:text-[#536174] transition-colors">
+              <a key={item} href="#" className={`text-[12px] transition-colors ${dark ? "text-[#667489] hover:text-[#8b9ab0]" : "text-[#9aa3b2] hover:text-[#536174]"}`}>
                 {item}
               </a>
             ))}
