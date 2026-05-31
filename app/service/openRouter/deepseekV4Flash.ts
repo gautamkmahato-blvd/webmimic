@@ -3,7 +3,10 @@ import OpenAI from 'openai';
 import openRouterClient from '@/config/openrouter/config';
 import { DESIGN_SYSTEM_PROMPT } from '@/lib/prompts/design_system_prompt';
 
-export default async function deepseekV4Flash(prompt: string): Promise<{ status: boolean; result?: string; message: string }> {
+export default async function deepseekV4Flash(
+  prompt: string,
+  imageUrls: string[] = [],
+): Promise<{ status: boolean; result?: string; message: string }> {
     console.log("===================================================");
     console.log("DEEPSEEK_V4_FLASH_ANALYSIS_STARTS_HERE");
     console.log("===================================================");
@@ -13,6 +16,18 @@ export default async function deepseekV4Flash(prompt: string): Promise<{ status:
     }
 
     try {
+        const userContent: OpenAI.ChatCompletionContentPart[] = [
+          { type: 'text', text: prompt },
+        ];
+        for (const url of imageUrls) {
+          if (typeof url === 'string' && url.trim()) {
+            userContent.push({
+              type: 'image_url',
+              image_url: { url: url.trim() },
+            } as unknown as OpenAI.ChatCompletionContentPart);
+          }
+        }
+
         const apiResponse = await openRouterClient.chat.completions.create({
             model: 'deepseek/deepseek-v4-flash',
             messages: [
@@ -22,10 +37,7 @@ export default async function deepseekV4Flash(prompt: string): Promise<{ status:
                 },
                 {
                   role: 'user',
-                  // video_url is an OpenRouter extension not present in the OpenAI SDK types
-                  content: [
-                    { type: 'text', text: prompt },
-                  ] as unknown as OpenAI.ChatCompletionContentPart[],
+                  content: userContent as unknown as OpenAI.ChatCompletionContentPart[],
                 },
               ],
         });
