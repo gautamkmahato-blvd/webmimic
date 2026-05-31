@@ -1,7 +1,12 @@
-
-import OpenAI from 'openai';
+import type OpenAI from 'openai';
 import openRouterClient from '@/config/openrouter/config';
 import { DESIGN_SYSTEM_PROMPT } from '@/lib/prompts/design_system_prompt';
+
+type ORChatMessage = {
+  role: string;
+  content: string | null;
+  reasoning_details?: unknown;
+};
 
 export default async function deepseekV4Flash(
   prompt: string,
@@ -16,36 +21,41 @@ export default async function deepseekV4Flash(
     }
 
     try {
+        const hasImages = imageUrls.some((url) => typeof url === 'string' && url.trim());
+        // deepseek-v4-flash is text-only on OpenRouter; use a vision model when screenshots are attached.
+        const model = hasImages ? 'qwen/qwen3.6-flash' : 'deepseek/deepseek-v4-flash';
+
         const userContent: OpenAI.ChatCompletionContentPart[] = [
           { type: 'text', text: prompt },
         ];
-        for (const url of imageUrls) {
-          if (typeof url === 'string' && url.trim()) {
-            userContent.push({
-              type: 'image_url',
-              image_url: { url: url.trim() },
-            } as unknown as OpenAI.ChatCompletionContentPart);
+        if (hasImages) {
+          for (const url of imageUrls) {
+            if (typeof url === 'string' && url.trim()) {
+              userContent.push({
+                type: 'image_url',
+                image_url: { url: url.trim() },
+              });
+            }
           }
         }
 
+        console.log('[deepseekV4Flash] model:', model, 'imageCount:', hasImages ? userContent.length - 1 : 0);
+
         const apiResponse = await openRouterClient.chat.completions.create({
-            model: 'deepseek/deepseek-v4-flash',
-            messages: [
-                {  
-                  role: 'system',
-                  content: DESIGN_SYSTEM_PROMPT,
-                },
-                {
-                  role: 'user',
-                  content: userContent as unknown as OpenAI.ChatCompletionContentPart[],
-                },
-              ],
+          model,
+          stream: false,
+          messages: [
+            {
+              role: 'system',
+              content: DESIGN_SYSTEM_PROMPT,
+            },
+            {
+              role: 'user',
+              content: userContent as OpenAI.ChatCompletionContentPart[],
+            },
+          ],
         });
 
-        // Extract the assistant message with reasoning_details
-        type ORChatMessage = (typeof apiResponse)['choices'][number]['message'] & {
-            reasoning_details?: unknown;
-        };
         const response = apiResponse.choices[0].message as ORChatMessage;
 
         return {
