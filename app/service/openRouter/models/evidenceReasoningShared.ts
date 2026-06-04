@@ -1,6 +1,6 @@
 import type OpenAI from 'openai';
 import openRouterClient from '@/config/openrouter/config';
-import { normalizeTextInput } from '@/app/service/openRouter/models/testReasoningShared';
+import { DESIGN_EVIDENCE_PROMPT } from '@/lib/prompts/design_evidence';
 
 export type ORChatMessage = {
   role: string;
@@ -21,6 +21,28 @@ export type EvidenceReasoningResult = {
   content?: string;
   message?: string;
 };
+
+/** Normalize pasted text or JSON into a stable string for the model. */
+export function normalizeTextInput(value: unknown): string {
+  if (value == null) return '';
+  if (typeof value === 'string') {
+    const trimmed = value.trim();
+    if (!trimmed) return '';
+    try {
+      const parsed = JSON.parse(trimmed) as unknown;
+      if (parsed !== null && typeof parsed === 'object') {
+        return JSON.stringify(parsed);
+      }
+    } catch {
+      // plain text
+    }
+    return trimmed;
+  }
+  if (typeof value === 'object') {
+    return JSON.stringify(value);
+  }
+  return String(value).trim();
+}
 
 export function normalizeImageUrl(value: unknown): string {
   if (value == null) return '';
@@ -181,7 +203,10 @@ export async function runEvidenceReasoningService(
     const apiResponse = await openRouterClient.chat.completions.create({
       model,
       stream: false,
-      messages: [{ role: 'user', content }],
+      messages: [
+        { role: 'system', content: DESIGN_EVIDENCE_PROMPT },
+        { role: 'user', content },
+      ],
     });
 
     const response = apiResponse.choices[0].message as ORChatMessage;
