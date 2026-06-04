@@ -1,5 +1,6 @@
 import type OpenAI from 'openai';
 import openRouterClient from '@/config/openrouter/config';
+import cloudinaryService from '@/app/service/cloudinaryService';
 import { DESIGN_EVIDENCE_PROMPT } from '@/lib/prompts/design_evidence';
 
 export type ORChatMessage = {
@@ -20,6 +21,8 @@ export type EvidenceReasoningResult = {
   model: string;
   content?: string;
   message?: string;
+  /** Set when the incoming screenshot was a data URL and was uploaded to Cloudinary. */
+  screenshotCloudinaryUrl?: string;
 };
 
 /** Normalize pasted text or JSON into a stable string for the model. */
@@ -173,6 +176,54 @@ export function logEvidenceReasoningCall(
   }
 }
 
+function parseScreenshotDataUrl(imageUrl: string): Buffer | null {
+  const trimmed = imageUrl.trim();
+  const match = trimmed.match(/^data:image\/[\w+.+-]+;base64,(.+)$/i);
+  if (!match) return null;
+  try {
+    const buffer = Buffer.from(match[1], 'base64');
+    return buffer.length > 0 ? buffer : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Extension sends a full-page capture as a data URL. Upload to Cloudinary so the
+ * model receives a stable HTTPS URL (and uploads appear in the Cloudinary console).
+ */
+export async function resolveEvidenceScreenshotUrl(
+  imageUrl: string,
+  serviceName: string,
+): Promise<{ url: string; cloudinaryUrl?: string }> {
+  const trimmed = imageUrl.trim();
+  if (!trimmed.startsWith('data:image/')) {
+    return { url: trimmed };
+  }
+
+  const buffer = parseScreenshotDataUrl(trimmed);
+  if (!buffer) {
+    throw new Error('Invalid or empty screenshot data URL');
+  }
+
+  const cloudName = process.env.CLOUDINARY_NAME?.trim();
+  const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY?.trim();
+  const cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET?.trim();
+  if (!cloudName || !cloudinaryApiKey || !cloudinaryApiSecret) {
+    throw new Error(
+      'Cloudinary is not configured (CLOUDINARY_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET required)',
+    );
+  }
+
+  const cloudinaryUrl = await cloudinaryService(buffer, 'image');
+  console.log(`[${serviceName}] screenshot uploaded to Cloudinary`, {
+    bytes: buffer.length,
+    cloudinaryUrl,
+  });
+
+  return { url: cloudinaryUrl, cloudinaryUrl };
+}
+
 export async function runEvidenceReasoningService(
   serviceName: string,
   model: string,
@@ -192,12 +243,22 @@ export async function runEvidenceReasoningService(
   }
 
   try {
-    const content = buildEvidenceUserContent(input);
+    const { url: imageUrlForModel, cloudinaryUrl } = await resolveEvidenceScreenshotUrl(
+      input.imageUrl,
+      serviceName,
+    );
+
+    const content = buildEvidenceUserContent({
+      ...input,
+      imageUrl: imageUrlForModel,
+    });
     console.log(`[${serviceName}] calling OpenRouter`, {
       model,
       contentParts: content.length,
       textParts: content.filter((part) => part.type === 'text').length,
       imageParts: content.filter((part) => part.type === 'image_url').length,
+      screenshotSource: cloudinaryUrl ? 'cloudinary' : 'url',
+      screenshotCloudinaryUrl: cloudinaryUrl,
     });
 
     const apiResponse = await openRouterClient.chat.completions.create({
@@ -219,7 +280,12 @@ export async function runEvidenceReasoningService(
       hasReasoningDetails: Boolean(response.reasoning_details),
     });
 
-    return { status: true, model, content: response.content ?? '' };
+    return {
+      status: true,
+      model,
+      content: response.content ?? '',
+      ...(cloudinaryUrl ? { screenshotCloudinaryUrl: cloudinaryUrl } : {}),
+    };
   } catch (err) {
     console.error(
       `[${serviceName}] OpenRouter error:`,
