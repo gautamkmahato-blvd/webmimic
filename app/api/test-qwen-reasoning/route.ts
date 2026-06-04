@@ -1,56 +1,84 @@
 import { NextResponse } from 'next/server';
-import type OpenAI from 'openai';
-import openRouterClient from '@/config/openrouter/config';
+import geminiReasoning from '@/app/service/openRouter/models/geminiReasoning';
+import grok4Reasoning from '@/app/service/openRouter/models/grok4Reasoning';
+import grokReasoning from '@/app/service/openRouter/models/grokReasoning';
+import kimiReasoning from '@/app/service/openRouter/models/kimiReasoning';
+import minimaxReasoning from '@/app/service/openRouter/models/minimaxReasoning';
+import testQwenReasoning from '@/app/service/openRouter/models/testQwenReasoning';
+import {
+  parseTestReasoningBody,
+  validateRequiredInputs,
+  type TestReasoningInput,
+  type TestReasoningResult,
+} from '@/app/service/openRouter/models/testReasoningShared';
+import zlmReasoning from '@/app/service/openRouter/models/zlmReasoning';
 
-const MODEL = 'qwen/qwen3.6-flash';
-const FIRST_QUESTION = "How many r's are in the word 'strawberry'?";
-const FOLLOW_UP = 'Are you sure? Think carefully.';
+const MODEL_SERVICES = {
+  qwen: testQwenReasoning,
+  kimi: kimiReasoning,
+  gemini: geminiReasoning,
+  zlm: zlmReasoning,
+  grok: grokReasoning,
+  grok4: grok4Reasoning,
+  minimax: minimaxReasoning,
+} as const;
 
-type ORChatMessage = {
-  role: string;
-  content: string | null;
-  reasoning_details?: unknown;
-};
+type ModelKey = keyof typeof MODEL_SERVICES;
 
-export async function POST() {
+const MODEL_KEYS = Object.keys(MODEL_SERVICES).join(', ');
+
+function resolveModelKey(value: unknown): ModelKey | null {
+  if (typeof value !== 'string') return null;
+  const key = value.trim().toLowerCase();
+  return key in MODEL_SERVICES ? (key as ModelKey) : null;
+}
+
+export async function POST(request: Request) {
   const requestId = `test-qwen-reasoning-${Date.now()}`;
   console.log(`[${requestId}] POST /api/test-qwen-reasoning`);
 
   try {
-    const apiKey = process.env.OPENROUTER_API_KEY?.trim();
-    if (!apiKey) {
+    const body = await request.json().catch(() => ({}));
+    const modelKey = resolveModelKey(
+      body && typeof body === 'object' && !Array.isArray(body)
+        ? (body as Record<string, unknown>).model
+        : undefined,
+    );
+
+    if (!modelKey) {
       return NextResponse.json(
-        { success: false, error: 'OPENROUTER_API_KEY is not configured or is empty.' },
+        {
+          success: false,
+          error: `Invalid or missing model. Use one of: ${MODEL_KEYS}.`,
+        },
+        { status: 400 },
+      );
+    }
+
+    const input = parseTestReasoningBody(body);
+    const validation = validateRequiredInputs(input);
+
+    if (!validation.ok) {
+      return NextResponse.json(
+        { success: false, error: validation.message },
+        { status: 400 },
+      );
+    }
+
+    const runModel = MODEL_SERVICES[modelKey] as (
+      input: TestReasoningInput,
+    ) => Promise<TestReasoningResult>;
+
+    const result = await runModel(input);
+
+    if (!result.status) {
+      return NextResponse.json(
+        { success: false, error: result.message ?? 'Test request failed.', result },
         { status: 500 },
       );
     }
 
-    const apiResponse = await openRouterClient.chat.completions.create({
-      model: MODEL,
-      stream: false,
-      messages: [
-        {
-          role: 'user',
-          content: [
-            { type: 'text', text: 'Describe this image in 10 words.' },
-            {
-              type: 'image_url',
-              image_url: {
-                url: 'https://res.cloudinary.com/dqryhg3rs/image/upload/v1779882712/websites_screenshots/Wise.png',
-              },
-            },
-          ] as OpenAI.ChatCompletionContentPart[],
-        },
-      ],
-    });
-
-    const response = apiResponse.choices[0].message as ORChatMessage;
-    console.log(response);
-
-    return NextResponse.json({
-      success: true,
-      content: response.content ?? '',
-    });
+    return NextResponse.json({ success: true, model: modelKey, result });
   } catch (error) {
     console.error(`[${requestId}] error`, error);
     return NextResponse.json(
