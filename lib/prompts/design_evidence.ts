@@ -122,6 +122,21 @@ Focus on: primary CTA color + shape, display typeface + tracking, card surface t
 - If missing, estimate from screenshot and mark \`"estimated"\`.
 - Do not invent new colors, font sizes, border radii, spacing, or shadows if they exist in design files.
 
+## SELF-CHECK (run before outputting Do's/Don'ts/Key Characteristics)
+
+- For EACH Do and Don't, verify:
+  □ Does it contain a design.md token name (e.g. --color-dark-gray-3)?
+  □ Does the value match exactly what design.md shows for that token?
+  □ Does it include a one-sentence WHY?
+  □ Would this rule surprise a designer who hasn't studied this site?
+  □ Is it NOT generic advice that applies to every website?
+
+- If any check fails, rewrite the rule before including it.
+
+- For EACH Key Characteristic, verify:
+  □ Does it reference at least one specific token or component?
+  □ Would it help identify THIS site from a lineup of 10 SaaS sites?
+
 ## Output Rules
 - Output ONLY valid JSON.
 - Avoid duplicates.
