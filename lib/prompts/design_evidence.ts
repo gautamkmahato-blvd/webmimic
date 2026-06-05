@@ -138,19 +138,29 @@ Focus on: primary CTA color + shape, display typeface + tracking, card surface t
   □ Would it help identify THIS site from a lineup of 10 SaaS sites?
 
 ## Output Rules
-- Output ONLY valid JSON.
+
+- Output ONLY raw JSON — no markdown code fences, no \`\`\`json wrapper, no preamble text.
+  The first character of your response must be \`{\` and the last must be \`}\`.
+- Every field value must be a STRING (markdown-formatted where needed), never a nested 
+  JSON object or array. This makes downstream concatenation trivial.
+  ✅ "semanticColors": "| Role | Token | Value |\n| --- | --- | --- |\n| Page Canvas | --color-white-2 | #F4F4F4 |"
+  ❌ "semanticColors": { "page_background": { "token": "...", "value": "..." } }
+  ✅ "components": "### Primary CTA Button\n**Purpose:** ...\n- Radius: ..."
+  ❌ "components": [{ "name": "Primary CTA Button", "padding": "8px 12px" }]
+  ✅ "keyCharacteristics": "- Off-white canvas \`--color-white-2\` (#F4F4F4)...\n- Complex elevation..."
+  ❌ "keyCharacteristics": ["Off-white canvas...", "Complex elevation..."]
 - Avoid duplicates.
 - Include enough detail for a designer to recreate the UI visually.
 - Structure:
 
 {
-  "overview": "Give a basic overview of the website, Example: Cal.com's marketing surface is a clean...",
-  "semanticColors": "| Role | Token | Value |\n...",
-  "typographyHierarchy": "| Token | Size | Use |\n...",
-  "components": [],
-  "layouts": [],
-  "dosAndDonts": "### Do\n...",
-  "keyCharacteristics": "- White canvas with...",
+  "overview": "string — 2-3 sentence brand voice summary",
+  "semanticColors": "string — markdown table with columns: Role | Token | Value",
+  "typographyHierarchy": "string — markdown table with columns: Token | Size | Font | Use",
+  "components": "string — markdown with ### per component, listing purpose, padding, radius, background, shadow, typography",
+  "layouts": "string — markdown with ### per section, listing layout type, columns, gaps, container width",
+  "dosAndDonts": "string — markdown with ### Do and ### Don't subsections",
+  "keyCharacteristics": "string — markdown bullet list, each referencing a specific token"
 }
 
 
