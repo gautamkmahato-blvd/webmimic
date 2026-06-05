@@ -151,7 +151,6 @@ Focus on: primary CTA color + shape, display typeface + tracking, card surface t
   "layouts": [],
   "dosAndDonts": "### Do\n...",
   "keyCharacteristics": "- White canvas with...",
-  "screenshotCloudinaryUrl": "Give The URL of the screenshot in Cloudinary"
 }
 
 
