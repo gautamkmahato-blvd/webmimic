@@ -32,7 +32,7 @@ export function getTypePillConfig(type: string | null | undefined): TypePillConf
       label: "TYPOGRAPHY",
       icon: <Type className="size-3.5" aria-hidden />,
       className:
-        "border-purple-500/20 bg-purple-500/10 text-purple-600 dark:border-purple-500/30 dark:bg-purple-500/15 dark:text-purple-400",
+        "border-neutral-500/20 bg-neutral-500/10 text-neutral-700 dark:border-neutral-500/30 dark:bg-neutral-500/15 dark:text-neutral-300",
     };
   }
   if (t === "color") {

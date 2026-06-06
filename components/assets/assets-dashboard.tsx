@@ -5,14 +5,12 @@ import type { AssetRow } from "@/app/service/supabase/assets/types";
 import {
   Clapperboard,
   Code2,
-  Download,
   Image as ImageIcon,
   Layers,
   Loader2,
   PackageOpen,
   Palette,
   Play,
-  Sparkles,
   Type,
   Video,
 } from "lucide-react";
@@ -162,7 +160,7 @@ function PanelCard({
           <button
             type="button"
             onClick={onViewAll}
-            className="text-xs font-medium text-violet-600 transition-colors hover:text-violet-700"
+            className="text-xs font-medium text-neutral-900 transition-colors hover:text-black"
           >
             View all →
           </button>
@@ -198,23 +196,25 @@ function ColorsPanelContent({
 
   return (
     <div className="flex h-full min-h-0 flex-col">
-      <div className="grid min-h-0 flex-1 grid-cols-5 grid-rows-2 gap-2.5">
-        {colors.slice(0, 10).map((asset) => {
-          const hex = parseHexFromContent(asset.content);
-          return (
-            <button
-              key={asset.id}
-              type="button"
-              className="aspect-square min-h-0 w-full rounded-2xl ring-1 ring-black/5 transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
-              style={{ backgroundColor: hex ?? "#e5e5e5" }}
-              onMouseEnter={() => setHoveredHex(hex)}
-              onMouseLeave={() => setHoveredHex(null)}
-              onFocus={() => setHoveredHex(hex)}
-              onBlur={() => setHoveredHex(null)}
-              aria-label={hex ?? "Color swatch"}
-            />
-          );
-        })}
+      <div className="flex min-h-0 flex-1 items-center justify-center">
+        <div className="grid grid-cols-5 grid-rows-2 gap-2">
+          {colors.slice(0, 10).map((asset) => {
+            const hex = parseHexFromContent(asset.content);
+            return (
+              <button
+                key={asset.id}
+                type="button"
+                className="size-11 rounded-xl ring-1 ring-black/5 transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400"
+                style={{ backgroundColor: hex ?? "#e5e5e5" }}
+                onMouseEnter={() => setHoveredHex(hex)}
+                onMouseLeave={() => setHoveredHex(null)}
+                onFocus={() => setHoveredHex(hex)}
+                onBlur={() => setHoveredHex(null)}
+                aria-label={hex ?? "Color swatch"}
+              />
+            );
+          })}
+        </div>
       </div>
 
       <div className="mt-2 flex shrink-0 flex-col gap-1.5">
@@ -255,9 +255,9 @@ function VideoPreview({ asset }: { asset: AssetRow }) {
 
 function LottiePreview() {
   return (
-    <div className="flex aspect-[4/3] flex-col items-center justify-center gap-1.5 rounded-lg bg-violet-50 ring-1 ring-violet-100">
-      <Clapperboard className="h-5 w-5 text-violet-500" />
-      <span className="text-[9px] font-medium uppercase tracking-wide text-violet-600">
+    <div className="flex aspect-[4/3] flex-col items-center justify-center gap-1.5 rounded-lg bg-neutral-100 ring-1 ring-neutral-200">
+      <Clapperboard className="h-5 w-5 text-neutral-700" />
+      <span className="text-[9px] font-medium uppercase tracking-wide text-neutral-800">
         Lottie
       </span>
     </div>
@@ -271,7 +271,6 @@ export function AssetsDashboard({
   onViewAll,
 }: Props) {
   const groups = useMemo(() => groupAssets(assets), [assets]);
-  const total = assets.length;
   const fontFamilies = uniqueFontFamilies(groups.typography);
   const colorGradient = useMemo(() => {
     const hexes = groups.colors
@@ -281,17 +280,6 @@ export function AssetsDashboard({
     if (hexes.length < 2) return null;
     return `linear-gradient(90deg, ${hexes.join(", ")})`;
   }, [groups.colors]);
-
-  const exportAllAssets = () => {
-    const payload = JSON.stringify(assets, null, 2);
-    const blob = new Blob([payload], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `assets-export-${Date.now()}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
 
   if (loading && assets.length === 0) {
     return (
@@ -314,8 +302,8 @@ export function AssetsDashboard({
         {/* Summary bar */}
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
           <SummaryCard
-            icon={<ImageIcon className="h-4 w-4 text-violet-600" />}
-            iconClass="bg-violet-100"
+            icon={<ImageIcon className="h-4 w-4 text-neutral-800" />}
+            iconClass="bg-neutral-100"
             label="Images"
             count={groups.images.length}
           />
@@ -332,14 +320,14 @@ export function AssetsDashboard({
             count={groups.videos.length}
           />
           <SummaryCard
-            icon={<Clapperboard className="h-4 w-4 text-violet-600" />}
-            iconClass="bg-violet-100"
+            icon={<Clapperboard className="h-4 w-4 text-neutral-800" />}
+            iconClass="bg-neutral-100"
             label="Lottie"
             count={groups.lotties.length}
           />
           <SummaryCard
             icon={<Palette className="h-4 w-4 text-amber-600" />}
-            iconClass="bg-gradient-to-br from-violet-100 via-rose-100 to-amber-100"
+            iconClass="bg-gradient-to-br from-neutral-100 via-rose-100 to-amber-100"
             label="Colors"
             count={groups.colors.length}
           />
@@ -461,7 +449,7 @@ export function AssetsDashboard({
                   return (
                     <div
                       key={asset.id}
-                      className="flex min-h-0 flex-1 items-center gap-3 px-1"
+                      className="flex min-h-0 flex-1 items-center gap-3 px-2 border border-neutral-100 py-2"
                     >
                       <span
                         className="w-12 shrink-0 text-[2rem] font-semibold leading-none text-neutral-900"
@@ -481,7 +469,7 @@ export function AssetsDashboard({
                           {fontWeightsFromContent(asset.content)}
                         </p>
                       </div>
-                      <span className="shrink-0 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-medium text-violet-700">
+                      <span className="shrink-0 rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-medium text-neutral-800">
                         {role}
                       </span>
                     </div>
@@ -535,26 +523,6 @@ export function AssetsDashboard({
               </div>
             )}
           </PanelCard>
-        </div>
-
-        {/* Bottom banner */}
-        <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-violet-100 bg-violet-50/80 px-6 py-5 sm:flex-row sm:items-center">
-          <div className="flex items-start gap-3">
-            <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-violet-500" />
-            <p className="max-w-2xl text-sm leading-relaxed text-violet-900/80">
-              All set! You now have all the visual assets and styles from this website.
-              Use them for inspiration, design systems, or recreating the look and feel.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={exportAllAssets}
-            disabled={total === 0}
-            className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-violet-200 bg-white px-5 py-2.5 text-sm font-medium text-violet-700 shadow-sm transition-colors hover:bg-violet-50 disabled:opacity-40"
-          >
-            <Download className="h-8 w-8" />
-            Export All Assets
-          </button>
         </div>
       </div>
     </main>

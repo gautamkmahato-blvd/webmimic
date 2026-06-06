@@ -30,7 +30,7 @@ export function categoryGroupPillClass(group: AssetCategoryGroup): string {
     case "Reports":
       return "border-amber-200 bg-amber-50 text-amber-900 dark:border-amber-800 dark:bg-amber-950/50 dark:text-amber-200";
     case "Animations":
-      return "border-violet-200 bg-violet-50 text-violet-800 dark:border-violet-800 dark:bg-violet-950/50 dark:text-violet-200";
+      return "border-neutral-200 bg-neutral-50 text-neutral-800 dark:border-neutral-700 dark:bg-neutral-950/50 dark:text-neutral-200";
     case "Design":
     default:
       return "border-rose-200 bg-rose-50 text-rose-900 dark:border-rose-900 dark:bg-rose-950/40 dark:text-rose-200";
