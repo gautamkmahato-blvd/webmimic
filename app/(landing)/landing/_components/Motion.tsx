@@ -11,86 +11,33 @@ const sectionP = "max-w-[380px] mb-6 text-[#667489] text-md leading-[1.6]";
 
 const CARD = "h-[146px] w-[210px] shrink-0 border border-[#dfe7f1] rounded-lg bg-white overflow-hidden shadow-[0_10px_24px_rgba(30,50,86,.06)]";
 
-const cards = [
-  /* 1 — Glowing Orb */
-  <article key="orb" className={CARD}>
-    <div className="h-full bg-[#080d14] grid place-items-center">
-      <div className="w-[100px] h-[100px] rounded-full border border-[rgba(255,255,255,.22)] shadow-[inset_0_0_28px_rgba(32,130,255,.28)] bg-[radial-gradient(circle_at_50%_70%,rgba(36,130,255,.48),transparent_40%)]" />
-    </div>
-  </article>,
-
-  /* 2 — Cursor Follower */
-  <article key="cursor" className={CARD}>
-    <div className="h-full bg-[#080d14] grid place-items-center relative overflow-hidden">
-      <div className="absolute w-6 h-6 rounded-full bg-[#20d4c7] left-[48px] top-[38px] shadow-[0_0_0_10px_rgba(32,212,199,.13)]" />
-      <button className="relative text-white bg-transparent border border-[rgba(255,255,255,.28)] rounded-lg px-8 py-3 text-xs">
-        Hover me
-      </button>
-    </div>
-  </article>,
-
-  /* 3 — Scroll Layers */
-  <article key="scroll" className={CARD}>
-    <div className="h-full bg-[#080d14] relative overflow-hidden">
-      {["top-[22px]", "top-[52px]", "top-[82px]"].map((t) => (
-        <div key={t} className={`absolute w-[88px] h-[54px] bg-white/20 [transform:rotate(-20deg)_skewX(25deg)] shadow-[0_16px_24px_rgba(255,255,255,.08)] ${t}`} />
-      ))}
-    </div>
-  </article>,
-
-  /* 4 — Text Split */
-  <article key="text" className={CARD}>
-    <div className="h-full text-white grid place-items-center text-[40px] font-black tracking-[-0.05em] bg-[radial-gradient(circle_at_79%_50%,#1e76ff,transparent_32%),#0b1020] [text-shadow:7px_0_0_rgba(255,255,255,.18),-7px_0_0_rgba(255,255,255,.12)]">
-      HELLO
-    </div>
-  </article>,
-
-  /* 5 — Magnetic Rings */
-  <article key="rings" className={CARD}>
-    <div className="h-full bg-[#080d14] grid place-items-center relative">
-      <div className="w-[60px] h-[60px] rounded-full border border-[rgba(255,255,255,.5)] bg-white/10 z-10" />
-      <div className="absolute w-[90px] h-[90px] rounded-full border border-[rgba(255,255,255,.18)]" />
-      <div className="absolute w-[120px] h-[120px] rounded-full border border-[rgba(255,255,255,.08)]" />
-      <div className="absolute w-2 h-2 rounded-full bg-[#ff6b6b] top-[28px] right-[42px]" />
-      <div className="absolute w-[5px] h-[5px] rounded-full bg-[#4ecdc4] bottom-[30px] left-[44px]" />
-    </div>
-  </article>,
-
-  /* 6 — Gradient Flow */
-  <article key="gradient" className={CARD}>
-    <div className="h-full bg-[radial-gradient(ellipse_at_20%_50%,#7c3aed,transparent_52%),radial-gradient(ellipse_at_80%_50%,#0ea5e9,transparent_52%),#0b0b14] flex flex-col justify-end p-4">
-      <div className="h-[5px] w-full rounded-full bg-white/10 mb-2">
-        <div className="h-full w-[68%] rounded-full bg-[linear-gradient(90deg,#7c3aed,#0ea5e9)]" />
-      </div>
-      <p className="text-white/40 text-[9px] font-mono">easing: cubic-bezier</p>
-    </div>
-  </article>,
-
-  /* 7 — Spring Bars */
-  <article key="spring" className={CARD}>
-    <div className="h-full bg-[#080d14] flex items-end justify-center gap-[6px] px-4 pb-4 pt-6">
-      {[65, 90, 45, 100, 72, 55, 83].map((h, i) => (
-        <div
-          key={i}
-          className="w-[14px] rounded-t-[4px] bg-[linear-gradient(to_top,rgba(99,102,241,.5),rgba(99,102,241,1))]"
-          style={{ height: `${h}%` }}
-        />
-      ))}
-    </div>
-  </article>,
-
-  /* 8 — Stagger List */
-  <article key="stagger" className={CARD}>
-    <div className="h-full bg-[#080d14] flex flex-col justify-center gap-[7px] px-4">
-      {[80, 60, 90, 50, 70].map((w, i) => (
-        <div key={i} className="flex items-center gap-2">
-          <div className="w-[6px] h-[6px] rounded-full bg-white/30 shrink-0" />
-          <div className="h-[6px] rounded-full bg-white/20" style={{ width: `${w}%` }} />
-        </div>
-      ))}
-    </div>
-  </article>,
+const MOTION_VIDEOS = [
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878511/videos/animation_78.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878588/videos/animation_96.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878568/videos/animation_89.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878543/videos/animation_82.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878539/videos/animation_81.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878511/videos/animation_78.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878475/videos/animation_75.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878456/videos/animation_71.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878453/videos/animation_70.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878431/videos/animation_63.mp4",
 ];
+
+const cards = MOTION_VIDEOS.map((src, i) => (
+  <article key={`motion-video-${i}`} className={CARD}>
+    <div className="h-full bg-[#080d14] p-3">
+      <video
+        src={src}
+        className="h-full w-full rounded object-contain"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+    </div>
+  </article>
+));
 
 const track = [...cards, ...cards];
 

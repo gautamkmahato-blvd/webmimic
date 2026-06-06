@@ -3,7 +3,9 @@ import { auth } from '@clerk/nextjs/server';
 import { codeToHtml } from 'shiki';
 import { COMPONENTS } from '@/data/motion/animations';
 import { getMotionCode } from '@/app/service/supabase/motion/getMotionCode';
-import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
+import { getUserCreditsSnapshotForClerkId } from '@/app/service/supabase/credits/creditsService';
+
+const MOTION_CODE_MIN_CREDITS = 5;
 
 // In-process cache: avoids re-fetching + re-highlighting within the same server instance.
 // Key: "{id}:{tier}"  Value: { html: string; raw: string }
@@ -30,11 +32,14 @@ export async function GET(
 
     const isPro = component.isPro === true;
 
-    // ── PRO gate (additional premium check) ────────────────────
+    // ── PRO gate (minimum credits; no deduction on fetch) ────────
     if (isPro) {
-      const { premium } = await hasPremiumAccessForClerkId(userId);
-      if (!premium) {
-        return NextResponse.json({ error: 'PRO subscription required' }, { status: 403 });
+      const snapshot = await getUserCreditsSnapshotForClerkId(userId);
+      if (!snapshot || snapshot.remainingCredits < MOTION_CODE_MIN_CREDITS) {
+        return NextResponse.json(
+          { error: `At least ${MOTION_CODE_MIN_CREDITS} credits required` },
+          { status: 403 },
+        );
       }
     }
 

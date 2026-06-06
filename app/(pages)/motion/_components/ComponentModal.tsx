@@ -105,7 +105,7 @@ export function ComponentModal({ component, onClose }: Props) {
         return;
       }
       if (res.status === 403) {
-        setCodeState({ status: "error", message: "PRO subscription required to view this component's code." });
+        setCodeState({ status: "error", message: "At least 5 credits required to view this component's code." });
         return;
       }
       if (res.status === 404) {
