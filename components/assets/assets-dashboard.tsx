@@ -126,27 +126,24 @@ function SummaryCard({
   iconClass,
   label,
   count,
-  subtitle,
 }: {
   icon: ReactNode;
   iconClass: string;
   label: string;
   count: number;
-  subtitle: string;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-3.5 shadow-sm">
+    <div className="flex min-w-0 items-center gap-2.5 rounded-xl border border-neutral-200/80 bg-white px-3 py-2.5 shadow-sm transition-shadow hover:shadow-md">
       <div
-        className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-xl ${iconClass}`}
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${iconClass}`}
       >
         {icon}
       </div>
-      <div className="min-w-0">
-        <p className="text-sm font-medium text-neutral-900">{label}</p>
-        <p className="text-2xl font-semibold tabular-nums tracking-tight text-neutral-900">
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-[11px] font-medium text-neutral-500">{label}</p>
+        <p className="text-xl font-bold tabular-nums leading-tight tracking-tight text-neutral-900">
           {count}
         </p>
-        <p className="truncate text-[11px] text-neutral-500">{subtitle}</p>
       </div>
     </div>
   );
@@ -316,55 +313,48 @@ export function AssetsDashboard({
         ) : null}
 
         {/* Summary bar */}
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
           <SummaryCard
-            icon={<ImageIcon className="h-8 w-8 text-violet-600" />}
+            icon={<ImageIcon className="h-4 w-4 text-violet-600" />}
             iconClass="bg-violet-100"
             label="Images"
             count={groups.images.length}
-            subtitle="PNG, JPG, WEBP, AVIF"
           />
           <SummaryCard
-            icon={<Layers className="h-8 w-8 text-emerald-600" />}
+            icon={<Layers className="h-4 w-4 text-emerald-600" />}
             iconClass="bg-emerald-100"
             label="SVGs"
             count={groups.svgs.length}
-            subtitle="Vector Graphics"
           />
           <SummaryCard
-            icon={<Video className="h-8 w-8 text-rose-600" />}
+            icon={<Video className="h-4 w-4 text-rose-600" />}
             iconClass="bg-rose-100"
             label="Videos"
             count={groups.videos.length}
-            subtitle="MP4, WEBM"
           />
           <SummaryCard
-            icon={<Clapperboard className="h-8 w-8 text-violet-600" />}
+            icon={<Clapperboard className="h-4 w-4 text-violet-600" />}
             iconClass="bg-violet-100"
             label="Lottie"
             count={groups.lotties.length}
-            subtitle="Animations"
           />
           <SummaryCard
-            icon={<Palette className="h-8 w-8 text-amber-600" />}
-            iconClass="bg-gradient-to-br from-violet-200 via-rose-200 to-amber-200"
+            icon={<Palette className="h-4 w-4 text-amber-600" />}
+            iconClass="bg-gradient-to-br from-violet-100 via-rose-100 to-amber-100"
             label="Colors"
             count={groups.colors.length}
-            subtitle="Unique Colors"
           />
           <SummaryCard
-            icon={<Type className="h-8 w-8 text-sky-600" />}
+            icon={<Type className="h-4 w-4 text-sky-600" />}
             iconClass="bg-sky-100"
             label="Typography"
             count={fontFamilies.length || groups.typography.length}
-            subtitle="Font Families"
           />
           <SummaryCard
-            icon={<Code2 className="h-8 w-8 text-slate-600" />}
+            icon={<Code2 className="h-4 w-4 text-slate-600" />}
             iconClass="bg-slate-100"
             label="Code"
             count={groups.code.length}
-            subtitle="Snippets"
           />
         </div>
 
@@ -467,14 +457,14 @@ export function AssetsDashboard({
             {groups.typography.length === 0 ? (
               <EmptyPanel message="No typography saved yet." />
             ) : (
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-5 p-3 border border-neutral-50 shadow-sm">
                 {uniqueTypographyByFamily(groups.typography).slice(0, 2).map((asset) => {
                   const { fontFamily, role } = typographyMeta(asset);
                   const isMono = /mono/i.test(role) || /mono/i.test(fontFamily);
                   return (
                     <div
                       key={asset.id}
-                      className="flex items-center gap-4"
+                      className="flex items-center gap-4 p-3"
                     >
                       <span
                         className="w-12 shrink-0 text-[2rem] font-semibold leading-none text-neutral-900"
