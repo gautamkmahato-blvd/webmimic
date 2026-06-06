@@ -21,7 +21,6 @@ import {
   isLottieAsset,
   isVideoAsset,
   parseHexFromContent,
-  truncateText,
   type AssetSectionFilter,
 } from "./asset-format";
 
@@ -368,8 +367,8 @@ export function AssetsDashboard({
             {groups.images.length === 0 ? (
               <EmptyPanel message="No images saved yet." />
             ) : (
-              <div className="grid grid-cols-3 grid-rows-2 gap-3">
-                {groups.images.slice(0, 6).map((asset) => (
+              <div className="grid grid-cols-4 grid-rows-2 gap-2.5">
+                {groups.images.slice(0, 8).map((asset) => (
                   <div
                     key={asset.id}
                     className="aspect-[4/3] overflow-hidden rounded-lg bg-neutral-100 ring-1 ring-neutral-200/80"
@@ -421,28 +420,26 @@ export function AssetsDashboard({
             ) : (
               <div className="grid grid-cols-4 grid-rows-2 gap-3">
                 {groups.svgs.slice(0, 8).map((asset) => (
-                  <div key={asset.id} className="min-w-0 text-center">
-                    <div className="flex aspect-square items-center justify-center rounded-xl bg-neutral-50 p-3 ring-1 ring-neutral-200/80">
-                      {asset.content ? (
-                        <img
-                          src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(asset.content)}`}
-                          alt={asset.title ?? "SVG"}
-                          className="h-full w-full max-h-[56px] max-w-[56px] object-contain"
-                        />
-                      ) : asset.url ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={asset.url}
-                          alt={asset.title ?? "SVG"}
-                          className="h-full w-full max-h-[56px] max-w-[56px] object-contain"
-                        />
-                      ) : (
-                        <Layers className="h-10 w-10 text-neutral-300" />
-                      )}
-                    </div>
-                    <p className="mt-1.5 truncate text-[10px] text-neutral-600">
-                      {assetFilename(asset)}
-                    </p>
+                  <div
+                    key={asset.id}
+                    className="flex aspect-square items-center justify-center rounded-xl bg-neutral-50 p-3 ring-1 ring-neutral-200/80"
+                  >
+                    {asset.content ? (
+                      <img
+                        src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(asset.content)}`}
+                        alt={asset.title ?? "SVG"}
+                        className="h-full w-full max-h-[56px] max-w-[56px] object-contain"
+                      />
+                    ) : asset.url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={asset.url}
+                        alt={asset.title ?? "SVG"}
+                        className="h-full w-full max-h-[56px] max-w-[56px] object-contain"
+                      />
+                    ) : (
+                      <Layers className="h-10 w-10 text-neutral-300" />
+                    )}
                   </div>
                 ))}
               </div>
@@ -533,38 +530,6 @@ export function AssetsDashboard({
                     <p className="mt-1.5 truncate text-[11px] font-medium text-neutral-800">
                       {assetFilename(asset)}
                     </p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </PanelCard>
-        </div>
-
-        {/* Row 4: Code (full width) */}
-        <div className="mt-5">
-          <PanelCard
-            title="Code"
-            count={groups.code.length}
-            onViewAll={() => onViewAll("__code__")}
-          >
-            {groups.code.length === 0 ? (
-              <EmptyPanel message="No code snippets saved yet." />
-            ) : (
-              <div className="grid grid-cols-3 grid-rows-2 gap-3 md:grid-cols-4 lg:grid-cols-6">
-                {groups.code.slice(0, 12).map((asset) => (
-                  <div
-                    key={asset.id}
-                    className="flex min-h-[88px] flex-col overflow-hidden rounded-lg bg-neutral-900 p-2.5 ring-1 ring-neutral-200/80"
-                  >
-                    <div className="mb-1.5 flex items-center gap-1.5">
-                      <Code2 className="h-3 w-3 shrink-0 text-neutral-400" />
-                      <p className="truncate text-[10px] font-medium text-neutral-300">
-                        {assetFilename(asset)}
-                      </p>
-                    </div>
-                    <pre className="line-clamp-3 flex-1 font-mono text-[9px] leading-relaxed text-neutral-500">
-                      {truncateText(asset.content ?? "", 80)}
-                    </pre>
                   </div>
                 ))}
               </div>
