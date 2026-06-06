@@ -44,8 +44,10 @@ export function resolveExtensionAudienceForMint(req: Request): ExtensionAudience
     if (!configured) {
       return { ok: false, code: 'MISSING_CONFIG' };
     }
-    if (fromHeader && fromHeader !== configured) {
-      return { ok: false, code: 'EXTENSION_ID_NOT_ALLOWED' };
+    // Mint for the requesting extension (content script sends chrome.runtime.id).
+    // background.mjs verifies audience against runtime.id — aud must match the caller.
+    if (fromHeader && isValidChromeExtensionId(fromHeader)) {
+      return { ok: true, aud: fromHeader };
     }
     return { ok: true, aud: configured };
   }
@@ -74,7 +76,12 @@ export function resolveExtensionAudiencesForVerify(req: Request): string[] {
   const fromHeader = req.headers.get('X-Extension-Id')?.trim() || null;
 
   if (process.env.NODE_ENV === 'production') {
-    return configured ? [configured] : [];
+    const allowed = new Set<string>();
+    if (configured) allowed.add(configured);
+    if (fromHeader && isValidChromeExtensionId(fromHeader)) {
+      allowed.add(fromHeader);
+    }
+    return [...allowed];
   }
 
   const allowed = new Set<string>();

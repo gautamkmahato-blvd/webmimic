@@ -13,7 +13,13 @@ export default function ExtensionAuthCallbackPage() {
       </p>
       <button
         type="button"
-        onClick={() => window.location.reload()}
+        onClick={() => {
+          if (typeof window.extensionAuthBridgeRetry === 'function') {
+            window.extensionAuthBridgeRetry();
+            return;
+          }
+          window.location.reload();
+        }}
         className="rounded-lg bg-zinc-900 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800"
       >
         Continue

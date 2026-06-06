@@ -8,27 +8,18 @@ import {
   getIssuer,
   resolveExtensionAudienceForMint,
 } from '@/lib/extension-jwt';
-import { getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
-import { ratelimit } from '@/lib/upstash/rateLimiter';
+import { getWebAppCorsHeaders } from '@/lib/extension-route-helpers';
 
 /**
  * Issues a custom RS256 JWT for the browser extension (not Clerk's session JWT).
  * POST with an active Clerk session (cookies). Used from the web app callback flow.
  */
 export async function POST(request: Request) {
-  const cors = getExtensionCorsHeaders(request);
+  const cors = getWebAppCorsHeaders(request);
   try {
     const { userId } = await auth();
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401, headers: cors });
-    }
-
-    const { success: rateLimitOk } = await ratelimit.limit(`issue-token:${userId}`);
-    if (!rateLimitOk) {
-      return NextResponse.json(
-        { error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
-        { status: 429, headers: cors },
-      );
     }
 
     const pem = process.env.EXTENSION_JWT_PRIVATE_KEY?.trim();
@@ -39,12 +30,6 @@ export async function POST(request: Request) {
 
     const audience = resolveExtensionAudienceForMint(request);
     if (!audience.ok) {
-      if (audience.code === 'EXTENSION_ID_NOT_ALLOWED') {
-        return NextResponse.json(
-          { error: 'Extension id is not authorized', code: 'EXTENSION_ID_NOT_ALLOWED' },
-          { status: 403, headers: cors },
-        );
-      }
       if (audience.code === 'INVALID_EXTENSION_ID') {
         return NextResponse.json(
           { error: 'Invalid X-Extension-Id header', code: 'INVALID_EXTENSION_ID' },
