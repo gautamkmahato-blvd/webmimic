@@ -16,14 +16,14 @@ export default function ResourcesPage() {
               Resources
             </h1>
             <p className="mt-4 text-[16px] leading-[1.7] text-[#657185]">
-              Guides, documentation, and learning material to get the most out of Webmimic.
+              Guides, feedback, and learning material to get the most out of Webmimic.
             </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               {[
                 {
-                  title: "Documentation",
-                  description: "Step-by-step guides for the extension, dashboard, and exports.",
-                  href: "/documentation",
+                  title: "Feedback",
+                  description: "Share ideas, report issues, and help us improve Webmimic.",
+                  href: "/feedback",
                 },
                 {
                   title: "Design Tokens Guide",

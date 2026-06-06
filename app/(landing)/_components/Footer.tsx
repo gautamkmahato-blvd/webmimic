@@ -18,7 +18,7 @@ const nav = [
   {
     heading: "RESOURCES",
     links: [
-      { label: "Documentation", href: "/documentation" },
+      { label: "Feedback", href: "/feedback" },
       { label: "Blog", href: "/blog" },
       { label: "Design Tokens Guide", href: "/design-tokens-guide" },
       { label: "Community", href: "/community" },
@@ -29,7 +29,6 @@ const nav = [
     heading: "COMPANY",
     links: [
       { label: "About", href: "/about" },
-      { label: "Careers", href: "/careers" },
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/privacy" },
       { label: "Contact", href: "/contact" },
@@ -130,22 +129,10 @@ export default function Footer({ dark = false }: { dark?: boolean }) {
 
       {/* Bottom bar */}
       <div className={`mx-auto border-t ${sectionWidth} ${dark ? "border-[rgba(255,255,255,0.08)]" : "border-[#edf1f7]"}`}>
-        <div className="py-[20px] flex items-center justify-between">
-          <p className={`text-[12px] ${dark ? "text-[#667489]" : "text-[#9aa3b2]"}`}>© 2026 webmimic. All rights reserved.</p>
-          <div className="flex items-center gap-[7px]">
-            <span className="w-[7px] h-[7px] rounded-full bg-[#22c55e] inline-block" />
-            <span className={`text-[12px] ${dark ? "text-[#8b9ab0]" : "text-[#536174]"}`}>All systems operational</span>
-          </div>
-          <div className="flex items-center gap-[20px]">
-            {[
-              { label: "Privacy", href: "/privacy" },
-              { label: "Terms", href: "/privacy" },
-            ].map((item) => (
-              <a key={item.label} href={item.href} className={`text-[12px] transition-colors ${dark ? "text-[#667489] hover:text-[#8b9ab0]" : "text-[#9aa3b2] hover:text-[#536174]"}`}>
-                {item.label}
-              </a>
-            ))}
-          </div>
+        <div className="py-[20px] flex items-center justify-center">
+          <p className={`text-[12px] text-center ${dark ? "text-[#667489]" : "text-[#9aa3b2]"}`}>
+            © 2026 webmimic. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
