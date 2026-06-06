@@ -137,6 +137,9 @@ function SummaryCard({
   );
 }
 
+const PANEL_CONTENT_CLASS =
+  "aspect-[8/3] w-full min-h-0 [&_.empty-panel]:h-full";
+
 function PanelCard({
   title,
   count,
@@ -149,7 +152,7 @@ function PanelCard({
   children: ReactNode;
 }) {
   return (
-    <div className="flex flex-col rounded-2xl border border-neutral-200 bg-white shadow-sm">
+    <div className="flex h-full flex-col rounded-2xl border border-neutral-200 bg-white shadow-sm">
       <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
         <h3 className="text-sm font-semibold text-neutral-900">
           {title}{" "}
@@ -165,14 +168,16 @@ function PanelCard({
           </button>
         ) : null}
       </div>
-      <div className="px-5 py-5">{children}</div>
+      <div className="flex flex-1 px-5 py-5">
+        <div className={PANEL_CONTENT_CLASS}>{children}</div>
+      </div>
     </div>
   );
 }
 
 function EmptyPanel({ message }: { message: string }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-6 py-12 text-center">
+    <div className="empty-panel flex h-full flex-col items-center justify-center rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-6 py-12 text-center">
       <PackageOpen className="mb-3 size-10 text-neutral-300" aria-hidden />
       <p className="text-sm font-medium text-neutral-500">{message}</p>
       <p className="mt-1 max-w-xs text-xs text-neutral-400">
@@ -192,15 +197,15 @@ function ColorsPanelContent({
   const [hoveredHex, setHoveredHex] = useState<string | null>(null);
 
   return (
-    <div className="flex flex-col">
-      <div className="grid grid-cols-5 grid-rows-2 gap-3.5">
+    <div className="flex h-full min-h-0 flex-col">
+      <div className="grid min-h-0 flex-1 grid-cols-5 grid-rows-2 gap-2.5">
         {colors.slice(0, 10).map((asset) => {
           const hex = parseHexFromContent(asset.content);
           return (
             <button
               key={asset.id}
               type="button"
-              className="aspect-square h-24 w-24 rounded-2xl ring-1 ring-black/5 transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+              className="aspect-square min-h-0 w-full rounded-2xl ring-1 ring-black/5 transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
               style={{ backgroundColor: hex ?? "#e5e5e5" }}
               onMouseEnter={() => setHoveredHex(hex)}
               onMouseLeave={() => setHoveredHex(null)}
@@ -212,13 +217,13 @@ function ColorsPanelContent({
         })}
       </div>
 
-      <div className="mt-4 flex flex-col gap-2.5">
-        <p className="min-h-[22px] text-center font-mono text-sm font-semibold tracking-wide text-neutral-800">
+      <div className="mt-2 flex shrink-0 flex-col gap-1.5">
+        <p className="min-h-[18px] text-center font-mono text-xs font-semibold tracking-wide text-neutral-800">
           {hoveredHex ?? ""}
         </p>
         {colorGradient ? (
           <div
-            className="h-2.5 w-full shrink-0 rounded-full"
+            className="h-2 w-full shrink-0 rounded-full"
             style={{ background: colorGradient }}
           />
         ) : null}
@@ -353,7 +358,7 @@ export function AssetsDashboard({
         </div>
 
         {/* Row 1: Images | Colors */}
-        <div className="mt-6 grid grid-cols-1 items-start gap-5 lg:grid-cols-2">
+        <div className="mt-6 grid grid-cols-1 items-stretch gap-5 lg:grid-cols-2">
           <PanelCard
             title="Images"
             count={groups.images.length}
@@ -362,7 +367,7 @@ export function AssetsDashboard({
             {groups.images.length === 0 ? (
               <EmptyPanel message="No images saved yet." />
             ) : (
-              <div className="grid grid-cols-4 grid-rows-2 gap-2.5">
+              <div className="grid h-full grid-cols-4 grid-rows-2 gap-2.5">
                 {groups.images.slice(0, 8).map((asset) => (
                   <div
                     key={asset.id}
@@ -404,7 +409,7 @@ export function AssetsDashboard({
         </div>
 
         {/* Row 2: SVGs | Typography */}
-        <div className="mt-5 grid grid-cols-1 items-start gap-5 lg:grid-cols-2">
+        <div className="mt-5 grid grid-cols-1 items-stretch gap-5 lg:grid-cols-2">
           <PanelCard
             title="SVGs"
             count={groups.svgs.length}
@@ -413,11 +418,11 @@ export function AssetsDashboard({
             {groups.svgs.length === 0 ? (
               <EmptyPanel message="No SVGs saved yet." />
             ) : (
-              <div className="grid grid-cols-4 grid-rows-2 gap-3">
+              <div className="grid h-full grid-cols-4 grid-rows-2 gap-2.5">
                 {groups.svgs.slice(0, 8).map((asset) => (
                   <div
                     key={asset.id}
-                    className="flex aspect-square items-center justify-center rounded-xl bg-neutral-50 p-3 ring-1 ring-neutral-200/80"
+                    className="flex aspect-[4/3] items-center justify-center rounded-lg bg-neutral-50 p-2 ring-1 ring-neutral-200/80"
                   >
                     {asset.content ? (
                       <img
@@ -449,14 +454,14 @@ export function AssetsDashboard({
             {groups.typography.length === 0 ? (
               <EmptyPanel message="No typography saved yet." />
             ) : (
-              <div className="flex flex-col gap-4">
+              <div className="flex h-full min-h-0 flex-col justify-between gap-2">
                 {groups.typography.slice(0, 4).map((asset) => {
                   const { fontFamily, role } = typographyMeta(asset);
                   const isMono = /mono/i.test(role) || /mono/i.test(fontFamily);
                   return (
                     <div
                       key={asset.id}
-                      className="flex items-center gap-4 p-3"
+                      className="flex min-h-0 flex-1 items-center gap-3 px-1"
                     >
                       <span
                         className="w-12 shrink-0 text-[2rem] font-semibold leading-none text-neutral-900"
@@ -488,7 +493,7 @@ export function AssetsDashboard({
         </div>
 
         {/* Row 3: Videos | Lottie */}
-        <div className="mt-5 grid grid-cols-1 items-start gap-5 lg:grid-cols-2">
+        <div className="mt-5 grid grid-cols-1 items-stretch gap-5 lg:grid-cols-2">
           <PanelCard
             title="Videos"
             count={groups.videos.length}
@@ -497,11 +502,11 @@ export function AssetsDashboard({
             {groups.videos.length === 0 ? (
               <EmptyPanel message="No videos saved yet." />
             ) : (
-              <div className="grid grid-cols-3 grid-rows-2 gap-3">
+              <div className="grid h-full grid-cols-4 grid-rows-2 gap-2.5">
                 {groups.videos.slice(0, 6).map((asset) => (
-                  <div key={asset.id} className="min-w-0">
+                  <div key={asset.id} className="relative min-h-0 min-w-0">
                     <VideoPreview asset={asset} />
-                    <p className="mt-1.5 truncate text-[11px] font-medium text-neutral-800">
+                    <p className="absolute bottom-1.5 left-1.5 max-w-[calc(100%-12px)] truncate rounded-md bg-white/90 px-1.5 py-0.5 text-[9px] font-medium text-neutral-800 shadow-sm">
                       {assetFilename(asset)}
                     </p>
                   </div>
@@ -518,11 +523,11 @@ export function AssetsDashboard({
             {groups.lotties.length === 0 ? (
               <EmptyPanel message="No Lottie animations saved yet." />
             ) : (
-              <div className="grid grid-cols-3 grid-rows-2 gap-3">
+              <div className="grid h-full grid-cols-4 grid-rows-2 gap-2.5">
                 {groups.lotties.slice(0, 6).map((asset) => (
-                  <div key={asset.id} className="min-w-0">
+                  <div key={asset.id} className="relative min-h-0 min-w-0">
                     <LottiePreview />
-                    <p className="mt-1.5 truncate text-[11px] font-medium text-neutral-800">
+                    <p className="absolute bottom-1.5 left-1.5 max-w-[calc(100%-12px)] truncate rounded-md bg-white/90 px-1.5 py-0.5 text-[9px] font-medium text-neutral-800 shadow-sm">
                       {assetFilename(asset)}
                     </p>
                   </div>
