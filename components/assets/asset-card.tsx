@@ -15,7 +15,7 @@ import {
 import { categoryBadgeReferenceClass, getCategoryBadgeDisplay } from "./asset-category";
 import { AssetTypePill } from "./asset-type-pill";
 import { AssetPreview } from "./asset-preview";
-import { Copy, ExternalLink, Globe } from "lucide-react";
+import { Calendar, Copy, ExternalLink, Globe } from "lucide-react";
 
 type Props = {
   asset: AssetRow;
@@ -32,10 +32,6 @@ export function AssetCard({ asset, variant = "grid", index = 0 }: Props) {
   const domainLabel = host ? formatDomainFilterLabel(host) : null;
 
   const t = asset.type?.toLowerCase() ?? "";
-  const hasDedicatedPreview =
-    !!hex ||
-    ["image", "video", "svg", "icon", "background", "typography", "code", "report"].includes(t);
-  const hasTextBody = Boolean(asset.content && !hasDedicatedPreview);
 
   const copyPayload = (): string => {
     if (hex) return hex;
@@ -57,6 +53,30 @@ export function AssetCard({ asset, variant = "grid", index = 0 }: Props) {
   const openSource = () => {
     if (asset.source_url) window.open(asset.source_url, "_blank", "noopener,noreferrer");
   };
+
+  const previewBadgeLabel = (): string => {
+    if (hex) return hex;
+    if (t === "code" || t === "report") {
+      return truncateText(asset.content ?? title, 28);
+    }
+    return truncateText(title, 28);
+  };
+
+  const CopyIconButton = ({ className = "" }: { className?: string }) => (
+    <button
+      type="button"
+      onClick={() => void copyContent()}
+      title={copied ? "Copied" : "Copy"}
+      aria-label={copied ? "Copied" : "Copy"}
+      className={`inline-flex size-8 items-center justify-center rounded-lg text-neutral-400 transition-colors hover:bg-neutral-100 hover:text-neutral-700 ${className}`}
+    >
+      {copied ? (
+        <span className="text-[10px] font-semibold text-green-500">✓</span>
+      ) : (
+        <Copy className="size-4" aria-hidden />
+      )}
+    </button>
+  );
 
   // ─── LIST VARIANT ──────────────────────────────────────────
   if (variant === "list") {
@@ -117,57 +137,50 @@ export function AssetCard({ asset, variant = "grid", index = 0 }: Props) {
       className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white transition-all duration-200 hover:border-neutral-300 hover:shadow-lg"
     >
       <div className="flex flex-col p-4">
-        {/* Header: type pill + copy button */}
+        {/* Header: source pill + copy icon */}
         <div className="mb-3 flex shrink-0 items-center justify-between gap-2">
-          <AssetTypePill type={asset.type} />
-          <button
-            type="button"
-            onClick={() => void copyContent()}
-            className="inline-flex h-7 items-center gap-1.5 rounded-lg border border-neutral-200 bg-white px-2.5 text-[11px] font-medium text-neutral-600 transition-colors hover:border-neutral-300 hover:bg-neutral-50"
-          >
-            <Copy className="size-3" aria-hidden />
-            {copied ? "Copied" : "Copy"}
-          </button>
-        </div>
-
-        {/* Preview */}
-        <div className="h-44 w-full overflow-hidden rounded-xl ring-1 ring-neutral-200/80">
-          <AssetPreview asset={asset} hex={hex} />
-        </div>
-
-        {/* Body */}
-        <div className="mt-4 flex flex-1 flex-col">
-          <h3 className="truncate text-sm font-semibold text-neutral-900">{title}</h3>
-          <div className="mt-1 flex shrink-0 items-center justify-between gap-2">
-            <p className="text-xs text-neutral-400">
-              {formatAssetDate(asset.created_at)}
-            </p>
-            <span className={categoryBadgeReferenceClass}>{categoryBadge}</span>
-          </div>
-
-          {hasTextBody ? (
-            <div className="mt-3 max-h-12 overflow-hidden rounded-lg bg-neutral-50 p-2">
-              <pre className="font-mono text-[10px] leading-relaxed text-neutral-600">
-                {truncateText(asset.content ?? "", 120)}
-              </pre>
-            </div>
-          ) : null}
-
           {domainLabel && asset.source_url ? (
             <button
               type="button"
               onClick={openSource}
-              className="group/link mt-3 flex w-full shrink-0 items-center gap-2 rounded-xl border border-neutral-200 bg-neutral-50 px-3 py-2 text-left transition-colors hover:border-neutral-300 hover:bg-neutral-100"
+              className="inline-flex max-w-[70%] items-center gap-1.5 rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-[11px] font-medium text-neutral-600 transition-colors hover:border-neutral-300 hover:bg-neutral-100"
             >
               <Globe className="size-3.5 shrink-0 text-neutral-500" aria-hidden />
-              <span className="min-w-0 flex-1 truncate text-xs text-neutral-600">
-                {domainLabel}
-              </span>
-              <ExternalLink className="size-3 shrink-0 text-neutral-400 opacity-0 transition-opacity group-hover/link:opacity-100" aria-hidden />
+              <span className="truncate">{domainLabel}</span>
             </button>
           ) : (
-            <div className="mt-auto" />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-[11px] font-medium text-neutral-500">
+              <Globe className="size-3.5 shrink-0" aria-hidden />
+              <span className="truncate">{categoryBadge}</span>
+            </span>
           )}
+          <CopyIconButton />
+        </div>
+
+        {/* Type pill */}
+        <div className="mb-3">
+          <AssetTypePill type={asset.type} />
+        </div>
+
+        {/* Preview with overlay badge */}
+        <div className="relative aspect-square w-full overflow-hidden rounded-xl ring-1 ring-neutral-200/80">
+          <AssetPreview asset={asset} hex={hex} />
+          <div className="absolute bottom-3 left-3 max-w-[calc(100%-1.5rem)]">
+            <span className="inline-block max-w-full truncate rounded-full bg-white px-3 py-1 text-[11px] font-bold text-neutral-900 shadow-sm ring-1 ring-black/5">
+              {previewBadgeLabel()}
+            </span>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="mt-4 flex items-center justify-between border-t border-neutral-100 pt-3">
+          <span
+            className="inline-flex items-center text-neutral-400"
+            title={formatAssetDate(asset.created_at)}
+          >
+            <Calendar className="size-4" aria-hidden />
+          </span>
+          <CopyIconButton />
         </div>
       </div>
     </motion.article>

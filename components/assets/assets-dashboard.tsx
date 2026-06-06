@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import type { AssetRow } from "@/app/service/supabase/assets/types";
 import {
   Clapperboard,
@@ -73,14 +73,6 @@ function assetFilename(asset: AssetRow): string {
   return asset.type || "asset";
 }
 
-function imageDimensions(asset: AssetRow): string | null {
-  const meta = asset.meta as Record<string, unknown> | null;
-  const w = meta?.width ?? meta?.naturalWidth;
-  const h = meta?.height ?? meta?.naturalHeight;
-  if (w != null && h != null) return `${w} × ${h}`;
-  return null;
-}
-
 function typographyMeta(asset: AssetRow) {
   const meta = asset.meta as Record<string, unknown> | null;
   const fontFamily =
@@ -108,6 +100,18 @@ function uniqueFontFamilies(typography: AssetRow[]): string[] {
     set.add(typographyMeta(t).fontFamily);
   }
   return Array.from(set);
+}
+
+function uniqueTypographyByFamily(typography: AssetRow[]): AssetRow[] {
+  const seen = new Set<string>();
+  const result: AssetRow[] = [];
+  for (const asset of typography) {
+    const { fontFamily } = typographyMeta(asset);
+    if (seen.has(fontFamily)) continue;
+    seen.add(fontFamily);
+    result.push(asset);
+  }
+  return result;
 }
 
 type Props = {
@@ -184,6 +188,51 @@ function PanelCard({
 function EmptyPanel({ message }: { message: string }) {
   return (
     <p className="py-8 text-center text-sm text-neutral-400">{message}</p>
+  );
+}
+
+function ColorsPanelContent({
+  colors,
+  colorGradient,
+}: {
+  colors: AssetRow[];
+  colorGradient: string | null;
+}) {
+  const [hoveredHex, setHoveredHex] = useState<string | null>(null);
+
+  return (
+    <div className="flex min-h-[240px] flex-col">
+      <div className="grid flex-1 grid-cols-5 grid-rows-2 gap-3.5">
+        {colors.slice(0, 10).map((asset) => {
+          const hex = parseHexFromContent(asset.content);
+          return (
+            <button
+              key={asset.id}
+              type="button"
+              className="aspect-square w-full rounded-2xl ring-1 ring-black/5 transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+              style={{ backgroundColor: hex ?? "#e5e5e5" }}
+              onMouseEnter={() => setHoveredHex(hex)}
+              onMouseLeave={() => setHoveredHex(null)}
+              onFocus={() => setHoveredHex(hex)}
+              onBlur={() => setHoveredHex(null)}
+              aria-label={hex ?? "Color swatch"}
+            />
+          );
+        })}
+      </div>
+
+      <div className="mt-auto flex flex-col gap-3 pt-5">
+        <p className="min-h-[22px] text-center font-mono text-sm font-semibold tracking-wide text-neutral-800">
+          {hoveredHex ?? ""}
+        </p>
+        {colorGradient ? (
+          <div
+            className="h-2.5 w-full shrink-0 rounded-full"
+            style={{ background: colorGradient }}
+          />
+        ) : null}
+      </div>
+    </div>
   );
 }
 
@@ -331,30 +380,23 @@ export function AssetsDashboard({
             ) : (
               <div className="grid grid-cols-3 grid-rows-2 gap-3">
                 {groups.images.slice(0, 6).map((asset) => (
-                  <div key={asset.id} className="min-w-0">
-                    <div className="aspect-[4/3] overflow-hidden rounded-lg bg-neutral-100 ring-1 ring-neutral-200/80">
-                      {asset.url ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={asset.url}
-                          alt={asset.title ?? ""}
-                          className="h-full w-full object-cover"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div className="flex h-full items-center justify-center">
-                          <ImageIcon className="h-5 w-5 text-neutral-300" />
-                        </div>
-                      )}
-                    </div>
-                    <p className="mt-1.5 truncate text-[11px] font-medium text-neutral-800">
-                      {assetFilename(asset)}
-                    </p>
-                    {imageDimensions(asset) ? (
-                      <p className="text-[10px] text-neutral-400">
-                        {imageDimensions(asset)}
-                      </p>
-                    ) : null}
+                  <div
+                    key={asset.id}
+                    className="aspect-[4/3] overflow-hidden rounded-lg bg-neutral-100 ring-1 ring-neutral-200/80"
+                  >
+                    {asset.url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={asset.url}
+                        alt={asset.title ?? ""}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="flex h-full items-center justify-center">
+                        <ImageIcon className="h-5 w-5 text-neutral-300" />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -369,30 +411,10 @@ export function AssetsDashboard({
             {groups.colors.length === 0 ? (
               <EmptyPanel message="No colors saved yet." />
             ) : (
-              <>
-                <div className="grid grid-cols-5 grid-rows-2 gap-2.5">
-                  {groups.colors.slice(0, 10).map((asset) => {
-                    const hex = parseHexFromContent(asset.content);
-                    return (
-                      <div key={asset.id} className="text-center">
-                        <div
-                          className="mx-auto aspect-square w-full max-w-[52px] rounded-xl ring-1 ring-black/5"
-                          style={{ backgroundColor: hex ?? "#e5e5e5" }}
-                        />
-                        <p className="mt-1.5 font-mono text-[9px] text-neutral-500">
-                          {hex ?? "—"}
-                        </p>
-                      </div>
-                    );
-                  })}
-                </div>
-                {colorGradient ? (
-                  <div
-                    className="mt-4 h-2.5 w-full rounded-full"
-                    style={{ background: colorGradient }}
-                  />
-                ) : null}
-              </>
+              <ColorsPanelContent
+                colors={groups.colors}
+                colorGradient={colorGradient}
+              />
             )}
           </PanelCard>
         </div>
@@ -407,28 +429,28 @@ export function AssetsDashboard({
             {groups.svgs.length === 0 ? (
               <EmptyPanel message="No SVGs saved yet." />
             ) : (
-              <div className="grid grid-cols-4 grid-rows-2 gap-2.5">
+              <div className="grid grid-cols-4 grid-rows-2 gap-3">
                 {groups.svgs.slice(0, 8).map((asset) => (
                   <div key={asset.id} className="min-w-0 text-center">
-                    <div className="flex aspect-square items-center justify-center rounded-lg bg-neutral-50 ring-1 ring-neutral-200/80">
+                    <div className="flex aspect-square items-center justify-center rounded-xl bg-neutral-50 p-3 ring-1 ring-neutral-200/80">
                       {asset.content ? (
                         <img
                           src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(asset.content)}`}
                           alt={asset.title ?? "SVG"}
-                          className="max-h-[28px] max-w-[28px] object-contain"
+                          className="h-full w-full max-h-[56px] max-w-[56px] object-contain"
                         />
                       ) : asset.url ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
                           src={asset.url}
                           alt={asset.title ?? "SVG"}
-                          className="max-h-[28px] max-w-[28px] object-contain"
+                          className="h-full w-full max-h-[56px] max-w-[56px] object-contain"
                         />
                       ) : (
-                        <Layers className="h-5 w-5 text-neutral-300" />
+                        <Layers className="h-10 w-10 text-neutral-300" />
                       )}
                     </div>
-                    <p className="mt-1 truncate text-[10px] text-neutral-600">
+                    <p className="mt-1.5 truncate text-[10px] text-neutral-600">
                       {assetFilename(asset)}
                     </p>
                   </div>
@@ -445,29 +467,34 @@ export function AssetsDashboard({
             {groups.typography.length === 0 ? (
               <EmptyPanel message="No typography saved yet." />
             ) : (
-              <div className="grid grid-rows-2 gap-4">
-                {groups.typography.slice(0, 2).map((asset) => {
+              <div className="flex flex-col gap-5">
+                {uniqueTypographyByFamily(groups.typography).slice(0, 2).map((asset) => {
                   const { fontFamily, role } = typographyMeta(asset);
+                  const isMono = /mono/i.test(role) || /mono/i.test(fontFamily);
                   return (
                     <div
                       key={asset.id}
-                      className="flex items-center gap-3 border-b border-neutral-100 pb-4 last:border-0 last:pb-0"
+                      className="flex items-center gap-4"
                     >
                       <span
-                        className="shrink-0 text-2xl font-medium text-neutral-900"
-                        style={{ fontFamily: `'${fontFamily}', sans-serif` }}
+                        className="w-12 shrink-0 text-[2rem] font-semibold leading-none text-neutral-900"
+                        style={{
+                          fontFamily: isMono
+                            ? `'${fontFamily}', monospace`
+                            : `'${fontFamily}', sans-serif`,
+                        }}
                       >
                         Aa
                       </span>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-semibold text-neutral-900">
+                        <p className="truncate text-[15px] font-bold text-neutral-900">
                           {fontFamily}
                         </p>
-                        <p className="truncate text-[11px] text-neutral-400">
+                        <p className="mt-0.5 truncate text-xs text-neutral-500">
                           {fontWeightsFromContent(asset.content)}
                         </p>
                       </div>
-                      <span className="shrink-0 rounded-md bg-violet-50 px-2 py-0.5 text-[10px] font-medium text-violet-700">
+                      <span className="shrink-0 rounded-full bg-violet-100 px-3 py-1 text-[11px] font-medium text-violet-700">
                         {role}
                       </span>
                     </div>
