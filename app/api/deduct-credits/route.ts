@@ -1,22 +1,23 @@
 import { NextResponse } from 'next/server';
-import { EXTENSION_CORS_HEADERS, getClerkIdFromExtensionBearer } from '@/lib/extension-route-helpers';
+import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
 import { reserveQuota } from '@/app/service/supabase/extension/reservationService';
 import { ratelimit } from '@/lib/upstash/rateLimiter';
 import { OPERATIONS, type OperationId } from '@/lib/credits/config';
 
 const ALLOWED_OPERATIONS = Object.values(OPERATIONS) as OperationId[];
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: EXTENSION_CORS_HEADERS });
+export async function OPTIONS(req: Request) {
+  return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
 }
 
 export async function POST(request: Request) {
+  const cors = getExtensionCorsHeaders(request);
   try {
     const clerkId = await getClerkIdFromExtensionBearer(request);
     if (!clerkId) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized', code: 'EXTENSION_AUTH_REQUIRED' },
-        { status: 401, headers: EXTENSION_CORS_HEADERS }
+        { status: 401, headers: cors }
       );
     }
 
@@ -24,7 +25,7 @@ export async function POST(request: Request) {
     if (!rateLimitOk) {
       return NextResponse.json(
         { success: false, error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
-        { status: 429, headers: EXTENSION_CORS_HEADERS }
+        { status: 429, headers: cors }
       );
     }
 
@@ -34,7 +35,7 @@ export async function POST(request: Request) {
     } catch {
       return NextResponse.json(
         { success: false, error: 'Invalid request body' },
-        { status: 400, headers: EXTENSION_CORS_HEADERS }
+        { status: 400, headers: cors }
       );
     }
 
@@ -42,7 +43,7 @@ export async function POST(request: Request) {
     if (!operation || !ALLOWED_OPERATIONS.includes(operation)) {
       return NextResponse.json(
         { success: false, error: 'Invalid operation', code: 'INVALID_OPERATION' },
-        { status: 400, headers: EXTENSION_CORS_HEADERS }
+        { status: 400, headers: cors }
       );
     }
 
@@ -50,7 +51,7 @@ export async function POST(request: Request) {
     if (!idempotencyKey || typeof idempotencyKey !== 'string' || !idempotencyKey.trim()) {
       return NextResponse.json(
         { success: false, error: 'idempotencyKey is required', code: 'MISSING_IDEMPOTENCY_KEY' },
-        { status: 400, headers: EXTENSION_CORS_HEADERS }
+        { status: 400, headers: cors }
       );
     }
 
@@ -69,7 +70,7 @@ export async function POST(request: Request) {
               error: 'This feature requires a paid plan. Upgrade to access it.',
               code: 'PLAN_BLOCKED',
             },
-            { status: 403, headers: EXTENSION_CORS_HEADERS }
+            { status: 403, headers: cors }
           );
         case 'QUOTA_EXHAUSTED':
           return NextResponse.json(
@@ -78,22 +79,22 @@ export async function POST(request: Request) {
               error: 'Monthly quota exhausted. Upgrade your plan or wait until next month.',
               code: 'QUOTA_EXHAUSTED',
             },
-            { status: 402, headers: EXTENSION_CORS_HEADERS }
+            { status: 402, headers: cors }
           );
         case 'USER_NOT_FOUND':
           return NextResponse.json(
             { success: false, error: 'User not found', code: 'USER_NOT_FOUND' },
-            { status: 401, headers: EXTENSION_CORS_HEADERS }
+            { status: 401, headers: cors }
           );
         case 'CONCURRENT_MODIFICATION':
           return NextResponse.json(
             { success: false, error: 'Request conflict, please retry', code: 'CONCURRENT_MODIFICATION' },
-            { status: 409, headers: EXTENSION_CORS_HEADERS }
+            { status: 409, headers: cors }
           );
         default:
           return NextResponse.json(
             { success: false, error: 'Internal server error' },
-            { status: 500, headers: EXTENSION_CORS_HEADERS }
+            { status: 500, headers: cors }
           );
       }
     }
@@ -104,13 +105,13 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       { success: true, quotaRemaining, reservationId },
-      { status: 200, headers: EXTENSION_CORS_HEADERS }
+      { status: 200, headers: cors }
     );
   } catch (error) {
     console.error('[deduct-credits] unexpected error', error);
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
-      { status: 500, headers: EXTENSION_CORS_HEADERS }
+      { status: 500, headers: cors }
     );
   }
 }

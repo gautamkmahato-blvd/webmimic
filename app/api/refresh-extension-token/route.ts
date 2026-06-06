@@ -2,15 +2,18 @@ import { NextResponse } from 'next/server';
 import { jwtVerify, SignJWT } from 'jose';
 import { createPrivateKey, createPublicKey } from 'node:crypto';
 
-import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
 import {
-  getExtensionAudienceFromRequest,
-  getExtensionAudienceVerifyList,
   getExtensionJwtTtlSeconds,
   getExtensionJwtVerifyIssuers,
   getIssuer,
+  resolveExtensionAudiencesForVerify,
 } from '@/lib/extension-jwt';
+import {
+  getExtensionJwtRevokedAfter,
+  isExtensionJwtRevoked,
+} from '@/lib/extension-jwt-revocation';
 import { extractBearerToken, getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
+import { ratelimit } from '@/lib/upstash/rateLimiter';
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
@@ -33,7 +36,7 @@ export async function POST(req: Request) {
 
     const pubPem = process.env.EXTENSION_JWT_PUBLIC_KEY?.trim();
     const privPem = process.env.EXTENSION_JWT_PRIVATE_KEY?.trim();
-    const verifyAudiences = getExtensionAudienceVerifyList(req);
+    const verifyAudiences = resolveExtensionAudiencesForVerify(req);
     if (!pubPem || !privPem || verifyAudiences.length === 0) {
       console.error(
         '[refresh-extension-token] Missing EXTENSION_JWT keys or extension audience (X-Extension-Id / EXTENSION_CHROME_ID)'
@@ -73,9 +76,22 @@ export async function POST(req: Request) {
           { status: 401, headers: corsHeaders }
         );
       }
+      const revokedAfter = await getExtensionJwtRevokedAfter(s);
+      if (isExtensionJwtRevoked(payload.iat, revokedAfter)) {
+        return NextResponse.json(
+          { error: 'Invalid or expired token' },
+          { status: 401, headers: corsHeaders }
+        );
+      }
       sub = s;
       const tokenAud = typeof payload.aud === 'string' ? payload.aud : null;
-      signAud = getExtensionAudienceFromRequest(req) || tokenAud || verifyAudiences[0];
+      if (!tokenAud || !verifyAudiences.includes(tokenAud)) {
+        return NextResponse.json(
+          { error: 'Invalid or expired token' },
+          { status: 401, headers: corsHeaders }
+        );
+      }
+      signAud = tokenAud;
     } catch {
       return NextResponse.json(
         { error: 'Invalid or expired token' },
@@ -83,14 +99,17 @@ export async function POST(req: Request) {
       );
     }
 
-    const { premium } = await hasPremiumAccessForClerkId(sub);
-    const plan = premium ? 'paid' : 'free';
+    const { success: rateLimitOk } = await ratelimit.limit(`refresh-extension-token:${sub}`);
+    if (!rateLimitOk) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
+        { status: 429, headers: corsHeaders },
+      );
+    }
+
     const now = Math.floor(Date.now() / 1000);
 
-    const token = await new SignJWT({
-      sub,
-      plan,
-    })
+    const token = await new SignJWT({ sub })
       .setProtectedHeader({ alg: 'RS256' })
       .setIssuer(iss)
       .setAudience(signAud)

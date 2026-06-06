@@ -2,13 +2,14 @@ import { NextResponse } from 'next/server';
 import { fetchAllAssets } from '@/app/service/supabase/assets/fetchAllAssets';
 import { findUserByClerkId } from '@/app/service/supabase/user/findUserByClerkId';
 import type { ApiResponse } from '@/types/ApiResponse';
-import { resolveClerkId, EXTENSION_CORS_HEADERS } from '@/lib/extension-route-helpers';
+import { resolveClerkId, getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
 
-export async function OPTIONS(): Promise<NextResponse> {
-  return new NextResponse(null, { status: 204, headers: EXTENSION_CORS_HEADERS });
+export async function OPTIONS(req: Request): Promise<NextResponse> {
+  return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
 }
 
 export async function GET(req: Request) {
+  const cors = getExtensionCorsHeaders(req);
   try {
     const clerkId = (await resolveClerkId(req)) ?? undefined;
 
@@ -20,7 +21,7 @@ export async function GET(req: Request) {
           error: 'unauthorized',
           message: 'Not authenticated',
         },
-        { status: 401, headers: EXTENSION_CORS_HEADERS }
+        { status: 401, headers: cors }
       );
     }
 
@@ -39,7 +40,7 @@ export async function GET(req: Request) {
           error: userResp.error ?? 'user_not_found',
           message: userResp.message ?? 'User not found',
         },
-        { status: 404, headers: EXTENSION_CORS_HEADERS }
+        { status: 404, headers: cors }
       );
     }
 
@@ -55,7 +56,7 @@ export async function GET(req: Request) {
     };
 
     const status = serviceResp.success ? 200 : 500;
-    return NextResponse.json(response, { status, headers: EXTENSION_CORS_HEADERS });
+    return NextResponse.json(response, { status, headers: cors });
   } catch (err: unknown) {
     return NextResponse.json(
       {
@@ -64,7 +65,7 @@ export async function GET(req: Request) {
         error: 'api_error',
         message: err instanceof Error ? err.message : 'Failed to fetch assets',
       },
-      { status: 500, headers: EXTENSION_CORS_HEADERS }
+      { status: 500, headers: cors }
     );
   }
 }

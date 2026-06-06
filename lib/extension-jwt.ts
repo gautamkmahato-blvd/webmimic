@@ -1,5 +1,92 @@
 import { jwtVerify } from 'jose';
 import { createPublicKey } from 'node:crypto';
+import {
+  getExtensionJwtRevokedAfter,
+  isExtensionJwtRevoked,
+} from '@/lib/extension-jwt-revocation';
+
+const CHROME_EXTENSION_ID_RE = /^[a-z]{32}$/;
+
+export function isValidChromeExtensionId(id: string): boolean {
+  return CHROME_EXTENSION_ID_RE.test(id.trim());
+}
+
+function getConfiguredExtensionId(): string | null {
+  const id = process.env.EXTENSION_CHROME_ID?.trim();
+  return id && isValidChromeExtensionId(id) ? id : null;
+}
+
+function getDevExtensionAllowlist(): Set<string> {
+  const raw = process.env.ALLOW_DEV_EXTENSION_IDS?.trim();
+  if (!raw) return new Set();
+  return new Set(
+    raw
+      .split(',')
+      .map((part) => part.trim())
+      .filter((part) => isValidChromeExtensionId(part)),
+  );
+}
+
+export type ExtensionAudienceMintResult =
+  | { ok: true; aud: string }
+  | { ok: false; code: 'MISSING_CONFIG' | 'INVALID_EXTENSION_ID' | 'EXTENSION_ID_NOT_ALLOWED' };
+
+/**
+ * Resolves JWT `aud` when minting a new extension token.
+ * Production: always the configured store extension id; rejects mismatched X-Extension-Id.
+ * Development: allows X-Extension-Id for unpacked builds on the dev allowlist.
+ */
+export function resolveExtensionAudienceForMint(req: Request): ExtensionAudienceMintResult {
+  const configured = getConfiguredExtensionId();
+  const fromHeader = req.headers.get('X-Extension-Id')?.trim() || null;
+
+  if (process.env.NODE_ENV === 'production') {
+    if (!configured) {
+      return { ok: false, code: 'MISSING_CONFIG' };
+    }
+    if (fromHeader && fromHeader !== configured) {
+      return { ok: false, code: 'EXTENSION_ID_NOT_ALLOWED' };
+    }
+    return { ok: true, aud: configured };
+  }
+
+  if (fromHeader) {
+    if (!isValidChromeExtensionId(fromHeader)) {
+      return { ok: false, code: 'INVALID_EXTENSION_ID' };
+    }
+    const allowlist = getDevExtensionAllowlist();
+    if (configured && fromHeader !== configured && !allowlist.has(fromHeader)) {
+      return { ok: false, code: 'EXTENSION_ID_NOT_ALLOWED' };
+    }
+    return { ok: true, aud: fromHeader };
+  }
+
+  if (configured) {
+    return { ok: true, aud: configured };
+  }
+
+  return { ok: false, code: 'MISSING_CONFIG' };
+}
+
+/** Audiences accepted when verifying an extension JWT. */
+export function resolveExtensionAudiencesForVerify(req: Request): string[] {
+  const configured = getConfiguredExtensionId();
+  const fromHeader = req.headers.get('X-Extension-Id')?.trim() || null;
+
+  if (process.env.NODE_ENV === 'production') {
+    return configured ? [configured] : [];
+  }
+
+  const allowed = new Set<string>();
+  if (configured) allowed.add(configured);
+  if (fromHeader && isValidChromeExtensionId(fromHeader)) {
+    const allowlist = getDevExtensionAllowlist();
+    if (!configured || fromHeader === configured || allowlist.has(fromHeader)) {
+      allowed.add(fromHeader);
+    }
+  }
+  return [...allowed];
+}
 
 /** Extension JWT lifetime in seconds (default 24h). Override with EXTENSION_JWT_TTL_SECONDS. */
 export function getExtensionJwtTtlSeconds(): number {
@@ -13,10 +100,15 @@ export function getExtensionJwtTtlSeconds(): number {
   return 86_400;
 }
 
-// Fail fast in production: JWT issuer must come from env, not untrusted request headers.
+// Fail fast in production: JWT issuer and extension audience must come from env.
 if (process.env.NODE_ENV === 'production' && !process.env.NEXT_PUBLIC_APP_URL?.trim()) {
   throw new Error(
     '[extension-jwt] NEXT_PUBLIC_APP_URL must be set in production — JWT issuer cannot be derived from request headers'
+  );
+}
+if (process.env.NODE_ENV === 'production' && !getConfiguredExtensionId()) {
+  throw new Error(
+    '[extension-jwt] EXTENSION_CHROME_ID must be set in production — extension JWT audience cannot be derived from request headers'
   );
 }
 
@@ -75,21 +167,15 @@ export function getExtensionJwtVerifyIssuers(req: Request): string[] {
   return [...withAliases];
 }
 
-/**
- * Chrome extension id for JWT `aud`. Prefer `X-Extension-Id` from the installing
- * extension (auth bridge / panel) so unpacked dev builds work when .env is stale.
- */
+/** @deprecated Use {@link resolveExtensionAudienceForMint} */
 export function getExtensionAudienceFromRequest(req: Request): string | null {
-  const fromHeader = req.headers.get('X-Extension-Id')?.trim();
-  const fromEnv = process.env.EXTENSION_CHROME_ID?.trim();
-  return fromHeader || fromEnv || null;
+  const resolved = resolveExtensionAudienceForMint(req);
+  return resolved.ok ? resolved.aud : null;
 }
 
-/** All acceptable `aud` values when verifying an extension JWT. */
+/** @deprecated Use {@link resolveExtensionAudiencesForVerify} */
 export function getExtensionAudienceVerifyList(req: Request): string[] {
-  const fromHeader = req.headers.get('X-Extension-Id')?.trim();
-  const fromEnv = process.env.EXTENSION_CHROME_ID?.trim();
-  return [...new Set([fromHeader, fromEnv].filter((x): x is string => Boolean(x)))];
+  return resolveExtensionAudiencesForVerify(req);
 }
 
 /**
@@ -98,7 +184,7 @@ export function getExtensionAudienceVerifyList(req: Request): string[] {
  */
 export async function getClerkIdFromExtensionJwt(req: Request, token: string): Promise<string | null> {
   const pubPem = process.env.EXTENSION_JWT_PUBLIC_KEY?.trim();
-  const audiences = getExtensionAudienceVerifyList(req);
+  const audiences = resolveExtensionAudiencesForVerify(req);
   if (!pubPem || audiences.length === 0) return null;
 
   let publicKey: ReturnType<typeof createPublicKey>;
@@ -114,7 +200,14 @@ export async function getClerkIdFromExtensionJwt(req: Request, token: string): P
       issuer: getExtensionJwtVerifyIssuers(req),
     });
     const sub = payload.sub;
-    return typeof sub === 'string' && sub ? sub : null;
+    if (typeof sub !== 'string' || !sub) return null;
+
+    const revokedAfter = await getExtensionJwtRevokedAfter(sub);
+    if (isExtensionJwtRevoked(payload.iat, revokedAfter)) {
+      return null;
+    }
+
+    return sub;
   } catch {
     return null;
   }

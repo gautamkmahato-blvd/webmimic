@@ -6,8 +6,8 @@ import {
   type PlanKey,
   type OperationId,
 } from '@/lib/credits/config';
-import { PLAN_IDS } from '@/lib/billing/plans';
 import { grantFreeSignupCredits } from '@/app/service/supabase/user/grantFreeSignupCredits';
+import { resolvePlanKeyForUser } from '@/app/service/supabase/extension/resolvePlanKey';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -43,24 +43,6 @@ export function getCurrentPeriodStart(): string {
   const year = now.getUTCFullYear();
   const month = String(now.getUTCMonth() + 1).padStart(2, '0');
   return `${year}-${month}-01`;
-}
-
-/**
- * Maps a user's plan_id + plan_type from user_credits to an internal PlanKey.
- *
- * - plan_type = 'Free'        → FREE (always, regardless of plan_id)
- * - plan_type = 'Premium'     → look up plan_id against known UUIDs
- * - Unknown or null plan_id   → PRO (legacy permissive — never punish old paying users)
- * - plan_type = null          → PRO (very old row pre-dating plan_type column)
- */
-function resolvePlanKey(planId: string | null, planType: string | null): PlanKey {
-  if (planType === 'Free') return PLAN_KEYS.FREE;
-  if (planId === PLAN_IDS.BASIC) return PLAN_KEYS.BASIC;
-  if (planId === PLAN_IDS.PRO) return PLAN_KEYS.PRO;
-  if (planId === PLAN_IDS.BASIC_ANNUALLY) return PLAN_KEYS.BASIC_ANNUALLY;
-  if (planId === PLAN_IDS.PRO_ANNUALLY) return PLAN_KEYS.PRO_ANNUALLY;
-  // Legacy Premium with unrecognised plan_id or null plan_type → permissive
-  return PLAN_KEYS.PRO;
 }
 
 /**
@@ -112,12 +94,14 @@ export async function resolveUserPlan(clerkId: string): Promise<ResolvedUser> {
 
     const planId = (ucAfter.plan_id as string | null) ?? null;
     const planType = (ucAfter.plan_type as string | null) ?? null;
-    return { userId, planKey: resolvePlanKey(planId, planType), planType };
+    const planKey = await resolvePlanKeyForUser(userId, planId, planType);
+    return { userId, planKey, planType };
   }
 
   const planId = (uc.plan_id as string | null) ?? null;
   const planType = (uc.plan_type as string | null) ?? null;
-  return { userId, planKey: resolvePlanKey(planId, planType), planType };
+  const planKey = await resolvePlanKeyForUser(userId, planId, planType);
+  return { userId, planKey, planType };
 }
 
 // ── Public API ────────────────────────────────────────────────────────────────

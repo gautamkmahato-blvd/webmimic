@@ -1,20 +1,50 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
-import { getClerkIdFromExtensionJwt } from '@/lib/extension-jwt';
+import { getClerkIdFromExtensionJwt, isValidChromeExtensionId } from '@/lib/extension-jwt';
 import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
 
 const _extensionId = process.env.EXTENSION_CHROME_ID?.trim();
-if (!_extensionId && process.env.NODE_ENV === 'production') {
-  console.warn('[extension-route-helpers] EXTENSION_CHROME_ID not set — CORS will deny cross-origin requests in production');
+const _configuredExtensionId =
+  _extensionId && isValidChromeExtensionId(_extensionId) ? _extensionId : null;
+
+if (process.env.NODE_ENV === 'production' && !_configuredExtensionId) {
+  throw new Error(
+    '[extension-route-helpers] EXTENSION_CHROME_ID must be set in production — extension CORS cannot be configured'
+  );
+}
+
+function getDevExtensionAllowlist(): Set<string> {
+  const raw = process.env.ALLOW_DEV_EXTENSION_IDS?.trim();
+  if (!raw) return new Set();
+  return new Set(
+    raw
+      .split(',')
+      .map((part) => part.trim())
+      .filter((part) => isValidChromeExtensionId(part)),
+  );
 }
 
 function resolveExtensionCorsOrigin(req?: Request): string {
-  if (_extensionId) return `chrome-extension://${_extensionId}`;
-  const fromHeader = req?.headers.get('X-Extension-Id')?.trim();
-  if (fromHeader && /^[a-z]{32}$/.test(fromHeader)) {
-    return `chrome-extension://${fromHeader}`;
+  if (process.env.NODE_ENV === 'production') {
+    return _configuredExtensionId ? `chrome-extension://${_configuredExtensionId}` : 'null';
   }
-  if (process.env.NODE_ENV !== 'production') return '*';
+
+  const fromHeader = req?.headers.get('X-Extension-Id')?.trim();
+  if (fromHeader && isValidChromeExtensionId(fromHeader)) {
+    const allowlist = getDevExtensionAllowlist();
+    if (
+      !_configuredExtensionId ||
+      fromHeader === _configuredExtensionId ||
+      allowlist.has(fromHeader)
+    ) {
+      return `chrome-extension://${fromHeader}`;
+    }
+  }
+
+  if (_configuredExtensionId) {
+    return `chrome-extension://${_configuredExtensionId}`;
+  }
+
   return 'null';
 }
 
@@ -26,8 +56,6 @@ export function getExtensionCorsHeaders(req?: Request): Record<string, string> {
     'Access-Control-Allow-Headers': 'Authorization, Content-Type, X-Extension-Id',
   };
 }
-
-export const EXTENSION_CORS_HEADERS = getExtensionCorsHeaders();
 
 function getAllowedWebAppOrigins(): string[] {
   const origins: string[] = [];
@@ -114,13 +142,14 @@ export async function getClerkIdFromExtensionBearer(req: Request): Promise<strin
 export async function requirePremiumExtension(req: Request): Promise<
   { ok: true; clerkId: string } | { ok: false; response: NextResponse }
 > {
+  const corsHeaders = getExtensionCorsHeaders(req);
   const clerkId = await getClerkIdFromExtensionBearer(req);
   if (!clerkId) {
     return {
       ok: false,
       response: NextResponse.json(
         { success: false, error: 'Unauthorized', code: 'EXTENSION_AUTH_REQUIRED' },
-        { status: 401, headers: EXTENSION_CORS_HEADERS }
+        { status: 401, headers: corsHeaders }
       ),
     };
   }
@@ -137,7 +166,7 @@ export async function requirePremiumExtension(req: Request): Promise<
             : 'No credits remaining. Purchase credits to use this feature.',
           code: isFreeUser ? 'FREE_PLAN_NOT_ALLOWED' : 'INSUFFICIENT_CREDITS',
         },
-        { status: 403, headers: EXTENSION_CORS_HEADERS }
+        { status: 403, headers: corsHeaders }
       ),
     };
   }

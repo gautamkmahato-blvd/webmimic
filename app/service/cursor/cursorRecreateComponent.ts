@@ -1,4 +1,5 @@
 import { RECREATE_FROM_SCREENSHOT_SYSTEM_PROMPT } from '@/lib/prompts/recreate_from_screenshot_prompt';
+import { fetchAllowedMediaUrl } from '@/lib/security/allowedMediaUrl';
 import {
   CursorApiError,
   getCursorApiKey,
@@ -42,28 +43,7 @@ function buildUserPrompt(html: string, css: string): string {
 async function screenshotUrlToImage(
   screenshotUrl: string
 ): Promise<{ data: string; mimeType: string }> {
-  if (screenshotUrl.startsWith('data:')) {
-    const match = screenshotUrl.match(/^data:([^;]+);base64,(.+)$/);
-    if (match?.[2]) {
-      return {
-        mimeType: match[1] || 'image/png',
-        data: match[2],
-      };
-    }
-    throw new Error('Invalid data URL for screenshot');
-  }
-
-  const response = await fetch(screenshotUrl);
-  if (!response.ok) {
-    throw new Error('Failed to download screenshot from URL');
-  }
-
-  const mimeType = response.headers.get('content-type')?.split(';')[0]?.trim() || 'image/png';
-  const buffer = Buffer.from(await response.arrayBuffer());
-  return {
-    data: buffer.toString('base64'),
-    mimeType,
-  };
+  return fetchAllowedMediaUrl(screenshotUrl, { allowDataUrl: true });
 }
 
 export default async function cursorRecreateComponent(

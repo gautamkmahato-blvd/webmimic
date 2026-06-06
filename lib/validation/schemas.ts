@@ -1,4 +1,6 @@
 import { z } from 'zod';
+import { getAllowedMediaUrlError } from '@/lib/security/allowedMediaUrl';
+import { getBase64MediaSizeError, MAX_UPLOAD_BASE64_CHARS } from '@/lib/security/base64MediaSize';
 
 // ─── Reusable field definitions ────────────────────────────────────────────────
 
@@ -7,6 +9,18 @@ const optionalString = (max: number) =>
 
 const requiredString = (max: number) =>
   z.string().min(1).max(max);
+
+const allowedCloudinaryMediaUrl = (max = 2048) =>
+  z
+    .string()
+    .min(1)
+    .max(max)
+    .superRefine((value, ctx) => {
+      const error = getAllowedMediaUrlError(value, { allowDataUrl: true });
+      if (error) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: error });
+      }
+    });
 
 // ─── Route schemas ─────────────────────────────────────────────────────────────
 
@@ -40,13 +54,13 @@ export const RecreateComponentSchema = z.object({
 export const RecreateFromScreenshotSchema = z.object({
   html: requiredString(500_000),
   css: requiredString(200_000),
-  screenshotUrl: z.string().url().max(2048),
+  screenshotUrl: allowedCloudinaryMediaUrl(2048),
   idempotencyKey: requiredString(128),
 });
 
 export const AnalyzeVideoSchema = z.object({
-  videoUrl: requiredString(2048),
-  imageUrl: requiredString(2048),
+  videoUrl: allowedCloudinaryMediaUrl(2048),
+  imageUrl: allowedCloudinaryMediaUrl(2048),
   code: requiredString(500_000),
   operationType: z.enum(['lottie-animations', 'ai-recreate']),
   idempotencyKey: requiredString(128),
@@ -70,6 +84,26 @@ export const PlanSubscribeSchema = z.object({
   planId: requiredString(200),
 });
 
+const uploadVideoDataUrl = z
+  .string()
+  .min(1)
+  .max(MAX_UPLOAD_BASE64_CHARS)
+  .superRefine((value, ctx) => {
+    const trimmed = value.trim();
+    if (!trimmed.startsWith('data:image/') && !trimmed.startsWith('data:video/')) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: 'videoData must be a data:image/* or data:video/* URL',
+      });
+      return;
+    }
+    const base64 = trimmed.replace(/^data:(?:image|video)\/[^;]+;base64,/, '');
+    const sizeError = getBase64MediaSizeError(base64);
+    if (sizeError) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: sizeError });
+    }
+  });
+
 export const UploadVideoSchema = z.object({
-  videoData: requiredString(10_000_000), // base64 data URL
+  videoData: uploadVideoDataUrl,
 });

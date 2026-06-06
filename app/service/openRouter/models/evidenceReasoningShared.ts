@@ -16,6 +16,12 @@ export type EvidenceReasoningInput = {
   imageUrl: string;
 };
 
+/** Max decoded screenshot size when sent as a data URL (bytes). */
+export const MAX_EVIDENCE_SCREENSHOT_BYTES = 12 * 1024 * 1024;
+
+/** Max characters per text field in the evidence payload. */
+export const MAX_EVIDENCE_TEXT_FIELD_CHARS = 2_000_000;
+
 export type EvidenceReasoningResult = {
   status: boolean;
   model: string;
@@ -134,6 +140,43 @@ export function validateEvidenceRequiredInputs(
       ok: false,
       message: `Missing required inputs: ${missing.join(', ')}`,
     };
+  }
+
+  return { ok: true };
+}
+
+export function validateEvidencePayloadLimits(
+  input: EvidenceReasoningInput,
+): { ok: true } | { ok: false; message: string } {
+  const textFields: Array<{ name: string; value: string; max: number }> = [
+    { name: 'designMd', value: input.designMd, max: MAX_EVIDENCE_TEXT_FIELD_CHARS },
+    { name: 'interactive', value: input.interactiveJson, max: MAX_EVIDENCE_TEXT_FIELD_CHARS },
+    { name: 'elementSamples', value: input.elementSamplesJson, max: MAX_EVIDENCE_TEXT_FIELD_CHARS },
+  ];
+
+  for (const field of textFields) {
+    if (field.value.length > field.max) {
+      return {
+        ok: false,
+        message: `${field.name} exceeds maximum size (${field.max} characters)`,
+      };
+    }
+  }
+
+  const imageUrl = input.imageUrl.trim();
+  if (imageUrl.startsWith('data:image/')) {
+    const buffer = parseScreenshotDataUrl(imageUrl);
+    if (!buffer) {
+      return { ok: false, message: 'Invalid or empty screenshot data URL' };
+    }
+    if (buffer.length > MAX_EVIDENCE_SCREENSHOT_BYTES) {
+      return {
+        ok: false,
+        message: `screenshot exceeds maximum size (${MAX_EVIDENCE_SCREENSHOT_BYTES} bytes)`,
+      };
+    }
+  } else if (imageUrl.length > 8_192) {
+    return { ok: false, message: 'screenshot URL exceeds maximum length' };
   }
 
   return { ok: true };

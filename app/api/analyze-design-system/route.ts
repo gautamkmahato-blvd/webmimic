@@ -1,9 +1,14 @@
 import { NextResponse } from 'next/server';
 import deepseekV4Flash from '@/app/service/openRouter/deepseekV4Flash';
-import { EXTENSION_CORS_HEADERS, getClerkIdFromExtensionBearer } from '@/lib/extension-route-helpers';
-import { ratelimit } from '@/lib/upstash/rateLimiter';
+import { getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
+import {
+  finalizeDesignAnalysisReservation,
+  requireExtensionLlmAccess,
+  reserveDesignAnalysisQuota,
+} from '@/lib/extension-llm-access';
+import { getAllowedMediaUrlError } from '@/lib/security/allowedMediaUrl';
 
-const MAX_PROMPT_CHARS = 5_000_000;
+const MAX_PROMPT_CHARS = 2_000_000;
 
 function summarizeUrl(url: string): { chars: number; host: string; pathSuffix: string } {
   try {
@@ -120,8 +125,8 @@ function logInputSummary(body: unknown, requestId: string): void {
   });
 }
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: EXTENSION_CORS_HEADERS });
+export async function OPTIONS(req: Request) {
+  return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
 }
 
 function resolvePrompt(body: unknown): { ok: true; prompt: string; imageUrls?: string[] } | { ok: false; error: string } {
@@ -146,6 +151,15 @@ function resolvePrompt(body: unknown): { ok: true; prompt: string; imageUrls?: s
     if (!designMd) return { ok: false, error: 'designMd must not be empty' };
     if (!desktopScreenshotUrl) return { ok: false, error: 'desktopScreenshotUrl must not be empty' };
     if (!mobileScreenshotUrl) return { ok: false, error: 'mobileScreenshotUrl must not be empty' };
+
+    const desktopUrlError = getAllowedMediaUrlError(desktopScreenshotUrl);
+    if (desktopUrlError) {
+      return { ok: false, error: `desktopScreenshotUrl: ${desktopUrlError}` };
+    }
+    const mobileUrlError = getAllowedMediaUrlError(mobileScreenshotUrl);
+    if (mobileUrlError) {
+      return { ok: false, error: `mobileScreenshotUrl: ${mobileUrlError}` };
+    }
 
     const prompt = [
       '## Denoised raw tokens (JSON)',
@@ -208,34 +222,27 @@ export async function POST(request: Request) {
   const requestId = `analyze-design-system-${Date.now()}`;
   console.log(`[${requestId}] POST /api/analyze-design-system received`);
 
+  const access = await requireExtensionLlmAccess(request);
+  if (!access.ok) return access.response;
+  const { clerkId, cors } = access;
+
   try {
-    const clerkId = await getClerkIdFromExtensionBearer(request);
-    if (!clerkId) {
-      console.warn(`[${requestId}] Unauthorized`);
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized', code: 'EXTENSION_AUTH_REQUIRED' },
-        { status: 401, headers: EXTENSION_CORS_HEADERS },
-      );
-    }
-
-    const { success: rateLimitOk } = await ratelimit.limit(clerkId);
-    if (!rateLimitOk) {
-      console.warn(`[${requestId}] Rate limited: clerkId=${clerkId}`);
-      return NextResponse.json(
-        { success: false, error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
-        { status: 429, headers: EXTENSION_CORS_HEADERS },
-      );
-    }
-
     let body: unknown;
     try {
       body = await request.json();
     } catch {
       return NextResponse.json(
         { success: false, error: 'invalid_body', message: 'Invalid JSON body' },
-        { status: 400, headers: EXTENSION_CORS_HEADERS },
+        { status: 400, headers: cors },
       );
     }
+
+    const rawIdempotencyKey =
+      body && typeof body === 'object' && !Array.isArray(body)
+        ? (body as Record<string, unknown>).idempotencyKey
+        : undefined;
+    const idempotencyKey =
+      typeof rawIdempotencyKey === 'string' ? rawIdempotencyKey : undefined;
 
     logInputSummary(body, requestId);
 
@@ -243,7 +250,7 @@ export async function POST(request: Request) {
     if (parsed.ok === false) {
       return NextResponse.json(
         { success: false, error: 'validation_error', message: parsed.error },
-        { status: 400, headers: EXTENSION_CORS_HEADERS },
+        { status: 400, headers: cors },
       );
     }
 
@@ -252,34 +259,50 @@ export async function POST(request: Request) {
       console.error(`[${requestId}] OPENROUTER_API_KEY is missing or empty`);
       return NextResponse.json(
         { status: false, statusText: 'OPENROUTER_API_KEY is not configured or is empty.' },
-        { status: 500, headers: EXTENSION_CORS_HEADERS },
+        { status: 500, headers: cors },
       );
     }
 
-    console.log(`[${requestId}] Calling deepseekV4Flash, promptLength=${parsed.prompt.length}`);
-    const modelResponse = await deepseekV4Flash(parsed.prompt, parsed.imageUrls ?? []);
-    console.log(`[${requestId}] deepseekV4Flash returned`, {
-      status: modelResponse.status,
-      message: modelResponse.message,
-      resultLength: modelResponse.result?.length ?? 0,
-    });
+    const quota = await reserveDesignAnalysisQuota(clerkId, idempotencyKey, cors);
+    if (!quota.ok) return quota.response;
+    const { reservationId } = quota;
 
-    if (!modelResponse.status) {
+    try {
+      console.log(`[${requestId}] Calling deepseekV4Flash, promptLength=${parsed.prompt.length}`);
+      const modelResponse = await deepseekV4Flash(parsed.prompt, parsed.imageUrls ?? []);
+      console.log(`[${requestId}] deepseekV4Flash returned`, {
+        status: modelResponse.status,
+        message: modelResponse.message,
+        resultLength: modelResponse.result?.length ?? 0,
+      });
+
+      if (!modelResponse.status) {
+        await finalizeDesignAnalysisReservation(reservationId, false);
+        return NextResponse.json(
+          { status: false, statusText: modelResponse.message },
+          { status: 500, headers: cors },
+        );
+      }
+
+      await finalizeDesignAnalysisReservation(reservationId, true);
       return NextResponse.json(
-        { status: false, statusText: modelResponse.message },
-        { status: 500, headers: EXTENSION_CORS_HEADERS },
+        {
+          status: true,
+          analysis: modelResponse,
+          statusText: modelResponse.message,
+          reservationId,
+        },
+        { status: 200, headers: cors },
       );
+    } catch (error) {
+      await finalizeDesignAnalysisReservation(reservationId, false);
+      throw error;
     }
-
-    return NextResponse.json(
-      { status: true, analysis: modelResponse, statusText: modelResponse.message },
-      { status: 200, headers: EXTENSION_CORS_HEADERS },
-    );
   } catch (error) {
     console.error(`[${requestId}] Unexpected error`, error);
     return NextResponse.json(
       { status: false, statusText: 'Design system analysis failed' },
-      { status: 500, headers: EXTENSION_CORS_HEADERS },
+      { status: 500, headers: cors },
     );
   }
 }

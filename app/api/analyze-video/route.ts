@@ -1,17 +1,18 @@
 import { NextResponse } from "next/server";
 import openRouterAnalysis from "@/app/service/openRouterAnalysis";
-import { EXTENSION_CORS_HEADERS, getClerkIdFromExtensionBearer } from "@/lib/extension-route-helpers";
+import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/extension-route-helpers";
 import { parseBody } from "@/lib/validation/validate";
 import { AnalyzeVideoSchema } from "@/lib/validation/schemas";
 import { reserveQuota, confirmReservation, rollbackReservation } from "@/app/service/supabase/extension/reservationService";
 import { ratelimit } from "@/lib/upstash/rateLimiter";
 import cursorVideoAnalysis from "@/app/service/cursor/cursorVideoAnalysis";
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: EXTENSION_CORS_HEADERS });
+export async function OPTIONS(req: Request) {
+  return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
 }
 
 export async function POST(request: Request) {
+  const cors = getExtensionCorsHeaders(request);
   const requestId = `analyze-video-${Date.now()}`;
   console.log(`[${requestId}] ── POST /api/analyze-video received`);
 
@@ -22,7 +23,7 @@ export async function POST(request: Request) {
       console.warn(`[${requestId}] Step 1 FAILED: Unauthorized`);
       return NextResponse.json(
         { success: false, error: 'Unauthorized', code: 'EXTENSION_AUTH_REQUIRED' },
-        { status: 401, headers: EXTENSION_CORS_HEADERS }
+        { status: 401, headers: cors }
       );
     }
     console.log(`[${requestId}] Step 1 PASSED: clerkId=${clerkId}`);
@@ -32,13 +33,13 @@ export async function POST(request: Request) {
       console.warn(`[${requestId}] Rate limited: clerkId=${clerkId}`);
       return NextResponse.json(
         { success: false, error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
-        { status: 429, headers: EXTENSION_CORS_HEADERS }
+        { status: 429, headers: cors }
       );
     }
 
     // Validate body before deducting — invalid requests don't consume quota
     console.log(`[${requestId}] Step 2: Parsing and validating request body`);
-    const parsed = await parseBody(request, AnalyzeVideoSchema, EXTENSION_CORS_HEADERS);
+    const parsed = await parseBody(request, AnalyzeVideoSchema, cors);
     if (!parsed.ok) {
       console.warn(`[${requestId}] Step 2 FAILED: Body validation error`);
       return parsed.response;
@@ -52,7 +53,7 @@ export async function POST(request: Request) {
       console.error(`[${requestId}] Step 3 FAILED: CURSOR_API_KEY is missing or empty`);
       return NextResponse.json(
         { status: false, statusText: "CURSOR_API_KEY is not configured or is empty" },
-        { status: 500, headers: EXTENSION_CORS_HEADERS }
+        { status: 500, headers: cors }
       );
     }
     console.log(`[${requestId}] Step 3 PASSED: API key present`);
@@ -69,7 +70,7 @@ export async function POST(request: Request) {
               error: 'This feature requires a paid plan. Upgrade to access it.',
               code: 'PLAN_BLOCKED',
             },
-            { status: 403, headers: EXTENSION_CORS_HEADERS }
+            { status: 403, headers: cors }
           );
         case 'QUOTA_EXHAUSTED':
           return NextResponse.json(
@@ -78,22 +79,22 @@ export async function POST(request: Request) {
               error: 'Monthly quota exhausted. Upgrade your plan or wait until next month.',
               code: 'QUOTA_EXHAUSTED',
             },
-            { status: 402, headers: EXTENSION_CORS_HEADERS }
+            { status: 402, headers: cors }
           );
         case 'USER_NOT_FOUND':
           return NextResponse.json(
             { success: false, error: 'User not found', code: 'USER_NOT_FOUND' },
-            { status: 401, headers: EXTENSION_CORS_HEADERS }
+            { status: 401, headers: cors }
           );
         case 'CONCURRENT_MODIFICATION':
           return NextResponse.json(
             { success: false, error: 'Request conflict, please retry', code: 'CONCURRENT_MODIFICATION' },
-            { status: 409, headers: EXTENSION_CORS_HEADERS }
+            { status: 409, headers: cors }
           );
         default:
           return NextResponse.json(
             { success: false, error: 'Internal server error' },
-            { status: 500, headers: EXTENSION_CORS_HEADERS }
+            { status: 500, headers: cors }
           );
       }
     }
@@ -113,7 +114,7 @@ export async function POST(request: Request) {
         if (reservationId) await rollbackReservation(reservationId);
         return NextResponse.json(
           { status: false, statusText: modelResponse.message },
-          { status: 500, headers: EXTENSION_CORS_HEADERS }
+          { status: 500, headers: cors }
         );
       }
 
@@ -121,21 +122,21 @@ export async function POST(request: Request) {
       if (reservationId) await confirmReservation(reservationId);
       return NextResponse.json(
         { status: true, analysis: modelResponse, statusText: modelResponse.message, reservationId },
-        { status: 200, headers: EXTENSION_CORS_HEADERS }
+        { status: 200, headers: cors }
       );
     } catch (error) {
       console.error(`[${requestId}] Step 5 EXCEPTION: openRouterAnalysis threw an error, rolling back reservation`, error);
       if (reservationId) await rollbackReservation(reservationId);
       return NextResponse.json(
         { status: false, statusText: "Analysis failed" },
-        { status: 500, headers: EXTENSION_CORS_HEADERS }
+        { status: 500, headers: cors }
       );
     }
   } catch (error) {
     console.error(`[${requestId}] UNEXPECTED EXCEPTION in outer try-catch`, error);
     return NextResponse.json(
       { status: false, statusText: "Gemini request failed" },
-      { status: 500, headers: EXTENSION_CORS_HEADERS }
+      { status: 500, headers: cors }
     );
   }
 }

@@ -1,23 +1,24 @@
 import { NextResponse } from "next/server";
 import recreateComponent from "@/app/service/recreateComponent";
-import { EXTENSION_CORS_HEADERS, getClerkIdFromExtensionBearer } from "@/lib/extension-route-helpers";
+import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/extension-route-helpers";
 import { parseBody } from "@/lib/validation/validate";
 import { RecreateFromScreenshotSchema } from "@/lib/validation/schemas";
 import { reserveQuota, confirmReservation, rollbackReservation } from "@/app/service/supabase/extension/reservationService";
 import { ratelimit } from "@/lib/upstash/rateLimiter";
 import cursorRecreateComponent from "@/app/service/cursor/cursorRecreateComponent";
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: EXTENSION_CORS_HEADERS });
+export async function OPTIONS(req: Request) {
+  return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
 }
 
 export async function POST(request: Request) {
+  const cors = getExtensionCorsHeaders(request);
   try {
     const clerkId = await getClerkIdFromExtensionBearer(request);
     if (!clerkId) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized', code: 'EXTENSION_AUTH_REQUIRED' },
-        { status: 401, headers: EXTENSION_CORS_HEADERS }
+        { status: 401, headers: cors }
       );
     }
 
@@ -25,12 +26,12 @@ export async function POST(request: Request) {
     if (!rateLimitOk) {
       return NextResponse.json(
         { success: false, error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
-        { status: 429, headers: EXTENSION_CORS_HEADERS }
+        { status: 429, headers: cors }
       );
     }
 
     // Validate body before deducting — invalid requests don't consume quota
-    const parsed = await parseBody(request, RecreateFromScreenshotSchema, EXTENSION_CORS_HEADERS);
+    const parsed = await parseBody(request, RecreateFromScreenshotSchema, cors);
     if (!parsed.ok) return parsed.response;
     const { html, css, screenshotUrl, idempotencyKey } = parsed.data;
 
@@ -38,7 +39,7 @@ export async function POST(request: Request) {
     // if (!openrouterKey) {
     //   return NextResponse.json(
     //     { success: false, error: "OPENROUTER_API_KEY is not configured or is empty" },
-    //     { status: 500, headers: EXTENSION_CORS_HEADERS }
+    //     { status: 500, headers: cors }
     //   );
     // }
 
@@ -52,7 +53,7 @@ export async function POST(request: Request) {
               error: 'This feature requires a paid plan. Upgrade to access it.',
               code: 'PLAN_BLOCKED',
             },
-            { status: 403, headers: EXTENSION_CORS_HEADERS }
+            { status: 403, headers: cors }
           );
         case 'QUOTA_EXHAUSTED':
           return NextResponse.json(
@@ -61,22 +62,22 @@ export async function POST(request: Request) {
               error: 'Monthly quota exhausted. Upgrade your plan or wait until next month.',
               code: 'QUOTA_EXHAUSTED',
             },
-            { status: 402, headers: EXTENSION_CORS_HEADERS }
+            { status: 402, headers: cors }
           );
         case 'USER_NOT_FOUND':
           return NextResponse.json(
             { success: false, error: 'User not found', code: 'USER_NOT_FOUND' },
-            { status: 401, headers: EXTENSION_CORS_HEADERS }
+            { status: 401, headers: cors }
           );
         case 'CONCURRENT_MODIFICATION':
           return NextResponse.json(
             { success: false, error: 'Request conflict, please retry', code: 'CONCURRENT_MODIFICATION' },
-            { status: 409, headers: EXTENSION_CORS_HEADERS }
+            { status: 409, headers: cors }
           );
         default:
           return NextResponse.json(
             { success: false, error: 'Internal server error' },
-            { status: 500, headers: EXTENSION_CORS_HEADERS }
+            { status: 500, headers: cors }
           );
       }
     }
@@ -93,7 +94,7 @@ export async function POST(request: Request) {
         if (reservationId) await rollbackReservation(reservationId);
         return NextResponse.json(
           { success: false, error: result.message },
-          { status: 500, headers: EXTENSION_CORS_HEADERS }
+          { status: 500, headers: cors }
         );
       }
 
@@ -102,7 +103,7 @@ export async function POST(request: Request) {
       if (reservationId) await confirmReservation(reservationId);
       return NextResponse.json(
         { success: true, code, message: result.message, reservationId },
-        { headers: EXTENSION_CORS_HEADERS }
+        { headers: cors }
       );
     } catch (error) {
       console.error("Recreate from screenshot error:", error);
@@ -112,7 +113,7 @@ export async function POST(request: Request) {
           success: false,
           error: error instanceof Error ? error.message : "Recreate from screenshot failed",
         },
-        { status: 500, headers: EXTENSION_CORS_HEADERS }
+        { status: 500, headers: cors }
       );
     }
   } catch (error) {
@@ -122,7 +123,7 @@ export async function POST(request: Request) {
         success: false,
         error: error instanceof Error ? error.message : "Recreate from screenshot failed",
       },
-      { status: 500, headers: EXTENSION_CORS_HEADERS }
+      { status: 500, headers: cors }
     );
   }
 }

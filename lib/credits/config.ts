@@ -25,6 +25,8 @@ export const OPERATIONS = {
   LOTTIE_ANIMATIONS:   'lottie-animations',
   AI_RECREATE:         'ai-recreate',
   EXTRACT_TOKENS:      'extract-tokens',
+  DESIGN_ANALYSIS:     'design-analysis',
+  MEDIA_UPLOAD:        'media-upload',
 } as const;
 
 export type OperationId = (typeof OPERATIONS)[keyof typeof OPERATIONS];
@@ -42,6 +44,8 @@ export const PLAN_OPERATION_QUOTAS: Record<PlanKey, Record<OperationId, number |
     'lottie-animations':   10,
     'ai-recreate':         0,
     'extract-tokens':      10,
+    'design-analysis':     0,
+    'media-upload':        50,
   },
   BASIC: {
     'accessibility-audit': null,
@@ -49,6 +53,8 @@ export const PLAN_OPERATION_QUOTAS: Record<PlanKey, Record<OperationId, number |
     'lottie-animations':   100,
     'ai-recreate':         5,
     'extract-tokens':      100,
+    'design-analysis':     10,
+    'media-upload':        1000,
   },
   PRO: {
     'accessibility-audit': null,
@@ -56,6 +62,8 @@ export const PLAN_OPERATION_QUOTAS: Record<PlanKey, Record<OperationId, number |
     'lottie-animations':   null,
     'ai-recreate':         50,
     'extract-tokens':      null,
+    'design-analysis':     50,
+    'media-upload':        10000,
   },
   BASIC_ANNUALLY: {
     'accessibility-audit': null,
@@ -63,6 +71,8 @@ export const PLAN_OPERATION_QUOTAS: Record<PlanKey, Record<OperationId, number |
     'lottie-animations':   1500,
     'ai-recreate':         70,
     'extract-tokens':      1500,
+    'design-analysis':     70,
+    'media-upload':        15000,
   },
   PRO_ANNUALLY: {
     'accessibility-audit': null,
@@ -70,6 +80,8 @@ export const PLAN_OPERATION_QUOTAS: Record<PlanKey, Record<OperationId, number |
     'lottie-animations':   null,
     'ai-recreate':         700,
     'extract-tokens':      null,
+    'design-analysis':     700,
+    'media-upload':        100000,
   },
 };
 
@@ -81,6 +93,8 @@ export const PLAN_REQUIRES_PREMIUM: Record<OperationId, boolean> = {
   'lottie-animations':   false,
   'ai-recreate':         true,
   'extract-tokens':      false,
+  'design-analysis':     true,
+  'media-upload':        false,
 };
 
 /**

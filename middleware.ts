@@ -12,6 +12,8 @@ const isProtectedRoute = createRouteMatcher([
   '/design-systems(.*)',
   '/billing(.*)',
   '/convert(.*)',
+  '/design-md-converter(.*)',
+  '/test-qwen-reasoning(.*)',
 ]);
 
 export default clerkMiddleware(async (auth, req) => {

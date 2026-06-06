@@ -1,10 +1,14 @@
 import cloudinaryService from "@/app/service/cloudinaryService";
 import { NextResponse } from "next/server";
-import { EXTENSION_CORS_HEADERS, getClerkIdFromExtensionBearer } from "@/lib/extension-route-helpers";
+import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/extension-route-helpers";
 import { ratelimit } from "@/lib/upstash/rateLimiter";
+import {
+  refundMediaUploadQuota,
+  reserveMediaUploadQuota,
+} from "@/lib/extension-upload-access";
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: EXTENSION_CORS_HEADERS });
+export async function OPTIONS(req: Request) {
+  return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
 }
 
 /**
@@ -12,12 +16,15 @@ export async function OPTIONS() {
  * Expects multipart field `file` (PNG). Returns { url } — same shape as /api/upload-video.
  */
 export async function POST(request: Request) {
+  const cors = getExtensionCorsHeaders(request);
+  let clerkId: string | null = null;
+
   try {
-    const clerkId = await getClerkIdFromExtensionBearer(request);
+    clerkId = await getClerkIdFromExtensionBearer(request);
     if (!clerkId) {
       return NextResponse.json(
         { error: "Unauthorized", code: "EXTENSION_AUTH_REQUIRED" },
-        { status: 401, headers: EXTENSION_CORS_HEADERS }
+        { status: 401, headers: cors }
       );
     }
 
@@ -25,7 +32,7 @@ export async function POST(request: Request) {
     if (!rateLimitOk) {
       return NextResponse.json(
         { error: "Too many requests" },
-        { status: 429, headers: EXTENSION_CORS_HEADERS }
+        { status: 429, headers: cors }
       );
     }
 
@@ -34,46 +41,59 @@ export async function POST(request: Request) {
     if (!(file instanceof Blob) || file.size === 0) {
       return NextResponse.json(
         { error: "Missing or empty file field" },
-        { status: 400, headers: EXTENSION_CORS_HEADERS }
+        { status: 400, headers: cors }
       );
     }
+
+    const MAX_TILE_BYTES = 12 * 1024 * 1024;
+    if (file.size > MAX_TILE_BYTES) {
+      return NextResponse.json(
+        { error: "File exceeds maximum size (12 MB)" },
+        { status: 413, headers: cors }
+      );
+    }
+
+    const quota = await reserveMediaUploadQuota(clerkId, cors);
+    if (!quota.ok) return quota.response;
 
     const cloudName = process.env.CLOUDINARY_NAME?.trim();
     const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY?.trim();
     const cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET?.trim();
     if (!cloudName || !cloudinaryApiKey || !cloudinaryApiSecret) {
+      await refundMediaUploadQuota(clerkId);
       return NextResponse.json(
         {
           error:
             "Cloudinary is not configured (CLOUDINARY_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET required)",
         },
-        { status: 500, headers: EXTENSION_CORS_HEADERS }
+        { status: 500, headers: cors }
       );
     }
 
-    // No credit deduction — infrastructure upload for curated-spec evidence tiles.
     try {
       const buffer = Buffer.from(await file.arrayBuffer());
       const secureUrl = await cloudinaryService(buffer, "image");
-      return NextResponse.json({ url: secureUrl }, { headers: EXTENSION_CORS_HEADERS });
+      return NextResponse.json({ url: secureUrl }, { headers: cors });
     } catch (error) {
+      await refundMediaUploadQuota(clerkId);
       console.error("[upload-evidence-tile] upload error:", error);
       return NextResponse.json(
         {
           error: "Upload failed",
           details: error instanceof Error ? error.message : "Unknown error occurred",
         },
-        { status: 500, headers: EXTENSION_CORS_HEADERS }
+        { status: 500, headers: cors }
       );
     }
   } catch (error) {
+    if (clerkId) await refundMediaUploadQuota(clerkId);
     console.error("[upload-evidence-tile] unexpected error:", error);
     return NextResponse.json(
       {
         error: "Upload failed",
         details: error instanceof Error ? error.message : "Unknown error occurred",
       },
-      { status: 500, headers: EXTENSION_CORS_HEADERS }
+      { status: 500, headers: cors }
     );
   }
 }

@@ -10,7 +10,16 @@ export default function SignOutPage() {
   const { signOut } = useClerk();
 
   useEffect(() => {
-    void signOut({ redirectUrl: '/' });
+    async function runSignOut() {
+      try {
+        await fetch('/api/extension/revoke-token', { method: 'POST', credentials: 'include' });
+      } catch {
+        // Best-effort — Clerk sign-out still proceeds.
+      }
+      await signOut({ redirectUrl: '/' });
+    }
+
+    void runSignOut();
   }, [signOut]);
 
   return (

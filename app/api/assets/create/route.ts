@@ -52,6 +52,17 @@ export async function POST(req: NextRequest) {
     const userId = (userResp.result as { id: string }).id;
 
     const limitCheck = await checkAssetSaveLimit(userId);
+    if (limitCheck.error === 'DB_ERROR') {
+      return NextResponse.json(
+        {
+          success: false,
+          result: {},
+          error: 'service_unavailable',
+          message: 'Could not verify save limit. Please try again shortly.',
+        },
+        { status: 503, headers: corsHeaders }
+      );
+    }
     if (!limitCheck.allowed) {
       return NextResponse.json(
         {
@@ -84,7 +95,7 @@ export async function POST(req: NextRequest) {
     // Re-count after insert — if now over limit, compensate by deleting the just-inserted row.
     if (serviceResp.success && limitCheck.limit !== null) {
       const postCheck = await checkAssetSaveLimit(userId);
-      if (!postCheck.allowed) {
+      if (postCheck.error === 'DB_ERROR' || !postCheck.allowed) {
         const insertedId = (serviceResp.result as AssetRow).id;
         await deleteAssetById(insertedId, userId);
         return NextResponse.json(

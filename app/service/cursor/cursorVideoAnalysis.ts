@@ -1,4 +1,5 @@
 import { VIDEO_ANIMATION_RECONSTRUCTION_PROMPT } from '@/lib/prompts/video_generation_prompt';
+import { fetchAllowedMediaUrl } from '@/lib/security/allowedMediaUrl';
 import {
   CursorApiError,
   getCursorApiKey,
@@ -30,30 +31,8 @@ ${code}
 }
 
 async function urlToAttachment(url: string): Promise<CursorPromptImage> {
-  if (url.startsWith('data:')) {
-    const match = url.match(/^data:([^;]+);base64,(.+)$/);
-    if (match?.[2]) {
-      return {
-        mimeType: match[1] || 'application/octet-stream',
-        data: match[2],
-      };
-    }
-    throw new Error('Invalid data URL for media attachment');
-  }
-
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Failed to download media from URL (${response.status})`);
-  }
-
-  const mimeType =
-    response.headers.get('content-type')?.split(';')[0]?.trim() || 'application/octet-stream';
-  const buffer = Buffer.from(await response.arrayBuffer());
-
-  return {
-    data: buffer.toString('base64'),
-    mimeType,
-  };
+  const attachment = await fetchAllowedMediaUrl(url, { allowDataUrl: true });
+  return attachment;
 }
 
 export default async function cursorVideoAnalysis(

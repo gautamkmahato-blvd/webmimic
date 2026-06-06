@@ -100,7 +100,11 @@ async function decrementQuotaByUserId(
   }
 }
 
-export type ReservationActionResult = 'ok' | 'forbidden' | 'not_found';
+export type ReservationActionResult =
+  | 'ok'
+  | 'already_confirmed'
+  | 'forbidden'
+  | 'not_found';
 
 async function getUserIdForClerk(clerkId: string): Promise<string | null> {
   const { data: user, error } = await supabaseAdmin
@@ -125,12 +129,16 @@ export async function confirmReservationForClerk(
 
   const { data: reservation, error } = await supabaseAdmin
     .from('quota_reservations')
-    .select('user_id')
+    .select('user_id, status')
     .eq('id', reservationId)
     .maybeSingle();
 
   if (error || !reservation) return 'not_found';
   if (reservation.user_id !== userId) return 'forbidden';
+
+  const status = reservation.status as string;
+  if (status === 'confirmed') return 'already_confirmed';
+  if (status !== 'pending') return 'not_found';
 
   await confirmReservation(reservationId);
   return 'ok';

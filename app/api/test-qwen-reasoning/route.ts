@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { auth } from '@clerk/nextjs/server';
 import geminiReasoning from '@/app/service/openRouter/models/geminiReasoning';
 import grok4Reasoning from '@/app/service/openRouter/models/grok4Reasoning';
 import grokReasoning from '@/app/service/openRouter/models/grokReasoning';
@@ -12,6 +13,7 @@ import {
   type TestReasoningResult,
 } from '@/app/service/openRouter/models/testReasoningShared';
 import zlmReasoning from '@/app/service/openRouter/models/zlmReasoning';
+import { ratelimit } from '@/lib/upstash/rateLimiter';
 
 const MODEL_SERVICES = {
   qwen: testQwenReasoning,
@@ -38,6 +40,26 @@ export async function POST(request: Request) {
   console.log(`[${requestId}] POST /api/test-qwen-reasoning`);
 
   try {
+    if (process.env.NODE_ENV === 'production' && process.env.ALLOW_TEST_QWEN_REASONING !== 'true') {
+      return NextResponse.json(
+        { success: false, error: 'This endpoint is disabled in production.' },
+        { status: 403 },
+      );
+    }
+
+    const { userId } = await auth();
+    if (!userId) {
+      return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const { success: rateLimitOk } = await ratelimit.limit(userId);
+    if (!rateLimitOk) {
+      return NextResponse.json(
+        { success: false, error: 'Too many requests. Please slow down.' },
+        { status: 429 },
+      );
+    }
+
     const body = await request.json().catch(() => ({}));
     const modelKey = resolveModelKey(
       body && typeof body === 'object' && !Array.isArray(body)

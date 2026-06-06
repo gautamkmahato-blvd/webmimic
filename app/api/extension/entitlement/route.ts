@@ -1,18 +1,19 @@
 import { NextResponse } from 'next/server';
-import { EXTENSION_CORS_HEADERS, getClerkIdFromExtensionBearer } from '@/lib/extension-route-helpers';
+import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
 import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
 
-export async function OPTIONS() {
-  return new NextResponse(null, { status: 204, headers: EXTENSION_CORS_HEADERS });
+export async function OPTIONS(req: Request) {
+  return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
 }
 
 export async function GET(req: Request) {
+  const cors = getExtensionCorsHeaders(req);
   try {
     const clerkId = await getClerkIdFromExtensionBearer(req);
     if (!clerkId) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized', code: 'EXTENSION_AUTH_REQUIRED' },
-        { status: 401, headers: EXTENSION_CORS_HEADERS }
+        { status: 401, headers: cors }
       );
     }
 
@@ -24,13 +25,13 @@ export async function GET(req: Request) {
         premium,
         plan: premium ? 'paid' : 'free',
       },
-      { status: 200, headers: EXTENSION_CORS_HEADERS }
+      { status: 200, headers: cors }
     );
   } catch (e: unknown) {
     console.error('[extension/entitlement]', e);
     return NextResponse.json(
       { success: false, error: 'Internal error' },
-      { status: 500, headers: EXTENSION_CORS_HEADERS }
+      { status: 500, headers: cors }
     );
   }
 }

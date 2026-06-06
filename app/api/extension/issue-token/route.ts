@@ -3,27 +3,56 @@ import { SignJWT } from 'jose';
 import { createPrivateKey } from 'node:crypto';
 import { NextResponse } from 'next/server';
 
-import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
-import { getExtensionAudienceFromRequest, getExtensionJwtTtlSeconds, getIssuer } from '@/lib/extension-jwt';
+import {
+  getExtensionJwtTtlSeconds,
+  getIssuer,
+  resolveExtensionAudienceForMint,
+} from '@/lib/extension-jwt';
+import { getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
+import { ratelimit } from '@/lib/upstash/rateLimiter';
 
 /**
  * Issues a custom RS256 JWT for the browser extension (not Clerk's session JWT).
  * POST with an active Clerk session (cookies). Used from the web app callback flow.
  */
 export async function POST(request: Request) {
+  const cors = getExtensionCorsHeaders(request);
   try {
     const { userId } = await auth();
     if (!userId) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401, headers: cors });
+    }
+
+    const { success: rateLimitOk } = await ratelimit.limit(`issue-token:${userId}`);
+    if (!rateLimitOk) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
+        { status: 429, headers: cors },
+      );
     }
 
     const pem = process.env.EXTENSION_JWT_PRIVATE_KEY?.trim();
-    const aud = getExtensionAudienceFromRequest(request);
-    if (!pem || !aud) {
-      console.error(
-        '[issue-token] Missing EXTENSION_JWT_PRIVATE_KEY or extension audience (X-Extension-Id / EXTENSION_CHROME_ID)'
-      );
-      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+    if (!pem) {
+      console.error('[issue-token] Missing EXTENSION_JWT_PRIVATE_KEY');
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500, headers: cors });
+    }
+
+    const audience = resolveExtensionAudienceForMint(request);
+    if (!audience.ok) {
+      if (audience.code === 'EXTENSION_ID_NOT_ALLOWED') {
+        return NextResponse.json(
+          { error: 'Extension id is not authorized', code: 'EXTENSION_ID_NOT_ALLOWED' },
+          { status: 403, headers: cors },
+        );
+      }
+      if (audience.code === 'INVALID_EXTENSION_ID') {
+        return NextResponse.json(
+          { error: 'Invalid X-Extension-Id header', code: 'INVALID_EXTENSION_ID' },
+          { status: 400, headers: cors },
+        );
+      }
+      console.error('[issue-token] Missing EXTENSION_CHROME_ID or extension audience configuration');
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500, headers: cors });
     }
 
     let privateKey: ReturnType<typeof createPrivateKey>;
@@ -31,29 +60,24 @@ export async function POST(request: Request) {
       privateKey = createPrivateKey(pem);
     } catch (e) {
       console.error('[issue-token] Invalid EXTENSION_JWT_PRIVATE_KEY', e);
-      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500, headers: cors });
     }
 
-    const { premium } = await hasPremiumAccessForClerkId(userId);
-    const plan = premium ? 'paid' : 'free';
     const iss = getIssuer(request);
     const now = Math.floor(Date.now() / 1000);
 
-    const token = await new SignJWT({
-      sub: userId,
-      plan,
-    })
+    const token = await new SignJWT({ sub: userId })
       .setProtectedHeader({ alg: 'RS256' })
       .setIssuer(iss)
-      .setAudience(aud)
+      .setAudience(audience.aud)
       .setIssuedAt(now)
       .setExpirationTime(now + getExtensionJwtTtlSeconds())
       .sign(privateKey);
 
-    return NextResponse.json({ token });
+    return NextResponse.json({ token }, { headers: cors });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Failed to issue token';
     console.error('[issue-token]', e);
-    return NextResponse.json({ error: msg }, { status: 500 });
+    return NextResponse.json({ error: msg }, { status: 500, headers: cors });
   }
 }
