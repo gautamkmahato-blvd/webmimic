@@ -11,6 +11,10 @@ export const CREDIT_FEATURES = {
   RECREATE_WITH_ANIMATIONS: 'recreate-with-animations',
   /** Extract Lottie animations (analyze-video lottie-animations) */
   LOTTIE_EXTRACTION: 'lottie-extraction',
+  /** Design Chat (OpenRouter) */
+  DESIGN_CHAT: 'design-chat',
+  /** Design Chat (Cursor agent) */
+  DESIGN_CHAT_CURSOR: 'design-chat-cursor',
 } as const;
 
 export type CreditFeatureId = (typeof CREDIT_FEATURES)[keyof typeof CREDIT_FEATURES];
@@ -21,6 +25,8 @@ export const FEATURE_CREDIT_COSTS: Record<CreditFeatureId, number> = {
   [CREDIT_FEATURES.RECREATE_FROM_SCREENSHOT]: 3,
   [CREDIT_FEATURES.RECREATE_WITH_ANIMATIONS]: 5,
   [CREDIT_FEATURES.LOTTIE_EXTRACTION]: 3,
+  [CREDIT_FEATURES.DESIGN_CHAT]: 2,
+  [CREDIT_FEATURES.DESIGN_CHAT_CURSOR]: 5,
 };
 
 export function getFeatureCreditCost(featureId: CreditFeatureId): number {

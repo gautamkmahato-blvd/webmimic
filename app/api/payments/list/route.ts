@@ -3,6 +3,7 @@ import { currentUser } from '@clerk/nextjs/server';
 import getUserPayments from '@/app/service/supabase/payments/getUserPayments';
 import { findUserByClerkId } from '@/app/service/supabase/user/findUserByClerkId';
 import type { ApiResponse } from '@/types/ApiResponse';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 export async function POST(req: NextRequest) {
   try {
@@ -15,6 +16,9 @@ export async function POST(req: NextRequest) {
         { status: 401 }
       );
     }
+
+    const rateLimited = await enforceRateLimit('payments-list', clerkId);
+    if (rateLimited) return rateLimited;
 
     const userResp = await findUserByClerkId(clerkId);
 

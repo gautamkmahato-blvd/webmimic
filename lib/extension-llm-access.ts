@@ -3,7 +3,7 @@ import {
   getClerkIdFromExtensionBearer,
   getExtensionCorsHeaders,
 } from '@/lib/extension-route-helpers';
-import { ratelimit } from '@/lib/upstash/rateLimiter';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 /** Extension auth + rate limit. Credit charging is handled per route after validation. */
 export async function requireExtensionLlmAccess(req: Request): Promise<
@@ -22,15 +22,9 @@ export async function requireExtensionLlmAccess(req: Request): Promise<
     };
   }
 
-  const { success: rateLimitOk } = await ratelimit.limit(clerkId);
-  if (!rateLimitOk) {
-    return {
-      ok: false,
-      response: NextResponse.json(
-        { success: false, error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
-        { status: 429, headers: cors },
-      ),
-    };
+  const rateLimited = await enforceRateLimit('extension-llm', clerkId, cors);
+  if (rateLimited) {
+    return { ok: false, response: rateLimited };
   }
 
   return { ok: true, clerkId, cors };

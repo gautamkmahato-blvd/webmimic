@@ -3,6 +3,7 @@ import { fetchAllAssets } from '@/app/service/supabase/assets/fetchAllAssets';
 import { findUserByClerkId } from '@/app/service/supabase/user/findUserByClerkId';
 import type { ApiResponse } from '@/types/ApiResponse';
 import { resolveClerkId, getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 export async function OPTIONS(req: Request): Promise<NextResponse> {
   return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
@@ -24,6 +25,9 @@ export async function GET(req: Request) {
         { status: 401, headers: cors }
       );
     }
+
+    const rateLimited = await enforceRateLimit('assets-list', clerkId, cors);
+    if (rateLimited) return rateLimited;
 
     const userResp = await findUserByClerkId(clerkId);
 

@@ -1,3 +1,4 @@
+import { NextResponse } from 'next/server';
 import { Redis } from '@upstash/redis';
 import { Ratelimit } from '@upstash/ratelimit';
 
@@ -26,3 +27,30 @@ export const ratelimit = redis
   : {
       limit: async () => ({ success: true, limit: 5, remaining: 5, reset: 0 }),
     };
+
+/** Per-route + per-user key so parallel reads (assets list, credits, etc.) do not share one bucket. */
+export function rateLimitKey(scope: string, userId: string): string {
+  return `${scope}:${userId}`;
+}
+
+/**
+ * Returns a 429 NextResponse when limited, otherwise null.
+ * @param scope Route identifier (e.g. "design-chat", "assets-list")
+ * @param userId Clerk user id
+ */
+export async function enforceRateLimit(
+  scope: string,
+  userId: string,
+  headers?: Record<string, string>,
+): Promise<NextResponse | null> {
+  const { success } = await ratelimit.limit(rateLimitKey(scope, userId));
+  if (success) return null;
+  return NextResponse.json(
+    {
+      success: false,
+      error: 'Too many requests. Please slow down.',
+      code: 'RATE_LIMITED',
+    },
+    { status: 429, headers: headers ?? {} },
+  );
+}

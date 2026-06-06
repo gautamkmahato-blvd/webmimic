@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import { convertUiInspectorToGoogleDesignMd } from '@/lib/design-md/convertToGoogleDesignMd';
-import { ratelimit } from '@/lib/upstash/rateLimiter';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 export async function POST(request: Request) {
   try {
@@ -10,13 +10,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
     }
 
-    const { success: rateLimitOk } = await ratelimit.limit(userId);
-    if (!rateLimitOk) {
-      return NextResponse.json(
-        { success: false, error: 'Too many requests. Please slow down.' },
-        { status: 429 },
-      );
-    }
+    const rateLimited = await enforceRateLimit('convert-design-md', userId);
+    if (rateLimited) return rateLimited;
 
     let body: { markdown?: string };
     try {

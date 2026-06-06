@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import fs from 'fs/promises';
 import path from 'path';
-import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
 import { getWebAppCorsHeaders } from '@/lib/extension-route-helpers';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getWebAppCorsHeaders(req) });
@@ -21,14 +21,8 @@ export async function GET(req: Request) {
       );
     }
 
-    // ── PREMIUM GATE ───────────────────────────────────────────
-    const { premium } = await hasPremiumAccessForClerkId(userId);
-    if (!premium) {
-      return NextResponse.json(
-        { success: false, error: 'Premium subscription required to use Design Chat.' },
-        { status: 403, headers: corsHeaders }
-      );
-    }
+    const rateLimited = await enforceRateLimit('design-chat-files', userId, corsHeaders);
+    if (rateLimited) return rateLimited;
 
     const dir = path.join(process.cwd(), 'public', 'files');
     const entries = await fs.readdir(dir);

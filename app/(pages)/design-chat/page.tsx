@@ -69,8 +69,6 @@ export default function DesignChatPage() {
         if (r.ok && data.success && Array.isArray(data.files)) {
           setFiles(data.files);
           setFilesError(null);
-        } else if (r.status === 403) {
-          setFilesError("Premium subscription required to use Design Chat.");
         } else if (r.status === 401) {
           setFilesError("Please sign in to use Design Chat.");
         } else {
@@ -208,8 +206,10 @@ export default function DesignChatPage() {
         replyText = data.result;
       } else if (res.status === 401) {
         replyText = "You need to be signed in to use Design Chat.";
-      } else if (res.status === 403) {
-        replyText = "This is a premium feature. Upgrade your plan to continue.";
+      } else if (res.status === 402) {
+        replyText =
+          data?.error ||
+          "Not enough credits. Purchase credits to continue using Design Chat.";
       } else {
         replyText = `Error: ${data?.error || "request failed"}`;
       }
@@ -254,8 +254,8 @@ export default function DesignChatPage() {
               <Sparkles className="h-3.5 w-3.5 text-white" />
             </div>
             <span className="text-base font-semibold tracking-tight">design.chat</span>
-            <span className="ml-2 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-800">
-              Premium
+            <span className="ml-2 rounded-full border border-neutral-200 bg-neutral-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-neutral-600">
+              2 credits / message
             </span>
           </div>
 
@@ -287,11 +287,11 @@ export default function DesignChatPage() {
           </p>
         </section>
 
-        {/* ── Auth/Premium states ─────────────────────────────── */}
+        {/* ── Auth states ─────────────────────────────────────── */}
         {isLoaded && !isSignedIn && (
           <div className="mb-6 rounded-2xl border border-neutral-200 bg-neutral-50 p-6 text-center">
             <p className="mb-3 text-sm text-neutral-700">
-              Sign in to use Design Chat — this is a premium feature.
+              Sign in to use Design Chat. Each message uses credits from your balance.
             </p>
             <SignInButton mode="modal">
               <button className="rounded-full bg-neutral-900 px-5 py-2 text-sm font-medium text-white hover:bg-neutral-700">

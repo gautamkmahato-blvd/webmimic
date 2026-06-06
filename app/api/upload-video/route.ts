@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/extension-route-helpers";
 import { parseBody } from "@/lib/validation/validate";
 import { UploadVideoSchema } from "@/lib/validation/schemas";
-import { ratelimit } from "@/lib/upstash/rateLimiter";
+import { enforceRateLimit } from "@/lib/upstash/rateLimiter";
 import { getBase64MediaSizeError, MAX_UPLOAD_MEDIA_BYTES } from "@/lib/security/base64MediaSize";
 
 export async function OPTIONS(req: Request) {
@@ -37,13 +37,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const { success: rateLimitOk } = await ratelimit.limit(clerkId);
-    if (!rateLimitOk) {
-      return NextResponse.json(
-        { error: 'Too many requests' },
-        { status: 429, headers: cors }
-      );
-    }
+    const rateLimited = await enforceRateLimit('upload-video', clerkId, cors);
+    if (rateLimited) return rateLimited;
 
     const parsed = await parseBody(request, UploadVideoSchema, cors);
     if (!parsed.ok) return parsed.response;

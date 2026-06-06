@@ -1,7 +1,5 @@
-import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import { getClerkIdFromExtensionJwt, isValidChromeExtensionId } from '@/lib/extension-jwt';
-import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
 
 const _extensionId = process.env.EXTENSION_CHROME_ID?.trim();
 const _configuredExtensionId =
@@ -134,41 +132,4 @@ export async function getClerkIdFromExtensionBearer(req: Request): Promise<strin
   const bearer = extractBearerToken(req);
   if (!bearer) return null;
   return getClerkIdFromExtensionJwt(req, bearer);
-}
-
-/**
- * Restricted extension features: valid Clerk session token + Premium plan.
- */
-export async function requirePremiumExtension(req: Request): Promise<
-  { ok: true; clerkId: string } | { ok: false; response: NextResponse }
-> {
-  const corsHeaders = getExtensionCorsHeaders(req);
-  const clerkId = await getClerkIdFromExtensionBearer(req);
-  if (!clerkId) {
-    return {
-      ok: false,
-      response: NextResponse.json(
-        { success: false, error: 'Unauthorized', code: 'EXTENSION_AUTH_REQUIRED' },
-        { status: 401, headers: corsHeaders }
-      ),
-    };
-  }
-  const { premium, planType } = await hasPremiumAccessForClerkId(clerkId);
-  if (!premium) {
-    const isFreeUser = planType === 'Free';
-    return {
-      ok: false,
-      response: NextResponse.json(
-        {
-          success: false,
-          error: isFreeUser
-            ? 'This feature requires a paid plan. Upgrade to access it.'
-            : 'No credits remaining. Purchase credits to use this feature.',
-          code: isFreeUser ? 'FREE_PLAN_NOT_ALLOWED' : 'INSUFFICIENT_CREDITS',
-        },
-        { status: 403, headers: corsHeaders }
-      ),
-    };
-  }
-  return { ok: true, clerkId };
 }

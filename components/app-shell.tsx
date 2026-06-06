@@ -3,15 +3,13 @@
 import { usePathname } from "next/navigation";
 import { Sidebar } from "./sidebar";
 
+/** Routes that exist in the app and use the dashboard sidebar (see sidebar.tsx navLinks). */
 const APP_PATHS = [
   "/assets",
-  "/convert",
-  "/design",
   "/design-systems",
   "/design-chat-cursor",
-  "/kit",
   "/motion",
-  "/billing",
+  "/credits",
 ];
 
 export function AppShell({ children }: { children: React.ReactNode }) {

@@ -4,6 +4,7 @@ import createOrUpdateUser from '@/app/service/supabase/user/createOrUpdateUser';
 import { grantFreeSignupCredits } from '@/app/service/supabase/user/grantFreeSignupCredits';
 import { parseBody } from '@/lib/validation/validate';
 import { UserCreateSchema } from '@/lib/validation/schemas';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
@@ -15,6 +16,9 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
         { status: 401 }
       );
     }
+
+    const rateLimited = await enforceRateLimit('user-create', userId);
+    if (rateLimited) return rateLimited;
 
     const parsed = await parseBody(req, UserCreateSchema);
     if (!parsed.ok) return parsed.response;

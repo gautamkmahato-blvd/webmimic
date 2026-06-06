@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/extension-route-helpers";
 import { parseBody } from "@/lib/validation/validate";
 import { RecreateFromScreenshotSchema } from "@/lib/validation/schemas";
-import { ratelimit } from "@/lib/upstash/rateLimiter";
+import { enforceRateLimit } from "@/lib/upstash/rateLimiter";
 import cursorRecreateComponent from "@/app/service/cursor/cursorRecreateComponent";
 import { CREDIT_FEATURES } from "@/lib/credits/config";
 import { chargeFeatureCredits, refundFeatureCredits } from "@/lib/credits/extensionCredits";
@@ -23,13 +23,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const { success: rateLimitOk } = await ratelimit.limit(clerkId);
-    if (!rateLimitOk) {
-      return NextResponse.json(
-        { success: false, error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
-        { status: 429, headers: cors }
-      );
-    }
+    const rateLimited = await enforceRateLimit('recreate-from-screenshot', clerkId, cors);
+    if (rateLimited) return rateLimited;
 
     const parsed = await parseBody(request, RecreateFromScreenshotSchema, cors);
     if (!parsed.ok) return parsed.response;

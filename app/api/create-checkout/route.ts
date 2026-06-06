@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { currentUser } from '@clerk/nextjs/server';
 import { getPolarAccessTokenForApi, getPolarCheckoutApiUrl, isPolarSandbox } from '@/config/polar/env';
 import { resolvePlanForCheckout } from '@/app/service/supabase/billing/polar/resolvePlanForCheckout';
-import { ratelimit } from '@/lib/upstash/rateLimiter';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 import { parseBody } from '@/lib/validation/validate';
 import { CreateCheckoutSchema } from '@/lib/validation/schemas';
 
@@ -31,13 +31,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { success } = await ratelimit.limit(clerkId);
-    if (!success) {
-      return NextResponse.json(
-        { success: false, error: 'Too many requests' },
-        { status: 429 }
-      );
-    }
+    const rateLimited = await enforceRateLimit('create-checkout', clerkId);
+    if (rateLimited) return rateLimited;
 
     const parsed = await parseBody(request, CreateCheckoutSchema);
     if (!parsed.ok) return parsed.response;

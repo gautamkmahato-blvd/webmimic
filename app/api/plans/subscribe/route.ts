@@ -3,6 +3,7 @@ import { currentUser } from '@clerk/nextjs/server';
 import { billingService } from '@/app/service/supabase/billing/billingService';
 import { parseBody } from '@/lib/validation/validate';
 import { PlanSubscribeSchema } from '@/lib/validation/schemas';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 export const runtime = 'nodejs';
 
@@ -22,6 +23,9 @@ export async function POST(req: Request) {
         { status: 401 }
       );
     }
+
+    const rateLimited = await enforceRateLimit('plans-subscribe', clerkId);
+    if (rateLimited) return rateLimited;
 
     if (process.env.NODE_ENV === 'production') {
       return NextResponse.json(

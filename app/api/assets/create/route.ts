@@ -5,6 +5,7 @@ import type { ApiResponse } from '@/types/ApiResponse';
 import { resolveClerkId, getBearerRouteCorsHeaders } from '@/lib/extension-route-helpers';
 import { parseBody } from '@/lib/validation/validate';
 import { AssetCreateSchema } from '@/lib/validation/schemas';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 export async function OPTIONS(req: NextRequest): Promise<NextResponse> {
   return new NextResponse(null, { status: 204, headers: getBearerRouteCorsHeaders(req) });
@@ -26,6 +27,9 @@ export async function POST(req: NextRequest) {
         { status: 401, headers: corsHeaders }
       );
     }
+
+    const rateLimited = await enforceRateLimit('assets-create', clerkId, corsHeaders);
+    if (rateLimited) return rateLimited;
 
     const userResp = await findUserByClerkId(clerkId);
 

@@ -149,7 +149,11 @@ function FeatureRow({ feature, dark }: { feature: Feature; dark: boolean }) {
   );
 }
 
-export default function PolarPaymentGateway() {
+type PolarPaymentGatewayProps = {
+  embedded?: boolean;
+};
+
+export default function PolarPaymentGateway({ embedded = false }: PolarPaymentGatewayProps) {
   const [billing, setBilling] = useState<'monthly' | 'yearly'>('monthly');
   const [loadingKey, setLoadingKey] = useState<BillingPlanKey | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -170,8 +174,8 @@ export default function PolarPaymentGateway() {
         credentials: 'include',
         body: JSON.stringify({
           productId,
-          successUrl: `${origin}/polar?checkout=success`,
-          cancelUrl: `${origin}/polar?checkout=cancel`,
+          successUrl: `${origin}/credits?checkout=success`,
+          cancelUrl: `${origin}/credits?checkout=cancel`,
         }),
       });
 
@@ -202,29 +206,34 @@ export default function PolarPaymentGateway() {
 
   return (
     <>
-      {/* ── Header ── */}
-      <section className="pt-[40px] pb-[52px] text-center px-6">
-        <motion.p
-          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="text-xs tracking-[.24em] font-extrabold text-[#1463ff] mb-[14px]"
-        >
-          PRICING
-        </motion.p>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.07, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[clamp(34px,5vw,54px)] font-bold tracking-[-0.045em] text-[#090b12] leading-[1.04] mb-[14px]"
-        >
-          Simple, transparent pricing
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[#667489] text-[15px] max-w-[380px] mx-auto mb-[36px]"
-        >
-          Start for free. Scale as you grow. No hidden fees, ever.
-        </motion.p>
+      <section
+        className={`text-center px-6 ${embedded ? 'pb-8' : 'pt-[40px] pb-[52px]'}`}
+      >
+        {!embedded && (
+          <>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="text-xs tracking-[.24em] font-extrabold text-[#1463ff] mb-[14px]"
+            >
+              PRICING
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.07, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[clamp(34px,5vw,54px)] font-bold tracking-[-0.045em] text-[#090b12] leading-[1.04] mb-[14px]"
+            >
+              Simple, transparent pricing
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[#667489] text-[15px] max-w-[380px] mx-auto mb-[36px]"
+            >
+              Start for free. Scale as you grow. No hidden fees, ever.
+            </motion.p>
+          </>
+        )}
 
         {/* Billing toggle */}
         <motion.div
@@ -383,7 +392,7 @@ export default function PolarPaymentGateway() {
         </p>
       </section>
 
-      {/* ── FAQ ── */}
+      {!embedded && (
       <section className="mx-auto w-[min(720px,calc(100%-48px))] pb-[96px]">
         <h2 className="text-[22px] font-bold tracking-[-0.03em] text-[#090b12] text-center mb-[32px]">
           Common questions
@@ -403,6 +412,7 @@ export default function PolarPaymentGateway() {
           ))}
         </div>
       </section>
+      )}
     </>
   );
 }

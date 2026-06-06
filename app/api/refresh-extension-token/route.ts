@@ -13,7 +13,7 @@ import {
   isExtensionJwtRevoked,
 } from '@/lib/extension-jwt-revocation';
 import { extractBearerToken, getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
-import { ratelimit } from '@/lib/upstash/rateLimiter';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
@@ -99,13 +99,8 @@ export async function POST(req: Request) {
       );
     }
 
-    const { success: rateLimitOk } = await ratelimit.limit(`refresh-extension-token:${sub}`);
-    if (!rateLimitOk) {
-      return NextResponse.json(
-        { error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
-        { status: 429, headers: corsHeaders },
-      );
-    }
+    const rateLimited = await enforceRateLimit('refresh-extension-token', sub, corsHeaders);
+    if (rateLimited) return rateLimited;
 
     const now = Math.floor(Date.now() / 1000);
 

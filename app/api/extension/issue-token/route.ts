@@ -9,6 +9,7 @@ import {
   resolveExtensionAudienceForMint,
 } from '@/lib/extension-jwt';
 import { getWebAppCorsHeaders } from '@/lib/extension-route-helpers';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 /**
  * Issues a custom RS256 JWT for the browser extension (not Clerk's session JWT).
@@ -21,6 +22,9 @@ export async function POST(request: Request) {
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401, headers: cors });
     }
+
+    const rateLimited = await enforceRateLimit('extension-issue-token', userId, cors);
+    if (rateLimited) return rateLimited;
 
     const pem = process.env.EXTENSION_JWT_PRIVATE_KEY?.trim();
     if (!pem) {

@@ -4,6 +4,7 @@ import { codeToHtml } from 'shiki';
 import { COMPONENTS } from '@/data/motion/animations';
 import { getMotionCode } from '@/app/service/supabase/motion/getMotionCode';
 import { getUserCreditsSnapshotForClerkId } from '@/app/service/supabase/credits/creditsService';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 const MOTION_CODE_MIN_CREDITS = 5;
 
@@ -22,6 +23,9 @@ export async function GET(
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+
+    const rateLimited = await enforceRateLimit('motion-code', userId);
+    if (rateLimited) return rateLimited;
 
     const { id } = await params;
 

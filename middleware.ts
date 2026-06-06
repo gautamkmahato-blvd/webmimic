@@ -1,5 +1,6 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
+import { applySecurityHeaders } from '@/lib/security/headers';
 
 const isProtectedRoute = createRouteMatcher([
   '/auth(.*)',
@@ -11,18 +12,19 @@ const isProtectedRoute = createRouteMatcher([
   '/motion(.*)',
   '/design-systems(.*)',
   '/billing(.*)',
-  '/convert(.*)',
+  '/credits(.*)',
   '/design-md-converter(.*)',
   '/test-qwen-reasoning(.*)',
+  '/design-chat(.*)',
+  '/design-chat-cursor(.*)',
+  '/design-editor(.*)',
 ]);
 
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) await auth.protect();
 
-  // Always attach security headers
   const res = NextResponse.next();
-  res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+  applySecurityHeaders(res, req.nextUrl.pathname);
   return res;
 });
 

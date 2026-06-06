@@ -1,267 +1,446 @@
 "use client";
 
-import Image from "next/image";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
 
-const highlightedDates = new Set([15, 16, 17, 20, 21, 22, 23, 27, 28, 29, 30, 31]);
-const dotDates = new Set([15, 31]);
-const selectedDate = 24;
+/* ─────────────────────────────────────────────
+   Fan animation config
+   ─────────────────────────────────────────────
+   TIGHT = overlapping resting state (frames 1, 30)
+   SPREAD = fanned open, cards apart (frame 20)
+   
+   Cycle: tight → spread → tight (10s loop)
+   ───────────────────────────────────────────── */
 
-const weeks: (number | null)[][] = [
-  [null, null, null, 1, 2, 3, 4],
-  [5, 6, 7, 8, 9, 10, 11],
-  [12, 13, 14, 15, 16, 17, 18],
-  [19, 20, 21, 22, 23, 24, 25],
-  [26, 27, 28, 29, 30, 31, null],
+const FAN_DURATION = 10;
+
+const fanStates = {
+  left: {
+    tight:  { rotate: -12, x: -40, y: 15 },
+    spread: { rotate: -22, x: -105, y: 5 },
+  },
+  center: {
+    tight:  { rotate: -2, x: 5, y: -20 },
+    spread: { rotate: -5, x: 0, y: -35 },
+  },
+  right: {
+    tight:  { rotate: 8, x: 50, y: -5 },
+    spread: { rotate: 16, x: 110, y: -15 },
+  },
+};
+
+/* Keyframe timing:
+   0.00 - 0.10  hold tight
+   0.10 - 0.45  spread open
+   0.45 - 0.55  hold spread
+   0.55 - 0.90  close back
+   0.90 - 1.00  hold tight (seamless loop) */
+const fanTimes = [0, 0.1, 0.45, 0.55, 0.9, 1];
+
+function buildFanKeyframes(position: "left" | "center" | "right") {
+  const s = fanStates[position];
+  return {
+    rotate: [s.tight.rotate, s.tight.rotate, s.spread.rotate, s.spread.rotate, s.tight.rotate, s.tight.rotate],
+    x:      [s.tight.x, s.tight.x, s.spread.x, s.spread.x, s.tight.x, s.tight.x],
+    y:      [s.tight.y, s.tight.y, s.spread.y, s.spread.y, s.tight.y, s.tight.y],
+  };
+}
+
+/* ─────────────────────────────────────────────
+   Card content — three website mockups
+   ───────────────────────────────────────────── */
+
+const cards: {
+  id: string;
+  position: "left" | "center" | "right";
+  zIndex: number;
+  enterDelay: number;
+  content: React.ReactNode;
+}[] = [
+  {
+    id: "self-love",
+    position: "left",
+    zIndex: 1,
+    enterDelay: 0,
+    content: (
+      <div className="w-[230px] h-[345px] rounded-[20px] overflow-hidden bg-gradient-to-b from-pink-500 via-rose-400 to-fuchsia-600 text-white relative">
+        <div className="p-4">
+          <div className="flex items-center gap-2 mb-5">
+            <div className="w-6 h-6 rounded-full bg-white/30" />
+            <span className="text-[10px] font-medium opacity-80">STUDIO</span>
+          </div>
+          <h3 className="text-[22px] font-bold leading-tight mb-2">
+            Self-Love<br />That Works
+          </h3>
+          <p className="text-[10px] opacity-70 mb-4">
+            Discover your inner strength through mindful practices and daily rituals
+          </p>
+          <div className="w-14 h-14 rounded-full bg-white/20 mx-auto mb-4 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-white/30" />
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 bg-purple-900/80 p-3 backdrop-blur-sm">
+          <div className="text-[9px] font-semibold mb-1">The best way to</div>
+          <div className="text-[9px] opacity-70">better yourself everyday</div>
+          <div className="flex gap-1 mt-2">
+            <div className="w-12 h-1.5 rounded-full bg-white/40" />
+            <div className="w-12 h-1.5 rounded-full bg-white/20" />
+          </div>
+        </div>
+        <div className="absolute top-[130px] left-3 bg-black/60 backdrop-blur-sm rounded-lg p-2 w-[90px]">
+          <div className="w-full h-1.5 bg-green-400/60 rounded mb-1" />
+          <div className="w-3/4 h-1 bg-white/20 rounded" />
+          <div className="w-1/2 h-1 bg-white/20 rounded mt-0.5" />
+        </div>
+        <div className="absolute top-[195px] right-3 text-[8px] bg-white/10 backdrop-blur-sm rounded-md px-2 py-1">
+          <span className="text-yellow-300">✦</span> Checkout with<br />redirects
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "ecommerce",
+    position: "center",
+    zIndex: 2,
+    enterDelay: 0.15,
+    content: (
+      <div className="w-[230px] h-[345px] rounded-[20px] overflow-hidden bg-white relative">
+        <div className="bg-[#c8ff00] p-3 pb-2">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-4 h-4 rounded-full bg-black/20" />
+            <span className="text-[9px] font-bold text-black/70">Skye</span>
+            <div className="ml-auto flex gap-2">
+              {["Shop", "About", "Blog"].map((t) => (
+                <span key={t} className="text-[7px] text-black/50">{t}</span>
+              ))}
+            </div>
+          </div>
+          <h3 className="text-[15px] font-bold text-black leading-tight">
+            Ecommerce<br />infrastructure
+          </h3>
+          <p className="text-[9px] text-black/60 mt-0.5">for any digital experience</p>
+        </div>
+        <div className="p-3 space-y-2">
+          <div className="flex gap-2">
+            <div className="w-1/2 h-14 rounded-lg bg-[#c8ff00]/20 p-2">
+              <div className="w-full h-2 bg-gray-200 rounded mb-1" />
+              <div className="w-2/3 h-1.5 bg-gray-100 rounded" />
+            </div>
+            <div className="w-1/2 h-14 rounded-lg bg-gray-100 p-2">
+              <div className="w-8 h-8 rounded bg-gray-200 mb-1" />
+              <div className="w-full h-1.5 bg-gray-200 rounded" />
+            </div>
+          </div>
+          <div className="bg-gray-50 rounded-lg p-2">
+            <div className="text-[8px] font-semibold text-gray-700 mb-1">Integrations</div>
+            <div className="grid grid-cols-4 gap-1">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div key={i} className="w-[18px] h-[18px] rounded bg-gray-200/80" />
+              ))}
+            </div>
+          </div>
+          <div className="bg-black rounded-lg p-2 text-white">
+            <div className="text-[7px] opacity-60 mb-1">Terminal</div>
+            <div className="text-[7px] font-mono opacity-40">$ npm install @skye/sdk</div>
+          </div>
+          <div className="bg-purple-50 rounded-lg p-2">
+            <div className="text-[8px] text-purple-700 font-medium">Checkout flow</div>
+            <div className="flex gap-1 mt-1">
+              <div className="w-8 h-1 rounded-full bg-purple-200" />
+              <div className="w-8 h-1 rounded-full bg-purple-100" />
+            </div>
+          </div>
+          <div className="bg-amber-50 rounded-lg p-2">
+            <div className="text-[8px] text-amber-700 font-medium">Analytics</div>
+            <div className="flex items-end gap-0.5 mt-1 h-4">
+              {[40, 65, 50, 80, 60, 90, 70].map((h, i) => (
+                <div key={i} className="w-2 bg-amber-300 rounded-t" style={{ height: `${h}%` }} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "beauty",
+    position: "right",
+    zIndex: 3,
+    enterDelay: 0.3,
+    content: (
+      <div className="w-[230px] h-[345px] rounded-[20px] overflow-hidden bg-white relative">
+        <div className="h-[110px] bg-gradient-to-br from-gray-600 to-gray-800 relative">
+          <div className="absolute top-2 left-3 flex gap-3">
+            <span className="text-[7px] text-white/60">About</span>
+            <span className="text-[7px] text-white/60">Shop</span>
+          </div>
+          <div className="absolute bottom-3 left-3 right-3">
+            <p className="text-[11px] text-white/90 italic font-light">Unlock your full beauty</p>
+          </div>
+          <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-pink-300/60" />
+        </div>
+        <div className="p-3">
+          <div className="text-center mb-2">
+            <p className="text-[6px] text-gray-400 uppercase tracking-[2px]">Premium Collection</p>
+            <h4 className="text-[13px] font-serif italic text-gray-800">Health skin,<br />happy life</h4>
+          </div>
+          <div className="grid grid-cols-2 gap-2 mb-2">
+            {[
+              { bg: "bg-orange-100", label: "Glow Serum" },
+              { bg: "bg-rose-50", label: "Day Cream" },
+              { bg: "bg-amber-50", label: "Essence Oil" },
+              { bg: "bg-stone-100", label: "Night Mask" },
+            ].map((item) => (
+              <div key={item.label} className={`${item.bg} rounded-lg p-2 flex flex-col items-center`}>
+                <div className="w-7 h-7 rounded-full bg-white/60 mb-1" />
+                <span className="text-[6px] text-gray-500">{item.label}</span>
+              </div>
+            ))}
+          </div>
+          <div className="bg-gradient-to-r from-pink-50 to-orange-50 rounded-lg p-2 text-center">
+            <div className="text-[7px] text-gray-500">Free shipping on $50+</div>
+          </div>
+          <div className="mt-2 bg-gray-50 rounded-lg p-2">
+            <div className="text-[7px] font-medium text-gray-700 mb-1">Bestsellers</div>
+            <div className="flex gap-1">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="w-10 h-10 rounded bg-stone-200/60" />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    ),
+  },
 ];
 
-const dayLabels = [
-  { label: "SUN", muted: true },
-  { label: "MON", muted: false },
-  { label: "TUE", muted: false },
-  { label: "WED", muted: false },
-  { label: "THU", muted: false },
-  { label: "FRI", muted: false },
-  { label: "SAT", muted: true },
-];
+/* ─────────────────────────────────────────────
+   FanCard — synchronized spread/close animation
+   ───────────────────────────────────────────── */
 
-function DateCell({ day }: { day: number | null }) {
-  if (day === null) {
-    return <div className="h-[40px] w-full" />;
-  }
-
-  const isSelected = day === selectedDate;
-  const isHighlighted = highlightedDates.has(day);
-  const hasDot = dotDates.has(day);
-
-  let cellBg = "bg-transparent";
-  let textColor = "text-[#898989]";
-
-  if (isSelected) {
-    cellBg = "bg-[#374151]";
-    textColor = "text-white";
-  } else if (isHighlighted) {
-    cellBg = "bg-[#E5E7EB]";
-    textColor = "text-[#242424]";
-  }
+function FanCard({
+  children,
+  position,
+  zIndex,
+  enterDelay,
+}: {
+  children: React.ReactNode;
+  position: "left" | "center" | "right";
+  zIndex: number;
+  enterDelay: number;
+}) {
+  const states = fanStates[position];
+  const keyframes = buildFanKeyframes(position);
 
   return (
-    <div className="flex h-[40px] w-full items-center justify-center rounded-[2px]">
-      <div
-        className={`relative flex h-[36px] w-[36px] flex-col items-center justify-center rounded-[4px] ${cellBg}`}
+    <motion.div
+      className="absolute"
+      style={{ zIndex }}
+      initial={{
+        opacity: 0,
+        scale: 0.7,
+        rotate: states.tight.rotate - 8,
+        x: states.tight.x,
+        y: states.tight.y + 60,
+      }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        rotate: states.tight.rotate,
+        x: states.tight.x,
+        y: states.tight.y,
+      }}
+      transition={{
+        duration: 0.9,
+        delay: enterDelay,
+        ease: [0.23, 1, 0.32, 1],
+      }}
+    >
+      {/* Primary: fan breathe (spread ↔ close) */}
+      <motion.div
+        animate={keyframes}
+        transition={{
+          duration: FAN_DURATION,
+          times: fanTimes,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        style={{
+          filter:
+            "drop-shadow(0 20px 40px rgba(0,0,0,0.25)) drop-shadow(0 8px 16px rgba(0,0,0,0.15))",
+        }}
       >
-        <span className={`text-[14px] font-medium leading-[16px] ${textColor}`}>
-          {day}
-        </span>
-        {hasDot && !isSelected && (
-          <span className="absolute bottom-[4px] h-[3px] w-[3px] rounded-full bg-[#101010]" />
-        )}
-      </div>
+        {/* Secondary: subtle micro-float layered on top */}
+        <motion.div
+          animate={{ y: [0, -3, 0, 3, 0] }}
+          transition={{
+            duration: 5,
+            delay: enterDelay * 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          {children}
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────────────────────────
+   ScrollingContent — synced with fan spread
+   ───────────────────────────────────────────── */
+
+function ScrollingContent({ children }: { children: React.ReactNode }) {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    let active = true;
+
+    const holdMs = FAN_DURATION * 100;       // 1s hold phases
+    const spreadMs = FAN_DURATION * 350;     // 3.5s spread phase
+    const closeMs = FAN_DURATION * 350;      // 3.5s close phase
+
+    const run = async () => {
+      await new Promise((r) => setTimeout(r, 1500)); // wait for entrance
+
+      while (active) {
+        // Hold at top (tight phase)
+        await new Promise((r) => setTimeout(r, holdMs));
+
+        // Scroll down during spread
+        await controls.start({
+          y: -65,
+          transition: { duration: spreadMs / 1000, ease: "easeInOut" },
+        });
+
+        // Hold at bottom (spread hold)
+        await new Promise((r) => setTimeout(r, holdMs));
+
+        // Scroll back up during close
+        await controls.start({
+          y: 0,
+          transition: { duration: closeMs / 1000, ease: "easeInOut" },
+        });
+
+        // Brief pause for seamless loop
+        await new Promise((r) => setTimeout(r, holdMs));
+      }
+    };
+
+    run();
+    return () => { active = false; };
+  }, [controls]);
+
+  return (
+    <div className="overflow-hidden rounded-[20px]">
+      <motion.div animate={controls}>{children}</motion.div>
     </div>
   );
 }
 
-export default function BookingPage() {
+/* ─────────────────────────────────────────────
+   Animated gradient blob background
+   ───────────────────────────────────────────── */
+
+function GradientBackground() {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center bg-white px-4 py-12">
-      <div className="flex w-[1038px] flex-col items-center gap-[48px]">
-        <div className="flex w-full overflow-hidden rounded-[8px] border border-[#E5E7EB] bg-white">
-          <div className="flex w-[380px] shrink-0 flex-col bg-white">
-            <div className="flex flex-col gap-[20px] px-[24px] pt-[24px]">
-              <div className="flex flex-col gap-[8px]">
-                <div className="flex items-center gap-[8px]">
-                  <div className="relative h-[24px] w-[24px] shrink-0 overflow-hidden rounded-full">
-                    <Image
-                      src="https://framerusercontent.com/images/VBtxxarwLxy4F9dx1Vb8BqA5c.png?width=200&height=260&scale-down-to=40"
-                      alt="Cédric van Ravesteijn"
-                      fill
-                      className="object-cover"
-                      sizes="24px"
-                    />
-                  </div>
-                  <p className="text-[14px] font-normal leading-[20px] text-[#898989]">
-                    Cédric van Ravesteijn
-                  </p>
-                </div>
-                <div className="flex flex-col gap-[8px]">
-                  <p
-                    className="text-[20px] font-normal leading-[24px] tracking-[0.01em] text-[#101010]"
-                    style={{ fontFamily: '"Cal Sans", "Cal Sans Placeholder", sans-serif' }}
-                  >
-                    Partnerships Meeting
-                  </p>
-                  <p className="text-[14px] font-normal leading-[20px] text-[#898989]">
-                    Are you an agency, influencer, SaaS founder, or business looking to collaborate with Cal.com? Let&apos;s chat!
-                  </p>
-                </div>
-              </div>
-            </div>
+    <div className="absolute inset-0 overflow-hidden rounded-[28px]">
+      <div className="absolute inset-0 bg-orange-500" />
+      <motion.div
+        className="absolute w-[450px] h-[450px] rounded-full bg-blue-600 opacity-80"
+        style={{ filter: "blur(60px)", top: "-10%", right: "-22%" }}
+        animate={{
+          x: [0, 80, -20, 50, 0],
+          y: [0, 80, 30, -20, 0],
+          scale: [1, 1.2, 0.9, 1.1, 1],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute w-[380px] h-[380px] rounded-full bg-pink-500 opacity-70"
+        style={{ filter: "blur(50px)", top: "-15%", left: "5%" }}
+        animate={{
+          x: [0, 50, -30, 20, 0],
+          y: [0, 40, -30, 10, 0],
+          scale: [1, 0.9, 1.15, 1, 1],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+      />
+      <motion.div
+        className="absolute w-[320px] h-[320px] rounded-full bg-indigo-700 opacity-60"
+        style={{ filter: "blur(50px)", bottom: "-5%", right: "5%" }}
+        animate={{
+          x: [0, 40, -20, 30, 0],
+          y: [0, -40, 20, -30, 0],
+          scale: [1, 1.1, 0.95, 1.05, 1],
+        }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+      />
+      <motion.div
+        className="absolute w-[400px] h-[280px] rounded-full bg-orange-600 opacity-60"
+        style={{ filter: "blur(40px)", bottom: "8%", left: "15%" }}
+        animate={{
+          x: [0, 30, -15, 20, 0],
+          y: [0, -20, 30, -10, 0],
+          scale: [1, 1.05, 0.95, 1.1, 1],
+        }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      />
+      <motion.div
+        className="absolute w-[200px] h-[200px] rounded-full bg-red-500 opacity-40"
+        style={{ filter: "blur(40px)", top: "30%", left: "-5%" }}
+        animate={{
+          x: [0, 20, -10, 15, 0],
+          y: [0, -15, 20, -10, 0],
+        }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+      />
+    </div>
+  );
+}
 
-            <div className="flex flex-col gap-[12px] px-[24px] pb-[24px] pt-[20px]">
-              <div className="flex items-center gap-[8px]">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  className="shrink-0"
-                  aria-hidden="true"
+/* ─────────────────────────────────────────────
+   Main page component
+   ───────────────────────────────────────────── */
+
+export default function ReceiveSection() {
+  return (
+    <div className="min-h-screen bg-[#e5e5e5] flex items-center justify-center p-6">
+      <div className="w-full max-w-[440px]">
+        {/* Card showcase area */}
+        <div className="relative rounded-[28px] overflow-hidden h-[530px]">
+          <GradientBackground />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative w-[280px] h-[345px]">
+              {cards.map((card) => (
+                <FanCard
+                  key={card.id}
+                  position={card.position}
+                  zIndex={card.zIndex}
+                  enterDelay={card.enterDelay}
                 >
-                  <circle cx="8" cy="8" r="6.5" stroke="#101010" strokeWidth="1.2" />
-                  <path d="M8 4.5V8.5L10.5 10" stroke="#101010" strokeWidth="1.2" strokeLinecap="round" />
-                </svg>
-                <div className="flex w-full items-center rounded-[10px] bg-[#F3F4F6] p-[4px]">
-                  <div className="flex flex-1 items-center justify-center rounded-[6px] bg-white px-[12px] py-[6px] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_0px_2px_0px_rgba(0,0,0,0.06)]">
-                    <span className="text-[14px] font-medium leading-[16px] text-[#101010]">15m</span>
-                  </div>
-                  <div className="flex flex-1 items-center justify-center rounded-[6px] px-[12px] py-[6px]">
-                    <span className="text-[14px] font-medium leading-[16px] text-[#898989]">30m</span>
-                  </div>
-                  <div className="flex flex-1 items-center justify-center rounded-[6px] px-[12px] py-[6px]">
-                    <span className="text-[14px] font-medium leading-[16px] text-[#898989]">45m</span>
-                  </div>
-                  <div className="flex flex-1 items-center justify-center rounded-[6px] px-[12px] py-[6px]">
-                    <span className="text-[14px] font-medium leading-[16px] text-[#898989]">1h</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-[8px]">
-                <div className="relative h-[16px] w-[16px] shrink-0">
-                  <Image
-                    src="https://framerusercontent.com/images/Z3p4UVP4P9YlO5E3zcuqgcm2eI.svg?width=16&height=16"
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <p className="text-[14px] font-normal leading-[20px] text-[#898989]">Cal Video</p>
-              </div>
-
-              <div className="flex items-center gap-[8px] rounded-[4px]">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  className="shrink-0"
-                  aria-hidden="true"
-                >
-                  <circle cx="8" cy="8" r="6.5" stroke="#101010" strokeWidth="1.2" />
-                  <path
-                    d="M2.5 8H13.5M8 2.5C6.2 4.5 5.5 6.2 5.5 8C5.5 9.8 6.2 11.5 8 13.5C9.8 11.5 10.5 9.8 10.5 8C10.5 6.2 9.8 4.5 8 2.5Z"
-                    stroke="#101010"
-                    strokeWidth="1.2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-                <div className="flex items-center gap-[4px]">
-                  <p className="text-[14px] font-normal leading-[20px] text-[#898989]">
-                    Europe/Amsterdam
-                  </p>
-                  <svg
-                    width="10"
-                    height="6"
-                    viewBox="0 0 10 6"
-                    fill="none"
-                    className="shrink-0"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M1 1L5 5L9 1"
-                      stroke="#101010"
-                      strokeWidth="1.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex min-h-[508px] flex-1 flex-col border-l border-[#E1E2E3] bg-white px-[24px] py-[24px]">
-            <div className="mb-[16px] flex items-center justify-between">
-              <div className="flex items-baseline gap-[6px]">
-                <span className="text-[16px] font-semibold leading-[16px] text-[#101010]">May</span>
-                <span className="text-[14px] font-medium leading-[16px] text-[#6B7280]">2025</span>
-              </div>
-              <div className="flex items-center gap-[4px]">
-                <button
-                  type="button"
-                  className="flex h-[32px] w-[32px] items-center justify-center rounded-[8px] hover:bg-[#F3F4F6]"
-                  aria-label="Previous month"
-                >
-                  <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden="true">
-                    <path
-                      d="M5 1L1 5L5 9"
-                      stroke="#101010"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  className="flex h-[32px] w-[32px] items-center justify-center rounded-[8px] hover:bg-[#F3F4F6]"
-                  aria-label="Next month"
-                >
-                  <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden="true">
-                    <path
-                      d="M1 1L5 5L1 9"
-                      stroke="#101010"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-7 gap-y-[4px]">
-              {dayLabels.map((day) => (
-                <div key={day.label} className="flex h-[28px] items-center justify-center">
-                  <span
-                    className={`text-[12px] font-medium leading-[12px] ${
-                      day.muted ? "text-[#9CA3AF]" : "text-[#374151]"
-                    }`}
-                  >
-                    {day.label}
-                  </span>
-                </div>
-              ))}
-
-              {weeks.flat().map((day, index) => (
-                <DateCell key={`${day ?? "empty"}-${index}`} day={day} />
+                  <ScrollingContent>{card.content}</ScrollingContent>
+                </FanCard>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-[48px]">
-          <div
-            className="h-[48px] w-[108px] shrink-0 bg-contain bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 48'%3E%3Cpath d='M 20.179 0 L 0.096 0 L 0.096 20 L 20.179 20 Z M 41.935 0 L 21.853 0 L 21.853 20 L 41.935 20 Z M 63.691 0 L 43.609 0 L 43.609 20 L 63.691 20 Z M 85.448 0 L 65.365 0 L 65.365 20 L 85.448 20 Z' fill='rgb(0,182,122)'/%3E%3Cpath d='M 107.204 0 L 97.163 0 L 97.163 20 L 107.204 20 Z' fill='rgb(220,220,230)'/%3E%3Cpath d='M 97.163 0 L 87.121 0 L 87.121 20 L 97.163 20 Z' fill='rgb(0,182,122)'/%3E%3Cpath d='M 10.138 13.479 L 13.192 12.708 L 14.468 16.625 Z M 17.167 8.417 L 11.791 8.417 L 10.138 3.375 L 8.486 8.417 L 3.109 8.417 L 7.46 11.541 L 5.808 16.583 L 10.159 13.459 L 12.837 11.541 Z M 31.894 13.479 L 34.948 12.708 L 36.225 16.625 Z M 38.923 8.417 L 33.547 8.417 L 31.894 3.375 L 30.242 8.417 L 24.865 8.417 L 29.216 11.541 L 27.564 16.583 L 31.915 13.459 L 34.593 11.541 Z M 53.65 13.479 L 56.704 12.708 L 57.981 16.625 Z M 60.679 8.417 L 55.303 8.417 L 53.65 3.375 L 51.998 8.417 L 46.621 8.417 L 50.972 11.541 L 49.32 16.583 L 53.672 13.459 L 56.349 11.541 Z M 75.406 13.479 L 78.461 12.708 L 79.737 16.625 Z M 82.435 8.417 L 77.059 8.417 L 75.406 3.375 L 73.754 8.417 L 68.377 8.417 L 72.729 11.541 L 71.076 16.583 L 75.428 13.459 L 78.105 11.541 Z M 97.163 13.479 L 100.217 12.708 L 101.493 16.625 Z M 104.191 8.417 L 98.816 8.417 L 97.163 3.375 L 95.51 8.417 L 90.134 8.417 L 94.485 11.541 L 92.833 16.583 L 97.184 13.459 L 99.862 11.541 Z' fill='rgb(255,255,255)'/%3E%3Cpath d='M 17.74 36.96 L 24.537 36.96 L 24.537 38.223 L 21.864 38.223 L 21.864 45.324 L 20.394 45.324 L 20.394 38.222 L 17.733 38.222 L 17.733 36.96 Z M 24.246 39.268 L 25.503 39.268 L 25.503 40.436 L 25.526 40.436 C 25.572 40.264 25.65 40.101 25.758 39.958 C 25.997 39.63 26.323 39.374 26.7 39.22 C 26.896 39.144 27.097 39.102 27.299 39.102 C 27.453 39.102 27.565 39.108 27.625 39.115 C 27.684 39.12 27.744 39.132 27.809 39.138 L 27.809 40.425 C 27.712 40.408 27.615 40.394 27.518 40.383 C 27.421 40.371 27.325 40.366 27.228 40.365 C 27.003 40.365 26.789 40.412 26.588 40.501 C 26.386 40.593 26.208 40.728 26.066 40.897 C 25.908 41.089 25.788 41.309 25.71 41.546 C 25.618 41.834 25.574 42.135 25.58 42.437 L 25.58 45.317 L 24.241 45.317 L 24.241 39.268 Z M 33.966 45.324 L 32.65 45.324 L 32.65 44.479 L 32.627 44.479 C 32.458 44.789 32.202 45.043 31.891 45.211 C 31.59 45.388 31.246 45.484 30.896 45.489 C 30.096 45.489 29.515 45.293 29.16 44.899 C 28.804 44.503 28.626 43.907 28.626 43.11 L 28.626 39.268 L 29.966 39.268 L 29.966 42.98 C 29.966 43.511 30.066 43.889 30.274 44.108 C 30.476 44.325 30.766 44.438 31.133 44.438 C 31.417 44.438 31.648 44.396 31.839 44.308 C 32.028 44.219 32.182 44.108 32.295 43.96 C 32.417 43.808 32.504 43.63 32.549 43.441 C 32.603 43.24 32.627 43.021 32.627 42.785 L 32.627 39.274 L 33.966 39.274 Z M 36.248 43.381 C 36.289 43.771 36.437 44.043 36.692 44.202 C 36.953 44.356 37.261 44.438 37.622 44.438 C 37.746 44.438 37.889 44.426 38.049 44.408 C 38.204 44.39 38.355 44.353 38.5 44.296 C 38.635 44.246 38.754 44.163 38.849 44.054 C 38.938 43.948 38.98 43.812 38.974 43.641 C 38.972 43.481 38.903 43.329 38.784 43.222 C 38.653 43.105 38.5 43.014 38.334 42.956 C 38.129 42.884 37.919 42.827 37.705 42.785 C 37.468 42.738 37.231 42.685 36.989 42.632 C 36.744 42.578 36.503 42.511 36.266 42.431 C 36.042 42.359 35.832 42.251 35.643 42.113 C 35.458 41.981 35.307 41.807 35.204 41.604 C 35.092 41.398 35.038 41.145 35.038 40.837 C 35.038 40.508 35.121 40.236 35.281 40.011 C 35.442 39.787 35.649 39.611 35.892 39.475 C 36.141 39.339 36.414 39.244 36.716 39.185 C 37.001 39.132 37.291 39.105 37.581 39.102 C 37.895 39.102 38.197 39.138 38.482 39.203 C 38.767 39.268 39.027 39.374 39.258 39.527 C 39.49 39.675 39.679 39.869 39.833 40.106 C 39.987 40.342 40.082 40.631 40.123 40.968 L 38.725 40.968 C 38.66 40.648 38.518 40.43 38.286 40.324 C 38.038 40.21 37.766 40.153 37.492 40.159 C 37.379 40.159 37.266 40.167 37.154 40.182 C 37.029 40.199 36.906 40.229 36.787 40.271 C 36.677 40.312 36.578 40.376 36.496 40.46 C 36.415 40.548 36.373 40.665 36.378 40.785 C 36.378 40.949 36.437 41.08 36.55 41.18 C 36.662 41.28 36.81 41.363 36.994 41.434 C 37.178 41.499 37.385 41.558 37.622 41.605 C 37.86 41.652 38.103 41.705 38.352 41.758 C 38.594 41.812 38.832 41.883 39.068 41.959 C 39.306 42.036 39.513 42.142 39.697 42.277 C 39.881 42.413 40.029 42.58 40.141 42.78 C 40.254 42.98 40.313 43.234 40.313 43.529 C 40.313 43.889 40.23 44.19 40.064 44.444 C 39.9 44.692 39.681 44.9 39.424 45.052 C 39.152 45.211 38.856 45.326 38.547 45.394 C 38.227 45.465 37.907 45.5 37.593 45.5 C 37.233 45.505 36.874 45.461 36.526 45.371 C 36.222 45.293 35.935 45.16 35.678 44.98 C 35.444 44.807 35.251 44.583 35.115 44.325 C 34.98 44.066 34.908 43.753 34.896 43.393 L 36.248 43.393 Z M 40.669 39.268 L 41.682 39.268 L 41.682 37.45 L 43.021 37.45 L 43.021 39.268 L 44.23 39.268 L 44.23 40.265 L 43.021 40.265 L 43.021 43.5 C 43.021 43.642 43.027 43.759 43.039 43.866 C 43.049 43.957 43.077 44.045 43.122 44.125 C 43.163 44.196 43.229 44.25 43.318 44.284 C 43.406 44.32 43.52 44.338 43.673 44.338 C 43.768 44.338 43.863 44.338 43.958 44.332 C 44.052 44.325 44.147 44.314 44.243 44.291 L 44.243 45.324 C 44.094 45.341 43.946 45.353 43.81 45.371 C 43.668 45.388 43.525 45.394 43.377 45.394 C 43.021 45.394 42.737 45.358 42.523 45.293 C 42.332 45.242 42.158 45.14 42.02 44.998 C 41.895 44.862 41.809 44.695 41.771 44.515 C 41.724 44.295 41.699 44.072 41.694 43.848 L 41.694 40.277 L 40.68 40.277 L 40.68 39.268 Z M 45.179 39.268 L 46.447 39.268 L 46.447 40.088 L 46.47 40.088 C 46.66 39.734 46.921 39.486 47.258 39.332 C 47.603 39.177 47.977 39.099 48.355 39.102 C 48.835 39.102 49.25 39.185 49.606 39.356 C 49.961 39.522 50.257 39.752 50.494 40.047 C 50.731 40.342 50.904 40.684 51.022 41.074 C 51.14 41.463 51.2 41.883 51.2 42.325 C 51.2 42.732 51.146 43.128 51.039 43.506 C 50.933 43.889 50.773 44.226 50.56 44.521 C 50.345 44.815 50.065 45.055 49.742 45.223 C 49.41 45.4 49.025 45.489 48.574 45.489 C 48.377 45.489 48.181 45.471 47.988 45.436 C 47.794 45.4 47.605 45.342 47.424 45.264 C 47.245 45.188 47.077 45.087 46.926 44.964 C 46.777 44.842 46.647 44.699 46.542 44.538 L 46.518 44.538 L 46.518 47.56 L 45.179 47.56 Z M 49.86 42.301 C 49.86 42.03 49.825 41.764 49.754 41.505 C 49.683 41.245 49.576 41.02 49.434 40.82 C 49.295 40.624 49.115 40.461 48.906 40.342 C 48.683 40.22 48.432 40.157 48.177 40.159 C 47.615 40.159 47.188 40.354 46.903 40.743 C 46.619 41.132 46.477 41.652 46.477 42.301 C 46.477 42.608 46.512 42.892 46.589 43.151 C 46.666 43.411 46.773 43.636 46.926 43.824 C 47.075 44.012 47.253 44.161 47.46 44.267 C 47.667 44.379 47.911 44.432 48.183 44.432 C 48.491 44.432 48.746 44.367 48.96 44.244 C 49.167 44.122 49.345 43.957 49.481 43.759 C 49.621 43.553 49.722 43.323 49.777 43.08 C 49.831 42.827 49.86 42.567 49.86 42.301 Z M 52.225 36.96 L 53.564 36.96 L 53.564 38.223 L 52.225 38.223 L 52.225 36.961 Z M 52.225 39.268 L 53.564 39.268 L 53.564 45.324 L 52.225 45.324 Z M 54.761 36.96 L 56.101 36.96 L 56.101 45.324 L 54.761 45.324 Z M 60.208 45.489 C 59.763 45.496 59.322 45.413 58.91 45.246 C 58.546 45.095 58.217 44.87 57.944 44.586 C 57.677 44.294 57.473 43.95 57.345 43.576 C 57.204 43.162 57.134 42.727 57.138 42.29 C 57.138 41.829 57.209 41.404 57.345 41.015 C 57.473 40.641 57.677 40.297 57.944 40.005 C 58.214 39.718 58.544 39.493 58.91 39.345 C 59.322 39.178 59.763 39.095 60.208 39.102 C 60.652 39.095 61.094 39.178 61.506 39.345 C 61.885 39.504 62.205 39.728 62.471 40.005 C 62.732 40.289 62.934 40.625 63.07 41.015 C 63.207 41.404 63.277 41.829 63.277 42.29 C 63.277 42.756 63.207 43.187 63.07 43.576 C 62.942 43.95 62.738 44.294 62.471 44.586 C 62.201 44.873 61.872 45.098 61.506 45.246 C 61.094 45.413 60.652 45.496 60.208 45.489 Z M 60.208 44.432 C 60.504 44.432 60.765 44.367 60.984 44.244 C 61.198 44.122 61.383 43.954 61.523 43.753 C 61.667 43.544 61.773 43.313 61.838 43.068 C 61.903 42.815 61.938 42.555 61.938 42.29 C 61.938 42.03 61.903 41.776 61.838 41.516 C 61.777 41.271 61.67 41.039 61.523 40.832 C 61.227 40.401 60.732 40.148 60.208 40.159 C 59.937 40.153 59.669 40.218 59.431 40.348 C 59.219 40.469 59.035 40.634 58.892 40.832 C 58.748 41.04 58.642 41.272 58.578 41.516 C 58.512 41.769 58.479 42.029 58.477 42.29 C 58.477 42.555 58.513 42.814 58.578 43.068 C 58.643 43.323 58.75 43.553 58.892 43.753 C 59.034 43.954 59.213 44.119 59.431 44.243 C 59.651 44.373 59.911 44.432 60.208 44.432 Z M 63.669 39.268 L 64.682 39.268 L 64.682 37.45 L 66.022 37.45 L 66.022 39.268 L 67.23 39.268 L 67.23 40.265 L 66.022 40.265 L 66.022 43.5 C 66.022 43.642 66.027 43.759 66.039 43.866 C 66.049 43.957 66.077 44.045 66.122 44.125 C 66.164 44.196 66.229 44.25 66.318 44.284 C 66.407 44.32 66.519 44.338 66.673 44.338 C 66.768 44.338 66.863 44.338 66.958 44.332 C 67.053 44.325 67.147 44.314 67.242 44.291 L 67.242 45.324 C 67.094 45.341 66.946 45.353 66.81 45.371 C 66.667 45.388 66.525 45.394 66.377 45.394 C 66.022 45.394 65.737 45.358 65.524 45.293 C 65.332 45.242 65.158 45.14 65.02 44.998 C 64.895 44.862 64.809 44.695 64.771 44.515 C 64.725 44.295 64.699 44.072 64.694 43.848 L 64.694 40.277 L 63.681 40.277 L 63.681 39.268 Z M 8.138 42.773 L 11.642 41.87 L 13.111 46.368 Z M 16.175 36.96 L 10.035 36.96 L 8.138 31.14 L 6.243 36.96 L 0.096 36.954 L 5.069 40.548 L 3.172 46.368 L 8.138 42.773 L 11.209 40.555 Z' fill='rgb(2,42,28)'/%3E%3C/svg%3E")`,
-            }}
-            aria-label="Trustpilot"
-          />
-          <div
-            className="h-[48px] w-[103px] shrink-0 bg-contain bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 103 48'%3E%3Cpath d='M 8.061 13.568 L 3.071 15.36 L 3.199 10.048 L 0 5.888 L 5.054 4.352 L 8.061 0 L 11.068 4.352 L 16.122 5.888 L 12.923 10.048 L 13.051 15.36 Z M 29.684 13.568 L 24.694 15.36 L 24.886 10.048 L 21.624 5.888 L 26.678 4.352 L 29.684 0 L 32.691 4.352 L 37.745 5.888 L 34.547 10.048 L 34.675 15.36 Z M 51.308 13.568 L 46.318 15.36 L 46.51 10.048 L 43.247 5.888 L 48.365 4.352 L 51.308 0 L 54.315 4.352 L 59.369 5.888 L 56.17 10.048 L 56.298 15.36 Z M 72.932 13.568 L 67.942 15.36 L 68.134 10.048 L 64.871 5.888 L 69.989 4.352 L 72.932 0 L 75.939 4.352 L 81.057 5.888 L 77.794 10.048 L 77.922 15.36 Z' fill='rgb(233,169,68)'/%3E%3Cpath d='M 25.59 36.16 C 25.59 42.7 20.292 48 13.755 48 C 7.218 48 1.919 42.7 1.919 36.16 C 1.919 29.62 7.218 24.32 13.755 24.32 C 20.292 24.32 25.59 29.62 25.59 36.16 Z' fill='rgb(255,97,84)'/%3E%3Cpath d='M 15.333 36.16 L 11.979 36.16 L 11.979 32.608 L 15.333 32.608 C 16.313 32.608 17.108 33.403 17.108 34.384 C 17.108 35.365 16.313 36.16 15.333 36.16 Z M 15.333 30.24 L 9.612 30.24 L 9.612 42.08 L 11.979 42.08 L 11.979 38.528 L 15.333 38.528 C 17.621 38.528 19.475 36.673 19.475 34.384 C 19.475 32.095 17.621 30.24 15.333 30.24 Z' fill='rgb(255,255,255)'/%3E%3Cpath d='M 94.427 13.568 L 89.437 15.36 L 89.629 10.048 L 86.366 5.888 L 91.484 4.352 L 94.427 0 L 97.434 4.352 L 102.552 5.888 L 99.289 10.048 L 99.417 15.36 Z' fill='rgb(233,169,68)'/%3E%3C/svg%3E")`,
-            }}
-            aria-label="Product Hunt"
-          />
-          <div
-            className="h-[48px] w-[102px] shrink-0 bg-contain bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 102 48'%3E%3Cpath d='M 7.941 13.389 L 3.025 15.158 L 3.151 9.916 L 0 5.811 L 4.978 4.295 L 7.941 0 L 10.903 4.295 L 15.881 5.811 L 12.73 9.916 L 12.856 15.158 Z M 29.241 13.389 L 24.326 15.158 L 24.515 9.916 L 21.301 5.811 L 26.28 4.295 L 29.242 0 L 32.204 4.295 L 37.182 5.811 L 34.031 9.916 L 34.157 15.158 Z M 50.542 13.389 L 45.627 15.158 L 45.816 9.916 L 42.602 5.811 L 47.644 4.295 L 50.542 0 L 53.505 4.295 L 58.483 5.811 L 55.332 9.916 L 55.458 15.158 Z M 71.843 13.389 L 66.928 15.158 L 67.117 9.916 L 63.903 5.811 L 68.945 4.295 L 71.843 0 L 74.806 4.295 L 79.847 5.811 L 76.633 9.916 L 76.759 15.158 Z M 93.145 0 L 90.245 4.295 L 85.204 5.811 L 88.418 9.916 L 88.229 15.158 L 93.145 13.389 Z' fill='rgb(255,73,44)'/%3E%3Cpath d='M 97.934 9.916 L 101.148 5.811 L 96.106 4.295 L 93.145 0 L 93.145 13.389 L 98.06 15.158 Z' fill='rgb(255,255,255)'/%3E%3Cpath d='M 25.25 35.787 C 25.25 42.207 20.059 47.411 13.651 47.411 C 7.244 47.411 2.052 42.207 2.052 35.785 C 2.052 29.364 7.244 24.161 13.651 24.161 C 20.059 24.161 25.25 29.369 25.25 35.785 Z' fill='rgb(255,73,44)'/%3E%3Cpath d='M 18.67 33.889 L 15.674 33.889 L 15.674 33.749 C 15.674 33.238 15.776 32.815 15.98 32.484 C 16.184 32.15 16.537 31.857 17.047 31.596 L 17.28 31.481 C 17.692 31.271 17.799 31.09 17.799 30.876 C 17.799 30.62 17.577 30.435 17.218 30.435 C 16.793 30.435 16.472 30.657 16.249 31.108 L 15.674 30.532 C 15.798 30.262 16.003 30.049 16.272 29.876 C 16.543 29.706 16.857 29.617 17.177 29.62 C 17.59 29.62 17.948 29.727 18.239 29.951 C 18.541 30.173 18.69 30.481 18.69 30.867 C 18.69 31.485 18.341 31.862 17.692 32.196 L 17.326 32.383 C 16.936 32.579 16.746 32.755 16.69 33.066 L 18.671 33.066 L 18.671 33.889 Z M 18.407 34.837 L 15.126 34.837 L 13.489 37.684 L 16.769 37.684 L 18.411 40.528 L 20.049 37.684 Z M 13.772 39.585 C 11.682 39.582 9.989 37.885 9.986 35.791 C 9.988 33.697 11.682 31.999 13.772 31.996 L 15.071 29.276 C 14.643 29.192 14.208 29.15 13.772 29.151 C 10.898 29.15 8.352 31.004 7.464 33.743 C 6.577 36.482 7.552 39.482 9.879 41.172 C 12.205 42.862 15.353 42.858 17.674 41.161 L 16.236 38.669 C 15.55 39.26 14.676 39.585 13.772 39.585 Z' fill='rgb(255,255,255)'/%3E%3C/svg%3E")`,
-            }}
-            aria-label="G2"
-          />
-        </div>
+        {/* Text section */}
+        <motion.div
+          className="mt-8 px-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <h2 className="text-[42px] font-bold text-[#1a1a1a] leading-[1.05] tracking-[-0.02em]">
+            Receive
+          </h2>
+          <p className="text-[18px] text-[#1a1a1a]/60 mt-3 leading-relaxed">
+            Receive your design within two business days on average.
+          </p>
+        </motion.div>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { resolveClerkId, getExtensionCorsHeaders } from '@/lib/extension-route-h
 import { supabaseAdmin } from '@/config/supabase/supabaseAdmin';
 import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
 import { syncUserFromClerkIfMissing } from '@/lib/auth/sync-user-from-clerk';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 const corsHeadersFor = (req: Request) => getExtensionCorsHeaders(req);
 
@@ -28,6 +29,9 @@ export async function GET(req: Request): Promise<NextResponse<ApiResponse>> {
         { status: 401, headers: corsHeaders }
       );
     }
+
+    const rateLimited = await enforceRateLimit('user-details', clerkId, corsHeaders);
+    if (rateLimited) return rateLimited as NextResponse<ApiResponse>;
 
     let res = await getUser(clerkId);
 

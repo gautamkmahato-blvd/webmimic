@@ -3,7 +3,9 @@ import fs from 'fs/promises';
 import path from 'path';
 import cursorDesignChat from '@/app/service/cursor/cursorDesignChat';
 import { resolveClerkId, getWebAppCorsHeaders } from '@/lib/extension-route-helpers';
-import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
+import { CREDIT_FEATURES } from '@/lib/credits/config';
+import { chargeFeatureCredits, refundFeatureCredits } from '@/lib/credits/extensionCredits';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 export const runtime = 'nodejs';
 export const maxDuration = 300;
@@ -25,13 +27,8 @@ export async function POST(req: Request) {
     );
   }
 
-  const { premium } = await hasPremiumAccessForClerkId(clerkId);
-  if (!premium) {
-    return NextResponse.json(
-      { success: false, error: 'Premium subscription required to use Design Chat.' },
-      { status: 403, headers: corsHeaders }
-    );
-  }
+  const rateLimited = await enforceRateLimit('design-chat-cursor', clerkId, corsHeaders);
+  if (rateLimited) return rateLimited;
 
   let body: {
     message?: string;
@@ -101,34 +98,49 @@ export async function POST(req: Request) {
     }
   }
 
-  const result = await cursorDesignChat({
-    message,
-    agentId: body.agentId,
-    images: body.images,
-    systemPrefix,
+  const charge = await chargeFeatureCredits({
+    clerkId,
+    featureId: CREDIT_FEATURES.DESIGN_CHAT_CURSOR,
+    cors: corsHeaders,
   });
+  if (!charge.ok) return charge.response;
 
-  if (!result.success) {
-    const { httpStatus, error, retryable, agentId, status } = result;
+  try {
+    const result = await cursorDesignChat({
+      message,
+      agentId: body.agentId,
+      images: body.images,
+      systemPrefix,
+    });
+
+    if (!result.success) {
+      if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
+      const { httpStatus, error, retryable, agentId, status } = result;
+      return NextResponse.json(
+        {
+          success: false,
+          error,
+          ...(retryable !== undefined ? { retryable } : {}),
+          ...(agentId ? { agentId } : {}),
+          ...(status ? { status } : {}),
+        },
+        { status: httpStatus, headers: corsHeaders }
+      );
+    }
+
     return NextResponse.json(
       {
-        success: false,
-        error,
-        ...(retryable !== undefined ? { retryable } : {}),
-        ...(agentId ? { agentId } : {}),
-        ...(status ? { status } : {}),
+        success: true,
+        agentId: result.agentId,
+        status: result.status,
+        result: result.result,
+        creditsCharged: charge.creditsCharged,
+        creditsRemaining: charge.creditsRemaining,
       },
-      { status: httpStatus, headers: corsHeaders }
+      { headers: corsHeaders }
     );
+  } catch (serviceErr) {
+    if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
+    throw serviceErr;
   }
-
-  return NextResponse.json(
-    {
-      success: true,
-      agentId: result.agentId,
-      status: result.status,
-      result: result.result,
-    },
-    { headers: corsHeaders }
-  );
 }

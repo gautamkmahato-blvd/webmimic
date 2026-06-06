@@ -1,7 +1,7 @@
 import cloudinaryService from "@/app/service/cloudinaryService";
 import { NextResponse } from "next/server";
 import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/extension-route-helpers";
-import { ratelimit } from "@/lib/upstash/rateLimiter";
+import { enforceRateLimit } from "@/lib/upstash/rateLimiter";
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
@@ -23,13 +23,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const { success: rateLimitOk } = await ratelimit.limit(clerkId);
-    if (!rateLimitOk) {
-      return NextResponse.json(
-        { error: "Too many requests" },
-        { status: 429, headers: cors }
-      );
-    }
+    const rateLimited = await enforceRateLimit('upload-evidence-tile', clerkId, cors);
+    if (rateLimited) return rateLimited;
 
     const formData = await request.formData();
     const file = formData.get("file");

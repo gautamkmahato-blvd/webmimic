@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
 import { getWebAppCorsHeaders } from '@/lib/extension-route-helpers';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getWebAppCorsHeaders(req) });
@@ -18,6 +19,9 @@ export async function GET(req: Request) {
         { status: 401, headers: corsHeaders }
       );
     }
+
+    const rateLimited = await enforceRateLimit('design-editor-entitlement', userId, corsHeaders);
+    if (rateLimited) return rateLimited;
 
     // ── PREMIUM GATE ───────────────────────────────────────────
     const { premium } = await hasPremiumAccessForClerkId(userId);

@@ -34,8 +34,8 @@ export default function CustomBilling() {
           isCustom: true,
           productId: POLAR_CUSTOM_PAY_PRODUCT_ID,
           amount,
-          successUrl: `${origin}/polar?checkout=success`,
-          cancelUrl: `${origin}/polar?checkout=cancel`,
+          successUrl: `${origin}/credits?checkout=success`,
+          cancelUrl: `${origin}/credits?checkout=cancel`,
         }),
       });
 

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getBearerRouteCorsHeaders, getClerkIdFromExtensionBearer } from '@/lib/extension-route-helpers';
 import { buildCuratedSpecMarkdown } from '@/lib/curate/buildCuratedSpec';
-import { ratelimit } from '@/lib/upstash/rateLimiter';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 import deepseekV4Flash from '@/app/service/openRouter/deepseekV4Flash';
 import { requireExtensionLlmAccess } from '@/lib/extension-llm-access';
 import { CREDIT_FEATURES } from '@/lib/credits/config';
@@ -85,10 +85,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const { success: rateLimitOk } = await ratelimit.limit(clerkId);
-    if (!rateLimitOk) {
-      return NextResponse.json({ error: 'Too many requests' }, { status: 429, headers: cors });
-    }
+    const rateLimited = await enforceRateLimit('curate-spec', clerkId, cors);
+    if (rateLimited) return rateLimited;
 
     const curatedSpec = buildCuratedSpecMarkdown(body);
     return NextResponse.json({ curatedSpec }, { headers: cors });

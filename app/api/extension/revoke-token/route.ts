@@ -5,6 +5,7 @@ import {
   getClerkIdFromExtensionBearer,
   getExtensionCorsHeaders,
 } from '@/lib/extension-route-helpers';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
@@ -34,6 +35,9 @@ export async function POST(req: Request) {
         { status: 403, headers: cors },
       );
     }
+
+    const rateLimited = await enforceRateLimit('extension-revoke-token', clerkId, cors);
+    if (rateLimited) return rateLimited;
 
     const revokeResult = await revokeExtensionTokensForClerk(clerkId);
     if (!revokeResult.ok) {

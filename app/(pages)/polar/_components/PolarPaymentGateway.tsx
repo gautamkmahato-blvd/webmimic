@@ -149,7 +149,11 @@ function FeatureRow({ feature, dark }: { feature: Feature; dark: boolean }) {
   );
 }
 
-export default function PolarPaymentGateway() {
+type PolarPaymentGatewayProps = {
+  embedded?: boolean;
+};
+
+export default function PolarPaymentGateway({ embedded = false }: PolarPaymentGatewayProps) {
   const [billing, setBilling] = useState<'monthly' | 'yearly'>('monthly');
   const [loadingKey, setLoadingKey] = useState<BillingPlanKey | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -170,8 +174,8 @@ export default function PolarPaymentGateway() {
         credentials: 'include',
         body: JSON.stringify({
           productId,
-          successUrl: `${origin}/polar?checkout=success`,
-          cancelUrl: `${origin}/polar?checkout=cancel`,
+          successUrl: `${origin}/credits?checkout=success`,
+          cancelUrl: `${origin}/credits?checkout=cancel`,
         }),
       });
 

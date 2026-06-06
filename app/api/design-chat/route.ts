@@ -2,9 +2,11 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import fs from 'fs/promises';
 import path from 'path';
-import { hasPremiumAccessForClerkId } from '@/app/service/supabase/extension/hasPremiumAccess';
 import { getWebAppCorsHeaders } from '@/lib/extension-route-helpers';
 import openRouterDesignChat from '@/app/service/openRouterDesignChat';
+import { CREDIT_FEATURES } from '@/lib/credits/config';
+import { chargeFeatureCredits, refundFeatureCredits } from '@/lib/credits/extensionCredits';
+import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
 const MAX_INPUT_CHARS = 20_000;
 const MAX_IMAGES = 6;
@@ -25,14 +27,8 @@ export async function POST(req: Request) {
       );
     }
 
-    // ── PREMIUM GATE (this is a paid feature) ──────────────────
-    const { premium } = await hasPremiumAccessForClerkId(userId);
-    if (!premium) {
-      return NextResponse.json(
-        { success: false, error: 'Premium subscription required to use Design Chat.' },
-        { status: 403, headers: corsHeaders }
-      );
-    }
+    const rateLimited = await enforceRateLimit('design-chat', userId, corsHeaders);
+    if (rateLimited) return rateLimited;
 
     // ── Parse body ─────────────────────────────────────────────
     let body: {
@@ -103,25 +99,44 @@ export async function POST(req: Request) {
       }
     }
 
-    // ── Call service ───────────────────────────────────────────
-    const result = await openRouterDesignChat({
-      designSystemName,
-      designSystemMarkdown,
-      userInput,
-      imageUrls,
+    const charge = await chargeFeatureCredits({
+      clerkId: userId,
+      featureId: CREDIT_FEATURES.DESIGN_CHAT,
+      cors: corsHeaders,
     });
+    if (!charge.ok) return charge.response;
 
-    if (!result.status) {
+    // ── Call service ───────────────────────────────────────────
+    try {
+      const result = await openRouterDesignChat({
+        designSystemName,
+        designSystemMarkdown,
+        userInput,
+        imageUrls,
+      });
+
+      if (!result.status) {
+        if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
+        return NextResponse.json(
+          { success: false, error: result.message },
+          { status: 500, headers: corsHeaders }
+        );
+      }
+
       return NextResponse.json(
-        { success: false, error: result.message },
-        { status: 500, headers: corsHeaders }
+        {
+          success: true,
+          result: result.result,
+          message: result.message,
+          creditsCharged: charge.creditsCharged,
+          creditsRemaining: charge.creditsRemaining,
+        },
+        { status: 200, headers: corsHeaders }
       );
+    } catch (serviceErr) {
+      if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
+      throw serviceErr;
     }
-
-    return NextResponse.json(
-      { success: true, result: result.result, message: result.message },
-      { status: 200, headers: corsHeaders }
-    );
   } catch (err) {
     console.error('[design-chat] error', err);
     return NextResponse.json(

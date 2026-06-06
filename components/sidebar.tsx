@@ -18,7 +18,7 @@ const navLinks = [
   { href: "/design-systems", label: "Design Systems", icon: Layers },
   { href: "/design-chat-cursor", label: "Design Chat", icon: MessageSquareCode },
   { href: "/motion", label: "Motion", icon: Film },
-  { href: "/billing", label: "Billing", icon: CreditCard },
+  { href: "/credits", label: "Credits", icon: CreditCard },
 ];
 
 const iconSlotClass = "flex size-8 shrink-0 items-center justify-center";

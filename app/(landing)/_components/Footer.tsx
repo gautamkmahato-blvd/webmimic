@@ -9,7 +9,7 @@ const nav = [
     heading: "PRODUCT",
     links: [
       { label: "Features", href: "/features" },
-      { label: "Pricing", href: "/billing" },
+      { label: "Pricing", href: "/credits" },
       { label: "Changelog", href: "/changelog" },
       { label: "Roadmap", href: "/roadmap" },
       { label: "Chrome Web Store", href: "/chrome-extension" },

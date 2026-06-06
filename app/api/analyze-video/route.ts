@@ -3,7 +3,7 @@ import openRouterAnalysis from "@/app/service/openRouterAnalysis";
 import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/extension-route-helpers";
 import { parseBody } from "@/lib/validation/validate";
 import { AnalyzeVideoSchema } from "@/lib/validation/schemas";
-import { ratelimit } from "@/lib/upstash/rateLimiter";
+import { enforceRateLimit } from "@/lib/upstash/rateLimiter";
 import { creditFeatureForVideoOperation } from "@/lib/credits/config";
 import { chargeFeatureCredits, refundFeatureCredits } from "@/lib/credits/extensionCredits";
 
@@ -28,13 +28,10 @@ export async function POST(request: Request) {
     }
     console.log(`[${requestId}] Step 1 PASSED: clerkId=${clerkId}`);
 
-    const { success: rateLimitOk } = await ratelimit.limit(clerkId);
-    if (!rateLimitOk) {
+    const rateLimited = await enforceRateLimit('analyze-video', clerkId, cors);
+    if (rateLimited) {
       console.warn(`[${requestId}] Rate limited: clerkId=${clerkId}`);
-      return NextResponse.json(
-        { success: false, error: 'Too many requests. Please slow down.', code: 'RATE_LIMITED' },
-        { status: 429, headers: cors }
-      );
+      return rateLimited;
     }
 
     console.log(`[${requestId}] Step 2: Parsing and validating request body`);

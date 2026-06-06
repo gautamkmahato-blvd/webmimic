@@ -85,8 +85,6 @@ export default function DesignChatCursorPage() {
         if (r.ok && data.success && Array.isArray(data.files)) {
           setFiles(data.files);
           setFilesError(null);
-        } else if (r.status === 403) {
-          setFilesError("Premium subscription required to use Design Chat.");
         } else if (r.status === 401) {
           setFilesError("Please sign in to use Design Chat.");
         } else {
@@ -217,6 +215,12 @@ export default function DesignChatCursorPage() {
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok || !data.success) {
+        if (res.status === 402) {
+          throw new Error(
+            data.error ||
+              "Not enough credits. Purchase credits to continue using Design Chat."
+          );
+        }
         throw new Error(data.error || "Request failed");
       }
 

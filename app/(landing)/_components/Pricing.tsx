@@ -262,7 +262,7 @@ export default function Pricing() {
 
             {/* CTA */}
             <a
-              href="/billing"
+              href="/credits"
               className={`min-h-[44px] w-full inline-flex items-center justify-center rounded-[10px] text-[13px] font-bold mb-[24px] transition-colors ${plan.ctaStyle}`}
             >
               {plan.cta}
