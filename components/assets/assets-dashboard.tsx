@@ -165,7 +165,7 @@ function PanelCard({
           </button>
         ) : null}
       </div>
-      <div className="px-5 py-3">{children}</div>
+      <div className="px-5 py-5">{children}</div>
     </div>
   );
 }
@@ -200,7 +200,7 @@ function ColorsPanelContent({
             <button
               key={asset.id}
               type="button"
-              className="aspect-square w-full rounded-2xl ring-1 ring-black/5 transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+              className="aspect-square h-24 w-24 rounded-2xl ring-1 ring-black/5 transition-transform hover:scale-[1.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
               style={{ backgroundColor: hex ?? "#e5e5e5" }}
               onMouseEnter={() => setHoveredHex(hex)}
               onMouseLeave={() => setHoveredHex(null)}

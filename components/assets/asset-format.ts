@@ -118,3 +118,73 @@ export function formatDomainFilterLabel(hostname: string): string {
   if (h.startsWith("www.")) return h.slice(4);
   return h;
 }
+
+export function assetFilenameFromRow(asset: AssetRow): string {
+  const title = asset.title?.trim();
+  if (title) return title;
+  const url = asset.url?.trim();
+  if (url) {
+    try {
+      const name = new URL(url).pathname.split("/").pop();
+      if (name) return decodeURIComponent(name);
+    } catch {
+      /* ignore */
+    }
+  }
+  return asset.type || "asset";
+}
+
+export function mediaFileTypeLabel(asset: AssetRow): string {
+  const url = asset.url?.trim() ?? "";
+  try {
+    const pathname = new URL(url, "https://placeholder.local").pathname;
+    const m = pathname.match(/\.([a-z0-9]+)$/i);
+    if (m) return m[1].toUpperCase();
+  } catch {
+    /* ignore */
+  }
+  if (/\.(jpe?g)(\?|$)/i.test(url)) return "JPG";
+  if (/\.png(\?|$)/i.test(url)) return "PNG";
+  if (/\.webp(\?|$)/i.test(url)) return "WEBP";
+  if (/\.avif(\?|$)/i.test(url)) return "AVIF";
+  if (/\.gif(\?|$)/i.test(url)) return "GIF";
+  if (/\.svg(\?|$)/i.test(url)) return "SVG";
+  if (/\.mp4(\?|$)/i.test(url)) return "MP4";
+  if (/\.webm(\?|$)/i.test(url)) return "WEBM";
+  if (/\.mov(\?|$)/i.test(url)) return "MOV";
+  const t = asset.type?.toLowerCase() ?? "";
+  if (t === "video") return "MP4";
+  if (isImageLikeAsset(asset)) return "PNG";
+  return formatAssetTypeLabel(asset.type).toUpperCase();
+}
+
+export function typographyFontName(asset: AssetRow): string {
+  const meta = asset.meta as Record<string, unknown> | null;
+  if (typeof meta?.fontFamily === "string" && meta.fontFamily.trim()) {
+    return meta.fontFamily.trim();
+  }
+  const title = asset.title?.trim();
+  if (title) {
+    const part = title.split("·").pop()?.trim();
+    if (part) return part;
+    return title;
+  }
+  return "Font";
+}
+
+export function assetPreviewOverlayLabel(asset: AssetRow): string {
+  const t = asset.type?.toLowerCase() ?? "";
+  if (t === "color") {
+    return parseHexFromContent(asset.content) ?? "—";
+  }
+  if (t === "svg" || t === "lottie" || t === "code") {
+    return truncateText(assetFilenameFromRow(asset), 28);
+  }
+  if (t === "typography") {
+    return truncateText(typographyFontName(asset), 28);
+  }
+  if (isVideoAsset(asset) || isImageLikeAsset(asset)) {
+    return mediaFileTypeLabel(asset);
+  }
+  return truncateText(assetFilenameFromRow(asset), 28);
+}

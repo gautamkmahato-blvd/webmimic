@@ -4,18 +4,18 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import type { AssetRow } from "@/app/service/supabase/assets/types";
 import {
+  assetPreviewOverlayLabel,
   formatAssetDate,
   formatAssetTypeLabel,
   formatDomainFilterLabel,
   getHostnameFromSourceUrl,
   isColorAsset,
   parseHexFromContent,
-  truncateText,
 } from "./asset-format";
 import { categoryBadgeReferenceClass, getCategoryBadgeDisplay } from "./asset-category";
 import { AssetTypePill } from "./asset-type-pill";
 import { AssetPreview } from "./asset-preview";
-import { Calendar, Copy, ExternalLink, Globe } from "lucide-react";
+import { Copy, ExternalLink, Globe } from "lucide-react";
 
 type Props = {
   asset: AssetRow;
@@ -52,14 +52,6 @@ export function AssetCard({ asset, variant = "grid", index = 0 }: Props) {
 
   const openSource = () => {
     if (asset.source_url) window.open(asset.source_url, "_blank", "noopener,noreferrer");
-  };
-
-  const previewBadgeLabel = (): string => {
-    if (hex) return hex;
-    if (t === "code" || t === "report") {
-      return truncateText(asset.content ?? title, 28);
-    }
-    return truncateText(title, 28);
   };
 
   const CopyIconButton = ({ className = "" }: { className?: string }) => (
@@ -157,30 +149,14 @@ export function AssetCard({ asset, variant = "grid", index = 0 }: Props) {
           <CopyIconButton />
         </div>
 
-        {/* Type pill */}
-        <div className="mb-3">
-          <AssetTypePill type={asset.type} />
-        </div>
-
         {/* Preview with overlay badge */}
         <div className="relative aspect-square w-full overflow-hidden rounded-xl ring-1 ring-neutral-200/80">
           <AssetPreview asset={asset} hex={hex} />
           <div className="absolute bottom-3 left-3 max-w-[calc(100%-1.5rem)]">
             <span className="inline-block max-w-full truncate rounded-full bg-white px-3 py-1 text-[11px] font-bold text-neutral-900 shadow-sm ring-1 ring-black/5">
-              {previewBadgeLabel()}
+              {assetPreviewOverlayLabel(asset)}
             </span>
           </div>
-        </div>
-
-        {/* Footer */}
-        <div className="mt-4 flex items-center justify-between border-t border-neutral-100 pt-3">
-          <span
-            className="inline-flex items-center text-neutral-400"
-            title={formatAssetDate(asset.created_at)}
-          >
-            <Calendar className="size-4" aria-hidden />
-          </span>
-          <CopyIconButton />
         </div>
       </div>
     </motion.article>
