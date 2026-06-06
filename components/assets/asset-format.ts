@@ -34,6 +34,36 @@ export function isVideoAsset(a: AssetRow): boolean {
   return a.type?.toLowerCase() === "video";
 }
 
+export function isLottieAsset(a: AssetRow): boolean {
+  return a.type?.toLowerCase() === "lottie";
+}
+
+/** Dashboard "View all" section keys → tab filter values. */
+export type AssetSectionFilter =
+  | "__images__"
+  | "__colors__"
+  | "__svgs__"
+  | "__typography__"
+  | "__media__"
+  | "__code__";
+
+export function assetMatchesTypeFilter(
+  asset: AssetRow,
+  typeFilter: string,
+): boolean {
+  if (typeFilter === "all") return true;
+  const t = asset.type?.toLowerCase() ?? "";
+  if (typeFilter === "__images__") {
+    return t === "image" || t === "icon" || t === "background";
+  }
+  if (typeFilter === "__colors__") return t === "color";
+  if (typeFilter === "__svgs__") return t === "svg";
+  if (typeFilter === "__typography__") return t === "typography";
+  if (typeFilter === "__media__") return t === "video" || t === "lottie";
+  if (typeFilter === "__code__") return t === "code";
+  return t === typeFilter;
+}
+
 export function isColorAsset(a: AssetRow): boolean {
   return a.type?.toLowerCase() === "color";
 }

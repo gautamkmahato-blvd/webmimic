@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useAssets } from "./use-assets";
 import {
+  assetMatchesTypeFilter,
   formatDomainFilterLabel,
   formatAssetTypeLabel,
   getHostnameFromSourceUrl,
@@ -67,7 +68,7 @@ function useFilteredAssets() {
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
     return assets.filter((a) => {
-      if (typeFilter !== "all" && a.type?.toLowerCase() !== typeFilter) return false;
+      if (!assetMatchesTypeFilter(a, typeFilter)) return false;
       if (sourceDomainFilter !== "all") {
         const host = getHostnameFromSourceUrl(a.source_url);
         if (sourceDomainFilter === "__no_source__") { if (host) return false; }
@@ -221,8 +222,13 @@ function AssetsSignedInView() {
         </p>
       </div>
 
-      {viewMode === "grid" ? (
-        <AssetsDashboard assets={filtered} loading={loading} error={error} />
+      {typeFilter === "all" && viewMode === "grid" ? (
+        <AssetsDashboard
+          assets={filtered}
+          loading={loading}
+          error={error}
+          onViewAll={(section) => setTypeFilter(section)}
+        />
       ) : (
         <main className="mx-auto max-w-[1600px] px-8 pb-8">
           {loading && assets.length === 0 ? (
@@ -231,7 +237,10 @@ function AssetsSignedInView() {
               <p className="mt-3 text-sm">Loading assets…</p>
             </div>
           ) : (
-            <AssetGrid assets={filtered} viewMode="list" />
+            <AssetGrid
+              assets={filtered}
+              viewMode={typeFilter === "all" ? viewMode : "grid"}
+            />
           )}
         </main>
       )}
