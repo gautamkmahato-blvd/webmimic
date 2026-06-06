@@ -104,7 +104,8 @@ function FeatureShowcase() {
                 </div>
 
                 {/* Image panel */}
-                <div className="relative h-[520px] rounded-[14px] overflow-hidden border border-[#dfe7f1] mt-44 shadow-[0_24px_55px_rgba(15,23,42,.13)]">
+                <div className="relative h-[520px] rounded-[14px] border border-[#dfe7f1] mt-44 p-3 shadow-[0_24px_55px_rgba(15,23,42,.13)]">
+                    <div className="relative h-full w-full overflow-hidden rounded-[10px]">
                     <AnimatePresence mode="wait">
                         <motion.img
                             key={activeIndex}
@@ -134,6 +135,7 @@ function FeatureShowcase() {
                                 </p>
                             </motion.div>
                         </AnimatePresence>
+                    </div>
                     </div>
                 </div>
             </div>
