@@ -48,6 +48,22 @@ export type AssetSectionFilter =
   | "__lottie__"
   | "__code__";
 
+export const ASSET_SECTION_TABS: { key: AssetSectionFilter; label: string }[] = [
+  { key: "__images__", label: "Images" },
+  { key: "__colors__", label: "Colors" },
+  { key: "__svgs__", label: "SVGs" },
+  { key: "__typography__", label: "Typography" },
+  { key: "__videos__", label: "Videos" },
+  { key: "__lottie__", label: "Lottie" },
+  { key: "__code__", label: "Code" },
+];
+
+export function assetSectionTabLabel(typeFilter: string): string | null {
+  if (typeFilter === "all") return "All";
+  const tab = ASSET_SECTION_TABS.find((t) => t.key === typeFilter);
+  return tab?.label ?? null;
+}
+
 export function assetMatchesTypeFilter(
   asset: AssetRow,
   typeFilter: string,

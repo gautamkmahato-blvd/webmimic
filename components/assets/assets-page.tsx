@@ -13,9 +13,9 @@ import {
 } from "lucide-react";
 import { useAssets } from "./use-assets";
 import {
+  ASSET_SECTION_TABS,
   assetMatchesTypeFilter,
   formatDomainFilterLabel,
-  formatAssetTypeLabel,
   getHostnameFromSourceUrl,
 } from "./asset-format";
 import { AssetGrid, type AssetViewMode } from "./asset-grid";
@@ -42,14 +42,6 @@ function useFilteredAssets() {
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState<AssetTypeFilter>("all");
   const [sourceDomainFilter, setSourceDomainFilter] = useState<SourceDomainFilter>("all");
-
-  const typeOptions = useMemo(() => {
-    const set = new Set<string>();
-    for (const a of assets) {
-      if (a.type) set.add(a.type.toLowerCase());
-    }
-    return Array.from(set).sort();
-  }, [assets]);
 
   const { sourceDomainOptions, noSourceCount } = useMemo(() => {
     const byHost = new Map<string, string>();
@@ -85,7 +77,7 @@ function useFilteredAssets() {
   return {
     assets, loading, error, refetch,
     search, setSearch,
-    typeFilter, setTypeFilter, typeOptions,
+    typeFilter, setTypeFilter,
     sourceDomainFilter, setSourceDomainFilter, sourceDomainOptions, noSourceCount,
     filtered,
   };
@@ -99,7 +91,7 @@ function AssetsSignedInView() {
   const {
     assets, loading, error, refetch,
     search, setSearch,
-    typeFilter, setTypeFilter, typeOptions,
+    typeFilter, setTypeFilter,
     sourceDomainFilter, setSourceDomainFilter, sourceDomainOptions, noSourceCount,
     filtered,
   } = useFilteredAssets();
@@ -194,17 +186,29 @@ function AssetsSignedInView() {
           {/* ── ROW 2: type pills ─────────────────────────── */}
           <div className="border-t border-neutral-100">
             <nav className="flex items-center gap-1 overflow-x-auto py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              {(["all", ...typeOptions] as string[]).map((t) => (
+              <button
+                type="button"
+                onClick={() => setTypeFilter("all")}
+                className={`shrink-0 rounded-full px-5 py-2 text-sm transition-colors ${
+                  typeFilter === "all"
+                    ? "bg-neutral-100 font-medium text-neutral-900"
+                    : "text-neutral-600 hover:text-neutral-900"
+                }`}
+              >
+                All
+              </button>
+              {ASSET_SECTION_TABS.map((tab) => (
                 <button
-                  key={t}
-                  onClick={() => setTypeFilter(t as AssetTypeFilter)}
+                  key={tab.key}
+                  type="button"
+                  onClick={() => setTypeFilter(tab.key)}
                   className={`shrink-0 rounded-full px-5 py-2 text-sm transition-colors ${
-                    typeFilter === t
+                    typeFilter === tab.key
                       ? "bg-neutral-100 font-medium text-neutral-900"
                       : "text-neutral-600 hover:text-neutral-900"
                   }`}
                 >
-                  {t === "all" ? "All" : formatAssetTypeLabel(t)}
+                  {tab.label}
                 </button>
               ))}
             </nav>

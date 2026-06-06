@@ -267,7 +267,7 @@ export function AssetsDashboard({
         ) : null}
 
         {/* Summary bar */}
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
           <SummaryCard
             icon={<ImageIcon className="h-8 w-8 text-violet-600" />}
             iconClass="bg-violet-100"
@@ -309,6 +309,13 @@ export function AssetsDashboard({
             label="Typography"
             count={fontFamilies.length || groups.typography.length}
             subtitle="Font Families"
+          />
+          <SummaryCard
+            icon={<Code2 className="h-8 w-8 text-slate-600" />}
+            iconClass="bg-slate-100"
+            label="Code"
+            count={groups.code.length}
+            subtitle="Snippets"
           />
         </div>
 
