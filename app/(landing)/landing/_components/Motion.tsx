@@ -11,7 +11,7 @@ const sectionP = "max-w-[380px] mb-6 text-[#667489] text-md leading-[1.6]";
 
 const CARD = "h-[146px] w-[210px] shrink-0 border border-[#dfe7f1] rounded-lg bg-white overflow-hidden shadow-[0_10px_24px_rgba(30,50,86,.06)]";
 
-const MOTION_VIDEOS = [
+const MOTION_VIDEOS_ROW_1 = [
   "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878511/videos/animation_78.mp4",
   "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878588/videos/animation_96.mp4",
   "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878568/videos/animation_89.mp4",
@@ -24,22 +24,37 @@ const MOTION_VIDEOS = [
   "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878431/videos/animation_63.mp4",
 ];
 
-const cards = MOTION_VIDEOS.map((src, i) => (
-  <article key={`motion-video-${i}`} className={CARD}>
-    <div className="h-full bg-[#080d14] p-3">
-      <video
-        src={src}
-        className="h-full w-full rounded object-contain"
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
-    </div>
-  </article>
-));
+const MOTION_VIDEOS_ROW_2 = [
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878417/videos/animation_62.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878148/videos/animation_1.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878390/videos/animation_54.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878379/videos/animation_53.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878155/videos/animation_4.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878366/videos/animation_51.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878339/videos/animation_46.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878330/videos/animation_44.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878204/videos/animation_20.mp4",
+  "https://res.cloudinary.com/dqryhg3rs/video/upload/v1779878150/videos/animation_2.mp4",
+];
 
-const track = [...cards, ...cards];
+const cardsFromVideos = (videos: string[], keyPrefix: string) =>
+  videos.map((src, i) => (
+    <article key={`${keyPrefix}-${i}`} className={CARD}>
+      <div className="h-full bg-[#080d14] p-3">
+        <video
+          src={src}
+          className="h-full w-full rounded object-contain"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      </div>
+    </article>
+  ));
+
+const trackRow1 = [...cardsFromVideos(MOTION_VIDEOS_ROW_1, "motion-row1"), ...cardsFromVideos(MOTION_VIDEOS_ROW_1, "motion-row1-dup")];
+const trackRow2 = [...cardsFromVideos(MOTION_VIDEOS_ROW_2, "motion-row2"), ...cardsFromVideos(MOTION_VIDEOS_ROW_2, "motion-row2-dup")];
 
 const TRANSITION = { duration: 28, repeat: Infinity, ease: "linear" } as const;
 
@@ -81,14 +96,14 @@ export default function Motion() {
           {/* Row 1 — scrolls left */}
           <div className="overflow-hidden">
             <motion.div className="flex gap-[18px] w-max" animate={ctrl1}>
-              {track.map((card, i) => <div key={i}>{card}</div>)}
+              {trackRow1.map((card, i) => <div key={i}>{card}</div>)}
             </motion.div>
           </div>
 
           {/* Row 2 — scrolls right */}
           <div className="overflow-hidden">
             <motion.div className="flex gap-[18px] w-max" animate={ctrl2}>
-              {track.map((card, i) => <div key={i}>{card}</div>)}
+              {trackRow2.map((card, i) => <div key={i}>{card}</div>)}
             </motion.div>
           </div>
         </div>
