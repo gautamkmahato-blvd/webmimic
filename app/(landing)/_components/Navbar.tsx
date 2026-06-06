@@ -43,15 +43,13 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
         <div className="flex min-h-[38px] min-w-[120px] items-center justify-end gap-[30px]">
           <a
             href={isLoaded && isSignedIn ? "/design-systems" : "/sign-in"}
-            className={`min-h-[38px] inline-flex items-center gap-[10px] px-[18px] rounded-lg text-[12px] font-bold whitespace-nowrap transition-opacity ${
-              isLoaded ? "opacity-100" : "pointer-events-none opacity-0"
-            } ${
+            className={`min-h-[38px] inline-flex items-center gap-[10px] px-[18px] rounded-lg text-[12px] font-bold whitespace-nowrap ${
               dark
                 ? "bg-white text-[#080d14] shadow-[0_10px_20px_rgba(0,0,0,.28)]"
                 : "bg-[#05070a] text-white shadow-[0_10px_20px_rgba(0,0,0,.18)]"
             }`}
           >
-            {isLoaded && isSignedIn ? "Dashboard" : "Sign in"} <span>→</span>
+            {!isLoaded ? "Sign in" : isSignedIn ? "Dashboard" : "Sign in"} <span>→</span>
           </a>
         </div>
       </div>

@@ -316,11 +316,7 @@ export function AssetsPage() {
       </section>
 
       {/* ─── CONTENT ─────────────────────────────────────── */}
-      {!isLoaded ? (
-        <div className="flex items-center justify-center py-24">
-          <Loader2 className="size-10 animate-spin text-neutral-300" aria-hidden />
-        </div>
-      ) : !isSignedIn ? (
+      {isLoaded && !isSignedIn ? (
         <div className="mx-auto max-w-[1600px] px-8 py-16">
           <div className="rounded-2xl border border-neutral-200 bg-neutral-50 px-10 py-16 text-center">
             <p className="text-neutral-600">
@@ -333,8 +329,12 @@ export function AssetsPage() {
             </SignInButton>
           </div>
         </div>
-      ) : (
+      ) : isLoaded && isSignedIn ? (
         <AssetsSignedInView />
+      ) : (
+        <div className="flex items-center justify-center py-24">
+          <Loader2 className="size-10 animate-spin text-neutral-300" aria-hidden />
+        </div>
       )}
     </div>
   );
