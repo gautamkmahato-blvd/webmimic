@@ -149,8 +149,8 @@ function PanelCard({
   children: ReactNode;
 }) {
   return (
-    <div className="flex h-full flex-col rounded-2xl border border-neutral-200 bg-white shadow-sm">
-      <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-4">
+    <div className="flex flex-col rounded-2xl border border-neutral-200 bg-white shadow-sm">
+      <div className="flex items-center justify-between border-b border-neutral-100 px-5 py-3.5">
         <h3 className="text-sm font-semibold text-neutral-900">
           {title}{" "}
           <span className="font-normal text-neutral-400">({count})</span>
@@ -165,7 +165,7 @@ function PanelCard({
           </button>
         ) : null}
       </div>
-      <div className="flex-1 px-5 py-4">{children}</div>
+      <div className="px-5 py-3">{children}</div>
     </div>
   );
 }
@@ -192,8 +192,8 @@ function ColorsPanelContent({
   const [hoveredHex, setHoveredHex] = useState<string | null>(null);
 
   return (
-    <div className="flex min-h-[240px] flex-col">
-      <div className="grid flex-1 grid-cols-5 grid-rows-2 gap-3.5">
+    <div className="flex flex-col">
+      <div className="grid grid-cols-5 grid-rows-2 gap-3.5">
         {colors.slice(0, 10).map((asset) => {
           const hex = parseHexFromContent(asset.content);
           return (
@@ -212,7 +212,7 @@ function ColorsPanelContent({
         })}
       </div>
 
-      <div className="mt-auto flex flex-col gap-3 pt-5">
+      <div className="mt-4 flex flex-col gap-2.5">
         <p className="min-h-[22px] text-center font-mono text-sm font-semibold tracking-wide text-neutral-800">
           {hoveredHex ?? ""}
         </p>
@@ -353,7 +353,7 @@ export function AssetsDashboard({
         </div>
 
         {/* Row 1: Images | Colors */}
-        <div className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <div className="mt-6 grid grid-cols-1 items-start gap-5 lg:grid-cols-2">
           <PanelCard
             title="Images"
             count={groups.images.length}
@@ -404,7 +404,7 @@ export function AssetsDashboard({
         </div>
 
         {/* Row 2: SVGs | Typography */}
-        <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <div className="mt-5 grid grid-cols-1 items-start gap-5 lg:grid-cols-2">
           <PanelCard
             title="SVGs"
             count={groups.svgs.length}
@@ -488,7 +488,7 @@ export function AssetsDashboard({
         </div>
 
         {/* Row 3: Videos | Lottie */}
-        <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
+        <div className="mt-5 grid grid-cols-1 items-start gap-5 lg:grid-cols-2">
           <PanelCard
             title="Videos"
             count={groups.videos.length}
