@@ -9,6 +9,7 @@ import {
   Image as ImageIcon,
   Layers,
   Loader2,
+  PackageOpen,
   Palette,
   Play,
   Sparkles,
@@ -101,18 +102,6 @@ function uniqueFontFamilies(typography: AssetRow[]): string[] {
   return Array.from(set);
 }
 
-function uniqueTypographyByFamily(typography: AssetRow[]): AssetRow[] {
-  const seen = new Set<string>();
-  const result: AssetRow[] = [];
-  for (const asset of typography) {
-    const { fontFamily } = typographyMeta(asset);
-    if (seen.has(fontFamily)) continue;
-    seen.add(fontFamily);
-    result.push(asset);
-  }
-  return result;
-}
-
 type Props = {
   assets: AssetRow[];
   loading: boolean;
@@ -183,7 +172,13 @@ function PanelCard({
 
 function EmptyPanel({ message }: { message: string }) {
   return (
-    <p className="py-8 text-center text-sm text-neutral-400">{message}</p>
+    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-6 py-12 text-center">
+      <PackageOpen className="mb-3 size-10 text-neutral-300" aria-hidden />
+      <p className="text-sm font-medium text-neutral-500">{message}</p>
+      <p className="mt-1 max-w-xs text-xs text-neutral-400">
+        Save items from the browser extension to see them here.
+      </p>
+    </div>
   );
 }
 
@@ -448,14 +443,14 @@ export function AssetsDashboard({
 
           <PanelCard
             title="Typography"
-            count={fontFamilies.length || groups.typography.length}
+            count={groups.typography.length}
             onViewAll={() => onViewAll("__typography__")}
           >
             {groups.typography.length === 0 ? (
               <EmptyPanel message="No typography saved yet." />
             ) : (
-              <div className="flex flex-col gap-5 p-3 border border-neutral-50 shadow-sm">
-                {uniqueTypographyByFamily(groups.typography).slice(0, 2).map((asset) => {
+              <div className="flex flex-col gap-4">
+                {groups.typography.slice(0, 4).map((asset) => {
                   const { fontFamily, role } = typographyMeta(asset);
                   const isMono = /mono/i.test(role) || /mono/i.test(fontFamily);
                   return (
