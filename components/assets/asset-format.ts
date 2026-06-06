@@ -44,7 +44,8 @@ export type AssetSectionFilter =
   | "__colors__"
   | "__svgs__"
   | "__typography__"
-  | "__media__"
+  | "__videos__"
+  | "__lottie__"
   | "__code__";
 
 export function assetMatchesTypeFilter(
@@ -59,7 +60,8 @@ export function assetMatchesTypeFilter(
   if (typeFilter === "__colors__") return t === "color";
   if (typeFilter === "__svgs__") return t === "svg";
   if (typeFilter === "__typography__") return t === "typography";
-  if (typeFilter === "__media__") return t === "video" || t === "lottie";
+  if (typeFilter === "__videos__") return t === "video";
+  if (typeFilter === "__lottie__") return t === "lottie";
   if (typeFilter === "__code__") return t === "code";
   return t === typeFilter;
 }

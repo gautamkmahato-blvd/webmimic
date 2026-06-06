@@ -187,10 +187,10 @@ function EmptyPanel({ message }: { message: string }) {
   );
 }
 
-function MediaPreview({ asset }: { asset: AssetRow }) {
-  if (isVideoAsset(asset) && asset.url) {
-    return (
-      <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-neutral-900 ring-1 ring-neutral-200/80">
+function VideoPreview({ asset }: { asset: AssetRow }) {
+  return (
+    <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-neutral-900 ring-1 ring-neutral-200/80">
+      {asset.url ? (
         <video
           src={asset.url}
           className="h-full w-full object-cover opacity-80"
@@ -198,15 +198,17 @@ function MediaPreview({ asset }: { asset: AssetRow }) {
           playsInline
           preload="metadata"
         />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90 shadow-sm">
-            <Play className="h-3 w-3 fill-neutral-900 text-neutral-900" />
-          </div>
+      ) : null}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/90 shadow-sm">
+          <Play className="h-3 w-3 fill-neutral-900 text-neutral-900" />
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
+function LottiePreview() {
   return (
     <div className="flex aspect-[4/3] flex-col items-center justify-center gap-1.5 rounded-lg bg-violet-50 ring-1 ring-violet-100">
       <Clapperboard className="h-5 w-5 text-violet-500" />
@@ -226,11 +228,6 @@ export function AssetsDashboard({
   const groups = useMemo(() => groupAssets(assets), [assets]);
   const total = assets.length;
   const fontFamilies = uniqueFontFamilies(groups.typography);
-  const mediaAssets = useMemo(
-    () => [...groups.videos, ...groups.lotties],
-    [groups.videos, groups.lotties],
-  );
-
   const colorGradient = useMemo(() => {
     const hexes = groups.colors
       .map((c) => parseHexFromContent(c.content))
@@ -270,7 +267,7 @@ export function AssetsDashboard({
         ) : null}
 
         {/* Summary bar */}
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           <SummaryCard
             icon={<ImageIcon className="h-8 w-8 text-violet-600" />}
             iconClass="bg-violet-100"
@@ -289,8 +286,15 @@ export function AssetsDashboard({
             icon={<Video className="h-8 w-8 text-rose-600" />}
             iconClass="bg-rose-100"
             label="Videos"
-            count={groups.videos.length + groups.lotties.length}
-            subtitle="MP4, WEBM, Lottie"
+            count={groups.videos.length}
+            subtitle="MP4, WEBM"
+          />
+          <SummaryCard
+            icon={<Clapperboard className="h-8 w-8 text-violet-600" />}
+            iconClass="bg-violet-100"
+            label="Lottie"
+            count={groups.lotties.length}
+            subtitle="Animations"
           />
           <SummaryCard
             icon={<Palette className="h-8 w-8 text-amber-600" />}
@@ -386,8 +390,8 @@ export function AssetsDashboard({
           </PanelCard>
         </div>
 
-        {/* Row 2: SVGs | Typography | Videos & Lottie */}
-        <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-3">
+        {/* Row 2: SVGs | Typography */}
+        <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
           <PanelCard
             title="SVGs"
             count={groups.svgs.length}
@@ -465,19 +469,43 @@ export function AssetsDashboard({
               </div>
             )}
           </PanelCard>
+        </div>
 
+        {/* Row 3: Videos | Lottie */}
+        <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
           <PanelCard
-            title="Videos & Lottie"
-            count={mediaAssets.length}
-            onViewAll={() => onViewAll("__media__")}
+            title="Videos"
+            count={groups.videos.length}
+            onViewAll={() => onViewAll("__videos__")}
           >
-            {mediaAssets.length === 0 ? (
-              <EmptyPanel message="No videos or Lottie animations saved yet." />
+            {groups.videos.length === 0 ? (
+              <EmptyPanel message="No videos saved yet." />
             ) : (
               <div className="grid grid-cols-3 grid-rows-2 gap-3">
-                {mediaAssets.slice(0, 6).map((asset) => (
+                {groups.videos.slice(0, 6).map((asset) => (
                   <div key={asset.id} className="min-w-0">
-                    <MediaPreview asset={asset} />
+                    <VideoPreview asset={asset} />
+                    <p className="mt-1.5 truncate text-[11px] font-medium text-neutral-800">
+                      {assetFilename(asset)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </PanelCard>
+
+          <PanelCard
+            title="Lottie Animations"
+            count={groups.lotties.length}
+            onViewAll={() => onViewAll("__lottie__")}
+          >
+            {groups.lotties.length === 0 ? (
+              <EmptyPanel message="No Lottie animations saved yet." />
+            ) : (
+              <div className="grid grid-cols-3 grid-rows-2 gap-3">
+                {groups.lotties.slice(0, 6).map((asset) => (
+                  <div key={asset.id} className="min-w-0">
+                    <LottiePreview />
                     <p className="mt-1.5 truncate text-[11px] font-medium text-neutral-800">
                       {assetFilename(asset)}
                     </p>
@@ -488,7 +516,7 @@ export function AssetsDashboard({
           </PanelCard>
         </div>
 
-        {/* Row 3: Code (full width) */}
+        {/* Row 4: Code (full width) */}
         <div className="mt-5">
           <PanelCard
             title="Code"
