@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
-import { Navbar } from "../(landing)/landing/_components/Navbar";
-import Footer from "../(landing)/landing/_components/Footer";
+import { Navbar } from "../(landing)/_components/Navbar";
+import Footer from "../(landing)/_components/Footer";
 
 // ── Feature type — supports optional sub-items ──
 type Feature = { text: string; sub?: string[] };

@@ -11,8 +11,8 @@ import {
   Play,
   Sparkles,
 } from "lucide-react";
-import { Navbar } from "../../(landing)/landing/_components/Navbar";
-import Footer from "../../(landing)/landing/_components/Footer";
+import { Navbar } from "../../(landing)/_components/Navbar";
+import Footer from "../../(landing)/_components/Footer";
 
 const sectionWidth = "w-full max-w-[1400px] px-6 sm:px-8 lg:px-12 xl:px-16";
 

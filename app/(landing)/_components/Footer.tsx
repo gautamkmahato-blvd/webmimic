@@ -7,15 +7,33 @@ const sectionWidth = "w-full max-w-[1400px] px-6 sm:px-8 lg:px-12 xl:px-16";
 const nav = [
   {
     heading: "PRODUCT",
-    links: ["Features", "Pricing", "Changelog", "Roadmap", "Chrome Web Store"],
+    links: [
+      { label: "Features", href: "/features" },
+      { label: "Pricing", href: "/billing" },
+      { label: "Changelog", href: "/changelog" },
+      { label: "Roadmap", href: "/roadmap" },
+      { label: "Chrome Web Store", href: "/chrome-extension" },
+    ],
   },
   {
     heading: "RESOURCES",
-    links: ["Documentation", "Blog", "Design Tokens Guide", "Community", "Support"],
+    links: [
+      { label: "Documentation", href: "/documentation" },
+      { label: "Blog", href: "/blog" },
+      { label: "Design Tokens Guide", href: "/design-tokens-guide" },
+      { label: "Community", href: "/community" },
+      { label: "Support", href: "/support" },
+    ],
   },
   {
     heading: "COMPANY",
-    links: ["About", "Careers", "Privacy Policy", "Terms of Service", "Contact"],
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/privacy" },
+      { label: "Contact", href: "/contact" },
+    ],
   },
 ];
 
@@ -91,14 +109,14 @@ export default function Footer({ dark = false }: { dark?: boolean }) {
                 </p>
                 <ul className="flex flex-col gap-[13px]">
                   {links.map((link) => (
-                    <li key={link}>
+                    <li key={link.label}>
                       <a
-                        href="#"
+                        href={link.href}
                         className={`text-[13px] transition-colors ${
                           dark ? "text-[#8b9ab0] hover:text-white" : "text-[#536174] hover:text-[#090b12]"
                         }`}
                       >
-                        {link}
+                        {link.label}
                       </a>
                     </li>
                   ))}
@@ -119,9 +137,12 @@ export default function Footer({ dark = false }: { dark?: boolean }) {
             <span className={`text-[12px] ${dark ? "text-[#8b9ab0]" : "text-[#536174]"}`}>All systems operational</span>
           </div>
           <div className="flex items-center gap-[20px]">
-            {["Privacy", "Terms", "Cookies"].map((item) => (
-              <a key={item} href="#" className={`text-[12px] transition-colors ${dark ? "text-[#667489] hover:text-[#8b9ab0]" : "text-[#9aa3b2] hover:text-[#536174]"}`}>
-                {item}
+            {[
+              { label: "Privacy", href: "/privacy" },
+              { label: "Terms", href: "/privacy" },
+            ].map((item) => (
+              <a key={item.label} href={item.href} className={`text-[12px] transition-colors ${dark ? "text-[#667489] hover:text-[#8b9ab0]" : "text-[#9aa3b2] hover:text-[#536174]"}`}>
+                {item.label}
               </a>
             ))}
           </div>
