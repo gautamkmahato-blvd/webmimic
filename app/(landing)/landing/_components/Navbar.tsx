@@ -37,7 +37,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
         </a>
 
         <nav className={`hidden md:flex gap-11 ml-[105px] ${dark ? "text-[#8b9ab0]" : "text-[#111827]"}`}>
-          <a href="#" className="hover:text-[#1463ff] transition-colors">Features</a>
+          <a href="/features" className="hover:text-[#1463ff] transition-colors">Features</a>
           <a href="#" className="hover:text-[#1463ff] transition-colors">
             Resources
           </a>

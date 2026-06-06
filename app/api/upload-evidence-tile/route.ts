@@ -2,10 +2,6 @@ import cloudinaryService from "@/app/service/cloudinaryService";
 import { NextResponse } from "next/server";
 import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/extension-route-helpers";
 import { ratelimit } from "@/lib/upstash/rateLimiter";
-import {
-  refundMediaUploadQuota,
-  reserveMediaUploadQuota,
-} from "@/lib/extension-upload-access";
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
@@ -17,10 +13,9 @@ export async function OPTIONS(req: Request) {
  */
 export async function POST(request: Request) {
   const cors = getExtensionCorsHeaders(request);
-  let clerkId: string | null = null;
 
   try {
-    clerkId = await getClerkIdFromExtensionBearer(request);
+    const clerkId = await getClerkIdFromExtensionBearer(request);
     if (!clerkId) {
       return NextResponse.json(
         { error: "Unauthorized", code: "EXTENSION_AUTH_REQUIRED" },
@@ -53,14 +48,10 @@ export async function POST(request: Request) {
       );
     }
 
-    const quota = await reserveMediaUploadQuota(clerkId, cors);
-    if (!quota.ok) return quota.response;
-
     const cloudName = process.env.CLOUDINARY_NAME?.trim();
     const cloudinaryApiKey = process.env.CLOUDINARY_API_KEY?.trim();
     const cloudinaryApiSecret = process.env.CLOUDINARY_API_SECRET?.trim();
     if (!cloudName || !cloudinaryApiKey || !cloudinaryApiSecret) {
-      await refundMediaUploadQuota(clerkId);
       return NextResponse.json(
         {
           error:
@@ -75,7 +66,6 @@ export async function POST(request: Request) {
       const secureUrl = await cloudinaryService(buffer, "image");
       return NextResponse.json({ url: secureUrl }, { headers: cors });
     } catch (error) {
-      await refundMediaUploadQuota(clerkId);
       console.error("[upload-evidence-tile] upload error:", error);
       return NextResponse.json(
         {
@@ -86,7 +76,6 @@ export async function POST(request: Request) {
       );
     }
   } catch (error) {
-    if (clerkId) await refundMediaUploadQuota(clerkId);
     console.error("[upload-evidence-tile] unexpected error:", error);
     return NextResponse.json(
       {

@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import recreateComponent from "@/app/service/recreateComponent";
 import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/extension-route-helpers";
 import { parseBody } from "@/lib/validation/validate";
 import { RecreateFromScreenshotSchema } from "@/lib/validation/schemas";
-import { reserveQuota, confirmReservation, rollbackReservation } from "@/app/service/supabase/extension/reservationService";
 import { ratelimit } from "@/lib/upstash/rateLimiter";
 import cursorRecreateComponent from "@/app/service/cursor/cursorRecreateComponent";
+import { CREDIT_FEATURES } from "@/lib/credits/config";
+import { chargeFeatureCredits, refundFeatureCredits } from "@/lib/credits/extensionCredits";
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
@@ -30,68 +30,25 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validate body before deducting — invalid requests don't consume quota
     const parsed = await parseBody(request, RecreateFromScreenshotSchema, cors);
     if (!parsed.ok) return parsed.response;
     const { html, css, screenshotUrl, idempotencyKey } = parsed.data;
 
-    // const openrouterKey = process.env.OPENROUTER_API_KEY?.trim();
-    // if (!openrouterKey) {
-    //   return NextResponse.json(
-    //     { success: false, error: "OPENROUTER_API_KEY is not configured or is empty" },
-    //     { status: 500, headers: cors }
-    //   );
-    // }
-
-    const reserveResult = await reserveQuota(clerkId, 'code-generation', idempotencyKey ?? null);
-    if (!reserveResult.allowed) {
-      switch (reserveResult.code) {
-        case 'PLAN_BLOCKED':
-          return NextResponse.json(
-            {
-              success: false,
-              error: 'This feature requires a paid plan. Upgrade to access it.',
-              code: 'PLAN_BLOCKED',
-            },
-            { status: 403, headers: cors }
-          );
-        case 'QUOTA_EXHAUSTED':
-          return NextResponse.json(
-            {
-              success: false,
-              error: 'Monthly quota exhausted. Upgrade your plan or wait until next month.',
-              code: 'QUOTA_EXHAUSTED',
-            },
-            { status: 402, headers: cors }
-          );
-        case 'USER_NOT_FOUND':
-          return NextResponse.json(
-            { success: false, error: 'User not found', code: 'USER_NOT_FOUND' },
-            { status: 401, headers: cors }
-          );
-        case 'CONCURRENT_MODIFICATION':
-          return NextResponse.json(
-            { success: false, error: 'Request conflict, please retry', code: 'CONCURRENT_MODIFICATION' },
-            { status: 409, headers: cors }
-          );
-        default:
-          return NextResponse.json(
-            { success: false, error: 'Internal server error' },
-            { status: 500, headers: cors }
-          );
-      }
-    }
-
-    const { reservationId } = reserveResult;
+    const charge = await chargeFeatureCredits({
+      clerkId,
+      featureId: CREDIT_FEATURES.RECREATE_FROM_SCREENSHOT,
+      idempotencyKey,
+      cors,
+    });
+    if (!charge.ok) return charge.response;
 
     try {
       console.log("[recreate-from-screenshot] Generating code...");
-      // const result = await recreateComponent({ html, css, screenshotUrl });
       const result = await cursorRecreateComponent({ html, css, screenshotUrl });
 
       if (!result.status) {
         console.log("[recreate-from-screenshot] Generation failed:", result.message);
-        if (reservationId) await rollbackReservation(reservationId);
+        if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
         return NextResponse.json(
           { success: false, error: result.message },
           { status: 500, headers: cors }
@@ -100,14 +57,19 @@ export async function POST(request: Request) {
 
       const code = result.result ?? "";
       console.log("[recreate-from-screenshot] Generated code successfully, length:", code.length);
-      if (reservationId) await confirmReservation(reservationId);
       return NextResponse.json(
-        { success: true, code, message: result.message, reservationId },
+        {
+          success: true,
+          code,
+          message: result.message,
+          creditsCharged: charge.creditsCharged,
+          creditsRemaining: charge.creditsRemaining,
+        },
         { headers: cors }
       );
     } catch (error) {
+      if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
       console.error("Recreate from screenshot error:", error);
-      if (reservationId) await rollbackReservation(reservationId);
       return NextResponse.json(
         {
           success: false,

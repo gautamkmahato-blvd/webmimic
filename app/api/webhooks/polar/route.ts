@@ -2,6 +2,8 @@
 import { Webhooks } from '@polar-sh/nextjs';
 import {
   updatePlanAccess,
+  grantCustomPaymentCredits,
+  clawBackCreditsForPayment,
   findPaymentByProviderId,
   findPlanByProductOrPriceIds,
   findUserByClerkId,
@@ -9,6 +11,7 @@ import {
   updatePaymentStatus,
   reconcilePlanAccessAfterPaymentChange,
 } from '@/app/service/supabase/billing/polarBillingService';
+import { creditsFromCustomPaymentCents } from '@/lib/credits/config';
 import { extractPolarOrderProductId } from '@/lib/polar/orderPayload';
 
 
@@ -108,9 +111,12 @@ const webhook = Webhooks({
       const amountCents = data?.totalAmount ?? data?.netAmount ?? 0;
 
       let planId: string | null = null;
+      let creditsPurchased: number | null = null;
+      const isCustomBilling = metadata?.billing_type === 'custom';
 
-      if (metadata?.billing_type === 'custom') {
-        console.log('[polar:webhook] custom billing — recording payment, no plan change', { amountCents });
+      if (isCustomBilling) {
+        creditsPurchased = creditsFromCustomPaymentCents(amountCents);
+        console.log('[polar:webhook] custom billing — grant credits', { amountCents, creditsPurchased });
       } else {
         const extracted = extractPolarOrderProductId(data);
         const productId =
@@ -132,6 +138,7 @@ const webhook = Webhooks({
         }
 
         planId = plan.id;
+        creditsPurchased = Math.max(0, Math.floor(Number(plan.credits) || 0));
       }
 
       if (existingPayment?.status === 'pending') {
@@ -144,18 +151,34 @@ const webhook = Webhooks({
           planId,
           provider: 'polar',
           amount: amountCents,
+          creditsPurchased,
           metadata,
         });
       }
 
-      const planAlreadyGranted = (existingPayment?.metadata as Record<string, unknown>)?.plan_granted === true;
+      const existingMeta = (existingPayment?.metadata as Record<string, unknown> | null) ?? {};
+      const planAlreadyGranted = existingMeta.plan_granted === true;
+      const creditsAlreadyGranted = existingMeta.credits_granted === true;
 
-      if (!planAlreadyGranted && planId !== null) {
-        await updatePlanAccess(userId, planId);
+      if (!creditsAlreadyGranted) {
+        if (isCustomBilling && creditsPurchased && creditsPurchased > 0) {
+          await grantCustomPaymentCredits(userId, amountCents, providerPaymentId);
+          await updatePaymentStatus(providerPaymentId, 'pending', { credits_granted: true });
+        } else if (!planAlreadyGranted && planId !== null) {
+          await updatePlanAccess(userId, planId, providerPaymentId);
+          await updatePaymentStatus(providerPaymentId, 'pending', {
+            plan_granted: true,
+            credits_granted: true,
+          });
+        }
+      } else if (!planAlreadyGranted && planId !== null) {
+        await updatePlanAccess(userId, planId, providerPaymentId);
         await updatePaymentStatus(providerPaymentId, 'pending', { plan_granted: true });
       }
 
-      await updatePaymentStatus(providerPaymentId, 'succeeded');
+      await updatePaymentStatus(providerPaymentId, 'succeeded', {
+        credits_purchased: creditsPurchased,
+      });
 
       console.log('[polar:webhook] order.paid processed', {
         providerPaymentId,
@@ -201,12 +224,26 @@ const webhook = Webhooks({
             (updated.metadata as Record<string, unknown> | null)?.plan_granted === true;
           const userId = updated.user_id as string | null;
 
-          if (wasPlanPayment && userId && (status.includes('refund') || status.includes('chargeback'))) {
-            await reconcilePlanAccessAfterPaymentChange(userId);
-            console.log('[polar:webhook] order.updated plan access reconciled after refund/chargeback', {
-              providerPaymentId,
-              userId,
-            });
+          if (userId && (status.includes('refund') || status.includes('chargeback'))) {
+            if (wasPlanPayment) {
+              await reconcilePlanAccessAfterPaymentChange(userId);
+              console.log('[polar:webhook] order.updated plan access reconciled after refund/chargeback', {
+                providerPaymentId,
+                userId,
+              });
+            }
+
+            const creditsPurchased =
+              (updated.credits_purchased as number | null | undefined) ??
+              ((updated.metadata as Record<string, unknown> | null)?.credits_purchased as number | null | undefined);
+
+            const refundAlreadyHandled =
+              (updated.metadata as Record<string, unknown> | null)?.refund_credits_deducted === true;
+
+            if (!refundAlreadyHandled && creditsPurchased && creditsPurchased > 0) {
+              await clawBackCreditsForPayment(userId, providerPaymentId, creditsPurchased);
+              await updatePaymentStatus(providerPaymentId, status, { refund_credits_deducted: true });
+            }
           }
         } else {
           console.log('[polar:webhook] order.updated no existing payment to update', providerPaymentId);

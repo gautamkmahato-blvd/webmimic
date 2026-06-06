@@ -55,7 +55,7 @@ export const RecreateFromScreenshotSchema = z.object({
   html: requiredString(500_000),
   css: requiredString(200_000),
   screenshotUrl: allowedCloudinaryMediaUrl(2048),
-  idempotencyKey: requiredString(128),
+  idempotencyKey: z.string().max(128).optional(),
 });
 
 export const AnalyzeVideoSchema = z.object({
@@ -63,7 +63,7 @@ export const AnalyzeVideoSchema = z.object({
   imageUrl: allowedCloudinaryMediaUrl(2048),
   code: requiredString(500_000),
   operationType: z.enum(['lottie-animations', 'ai-recreate']),
-  idempotencyKey: requiredString(128),
+  idempotencyKey: z.string().max(128).optional(),
 });
 
 export const CreateCheckoutSchema = z.object({

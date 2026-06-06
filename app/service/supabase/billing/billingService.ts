@@ -1,5 +1,6 @@
 // services/billingService.ts
 import { supabaseAdmin } from '@/config/supabase/supabaseAdmin';
+import { grantCreditsToUser } from '@/app/service/supabase/credits/creditsService';
 import { SubscribeResult } from './type';
 import { ServiceResponse } from '@/types/ServiceResponse';
 
@@ -70,6 +71,8 @@ export async function billingService(
     }
 
     // 4) Insert payment record
+    const creditsPurchased = Math.max(0, Math.floor(Number(plan.credits) || 0));
+
     const paymentPayload = {
       user_id: userId,
       plan_id: plan.id,
@@ -77,8 +80,9 @@ export async function billingService(
       payment_provider: 'internal',
       provider_payment_id: providerPaymentId,
       amount: plan.price_usd,
+      credits_purchased: creditsPurchased,
       status: 'succeeded',
-      metadata: { note: 'Immediate grant for manual purchase flow' },
+      metadata: { note: 'Immediate grant for manual purchase flow', credits_granted: true },
     };
 
     const { data: paymentRow, error: paymentErr } = await supabaseAdmin
@@ -92,52 +96,55 @@ export async function billingService(
       return { success: false, result: {}, error: 'Failed to record payment', message: String(paymentErr) };
     }
 
-    // 5) Grant plan access
-    const now = new Date().toISOString();
+    // 5) Grant credits + Premium plan access
+    if (creditsPurchased > 0) {
+      const grant = await grantCreditsToUser({
+        userId,
+        amount: creditsPurchased,
+        referenceType: 'plan_purchase',
+        referenceId: providerPaymentId,
+        planId: plan.id,
+        setPremium: true,
+      });
 
-    const { data: existing, error: existingErr } = await supabaseAdmin
-      .from('user_credits')
-      .select('id')
-      .eq('user_id', userId)
-      .maybeSingle();
+      if (!grant.ok) {
+        console.error('Failed to grant plan credits:', grant);
+        return {
+          success: true,
+          result: { payment: paymentRow, credits: {} },
+          message: 'Payment recorded, but failed to grant credits',
+        };
+      }
 
-    if (existingErr) {
-      console.error('Error reading user_credits:', existingErr);
       return {
         success: true,
-        result: { payment: paymentRow, planAccess: {} },
+        result: { payment: paymentRow, credits: grant },
+        message: 'Plan purchased and credits granted',
+      };
+    }
+
+    const now = new Date().toISOString();
+    const { data: planAccess, error: planAccessErr } = await supabaseAdmin
+      .from('user_credits')
+      .update({ plan_id: plan.id, plan_type: 'Premium', updated_at: now })
+      .eq('user_id', userId)
+      .select()
+      .maybeSingle();
+
+    if (planAccessErr) {
+      console.error('Failed to update premium plan access:', planAccessErr);
+      return {
+        success: true,
+        result: { payment: paymentRow, credits: {} },
         message: 'Payment recorded, but failed to update plan access',
       };
     }
 
-    if (existing?.id) {
-      const { data: updatedAccess, error: updateErr } = await supabaseAdmin
-        .from('user_credits')
-        .update({ plan_id: plan.id, plan_type: 'Premium', updated_at: now })
-        .eq('user_id', userId)
-        .select()
-        .single();
-
-      if (updateErr) {
-        console.error('Failed to update plan access:', updateErr);
-        return { success: false, result: {}, error: 'Failed to update plan access', message: String(updateErr) };
-      }
-
-      return { success: true, result: { payment: paymentRow, planAccess: updatedAccess }, message: 'Plan access granted' };
-    }
-
-    const { data: createdAccess, error: createErr } = await supabaseAdmin
-      .from('user_credits')
-      .insert([{ user_id: userId, plan_id: plan.id, plan_type: 'Premium', updated_at: now }])
-      .select()
-      .single();
-
-    if (createErr) {
-      console.error('Failed to create plan access row:', createErr);
-      return { success: false, result: {}, error: 'Failed to create plan access row', message: String(createErr) };
-    }
-
-    return { success: true, result: { payment: paymentRow, planAccess: createdAccess }, message: 'Plan purchased and access granted' };
+    return {
+      success: true,
+      result: { payment: paymentRow, credits: planAccess },
+      message: 'Plan purchased and access granted',
+    };
   } catch (err) {
     console.error('billingService unexpected error:', err);
     return { success: false, result: {}, error: 'Unexpected server error', message: String(err) };

@@ -3,11 +3,9 @@ import { getBearerRouteCorsHeaders, getClerkIdFromExtensionBearer } from '@/lib/
 import { buildCuratedSpecMarkdown } from '@/lib/curate/buildCuratedSpec';
 import { ratelimit } from '@/lib/upstash/rateLimiter';
 import deepseekV4Flash from '@/app/service/openRouter/deepseekV4Flash';
-import {
-  finalizeDesignAnalysisReservation,
-  requireExtensionLlmAccess,
-  reserveDesignAnalysisQuota,
-} from '@/lib/extension-llm-access';
+import { requireExtensionLlmAccess } from '@/lib/extension-llm-access';
+import { CREDIT_FEATURES } from '@/lib/credits/config';
+import { chargeFeatureCredits, refundFeatureCredits } from '@/lib/credits/extensionCredits';
 
 const MAX_CURATE_PROMPT_CHARS = 500_000;
 
@@ -36,17 +34,17 @@ export async function POST(request: Request) {
       const access = await requireExtensionLlmAccess(request);
       if (!access.ok) return access.response;
 
-      const quota = await reserveDesignAnalysisQuota(
-        access.clerkId,
-        typeof body.idempotencyKey === 'string' ? body.idempotencyKey : null,
-        access.cors,
-      );
-      if (!quota.ok) return quota.response;
-      const { reservationId } = quota;
+      const charge = await chargeFeatureCredits({
+        clerkId: access.clerkId,
+        featureId: CREDIT_FEATURES.DESIGN_SYSTEM_EXTRACTION,
+        idempotencyKey: typeof body.idempotencyKey === 'string' ? body.idempotencyKey : null,
+        cors: access.cors,
+      });
+      if (!charge.ok) return charge.response;
 
       const openRouterKey = process.env.OPENROUTER_API_KEY?.trim();
       if (!openRouterKey) {
-        await finalizeDesignAnalysisReservation(reservationId, false);
+        if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
         return NextResponse.json(
           { status: false, statusText: 'OPENROUTER_API_KEY is not configured or is empty.' },
           { status: 500, headers: cors }
@@ -56,25 +54,25 @@ export async function POST(request: Request) {
       try {
         const modelResponse = await deepseekV4Flash(prompt);
         if (!modelResponse.status) {
-          await finalizeDesignAnalysisReservation(reservationId, false);
+          if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
           return NextResponse.json(
             { status: false, statusText: modelResponse.message },
             { status: 500, headers: cors }
           );
         }
 
-        await finalizeDesignAnalysisReservation(reservationId, true);
         return NextResponse.json(
           {
             status: true,
             analysis: modelResponse,
             statusText: modelResponse.message,
-            reservationId,
+            creditsCharged: charge.creditsCharged,
+            creditsRemaining: charge.creditsRemaining,
           },
           { status: 200, headers: cors }
         );
       } catch (error) {
-        await finalizeDesignAnalysisReservation(reservationId, false);
+        if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
         throw error;
       }
     }

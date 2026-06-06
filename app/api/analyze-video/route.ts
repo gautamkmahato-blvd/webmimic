@@ -3,9 +3,9 @@ import openRouterAnalysis from "@/app/service/openRouterAnalysis";
 import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/extension-route-helpers";
 import { parseBody } from "@/lib/validation/validate";
 import { AnalyzeVideoSchema } from "@/lib/validation/schemas";
-import { reserveQuota, confirmReservation, rollbackReservation } from "@/app/service/supabase/extension/reservationService";
 import { ratelimit } from "@/lib/upstash/rateLimiter";
-import cursorVideoAnalysis from "@/app/service/cursor/cursorVideoAnalysis";
+import { creditFeatureForVideoOperation } from "@/lib/credits/config";
+import { chargeFeatureCredits, refundFeatureCredits } from "@/lib/credits/extensionCredits";
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
@@ -37,7 +37,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Validate body before deducting — invalid requests don't consume quota
     console.log(`[${requestId}] Step 2: Parsing and validating request body`);
     const parsed = await parseBody(request, AnalyzeVideoSchema, cors);
     if (!parsed.ok) {
@@ -58,75 +57,44 @@ export async function POST(request: Request) {
     }
     console.log(`[${requestId}] Step 3 PASSED: API key present`);
 
-    console.log(`[${requestId}] Step 4: Reserving quota for operation=${operationType} clerkId=${clerkId}`);
-    const reserveResult = await reserveQuota(clerkId, operationType, idempotencyKey ?? null);
-    if (!reserveResult.allowed) {
-      console.warn(`[${requestId}] Step 4 FAILED: Quota denied`, { code: reserveResult.code, operationType });
-      switch (reserveResult.code) {
-        case 'PLAN_BLOCKED':
-          return NextResponse.json(
-            {
-              success: false,
-              error: 'This feature requires a paid plan. Upgrade to access it.',
-              code: 'PLAN_BLOCKED',
-            },
-            { status: 403, headers: cors }
-          );
-        case 'QUOTA_EXHAUSTED':
-          return NextResponse.json(
-            {
-              success: false,
-              error: 'Monthly quota exhausted. Upgrade your plan or wait until next month.',
-              code: 'QUOTA_EXHAUSTED',
-            },
-            { status: 402, headers: cors }
-          );
-        case 'USER_NOT_FOUND':
-          return NextResponse.json(
-            { success: false, error: 'User not found', code: 'USER_NOT_FOUND' },
-            { status: 401, headers: cors }
-          );
-        case 'CONCURRENT_MODIFICATION':
-          return NextResponse.json(
-            { success: false, error: 'Request conflict, please retry', code: 'CONCURRENT_MODIFICATION' },
-            { status: 409, headers: cors }
-          );
-        default:
-          return NextResponse.json(
-            { success: false, error: 'Internal server error' },
-            { status: 500, headers: cors }
-          );
-      }
-    }
-    console.log(`[${requestId}] Step 4 PASSED: Quota reserved, used=${reserveResult.used} limit=${reserveResult.limit} reservationId=${reserveResult.reservationId}`);
+    const featureId = creditFeatureForVideoOperation(operationType);
+    const charge = await chargeFeatureCredits({
+      clerkId,
+      featureId,
+      idempotencyKey,
+      cors,
+    });
+    if (!charge.ok) return charge.response;
 
-    const { reservationId } = reserveResult;
-    
     try {
-      console.log(`[${requestId}] Step 5: Calling openRouterAnalysis`);
+      console.log(`[${requestId}] Step 4: Calling openRouterAnalysis`);
       const modelResponse = await openRouterAnalysis(videoUrl, imageUrl, code);
-      // const modelResponse = await cursorVideoAnalysis(videoUrl, imageUrl, code);
 
-      console.log(`[${requestId}] Step 5: openRouterAnalysis returned`, { status: modelResponse.status, message: modelResponse.message, resultLength: modelResponse.result?.length ?? 0 });
+      console.log(`[${requestId}] Step 4: openRouterAnalysis returned`, { status: modelResponse.status, message: modelResponse.message, resultLength: modelResponse.result?.length ?? 0 });
 
       if (!modelResponse.status) {
-        console.warn(`[${requestId}] Step 5 FAILED: Model returned status=false, rolling back reservation. message=${modelResponse.message}`);
-        if (reservationId) await rollbackReservation(reservationId);
+        console.warn(`[${requestId}] Step 4 FAILED: Model returned status=false. message=${modelResponse.message}`);
+        if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
         return NextResponse.json(
           { status: false, statusText: modelResponse.message },
           { status: 500, headers: cors }
         );
       }
 
-      console.log(`[${requestId}] Step 5 PASSED: Analysis complete, confirming reservation`);
-      if (reservationId) await confirmReservation(reservationId);
+      console.log(`[${requestId}] Step 4 PASSED: Analysis complete`);
       return NextResponse.json(
-        { status: true, analysis: modelResponse, statusText: modelResponse.message, reservationId },
+        {
+          status: true,
+          analysis: modelResponse,
+          statusText: modelResponse.message,
+          creditsCharged: charge.creditsCharged,
+          creditsRemaining: charge.creditsRemaining,
+        },
         { status: 200, headers: cors }
       );
     } catch (error) {
-      console.error(`[${requestId}] Step 5 EXCEPTION: openRouterAnalysis threw an error, rolling back reservation`, error);
-      if (reservationId) await rollbackReservation(reservationId);
+      if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
+      console.error(`[${requestId}] Step 4 EXCEPTION: openRouterAnalysis threw an error`, error);
       return NextResponse.json(
         { status: false, statusText: "Analysis failed" },
         { status: 500, headers: cors }

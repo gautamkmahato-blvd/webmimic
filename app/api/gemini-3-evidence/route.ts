@@ -6,11 +6,9 @@ import {
   validateEvidenceRequiredInputs,
 } from '@/app/service/openRouter/models/evidenceReasoningShared';
 import { getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
-import {
-  finalizeDesignAnalysisReservation,
-  requireExtensionLlmAccess,
-  reserveDesignAnalysisQuota,
-} from '@/lib/extension-llm-access';
+import { requireExtensionLlmAccess } from '@/lib/extension-llm-access';
+import { CREDIT_FEATURES } from '@/lib/credits/config';
+import { chargeFeatureCredits, refundFeatureCredits } from '@/lib/credits/extensionCredits';
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
@@ -51,28 +49,37 @@ export async function POST(request: Request) {
       );
     }
 
-    const quota = await reserveDesignAnalysisQuota(clerkId, idempotencyKey, cors);
-    if (!quota.ok) return quota.response;
-    const { reservationId } = quota;
+    const charge = await chargeFeatureCredits({
+      clerkId,
+      featureId: CREDIT_FEATURES.DESIGN_SYSTEM_EXTRACTION,
+      idempotencyKey,
+      cors,
+    });
+    if (!charge.ok) return charge.response;
 
     try {
       const result = await gemini3EvidenceReasoning(input);
 
       if (!result.status) {
-        await finalizeDesignAnalysisReservation(reservationId, false);
+        if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
         return NextResponse.json(
           { success: false, error: result.message ?? 'Request failed.', result },
           { status: 500, headers: cors },
         );
       }
 
-      await finalizeDesignAnalysisReservation(reservationId, true);
       return NextResponse.json(
-        { success: true, model: 'gemini-3', result, reservationId },
+        {
+          success: true,
+          model: 'gemini-3',
+          result,
+          creditsCharged: charge.creditsCharged,
+          creditsRemaining: charge.creditsRemaining,
+        },
         { headers: cors },
       );
     } catch (error) {
-      await finalizeDesignAnalysisReservation(reservationId, false);
+      if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
       throw error;
     }
   } catch (error) {

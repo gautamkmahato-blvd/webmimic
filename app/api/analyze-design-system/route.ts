@@ -1,12 +1,10 @@
 import { NextResponse } from 'next/server';
 import deepseekV4Flash from '@/app/service/openRouter/deepseekV4Flash';
 import { getExtensionCorsHeaders } from '@/lib/extension-route-helpers';
-import {
-  finalizeDesignAnalysisReservation,
-  requireExtensionLlmAccess,
-  reserveDesignAnalysisQuota,
-} from '@/lib/extension-llm-access';
+import { requireExtensionLlmAccess } from '@/lib/extension-llm-access';
 import { getAllowedMediaUrlError } from '@/lib/security/allowedMediaUrl';
+import { CREDIT_FEATURES } from '@/lib/credits/config';
+import { chargeFeatureCredits, refundFeatureCredits } from '@/lib/credits/extensionCredits';
 
 const MAX_PROMPT_CHARS = 2_000_000;
 
@@ -263,9 +261,13 @@ export async function POST(request: Request) {
       );
     }
 
-    const quota = await reserveDesignAnalysisQuota(clerkId, idempotencyKey, cors);
-    if (!quota.ok) return quota.response;
-    const { reservationId } = quota;
+    const charge = await chargeFeatureCredits({
+      clerkId,
+      featureId: CREDIT_FEATURES.DESIGN_SYSTEM_EXTRACTION,
+      idempotencyKey,
+      cors,
+    });
+    if (!charge.ok) return charge.response;
 
     try {
       console.log(`[${requestId}] Calling deepseekV4Flash, promptLength=${parsed.prompt.length}`);
@@ -277,25 +279,25 @@ export async function POST(request: Request) {
       });
 
       if (!modelResponse.status) {
-        await finalizeDesignAnalysisReservation(reservationId, false);
+        if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
         return NextResponse.json(
           { status: false, statusText: modelResponse.message },
           { status: 500, headers: cors },
         );
       }
 
-      await finalizeDesignAnalysisReservation(reservationId, true);
       return NextResponse.json(
         {
           status: true,
           analysis: modelResponse,
           statusText: modelResponse.message,
-          reservationId,
+          creditsCharged: charge.creditsCharged,
+          creditsRemaining: charge.creditsRemaining,
         },
         { status: 200, headers: cors },
       );
     } catch (error) {
-      await finalizeDesignAnalysisReservation(reservationId, false);
+      if (!charge.duplicate) await refundFeatureCredits(charge.transactionId);
       throw error;
     }
   } catch (error) {
