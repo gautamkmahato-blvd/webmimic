@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
     "*.ngrok-free.dev",
     "*.ngrok.io",
   ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "framerusercontent.com",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
