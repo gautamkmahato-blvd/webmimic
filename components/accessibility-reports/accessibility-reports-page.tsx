@@ -3,18 +3,14 @@
 import { useMemo, useState } from "react";
 import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
 import {
-  AlertTriangle,
-  CheckCircle2,
   Copy,
   Download,
   ExternalLink,
-  Globe,
   Loader2,
   RefreshCw,
   Search,
   ShieldCheck,
   X,
-  XCircle,
 } from "lucide-react";
 import type { AssetRow } from "@/app/service/supabase/assets/types";
 import { useAssets } from "@/components/assets/use-assets";
@@ -81,17 +77,19 @@ function ReportGalleryCard({
         onClick={onOpen}
         className="flex flex-1 flex-col p-5 text-left"
       >
-        <div className="mb-4 flex items-start justify-between gap-3">
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/20 bg-amber-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-amber-700">
-            <ShieldCheck className="size-3.5" aria-hidden />
-            Report
-          </div>
-          <span className="text-xs text-neutral-400">
-            {formatAssetDate(asset.created_at)}
-          </span>
+        <div className="mb-4">
+          {domainLabel ? (
+            <div className="inline-flex max-w-full items-center rounded-full border border-amber-500/20 bg-amber-500/10 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-amber-800">
+              <span className="truncate">{domainLabel}</span>
+            </div>
+          ) : (
+            <div className="inline-flex items-center rounded-full border border-neutral-200 bg-neutral-50 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-neutral-500">
+              Unknown site
+            </div>
+          )}
         </div>
 
-        <div className="mb-4 flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <div
             className="relative flex size-20 shrink-0 items-center justify-center rounded-full"
             style={{
@@ -115,42 +113,9 @@ function ReportGalleryCard({
             <h3 className="line-clamp-2 text-sm font-semibold text-neutral-900">
               {title}
             </h3>
-            {domainLabel && (
-              <p className="mt-1 flex items-center gap-1 text-xs text-neutral-500">
-                <Globe className="size-3.5 shrink-0" aria-hidden />
-                <span className="truncate">{domainLabel}</span>
-              </p>
-            )}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-3 gap-2">
-          <div className="rounded-xl bg-red-50 px-2 py-2 text-center">
-            <div className="flex items-center justify-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-red-600">
-              <XCircle className="size-3" aria-hidden />
-              Errors
-            </div>
-            <div className="mt-1 text-lg font-semibold tabular-nums text-red-700">
-              {stats.errors ?? "—"}
-            </div>
-          </div>
-          <div className="rounded-xl bg-amber-50 px-2 py-2 text-center">
-            <div className="flex items-center justify-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-amber-700">
-              <AlertTriangle className="size-3" aria-hidden />
-              Warnings
-            </div>
-            <div className="mt-1 text-lg font-semibold tabular-nums text-amber-800">
-              {stats.warnings ?? "—"}
-            </div>
-          </div>
-          <div className="rounded-xl bg-green-50 px-2 py-2 text-center">
-            <div className="flex items-center justify-center gap-1 text-[10px] font-semibold uppercase tracking-wide text-green-700">
-              <CheckCircle2 className="size-3" aria-hidden />
-              Passes
-            </div>
-            <div className="mt-1 text-lg font-semibold tabular-nums text-green-800">
-              {stats.passes ?? "—"}
-            </div>
+            <p className="mt-1 text-xs text-neutral-500">
+              {formatAssetDate(asset.created_at)}
+            </p>
           </div>
         </div>
       </button>
