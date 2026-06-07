@@ -17,7 +17,7 @@ const isProtectedRoute = createRouteMatcher([
   '/design-md-converter(.*)',
   '/test-qwen-reasoning(.*)',
   '/design-chat(.*)',
-  '/design-chat-cursor(.*)',
+  '/design(.*)',
   '/design-editor(.*)',
 ]);
 
