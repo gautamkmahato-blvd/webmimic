@@ -10,8 +10,12 @@ import {
   FileText,
   ImagePlus,
   Loader2,
+  MessageSquareCode,
+  Palette,
   Paperclip,
   Search,
+  Sparkles,
+  Wand2,
   X,
 } from "lucide-react";
 import { DesignChatPreviewPane } from "./_components/DesignChatPreviewPane";
@@ -22,6 +26,13 @@ import {
   PREVIEW_LOADING_HTML,
   type DesignChatPreviewPayload,
 } from "./extractPreviewHtml";
+
+/** LLM Design Chat is not ready — set to `true` to restore the implementation below. */
+const DESIGN_CHAT_LLM_ENABLED = false;
+
+// ---------------------------------------------------------------------------
+// Design Chat (LLM) — disabled until ready (DESIGN_CHAT_LLM_ENABLED = false)
+// ---------------------------------------------------------------------------
 
 const CHAT_WIDTH_CLASS = "w-full max-w-[860px]";
 const SIDEBAR_WIDTH_CLASS = "w-[320px]";
@@ -52,7 +63,7 @@ function toBase64Payload(image: UploadedImage) {
   };
 }
 
-export default function DesignChatCursorPage() {
+function DesignChatCursorPage() {
   const { isLoaded, isSignedIn } = useAuth();
 
   const [images, setImages] = useState<UploadedImage[]>([]);
@@ -746,4 +757,69 @@ function DesignSystemPicker({
       )}
     </div>
   );
+}
+
+function DesignComingSoon() {
+  return (
+    <div className="flex min-h-full items-center justify-center px-6 py-16">
+      <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-neutral-200 bg-white p-10 shadow-sm">
+        <div
+          className="pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-neutral-100/80 blur-2xl"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute -bottom-20 -left-16 size-56 rounded-full bg-neutral-50 blur-3xl"
+          aria-hidden
+        />
+
+        <div className="relative text-center">
+          <div className="mx-auto mb-6 flex size-14 items-center justify-center rounded-2xl border border-neutral-200 bg-neutral-50">
+            <MessageSquareCode className="size-7 text-neutral-800" aria-hidden />
+          </div>
+
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-neutral-600">
+            <Sparkles className="size-3.5" aria-hidden />
+            Coming soon
+          </span>
+
+          <h1 className="mt-5 text-2xl font-semibold tracking-tight text-neutral-900">
+            Design Chat
+          </h1>
+          <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-neutral-500">
+            Chat with an LLM to generate UI components, preview them live, and
+            apply your saved design systems — all in one workspace.
+          </p>
+
+          <ul className="mt-8 space-y-3 text-left">
+            {[
+              { icon: Wand2, label: "Describe components in natural language" },
+              { icon: Palette, label: "Apply tokens from your design systems" },
+              { icon: MessageSquareCode, label: "Iterate with a live Tailwind preview" },
+            ].map(({ icon: Icon, label }) => (
+              <li
+                key={label}
+                className="flex items-center gap-3 rounded-xl border border-neutral-100 bg-neutral-50/80 px-4 py-3 text-sm text-neutral-700"
+              >
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-white shadow-sm">
+                  <Icon className="size-4 text-neutral-600" aria-hidden />
+                </span>
+                {label}
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-8 text-xs text-neutral-400">
+            We&apos;re putting the finishing touches on this feature. Check back soon.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function DesignPage() {
+  if (DESIGN_CHAT_LLM_ENABLED) {
+    return <DesignChatCursorPage />;
+  }
+  return <DesignComingSoon />;
 }

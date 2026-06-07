@@ -52,12 +52,13 @@ export function Sidebar() {
                 height={24}
                 className="rounded-[6px] shrink-0"
               />
-            </Link>
+            
             {!collapsed && (
               <span className="truncate font-extrabold text-lg tracking-tight text-neutral-900">
                 Webmimic
               </span>
             )}
+            </Link>
           </div>
 
           <nav className="flex flex-1 flex-col gap-1 overflow-y-auto py-1 pl-4 pr-4">

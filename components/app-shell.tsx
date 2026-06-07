@@ -8,7 +8,7 @@ const APP_PATHS = [
   "/assets",
   "/accessibility-report",
   "/design-systems",
-  "/design-chat-cursor",
+  "/design",
   "/motion",
   "/credits",
 ];
