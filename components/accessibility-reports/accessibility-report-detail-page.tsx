@@ -187,7 +187,7 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
   const BannerIcon = banner.icon;
 
   return (
-    <div className="min-h-screen bg-[#f4f6fb] text-neutral-900">
+    <div className="min-h-screen text-neutral-900">
       <header className="border-b border-neutral-200 bg-white">
         <div className="mx-auto flex max-w-[1280px] items-center justify-between px-6 py-4 lg:px-8">
           <div className="flex items-center gap-4">
@@ -426,13 +426,6 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
             <BannerIcon className={`mt-0.5 size-5 shrink-0 ${banner.iconColor}`} aria-hidden />
             <p className="text-sm leading-relaxed text-neutral-700">{banner.text}</p>
           </div>
-          <a
-            href="#top-issues"
-            className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-medium text-neutral-800 shadow-sm transition-colors hover:bg-neutral-50"
-          >
-            View Issues
-            <ArrowRight className="size-4" aria-hidden />
-          </a>
         </div>
       </main>
     </div>
