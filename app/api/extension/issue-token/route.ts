@@ -1,6 +1,6 @@
 import { auth } from '@clerk/nextjs/server';
 import { SignJWT } from 'jose';
-import { createPrivateKey } from 'node:crypto';
+import { createPrivateKey, randomUUID } from 'node:crypto';
 import { NextResponse } from 'next/server';
 
 import {
@@ -8,6 +8,10 @@ import {
   getIssuer,
   resolveExtensionAudienceForMint,
 } from '@/lib/extension-jwt';
+import {
+  getExtensionJwtPrivateKeyPem,
+  getPrimarySigningKid,
+} from '@/lib/extension-jwt-keys';
 import { getWebAppCorsHeaders } from '@/lib/extension-route-helpers';
 import { enforceRateLimit } from '@/lib/upstash/rateLimiter';
 
@@ -26,7 +30,7 @@ export async function POST(request: Request) {
     const rateLimited = await enforceRateLimit('extension-issue-token', userId, cors);
     if (rateLimited) return rateLimited;
 
-    const pem = process.env.EXTENSION_JWT_PRIVATE_KEY?.trim();
+    const pem = getExtensionJwtPrivateKeyPem();
     if (!pem) {
       console.error('[issue-token] Missing EXTENSION_JWT_PRIVATE_KEY');
       return NextResponse.json({ error: 'Server configuration error' }, { status: 500, headers: cors });
@@ -56,7 +60,8 @@ export async function POST(request: Request) {
     const now = Math.floor(Date.now() / 1000);
 
     const token = await new SignJWT({ sub: userId })
-      .setProtectedHeader({ alg: 'RS256' })
+      .setProtectedHeader({ alg: 'RS256', kid: getPrimarySigningKid() })
+      .setJti(randomUUID())
       .setIssuer(iss)
       .setAudience(audience.aud)
       .setIssuedAt(now)

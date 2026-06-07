@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { jwtVerify, SignJWT } from 'jose';
-import { createPrivateKey, createPublicKey } from 'node:crypto';
+import { createPrivateKey, createPublicKey, randomUUID } from 'node:crypto';
 
 import {
   getExtensionJwtTtlSeconds,
@@ -8,6 +8,12 @@ import {
   getIssuer,
   resolveExtensionAudiencesForVerify,
 } from '@/lib/extension-jwt';
+import {
+  getExtensionJwtPrivateKeyPem,
+  getExtensionJwtPublicKeyPem,
+  getExtensionJwtPreviousPublicKeyPem,
+  getPrimarySigningKid,
+} from '@/lib/extension-jwt-keys';
 import {
   getExtensionJwtRevokedAfter,
   isExtensionJwtRevoked,
@@ -34,8 +40,9 @@ export async function POST(req: Request) {
       );
     }
 
-    const pubPem = process.env.EXTENSION_JWT_PUBLIC_KEY?.trim();
-    const privPem = process.env.EXTENSION_JWT_PRIVATE_KEY?.trim();
+    const pubPem = getExtensionJwtPublicKeyPem();
+    const privPem = getExtensionJwtPrivateKeyPem();
+    const prevPubPem = getExtensionJwtPreviousPublicKeyPem();
     const verifyAudiences = resolveExtensionAudiencesForVerify(req);
     if (!pubPem || !privPem || verifyAudiences.length === 0) {
       console.error(
@@ -47,13 +54,23 @@ export async function POST(req: Request) {
       );
     }
 
-    let publicKey: ReturnType<typeof createPublicKey>;
     let privateKey: ReturnType<typeof createPrivateKey>;
     try {
-      publicKey = createPublicKey(pubPem);
       privateKey = createPrivateKey(privPem);
     } catch (e) {
-      console.error('[refresh-extension-token] Invalid JWT keys', e);
+      console.error('[refresh-extension-token] Invalid JWT private key', e);
+      return NextResponse.json(
+        { error: 'Server configuration error' },
+        { status: 500, headers: corsHeaders }
+      );
+    }
+
+    const verifyKeys: ReturnType<typeof createPublicKey>[] = [];
+    try {
+      verifyKeys.push(createPublicKey(pubPem));
+      if (prevPubPem) verifyKeys.push(createPublicKey(prevPubPem));
+    } catch (e) {
+      console.error('[refresh-extension-token] Invalid JWT public key(s)', e);
       return NextResponse.json(
         { error: 'Server configuration error' },
         { status: 500, headers: corsHeaders }
@@ -65,10 +82,21 @@ export async function POST(req: Request) {
     let sub: string;
     let signAud: string;
     try {
-      const { payload } = await jwtVerify(raw, publicKey, {
-        audience: verifyAudiences.length === 1 ? verifyAudiences[0] : verifyAudiences,
-        issuer: getExtensionJwtVerifyIssuers(req),
-      });
+      let payload: Awaited<ReturnType<typeof jwtVerify>>['payload'] | null = null;
+      let lastErr: unknown;
+      for (const publicKey of verifyKeys) {
+        try {
+          const verified = await jwtVerify(raw, publicKey, {
+            audience: verifyAudiences.length === 1 ? verifyAudiences[0] : verifyAudiences,
+            issuer: getExtensionJwtVerifyIssuers(req),
+          });
+          payload = verified.payload;
+          break;
+        } catch (e) {
+          lastErr = e;
+        }
+      }
+      if (!payload) throw lastErr;
       const s = payload.sub;
       if (typeof s !== 'string' || !s) {
         return NextResponse.json(
@@ -105,7 +133,8 @@ export async function POST(req: Request) {
     const now = Math.floor(Date.now() / 1000);
 
     const token = await new SignJWT({ sub })
-      .setProtectedHeader({ alg: 'RS256' })
+      .setProtectedHeader({ alg: 'RS256', kid: getPrimarySigningKid() })
+      .setJti(randomUUID())
       .setIssuer(iss)
       .setAudience(signAud)
       .setIssuedAt(now)

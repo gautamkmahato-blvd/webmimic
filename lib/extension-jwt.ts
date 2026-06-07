@@ -1,6 +1,10 @@
 import { jwtVerify } from 'jose';
 import { createPublicKey } from 'node:crypto';
 import {
+  getExtensionJwtPublicKeyPem,
+  getExtensionJwtPreviousPublicKeyPem,
+} from '@/lib/extension-jwt-keys';
+import {
   getExtensionJwtRevokedAfter,
   isExtensionJwtRevoked,
 } from '@/lib/extension-jwt-revocation';
@@ -95,7 +99,7 @@ export function resolveExtensionAudiencesForVerify(req: Request): string[] {
   return [...allowed];
 }
 
-/** Extension JWT lifetime in seconds (default 24h). Override with EXTENSION_JWT_TTL_SECONDS. */
+/** Extension JWT lifetime in seconds (default 4h). Override with EXTENSION_JWT_TTL_SECONDS. */
 export function getExtensionJwtTtlSeconds(): number {
   const raw = process.env.EXTENSION_JWT_TTL_SECONDS?.trim();
   if (raw) {
@@ -104,7 +108,7 @@ export function getExtensionJwtTtlSeconds(): number {
       return parsed;
     }
   }
-  return 86_400;
+  return 14_400; // 4 hours — override with EXTENSION_JWT_TTL_SECONDS
 }
 
 // Fail fast in production: JWT issuer and extension audience must come from env.
@@ -189,33 +193,47 @@ export function getExtensionAudienceVerifyList(req: Request): string[] {
  * Verifies the extension's custom RS256 JWT (same rules as POST /api/refresh-extension-token).
  * Returns Clerk `sub` or null.
  */
-export async function getClerkIdFromExtensionJwt(req: Request, token: string): Promise<string | null> {
-  const pubPem = process.env.EXTENSION_JWT_PUBLIC_KEY?.trim();
-  const audiences = resolveExtensionAudiencesForVerify(req);
-  if (!pubPem || audiences.length === 0) return null;
-
-  let publicKey: ReturnType<typeof createPublicKey>;
-  try {
-    publicKey = createPublicKey(pubPem);
-  } catch {
-    return null;
-  }
-
-  try {
-    const { payload } = await jwtVerify(token, publicKey, {
-      audience: audiences.length === 1 ? audiences[0] : audiences,
-      issuer: getExtensionJwtVerifyIssuers(req),
-    });
-    const sub = payload.sub;
-    if (typeof sub !== 'string' || !sub) return null;
-
-    const revokedAfter = await getExtensionJwtRevokedAfter(sub);
-    if (isExtensionJwtRevoked(payload.iat, revokedAfter)) {
-      return null;
+function loadVerifyPublicKeys(): ReturnType<typeof createPublicKey>[] {
+  const keys: ReturnType<typeof createPublicKey>[] = [];
+  const primary = getExtensionJwtPublicKeyPem();
+  const previous = getExtensionJwtPreviousPublicKeyPem();
+  for (const pem of [primary, previous]) {
+    if (!pem) continue;
+    try {
+      keys.push(createPublicKey(pem));
+    } catch {
+      /* skip invalid pem */
     }
-
-    return sub;
-  } catch {
-    return null;
   }
+  return keys;
+}
+
+export async function getClerkIdFromExtensionJwt(req: Request, token: string): Promise<string | null> {
+  const publicKeys = loadVerifyPublicKeys();
+  const audiences = resolveExtensionAudiencesForVerify(req);
+  if (!publicKeys.length || audiences.length === 0) return null;
+
+  const verifyOpts = {
+    audience: audiences.length === 1 ? audiences[0] : audiences,
+    issuer: getExtensionJwtVerifyIssuers(req),
+  };
+
+  for (const publicKey of publicKeys) {
+    try {
+      const { payload } = await jwtVerify(token, publicKey, verifyOpts);
+      const sub = payload.sub;
+      if (typeof sub !== 'string' || !sub) return null;
+
+      const revokedAfter = await getExtensionJwtRevokedAfter(sub);
+      if (isExtensionJwtRevoked(payload.iat, revokedAfter)) {
+        return null;
+      }
+
+      return sub;
+    } catch {
+      /* try next key */
+    }
+  }
+
+  return null;
 }
