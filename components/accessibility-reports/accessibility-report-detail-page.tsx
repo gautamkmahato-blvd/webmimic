@@ -200,7 +200,7 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
             </Link>
             <div className="hidden h-5 w-px bg-neutral-200 sm:block" />
             <div className="hidden items-center gap-2 sm:flex">
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-violet-600">
+              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-neutral-900">
                 <ShieldCheck className="h-3.5 w-3.5 text-white" />
               </div>
               <span className="text-sm font-semibold">accessibility.reports</span>
@@ -241,7 +241,7 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
                 href={pageUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-violet-700"
+                className="inline-flex items-center gap-2 rounded-xl bg-neutral-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
               >
                 <RefreshCw className="size-4" aria-hidden />
                 Open Page
@@ -250,38 +250,38 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
           </div>
         </div>
 
-        <div className="mb-6 grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,2fr)]">
-          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-            <div className="flex items-center gap-6">
+        <div className="mb-6 grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1.4fr)_minmax(0,2fr)] xl:items-stretch">
+          <div className="flex h-full items-center rounded-2xl border border-neutral-200 bg-white px-4 py-3 shadow-sm">
+            <div className="flex items-center gap-4">
               <div
-                className="relative flex size-28 shrink-0 items-center justify-center rounded-full"
+                className="relative flex size-20 shrink-0 items-center justify-center rounded-full"
                 style={{
                   background: `conic-gradient(${ringColor} ${parsed.score ?? 0}%, #f1f5f9 0)`,
                 }}
               >
-                <div className="flex size-[5.5rem] flex-col items-center justify-center rounded-full bg-white">
+                <div className="flex size-16 flex-col items-center justify-center rounded-full bg-white">
                   <span
-                    className="text-3xl font-bold tabular-nums leading-none"
+                    className="text-2xl font-bold tabular-nums leading-none"
                     style={{ color: ringColor }}
                   >
                     {scoreDisplay}
                   </span>
-                  <span className="mt-1 text-xs font-medium text-neutral-400">
+                  <span className="mt-0.5 text-[10px] font-medium text-neutral-400">
                     / 100
                   </span>
                 </div>
               </div>
-              <div>
+              <div className="min-w-0">
                 <p
-                  className="text-lg font-semibold"
+                  className="text-base font-semibold"
                   style={{ color: ringColor }}
                 >
                   {parsed.scoreLabel}
                 </p>
-                <p className="mt-1 max-w-xs text-sm leading-relaxed text-neutral-500">
+                <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-neutral-500">
                   {parsed.scoreDescription}
                 </p>
-                <span className="mt-3 inline-flex rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+                <span className="mt-2 inline-flex rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-700">
                   {parsed.wcagLevel}
                 </span>
               </div>
@@ -292,7 +292,7 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
             <MetricCard
               label="Total Issues"
               value={totalIssues}
-              icon={<Layers className="size-4 text-violet-600" />}
+              icon={<Layers className="size-4 text-neutral-600" />}
               tone="neutral"
             />
             <MetricCard
@@ -450,12 +450,12 @@ function MetricCard({
     green: "border-emerald-100",
   };
   return (
-    <div className={`rounded-2xl border bg-white p-4 shadow-sm ${tones[tone]}`}>
-      <div className="mb-3 flex items-center justify-between">
+    <div className={`rounded-2xl border bg-white px-3 py-2.5 shadow-sm ${tones[tone]}`}>
+      <div className="mb-1 flex items-center justify-between">
         <span className="text-xs font-medium text-neutral-500">{label}</span>
         {icon}
       </div>
-      <div className="text-3xl font-bold tabular-nums text-neutral-900">{value}</div>
+      <div className="text-2xl font-bold leading-none tabular-nums text-neutral-900">{value}</div>
     </div>
   );
 }
