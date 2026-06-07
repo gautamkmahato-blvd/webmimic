@@ -16,7 +16,7 @@ import {
 
 const navLinks = [
   { href: "/assets", label: "Assets", icon: FolderOpen },
-  { href: "/accessibility-report", label: "Accessibility Report", icon: ShieldCheck },
+  { href: "/accessibility-report", label: "Accessibility Reports", icon: ShieldCheck },
   { href: "/design-systems", label: "Design Systems", icon: Layers },
   { href: "/design", label: "Design", icon: MessageSquareCode },
   { href: "/motion", label: "Motion", icon: Film },
@@ -44,20 +44,21 @@ export function Sidebar() {
           }`}
         >
           <div className="flex h-[70px] shrink-0 items-center gap-2 border-b border-neutral-100 pl-4 pr-4">
-            <Link href="/" className={`${iconSlotClass} min-w-0`}>
-              <Image
-                src="/landing-page/logo.jpg"
-                alt="webmimic"
-                width={24}
-                height={24}
-                className="rounded-[6px] shrink-0"
-              />
-            
-            {!collapsed && (
-              <span className="truncate font-extrabold text-lg tracking-tight text-neutral-900">
-                Webmimic
+            <Link href="/" className="flex min-w-0 items-center gap-2">
+              <span className={iconSlotClass}>
+                <Image
+                  src="/landing-page/logo.jpg"
+                  alt="webmimic"
+                  width={24}
+                  height={24}
+                  className="rounded-[6px] shrink-0"
+                />
               </span>
-            )}
+              {!collapsed && (
+                <span className="truncate font-extrabold text-lg tracking-tight text-neutral-900">
+                  Webmimic
+                </span>
+              )}
             </Link>
           </div>
 
@@ -74,7 +75,8 @@ export function Sidebar() {
                       setTooltip({ label, top: rect.top + rect.height / 2 });
                     }}
                     onMouseLeave={() => setTooltip(null)}
-                    className={`flex h-10 items-center gap-2 rounded-md text-sm font-medium transition-colors ${
+                    title={collapsed ? undefined : label}
+                    className={`flex h-10 min-w-0 items-center gap-2 rounded-md text-sm font-medium transition-colors ${
                       active
                         ? "bg-neutral-100 text-neutral-900"
                         : "text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900"
@@ -83,7 +85,9 @@ export function Sidebar() {
                     <span className={iconSlotClass}>
                       <Icon size={16} className="shrink-0" />
                     </span>
-                    {!collapsed && <span className="truncate">{label}</span>}
+                    {!collapsed && (
+                      <span className="min-w-0 flex-1 truncate">{label}</span>
+                    )}
                   </Link>
                 </div>
               );
