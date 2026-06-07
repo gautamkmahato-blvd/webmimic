@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
 import {
@@ -10,7 +11,6 @@ import {
   RefreshCw,
   Search,
   ShieldCheck,
-  X,
 } from "lucide-react";
 import type { AssetRow } from "@/app/service/supabase/assets/types";
 import { useAssets } from "@/components/assets/use-assets";
@@ -41,13 +41,7 @@ function downloadReportMarkdown(asset: AssetRow) {
   URL.revokeObjectURL(url);
 }
 
-function ReportGalleryCard({
-  asset,
-  onOpen,
-}: {
-  asset: AssetRow;
-  onOpen: () => void;
-}) {
+function ReportGalleryCard({ asset }: { asset: AssetRow }) {
   const [copied, setCopied] = useState(false);
   const stats = parseAccessibilityReportStats(asset.content);
   const host =
@@ -72,9 +66,8 @@ function ReportGalleryCard({
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white transition-all duration-200 hover:border-neutral-300 hover:shadow-lg">
-      <button
-        type="button"
-        onClick={onOpen}
+      <Link
+        href={`/accessibility-report/${asset.id}`}
         className="flex flex-1 flex-col p-5 text-left"
       >
         <div className="mb-4">
@@ -118,7 +111,7 @@ function ReportGalleryCard({
             </p>
           </div>
         </div>
-      </button>
+      </Link>
 
       <div className="flex items-center gap-2 border-t border-neutral-100 px-4 py-3">
         <button
@@ -153,69 +146,9 @@ function ReportGalleryCard({
   );
 }
 
-function ReportDetailModal({
-  asset,
-  onClose,
-}: {
-  asset: AssetRow;
-  onClose: () => void;
-}) {
-  const stats = parseAccessibilityReportStats(asset.content);
-  const title = asset.title?.trim() || "Accessibility audit report";
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 backdrop-blur-sm"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="report-modal-title"
-      onClick={onClose}
-    >
-      <div
-        className="flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between gap-4 border-b border-neutral-100 px-6 py-5">
-          <div>
-            <h2 id="report-modal-title" className="text-lg font-semibold text-neutral-900">
-              {title}
-            </h2>
-            <p className="mt-1 text-sm text-neutral-500">
-              {formatAssetDate(asset.created_at)}
-              {stats.score != null ? ` · Score ${stats.score}/100` : ""}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="inline-flex size-9 items-center justify-center rounded-lg text-neutral-500 transition-colors hover:bg-neutral-100"
-            aria-label="Close"
-          >
-            <X className="size-5" aria-hidden />
-          </button>
-        </div>
-        <pre className="min-h-0 flex-1 overflow-auto whitespace-pre-wrap break-words px-6 py-5 font-mono text-xs leading-relaxed text-neutral-700">
-          {asset.content?.trim() || "No report content."}
-        </pre>
-        <div className="flex items-center justify-end gap-2 border-t border-neutral-100 px-6 py-4">
-          <button
-            type="button"
-            onClick={() => downloadReportMarkdown(asset)}
-            className="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
-          >
-            <Download className="size-4" aria-hidden />
-            Download .md
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function ReportsSignedInView() {
   const { assets, loading, error, refetch } = useAssets();
   const [search, setSearch] = useState("");
-  const [selected, setSelected] = useState<AssetRow | null>(null);
 
   const reports = useMemo(
     () => assets.filter(isAccessibilityReport),
@@ -299,19 +232,13 @@ function ReportsSignedInView() {
           <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filtered.map((asset) => (
               <li key={asset.id} className="flex min-h-0 min-w-0">
-                <ReportGalleryCard
-                  asset={asset}
-                  onOpen={() => setSelected(asset)}
-                />
+                <ReportGalleryCard asset={asset} />
               </li>
             ))}
           </ul>
         )}
       </div>
 
-      {selected ? (
-        <ReportDetailModal asset={selected} onClose={() => setSelected(null)} />
-      ) : null}
     </>
   );
 }
