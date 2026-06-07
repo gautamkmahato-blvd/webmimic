@@ -29,11 +29,11 @@ import {
   formatDomainFilterLabel,
   getHostnameFromSourceUrl,
 } from "@/components/assets/asset-format";
+import { scoreColor } from "./parse-report-stats";
 import {
-  parseAccessibilityReport,
-  scoreColor,
+  parseAccessibilityReportContent,
   type ReportIssue,
-} from "./parse-accessibility-report";
+} from "@/lib/accessibility-report/parseReportContent";
 
 function downloadReport(asset: AssetRow) {
   const content = asset.content?.trim();
@@ -107,16 +107,20 @@ function DonutChart({
 }
 
 function TopIssueRow({ issue, index }: { issue: ReportIssue; index: number }) {
+  const message = issue.message?.trim() || "Untitled issue";
+  const rule = issue.rule?.trim() || "—";
+  const element = issue.element?.trim();
+
   return (
     <div className="flex items-center gap-4 border-b border-neutral-100 px-5 py-4 last:border-b-0">
       <div className="min-w-0 flex-1">
         <p className="text-sm font-semibold text-neutral-900">
-          {index + 1}. {issue.message.slice(0, 80)}
-          {issue.message.length > 80 ? "…" : ""}
+          {index + 1}. {message.slice(0, 80)}
+          {message.length > 80 ? "…" : ""}
         </p>
         <p className="mt-1 line-clamp-1 text-xs text-neutral-500">
-          WCAG {issue.rule}
-          {issue.element ? ` · ${issue.element}` : ""}
+          WCAG {rule}
+          {element ? ` · ${element}` : ""}
         </p>
       </div>
       <span
@@ -125,10 +129,10 @@ function TopIssueRow({ issue, index }: { issue: ReportIssue; index: number }) {
         {impactLabel(issue.impact)}
       </span>
       <span className="w-10 shrink-0 text-center text-sm font-semibold tabular-nums text-neutral-700">
-        1
+        {issue.instances ?? 1}
       </span>
       <span className="w-10 shrink-0 text-center text-sm tabular-nums text-neutral-500">
-        1
+        {issue.pages ?? 1}
       </span>
       <ChevronRight className="size-4 shrink-0 text-neutral-300" aria-hidden />
     </div>
@@ -137,20 +141,26 @@ function TopIssueRow({ issue, index }: { issue: ReportIssue; index: number }) {
 
 function ReportDashboard({ asset }: { asset: AssetRow }) {
   const parsed = useMemo(
-    () => parseAccessibilityReport(asset.content),
+    () => parseAccessibilityReportContent(asset.content),
     [asset.content],
   );
 
   const pageUrl = asset.source_url || parsed.pageUrl || "";
   const host = getHostnameFromSourceUrl(pageUrl);
   const domainLabel = host ? formatDomainFilterLabel(host) : "Unknown site";
-  const scannedAt = parsed.generatedAt || formatAssetDate(asset.created_at);
+  const scannedAt =
+    parsed.generatedAt?.trim() ||
+    formatAssetDate(asset.created_at) ||
+    "Unknown date";
   const ringColor = scoreColor(parsed.score);
   const score = parsed.score ?? 0;
-  const errors = parsed.errorItems.length || parsed.errors || 0;
-  const warnings = parsed.warningItems.length || parsed.warnings || 0;
-  const passes = parsed.passItems.length || parsed.passes || 0;
-  const totalIssues = parsed.totalIssues || errors + warnings;
+  const errors = parsed.errors;
+  const warnings = parsed.warnings;
+  const passes = parsed.passes;
+  const totalIssues = parsed.totalIssues;
+  const checksRun = parsed.checksRun > 0 ? parsed.checksRun : "—";
+  const pagesScanned = parsed.pagesScanned > 0 ? String(parsed.pagesScanned) : "—";
+  const scoreDisplay = parsed.score ?? "—";
 
   const banner =
     score >= 70
@@ -210,7 +220,7 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
               <span>
                 Scanned{" "}
                 <span className="font-medium text-neutral-700">
-                  {pageUrl || domainLabel}
+                  {pageUrl || domainLabel || "Unknown page"}
                 </span>{" "}
                 on {scannedAt}
               </span>
@@ -246,7 +256,7 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
               <div
                 className="relative flex size-28 shrink-0 items-center justify-center rounded-full"
                 style={{
-                  background: `conic-gradient(${ringColor} ${score}%, #f1f5f9 0)`,
+                  background: `conic-gradient(${ringColor} ${parsed.score ?? 0}%, #f1f5f9 0)`,
                 }}
               >
                 <div className="flex size-[5.5rem] flex-col items-center justify-center rounded-full bg-white">
@@ -254,7 +264,7 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
                     className="text-3xl font-bold tabular-nums leading-none"
                     style={{ color: ringColor }}
                   >
-                    {parsed.score ?? "—"}
+                    {scoreDisplay}
                   </span>
                   <span className="mt-1 text-xs font-medium text-neutral-400">
                     / 100
@@ -325,20 +335,24 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
             <div className="mt-5 flex items-center gap-5">
               <DonutChart slices={parsed.issueTypes} total={totalIssues} />
               <div className="min-w-0 flex-1 space-y-2">
-                {parsed.issueTypes.map((slice) => (
-                  <div key={slice.label} className="flex items-center justify-between gap-2 text-xs">
-                    <div className="flex min-w-0 items-center gap-2">
-                      <span
-                        className="size-2.5 shrink-0 rounded-full"
-                        style={{ backgroundColor: slice.color }}
-                      />
-                      <span className="truncate text-neutral-600">{slice.label}</span>
+                {parsed.issueTypes.length ? (
+                  parsed.issueTypes.map((slice) => (
+                    <div key={slice.label} className="flex items-center justify-between gap-2 text-xs">
+                      <div className="flex min-w-0 items-center gap-2">
+                        <span
+                          className="size-2.5 shrink-0 rounded-full"
+                          style={{ backgroundColor: slice.color }}
+                        />
+                        <span className="truncate text-neutral-600">{slice.label}</span>
+                      </div>
+                      <span className="shrink-0 font-semibold tabular-nums text-neutral-800">
+                        {slice.count}
+                      </span>
                     </div>
-                    <span className="shrink-0 font-semibold tabular-nums text-neutral-800">
-                      {slice.count}
-                    </span>
-                  </div>
-                ))}
+                  ))
+                ) : (
+                  <p className="text-xs text-neutral-400">No issue breakdown available.</p>
+                )}
               </div>
             </div>
           </div>
@@ -347,12 +361,12 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
             <MiniStatCard
               icon={<FileText className="size-5 text-violet-600" />}
               label="Pages Scanned"
-              value="1"
+              value={pagesScanned}
             />
             <MiniStatCard
               icon={<Grid3x3 className="size-5 text-violet-600" />}
               label="Checks Run"
-              value={String(totalIssues + passes)}
+              value={String(checksRun)}
             />
           </div>
         </div>
@@ -387,8 +401,8 @@ function ReportDashboard({ asset }: { asset: AssetRow }) {
             <h2 className="text-sm font-semibold text-neutral-900">Scan Summary</h2>
             <dl className="mt-5 space-y-3 text-sm">
               <SummaryRow label="Domain" value={domainLabel} />
-              <SummaryRow label="Pages Scanned" value="1" />
-              <SummaryRow label="Checks Run" value={String(totalIssues + passes)} />
+              <SummaryRow label="Pages Scanned" value={pagesScanned} />
+              <SummaryRow label="Checks Run" value={String(checksRun)} />
               <SummaryRow label="Date" value={scannedAt} />
               <SummaryRow label="Standard" value="WCAG 2.1" />
               <SummaryRow label="Mode" value="Automated" />
