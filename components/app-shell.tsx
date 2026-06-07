@@ -6,6 +6,7 @@ import { Sidebar } from "./sidebar";
 /** Routes that exist in the app and use the dashboard sidebar (see sidebar.tsx navLinks). */
 const APP_PATHS = [
   "/assets",
+  "/accessibility-report",
   "/design-systems",
   "/design-chat-cursor",
   "/motion",

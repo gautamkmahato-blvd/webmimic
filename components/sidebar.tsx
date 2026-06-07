@@ -11,10 +11,12 @@ import {
   CreditCard,
   MessageSquareCode,
   PanelLeft,
+  ShieldCheck,
 } from "lucide-react";
 
 const navLinks = [
   { href: "/assets", label: "Assets", icon: FolderOpen },
+  { href: "/accessibility-report", label: "Accessibility Report", icon: ShieldCheck },
   { href: "/design-systems", label: "Design Systems", icon: Layers },
   { href: "/design-chat-cursor", label: "Design Chat", icon: MessageSquareCode },
   { href: "/motion", label: "Motion", icon: Film },
