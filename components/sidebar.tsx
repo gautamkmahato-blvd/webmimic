@@ -18,7 +18,7 @@ const navLinks = [
   { href: "/assets", label: "Assets", icon: FolderOpen },
   { href: "/accessibility-report", label: "Accessibility Report", icon: ShieldCheck },
   { href: "/design-systems", label: "Design Systems", icon: Layers },
-  { href: "/design-chat-cursor", label: "Design Chat", icon: MessageSquareCode },
+  { href: "/design", label: "Design", icon: MessageSquareCode },
   { href: "/motion", label: "Motion", icon: Film },
   { href: "/credits", label: "Credits", icon: CreditCard },
 ];
