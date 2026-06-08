@@ -4,7 +4,7 @@ import { PrivacyPolicyPage } from "../../(landing)/_components/(footer)/PrivacyP
 export const metadata: Metadata = {
   title: "Privacy Policy | Webmimic",
   description:
-    "How Webmimic collects, uses, and protects data from webmimic.com and the Chrome extension—including screenshots, design tokens, AI processing, Clerk auth, and Polar billing.",
+    "How Webmimic handles your information—with transparency, user control, and no selling of personal data.",
 };
 
 export default function Page() {

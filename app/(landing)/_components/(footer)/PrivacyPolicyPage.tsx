@@ -1,346 +1,440 @@
+import type { ReactNode } from "react";
 import { FooterPageShell, FooterSection } from "./FooterPageShell";
+
+function Subheading({ children }: { children: ReactNode }) {
+  return (
+    <h3 className="text-[16px] font-semibold tracking-[-0.01em] text-[#090b12]">
+      {children}
+    </h3>
+  );
+}
 
 export function PrivacyPolicyPage() {
   return (
     <FooterPageShell
       title="Privacy Policy"
-      description="How Webmimic collects, uses, stores, and shares information when you use webmimic.com and the Webmimic Chrome extension."
+      description="How Webmimic handles your information—with transparency, user control, and no selling of personal data."
     >
+      <p className="text-[14px] text-[#657185]">
+        <strong>Last updated: May 20, 2026</strong>
+      </p>
+
       <FooterSection heading="Overview">
         <p>
-          Webmimic (&quot;Webmimic,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates the
-          webmimic.com website, related APIs, and the Webmimic Chrome extension (together, the
-          &quot;Service&quot;). This Privacy Policy explains what information we collect, how we use it,
-          who we share it with, how long we keep it, and the choices you have.
+          At Webmimic, privacy is a core part of how we build products.
         </p>
         <p>
-          By using the Service, you agree to this Privacy Policy. Our{" "}
+          Our mission is to help designers and developers inspect, analyze, and learn from websites
+          faster. We believe that powerful tools should also be transparent about how they handle
+          information.
+        </p>
+        <p>
+          Webmimic (&quot;Webmimic&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the
+          webmimic.com website, related APIs, and the Webmimic Chrome Extension (collectively, the
+          &quot;Service&quot;).
+        </p>
+        <p>This Privacy Policy explains:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>What information we collect</li>
+          <li>How we use it</li>
+          <li>When information is shared</li>
+          <li>How long it is retained</li>
+          <li>The choices and controls available to you</li>
+        </ul>
+        <p>
+          By using the Service, you agree to this Privacy Policy and our{" "}
           <a href="/terms" className="text-[#1463ff] hover:underline">
             Terms of Service
-          </a>{" "}
-          govern your use of the product.
-        </p>
-        <p>
-          <strong>We do not sell your personal information.</strong> We collect data only to operate,
-          secure, and improve the Service, process payments, and deliver features you request.
+          </a>
+          .
         </p>
       </FooterSection>
 
-      <FooterSection heading="Information we collect">
+      <FooterSection heading="Privacy at a Glance">
         <p>
-          <strong>Account information.</strong> When you create an account, we collect information you
-          provide (such as name and email) through our authentication provider, Clerk. We receive a
-          stable account identifier (Clerk user ID) used to associate your saved assets, audits, credits,
-          and subscription status with your account.
-        </p>
-        <p>
-          <strong>Usage and technical data.</strong> We collect information about how you use the web
-          app and extension, such as feature usage, credit consumption, error logs, and basic device or
-          browser metadata (for example extension version and API request timestamps). This helps us
-          operate, debug, and improve the Service.
-        </p>
-        <p>
-          <strong>Content you save or export.</strong> We collect and store content you explicitly save,
-          upload, or export through the web app or Chrome extension, including design assets, CSS and
-          HTML snippets, design tokens, accessibility audit reports, screenshots, video captures,
-          evidence packages, and AI-generated outputs linked to your account.
-        </p>
-        <p>
-          <strong>Payment information.</strong> Paid plans and credit purchases are processed by Polar,
-          our billing provider. We receive subscription status, transaction references, and billing
-          metadata from Polar. We do not store full payment card numbers on our servers.
-        </p>
-        <p>
-          <strong>Communications.</strong> If you contact us (for example at privacy@webmimic.com or
-          legal@webmimic.com), we keep the content of your message and our replies as needed to support
-          you and maintain records.
-        </p>
-      </FooterSection>
-
-      <FooterSection heading="Chrome extension">
-        <p>
-          The Webmimic Chrome extension analyzes pages you open while the side panel is in use. Some
-          features run entirely in your browser; others upload data to Webmimic when you explicitly
-          start them (for example Save, export, AI recreate, or design-system capture).
-        </p>
-        <p>
-          <strong>What the extension may collect or process</strong>
+          We designed Webmimic with a simple philosophy: collect only what is needed to provide the
+          features you choose to use.
         </p>
         <ul className="list-disc space-y-2 pl-6">
+          <li>We do not sell your personal information.</li>
+          <li>Most inspection and extraction features run directly in your browser.</li>
           <li>
-            <strong>Page inspection data</strong> — HTML snippets, computed CSS, design tokens, color
-            and typography samples, asset URLs, DOM structure samples, and accessibility audit results
-            derived from the active tab when you run inspection, extraction, or audit features.
+            Website data is only uploaded when you explicitly save, sync, export, or use cloud-powered
+            features.
           </li>
-          <li>
-            <strong>Screenshots and captures</strong> — visible viewport captures, element screenshots,
-            stitched full-page screenshots (desktop and mobile viewport widths), and related image tiles
-            when you run design-system export, evidence packages, recreation flows, or AI analysis.
-            Full-page capture may use Chrome&apos;s debugger API to stitch tall pages accurately.
-          </li>
-          <li>
-            <strong>Uploads to Webmimic</strong> — saved assets, audit reports, code snippets,
-            screenshot tiles, evidence packages, and structured page data sent to our servers when you
-            save or run cloud-backed features.
-          </li>
-          <li>
-            <strong>Account and session data</strong> — a short-lived extension authentication token
-            (JWT) stored in <code>chrome.storage.session</code> while signed in; cleared on sign-out.
-            Tokens are validated server-side and can be revoked when you sign out or when your web
-            session ends.
-          </li>
-          <li>
-            <strong>Animation and Lottie scan</strong> — when you run Scan animations, the extension
-            temporarily installs page-local detectors (only after you start the scan) to identify Lottie
-            JSON from network responses and in-page players. Results stay in your browser until you
-            export or save.
-          </li>
-          <li>
-            <strong>Accessibility audits</strong> — when you run an audit, the extension inspects the
-            page for WCAG-related issues. Reports may be stored locally in the panel and synced to your
-            Webmimic account when you save them.
-          </li>
-        </ul>
-        <p>
-          <strong>When data leaves your browser</strong>
-        </p>
-        <p>
-          Page content is <em>not</em> uploaded automatically on every site you visit. Uploads occur when
-          you take an explicit action such as Save to dashboard, run a cloud-backed AI feature, export an
-          evidence package with server upload enabled, or sync an accessibility report to your account.
-          Overview counts, local previews, and downloads you trigger without saving generally remain on
-          your device until you choose a cloud action.
-        </p>
-        <p>
-          <strong>Sign-in, credits, and paid features</strong>
-        </p>
-        <p>
-          Saving to your dashboard, running accessibility audits that sync to your account, AI code
-          recreation, design-system analysis, and similar cloud features require a Webmimic account.
-          Some actions consume credits or require a paid plan as shown in the extension and on
-          webmimic.com.
-        </p>
-        <p>
-          <strong>Local-only features</strong>
-        </p>
-        <p>
-          Overview page counts, local asset extraction previews, and downloads you trigger without
-          saving do not upload page content until you choose a cloud save or AI upload action.
-        </p>
-        <p>
-          <strong>Extension permissions</strong>
-        </p>
-        <p>
-          The extension requests permissions needed for its features, including access to the active tab
-          and scripting on pages you inspect, storage for session and preferences, downloads for exports,
-          the side panel UI, and (for full-page screenshots) the debugger permission. Host access to web
-          pages is used only to run inspection, capture, and audit tools on tabs you use with Webmimic.
-          We do not use the extension to browse or collect data from pages you are not actively
-          inspecting through the product.
-        </p>
-      </FooterSection>
-
-      <FooterSection heading="How we use your information">
-        <p>We use the information described above to:</p>
-        <ul className="list-disc space-y-2 pl-6">
-          <li>Provide, maintain, and secure the Service and your account</li>
-          <li>Store and display your saved assets, audits, and exports in your dashboard</li>
-          <li>Process AI-assisted analysis and code generation you request</li>
-          <li>Manage credits, subscriptions, and billing through Polar</li>
-          <li>Authenticate you via Clerk and issue extension session tokens</li>
-          <li>Monitor performance, prevent abuse, and fix errors</li>
-          <li>Comply with law and enforce our Terms of Service</li>
-          <li>Communicate with you about the Service, security, or policy updates</li>
+          <li>You control what is stored in your account.</li>
+          <li>You can request deletion of your account and associated data at any time.</li>
         </ul>
       </FooterSection>
 
-      <FooterSection heading="AI and third-party processing">
+      <FooterSection heading="Information We Collect">
+        <Subheading>Account Information</Subheading>
         <p>
-          When you use AI features, screenshots and structured page data may be sent to Webmimic servers
-          and processed with third-party AI providers (such as Google Gemini) to generate analysis,
-          design evidence, or code. AI outputs are provided for your workflow; you are responsible for
-          reviewing accuracy and suitability before use in production (see our Terms of Service).
+          When you create a Webmimic account, we receive basic account information through our
+          authentication provider, Clerk, such as your name, email address, and a secure account
+          identifier.
         </p>
-        <p>
-          We use the following categories of service providers to operate the Service:
-        </p>
+        <p>This information allows us to:</p>
         <ul className="list-disc space-y-2 pl-6">
-          <li>
-            <strong>Clerk</strong> — account sign-up, sign-in, and session management
-          </li>
-          <li>
-            <strong>Polar</strong> — payments, subscriptions, and credit purchases
-          </li>
-          <li>
-            <strong>Google (Gemini)</strong> — AI inference for features you explicitly trigger
-          </li>
-          <li>
-            <strong>Cloud infrastructure providers</strong> — hosting, storage, databases, and security for
-            webmimic.com and our APIs
-          </li>
+          <li>Create and manage your account</li>
+          <li>Associate saved assets and reports with you</li>
+          <li>Track subscription status and credits</li>
+          <li>Secure access to the Service</li>
+        </ul>
+
+        <Subheading>Usage Information</Subheading>
+        <p>
+          To keep Webmimic reliable and improve the product, we collect limited technical information
+          about how the Service is used.
+        </p>
+        <p>This may include:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Feature usage</li>
+          <li>Credit consumption</li>
+          <li>Browser or extension version</li>
+          <li>Error logs</li>
+          <li>API request timestamps</li>
+          <li>Performance metrics</li>
         </ul>
         <p>
-          These providers process data on our behalf under contractual obligations appropriate to their
-          role. We do not authorize them to use your personal information for their own unrelated
-          marketing.
+          This information helps us improve functionality, diagnose issues, and maintain security.
         </p>
-      </FooterSection>
 
-      <FooterSection heading="How we share information">
-        <p>
-          We share information only in these circumstances:
-        </p>
+        <Subheading>Content You Choose to Save</Subheading>
+        <p>Webmimic allows you to save and export content generated through the platform.</p>
+        <p>Depending on the features you use, this may include:</p>
         <ul className="list-disc space-y-2 pl-6">
-          <li>
-            <strong>Service providers</strong> — with Clerk, Polar, AI providers, and infrastructure
-            vendors as needed to run the Service
-          </li>
-          <li>
-            <strong>Legal requirements</strong> — when required by law, regulation, legal process, or
-            governmental request
-          </li>
-          <li>
-            <strong>Protection</strong> — to protect the rights, safety, and security of Webmimic, our
-            users, or the public
-          </li>
-          <li>
-            <strong>Business transfers</strong> — in connection with a merger, acquisition, or sale of
-            assets, subject to this policy
-          </li>
+          <li>Design assets</li>
+          <li>Design system exports</li>
+          <li>Accessibility reports</li>
+          <li>Screenshots</li>
+          <li>Video captures</li>
+          <li>HTML and CSS snippets</li>
+          <li>Design tokens</li>
+          <li>AI-generated outputs</li>
         </ul>
         <p>
-          <strong>We do not sell personal data</strong> to third parties for their advertising or data
-          brokerage purposes.
+          We only store content that you explicitly save, upload, export, or sync to your account.
+        </p>
+
+        <Subheading>Payment Information</Subheading>
+        <p>Payments, subscriptions, and credit purchases are securely processed through Polar.</p>
+        <p>Webmimic does not store full payment card details on its servers.</p>
+        <p>We may receive billing-related information such as:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Subscription status</li>
+          <li>Transaction references</li>
+          <li>Purchase metadata</li>
+        </ul>
+        <p>This information is used solely to manage billing and account access.</p>
+
+        <Subheading>Communications</Subheading>
+        <p>
+          If you contact us for support, feedback, or legal inquiries, we may retain copies of those
+          communications so we can respond appropriately and maintain support records.
         </p>
       </FooterSection>
 
-      <FooterSection heading="Data retention">
+      <FooterSection heading="How the Chrome Extension Works">
         <p>
-          Saved assets, audit reports, and other content you store in your account remain until you delete
-          them or close your account, unless we must retain certain records longer for legal, security, or
-          billing purposes.
+          The Webmimic Chrome Extension is designed to work only when you actively choose to use it.
         </p>
+        <p>The extension does not automatically collect information from websites you browse.</p>
         <p>
-          Extension session tokens expire automatically (typically within a few hours). Server-side
-          revocation applies when you sign out.
+          Analysis begins only when you open Webmimic and use one of its tools, such as inspection,
+          extraction, accessibility auditing, design-system analysis, or AI-assisted recreation.
         </p>
+
+        <Subheading>Information Processed During Inspection</Subheading>
+        <p>When you choose to inspect or analyze a page, Webmimic may process information such as:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>HTML structure</li>
+          <li>CSS styles</li>
+          <li>Design tokens</li>
+          <li>Typography and color information</li>
+          <li>Asset references</li>
+          <li>Accessibility audit results</li>
+          <li>Animation metadata</li>
+        </ul>
+        <p>This information is used exclusively to generate the outputs you request.</p>
+
+        <Subheading>Screenshots and Visual Captures</Subheading>
+        <p>Some features allow you to capture visual representations of a webpage.</p>
+        <p>Depending on the feature used, this may include:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Element screenshots</li>
+          <li>Visible viewport captures</li>
+          <li>Full-page screenshots</li>
+          <li>Mobile viewport captures</li>
+          <li>Evidence packages</li>
+        </ul>
+        <p>These captures are created only when you initiate the action.</p>
+
+        <Subheading>Animation Analysis</Subheading>
         <p>
-          Billing and transaction records may be retained as required for accounting, tax, and dispute
-          resolution.
+          When you run animation analysis tools, Webmimic may temporarily inspect page animations to
+          identify technologies such as:
         </p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Lottie</li>
+          <li>GSAP</li>
+          <li>Framer Motion</li>
+        </ul>
+        <p>Results remain local to your browser unless you choose to save or export them.</p>
+
+        <Subheading>Accessibility Audits</Subheading>
+        <p>When you run accessibility scans, Webmimic analyzes the active page for WCAG-related issues, including:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Color contrast</li>
+          <li>Heading structure</li>
+          <li>Form accessibility</li>
+          <li>ARIA usage</li>
+          <li>Keyboard navigation issues</li>
+        </ul>
+        <p>Reports remain local unless you choose to save or sync them to your account.</p>
+      </FooterSection>
+
+      <FooterSection heading="When Information Is Shared With Webmimic">
+        <p>Most Webmimic functionality operates directly in your browser.</p>
+        <p>Information is not automatically uploaded from every page you visit.</p>
+        <p>Information is shared with Webmimic only when you take an explicit action such as:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Saving content to your dashboard</li>
+          <li>Running a cloud-powered AI feature</li>
+          <li>Syncing an accessibility report</li>
+          <li>Exporting content using cloud-backed workflows</li>
+          <li>Uploading files for analysis</li>
+        </ul>
         <p>
-          Aggregated or de-identified analytics may be kept longer because it no longer identifies you.
+          In other words, Webmimic works because you choose to use it—not because it continuously
+          monitors your browsing activity.
         </p>
       </FooterSection>
 
-      <FooterSection heading="Data security">
+      <FooterSection heading="Local-Only Features">
+        <p>Several Webmimic features work entirely on your device.</p>
+        <p>Examples include:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Local previews</li>
+          <li>Asset extraction previews</li>
+          <li>Overview statistics</li>
+          <li>Downloads that are not synced to your account</li>
+        </ul>
+        <p>These actions remain local unless you explicitly choose to save or upload the results.</p>
+      </FooterSection>
+
+      <FooterSection heading="Extension Permissions">
+        <p>The extension requests only the permissions required to provide its features.</p>
+        <p>These permissions may include:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Active tab access</li>
+          <li>Scripting capabilities</li>
+          <li>Local storage</li>
+          <li>Download permissions</li>
+          <li>Side panel functionality</li>
+          <li>Debugger access for full-page screenshots</li>
+        </ul>
+        <p>These permissions are used solely to perform the actions you initiate through Webmimic.</p>
         <p>
-          We use technical and organizational measures designed to protect your information, including
-          encryption in transit (HTTPS), access controls, authenticated APIs, and short-lived extension
-          tokens. No method of transmission or storage is completely secure; we cannot guarantee absolute
+          We do not use extension permissions to monitor websites that you are not actively inspecting
+          with the product.
+        </p>
+      </FooterSection>
+
+      <FooterSection heading="How We Use Information">
+        <p>We use information to:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Provide and maintain the Service</li>
+          <li>Authenticate users</li>
+          <li>Store saved assets and reports</li>
+          <li>Deliver AI-powered features</li>
+          <li>Manage subscriptions and credits</li>
+          <li>Improve performance and reliability</li>
+          <li>Prevent abuse and misuse</li>
+          <li>Comply with legal obligations</li>
+          <li>Communicate important updates</li>
+        </ul>
+      </FooterSection>
+
+      <FooterSection heading="How AI Features Work">
+        <p>
+          Some Webmimic features use artificial intelligence to generate insights, code, audits,
+          design-system analysis, or recreation workflows.
+        </p>
+        <p>
+          When you use these features, the content required to fulfill your request may be securely
+          processed through Webmimic and trusted AI providers.
+        </p>
+        <p>Only the information necessary to generate the requested result is shared.</p>
+        <p>
+          AI-generated outputs should be reviewed before production use, as results may not always be
+          perfect or complete.
+        </p>
+      </FooterSection>
+
+      <FooterSection heading="Third-Party Services">
+        <p>We rely on trusted providers to operate portions of the Service.</p>
+        <p>These providers include:</p>
+
+        <Subheading>Clerk</Subheading>
+        <p>Authentication, sign-in, and account management.</p>
+
+        <Subheading>Polar</Subheading>
+        <p>Billing, subscriptions, and payment processing.</p>
+
+        <Subheading>Google Gemini</Subheading>
+        <p>AI-powered analysis and generation features.</p>
+
+        <Subheading>Infrastructure Providers</Subheading>
+        <p>Hosting, storage, databases, security, and content delivery.</p>
+
+        <p>
+          These providers process information only for the purpose of delivering Webmimic functionality.
+        </p>
+        <p>
+          We do not authorize them to use your information for unrelated advertising or marketing
+          purposes.
+        </p>
+      </FooterSection>
+
+      <FooterSection heading="How We Share Information">
+        <p>We share information only in limited circumstances:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>With service providers required to operate the Service</li>
+          <li>When required by law or legal process</li>
+          <li>To protect users, Webmimic, or the public</li>
+          <li>As part of a merger, acquisition, or business transfer</li>
+        </ul>
+        <p>We do not sell personal information or share it with data brokers.</p>
+      </FooterSection>
+
+      <FooterSection heading="Data Retention">
+        <p>Information stored in your account remains available until:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>You delete it</li>
+          <li>You close your account</li>
+          <li>Retention is required for legal, security, billing, or compliance reasons</li>
+        </ul>
+        <p>
+          Aggregated and anonymized analytics may be retained longer because they no longer identify
+          individuals.
+        </p>
+      </FooterSection>
+
+      <FooterSection heading="Data Security">
+        <p>We use industry-standard security measures, including:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>HTTPS encryption</li>
+          <li>Secure authentication</li>
+          <li>Access controls</li>
+          <li>Protected APIs</li>
+          <li>Short-lived session tokens</li>
+        </ul>
+        <p>
+          While we work hard to protect your information, no online system can guarantee absolute
           security.
         </p>
       </FooterSection>
 
-      <FooterSection heading="Your rights and choices">
+      <FooterSection heading="Your Choices and Control">
+        <p>You remain in control of your information.</p>
+        <p>Depending on your location, you may have the right to:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Access your information</li>
+          <li>Correct inaccurate information</li>
+          <li>Request deletion</li>
+          <li>Export your data</li>
+          <li>Restrict certain processing activities</li>
+        </ul>
+        <p>You may request account deletion or data export by contacting:</p>
         <p>
-          Depending on where you live, you may have rights to access, correct, delete, or export personal
-          information we hold about you, or to object to or restrict certain processing.
-        </p>
-        <p>
-          You can delete individual saved items from your dashboard where the product provides delete
-          controls. To request account deletion or a copy of your data, contact{" "}
           <a href="mailto:privacy@webmimic.com" className="text-[#1463ff] hover:underline">
             privacy@webmimic.com
           </a>
-          . We will remove associated data within a reasonable period, subject to legal retention
-          requirements.
-        </p>
-        <p>
-          You may stop the extension from uploading new data by signing out of the extension and
-          avoiding cloud save or AI actions. Uninstalling the extension removes locally stored extension
-          data from your browser profile.
         </p>
       </FooterSection>
 
-      <FooterSection heading="Your responsibility">
+      <FooterSection heading="Responsible Use">
+        <p>Please only analyze websites that you are authorized to inspect.</p>
         <p>
-          Only analyze websites you have permission to inspect. Do not use the extension to capture or
-          upload sensitive personal data from third-party sites without appropriate authority. You are
-          responsible for complying with applicable laws and the terms of sites you inspect.
+          Do not use Webmimic to collect or upload sensitive personal information from third-party
+          websites without proper authorization.
+        </p>
+        <p>
+          You are responsible for complying with applicable laws and the terms governing the websites
+          you inspect.
         </p>
       </FooterSection>
 
       <FooterSection heading="Children">
         <p>
-          The Service is not directed to children under 13 (or the minimum age required in your
-          jurisdiction), and we do not knowingly collect personal information from children. If you
-          believe a child has provided us personal information, contact{" "}
+          Webmimic is not intended for children under 13 years of age (or the minimum age required in
+          your jurisdiction).
+        </p>
+        <p>We do not knowingly collect personal information from children.</p>
+      </FooterSection>
+
+      <FooterSection heading="International Users">
+        <p>
+          Webmimic operates globally through infrastructure providers located in multiple regions,
+          including the United States.
+        </p>
+        <p>
+          By using the Service, you understand that information may be processed in countries whose
+          privacy laws may differ from those in your jurisdiction.
+        </p>
+      </FooterSection>
+
+      <FooterSection heading="Cookies and Similar Technologies">
+        <p>Webmimic uses cookies and similar technologies for:</p>
+        <ul className="list-disc space-y-2 pl-6">
+          <li>Authentication</li>
+          <li>Session management</li>
+          <li>Security</li>
+          <li>Basic analytics</li>
+        </ul>
+        <p>
+          Disabling certain cookies may affect account functionality and sign-in capabilities.
+        </p>
+      </FooterSection>
+
+      <FooterSection heading="Chrome Web Store Compliance">
+        <p>
+          Webmimic&apos;s use of information obtained through Chrome APIs complies with the Chrome Web
+          Store User Data Policy, including Limited Use requirements.
+        </p>
+        <p>
+          Information accessed through Chrome APIs is used solely to provide and improve
+          Webmimic&apos;s user-facing features and is never sold or used for unrelated advertising
+          purposes.
+        </p>
+      </FooterSection>
+
+      <FooterSection heading="Changes to This Policy">
+        <p>As Webmimic evolves, we may update this Privacy Policy from time to time.</p>
+        <p>
+          When significant changes are made, we will update this page and revise the &quot;Last
+          Updated&quot; date above.
+        </p>
+        <p>
+          Continued use of the Service after changes become effective constitutes acceptance of the
+          updated policy.
+        </p>
+      </FooterSection>
+
+      <FooterSection heading="Contact Us">
+        <p>Questions about privacy or data handling:</p>
+        <p>
           <a href="mailto:privacy@webmimic.com" className="text-[#1463ff] hover:underline">
             privacy@webmimic.com
-          </a>{" "}
-          and we will take appropriate steps to delete it.
-        </p>
-      </FooterSection>
-
-      <FooterSection heading="International users">
-        <p>
-          Webmimic is operated from the United States. If you access the Service from other regions, your
-          information may be processed in the United States and other countries where our providers
-          operate. Those countries may have different data protection laws than your own.
-        </p>
-      </FooterSection>
-
-      <FooterSection heading="Cookies and similar technologies (website)">
-        <p>
-          The webmimic.com site uses cookies and similar technologies for authentication (via Clerk),
-          session management, security, and basic analytics. You can control cookies through your browser
-          settings; disabling certain cookies may limit sign-in or account features.
-        </p>
-      </FooterSection>
-
-      <FooterSection heading="Chrome Web Store and limited use">
-        <p>
-          If you install the extension from the Chrome Web Store, Google&apos;s terms and policies also
-          apply to that distribution. Webmimic&apos;s use of information received from Chrome APIs
-          adheres to the{" "}
-          <a
-            href="https://developer.chrome.com/docs/webstore/program-policies/limited-use"
-            className="text-[#1463ff] hover:underline"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Chrome Web Store User Data Policy
-          </a>
-          , including the Limited Use requirements: we use extension-related user data only to provide
-          or improve the user-facing features of Webmimic, as described in this policy, and we do not
-          sell or transfer it for unrelated purposes.
-        </p>
-      </FooterSection>
-
-      <FooterSection heading="Changes to this policy">
-        <p>
-          We may update this Privacy Policy as the product evolves. We will post the revised policy on
-          this page and update the &quot;Last updated&quot; date below. Material changes may also be
-          communicated through the website or extension where appropriate. Continued use after changes
-          constitutes acceptance of the updated policy.
-        </p>
-      </FooterSection>
-
-      <FooterSection heading="Contact">
-        <p>
-          Questions about this Privacy Policy or our data practices:{" "}
-          <a href="mailto:privacy@webmimic.com" className="text-[#1463ff] hover:underline">
-            privacy@webmimic.com
           </a>
         </p>
+        <p>Legal inquiries:</p>
         <p>
-          Legal inquiries:{" "}
           <a href="mailto:legal@webmimic.com" className="text-[#1463ff] hover:underline">
             legal@webmimic.com
           </a>
         </p>
-        <p>Last updated: May 20, 2026</p>
       </FooterSection>
     </FooterPageShell>
   );
