@@ -30,7 +30,7 @@ const nav = [
     links: [
       { label: "About", href: "/about" },
       { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Service", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
       { label: "Contact", href: "/contact" },
     ],
   },
