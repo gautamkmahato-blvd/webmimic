@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { AppShell } from "@/components/app-shell";
+import { ExtensionWebSignOutSync } from "@/components/extension-web-sign-out-sync";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <ExtensionWebSignOutSync />
           <AppShell>{children}</AppShell>
         </body>
       </html>
