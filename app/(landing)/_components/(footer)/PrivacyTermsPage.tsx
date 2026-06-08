@@ -17,8 +17,8 @@ export function PrivacyTermsPage() {
           do not sell personal data to third parties.
         </p>
         <p>
-          Payment processing is handled by our billing partners; we do not store full card numbers on our
-          servers.
+          Payment processing is handled by Polar (our billing provider); we do not store full card
+          numbers on our servers.
         </p>
         <p>
           You may request account deletion by contacting{" "}
@@ -58,6 +58,11 @@ export function PrivacyTermsPage() {
             <strong>Account and session data</strong> — a short-lived extension auth token stored in
             browser session storage while signed in; cleared on sign-out.
           </li>
+          <li>
+            <strong>Lottie animation scan</strong> — when you run Scan animations, the extension
+            temporarily installs page-local detectors (only after you start the scan) to identify Lottie
+            JSON from network responses; results stay in your browser until you export or save.
+          </li>
         </ul>
         <p>
           <strong>Sign-in, credits, and paid features</strong>
@@ -81,7 +86,7 @@ export function PrivacyTermsPage() {
         <p>
           When you use AI features, screenshots and structured page data may be sent to Webmimic servers
           and processed with third-party AI providers (such as Google Gemini) to generate analysis or
-          code. We use Clerk for authentication, billing partners for payments, and infrastructure
+          code. We use Clerk for authentication, Polar for payments and subscriptions, and infrastructure
           providers to host and secure the service.
         </p>
         <p>
