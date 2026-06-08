@@ -3,6 +3,7 @@ import { headers } from 'next/headers'
 import type { NextRequest } from 'next/server'
 import type { WebhookEvent } from '@clerk/nextjs/server'
 import createOrUpdateUser from '@/app/service/supabase/user/createOrUpdateUser'
+import { deleteUser } from '@/app/service/supabase/user/deleteUser'
 import { grantFreeSignupCredits } from '@/app/service/supabase/user/grantFreeSignupCredits'
 
 
@@ -66,6 +67,49 @@ export async function POST(req: NextRequest) {
     const userId = res.result?.id as string | undefined
     if (userId) {
       await grantFreeSignupCredits(userId)
+    }
+  }
+
+  if (eventType === 'user.deleted') {
+    const data = evt.data
+    const clerkId = data.id
+    // Clerk's UserDeletedJSON type is minimal; some deliveries still include email fields.
+    const deletedPayload = data as {
+      email_addresses?: Array<{ email_address?: string | null }>
+    }
+    const email = deletedPayload.email_addresses?.[0]?.email_address ?? null
+
+    if (!clerkId || typeof clerkId !== 'string' || clerkId.trim() === '') {
+      console.error('❌ user.deleted missing clerk id')
+      return new Response('Missing user id', { status: 400 })
+    }
+
+    console.log('✅ Deleting user:', { clerkId, email })
+
+    const res = await deleteUser({ clerkId, email })
+    console.log('Delete result:', res)
+
+    if (!res?.success) {
+      console.error('❌ Failed to delete user in DB:', res?.message)
+      return new Response('Error deleting user', { status: 500 })
+    }
+
+    const deleteResult = res.result as {
+      deleted?: boolean
+      alreadyDeleted?: boolean
+      warnings?: string[]
+    }
+
+    if (deleteResult?.alreadyDeleted) {
+      console.warn('⚠️ user.deleted: no matching Supabase row — user was not removed:', {
+        clerkId,
+        email,
+      })
+    } else if (deleteResult?.deleted) {
+      console.log('✅ User deleted:', res?.message)
+      if (deleteResult.warnings?.length) {
+        console.warn('⚠️ User delete warnings:', deleteResult.warnings)
+      }
     }
   }
 

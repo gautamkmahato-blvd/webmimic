@@ -9,11 +9,15 @@ const CLOUDINARY_CONCURRENCY = 5;
 const UUID_RE =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
+const PLACEHOLDER_SIGNUP_EMAIL = 'example@gmail.com';
+
 export type DeleteUserInput = {
   /** Clerk user id (preferred when deleting from auth webhooks). */
   clerkId?: string | null;
   /** Internal Supabase users.id uuid. */
   userId?: string | null;
+  /** Fallback lookup when clerk_id in DB is missing or out of sync. */
+  email?: string | null;
 };
 
 export type DeleteUserDeletedCounts = {
@@ -150,12 +154,55 @@ async function userHasCreditsRow(userId: string): Promise<boolean> {
   return Boolean(data);
 }
 
+async function fetchUserRow(
+  column: 'clerk_id' | 'id' | 'email',
+  value: string,
+): Promise<ResolvedUser | null> {
+  const { data, error } = await supabaseAdmin
+    .from('users')
+    .select('id, clerk_id, email')
+    .eq(column, value)
+    .maybeSingle();
+
+  if (error) {
+    console.error(`${LOG_PREFIX} resolve user by ${column} failed`, { value, error });
+    throw new Error(`Failed to resolve user: ${error.message}`);
+  }
+
+  return (data as ResolvedUser | null) ?? null;
+}
+
+async function resolveUserIdFromPaymentsClerkId(clerkId: string): Promise<string | null> {
+  const { data, error } = await supabaseAdmin
+    .from('payments')
+    .select('user_id')
+    .eq('clerk_id', clerkId)
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) {
+    console.error(`${LOG_PREFIX} payments clerk_id lookup failed`, { clerkId, error });
+    return null;
+  }
+
+  const userId = data?.user_id;
+  return typeof userId === 'string' && isValidUuid(userId) ? userId : null;
+}
+
+function isUsableEmail(email: string | null | undefined): email is string {
+  const normalized = normalizeOptionalId(email);
+  if (!normalized) return false;
+  return normalized.toLowerCase() !== PLACEHOLDER_SIGNUP_EMAIL;
+}
+
 async function resolveUser(input: DeleteUserInput): Promise<ResolvedUser | null> {
   const clerkId = normalizeOptionalId(input.clerkId);
   const userId = normalizeOptionalId(input.userId);
+  const email = isUsableEmail(input.email) ? input.email.trim() : null;
 
-  if (!clerkId && !userId) {
-    throw new Error('Either clerkId or userId is required');
+  if (!clerkId && !userId && !email) {
+    throw new Error('Either clerkId, userId, or email is required');
   }
 
   if (userId && !isValidUuid(userId)) {
@@ -163,52 +210,56 @@ async function resolveUser(input: DeleteUserInput): Promise<ResolvedUser | null>
   }
 
   if (clerkId && userId) {
-    const { data, error } = await supabaseAdmin
-      .from('users')
-      .select('id, clerk_id, email')
-      .eq('clerk_id', clerkId)
-      .maybeSingle();
-
-    if (error) {
-      console.error(`${LOG_PREFIX} resolve user by clerkId failed`, { clerkId, error });
-      throw new Error(`Failed to resolve user: ${error.message}`);
-    }
-
-    if (!data) return null;
-    if (data.id !== userId) {
+    const byClerkId = await fetchUserRow('clerk_id', clerkId);
+    if (!byClerkId) return null;
+    if (byClerkId.id !== userId) {
       throw new Error('clerkId and userId refer to different users');
     }
-
-    return data as ResolvedUser;
+    return byClerkId;
   }
 
   if (userId) {
-    const { data, error } = await supabaseAdmin
-      .from('users')
-      .select('id, clerk_id, email')
-      .eq('id', userId)
-      .maybeSingle();
+    return fetchUserRow('id', userId);
+  }
 
-    if (error) {
-      console.error(`${LOG_PREFIX} resolve user by userId failed`, { userId, error });
-      throw new Error(`Failed to resolve user: ${error.message}`);
+  if (clerkId) {
+    const byClerkId = await fetchUserRow('clerk_id', clerkId);
+    if (byClerkId) return byClerkId;
+
+    if (email) {
+      const byEmail = await fetchUserRow('email', email);
+      if (byEmail) {
+        console.warn(`${LOG_PREFIX} resolved user by email fallback`, {
+          clerkId,
+          email,
+          userId: byEmail.id,
+          storedClerkId: byEmail.clerk_id,
+        });
+        return byEmail;
+      }
     }
 
-    return (data as ResolvedUser | null) ?? null;
+    const paymentUserId = await resolveUserIdFromPaymentsClerkId(clerkId);
+    if (paymentUserId) {
+      const byPaymentUserId = await fetchUserRow('id', paymentUserId);
+      if (byPaymentUserId) {
+        console.warn(`${LOG_PREFIX} resolved user by payments.clerk_id fallback`, {
+          clerkId,
+          userId: byPaymentUserId.id,
+          storedClerkId: byPaymentUserId.clerk_id,
+        });
+        return byPaymentUserId;
+      }
+    }
+
+    return null;
   }
 
-  const { data, error } = await supabaseAdmin
-    .from('users')
-    .select('id, clerk_id, email')
-    .eq('clerk_id', clerkId!)
-    .maybeSingle();
-
-  if (error) {
-    console.error(`${LOG_PREFIX} resolve user by clerkId failed`, { clerkId, error });
-    throw new Error(`Failed to resolve user: ${error.message}`);
+  if (email) {
+    return fetchUserRow('email', email);
   }
 
-  return (data as ResolvedUser | null) ?? null;
+  return null;
 }
 
 async function fetchAssetUrls(userId: string): Promise<string[]> {
@@ -297,20 +348,30 @@ async function cleanupCloudinaryAssets(urls: string[]): Promise<DeleteUserCloudi
   return summary;
 }
 
+async function deleteAuxiliaryUserRows(userId: string): Promise<void> {
+  const auxiliaryTables = ['operation_usage', 'quota_reservations'] as const;
+
+  for (const table of auxiliaryTables) {
+    const { error } = await supabaseAdmin.from(table).delete().eq('user_id', userId);
+    if (error) {
+      console.warn(`${LOG_PREFIX} auxiliary cleanup skipped for ${table}`, { userId, error });
+    }
+  }
+}
+
 async function deleteUserRow(userId: string): Promise<void> {
   const { data, error } = await supabaseAdmin
     .from('users')
     .delete()
     .eq('id', userId)
-    .select('id')
-    .maybeSingle();
+    .select('id');
 
   if (error) {
     console.error(`${LOG_PREFIX} delete users row failed`, { userId, error });
     throw new Error(`Failed to delete user: ${error.message}`);
   }
 
-  if (!data) {
+  if (!data || data.length === 0) {
     throw new Error('User delete returned no row — user may have been removed concurrently');
   }
 }
@@ -355,6 +416,12 @@ export async function deleteUser(
     const user = await resolveUser(input);
 
     if (!user) {
+      console.warn(`${LOG_PREFIX} no Supabase user matched delete request`, {
+        clerkId: normalizeOptionalId(input.clerkId),
+        userId: normalizeOptionalId(input.userId),
+        email: isUsableEmail(input.email) ? input.email : null,
+      });
+
       return {
         success: true,
         result: {
@@ -414,6 +481,7 @@ export async function deleteUser(
       warnings.push('Cloudinary not configured — remote media was not deleted');
     }
 
+    await deleteAuxiliaryUserRows(userId);
     await deleteUserRow(userId);
 
     const verified = await verifyUserDeleted(userId);
