@@ -20,33 +20,34 @@ export function PrivacyPolicyPage() {
       </p>
 
       <FooterSection heading="Overview">
+        <p>Privacy is fundamental to Webmimic.</p>
         <p>
-          At Webmimic, privacy is a core part of how we build products.
+          We built Webmimic to help designers and developers understand websites faster—not to track
+          browsing activity or collect unnecessary information.
         </p>
         <p>
-          Our mission is to help designers and developers inspect, analyze, and learn from websites
-          faster. We believe that powerful tools should also be transparent about how they handle
-          information.
+          A large part of Webmimic works directly in your browser, and we only process information that
+          is necessary to provide the features you choose to use. We do not sell your personal
+          information, and we do not collect website data simply because you visit a page while the
+          extension is installed.
         </p>
         <p>
-          Webmimic (&quot;Webmimic&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) operates the
-          webmimic.com website, related APIs, and the Webmimic Chrome Extension (collectively, the
-          &quot;Service&quot;).
+          When information is shared with Webmimic, it is because you have explicitly chosen to save
+          content, sync results to your account, export data, or use cloud-powered features such as AI
+          analysis.
         </p>
         <p>This Privacy Policy explains:</p>
         <ul className="list-disc space-y-2 pl-6">
           <li>What information we collect</li>
-          <li>How we use it</li>
-          <li>When information is shared</li>
+          <li>Why we collect it</li>
+          <li>How it is used</li>
+          <li>When it may be shared</li>
           <li>How long it is retained</li>
           <li>The choices and controls available to you</li>
         </ul>
         <p>
-          By using the Service, you agree to this Privacy Policy and our{" "}
-          <a href="/terms" className="text-[#1463ff] hover:underline">
-            Terms of Service
-          </a>
-          .
+          Our goal is simple: provide powerful website analysis tools while giving you transparency and
+          control over your information.
         </p>
       </FooterSection>
 
