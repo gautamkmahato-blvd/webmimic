@@ -3,10 +3,11 @@ import { getClerkIdFromExtensionBearer, getExtensionCorsHeaders } from "@/lib/ex
 import { parseBody } from "@/lib/validation/validate";
 import { RecreateFromScreenshotSchema } from "@/lib/validation/schemas";
 import { enforceRateLimit } from "@/lib/upstash/rateLimiter";
-import cursorRecreateComponent from "@/app/service/cursor/cursorRecreateComponent";
+// import cursorRecreateComponent from "@/app/service/cursor/cursorRecreateComponent";
 import { CREDIT_FEATURES } from "@/lib/credits/config";
 import { chargeFeatureCredits, refundFeatureCredits } from "@/lib/credits/extensionCredits";
-import recreateFromScreenshot from "@/app/service/recreateFromScreenshot";
+// import recreateFromScreenshot from "@/app/service/recreateFromScreenshot";
+import geminiReasoning from "@/app/service/openRouter/recreate-components/geminiReasoning";
 
 export async function OPTIONS(req: Request) {
   return new NextResponse(null, { status: 204, headers: getExtensionCorsHeaders(req) });
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
 
     try {
       console.log("[recreate-from-screenshot] Generating code...");
-      const result = await recreateFromScreenshot({ html, css, screenshotUrl });
+      const result = await geminiReasoning({ html, css, screenshotUrl });
 
       if (!result.status) {
         console.log("[recreate-from-screenshot] Generation failed:", result.message);
