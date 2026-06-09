@@ -174,14 +174,28 @@ export function PrivacyPolicyPage() {
         <Subheading>Animation Analysis</Subheading>
         <p>
           When you run animation analysis tools, Webmimic may temporarily inspect page animations to
-          identify technologies such as:
+          identify technologies such as GSAP and Framer Motion. Results remain local to your browser
+          unless you choose to save or export them.
         </p>
-        <ul className="list-disc space-y-2 pl-6">
-          <li>Lottie</li>
-          <li>GSAP</li>
-          <li>Framer Motion</li>
-        </ul>
-        <p>Results remain local to your browser unless you choose to save or export them.</p>
+
+        <Subheading>Lottie animation detection</Subheading>
+        <p>
+          Lottie detection runs only when you click <strong>Scan Page for Animations</strong> in the
+          Lottie Animations sub-tab. Webmimic does not install Lottie detectors on every page load.
+        </p>
+        <p>
+          At that moment, the extension injects a small on-page helper (<code>lottie-hooks.js</code>)
+          into the active tab so it can recognize Lottie animations that are already playing or loaded
+          on the page. That helper may observe Lottie-related network responses and{' '}
+          <code>lottie.loadAnimation</code> calls to locate animation JSON, and may read animation
+          data already present in the page context (for example from <code>lottie-web</code> or{' '}
+          <code>lottie-react</code>) so you can preview or download the file.
+        </p>
+        <p>
+          We extract <strong>only Lottie animation JSON</strong> for this feature — not passwords,
+          form inputs, browsing history, cookies, or other unrelated page content. Lottie scan results
+          and any JSON you download stay in your browser unless you choose to save or export them.
+        </p>
 
         <Subheading>Accessibility Audits</Subheading>
         <p>When you run accessibility scans, Webmimic analyzes the active page for WCAG-related issues, including:</p>

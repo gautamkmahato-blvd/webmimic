@@ -18,7 +18,7 @@ export interface RecreateFromScreenshotResult {
   code: string;
 }
 
-const MODEL = 'google/gemini-3.5-flash';
+const MODEL = 'gopenai/gpt-5.3-codex';
 
 export default async function geminiReasoning(
   input: RecreateFromScreenshotInput,
