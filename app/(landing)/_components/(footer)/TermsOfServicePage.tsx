@@ -50,8 +50,8 @@ export function TermsOfServicePage() {
         <p>
           You are responsible for maintaining the confidentiality of your account credentials and for
           all activity under your account. Notify us promptly at{" "}
-          <a href="mailto:legal@webmimic.com" className="text-[#1463ff] hover:underline">
-            legal@webmimic.com
+          <a href="mailto:gkmbusiness74@gmail.com" className="text-[#1463ff] hover:underline">
+            gkmbusiness74@gmail.com
           </a>{" "}
           if you suspect unauthorized access.
         </p>
@@ -234,8 +234,8 @@ export function TermsOfServicePage() {
         </p>
         <p>
           Before filing a claim, you agree to contact us at{" "}
-          <a href="mailto:legal@webmimic.com" className="text-[#1463ff] hover:underline">
-            legal@webmimic.com
+          <a href="mailto:gkmbusiness74@gmail.com" className="text-[#1463ff] hover:underline">
+            gkmbusiness74@gmail.com
           </a>{" "}
           and attempt to resolve the dispute informally. If we cannot resolve a dispute within thirty
           (30) days, either party may pursue remedies in the courts located in Delaware, except where
@@ -263,14 +263,14 @@ export function TermsOfServicePage() {
       <FooterSection heading="Contact">
         <p>
           Questions about these Terms:{" "}
-          <a href="mailto:legal@webmimic.com" className="text-[#1463ff] hover:underline">
-            legal@webmimic.com
+          <a href="mailto:gkmbusiness74@gmail.com" className="text-[#1463ff] hover:underline">
+            gkmbusiness74@gmail.com
           </a>
         </p>
         <p>
           Privacy-related requests:{" "}
-          <a href="mailto:privacy@webmimic.com" className="text-[#1463ff] hover:underline">
-            privacy@webmimic.com
+          <a href="mailto:gkmbusiness74@gmail.com" className="text-[#1463ff] hover:underline">
+            gkmbusiness74@gmail.com
           </a>
         </p>
         <p>Last updated: May 20, 2026</p>

@@ -349,8 +349,8 @@ export function PrivacyPolicyPage() {
         </ul>
         <p>You may request account deletion or data export by contacting:</p>
         <p>
-          <a href="mailto:privacy@webmimic.com" className="text-[#1463ff] hover:underline">
-            privacy@webmimic.com
+          <a href="mailto:gkmbusiness74@gmail.com" className="text-[#1463ff] hover:underline">
+            gkmbusiness74@gmail.com
           </a>
         </p>
       </FooterSection>
@@ -426,14 +426,14 @@ export function PrivacyPolicyPage() {
       <FooterSection heading="Contact Us">
         <p>Questions about privacy or data handling:</p>
         <p>
-          <a href="mailto:privacy@webmimic.com" className="text-[#1463ff] hover:underline">
-            privacy@webmimic.com
+          <a href="mailto:gkmbusiness74@gmail.com" className="text-[#1463ff] hover:underline">
+            gkmbusiness74@gmail.com
           </a>
         </p>
         <p>Legal inquiries:</p>
         <p>
-          <a href="mailto:legal@webmimic.com" className="text-[#1463ff] hover:underline">
-            legal@webmimic.com
+          <a href="mailto:gkmbusiness74@gmail.com" className="text-[#1463ff] hover:underline">
+            gkmbusiness74@gmail.com
           </a>
         </p>
       </FooterSection>
