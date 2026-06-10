@@ -35,7 +35,7 @@ ${code}
 const apiResponse = await openRouterClient.chat.completions.create({
   model: 'google/gemini-3.5-flash',
   messages: [
-    {
+    {  
       role: 'system',
       content: VIDEO_ANIMATION_RECONSTRUCTION_PROMPT,
     },
