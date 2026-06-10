@@ -18,7 +18,7 @@ export interface RecreateFromScreenshotResult {
   code: string;
 }
 
-const MODEL = 'openai/gpt-5.3-codex';
+const MODEL = 'google/gemini-3.1-pro-preview';
 
 export default async function geminiReasoning(
   input: RecreateFromScreenshotInput,
@@ -81,7 +81,6 @@ export default async function geminiReasoning(
           ] as OpenAI.ChatCompletionContentPart[],
         },
       ],
-      max_tokens: 10000,
     });
 
     const response = apiResponse.choices[0]?.message as ORChatMessage | undefined;
